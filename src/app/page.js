@@ -22,7 +22,7 @@ export default function Home() {
       <SponsorsMarquee /> 
       <Info /> 
       <AnokhaMarquee /> 
-      <Footer />
+       <Footer current_page="home"/> {/* current_page is a prop that is used to highlight the current page in the footer. Possible values are home, team, contact, privacy policy} */}
     </main>
   )
 }
