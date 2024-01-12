@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import bg from '/public/images/bg.png'
+import bg from '/public/images/hero.jpg'
 
 
 const Hero = () => {
@@ -10,7 +10,7 @@ const Hero = () => {
         <Image 
           src={bg}
           layout="fill"
-          objectFit="cover"
+          objectFit="contain"
           alt="hero background"
         />
       </div>
