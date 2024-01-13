@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'YourFontName';
+    src: url('/fonts/Roobert-Font/Roobert-Regular/Roobert-Regular.tff') format('tff');
+    /* Add additional font formats if needed */
+    font-weight: normal;
+    font-style: normal;
+}
