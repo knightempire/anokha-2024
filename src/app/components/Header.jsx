@@ -2,8 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import NavLink from "./NavLink";
-import { HiBars3 } from "react-icons/hi2";
-import { HiXMark } from "react-icons/hi2";
+import Hamburger from 'hamburger-react'
 import MenuOverlay from "./MenuOverlay";
 import Image from 'next/image'
 
@@ -46,23 +45,7 @@ const Navbar = () => {
             className="w-2/5 md:w-4/5"
           />
         </Link>
-        <div className="mobile-menu block md:hidden">
-          {!navbarOpen ? (
-            <button
-              onClick={() => setNavbarOpen(true)}
-              className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white"
-            >
-              <HiBars3 className="h-5 w-5 font-bold"/>
-            </button>
-          ) : (
-            <button
-              onClick={() => setNavbarOpen(false)}
-              className="flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white"
-            >
-              <HiXMark className="h-5 w-5 font-bold"/>
-            </button>
-          )}
-        </div>
+        <Hamburger toggled={navbarOpen} toggle={setNavbarOpen} size={20} color="#ffffff" />
         <div className="menu hidden md:block md:w-auto" id="navbar">
           <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
             {navLinks.map((link, index) => (
