@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import NavLink from "./NavLink";
 import { HiBars3 } from "react-icons/hi2";
 import { HiXMark } from "react-icons/hi2";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
 import Image from 'next/image'
 
