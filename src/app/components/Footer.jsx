@@ -15,16 +15,16 @@ const Footer = ({current_page}) => {
       {/* <div className="absolute inset-0 bg-black opacity-100">
         <h1 className="text-4xl text-white text-center content-center">Trust me this is the footer</h1>
       </div> */}
-      <div className="flex flex-wrap p-4 space-x-4">
-        <div className='p-4'>
+      <div className="flex flex-wrap p-8 space-x-4 lg:justify-center">
+        <div className='p-6'>
           <Image src="/images/footer_image.png" alt="footerImage" width={600} height={600}/>
         </div>
-        <div className=' pl-4 pr-4 pb-4 block w-1/2'>
+        <div className=' pl-4 pr-4 pb-4 block lg:w-1/2'>
           <div className=''><h1 className='text-white text-5xl'>REACH OUT TO US!</h1><h6 className='text-gray-600'>Feel free to reachout to us if any queries</h6></div>
-          <div className='mt-7'><Link href="mailto:anokhapr@cb.amrita.edu" className='text-white text-2xl flex flex-nowrap hover:space-x-4 transition-[margin] ease duration-200' ><p>anokhapr@cb.amrita.edu</p> <FaArrowRight className='align-middle mt-1.5 ml-2 text-xl'/></Link></div>
-          <div className='mt-1'><Link href="mailto:anokhasupport@cb.amrita.edu" className='text-white text-2xl flex flex-nowrap hover:space-x-4'><p>anokhasupport@cb.amrita.edu</p> <FaArrowRight className='align-middle mt-1.5 ml-2 text-xl'/></Link></div>
-          <div className='mt-5 flex flex-wrap justify-between p-2 gap-2'>
-            <div className='mt-3'>
+          <div className='mt-7'><Link href="mailto:anokhapr@cb.amrita.edu" className='text-white text-xl flex flex-nowrap hover:space-x-4 transition-[margin] ease duration-200 lg:text-2xl' ><p>anokhapr@cb.amrita.edu</p> <FaArrowRight className='align-middle mt-1.5 ml-2 text-base md:text-xl'/></Link></div>
+          <div className='mt-1'><Link href="mailto:anokhasupport@cb.amrita.edu" className='text-white text-xl flex flex-nowrap hover:space-x-4 lg:text-2xl'><p>anokhasupport@cb.amrita.edu</p> <FaArrowRight className='align-middle mt-1.5 ml-2 text-base lg:text-xl'/></Link></div>
+          <div className='mt-5 flex flex-col lg:flex-row flex-wrap justify-right gap-2 lg:justify-between'>
+            <div className='mt-3'> 
               <h2 className='text-white font-bold'>OUR ADDRESS</h2>
               <p className='text-gray-500 text-sm'>Amrita Vishwa Vidyapeetham</p>
               <p className='text-gray-500 text-sm'>Coimbatore Campus</p>
@@ -41,8 +41,8 @@ const Footer = ({current_page}) => {
                 <Link href={"https://www.linkedin.com"}><FaLinkedinIn className='text-gray-600 hover:text-white'/></Link>
               </div>
               <div className='block mt-5'>
-                <div className='flex flex-nowrap'><FiArrowUpRight className='text-gray-500 text-xl mt-0.5'/><Link href={"https://www.amrita.edu"} className='text-gray-200 hover:text-white hover:font-bold'>AMRITA.EDU</Link></div>
-                <div className='flex flex-nowrap'><FiArrowUpRight className='text-gray-500 text-xl mt-0.5'/><Link href={"https://www.google.com"} className='text-gray-200 hover:text-white hover:font-bold'>PLAYSTORE APP</Link></div>
+                <div className='flex flex-nowrap'><Link href={"https://www.amrita.edu"} className='text-gray-200 hover:text-white hover:font-bold'>AMRITA.EDU</Link><FiArrowUpRight className= 'pr-1 text-gray-500 text-xl mt-0.5'/></div>
+                <div className='flex flex-nowrap'><Link href={"https://www.google.com"} className='text-gray-200 hover:text-white hover:font-bold'>PLAYSTORE APP</Link><FiArrowUpRight className='pr-1 text-gray-500 text-xl mt-0.5'/></div>
               </div>
             </div>
             <div className='mt-3'>
