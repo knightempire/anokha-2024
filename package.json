@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@devil7softwares/react-drifter-stars": "^1.0.6",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
     "react-fast-marquee": "^1.6.2",
-    "react-icons": "^5.0.1"
+    "react-icons": "^5.0.1",
+    "react-starfield": "^1.0.3",
+    "sharp": "^0.33.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
