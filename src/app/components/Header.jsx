@@ -32,8 +32,11 @@ const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    // {Disabling fixed navbar for now, will enable later - sajith}
-    <nav className="mx-auto border border-[#33353F] top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-40 backdrop-blur-md">
+
+    // {Disable fixed navbar for now, will enable later}
+
+    <nav className="fixed mx-auto border border-[#33353F] top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-40 backdrop-blur-md footer-font overflow-hidden">
+
       <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
         <Link
           href={"/"}
@@ -44,7 +47,7 @@ const Navbar = () => {
             alt="logo"
             width={200}
             height={200}
-            className="rounded-full"
+            className="w-2/5 md:w-4/5"
           />
         </Link>
         <div className="mobile-menu block md:hidden">
