@@ -32,7 +32,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed mx-auto border border-[#33353F] top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-40 backdrop-blur-md footer-font overflow-hidden">
-      <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
+      <div className="flex container lg:py-4 flex-nowrap items-center justify-between mx-auto px-4 py-2">
         <Link
           href={"/"}
           className="text-2xl md:text-5xl text-white font-normal"
@@ -45,7 +45,9 @@ const Navbar = () => {
             className="w-2/5 md:w-4/5"
           />
         </Link>
-        <Hamburger toggled={navbarOpen} toggle={setNavbarOpen} size={20} color="#ffffff" />
+        <div className="mobile-menu md:hidden place-self-end">
+          <Hamburger toggled={navbarOpen} toggle={setNavbarOpen} size={20} color="#ffffff" />
+        </div>
         <div className="menu hidden md:block md:w-auto" id="navbar">
           <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
             {navLinks.map((link, index) => (
