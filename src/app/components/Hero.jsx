@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
-import bg from '/public/images/hero.jpg'
+import bg from '/public/images/bg.png'
+import logo from '/public/images/anokha2024_logo.png'
 
 
 const Hero = () => {
@@ -10,11 +11,18 @@ const Hero = () => {
         <Image 
           src={bg}
           layout="fill"
-          objectFit="contain"
+          objectFit="center"
           alt="hero background"
         />
       </div>
-      <div className="absolute inset-0 bg-black opacity-20">
+      <div className="absolute inset-0">
+              <div className="absolute bottom-20 left-20">
+                <Image 
+                src={logo}
+                height={600}
+                width={600}/>
+
+      </div>
         
       </div>
     </div>
