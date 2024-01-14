@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@devil7softwares/react-drifter-stars": "^1.0.6",
+    "clsx": "^2.1.0",
     "hamburger-react": "^2.5.0",
     "next": "14.0.4",
     "react": "^18",

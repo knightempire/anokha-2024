@@ -23,7 +23,7 @@ const navLinks = [
   },
     {
     title: "Login",
-    path: "#Login",
+    path: "/login",
   },
 ];
 
