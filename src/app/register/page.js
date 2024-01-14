@@ -15,8 +15,10 @@ import SignUpForm from './components/SignUpForm'
 export default function Home() {
     return (
         <main className="flex min-h-screen flex-col bg-[#121212]">
-            <Navbar />
-            <RegisterPage />
+            <div className="block space-y-24">
+                <Navbar />
+                <RegisterPage />
+            </div>
         </main>
     )
 }
