@@ -3,13 +3,13 @@ import React, { useEffect, useRef } from 'react'
 import { WebGL } from './js/webgl'
 import "./app.css"
 
-const WebGLApp = () => {
+const WebGLApp = ({colors}) => {
     const rendererEl = useRef(null)
 
     const bgProps = {
-        color1: [163 / 255, 189 / 255, 230 / 255],
-        color2: [54 / 255, 211 / 255, 211 / 255],
-        color3: [0 / 255, 0 / 255, 0 / 255],
+        color1: colors.color1,
+        color2: colors.color2,
+        color3: colors.color3,
         uLinesBlur: 0.25,
         uNoise: 0.075,
         uOffsetX: 0.34,
