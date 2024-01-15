@@ -14,11 +14,11 @@ import EventLander from "./components/EventLander"
 // FOoter - Design given
 const EventsHome = () => {
   return (
-    <div className="flex min-h-screen flex-col bg-[#121212]">
+    <div className="flex min-h-screen flex-col  bg-indigo-950">
       <Header/>
-
+      <div className='mt-12'>
       <EventLander />
-
+      </div>
        <Footer current_page="home"/> {/* current_page is a prop that is used to highlight the current page in the footer. Possible values are home, team, contact, privacy policy} */}
     </div>
   )

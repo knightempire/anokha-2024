@@ -9,9 +9,9 @@ export default function EventCard({
   price,
 }) {
   return (
-    <div className="flex flex-row bg-white h-full w-[480px] rounded overflow-hidden shadow-lg relative">
+    <div className="flex flex-row bg-white h-auto w-full rounded shadow-lg    ">
       {/* Image Section */}
-      <div className="flex-none h-full w-[220px]  relative">
+      <div className="flex-none h-full w-2/4  relative">
         <Image
           src={imgSrc}
           alt="Event Image"
@@ -33,7 +33,7 @@ export default function EventCard({
             tags.map((tag, index) => (
               <span
                 key={index}
-                className="inline-block bg-red-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
+                className="inline-block bg-gray-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-900 mr-2 mb-2"
               >
                 #{tag}
               </span>

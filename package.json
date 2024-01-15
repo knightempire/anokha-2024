@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@devil7softwares/react-drifter-stars": "^1.0.6",
+    "@material-tailwind/react": "^2.1.8",
     "clsx": "^2.1.0",
     "hamburger-react": "^2.5.0",
     "json-server": "^1.0.0-alpha.21",
