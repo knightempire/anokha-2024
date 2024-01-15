@@ -4,6 +4,7 @@ import Info from './components/InfoDivs'
 import SponsorsMarquee from './components/SponsorsMarquee'
 import AnokhaMarquee from './components/AnokhaMarquee'
 import Footer from './components/Footer'
+import WebGLApp from './bg/WebGLApp'
 
 // Use GSAP ScrollTrigger and Locomotive Scroll
 
@@ -18,6 +19,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
       <Navbar /> 
+      <WebGLApp />
       <Hero /> 
       <SponsorsMarquee /> 
       <Info /> 

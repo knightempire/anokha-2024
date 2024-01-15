@@ -1,27 +1,31 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import logo from '/public/images/anokha2024_logo.png';
-import DrifterStars from '@devil7softwares/react-drifter-stars';
+import mascot from '/public/images/mascot_base.svg';
 
 const Hero = () => (
-  <div className="relative h-screen overflow-hidden">
-    <DrifterStars
-      color="#a1a8b2"
-      motion={{ ratio: 0.015, noiseLength: 1000, noiseStrength: 2 }}
-      particle={{ count: 60 }}
-      links={{fade:300, maxLength:15}}
-      flare={{maxLength:20}}
-      glare={{opacityMultiplier:0.05}}
-       />
-    <Image
-      src={logo}
-      className="absolute bottom-20 left-20 hidden w-1/5 lg:block"
-    />
-    <div className="absolute flex flex-row justify-center p-5 bottom-20 space-x-10 text-white text-xl footer-font font-bold lg:space-x-20 lg:text-2xl lg:right-20 lg:py-10 xl:text-4xl">
-      <p>12th Edition</p>
-      <p>20+ Events</p>
-      <p>3 Days of Fun</p>
+  <div className="container mx-auto px-4 py-2">
+    <div className="relative h-screen overflow-hidden flex items-center justify-end">
+
+      <div className="absolute flex flex-col items-center justify-center w-full lg:bottom-10 lg:w-1/3 h-full">
+        <Image
+          src={mascot}
+          height={100}
+          width={100}
+          className="w-full h-full lg:mx-auto"
+          layout="intrinsic"
+          objectFit="contain"
+        />
+      </div>
+      <div className="absolute left-10 font-bold footer-font text-lg  lg:text-4xl xl:text-6xl text-white">
+        <p>Idiots are not born</p>
+        <p>They are made....</p>
+      </div>
+      <div className="absolute flex flex-row justify-center items-center w-full p-5 bottom-10 space-x-5 text-white text-xl footer-font font-bold lg:space-x-52 lg:text-2xl lg:py-10 xl:text-4xl">
+        <p>12th Edition</p>
+        <p>20+ Events</p>
+        <p>3 Days of Fun</p>
+      </div>
     </div>
   </div>
 );
