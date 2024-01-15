@@ -6,12 +6,13 @@ import { FaInstagram } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { FiArrowUpRight } from "react-icons/fi";
 import { TbPointFilled } from "react-icons/tb";
+import { IoLogoYoutube } from "react-icons/io";
 import Image from 'next/image'
 import Link from 'next/link';
 
 const Footer = ({current_page}) => {
   return (
-    <div className="relative h-1/2 footer-font">
+    <div className="relative h-1/2 footer-font bg-black">
       {/* <div className="absolute inset-0 bg-black opacity-100">
         <h1 className="text-4xl text-white text-center content-center">Trust me this is the footer</h1>
       </div> */}
@@ -35,10 +36,11 @@ const Footer = ({current_page}) => {
             <div className='mt-3'>
               <h2 className='text-white font-bold'>FOLLOW US</h2>
               <div className='flex flex-wrap justify-between mt-1 w-28'>
-                <Link href={"https://www.facebook.com"}><FaFacebookSquare className='text-gray-600 hover:text-white'/></Link>
-                <Link href={"https://www.twitter.com"}><FaXTwitter className='text-gray-600 hover:text-white'/></Link>
-                <Link href={"https://www.instagram.com"}><FaInstagram className='text-gray-600 hover:text-white'/></Link>
-                <Link href={"https://www.linkedin.com"}><FaLinkedinIn className='text-gray-600 hover:text-white'/></Link>
+                <Link href={"https://www.facebook.com/anokha.amrita/"}><FaFacebookSquare className='text-gray-600 hover:text-white'/></Link>
+                <Link href={"https://twitter.com/anokha_avvp_cbe"}><FaXTwitter className='text-gray-600 hover:text-white'/></Link>
+                <Link href={"https://www.instagram.com/anokhatechfest/"}><FaInstagram className='text-gray-600 hover:text-white'/></Link>
+                <Link href={"https://www.linkedin.com/school/anokha-amrita/"}><FaLinkedinIn className='text-gray-600 hover:text-white'/></Link>
+                <Link href={"https://www.youtube.com/@AnokhaTechfest"}><IoLogoYoutube className='text-gray-600 hover:text-white'/></Link>
               </div>
               <div className='block mt-5'>
                 <div className='flex flex-nowrap'><Link href={"https://www.amrita.edu"} className='text-gray-200 hover:text-white hover:font-bold'>AMRITA.EDU</Link><FiArrowUpRight className= 'pr-1 text-gray-500 text-xl mt-0.5'/></div>
