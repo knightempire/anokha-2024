@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
       <Navbar /> 
-      <WebGLApp />
+      <WebGLApp colors = {{color1: [0.64, 0.00, 0.00],color2: [0.21, 0.00, 0.00], color3: [0,0,0]}} />
       <Hero /> 
       <SponsorsMarquee /> 
       <Info /> 
