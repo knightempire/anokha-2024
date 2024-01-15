@@ -5,7 +5,9 @@ import NavLink from "./NavLink";
 import Hamburger from 'hamburger-react'
 import MenuOverlay from "./MenuOverlay";
 import Image from 'next/image'
-
+// import {
+//   Navbar
+// } from "@material-tailwind/react";
 
 
 const navLinks = [
@@ -31,12 +33,17 @@ const navLinks = [
   },
 ];
 
-const Navbar = () => {
+const Navigationbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    <nav className="fixed mx-auto border border-[#33353F] top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-40 backdrop-blur-md footer-font overflow-hidden">
-      <div className="flex container lg:py-4 flex-nowrap items-center justify-between mx-auto px-4 py-2">
+
+    // {Disable fixed navbar for now, will enable later}
+
+    <nav className="fixed z-20 h-fit rounded-md inset-2 max-w-full lg:px-16 lg:py-2 bg-opacity-50 backdrop-blur-xl mb-3 border-b-1 border-t-3 border-none bg-[#121212]">
+      <div className="flex container lg:py-2 flex-nowrap items-center justify-between mx-auto px-4 py-2  ">
+
+
         <Link
           href={"/"}
           className="text-2xl md:text-5xl text-white font-normal"
@@ -46,17 +53,17 @@ const Navbar = () => {
             alt="logo"
             width={200}
             height={200}
-            className="w-2/5 md:w-4/5"
+            className="w-36 lg:h-full"
           />
         </Link>
-        <div className="mobile-menu md:hidden place-self-end">
+        <div className="mobile-menu lg:hidden place-self-end pb-2">
           <Hamburger toggled={navbarOpen} toggle={setNavbarOpen} size={20} color="#ffffff" />
         </div>
-        <div className="menu hidden md:block md:w-auto" id="navbar">
-          <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
+        <div className="menu hidden  lg:block lg:w-auto" id="navbar">
+          <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0 ">
             {navLinks.map((link, index) => (
               <li key={index}>
-                <NavLink href={link.path} title={link.title} />
+                 <NavLink href={link.path} title={link.title} /> 
               </li>
             ))}
           </ul>
@@ -67,4 +74,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navigationbar;
