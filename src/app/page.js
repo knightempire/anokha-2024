@@ -12,6 +12,10 @@ import { useScroll } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import projects from './info_data'
 
+
+
+
+
 // Use GSAP ScrollTrigger and Locomotive Scroll
 
 // Navbar. Let it remain thisway untill better one is designed. This is also mobile responsive, so dont touch yet
@@ -57,6 +61,7 @@ export default function Home() {
       }
       <AnokhaMarquee /> 
        <Footer current_page="home"/> {/* current_page is a prop that is used to highlight the current page in the footer. Possible values are home, team, contact, privacy policy} */}
-    </main>
+
+ 
   )
 }

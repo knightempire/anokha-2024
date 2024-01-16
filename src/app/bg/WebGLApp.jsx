@@ -3,8 +3,9 @@ import React, { useEffect, useRef } from 'react'
 import { WebGL } from './js/webgl'
 import "./app.css"
 
-const WebGLApp = ({colors}) => {
-    const rendererEl = useRef(null)
+const WebGLApp = ({ colors }) => {
+    const rendererEl = useRef(null);
+    const webGl = useRef(null);
 
     const bgProps = {
         color1: colors.color1,
@@ -14,16 +15,20 @@ const WebGLApp = ({colors}) => {
         uNoise: 0.075,
         uOffsetX: 0.34,
         uOffsetY: 0.0,
-        uLinesAmount: 5.0,
+        uLinesAmount: 5.0
     };
 
     useEffect(() => {
         if (rendererEl.current) {
-            new WebGL({ rendererEl: rendererEl.current, bgProps })
+            webGl.current = new WebGL({ rendererEl: rendererEl.current, bgProps });
         }
-    }, [])
+        return () => webGl.current?.destroy();
+    }, []);
 
-    return <div id='webgl' ref={rendererEl} />
-}
+    useEffect(() => {
+        webGl.current?.experienceScene.updateBgProps(bgProps);
+    }, [colors, bgProps]);
 
+    return <div id="webgl" ref={rendererEl} />;
+};
 export default WebGLApp
