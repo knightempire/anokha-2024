@@ -6,7 +6,13 @@ import SponsorsMarquee from './components/SponsorsMarquee'
 import AnokhaMarquee from './components/AnokhaMarquee'
 import Footer from './components/Footer'
 import WebGLApp from './bg/WebGLApp'
-import { useState, useEffect } from 'react';
+import styles from './page.module.scss'
+import Lenis from '@studio-freight/lenis';
+import { useScroll } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import projects from './info_data'
+
+
 
 
 
@@ -19,47 +25,43 @@ import { useState, useEffect } from 'react';
 // Info div, self scrolling like the one in video. Please create supporting components as needed
 // Marquee of Anokha Hashtags
 // FOoter - Design given
+
+
+
 export default function Home() {
-  const [webGLColors, setWebGLColors] = useState({
-    color1: [0.64, 0.00, 0.00],
-    color2: [0.21, 0.00, 0.00],
-    color3: [0, 0, 0]
-  });
 
-  const handleClick = () => {
-    const randomColors = {
-      color1: getRandomColorValue(),
-      color2: getRandomColorValue(),
-      color3: getRandomColorValue()
-    };
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ['start start', 'end end']
+  })
 
-    setWebGLColors(randomColors);
-  };
+  useEffect( () => {
+    const lenis = new Lenis()
 
-  const getRandomColorValue = () => {
-    return [Math.random(), Math.random(), Math.random()];
-  };
-  useEffect(() => {
-  }, [webGLColors]);
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+  })
 
   return (
-    <main className="flex min-h-screen flex-col bg-[#121212]">
-      <Navbar />
-      {/* Temp buddon to change colors. Remove later */}
-      <button
-        className="fixed right-4 bottom-4 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-400 z-10"
-        onClick={handleClick}
-      >
-        Change Colors
-      </button>
-      <WebGLApp colors={webGLColors} />
-      <Hero />
-      <SponsorsMarquee />
-      <Info />
-      <AnokhaMarquee />
-      <Footer current_page="home" /> {/* current_page is a prop that is used to highlight the current page in the footer. Possible values are home, team, contact, privacy policy} */}
+    <main className={styles.main}>
+      <Navbar /> 
+      <WebGLApp colors = {{color1: [0.64, 0.00, 0.00],color2: [0.21, 0.00, 0.00], color3: [0,0,0]}} />
+      <Hero /> 
+      <SponsorsMarquee /> 
+      {
+        projects.map( (project, i) => {
+          const targetScale = 1 - ( (projects.length - i) * 0.05);
+          return <Info key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * .25, 1]} targetScale={targetScale}/>
+        })
+      }
+      <AnokhaMarquee /> 
+       <Footer current_page="home"/> {/* current_page is a prop that is used to highlight the current page in the footer. Possible values are home, team, contact, privacy policy} */}
 
-    </main>
-
+ 
   )
 }
