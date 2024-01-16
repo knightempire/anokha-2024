@@ -103,10 +103,23 @@ export class Background extends InteractiveObject {
 
   destroy() {
     super.destroy();
+
     this.geometry?.dispose();
     this.material?.dispose();
     if (this.mesh) {
       this.remove(this.mesh);
+    }
+  }
+  updateProps({ color1, color2, color3, uLinesBlur, uNoise, uOffsetX, uOffsetY, uLinesAmount }) {
+    if (this.material) {
+      this.material.uniforms.uColor1.value = color1;
+      this.material.uniforms.uColor2.value = color2;
+      this.material.uniforms.uColor3.value = color3;
+      this.material.uniforms.uLinesBlur.value = uLinesBlur;
+      this.material.uniforms.uNoise.value = uNoise;
+      this.material.uniforms.uOffsetX.value = uOffsetX;
+      this.material.uniforms.uOffsetY.value = uOffsetY;
+      this._setLinesAmount(uLinesAmount);
     }
   }
 

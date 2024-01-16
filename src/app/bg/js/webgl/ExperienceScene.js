@@ -11,7 +11,7 @@ export class ExperienceScene extends InteractiveScene {
     this.add(this.background);
   }
 
-  animateIn() { }
+  //animateIn() { }
 
   update(updateInfo) {
     super.update(updateInfo);
@@ -32,7 +32,9 @@ export class ExperienceScene extends InteractiveScene {
       height: this.rendererBounds.height * 1.001
     });
   }
-
+  updateBgProps(newProps) {
+    this.background.updateProps(newProps);
+  }
   destroy() {
     super.destroy();
 
