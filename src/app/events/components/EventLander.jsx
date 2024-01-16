@@ -62,7 +62,7 @@ export default function EventLander() {
         <div className="grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2   ">
           {eventsData &&
             eventsData.events.map((event) => (
-              <div onClick={()=>handleEventClick(event)}>
+              <div onClick={()=>handleEventClick(event)} key={event.id}>
               <EventCard 
                 key={event.id}
                 imgSrc={event.imgsrc}
