@@ -2,6 +2,8 @@ import { FrontSide, Mesh, PlaneGeometry, ShaderMaterial, Vector2 } from 'three';
 import vertexShader from './shader/vertex.glsl';
 import fragmentShader from './shader/fragment.glsl';
 import { InteractiveObject } from './InteractiveObject';
+import { gsap } from 'gsap';
+
 
 const breakpoints = {
   tablet: 767,
@@ -112,9 +114,24 @@ export class Background extends InteractiveObject {
   }
   updateProps({ color1, color2, color3, uLinesBlur, uNoise, uOffsetX, uOffsetY, uLinesAmount }) {
     if (this.material) {
-      this.material.uniforms.uColor1.value = color1;
-      this.material.uniforms.uColor2.value = color2;
-      this.material.uniforms.uColor3.value = color3;
+      // Use gsap.to() to smoothly transition between colors
+      gsap.to(this.material.uniforms.uColor1.value, {
+        duration: 0.5, ease: 'power1.inOut',
+        startAt: this.material.uniforms.uColor1.value,
+        endArray: color1
+      });
+
+      gsap.to(this.material.uniforms.uColor2.value, {
+        duration: 0.5, ease: 'power1.inOut',
+        startAt: this.material.uniforms.uColor2.value,
+        endArray: color2
+      });
+
+      gsap.to(this.material.uniforms.uColor3.value, {
+        duration: 0.5, ease: 'power1.inOut',
+        startAt: this.material.uniforms.uColor3.value,
+        endArray: color3
+      });
       this.material.uniforms.uLinesBlur.value = uLinesBlur;
       this.material.uniforms.uNoise.value = uNoise;
       this.material.uniforms.uOffsetX.value = uOffsetX;

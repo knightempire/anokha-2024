@@ -37,8 +37,6 @@ export default function Home() {
   };
 
   const getRandomColorValue = () => {
-    let randomColor = Math.random();
-    console.log(randomColor);
     return [Math.random(), Math.random(), Math.random()];
   };
   useEffect(() => {
@@ -47,6 +45,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
       <Navbar />
+      {/* Temp buddon to change colors. Remove later */}
       <button
         className="fixed right-4 bottom-4 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-400 z-10"
         onClick={handleClick}

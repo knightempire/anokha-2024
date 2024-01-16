@@ -9,16 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@devil7softwares/react-drifter-stars": "^1.0.6",
     "clsx": "^2.1.0",
+    "gsap": "^3.12.4",
     "hamburger-react": "^2.5.0",
     "next": "14.0.4",
-    "raw-loader": "^4.0.2",
     "react": "^18",
     "react-dom": "^18",
     "react-fast-marquee": "^1.6.2",
     "react-icons": "^5.0.1",
-    "react-starfield": "^1.0.3",
     "sharp": "^0.33.2",
     "three": "^0.160.0",
     "webgl": "^0.0.7"
@@ -28,6 +26,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "postcss": "^8",
+    "raw-loader": "^4.0.2",
     "tailwindcss": "^3.3.0"
   }
 }
