@@ -65,12 +65,12 @@ export class MouseMove extends EventDispatcher {
       const clickBounds = 10;
       const xDiff = Math.abs(this.clickStart.x - this.mouse.x);
       const yDiff = Math.abs(this.clickStart.y - this.mouse.y);
-      if(xDiff <= clickBounds && yDiff <= clickBounds) {
+      if (xDiff <= clickBounds && yDiff <= clickBounds) {
         this.dispatchEvent({ type: 'click' });
       }
     };
 
-    if( MouseMove.instance || !MouseMove.canCreate ) {
+    if (MouseMove.instance || !MouseMove.canCreate) {
       throw new Error('Use MouseMove.getInstance()');
     };
     this.addEvents();
@@ -89,7 +89,7 @@ export class MouseMove extends EventDispatcher {
   }
 
   update() {
-    if(this.isInit) {
+    if (this.isInit) {
       this.dispatchEvent({ type: 'mousemove' });
     }
 

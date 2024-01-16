@@ -30,7 +30,7 @@ export class InteractiveObject extends Object3D {
   }
 
   destroy() {
-    
+
   }
 
 }

@@ -13,9 +13,6 @@ import { useEffect, useRef } from 'react';
 import projects from './info_data'
 
 
-
-
-
 // Use GSAP ScrollTrigger and Locomotive Scroll
 
 // Navbar. Let it remain thisway untill better one is designed. This is also mobile responsive, so dont touch yet
@@ -36,7 +33,7 @@ export default function Home() {
     offset: ['start start', 'end end']
   })
 
-  useEffect( () => {
+  useEffect(() => {
     const lenis = new Lenis()
 
     function raf(time) {
@@ -49,19 +46,20 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <Navbar /> 
-      <WebGLApp colors = {{color1: [0.64, 0.00, 0.00],color2: [0.21, 0.00, 0.00], color3: [0,0,0]}} />
-      <Hero /> 
-      <SponsorsMarquee /> 
+      <Navbar />
+      <WebGLApp colors={{ color1: [0.64, 0.00, 0.00], color2: [0.21, 0.00, 0.00], color3: [0, 0, 0] }} />
+      <Hero />
+      <SponsorsMarquee />
       {
-        projects.map( (project, i) => {
-          const targetScale = 1 - ( (projects.length - i) * 0.05);
-          return <Info key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * .25, 1]} targetScale={targetScale}/>
+        projects.map((project, i) => {
+          const targetScale = 1 - ((projects.length - i) * 0.05);
+          return <Info key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * .25, 1]} targetScale={targetScale} />
         })
       }
-      <AnokhaMarquee /> 
-       <Footer current_page="home"/> {/* current_page is a prop that is used to highlight the current page in the footer. Possible values are home, team, contact, privacy policy} */}
+      <AnokhaMarquee />
+      <Footer current_page="home" /> {/* current_page is a prop that is used to highlight the current page in the footer. Possible values are home, team, contact, privacy policy} */}
 
- 
+
+    </main>
   )
 }

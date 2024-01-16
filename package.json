@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-
-    "@devil7softwares/react-drifter-stars": "^1.0.6",
     "@studio-freight/lenis": "^1.0.33",
     "clsx": "^2.1.0",
     "framer-motion": "^10.18.0",
@@ -21,11 +19,10 @@
     "react-dom": "^18",
     "react-fast-marquee": "^1.6.2",
     "react-icons": "^5.0.1",
-    "react-starfield": "^1.0.3",
     "sass": "^1.69.7",
     "sharp": "^0.33.2",
     "three": "^0.160.0",
-    "webgl": "^0.0.7",
+    "webgl": "^0.0.7"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
