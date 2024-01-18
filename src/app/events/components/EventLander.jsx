@@ -18,7 +18,7 @@ export default function EventLander() {
       
     }
   const handleGoBack = ()=>{
-    gsap.to('#event-desc', { opacity: 0, duration: 0.5, ease: 'power2.inOut' });
+    gsap.to('#event-desc', { opacity: 0, duration: 0.5, y: -50, ease: 'power2.inOut' });
     const timeout1 = setTimeout(() => {
       setClickedEvent(null)
       setIsClicked(false)
@@ -40,7 +40,7 @@ export default function EventLander() {
     // Check if the condition is met and animate
     if (clickedEvent && isClicked) {
       // Animation using GSAP
-      gsap.from('#event-desc', { opacity: 0, duration: 0.3, ease: 'power2.inOut' });
+      gsap.fromTo('#event-desc', { opacity: 0, y: -50, duration: 0.5}, {opacity: 1, y: 0, ease: 'power2.inOut' });
     }
   }, [clickedEvent, isClicked]);
 

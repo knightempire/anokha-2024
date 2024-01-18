@@ -23,7 +23,7 @@ export default function EventCard({
         />
       </div>
       {/* Main Content Section */}
-      <div className="flex flex-col hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-2000 ease-in-out opacity-90 " id="card-content">
+      <div className="flex flex-col" id="card-content">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{eventName}</div>
           <p className="text-gray-700 text-base">{eventDesc}</p>

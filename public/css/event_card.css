@@ -5,18 +5,21 @@
 
 #card-content::before{
   content: "";
-  background-color: burlywood;
+  background: linear-gradient(to right,rgb(255, 67, 67),rgb(244, 123, 25));
   position: absolute;
   top: 0px;
   left: 0px;
   right: 0px;
   bottom: 0px;
   z-index: -1;
-  transition: top,bottom,left,right 1s;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s;
+  color: black;
 }
 
 #card-content:hover::before{
   content: "";
-  background-color: burlywood;
-
+  transform: scaleX(100%);
+  color: black;
 }
