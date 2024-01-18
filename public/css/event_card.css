@@ -1,0 +1,22 @@
+#card-content{
+  position: relative;
+  z-index: 1;
+}
+
+#card-content::before{
+  content: "";
+  background-color: burlywood;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: -1;
+  transition: top,bottom,left,right 1s;
+}
+
+#card-content:hover::before{
+  content: "";
+  background-color: burlywood;
+
+}
