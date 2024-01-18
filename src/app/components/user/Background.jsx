@@ -1,5 +1,5 @@
 import React from 'react';
-import './Background.css';
+import '../styles/Background.css';
 import clsx from 'clsx';
 
 class Background extends React.Component {
