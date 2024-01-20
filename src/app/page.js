@@ -1,12 +1,11 @@
 'use client';
-import Navbar from './components/Header'
+import Navbar from './components/EventHeader'
 import Hero from './components/Hero'
 import Info from './components/InfoDivs'
 import SponsorsMarquee from './components/SponsorsMarquee'
 import AnokhaMarquee from './components/AnokhaMarquee'
 import Footer from './components/Footer'
 import WebGLApp from './bg/WebGLApp'
-import styles from './page.module.scss'
 import Lenis from '@studio-freight/lenis';
 import { useScroll } from 'framer-motion';
 import { useEffect, useRef } from 'react';
@@ -45,11 +44,12 @@ export default function Home() {
   })
 
   return (
-    <main className={styles.main}>
+    <main >
+      <WebGLApp className=' -z-0' colors={{ color1: [43/255, 30/255, 56/255], color2: [11/255,38/255,59/255], color3: [15/255, 21/255, 39/255] }} />
       <Navbar />
-      <WebGLApp colors={{ color1: [0.64, 0.00, 0.00], color2: [0.21, 0.00, 0.00], color3: [0, 0, 0] }} />
-      <Hero />
-      <SponsorsMarquee />
+      
+      <Hero className='z-10' />
+      {/* <SponsorsMarquee /> */}
       {
         projects.map((project, i) => {
           const targetScale = 1 - ((projects.length - i) * 0.05);

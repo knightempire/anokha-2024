@@ -14,7 +14,7 @@ import EventLander from "./components/EventLander"
 // FOoter - Design given
 const EventsHome = () => {
   return (
-    <div className="flex min-h-screen flex-col  bg-indigo-950">
+    <div className="flex min-h-screen flex-col bg-black">
       <Header/>
       <div className='mt-12 mb-12 md:mt-20 lg:mt-8'>
       <EventLander />

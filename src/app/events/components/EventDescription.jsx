@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
+
 export default function EventDescription({
   imgSrc,
   eventName,
@@ -22,7 +23,7 @@ export default function EventDescription({
         />
       </div>
       {/* Main Content Section */}
-      <div className="mt-5 flex flex-col hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-500 ease-in-out opacity-90">
+      <div className="mt-5 flex flex-col">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{eventName}</div>
           <p className="text-gray-700 text-base">{eventDesc}</p>
