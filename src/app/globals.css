@@ -2,7 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('/css/fonts.css');
+@font-face {
+  font-family: Roobert-Regular;
+  src: url(/fonts/Roobert-Regular.ttf);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald');
+
+@font-face {
+  font-family: arista;
+  src: url('/fonts/arista.otf');
+}
 
 /* width */
 ::-webkit-scrollbar {
@@ -25,7 +35,14 @@
   background: #555;
 }
 
-
 .footer-font {
   font-family: 'Roobert-Regular', sans-serif;
+}
+
+.hero-font {
+  font-family: 'Oswald', sans-serif;
+}
+
+.hero-font-2 {
+  font-family: 'arista', sans-serif;
 }

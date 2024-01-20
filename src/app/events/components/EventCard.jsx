@@ -14,9 +14,9 @@ export default function EventCard({
   isAllowed,
 }) {
   return (
-    <div className="flex flex-row bg-white   w-full rounded shadow-lg    ">
+    <div className="flex flex-row bg-white w-full rounded shadow-lg hover:scale-105 cursor-pointer transition-transform duration-100 ease-in-out">
       {/* Image Section */}
-      <div className="flex-none h-full w-2/4  relative">
+      <div className="flex-none h-full w-1/3  relative">
         <Image
           src={imgSrc}
           alt="Event Image"
@@ -27,7 +27,7 @@ export default function EventCard({
         />
       </div>
       {/* Main Content Section */}
-      <div className="flex flex-col hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-500 ease-in-out opacity-90">
+      <div className="flex flex-col">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{eventName}</div>
           <p className="text-gray-700 text-base">{eventBlurb}</p>
