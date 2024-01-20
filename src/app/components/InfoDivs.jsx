@@ -21,9 +21,10 @@ const Card = ({i, title, description, src, url, color, progress, range, targetSc
         style={{scale, top:`calc(-5vh + ${i * 25}px)`}} 
         className={styles.card}
       >
-        <h2>{title}</h2>
+        
         <div className={styles.body}>
-          <div className="w-2/5 relative top-1/10 text-white">            
+          <div className="w-2/5 relative top-1/10 text-white"> 
+            <h2>{title}</h2>     
           <p>{description}</p>
           </div>
 

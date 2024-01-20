@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    top: -20%;
+    //top: -20%;
     height: 75vh;
     width: 80vw;
     border-radius: 25px;
@@ -24,9 +24,10 @@
     /* Add a border for better visibility */
 
     h2 {
-      text-align: center;
+      text-align: left;
       margin: 0px;
-      font-size: 28px;
+      font-weight: 500;
+      font-size: 5rem;
       color: #fff;
       /* Adjust the text color for better visibility */
     }
@@ -34,7 +35,7 @@
     .body {
       display: flex;
       height: 100%;
-      margin-top: 50px;
+      //margin-top: 50px;
       gap: 50px;
 
       .description {
@@ -96,6 +97,48 @@
       }
 
 
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cardContainer {
+    display: block;
+    height: auto;
+  }
+
+  .card {
+    width: calc(100% - 20px);
+    height: auto;
+    padding: 20px;
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .body {
+      display: block;
+
+      .description {
+        width: 100%;
+        position: relative;
+        top: 0;
+
+        p {
+          font-size: 14px;
+        }
+      }
+
+      .imageContainer {
+        width: 100%;
+        height: auto;
+
+        .inner {
+          img {
+            object-fit: contain;
+          }
+        }
+      }
     }
   }
 }
