@@ -9,9 +9,9 @@ export default function EventCard({
   price,
 }) {
   return (
-    <div className="flex flex-row bg-white w-full rounded shadow-lg hover:transform-scale-110 cursor-pointer">
+    <div className="flex flex-row bg-white w-full rounded shadow-lg hover:scale-105 cursor-pointer transition-transform duration-100 ease-in-out">
       {/* Image Section */}
-      <div className="flex-none h-full w-2/4  relative">
+      <div className="flex-none h-full w-1/3  relative">
         <Image
           src={imgSrc}
           alt="Event Image"
