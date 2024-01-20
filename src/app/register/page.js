@@ -225,7 +225,7 @@ export default function Register() {
                     <div className="text-center">
                       <button
                         type="submit"
-                        className="w-[200px] text-white bg-[#f69c18] mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                        className="w-[200px] text-black bg-white mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                       >
                         Sign Up
                       </button>
