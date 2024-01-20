@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import "../../../../public/css/event_card.css";
 
 
 export default function EventDescription({
@@ -24,7 +23,7 @@ export default function EventDescription({
         />
       </div>
       {/* Main Content Section */}
-      <div className="mt-5 flex flex-col" id="card-content">
+      <div className="mt-5 flex flex-col">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{eventName}</div>
           <p className="text-gray-700 text-base">{eventDesc}</p>

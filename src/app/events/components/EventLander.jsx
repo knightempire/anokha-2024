@@ -74,7 +74,7 @@ export default function EventLander() {
       
       
 
-      <div className="flex flex-row min-h-screen mt-5 justify-center items-center mx-10 pt-10 lg:mt-20">
+      <div className="flex flex-row min-h-screen mt-5 justify-center items-center mx-10 pt-10 lg:mt-20 ">
         <div className="grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2   ">
           {eventsData &&
             eventsData.events.map((event) => (

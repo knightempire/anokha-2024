@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import '../../../../public/css/event_card.css';
 
 export default function EventCard({
   imgSrc,
@@ -10,7 +9,7 @@ export default function EventCard({
   price,
 }) {
   return (
-    <div className="flex flex-row bg-white w-full rounded shadow-lg ">
+    <div className="flex flex-row bg-white w-full rounded shadow-lg hover:transform-scale-110 cursor-pointer">
       {/* Image Section */}
       <div className="flex-none h-full w-2/4  relative">
         <Image
@@ -23,7 +22,7 @@ export default function EventCard({
         />
       </div>
       {/* Main Content Section */}
-      <div className="flex flex-col" id="card-content">
+      <div className="flex flex-col">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{eventName}</div>
           <p className="text-gray-700 text-base">{eventDesc}</p>
