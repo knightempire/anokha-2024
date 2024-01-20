@@ -1,36 +1,36 @@
 const projects = [
   {
     title: "About Anokha",
-    description: "Originally hailing from Austria, Berlin-based photographer Matthias Leindinger is a young creative brimming with talent and ideas.",
-    src: "Sarnesh_173.jpg",
+    description: "Amrita Coimbatore Campus's annual techfest, Anokha, is a vibrant celebration of innovation and technological prowess. Bringing together students, professionals, and tech enthusiasts nationwide, this dynamic 3-day event features competitions, workshops, and interactive sessions spanning engineering, robotics, artificial intelligence, and sustainable technologies. Beyond fostering healthy competition, Anokha promotes collaboration and knowledge exchange. With diverse events catering to various interests and skill sets, it embodies curiosity and creativity, becoming a highlight in the academic calendar. The fest goes beyond the technological realm, incorporating cultural elements for a lively and engaging atmosphere, making Anokha a unique celebration of innovation.",
+    src: "dummy.jpg",
     link: "https://www.ignant.com/2023/03/25/ad2186-matthias-leidingers-photographic-exploration-of-awe-and-wonder/",
     color: "#BBACAF"
   },
   {
     title: "About Amrita",
-    description: "This is a story on the border between reality and imaginary, about the contradictory feelings that the insularity of a rocky, arid, and wild territory provokes”—so French photographer Clément Chapillon describes his latest highly captivating project Les rochers fauves (French for ‘The tawny rocks’).",
-    src: "Sarnesh_1137.jpg",
+    description: "Nestled in the Western Ghats, Amrita Vishwa Vidyapeetham's Coimbatore campus is a serene hub of academic excellence. Offering diverse undergraduate and postgraduate programs, including engineering, sciences, arts, and management, the campus is equipped with modern facilities for a dynamic learning environment. Emphasizing research and innovation, it encourages entrepreneurial thinking. Beyond academics, the campus promotes extracurricular engagement through cultural events, sports, and community service. With a holistic approach that nurtures intellect and character, Amrita Vishwa Vidyapeetham is a coveted destination for students seeking a transformative educational experience.",
+    src: "dummy.jpg",
     link: "https://www.ignant.com/2022/09/30/clement-chapillon-questions-geographical-and-mental-isolation-with-les-rochers-fauves/",
     color: "#977F6D"
   },
   {
     title: "Events and Workshops",
-    description: "Though he views photography as a medium for storytelling, Zissou’s images don’t insist on a narrative. Both crisp and ethereal, they’re encoded with an ambiguity—a certain tension—that lets the viewer find their own story within them.",
-    src: "Sarnesh_1733.jpg",
+    description: "Our dynamic range of workshops and events create a vibrant environment for continuous learning and enjoyment. Workshops turn knowledge seekers into active explorers of topics such as programming languages and market trends, fueling life-long learning. This is complemented by our diverse event lineup, where technical rigor meets fun through coding competitions to gaming activities. This interwoven fabric of technical engagement and enjoyment allows for a comprehensive, enriching experience that encourages participant's skills showcase, camaraderie and expands their knowledge horizon.",
+    src: "dummy.jpg",
     link: "https://www.ignant.com/2023/10/28/capturing-balis-many-faces-zissou-documents-the-sacred-and-the-mundane-of-a-fragile-island/",
     color: "#C2491D"
   },
   {
     title: "Techfair",
-    description: "Though he views photography as a medium for storytelling, Zissou’s images don’t insist on a narrative. Both crisp and ethereal, they’re encoded with an ambiguity—a certain tension—that lets the viewer find their own story within them.",
-    src: "Sarnesh_173.jpg",
+    description: "Techfair acts as a unifying force, drawing students from various universities nationwide to showcase their ingenuity to industry experts. Recognized as a premier stage for talent and innovation, this expansive fair creates a platform for diverse talents under one roof. Beyond showcasing skills, it serves as an exceptional opportunity for learning and growth. Techfair stands as a testament to the synergy between academia and industry, where students not only exhibit technical prowess but also cultivate valuable insights and experiences for their professional journey. It is a unique blend of collaboration and innovation, emphasizing the bridge between academic excellence and practical industry application.",
+    src: "dummy.jpg",
     link: "https://www.ignant.com/2023/10/28/capturing-balis-many-faces-zissou-documents-the-sacred-and-the-mundane-of-a-fragile-island/",
     color: "#C2491D"
   },
   {
     title: "Eventide",
-    description: "Though he views photography as a medium for storytelling, Zissou’s images don’t insist on a narrative. Both crisp and ethereal, they’re encoded with an ambiguity—a certain tension—that lets the viewer find their own story within them.",
-    src: "Sarnesh_1137.jpg",
+    description: "Eventide, a decade-long celebration nestled within Anokha's cultural showcase, is a jubilant ode to India's cultural richness. Featuring explosive performances by a stellar cast of skilled artists, including percussionist Sivamani, playback singers Vijay Prakash, Karthik, Benny Dayal, Haricharan, Rahul Nambiar, Alaap Raju, Shaktisree Gopalan, Sunitha Sarathy, Ranjani-Gayatri, Nikita Gandhi, and Andrea Jeremiah, the stage transforms into a canvas for diverse and enchanting musical expressions. Beyond entertainment, Eventide resonates with classical notes and pulsating beats, offering a captivating journey that blends dedication and talent into an unforgettable cultural odyssey, representing every corner of the country. ",
+    src: "dummy.jpg",
     link: "https://www.ignant.com/2023/10/28/capturing-balis-many-faces-zissou-documents-the-sacred-and-the-mundane-of-a-fragile-island/",
     color: "#C2491D"
   },

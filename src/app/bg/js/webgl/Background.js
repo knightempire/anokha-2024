@@ -1,4 +1,4 @@
-import { FrontSide, Mesh, PlaneGeometry, ShaderMaterial, Vector2 } from 'three';
+import { Mesh, PlaneGeometry, ShaderMaterial, Vector2 } from 'three';
 import vertexShader from './shader/vertex.glsl';
 import fragmentShader from './shader/fragment.glsl';
 import { InteractiveObject } from './InteractiveObject';
