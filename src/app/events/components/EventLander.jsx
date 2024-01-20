@@ -47,6 +47,7 @@ export default function EventLander() {
                 key={clickedEvent.id}
                 imgSrc={clickedEvent.imgsrc}
                 eventName={clickedEvent.title}
+                eventBlurb={clickedEvent.blurb}
                 eventDesc={clickedEvent.description}
                 tags={clickedEvent.tags}
                 price={clickedEvent.price}/>

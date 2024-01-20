@@ -4,9 +4,14 @@ import React from "react";
 export default function EventCard({
   imgSrc,
   eventName,
+  eventBlurb,
   eventDesc,
+  date,
+  time,
+  goi,
   tags,
   price,
+  isAllowed,
 }) {
   return (
     <div className="flex flex-row bg-white   w-full rounded shadow-lg    ">
@@ -25,7 +30,7 @@ export default function EventCard({
       <div className="flex flex-col hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 transition duration-500 ease-in-out opacity-90">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{eventName}</div>
-          <p className="text-gray-700 text-base">{eventDesc}</p>
+          <p className="text-gray-700 text-base">{eventBlurb}</p>
         </div>
         {/* Tags Section */}
         <div className="px-6 pt-4">
