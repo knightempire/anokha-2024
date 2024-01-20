@@ -60,7 +60,7 @@ const DataHandler = async () => {
       {
         id: 4,
         title: "Science and Innovation Symposium",
-        imgsrc: "/images/science_symposium.jpg",
+        imgsrc: "/images/dummy.jpg",
         tags: ["Science", "Innovation", "Research"],
         price: 250,
         date: "2024-08-20",
@@ -75,7 +75,7 @@ const DataHandler = async () => {
       {
         id: 5,
         title: "Cultural Diversity Festival",
-        imgsrc: "/images/cultural_festival.jpg",
+        imgsrc: "/images/dummy.jpg",
         tags: ["Culture", "Diversity", "Arts"],
         price: 500,
         date: "2024-09-15",

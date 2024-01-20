@@ -14,6 +14,7 @@ export default function EventCard({
   isAllowed,
 }) {
   return (
+    
     <div className="flex flex-row bg-white w-full rounded shadow-lg hover:scale-105 cursor-pointer transition-transform duration-100 ease-in-out">
       {/* Image Section */}
       <div className="flex-none h-full w-1/3  relative">
@@ -30,6 +31,7 @@ export default function EventCard({
       <div className="flex flex-col">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{eventName}</div>
+          <p classname="text-gray-700 text-base">{date}</p>
           <p className="text-gray-700 text-base">{eventBlurb}</p>
         </div>
         {/* Tags Section */}
