@@ -81,7 +81,7 @@ export default function Register() {
             >
               Anokha 2024
             </a>
-            <div className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:mt-0 lg:w-3/4 xl:p-0 bg-white">
+            <div className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:mt-0 lg:w-3/4 xl:p-0 bg-white ">
               <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl">
                   Register to your account
@@ -229,7 +229,7 @@ export default function Register() {
                       >
                         Sign Up
                       </button>
-                      <p className="text-sm font-light text-[#ed1d21]">
+                      <p className="text-sm font-light text-black">
                         Already have an account?{" "}
                         <a
                           href="/login"
