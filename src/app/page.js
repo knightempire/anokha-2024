@@ -8,7 +8,7 @@ import Footer from './components/Footer'
 import WebGLApp from './bg/WebGLApp'
 import Lenis from '@studio-freight/lenis';
 import { useScroll } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import projects from './info_data'
 
 
@@ -43,13 +43,38 @@ export default function Home() {
     requestAnimationFrame(raf)
   })
 
+  const [webGLColors, setWebGLColors] = useState({ color1: [43 / 255, 30 / 255, 56 / 255], color2: [11 / 255, 38 / 255, 59 / 255], color3: [15 / 255, 21 / 255, 39 / 255] });
+
+  const handleClick = () => {
+    const randomColors = {
+      color1: getRandomColorValue(),
+      color2: getRandomColorValue(),
+      color3: getRandomColorValue()
+    };
+
+    setWebGLColors(randomColors);
+  };
+
+  const getRandomColorValue = () => {
+    return [Math.random(), Math.random(), Math.random()];
+  };
+  useEffect(() => {
+  }, [webGLColors]);
+
   return (
-    <main >
-      <WebGLApp className=' -z-0' colors={{ color1: [43/255, 30/255, 56/255], color2: [11/255,38/255,59/255], color3: [15/255, 21/255, 39/255] }} />
+    <main className="flex min-h-screen flex-col bg-[#121212]">
+      <button
+        className="fixed right-4 bottom-4 bg-gray-600 hover:bg-gray-700 text-white py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-400 z-10"
+        onClick={handleClick}
+      >
+        Change Colors
+      </button>
+      <WebGLApp colors={webGLColors} />
+
       <Navbar />
       
       <Hero className='z-10' />
-      {/* <SponsorsMarquee /> */}
+      <SponsorsMarquee /> 
       {
         projects.map((project, i) => {
           const targetScale = 1 - ((projects.length - i) * 0.05);
