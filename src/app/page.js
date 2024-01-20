@@ -1,5 +1,5 @@
 'use client';
-import Navbar from './components/Header'
+import Navbar from './components/EventHeader'
 import Hero from './components/Hero'
 import Info from './components/InfoDivs'
 import SponsorsMarquee from './components/SponsorsMarquee'
