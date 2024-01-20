@@ -77,24 +77,24 @@ export default function Register() {
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
             <a
               href="/"
-              className="flex items-center justify-center md:mb-6 text-2xl font-semibold text-white"
+              className="flex items-center justify-center md:mb-6 text-2xl font-semibold text-black"
             >
               Anokha 2024
             </a>
-            <div className="w-full rounded-md bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-50 md:mt-0 lg:w-3/4 xl:p-0 bg-black">
+            <div className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:mt-0 lg:w-3/4 xl:p-0 bg-white">
               <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl">
+                <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl">
                   Register to your account
                 </h1>
                 <form
-                  className="space-y-4 md:space-y-6 flex flex-row gap-10 justify-center"
+                  className="space-y-4 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
                   onSubmit={handleSignUp}
                 >
-                  <div className="flex flex-col justify-center w-full space-y-5 border-r border-black pr-10">
+                  <div className="flex flex-col justify-center w-full space-y-5 md:border-r md:border-black md:pr-10 ">
                     <div>
                       <label
                         htmlFor="name"
-                        className="block mb-2 text-sm font-medium text-white"
+                        className="block mb-2 text-sm font-medium text-black"
                       >
                         Your Name
                       </label>
@@ -105,7 +105,7 @@ export default function Register() {
                         }}
                         name="name"
                         id="name"
-                        className="bg-transparent border border-gray-800 text-white sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                        className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
                         placeholder="Name"
                         required
                       />
@@ -113,7 +113,7 @@ export default function Register() {
                     <div>
                       <label
                         htmlFor="phone"
-                        className="block mb-2 text-sm font-medium text-white"
+                        className="block mb-2 text-sm font-medium text-black"
                       >
                         Phone Number
                       </label>
@@ -124,7 +124,7 @@ export default function Register() {
                         type="text"
                         name="phone"
                         id="phone"
-                        className="bg-transparent border border-gray-800 text-white sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                        className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
                         placeholder="+91 99999 99999"
                         required
                       />
@@ -133,7 +133,7 @@ export default function Register() {
                       <div>
                         <label
                           htmlFor="college"
-                          className="block mb-2 text-sm font-medium text-white"
+                          className="block mb-2 text-sm font-medium text-black"
                         >
                           College Name
                         </label>
@@ -144,7 +144,7 @@ export default function Register() {
                           type="text"
                           name="college"
                           id="college"
-                          className="bg-transparent border border-gray-800 text-white sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                          className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
                           placeholder="Amrita School of Engineering, Coimbatore"
                         />
                       </div>
@@ -157,7 +157,7 @@ export default function Register() {
                         />
                         <label
                           htmlFor="amrita-student"
-                          className="text-sm font-medium text-white"
+                          className="text-sm font-medium text-black"
                         >
                           Amrita Student?
                         </label>
@@ -168,7 +168,7 @@ export default function Register() {
                     <div>
                       <label
                         htmlFor="email"
-                        className="block mb-2 text-sm font-medium text-white"
+                        className="block mb-2 text-sm font-medium text-black"
                       >
                         Your Email
                       </label>
@@ -179,7 +179,7 @@ export default function Register() {
                         type="email"
                         name="email"
                         id="email"
-                        className=" bg-transparent border border-gray-800 text-white sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                        className=" bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
                         placeholder="eon@anokha.amrita.edu"
                         required
                       />
@@ -187,7 +187,7 @@ export default function Register() {
                     <div>
                       <label
                         htmlFor="password"
-                        className="block mb-2 text-sm font-medium text-white"
+                        className="block mb-2 text-sm font-medium text-black"
                       >
                         Password
                       </label>
@@ -199,14 +199,14 @@ export default function Register() {
                         name="password"
                         id="password"
                         placeholder="••••••••"
-                        className=" border bg-transparent border-gray-800 text-white sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                        className=" border bg-transparent border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
                         required
                       />
                     </div>
                     <div>
                       <label
                         htmlFor="conf-password"
-                        className="block mb-2 text-sm font-medium text-white"
+                        className="block mb-2 text-sm font-medium text-black"
                       >
                         Confirm Password
                       </label>
@@ -218,18 +218,18 @@ export default function Register() {
                         name="conf-password"
                         id="conf-password"
                         placeholder="••••••••"
-                        className=" border bg-transparent border-gray-800 text-white sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                        className=" border bg-transparent border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
                         required
                       />
                     </div>
                     <div className="text-center">
                       <button
                         type="submit"
-                        className="w-[200px] text-black bg-white mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                        className="w-[200px] text-black bg-[#f69c18] mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                       >
                         Sign Up
                       </button>
-                      <p className="text-sm font-light text-gray-400">
+                      <p className="text-sm font-light text-[#ed1d21]">
                         Already have an account?{" "}
                         <a
                           href="/login"
