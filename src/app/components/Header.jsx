@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <nav className="fixed mx-auto border border-[#33353F] top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-40 backdrop-blur-md footer-font overflow-hidden">
-      <div className="flex container lg:py-4 flex-nowrap items-center justify-between mx-auto px-4 py-2">
+      <div className="flex container lg:py-4 flex-nowrap items-center justify-between mx-auto px-4 py-2 md:px-8 xl:px-0">
         <Link
           href={"/"}
           className="text-2xl md:text-5xl text-white font-normal"
@@ -46,7 +46,7 @@ const Navbar = () => {
             alt="logo"
             width={200}
             height={200}
-            className="w-2/5 md:w-4/5"
+            className="w-2/5 md:w-3/5 xl:w-4/5"
           />
         </Link>
         <div className="mobile-menu md:hidden place-self-end">
