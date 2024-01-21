@@ -1,20 +1,109 @@
+"use client"
+
+import { useEffect,useState,useRef } from 'react'
 import Navbar from '../components/EventHeader'
-import LoginPage from './components/LoginPage'
+import Background from '@/app/components/user/Background'
+import securelocalStorage from 'react-secure-storage'
+import { useRouter } from 'next/navigation'
+import { LOGIN_URL } from '../_util/constants'
+import { hashPassword } from '../_util/hash'
 
-// Use GSAP ScrollTrigger and Locomotive Scroll
+export default function Login() {
 
-// Navbar. Let it remain thisway untill better one is designed. This is also mobile responsive, so dont touch yet
-// Navbar modifcation - If logged in, then his gravatar image on top right. When clicked, dropdown to view profile, logout, else login button.
-// Hero section - Anokha logo on bottom left, spline div on right, 3 sections of 2 words each on the bottom right
-// Marquee of sponsors (Logos, will be added later)
-// Info div, self scrolling like the one in video. Please create supporting components as needed
-// Marquee of Anokha Hashtags
-// FOoter - Design given1
-export default function Home() {
+    useEffect(()=>{
+        securelocalStorage.clear()
+    })
+
+    const [studentEmail, setStudentEmail] = useState("")
+    const [studentPassword, setStudentPassword] = useState("")
+
+    const toast = useRef(null)
+    const emailRegex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$")
+    
+    const isValidEmail = studentEmail.length > 0 && emailRegex.test(studentEmail)
+    const isValidPassword = studentPassword.length > 0
+    
+    const router = useRouter()
+
+    const HandleLogin = async( e) => {
+        e.preventDefault()
+
+        if (!isValidEmail || !isValidPassword) {
+            alertError("Error", "Invalid email or password")
+            return
+        }
+        try{
+                const response = await fetch(LOGIN_URL,{
+                    method:'POST',
+                    headers:{
+                        'Content-Type':'application/json'
+                    },
+                    body:JSON.stringify({
+                        "studentEmail": studentEmail ,
+                        "studentPassword": hashPassword(studentPassword )//
+                    })
+                })
+                console.log(response)
+
+                const data = await response.json()
+                if (response.status === 200){
+                    console.log(data)
+                    router.replace('/')
+                }
+                else if (response.status === 500) {
+                    alertError('Oops!', 'Something went wrong! Please try again later!');
+                } else if (data.message !== undefined || data.message !== null) {
+                    alertError('Login Failed', data.message);
+                } else {
+                    alertError('Oops!', 'Something went wrong! Please try again later!');
+                }
+                 
+        }
+        catch{
+            console.log(error);
+        }
+    }
+
+    
     return (
         <main className="flex min-h-screen flex-col bg-[#121212]">
             <Navbar />
-            <LoginPage />
+            <div className="relative min-h-screen">
+            <Background />
+            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
+            <div className="w-full  rounded-md bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-40  md:mt-0 sm:max-w-md xl:p-0 bg-black ">
+        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl">Sign in to your account</h1>
+            <form className="space-y-4 md:space-y-6" action="#">
+                <div>
+                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-white">Your email</label>
+                    <input onChange={(e)=>{
+                        setStudentEmail(e.target.value)
+                    }
+                    }type="email" name="email" id="email" className=" bg-transparent border border-gray-800 text-white sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5" placeholder="eon@anokha.amrita.edu" required />
+                </div>
+                <div>
+                    <label htmlFor="password" className="block mb-2 text-sm font-medium text-white">Password</label>
+                    <input onChange={(e)=>{
+                        setStudentPassword(e.target.value)
+                    }}
+                    type="password" name="password" id="password" placeholder="••••••••" className=" border bg-transparent border-gray-800 text-white sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5" required />
+                </div>
+                <div className="flex items-center justify-between">
+                    <div className="flex items-start">
+
+                    </div>
+                    <a href="#" className="text-sm font-medium text-primary-500 text-white hover:underline">Forgot password?</a>
+                </div>
+                <button type="submit" onClick={HandleLogin} className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
+                <p className="text-sm font-light text-gray-400">
+                    Don’t have an account yet? <a href="/register" className="font-medium text-primary-500 hover:underline">Sign up</a>
+                </p>
+            </form>
+        </div>
+    </div>
+            </div>
+        </div>
         </main>
     )
 }

@@ -2,10 +2,10 @@
 import React from 'react';
 import { ProgressSpinner } from 'primereact/progressspinner';
 
-export default function CustomDemo() {
+export const  LoadingScreen= () => {
     return (
-        <div className="card">
-            <ProgressSpinner style={{width: '50px', height: '50px'}} strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s" />
+        <div className="flex h-screen justify-center items-center text-white">
+            <ProgressSpinner style={{width: '100px', height: '100px'}} strokeWidth="3" fill="white" animationDuration=".75s" />
         </div>
     );
 }
