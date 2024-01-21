@@ -11,19 +11,6 @@ import { useScroll } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import projects from './info_data'
 
-
-// Use GSAP ScrollTrigger and Locomotive Scroll
-
-// Navbar. Let it remain thisway untill better one is designed. This is also mobile responsive, so dont touch yet
-// Navbar modifcation - If logged in, then his gravatar image on top right. When clicked, dropdown to view profile, logout, else login button.
-// Hero section - Anokha logo on bottom left, spline div on right, 3 sections of 2 words each on the bottom right
-// Marquee of sponsors (Logos, will be added later)
-// Info div, self scrolling like the one in video. Please create supporting components as needed
-// Marquee of Anokha Hashtags
-// FOoter - Design given
-
-
-
 export default function Home() {
 
   const container = useRef(null);
@@ -42,8 +29,13 @@ export default function Home() {
 
     requestAnimationFrame(raf)
   })
-
+  
   const [webGLColors, setWebGLColors] = useState({ color1: [43 / 255, 30 / 255, 56 / 255], color2: [11 / 255, 38 / 255, 59 / 255], color3: [15 / 255, 21 / 255, 39 / 255] });
+  const [cardColor, setCardColor] = useState(webGLColors);
+
+  const getRandomColorValue = () => {
+    return [Math.random(), Math.random(), Math.random()];
+  };
 
   const handleClick = () => {
     const randomColors = {
@@ -54,12 +46,9 @@ export default function Home() {
 
     setWebGLColors(randomColors);
   };
-
-  const getRandomColorValue = () => {
-    return [Math.random(), Math.random(), Math.random()];
+  const handleCardColorChange = (color) => {
+    setCardColor(color);
   };
-  useEffect(() => {
-  }, [webGLColors]);
 
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
@@ -69,8 +58,7 @@ export default function Home() {
       >
         Change Colors
       </button>
-      <WebGLApp colors={webGLColors} />
-
+      <WebGLApp colors={cardColor} />
       <Navbar />
       
       <Hero className='z-10' />
@@ -78,7 +66,7 @@ export default function Home() {
       {
         projects.map((project, i) => {
           const targetScale = 1 - ((projects.length - i) * 0.05);
-          return <Info key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * .25, 1]} targetScale={targetScale} />
+          return <Info key={`p_${i}`} i={i} {...project} progress={scrollYProgress} range={[i * .25, 1]} targetScale={targetScale} onColorChange={handleCardColorChange} />
         })
       }
       <AnokhaMarquee />
