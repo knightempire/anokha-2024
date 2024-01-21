@@ -2,13 +2,13 @@
 
 import Navbar from "../components/EventHeader";
 import Footer from "../components/Footer";
-import Background from "../components/user/Background";
-
 import { hashPassword } from "../_util/hash";
 import { useEffect, useState, useRef } from "react";
 import { REGISTER_URL } from "../_util/constants";
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
+
+import WebGLApp from "../bg/WebGLApp";
 
 export default function Register() {
   useEffect(() => {
@@ -68,21 +68,23 @@ export default function Register() {
     }
   };
 
+  const [webGLColors, setWebGLColors] = useState({ color1: [43 / 255, 30 / 255, 56 / 255], color2: [11 / 255, 38 / 255, 59 / 255], color3: [15 / 255, 21 / 255, 39 / 255] });
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
+      <WebGLApp colors={webGLColors} />
+
       <div className="block space-y-24">
         <Navbar />
         <div className="relative min-h-screen">
-          <Background />
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
             <a
               href="/"
-              className="flex items-center justify-center md:mb-6 text-2xl font-semibold text-black"
+              className="flex items-center justify-center md:mb-6 text-2xl font-semibold text-white"
             >
               Anokha 2024
             </a>
-            <div className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:mt-0 lg:w-3/4 xl:p-0 bg-white">
-              <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
+            <div className=" rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:mt-0 lg:w-3/4 xl:p-0 bg-white">
+              <div className=" flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl">
                   Register to your account
                 </h1>
