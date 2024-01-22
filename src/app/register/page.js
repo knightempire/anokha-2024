@@ -130,7 +130,7 @@ export default function Register() {
                       className="space-y-4 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
                       onSubmit={handleSignUp}
                     >
-                      <div className="flex flex-col justify-center w-full space-y-5 md:border-r md:border-black md:pr-10 ">
+                      <div className="flex flex-col justify-center flex-1 space-y-5 md:border-r md:border-black md:pr-10 max-w-600">
                         <div>
                           <label
                             htmlFor="name"
@@ -208,7 +208,7 @@ export default function Register() {
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-col w-full space-y-5">
+                      <div className="flex flex-col flex-1 space-y-5 ">
                         <div>
                           <label
                             htmlFor="email"
