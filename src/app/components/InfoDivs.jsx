@@ -35,7 +35,11 @@ const Card = ({ i, title, description, src, url, color, progress, range, targetS
       );
       observer.observe(cardRef.current);
 
-      return () => observer.unobserve(cardRef.current);
+      return () => {
+        if (cardRef.current) {
+          observer.unobserve(cardRef.current);
+        }
+      };
     }
   }, []);
 
