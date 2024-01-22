@@ -67,7 +67,7 @@ export default function RegisterVerify() {
                 },
                 body: JSON.stringify({
                     "otp": hashPassword(otpString),
-                    "studentPassword" : password
+                    "studentPassword" : hashPassword(password)
                 }),
             });
 
@@ -228,7 +228,7 @@ export default function RegisterVerify() {
                                 <input
                                     value="Verify"
                                     type="submit"
-                                    disabled={!isValidOtp || loading}
+                                    // disabled={!isValidOtp || loading}
                                     className={"w-full text-lg rounded-lg bg-black text-white p-2 cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed"} />
                             </div>
                         </form>
