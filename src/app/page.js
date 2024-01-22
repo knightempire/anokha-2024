@@ -59,7 +59,7 @@ export default function Home() {
         Change Colors
       </button>
       <WebGLApp colors={cardColor} />
-      <Navbar />
+      <Navbar login={true}/>
       
       <Hero className='z-10' />
       <SponsorsMarquee /> 
