@@ -97,12 +97,11 @@ export default function Login() {
                     <div className="flex items-center justify-between">
                         <div className="flex items-start">
                         </div>
-                        <a href="#" className="text-sm font-medium text-primary-500 text-black hover:underline">Forgot password?</a>
-                    </div>
-                    <Link href='/forgotpassword' 
-                    className="text-sm font-medium text-primary-500 text-white hover:underline">
+                        <Link href='/forgotpassword' 
+                        className="text-sm font-medium text-primary-500 text-black hover:underline">
                             Forgot password?
-                    </Link>
+                        </Link>
+                    </div>
                    
                 <button type="submit" onClick={HandleLogin} className="w-full text-black bg-[#f69c18] hover:bg-[#f69c18] focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
                 <p className="text-sm font-light text-[#ed1d21]">
