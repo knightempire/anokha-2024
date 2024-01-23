@@ -10,7 +10,7 @@ import { hashPassword } from '../_util/hash'
 
 import WebGLApp from "../bg/WebGLApp";
 
-
+import Link from "next/link";
 export default function Login() {
 
     useEffect(()=>{
@@ -77,7 +77,7 @@ export default function Login() {
                 <div className="relative min-h-screen">
                 <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
                 <div className="w-full  rounded-md bg-clip-padding bg-opacity-80  md:mt-0 sm:max-w-md xl:p-0 bg-white ">
-                        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl">Sign in to your account</h1>
                 <form className="space-y-4 md:space-y-6" action="#">
                     <div>
@@ -99,16 +99,21 @@ export default function Login() {
                         </div>
                         <a href="#" className="text-sm font-medium text-primary-500 text-black hover:underline">Forgot password?</a>
                     </div>
-                    <button type="submit" onClick={HandleLogin} className="w-full text-black bg-[#f69c18] hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
-                    <p className="text-sm font-light text-[#ed1d21]">
-                        Don’t have an account yet? <a href="/register" className="font-medium text-primary-500 hover:underline">Sign up</a>
-                    </p>
-                </form>
-                        </div>
-                    </div>
-                </div>
-                        </div>
+                    <Link href='/forgotpassword' 
+                    className="text-sm font-medium text-primary-500 text-white hover:underline">
+                            Forgot password?
+                    </Link>
+                   
+                <button type="submit" onClick={HandleLogin} className="w-full text-black bg-[#f69c18] hover:bg-[#f69c18] focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign in</button>
+                <p className="text-sm font-light text-[#ed1d21]">
+                    Don’t have an account yet? <a href="/register" className="font-medium text-primary-500 hover:underline">Sign up</a>
+                </p>
+            </form>
             </div>
+            </div>
+            </div>
+            </div>
+        </div>
         </main>
     )
 }
