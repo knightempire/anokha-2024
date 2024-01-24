@@ -1,27 +1,56 @@
-import React from 'react'
-import Header from '../components/EventHeader'
-import Footer from '../components/Footer'
-import EventLander from "./components/EventLander" 
+"use client";
+import React, { useEffect, useState } from "react";
+import EventCard from "@/app/events/components/EventCard";
+import DataHandler from "@/app/events/components/DataHandler";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Navbar from "../components/Header";
+import Footer from "../components/Footer";
 
-// Use GSAP ScrollTrigger and Locomotive Scroll
+export default function Events() {
+  const [eventsData, setEventsData] = useState(null);
+  const router = useRouter();
 
-// Navbar. Let it remain thisway untill better one is designed. This is also mobile responsive, so dont touch yet
-// Navbar modifcation - If logged in, then his gravatar image on top right. When clicked, dropdown to view profile, logout, else login button.
-// Hero section - Anokha logo on bottom left, spline div on right, 3 sections of 2 words each on the bottom right
-// Marquee of sponsors (Logos, will be added later)
-// Info div, self scrolling like the one in video. Please create supporting components as needed
-// Marquee of Anokha Hashtags
-// FOoter - Design given
-const EventsHome = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const eventData = await DataHandler();
+      setEventsData(eventData);
+    };
+    fetchData();
+  }, []);
+
   return (
-    <div className="flex min-h-screen flex-col  bg-black">
-      <Header/>
-      <div className='mt-12 mb-12 md:mt-20 lg:mt-8'>
-      <EventLander />
+    <div>
+      <Navbar />
+      <div className="flex flex-row min-h-screen mt-5 justify-center items-center mx-10 pt-10 lg:mt-20">
+        <div className="grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
+          {eventsData &&
+            eventsData.events.map((event) => (
+              <div key={event.id}>
+                <Link
+                  href={{
+                    pathname: `/events/${event.id}`,
+                    query: { data: encodeURIComponent(JSON.stringify(event)) },
+                  }}
+                >
+                  <EventCard
+                    imgSrc={event.imgsrc}
+                    eventName={event.title}
+                    eventBlurb={event.blurb}
+                    eventDesc={event.description}
+                    date={event.date}
+                    time={event.time}
+                    goi={event.groupOrIndividual}
+                    tags={event.tags}
+                    price={event.price}
+                    isAllowed={event.isAllowed}
+                  />
+                </Link>
+              </div>
+            ))}
+        </div>
       </div>
-       <Footer current_page="home"/> {/* current_page is a prop that is used to highlight the current page in the footer. Possible values are home, team, contact, privacy policy} */}
+      <Footer />
     </div>
-  )
+  );
 }
-
-export default EventsHome;
