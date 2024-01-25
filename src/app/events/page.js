@@ -1,56 +1,86 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import EventCard from "@/app/events/components/EventCard";
-import DataHandler from "@/app/events/components/DataHandler";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import Navbar from "../components/Header";
+import Navbar from "../components/EventHeader";
 import Footer from "../components/Footer";
 
-export default function Events() {
+const Events = () => {
   const [eventsData, setEventsData] = useState(null);
-  const router = useRouter();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const eventData = await DataHandler();
-      setEventsData(eventData);
-    };
-    fetchData();
-  }, []);
+    fetch("https://web.abhinavramakrishnan.tech/api/user/getAllEvents", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer <SECRET_TOKEN>`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401) {
+          // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
+          // openModal();
+          // Session Expired or not logged in. Clear Cache and Navigate to login screen.
+        } else if (res.status === 500) {
+          // Backend Error. Handle it.
+        } else if (res.status === 200) {
+          // Valid Request. Data has come
+          return res.json();
+        } else if (res.status === 400) {
+          // Display error message from "MESSAGE" field in data
+        } else {
+          // Unknown Error.
+        }
+      })
+      .then((data) => {
+        console.log("Recived Data:", data);
+        setEventsData(data.EVENTS);
+      })
+      .catch((err) => {
+        console.error("Error fetching data:", err);
+        throw err;
+      });
+  }, []); // This empty bracket here is important
+
+  console.log("Events Data:", eventsData);
 
   return (
     <div>
       <Navbar />
       <div className="flex flex-row min-h-screen mt-5 justify-center items-center mx-10 pt-10 lg:mt-20">
         <div className="grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
-          {eventsData &&
-            eventsData.events.map((event) => (
-              <div key={event.id}>
+          {eventsData && eventsData.length > 0 ? (
+            eventsData.map((event) => (
+              <div key={event.eventId}>
                 <Link
                   href={{
-                    pathname: `/events/${event.id}`,
-                    query: { data: encodeURIComponent(JSON.stringify(event)) },
+                    pathname: "/events/event",
+                    query: { id: event.eventId },
                   }}
                 >
                   <EventCard
-                    imgSrc={event.imgsrc}
-                    eventName={event.title}
-                    eventBlurb={event.blurb}
-                    eventDesc={event.description}
-                    date={event.date}
-                    time={event.time}
-                    goi={event.groupOrIndividual}
+                    imgSrc={event.eventImageURL}
+                    eventName={event.eventName}
+                    eventBlurb={event.eventDescription}
+                    eventDesc={event.eventDescription}
+                    date={event.eventDate}
+                    time={event.eventTime}
+                    goi={event.isGroup}
                     tags={event.tags}
-                    price={event.price}
-                    isAllowed={event.isAllowed}
+                    price={event.eventPrice}
+                    isAllowed={event.eventStatus === "1"} // Adjust as needed
                   />
                 </Link>
               </div>
-            ))}
+            ))
+          ) : (
+            <p>Loading...</p>
+          )}
         </div>
       </div>
       <Footer />
     </div>
   );
-}
+};
+
+export default Events;
