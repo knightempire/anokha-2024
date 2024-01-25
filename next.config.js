@@ -1,4 +1,8 @@
-module.exports = {
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+})
+
+module.exports = withBundleAnalyzer({
     webpack: (config, { isServer }) => {
         config.module.rules.push({
             test: /\.glsl$/,
@@ -7,10 +11,10 @@ module.exports = {
 
         return config;
     },
-    
-    env:{
-        name:"sajith",
-        email:"isajithrajan@gmail.com",
-        phone:"6379132006",
+
+    env: {
+        name: "sajith",
+        email: "isajithrajan@gmail.com",
+        phone: "6379132006",
     }
-};
+});
