@@ -14,15 +14,14 @@ export default function EventCard({
   isAllowed,
 }) {
   return (
-    
     <div className="flex flex-row bg-white w-full rounded shadow-lg hover:scale-105 cursor-pointer transition-transform duration-100 ease-in-out">
       {/* Image Section */}
-      <div className="flex-none h-full w-1/3  relative">
+      <div className="flex-none h-[300px] w-1/3 relative border">
         <Image
           src={imgSrc}
           alt="Event Image"
           layout="fill"
-          objectFit="cover"
+          objectFit="conta"
           objectPosition="center"
           className="rounded"
         />
@@ -31,7 +30,7 @@ export default function EventCard({
       <div className="flex flex-col">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">{eventName}</div>
-          <p classname="text-gray-700 text-base">{date}</p>
+          <p className="text-gray-700 text-base">{date}</p>
           <p className="text-gray-700 text-base">{eventBlurb}</p>
         </div>
         {/* Tags Section */}
@@ -42,7 +41,7 @@ export default function EventCard({
                 key={index}
                 className="inline-block bg-gray-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-900 mr-2 mb-2"
               >
-                #{tag}
+                #{tag.tagName}{" "}
               </span>
             ))}
         </div>
