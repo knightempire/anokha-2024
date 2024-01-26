@@ -45,10 +45,10 @@ const Events = () => {
   console.log("Events Data:", eventsData);
 
   return (
-    <div>
+    <div className="bg-[#121212]">
       <Navbar />
       <div className="flex flex-row min-h-screen mt-5 justify-center items-center mx-10 pt-10 lg:mt-20">
-        <div className="grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
+        <div className="grid grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           {eventsData && eventsData.length > 0 ? (
             eventsData.map((event) => (
               <div key={event.eventId}>
