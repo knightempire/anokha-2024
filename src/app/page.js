@@ -45,8 +45,10 @@ export default function Home() {
     };
 
     setWebGLColors(randomColors);
+    handleCardColorChange(randomColors);
   };
   const handleCardColorChange = (color) => {
+    console.log(color)
     setCardColor(color);
   };
 
