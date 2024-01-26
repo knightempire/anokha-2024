@@ -13,7 +13,7 @@ module.exports = withBundleAnalyzer({
   },
 
   images: {
-    domains: ["anokha.amrita.edu","i.imgur.com"],
+    domains: ["anokha.amrita.edu", "i.imgur.com"],
   },
 
   env: {
