@@ -18,7 +18,11 @@ const Events = () => {
     })
       .then((res) => {
         if (res.status === 401) {
-          // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
+          buildDialog(
+            "Error",
+            "You are not logged in!\nPlease Login to continue.",
+            "Okay"
+          );
           // openModal();
           // Session Expired or not logged in. Clear Cache and Navigate to login screen.
         } else if (res.status === 500) {
@@ -45,41 +49,43 @@ const Events = () => {
   console.log("Events Data:", eventsData);
 
   return (
-    <div>
-      <Navbar />
-      <div className="flex flex-row min-h-screen mt-5 justify-center items-center mx-10 pt-10 lg:mt-20">
-        <div className="grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
-          {eventsData && eventsData.length > 0 ? (
-            eventsData.map((event) => (
-              <div key={event.eventId}>
-                <Link
-                  href={{
-                    pathname: "/events/event",
-                    query: { id: event.eventId },
-                  }}
-                >
-                  <EventCard
-                    imgSrc={event.eventImageURL}
-                    eventName={event.eventName}
-                    eventBlurb={event.eventDescription}
-                    eventDesc={event.eventDescription}
-                    date={event.eventDate}
-                    time={event.eventTime}
-                    goi={event.isGroup}
-                    tags={event.tags}
-                    price={event.eventPrice}
-                    isAllowed={event.eventStatus === "1"} // Adjust as needed
-                  />
-                </Link>
-              </div>
-            ))
-          ) : (
-            <p>Loading...</p>
-          )}
+    <main className="flex min-h-screen flex-col bg-[#121212]">
+      <div className="block">
+        <Navbar />
+        <div className="flex flex-row min-h-screen mt-5 justify-center items-center mx-10 pt-10 lg:mt-20">
+          <div className="grid grid-flow-row gap-8 text-neutral-600 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
+            {eventsData && eventsData.length > 0 ? (
+              eventsData.map((event) => (
+                <div key={event.eventId}>
+                  <Link
+                    href={{
+                      pathname: "/events/event",
+                      query: { id: event.eventId },
+                    }}
+                  >
+                    <EventCard
+                      imgSrc={event.eventImageURL}
+                      eventName={event.eventName}
+                      eventBlurb={event.eventDescription}
+                      eventDesc={event.eventDescription}
+                      date={event.eventDate}
+                      time={event.eventTime}
+                      goi={event.isGroup}
+                      tags={event.tags}
+                      price={event.eventPrice}
+                      isAllowed={event.eventStatus === "1"} // Adjust as needed
+                    />
+                  </Link>
+                </div>
+              ))
+            ) : (
+              <p>Loading...</p>
+            )}
+          </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </main>
   );
 };
 
