@@ -1,33 +1,45 @@
 import React from "react";
 
+// Dropdown-Checkbox Component 
+function dropdownCheckbox({icon, name, options}){
+    return(
+        <div className="">
+
+        </div>
+    );
+}
+
 export default function FilterComponent(){
+
     return(
         <div className="flex">
             {/* All of the following should be Dropdown-Checkbox Components*/}
             {/* Select Day: "01" | "02" | "03"; */}
-            <div>
+            <dropdownCheckbox()>
 
-            </div>
+            </dropdownCheckbox>
             {/* Select Department: <Bunch of department options> */}
-            <div>
+            <dropdownCheckbox()>
 
-            </div>
+            </dropdownCheckbox>
             {/* Select Participants: "Group" | "Individual" */}
-            <div>
+            <dropdownCheckbox()>
 
-            </div>
+            </dropdownCheckbox>
             {/* Select Type: "Tech Workshop"| "Non-Tech Workshop" | "Tech Event" | "Non-Tech Event" | "Tech Contest" | "Non-Tech Contest" */}
-            <div>
+            <dropdownCheckbox()>
 
-            </div>
+            </dropdownCheckbox>
             {/* Select Tags: <Bunch of tag options> */}
-            <div>
+            <dropdownCheckbox)
 
-            </div>
+            </dropdownCheckbox>
             {/* Select Status: "Registered" | "Not Registered" */}
-            <div>
+            <dropdownCheckbox()>
 
-            </div>
+            </dropdownCheckbox>
         </div> 
     );
 }
+
+// Functionality is to be added post UI design and responsiveness checks
