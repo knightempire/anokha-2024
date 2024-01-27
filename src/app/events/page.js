@@ -1,27 +1,92 @@
-import React from 'react'
-import Header from '../components/EventHeader'
-import Footer from '../components/Footer'
-import EventLander from "./components/EventLander" 
+"use client";
+import React, { useEffect, useState } from "react";
+import EventCard from "@/app/events/components/EventCard";
+import Link from "next/link";
+import Navbar from "../components/EventHeader";
+import Footer from "../components/Footer";
 
-// Use GSAP ScrollTrigger and Locomotive Scroll
+const Events = () => {
+  const [eventsData, setEventsData] = useState(null);
 
-// Navbar. Let it remain thisway untill better one is designed. This is also mobile responsive, so dont touch yet
-// Navbar modifcation - If logged in, then his gravatar image on top right. When clicked, dropdown to view profile, logout, else login button.
-// Hero section - Anokha logo on bottom left, spline div on right, 3 sections of 2 words each on the bottom right
-// Marquee of sponsors (Logos, will be added later)
-// Info div, self scrolling like the one in video. Please create supporting components as needed
-// Marquee of Anokha Hashtags
-// FOoter - Design given
-const EventsHome = () => {
+  useEffect(() => {
+    fetch("https://web.abhinavramakrishnan.tech/api/user/getAllEvents", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer <SECRET_TOKEN>`,
+      },
+    })
+      .then((res) => {
+        if (res.status === 401) {
+          buildDialog(
+            "Error",
+            "You are not logged in!\nPlease Login to continue.",
+            "Okay"
+          );
+          // openModal();
+          // Session Expired or not logged in. Clear Cache and Navigate to login screen.
+        } else if (res.status === 500) {
+          // Backend Error. Handle it.
+        } else if (res.status === 200) {
+          // Valid Request. Data has come
+          return res.json();
+        } else if (res.status === 400) {
+          // Display error message from "MESSAGE" field in data
+        } else {
+          // Unknown Error.
+        }
+      })
+      .then((data) => {
+        console.log("Recived Data:", data);
+        setEventsData(data.EVENTS);
+      })
+      .catch((err) => {
+        console.error("Error fetching data:", err);
+        throw err;
+      });
+  }, []); // This empty bracket here is important
+
+  console.log("Events Data:", eventsData);
+
   return (
-    <div className="flex min-h-screen flex-col bg-black">
-      <Header/>
-      <div className='mt-12 mb-12 md:mt-20 lg:mt-8'>
-      <EventLander />
+    <main className="flex min-h-screen flex-col bg-[#121212]">
+      <div className="block">
+        <Navbar />
+        <div className="flex flex-row min-h-screen mt-5 justify-center items-center mx-10 pt-10 lg:mt-20">
+          <div className="grid grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            {eventsData && eventsData.length > 0 ? (
+              eventsData.map((event) => (
+                <div key={event.eventId}>
+                  <Link
+                    href={{
+                      pathname: "/events/event",
+                      query: { id: event.eventId },
+                    }}
+                  >
+                    <EventCard
+                      imgSrc={event.eventImageURL}
+                      eventName={event.eventName}
+                      eventBlurb={event.eventDescription}
+                      eventDesc={event.eventDescription}
+                      date={event.eventDate}
+                      time={event.eventTime}
+                      goi={event.isGroup}
+                      tags={event.tags}
+                      price={event.eventPrice}
+                      isAllowed={event.eventStatus === "1"} // Adjust as needed
+                    />
+                  </Link>
+                </div>
+              ))
+            ) : (
+              <p>Loading...</p>
+            )}
+          </div>
+        </div>
+        <Footer />
       </div>
-       <Footer current_page="home"/> {/* current_page is a prop that is used to highlight the current page in the footer. Possible values are home, team, contact, privacy policy} */}
-    </div>
-  )
-}
+    </main>
+  );
+};
 
-export default EventsHome;
+export default Events;

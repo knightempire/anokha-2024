@@ -10,6 +10,7 @@ import Lenis from '@studio-freight/lenis';
 import { useScroll } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import projects from './info_data'
+import tinycolor from 'tinycolor2';
 
 export default function Home() {
 
@@ -34,19 +35,43 @@ export default function Home() {
   const [cardColor, setCardColor] = useState(webGLColors);
 
   const getRandomColorValue = () => {
-    return [Math.random(), Math.random(), Math.random()];
+    let r = Math.random();
+    let g = Math.random();
+    let b = Math.random();
+    return [r,g,b];
   };
 
   const handleClick = () => {
+    let color1 = getRandomColorValue()
+    for(let i=0;i<3;i++){
+      color1[i] = color1[i]*255;
+    }
+
+    const hexColor = tinycolor({ r: color1[0], g: color1[1], b: color1[2] }).toHex();
+    const baseTinycolor = tinycolor(hexColor);
+    const analogousColors = baseTinycolor.monochromatic(2)
+
+    console.log(analogousColors);
+    let color2 = [analogousColors[0]._r, analogousColors[0]._g, analogousColors[0]._b];
+    let color3 = [analogousColors[1]._r, analogousColors[1]._g, analogousColors[1]._b];
+
+    for(let i=0;i<3;i++){
+      color1[i] = color1[i]/255;
+      color2[i] = color2[i]/255;
+      color3[i] = color3[i]/255;
+    }
+
     const randomColors = {
-      color1: getRandomColorValue(),
-      color2: getRandomColorValue(),
-      color3: getRandomColorValue()
+      color1: color1,
+      color2: color2,
+      color3: color3
     };
 
     setWebGLColors(randomColors);
+    handleCardColorChange(randomColors);
   };
   const handleCardColorChange = (color) => {
+    console.log(color)
     setCardColor(color);
   };
 
