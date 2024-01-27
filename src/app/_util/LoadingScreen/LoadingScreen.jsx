@@ -1,12 +1,22 @@
 
 import React from 'react';
 import { ProgressSpinner } from 'primereact/progressspinner';
-
+import './LoadingScreen.css'
 export const  LoadingScreen= () => {
     return (
-        <div className="flex h-screen justify-center items-center text-white">
-            <ProgressSpinner style={{width: '100px', height: '100px'}} strokeWidth="3" fill="white" animationDuration=".75s" />
-        </div>
+       
+  <div class="loading">
+    <div class="loading-text">
+      <span>A</span>
+      <span>N</span>
+      <span>O</span>
+      <span>K</span>
+      <span>H</span>
+      <span>A</span>
+       
+    </div>
+  </div>
+
     );
 }
         

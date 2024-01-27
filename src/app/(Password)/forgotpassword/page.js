@@ -158,7 +158,7 @@ export default function forgetpassword() {
 
                             <div>
                                 <input
-                                    value="Verify"
+                                    value="SEND"
                                     type="submit"
                                     disabled={false}
                                     className={"w-full text-lg rounded-lg bg-black text-white p-2 cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed"} />

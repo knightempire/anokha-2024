@@ -5,33 +5,7 @@ import  { useState } from "react";
 import Hamburger from 'hamburger-react'
 import MenuOverlay from "./MenuOverlay";
 import Image from 'next/image'
-// import {
-//   Navbar
-// } from "@material-tailwind/react";
 
-
-const navLinks = [
-  {
-    title: "Home",
-    path: "/",
-  },
-  {
-    title: "About",
-    path: "#about",
-  },
-  {
-    title: "Event",
-    path: "/events",
-  },
-  {
-    title: "Contact",
-    path: "#contact",
-  },
-    {
-    title: "Login",
-    path: "/login",
-  },
-];
 
 
 
@@ -47,14 +21,7 @@ const Navigationbar = ({login}) => {
     path: "/profile",
   };
 
-  const loginIndex = navLinks.findIndex(link => link.title === "Login");
-
  
-  if (islogined && loginIndex !== -1) {
-    navLinks.splice(loginIndex, 1);
-  }
-  
-  
   return (
 
     
@@ -73,35 +40,57 @@ const Navigationbar = ({login}) => {
               className="w-36 lg:h-full"
             />
         </Link>
-        <div className="mobile-menu lg:hidden place-self-start pb-2 flex items-center">
-
+        <div className="mobile-menu lg:hidden place-self-end pb-2">
           <Hamburger toggled={navbarOpen} toggle={setNavbarOpen} size={20} color="#ffffff" />
         </div>
         <div className="menu hidden  lg:block lg:w-auto" id="navbar">
           <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0 ">
-            {navLinks.map((link, index) => (
-              <li key={index}>
-                 <Link
-      href={link.path}
-      className="block py-2 pl-3 pr-4 text-[#ADB7BE] sm:text-xl rounded md:p-0 hover:text-white"
-    >
-      {link.title}
-    </Link>
-              </li>
-            ))}
-
-            <li key="7">
+          
+        <a href="/#about">
+          <button variant="text" className=" text-gray-50 ml-auto mr-auto">
+            About
+          </button>
+        </a>
+        <a href="/#eventide">
+          <button type="button" variant="text" className="text-gray-50 ml-auto mr-auto text-md">
+          Eventide
+          </button>
+        </a>
+        <a href="/#techfair">
+          <button variant="text" className="text-gray-50 ml-auto mr-auto">
+            <h2 className="flex items-center capitalize">
+              TechFair
+             </h2>
+          </button>
+        </a>
+        <a href="/events">
+          <button variant="text" className="text-gray-50 ml-auto mr-auto">
+          Events & Workshops
+          </button>
+        </a>
+         
+        <a href="/#footer">
+          <button variant="text" className="text-gray-50 ml-auto mr-auto">
+          Contact Us
+          </button>
+        </a>
+       
+     
+        <li key="7">
               <Link
                 href={ProfileObject.path}
-                className="block py-2 pl-3 pr-4 text-[#ADB7BE] sm:text-xl rounded md:p-0 hover:text-white"
+                className="text-gray-50 text-lg  hover:text-white"
               >
+                <button variant="text" className="text-gray-50 ml-auto mr-auto">
                 {ProfileObject.title}
+          </button>
+                
               </Link>
             </li>
           </ul>
         </div>
       </div>
-      {navbarOpen ? <MenuOverlay links={navLinks} /> : null}
+      {/* {navbarOpen ? <MenuOverlay links={navLinks} /> : null} */}
     </nav>
   );
 };
