@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Star from "../../../../public/images/star.png";
+import Unstar from "../../../../public/images/unstar.png";
 
 export default function EventCard({
   imgSrc,
+  id,
   eventName,
   eventBlurb,
   eventDesc,
@@ -15,6 +20,48 @@ export default function EventCard({
   maxseats,
   seats
 }) {
+  const [starred,toggleStar] = useState(0);
+
+  useEffect(() => {
+    fetch("https://web.abhinavramakrishnan.tech/api/user/toggleStarredEvent", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer <SECRET_TOKEN>`
+        },
+        body: {
+          "eventId": id,
+          "isStarred": `${starred}`
+        }
+    }).then(res => {
+        if (res.status === 401) {
+            // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
+            // openModal();
+              // Session Expired or not logged in. Clear Cache and Navigate to login screen.
+        } else if (res.status === 500) {
+            // Backend Error. Handle it.
+        } else if (res.status === 200) {
+                // Valid Request. Data has come
+            return res.json();
+        } else if (res.status === 400) {
+            // Display error message from "MESSAGE" field in data
+        } else {
+            // Unknown Error.
+         }
+      })
+          .then((data) => {
+                // Set Data variables.
+          })
+          .catch(err => {
+              // Error in Frontend Code. Handle it.
+          })
+  }, [starred]); 
+
+  const handleStarToggle= (e)=>{
+    e.preventDefault();
+    toggleStar(!starred)
+  }
+
   return (
     <div className="flex flex-col group relative bg-white w-[250px] rounded-[25px] hover:scale-105 cursor-pointer transition-transform duration-100 ease-in-out">
       <div className="absolute -left-[5px] -top-[5px] -right-[5px] -bottom-[5px] z-[1] rounded-[25px] bg-white group-hover:bg-gradient-to-r from-[#ef9a17] to-[#e42120]">
@@ -46,37 +93,41 @@ export default function EventCard({
             </div>
           </div>
           {/* Tags Section */}
-          <div className="px-3 pb-2 flex flex-row flex-wrap">
-            {tags &&
-              tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2 h-full"
-                >
-                  #{tag.tagName}{" "}
-                </span>
-              ))}
-            <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
-              #Hello
-            </span>
-            <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
-              #Hello
-            </span>
-            <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
-              #Hello
-            </span>
-            <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
-              #Hello
-            </span>
-            <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
-              #Hello
-            </span>
-            <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
-              #Hello
-            </span>
+          <div className="flex flex-row">
+            <div className="px-2 pb-2 flex flex-row flex-wrap w-[95%]">
+              {tags &&
+                tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2 h-[23px]"
+                  >
+                    #{tag.tagName}{" "}
+                  </span>
+                ))}
+              <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
+                #Hello
+              </span>
+              <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
+                #Hello
+              </span>
+              <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
+                #Hello
+              </span>
+              <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
+                #Hello
+              </span>
+              <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
+                #Hello
+              </span>
+              <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
+                #Hello
+              </span>
+            </div>
+            {/* Star Section */}
+            <div className="mt-[auto] mb-[20px] mr-3">
+              <Image src={starred==0?Unstar:Star} alt="" width={20} height={20} onClick={handleStarToggle}></Image>
+            </div>
           </div>
-        
-          {/* Price Section */}
         </div>
       </div>
     </div>

@@ -65,6 +65,7 @@ const Events = () => {
                   >
                     <EventCard
                       imgSrc={event.eventImageURL}
+                      id={event.eventId}
                       eventName={event.eventName}
                       eventBlurb={event.eventDescription}
                       eventDesc={event.eventDescription}
