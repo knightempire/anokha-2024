@@ -197,7 +197,6 @@ export default function Register() {
                               name="amrita-student"
                               id="amrita-student"
                               className="mr-2"
-                              
                             />
                             <label
                               htmlFor="amrita-student"
