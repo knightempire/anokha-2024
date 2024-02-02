@@ -74,6 +74,8 @@ const Events = () => {
                       tags={event.tags}
                       price={event.eventPrice}
                       isAllowed={event.eventStatus === "1"} // Adjust as needed
+                      maxseats={event.maxSeats}
+                      seats={event.seatsFilled}
                     />
                   </Link>
                 </div>
