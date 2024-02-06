@@ -2,7 +2,12 @@
 
 import React, { useState, useEffect, useRef } from "react";
 
-export default function FilterComponent({ icon, name, options }) {
+export default function FilterComponent({
+  icon,
+  name,
+  options,
+  sendSelectedOption,
+}) {
   const [curr_options, setCurrOptions] = useState(options);
   const [displayOptions, setDisplayOptions] = useState(0);
   const componentRef = useRef(null);
@@ -12,6 +17,10 @@ export default function FilterComponent({ icon, name, options }) {
     if (componentRef.current && !componentRef.current.contains(event.target)) {
       setDisplayOptions(0);
     }
+  };
+
+  const handleSendingOption = (item) => {
+    sendSelectedOption(item);
   };
 
   useEffect(() => {
@@ -25,7 +34,7 @@ export default function FilterComponent({ icon, name, options }) {
   }, []);
 
   return (
-    <div className="" ref={componentRef}>
+    <div className="z-13" ref={componentRef}>
       <input
         className="max-w-[170px] px-2 py-1"
         type="text"
@@ -45,14 +54,15 @@ export default function FilterComponent({ icon, name, options }) {
         }}
       />
       {displayOptions ? (
-        <div className="flex flex-col cursor-pointer">
+        <div className="flex flex-col cursor-pointer absolute w-[170px]">
           {curr_options.map((filterItem, index) => (
             <div
               key={index}
               className="bg-white text-black"
               onClick={() => {
-                console.log(filterItem);
                 inputRef.current.value = filterItem;
+                setDisplayOptions(0);
+                handleSendingOption(filterItem);
               }}
             >
               {filterItem}

@@ -55,10 +55,8 @@ const Events = () => {
       <div className="block">
         <Navbar />
         <div className="flex flex-col gap-5 min-h-screen justify-center items-center mx-10 pt-10 mt-10">
-          <div className="relative w-full h-12">
-            <div className="my-3 z-20 absolute w-full flex justify-center">
-              <FilterSection />
-            </div>
+          <div className="my-3 z-20 w-full min-h-[100px] flex justify-center">
+            <FilterSection />
           </div>
           <div className="grid grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {eventsData && eventsData.length > 0 ? (
