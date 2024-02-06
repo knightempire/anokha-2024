@@ -11,12 +11,36 @@ const Team = () => {
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
       <WebGLApp colors={webGLColors} />
-      <div className="z-10">
+      <div className="grid grid-cols-5 gap-4 m-10">
         <TeamMember
           name="Tharun Kumarr A"
-          position="web-dev"
+          Position="Frontend Developer"
+          rollno="CB.EN.U4CSE22253"
           imgSrc="/images/dummy.jpg"
-          socials=""
+        />
+        <TeamMember
+          name="Tharun Kumarr A"
+          Position="Frontend Developer"
+          rollno="CB.EN.U4CSE22253"
+          imgSrc="/images/dummy.jpg"
+        />
+        <TeamMember
+          name="Tharun Kumarr A"
+          Position="Frontend Developer"
+          rollno="CB.EN.U4CSE22253"
+          imgSrc="/images/dummy.jpg"
+        />
+        <TeamMember
+          name="Tharun Kumarr A"
+          Position="Frontend Developer"
+          rollno="CB.EN.U4CSE22253"
+          imgSrc="/images/dummy.jpg"
+        />
+        <TeamMember
+          name="Tharun Kumarr A"
+          Position="Frontend Developer"
+          rollno="CB.EN.U4CSE22253"
+          imgSrc="/images/dummy.jpg"
         />
       </div>
     </main>
