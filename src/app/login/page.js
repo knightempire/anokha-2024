@@ -80,11 +80,11 @@ export default function Login() {
   useGSAP(() => {
     let tl = new gsap.timeline();
     tl.from(loginFrame.current, { opacity: 0, duration: 1 });
-    tl.from(Heading.current, { opacity: 0, y: -30, duration: 0.4 });
-    tl.from(Email.current, { opacity: 0, stagger: 0.1, duration: 0.4 });
-    tl.from(Password.current, { opacity: 0, stagger: 0.1, duration: 0.4 });
-    tl.from(SignIn.current, { opacity: 0, y: 20, duration: 0.4 });
-    tl.from("#Others", { opacity: 0, duration: 0.4 });
+    tl.from(Heading.current, { opacity: 0, y: -30, duration: 0.3 });
+    tl.from(Email.current, { opacity: 0, stagger: 0.1, duration: 0.3 });
+    tl.from(Password.current, { opacity: 0, stagger: 0.1, duration: 0.3 });
+    tl.from(SignIn.current, { opacity: 0, y: 20, duration: 0.3 });
+    tl.from("#Others", { opacity: 0, duration: 0.3 });
   });
 
   return (
