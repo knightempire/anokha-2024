@@ -87,26 +87,22 @@ const TeamRegister = ({ minTeamSize, maxTeamSize }) => {
                     )}
                   </div>
                   <div className="flex flex-col gap-4 min-h-[250px]">
-                    {minTeamSize == maxTeamSize ? (
-                      ""
-                    ) : (
-                      <div className="my-4">
-                        <label
-                          htmlFor="team_name"
-                          className="block mb-2 text-sm font-medium text-black"
-                        >
-                          Team name
-                        </label>
-                        <input
-                          type="text"
-                          name="team_name"
-                          id="team_name"
-                          className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                          placeholder="Team Name"
-                          required
-                        />
-                      </div>
-                    )}
+                    <div className="my-4">
+                      <label
+                        htmlFor="team_name"
+                        className="block mb-2 text-sm font-medium text-black"
+                      >
+                        Team name
+                      </label>
+                      <input
+                        type="text"
+                        name="team_name"
+                        id="team_name"
+                        className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                        placeholder="Team Name"
+                        required
+                      />
+                    </div>
                     {Team.map((member) => (
                       <div key={member}>
                         <label
