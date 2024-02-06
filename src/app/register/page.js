@@ -101,20 +101,13 @@ export default function Register() {
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
       <WebGLApp colors={webGLColors} />
-
+  
       <div className="block space-y-24 md:space-y-10">
         <Navbar />
         <div className="relative min-h-screen">
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
             <div className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
-              <Image
-                src={anokhalogo}
-                priority
-                alt="Amrita logo"
-                width={128}
-                height={128}
-                className="ml-auto mr-auto mt-4 h-16"
-              />
+              <Image src={anokhalogo} priority alt="Amrita logo" width={128} height={128} className='ml-auto mr-auto mt-4 h-16' />
               <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl">
                   Register
@@ -287,4 +280,5 @@ export default function Register() {
       </div>
     </main>
   );
+  
 }
