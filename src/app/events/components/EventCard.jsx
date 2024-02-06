@@ -66,10 +66,14 @@ export default function EventCard({
 
   return (
     <div className="flex flex-col group relative bg-white w-[270px] rounded-[25px] hover:scale-105 cursor-pointer transition-transform duration-100 ease-in-out">
-      <div className="absolute -left-[5px] -top-[5px] -right-[5px] -bottom-[5px] z-[1] rounded-[25px] bg-white group-hover:bg-gradient-to-r from-[#ef9a17] to-[#e42120]">
-      </div>
-      <div className={ `${maxseats==seats ? "absolute -left-[5px] -top-[5px] -right-[5px] -bottom-[5px] z-[11] rounded-[25px] bg-[rgba(0,0,0,0.6)]" : ""}`}>
-      </div>
+      <div className="absolute -left-[5px] -top-[5px] -right-[5px] -bottom-[5px] z-[1] rounded-[25px] bg-white group-hover:bg-gradient-to-r from-[#ef9a17] to-[#e42120]"></div>
+      <div
+        className={`${
+          maxseats == seats
+            ? "absolute -left-[5px] -top-[5px] -right-[5px] -bottom-[5px] z-[11] rounded-[25px] bg-[rgba(0,0,0,0.6)]"
+            : ""
+        }`}
+      ></div>
       {/* Image Section */}
       <div className="z-10 bg-white rounded-xl">
         <div className="flex-none h-[350px] w-full relative group/img overflow-hidden">
