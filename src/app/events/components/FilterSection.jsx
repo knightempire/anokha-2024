@@ -20,7 +20,14 @@ export default function FilterSection({ sendcurrentFilters }) {
           {filters.map((filter, index) => (
             <div key={index} className="bg-white flex flex-row px-1">
               <div className="mr-2">{filter}</div>
-              <div>&#x2715;</div>
+              <div
+                className="cursor-pointer m-1"
+                onClick={() => {
+                  setFilters(filters.filter((item) => item != filter));
+                }}
+              >
+                &#x2715;
+              </div>
             </div>
           ))}
         </div>

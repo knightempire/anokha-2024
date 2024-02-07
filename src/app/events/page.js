@@ -60,7 +60,7 @@ const Events = () => {
           break;
       }
     }
-    if (grpCode == -1 || grpCode == 3) setgroupFilter(null);
+    if (grpCode == -1 || grpCode == 2) setgroupFilter(null);
     else setgroupFilter(grpCode);
   };
 
@@ -115,32 +115,36 @@ const Events = () => {
           </div>
           <div className="grid grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {eventsData && eventsData.length > 0 ? (
-              eventsData.map((event) => (
-                <div key={event.eventId}>
-                  <Link
-                    href={{
-                      pathname: "/events/event",
-                      query: { id: event.eventId },
-                    }}
-                  >
-                    <EventCard
-                      imgSrc={event.eventImageURL}
-                      id={event.eventId}
-                      eventName={event.eventName}
-                      eventBlurb={event.eventDescription}
-                      eventDesc={event.eventDescription}
-                      date={event.eventDate}
-                      time={event.eventTime}
-                      goi={event.isGroup}
-                      tags={event.tags}
-                      price={event.eventPrice}
-                      isAllowed={event.eventStatus === "1"} // Adjust as needed
-                      maxseats={event.maxSeats}
-                      seats={event.seatsFilled}
-                    />
-                  </Link>
-                </div>
-              ))
+              eventsData.map((event) => {
+                if (groupFilter == null || event.isGroup == groupFilter) {
+                  return (
+                    <div key={event.eventId}>
+                      <Link
+                        href={{
+                          pathname: "/events/event",
+                          query: { id: event.eventId },
+                        }}
+                      >
+                        <EventCard
+                          imgSrc={event.eventImageURL}
+                          id={event.eventId}
+                          eventName={event.eventName}
+                          eventBlurb={event.eventDescription}
+                          eventDesc={event.eventDescription}
+                          date={event.eventDate}
+                          time={event.eventTime}
+                          goi={event.isGroup}
+                          tags={event.tags}
+                          price={event.eventPrice}
+                          isAllowed={event.eventStatus === "1"} // Adjust as needed
+                          maxseats={event.maxSeats}
+                          seats={event.seatsFilled}
+                        />
+                      </Link>
+                    </div>
+                  );
+                }
+              })
             ) : (
               <p>Loading...</p>
             )}
