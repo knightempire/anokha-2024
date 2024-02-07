@@ -6,9 +6,7 @@ import securelocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import { LOGIN_URL } from "../_util/constants";
 import { hashPassword } from "../_util/hash";
-import "primereact/resources/themes/saga-blue/theme.css";
 import toastAlert from "../_util/toastAlerts";
-import { Toast } from "primereact/toast";
 import validator from "validator";
 
 import WebGLApp from "../bg/WebGLApp";
@@ -16,6 +14,11 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
 import Link from "next/link";
+
+import { Toast } from "primereact/toast";
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/lara-light-blue/theme.css";
+
 export default function Login() {
   useEffect(() => {
     securelocalStorage.clear();
