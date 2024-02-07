@@ -36,7 +36,7 @@ export default function FilterComponent({
   return (
     <div className="z-13" ref={componentRef}>
       <input
-        className="max-w-[170px] px-2 py-1"
+        className="max-w-[170px] px-2 py-1 rounded-md border-2 border-gray-300"
         type="text"
         placeholder={name}
         ref={inputRef}

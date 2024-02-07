@@ -1,9 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Event = ({ searchParams }) => {
   const [eventData, setEventData] = useState(null);
@@ -12,6 +15,14 @@ const Event = ({ searchParams }) => {
 
   const { id } = searchParams;
   console.log("Event ID:", id);
+
+  const Poster = useRef(null);
+  const Register = useRef(null);
+  const Title = useRef(null);
+  const MainInfo = useRef(null);
+  const Tags = useRef(null);
+  const Price = useRef(null);
+  const Desc = useRef(null);
 
   useEffect(() => {
     if (id) {
@@ -35,6 +46,22 @@ const Event = ({ searchParams }) => {
         .then((data) => {
           console.log("Received Data:", data);
           setEventData(data);
+          // Trigger GSAP animations once data is fetched and rendered
+          let tl = gsap.timeline();
+          tl.from(Poster.current, { opacity: 0, duration: 0.3 });
+          tl.from(Register.current, { opacity: 0, y: 20, duration: 0.3 });
+          tl.from(Title.current, { opacity: 0, y: -30, duration: 0.3 });
+          tl.from(
+            MainInfo.current,
+            {
+              opacity: 0,
+              stagger: 0.1,
+              duration: 0.3,
+            },
+            "start"
+          );
+          tl.from(Price.current, { opacity: 0, duration: 0.3 }, "start");
+          tl.from(Desc.current, { opacity: 0, duration: 0.3 });
         })
         .catch((err) => {
           console.error("Error fetching data:", err);
@@ -59,11 +86,10 @@ const Event = ({ searchParams }) => {
     return <div>Error loading data</div>;
   }
 
-  const checkisTeam = ()=>{
-    if(eventData.isGroup=="1"){
-
+  const checkisTeam = () => {
+    if (eventData.isGroup == "1") {
     }
-  }
+  };
 
   const {
     eventName,
@@ -102,23 +128,31 @@ const Event = ({ searchParams }) => {
               alt="Event Image"
               objectFit="contain"
               objectPosition="center"
+              ref={Poster}
             />
           </div>
           {/* Register Button */}
-          <div className="flex justify-center mt-8">
-            <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-            >
-              <Link href={{
-                pathname: "/events/register_team",
-                query: { minTeamMembers: eventData.minTeamSize,
-                         maxTeamMembers: eventData.maxTeamSize}
-              }}>Register</Link>
+          <div className="flex justify-center mt-8" ref={Register}>
+            <button className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+              <Link
+                href={{
+                  pathname: "/events/register_team",
+                  query: {
+                    minTeamMembers: eventData.minTeamSize,
+                    maxTeamMembers: eventData.maxTeamSize,
+                  },
+                }}
+              >
+                Register
+              </Link>
             </button>
           </div>
         </div>
         {/* Main Content Section */}
         <div className="mt-5 flex flex-col overflow-y-auto h-[500px]">
-          <div className="font-bold text-5xl mb-2">{eventName}</div>
+          <div className="font-bold text-5xl mb-2" ref={Title}>
+            {eventName}
+          </div>
           {/* Tags Section */}
           <div className="pt-4">
             {tags &&
@@ -126,6 +160,7 @@ const Event = ({ searchParams }) => {
                 <span
                   key={index}
                   className="inline-block bg-gray-400 rounded-full px-3 py-1 text-sm font-semibold text-gray-900 mr-2 mb-2"
+                  ref={Tags}
                 >
                   #{tag.tagName}
                 </span>
@@ -133,7 +168,7 @@ const Event = ({ searchParams }) => {
           </div>
           <div className="flex flex-row justify-between items-center ">
             {/* Additional Info */}
-            <div className="flex flex-col mt-4">
+            <div className="flex flex-col mt-4" ref={MainInfo}>
               <p className="text-white text-base mb-2">
                 <strong>Date:</strong> {eventDate.slice(0, 10)} &bull;{" "}
                 <strong>Time:</strong> {eventTime}
@@ -147,22 +182,28 @@ const Event = ({ searchParams }) => {
               </p>
             </div>
             {/* Price Section */}
-            <div className="flex items-end justify-end pb-2 pr-8">
+            <div className="flex items-end justify-end pb-2 pr-8" ref={Price}>
               <span className="text-4xl font-bold text-white">{`$${eventPrice}`}</span>
             </div>
           </div>
 
-          <hr className="my-2" />
-          <h2 className="text-2xl">Description</h2>
+          <hr className="my-2" tag="Others" />
+          <h2 className="text-2xl" tag="Others">
+            Description
+          </h2>
           <br />
 
-          <ReactMarkdown className={showFullText ? "" : "line-clamp-[4]"}>
+          <ReactMarkdown
+            className={showFullText ? "" : "line-clamp-[4]"}
+            ref={Desc}
+          >
             {eventMarkdownDescription}
           </ReactMarkdown>
           {eventMarkdownDescription.length > 4 && (
             <button
               className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center m-4"
               onClick={() => setShowFullText(!showFullText)}
+              tag="Others"
             >
               {showFullText ? "Read Less" : "Read More"}
             </button>
