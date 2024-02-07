@@ -188,7 +188,10 @@ export default function Register() {
         <div className="relative min-h-screen">
           <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
-            <div className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
+            <div
+              className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white"
+              ref={RegisterFame}
+            >
               <Image
                 src={anokhalogo}
                 priority
@@ -196,17 +199,22 @@ export default function Register() {
                 width={128}
                 height={128}
                 className="ml-auto mr-auto mt-4 h-16"
+                ref={Logo}
               />
               <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1 className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl">
+                <h1
+                  className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl"
+                  ref={Heading}
+                >
                   Register
                 </h1>
                 <form
                   className="space-y-4 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
                   onSubmit={handleSignUp}
+                  ref={Form}
                 >
                   <div className="flex flex-col justify-center flex-1 space-y-5 md:border-r md:border-black md:pr-10 max-w-600">
-                    <div>
+                    <div id="Fields">
                       <label
                         htmlFor="name"
                         className="block mb-2 text-sm font-medium text-black"
@@ -225,7 +233,7 @@ export default function Register() {
                         required
                       />
                     </div>
-                    <div>
+                    <div id="Fields">
                       <label
                         htmlFor="phone"
                         className="block mb-2 text-sm font-medium text-black"
@@ -244,7 +252,7 @@ export default function Register() {
                         required
                       />
                     </div>
-                    <div>
+                    <div id="Fields">
                       <div>
                         <label
                           htmlFor="college"
@@ -265,7 +273,7 @@ export default function Register() {
                           disabled={isAmrita}
                         />
                       </div>
-                      <div>
+                      <div id="Fields">
                         <label
                           htmlFor="collegeCity"
                           className="block mb-2 text-sm mt-5 font-medium text-black"
@@ -299,14 +307,15 @@ export default function Register() {
                         <label
                           htmlFor="amrita-student"
                           className="text-sm font-medium text-black"
+                          id="Others"
                         >
                           Amrita Student?
                         </label>
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col flex-1 space-y-5 ">
-                    <div>
+                  <div className="flex flex-col flex-1 space-y-5">
+                    <div id="Fields">
                       <label
                         htmlFor="email"
                         className="block mb-2 text-sm font-medium text-black"
@@ -325,10 +334,10 @@ export default function Register() {
                         required
                       />
                     </div>
-                    <div>
+                    <div id="Fields">
                       <label
                         htmlFor="password"
-                        className="block mb-2 text-sm font-medium text-black"
+                        className="block mb-2 text-sm font-medium text-black mt-3"
                       >
                         Password
                       </label>
@@ -344,10 +353,10 @@ export default function Register() {
                         required
                       />
                     </div>
-                    <div>
+                    <div id="Fields">
                       <label
                         htmlFor="conf-password"
-                        className="block mb-2 text-sm font-medium text-black"
+                        className="block mb-2 text-sm font-medium text-black mt-3"
                       >
                         Confirm Password
                       </label>
@@ -366,12 +375,16 @@ export default function Register() {
                     <div className="text-center">
                       <button
                         type="submit"
-                        className="w-[200px] text-black bg-[#f69c18] mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed"
+                        className="w-[200px] mt-3 text-black bg-[#f69c18] mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed"
                         disabled={loading}
+                        ref={Register}
                       >
                         Sign Up
                       </button>
-                      <p className="text-sm font-light text-[#ed1d21]">
+                      <p
+                        className="text-sm font-light text-[#ed1d21]"
+                        id="Others"
+                      >
                         Already have an account?{" "}
                         <a
                           href="/login"
