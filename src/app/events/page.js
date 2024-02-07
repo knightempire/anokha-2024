@@ -13,6 +13,7 @@ const Events = () => {
   const [TypeFilter, setTypeFilter] = useState(null);
   const [DayFilter, setDayFilter] = useState(null);
   const [TechFilter, setTechFilter] = useState(null);
+
   const [RegisteredFilter, setRegisteredFilter] = useState(null);
 
   const [filteredData, setFilteredData] = useState([]);
@@ -69,14 +70,6 @@ const Events = () => {
         case "Non-Tech Event":
           techCode += 1;
           evetypeCode += 1;
-          break;
-        case "Tech Contest":
-          techCode += 2;
-          evetypeCode += 3;
-          break;
-        case "Non-Tech Contest":
-          techCode += 1;
-          evetypeCode += 3;
           break;
       }
     }
