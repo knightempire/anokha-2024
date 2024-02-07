@@ -16,7 +16,7 @@ export default function FilterSection() {
           {filters.map((filter, index) => (
             <div key={index} className="bg-white flex flex-row px-1">
               <div className="mr-2">{filter}</div>
-              <div>X</div>
+              <div>&#x2715;</div>
             </div>
           ))}
         </div>
