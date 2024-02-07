@@ -11,6 +11,7 @@ import { useScroll } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import projects from "./info_data";
 import tinycolor from "tinycolor2";
+import Gallery from "./components/Gallery";
 
 export default function Home() {
   const container = useRef(null);
@@ -98,7 +99,7 @@ export default function Home() {
       >
         Change Colors
       </button>
-      <WebGLApp colors={cardColor} />
+      {/* <WebGLApp colors={cardColor} /> */}
       <Navbar login={true} />
       <Hero className="z-10" />
       <SponsorsMarquee />
@@ -116,6 +117,7 @@ export default function Home() {
           />
         );
       })}
+      <Gallery />
       <AnokhaMarquee />
       <Footer current_page="home" />{" "}
       {/* current_page is a prop that is used to highlight the current page in the footer. Possible values are home, team, contact, privacy policy} */}
