@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Toast } from "primereact/toast";
+import "primereact/resources/primereact.min.css"
 import "primereact/resources/themes/saga-blue/theme.css";
 import toastAlert from "../_util/toastAlerts";
 
