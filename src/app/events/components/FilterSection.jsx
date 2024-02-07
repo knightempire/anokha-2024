@@ -1,23 +1,36 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FilterComponent from "./FilterComponent";
 
-export default function FilterSection() {
+export default function FilterSection({ sendcurrentFilters }) {
   const [filters, setFilters] = useState([]);
+
+  useEffect(() => {
+    sendcurrentFilters(filters);
+  }, [filters]);
+
   const handleItemFromFilters = (filter) => {
     if (!filters.includes(filter)) {
       setFilters([...filters, filter]);
-      console.log(filters);
     }
   };
   return (
     <div>
       <div className="flex flex-row gap-3 mb-3 min-h-[30px] w-full">
         {filters.map((filter, index) => (
-          <div className="bg-white flex flex-row px-1">
-            <div key={index} className="mr-2">
-              {filter}
+          <div
+            key={index}
+            className="bg-white flex flex-row px-2 py-1 rounded-3xl"
+          >
+            <div className="mr-2">{filter}</div>
+            <div
+              className="cursor-pointer"
+              onClick={() => {
+                const f = filters.filter((item) => item != filter);
+                setFilters(f);
+              }}
+            >
+              X
             </div>
-            <div>X</div>
           </div>
         ))}
       </div>
@@ -29,10 +42,10 @@ export default function FilterSection() {
           options={["01", "02", "03"]}
           sendSelectedOption={handleItemFromFilters}
         />
-        {/* Select Department: <Bunch of department options> */}
+        {/* Select Tags: <Bunch of tag options> */}
         <FilterComponent
-          name={"department"}
-          options={["CSE", "ARE", "CYS", "AI", "MEC", "EEE", "ECE", "MAT"]}
+          name={"Tags"}
+          options={["IOT", "CODING", "CYS", "AI", "MEC", "EEE", "ECE", "MAT"]}
           sendSelectedOption={handleItemFromFilters}
         />
         {/* Select Participants: "Group" | "Individual" */}
@@ -54,7 +67,6 @@ export default function FilterSection() {
           ]}
           sendSelectedOption={handleItemFromFilters}
         />
-        {/* Select Tags: <Bunch of tag options> */}
         {/* Select Status: "Registered" | "Not Registered" */}
         <FilterComponent
           name={"Status"}

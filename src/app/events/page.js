@@ -8,6 +8,61 @@ import FilterSection from "./components/FilterSection";
 
 const Events = () => {
   const [eventsData, setEventsData] = useState(null);
+  const [groupFilter, setgroupFilter] = useState(null);
+  const [TypeFilter, setTypeFilter] = useState(null);
+  const [DayFilter, setDayFilter] = useState(null);
+  const [TechFilter, setTechFilter] = useState(null);
+  const [RegisteredFilter, setRegisteredFilter] = useState(null);
+
+  const hanldeCurrentFilters = (filters) => {
+    let grpCode = -1;
+    let techCode = -1;
+    let evetypeCode = -1;
+    let registerCode = -1;
+    for (let i of filters) {
+      console.log(i);
+      switch (i) {
+        case "Group":
+          grpCode += 2;
+          break;
+        case "Individual":
+          grpCode += 1;
+          break;
+        case "Registered":
+          registerCode += 2;
+          break;
+        case "Not Registered":
+          registerCode += 1;
+          break;
+        case "Tech Workshop":
+          techCode += 2;
+          evetypeCode += 2;
+          break;
+        case "Non-Tech Workshop":
+          techCode += 1;
+          evetypeCode += 2;
+          break;
+        case "Tech Event":
+          techCode += 2;
+          evetypeCode += 1;
+          break;
+        case "Non-Tech Event":
+          techCode += 1;
+          evetypeCode += 1;
+          break;
+        case "Tech Contest":
+          techCode += 2;
+          evetypeCode += 3;
+          break;
+        case "Non-Tech Contest":
+          techCode += 1;
+          evetypeCode += 3;
+          break;
+      }
+    }
+    if (grpCode == -1 || grpCode == 3) setgroupFilter(null);
+    else setgroupFilter(grpCode);
+  };
 
   useEffect(() => {
     fetch("https://web.abhinavramakrishnan.tech/api/user/getAllEvents", {
@@ -56,7 +111,7 @@ const Events = () => {
         <Navbar />
         <div className="flex flex-col gap-5 min-h-screen justify-center items-center mx-10 pt-10 mt-10">
           <div className="my-3 z-20 w-full min-h-[100px] flex justify-center">
-            <FilterSection />
+            <FilterSection sendcurrentFilters={hanldeCurrentFilters} />
           </div>
           <div className="grid grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {eventsData && eventsData.length > 0 ? (
