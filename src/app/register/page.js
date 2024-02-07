@@ -1,8 +1,7 @@
-"use client"
+"use client";
 
 import Navbar from "../components/EventHeader";
 import Footer from "../components/Footer";
-
 
 import { hashPassword } from "../_util/hash";
 import { useEffect, useState, useRef } from "react";
@@ -12,102 +11,117 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
-
 import WebGLApp from "../bg/WebGLApp";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
-import Background from '../components/user/Background'
-import anokhalogo from "@/../public/images/anokha_circle.svg"
+import Background from "../components/user/Background";
+import anokhalogo from "@/../public/images/anokha_circle.svg";
 
+export default function Register() {
+  useEffect(() => {
+    secureLocalStorage.clear();
+  }, []);
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [collegeName, setCollegeName] = useState("Amrita Vishwa Vidyapeetham");
+  const [isAmrita, setisAmrita] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
+  const handleCheckboxChange = (e) => {
+    setisAmrita(e.target.checked);
+    setCollegeName(e.target.checked ? "Amrita Vishwa Vidyapeetham" : "");
+    if (e.target.checked) {
+      console.log(e);
+    } else {
+      console.log("Checkbox is unchecked");
+    }
+  };
 
-export default function Register() { 
+  const handleSignUp = async (e) => {
+    setLoading(true);
+    e.preventDefault();
+    console.log({
+      studentFullName: name, // Max 255 chars. Min 1 char.
+      studentEmail: email, // Valid Email. Max 255 chars.
+      studentPhone: phone, // 10-digit exactly.
+      studentPassword: hashPassword(password), // min 8 chars. Cannot include '-'(hiphen) and "'"(quotes) as part of the password. SHA256 hashed version.
+      studentCollegeName: collegeName, // Max 255 chars. Min 1 char.
+      studentCollegeCity: "Coimbatore",
+    });
 
-    useEffect(()=>{
-        secureLocalStorage.clear()
-    },[])
+    try {
+      const response = await fetch(REGISTER_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          studentFullName: name,
+          studentEmail: email,
+          studentPhone: phone,
+          studentPassword: hashPassword(password),
+          studentCollegeName: collegeName,
+          studentCollegeCity: "Coimbatore",
+        }),
+      });
 
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
-    const [collegeName, setCollegeName] = useState("Amrita Vishwa Vidyapeetham");
-    const [isAmrita, setisAmrita] = useState(true);
-    const [loading,setLoading] = useState(false)  
-    const router = useRouter();
+      const data = await response.json();
+      if (response.status === 200) {
+        alert("Registration Successful");
+        console.log(data);
+        secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
+        secureLocalStorage.setItem("registerEmail", email);
 
-    const handleCheckboxChange = (e)=>{
-      setisAmrita(e.target.checked);
-      setCollegeName(e.target.checked ? "Amrita Vishwa Vidyapeetham" : "");
-      if (e.target.checked) {
-        console.log(e);
-         
+        setTimeout(() => {
+          router.replace("/register/verify");
+        }, 500);
+      } else if (response.status === 500) {
+        alertError("Oops!", "Something went wrong! Please try again later!");
+      } else if (data.message !== undefined || data.message !== null) {
+        alertError("Registration Failed", data.message);
       } else {
-        console.log('Checkbox is unchecked');
-         
+        alertError("Oops!", "Something went wrong! Please try again later!");
       }
+    } catch (e) {
+      console.log(e);
     }
 
-    const handleSignUp = async(e)=>{
-      setLoading(true)
-        e.preventDefault()
-        console.log({
-            "studentFullName":name, // Max 255 chars. Min 1 char.
-            "studentEmail":email, // Valid Email. Max 255 chars.
-            "studentPhone":phone, // 10-digit exactly.
-            "studentPassword":hashPassword(password), // min 8 chars. Cannot include '-'(hiphen) and "'"(quotes) as part of the password. SHA256 hashed version.
-            "studentCollegeName":collegeName, // Max 255 chars. Min 1 char.
-            "studentCollegeCity":"Coimbatore",
+    setLoading(false);
+  };
 
-            });
+  const [webGLColors, setWebGLColors] = useState({
+    color1: [43 / 255, 30 / 255, 56 / 255],
+    color2: [11 / 255, 38 / 255, 59 / 255],
+    color3: [15 / 255, 21 / 255, 39 / 255],
+  });
 
+  const RegisterFame = useRef(null);
+  const Logo = useRef(null);
+  const Heading = useRef(null);
+  const Register = useRef(null);
+  const Form = useRef(null)
 
-        try{
-            const response = await fetch(REGISTER_URL,{
-                method : "POST",
-                headers:{
-                    "Content-Type" : "application/json",
-                },
-                body: JSON.stringify({
-                    "studentFullName":name, 
-                    "studentEmail":email,  
-                    "studentPhone":phone, 
-                    "studentPassword":hashPassword(password), 
-                    "studentCollegeName":collegeName, 
-                    "studentCollegeCity":"Coimbatore",
-                })
-            })
+  useGSAP(() => {
+    let tl = new gsap.timeline();
+    tl.from(RegisterFame.current, { opacity: 0, duration: 1 });
+    tl.from(
+      Logo.current,
+      { opacity: 0, rotation: -360, duration: 0.3 },
+      "start"
+    );
+    tl.from(Heading.current, { opacity: 0, y: -30, duration: 0.3 }, "start");
+    tl.from(Form.current, { opacity: 0, duration: 0.3 });
+    tl.from("#Fields", { opacity: 0, stagger: 0.1, duration: 0.3 });
+    tl.from(Register.current, { opacity: 0, y: 20, duration: 0.3 });
+    tl.from("#Others", { opacity: 0, duration: 0.3 });
+  });
 
-            const data = await response.json()
-            if (response.status === 200){
-                alert("Registration Successful")
-                console.log(data)
-                secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
-                secureLocalStorage.setItem("registerEmail", email);
-
-                setTimeout(()=>{
-                  router.replace("/register/verify")
-                },500)
-            }
-            else if (response.status === 500) {
-                alertError('Oops!', 'Something went wrong! Please try again later!');
-            } else if (data.message !== undefined || data.message !== null) {
-                alertError('Registration Failed', data.message);
-            } else {
-                alertError('Oops!', 'Something went wrong! Please try again later!');
-            }
-
-        }
-        catch(e){
-            console.log(e)
-        }
-
-        setLoading(false)
-    }
- 
-
-  const [webGLColors, setWebGLColors] = useState({ color1: [43 / 255, 30 / 255, 56 / 255], color2: [11 / 255, 38 / 255, 59 / 255], color3: [15 / 255, 21 / 255, 39 / 255] });
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
       <WebGLApp colors={webGLColors} />
