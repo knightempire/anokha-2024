@@ -6,7 +6,10 @@ import securelocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import { LOGIN_URL } from "../_util/constants";
 import { hashPassword } from "../_util/hash";
+import "primereact/resources/themes/saga-blue/theme.css";
 import toastAlert from "../_util/toastAlerts";
+import { Toast } from "primereact/toast";
+import validator from "validator";
 
 import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";
@@ -18,22 +21,45 @@ export default function Login() {
     securelocalStorage.clear();
   });
 
+  const toastRef = useRef();
+  const loginFrame = useRef(null);
+  const Heading = useRef(null);
+  const Email = useRef(null);
+  const Password = useRef(null);
+  const SignIn = useRef(null);
+
   const [studentEmail, setStudentEmail] = useState("");
   const [studentPassword, setStudentPassword] = useState("");
-
-  const toastBottomCenter = useRef(null);
-  const emailRegex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
-
-  const isValidEmail = studentEmail.length > 0 && emailRegex.test(studentEmail);
-  const isValidPassword = studentPassword.length > 0;
 
   const router = useRouter();
 
   const HandleLogin = async (e) => {
     e.preventDefault();
 
-    if (!isValidEmail || !isValidPassword) {
-        toastAlert('error', 'Invalid Email', 'The email provided is invalid!');
+    if (
+      studentEmail == "" ||
+      studentEmail == undefined ||
+      !validator.isEmail(studentEmail)
+    ) {
+      toastAlert(
+        "error",
+        "Invalid Email",
+        "The email provided is invalid!",
+        toastRef
+      );
+      return;
+    }
+    if (
+      studentPassword == "" ||
+      studentPassword == undefined ||
+      studentPassword.length < 8
+    ) {
+      toastAlert(
+        "error",
+        "Invalid Password",
+        "The password provided is invalid!",
+        toastRef
+      );
       return;
     }
     try {
@@ -54,13 +80,23 @@ export default function Login() {
         console.log(data);
         router.replace("/");
       } else if (response.status === 500) {
-        toastAlert('error', 'Oops!', 'Something went wrong! Please try again.');
+        toastAlert(
+          "error",
+          "Oops!",
+          "Something went wrong! Please try again.",
+          toastRef
+        );
         // alertError("Oops!", "Something went wrong! Please try again later!");
       } else if (data.message !== undefined || data.message !== null) {
-        toastAlert('error', 'Login Failed', `${data.message}`);
+        toastAlert("error", "Login Failed", `${data.message}`, toastRef);
         // alertError("Login Failed", data.message);
       } else {
-        toastAlert('error', 'Oops!', 'Something went wrong! Please try again!');
+        toastAlert(
+          "error",
+          "Oops!",
+          "Something went wrong! Please try again!",
+          toastRef
+        );
         // alertError("Oops!", "Something went wrong! Please try again later!");
       }
     } catch (error) {
@@ -73,12 +109,6 @@ export default function Login() {
     color2: [11 / 255, 38 / 255, 59 / 255],
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
-
-  const loginFrame = useRef(null);
-  const Heading = useRef(null);
-  const Email = useRef(null);
-  const Password = useRef(null);
-  const SignIn = useRef(null);
 
   useGSAP(() => {
     let tl = new gsap.timeline();
@@ -95,6 +125,7 @@ export default function Login() {
       <WebGLApp colors={webGLColors} />
       <div className="block">
         <Navbar />
+        <Toast ref={toastRef} position="bottom-center" className="p-5" />
         <div className="relative min-h-screen">
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
             <div
@@ -166,8 +197,13 @@ export default function Login() {
                   >
                     Sign in
                   </button>
-                  <p className="text-sm font-light text-[#ed1d21] sm:flex sm:flex-col sm:justify-center" id="Others">
-                    <span className="sm:text-center">Don’t have an account yet?{" "}</span>
+                  <p
+                    className="text-sm font-light text-[#ed1d21] sm:flex sm:flex-col sm:justify-center"
+                    id="Others"
+                  >
+                    <span className="sm:text-center">
+                      Don’t have an account yet?{" "}
+                    </span>
                     <a
                       href="/register"
                       className="font-medium text-primary-500 hover:underline sm:text-center"
