@@ -1,15 +1,10 @@
-import { Toast } from "primereact/toast";
-import React, { useRef } from "react";
+export default function ToastAlert(severity, summary, detail, ref) {
 
-export default function ToastAlert(type, title, detail, ref) {
     ref.current.show({
-        severity: `${type}`,
-        title: `${title}`,
+        severity: `${severity}`,
+        summary: `${summary}`,
         detail: `${detail}`,
         life: 3000
     });
 
-    return(
-        <Toast ref={ref} position="bottom-center" />
-    );
 }

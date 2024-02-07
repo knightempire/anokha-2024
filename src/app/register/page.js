@@ -10,6 +10,9 @@ import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { Toast } from "primereact/toast";
+import "primereact/resources/themes/saga-blue/theme.css";
+import toastAlert from "../_util/toastAlerts";
 
 import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";
@@ -129,7 +132,7 @@ export default function Register() {
 
         const data = await response.json();
         if (response.status === 200) {
-          alert("Registration Successful");
+          toastAlert("success", "Success", "Registration Successful!", toastRef);
           console.log(data);
           secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
           secureLocalStorage.setItem("registerEmail", email);
@@ -138,11 +141,12 @@ export default function Register() {
             router.replace("/register/verify");
           }, 500);
         } else if (response.status === 500) {
-          alertError("Oops!", "Something went wrong! Please try again later!");
+
+          toastAlert('error', "Oops!", "Something went wrong! Please try again later!", toastRef);
         } else if (data.message !== undefined || data.message !== null) {
-          alertError("Registration Failed", data.message);
+          toastAlert('error', "Registration Failed", data.message, toastRef);
         } else {
-          alertError("Oops!", "Something went wrong! Please try again later!");
+          toastAlert('error', "Oops!", "Something went wrong! Please try again later!", toastRef);
         }
       } catch (e) {
         console.log(e);
@@ -158,6 +162,7 @@ export default function Register() {
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
 
+  const toastRef = useRef(null);
   const RegisterFame = useRef(null);
   const Logo = useRef(null);
   const Heading = useRef(null);
@@ -188,6 +193,7 @@ export default function Register() {
         <div className="relative min-h-screen">
           <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
+            <Toast ref={toastRef} position="bottom-center" />
             <div
               className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white"
               ref={RegisterFame}
