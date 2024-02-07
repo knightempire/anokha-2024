@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import FilterComponent from "./FilterComponent";
 
@@ -16,7 +17,7 @@ export default function FilterSection({ sendcurrentFilters }) {
   return (
     <div className="border-2 p-5 rounded-xl">
       {filters.length > 0 && (
-        <div className="flex flex-row gap-3 mb-3 min-h-[30px] w-full">
+        <div className="flex flex-row gap-3 mb-3 min-h-[30px] w-full flex-wrap">
           {filters.map((filter, index) => (
             <div key={index} className="bg-white flex flex-row px-1">
               <div className="mr-2">{filter}</div>
@@ -61,8 +62,6 @@ export default function FilterSection({ sendcurrentFilters }) {
             "Non-Tech Workshop",
             "Tech Event",
             "Non-Tech Event",
-            "Tech Contest",
-            "Non-Tech Contest",
           ]}
           sendSelectedOption={handleItemFromFilters}
         />

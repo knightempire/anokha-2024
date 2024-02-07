@@ -7,14 +7,15 @@ import ReactMarkdown from "react-markdown";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useParams } from "next/navigation";
 
-const Event = ({ searchParams }) => {
+const Event = () => {
   const [eventData, setEventData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showFullText, setShowFullText] = useState(false);
 
-  const { id } = searchParams;
-  console.log("Event ID:", id);
+  const { eventId } = useParams();
+  console.log("Event ID:", eventId);
 
   const Poster = useRef(null);
   const Register = useRef(null);
@@ -25,9 +26,9 @@ const Event = ({ searchParams }) => {
   const Desc = useRef(null);
 
   useEffect(() => {
-    if (id) {
+    if (eventId) {
       fetch(
-        `https://web.abhinavramakrishnan.tech/api/user/getEventData/${id}`,
+        `https://web.abhinavramakrishnan.tech/api/user/getEventData/${eventId}`,
         {
           method: "GET",
           headers: {
@@ -70,11 +71,11 @@ const Event = ({ searchParams }) => {
           setLoading(false);
         });
     } else {
-      // Handle the case where id is not present in the URL
-      console.error("Event ID not found in the URL");
+      // Handle the case where eventId is not present in the URL
+      console.error("Event eventId not found in the URL");
       setLoading(false);
     }
-  }, [id]);
+  }, [eventId]);
 
   console.log("Event Data:", eventData);
 

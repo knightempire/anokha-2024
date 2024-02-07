@@ -2,11 +2,11 @@
 
 import { useEffect, useState, useRef } from "react";
 import Navbar from "../components/EventHeader";
-import Background from "@/app/components/user/Background";
 import securelocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import { LOGIN_URL } from "../_util/constants";
 import { hashPassword } from "../_util/hash";
+import toastAlert from "../_util/toastAlerts";
 
 import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";
@@ -21,7 +21,7 @@ export default function Login() {
   const [studentEmail, setStudentEmail] = useState("");
   const [studentPassword, setStudentPassword] = useState("");
 
-  const toast = useRef(null);
+  const toastBottomCenter = useRef(null);
   const emailRegex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
 
   const isValidEmail = studentEmail.length > 0 && emailRegex.test(studentEmail);
@@ -33,7 +33,7 @@ export default function Login() {
     e.preventDefault();
 
     if (!isValidEmail || !isValidPassword) {
-      alertError("Error", "Invalid email or password");
+        toastAlert('error', 'Invalid Email', 'The email provided is invalid!');
       return;
     }
     try {
@@ -54,11 +54,14 @@ export default function Login() {
         console.log(data);
         router.replace("/");
       } else if (response.status === 500) {
-        alertError("Oops!", "Something went wrong! Please try again later!");
+        toastAlert('error', 'Oops!', 'Something went wrong! Please try again.');
+        // alertError("Oops!", "Something went wrong! Please try again later!");
       } else if (data.message !== undefined || data.message !== null) {
-        alertError("Login Failed", data.message);
+        toastAlert('error', 'Login Failed', `${data.message}`);
+        // alertError("Login Failed", data.message);
       } else {
-        alertError("Oops!", "Something went wrong! Please try again later!");
+        toastAlert('error', 'Oops!', 'Something went wrong! Please try again!');
+        // alertError("Oops!", "Something went wrong! Please try again later!");
       }
     } catch (error) {
       console.log(error);
