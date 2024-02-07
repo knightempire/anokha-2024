@@ -6,7 +6,7 @@ import Hamburger from 'hamburger-react'
 import MenuOverlay from "./MenuOverlay";
 import Image from 'next/image'
 import secureLocalStorage from "react-secure-storage"
-import {useAuth} from '@/app/_auth/useAuth'
+import {useAuth } from '@/app/_auth/useAuth'
 import {
   Button,
   Navbar
@@ -26,6 +26,10 @@ const navLinks = [
   {
     title: "TechFair",
     path: "/techfair",
+  },
+  {
+    title: "Hackathon",
+    path: "/hackathon",
   },
   {
     title: "Events",
