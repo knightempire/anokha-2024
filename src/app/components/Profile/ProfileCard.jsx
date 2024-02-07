@@ -1,10 +1,13 @@
 "use client"
 import React, { useState,useRef,createElement  } from 'react'
  
-import { Menu, MenuItem,Avatar,Popover,Typography } from '@mui/material';
+import {Avatar,Popover } from '@mui/material';
 
 import { FaArrowDown,FaArrowUp  } from "react-icons/fa";
-import {Button,Dropdown,Tooltip,Whisper} from 'rsuite'
+import {Button,
+  Menu,MenuHandler,
+  MenuList,
+  MenuItem,Typography} from "@material-tailwind/react";
 import {
   UserCircleIcon,
   Cog6ToothIcon,
@@ -34,66 +37,82 @@ export default function ProfileCard() {
     console.log(isArrowMenuOpen)
   }
 
-  
-  const Profile_Avatar = ()=>{
-    return (
-    <Button  color="blue" onClick={handleClick} className='flex flex-row justify-self-center items-center rounded-3xl bg-blue-950 backdrop-blur-xl '>
-        <div className='border-blue-600 border-2 p-1 rounded-3xl w-13'>
-        <Avatar variant='circle' className='' alt="Travis Howard" src="/images/s_avatar.jpg" 
-        sx={{ width: 35, height: 35,
-            bg:"red" }}
-        />
-        </div>
-        <div className='mr-2 cursor-pointer' >
-          {isArrowMenuOpen?
-           (<FaArrowUp size={12} color='white' onClick={handlearrowclick} />):
-           (<FaArrowDown size={12} color='white' onClick={handlearrowclick} />)
-            }
-        </div>
-        
-    </Button>)
-  }
-//notclickable dropdown
+
    
    
-  const [anchorEl, setAnchorEl] =useState(null);
+const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+     
   };
 
   const handleClose = () => {
-    setAnchorEl(null);
+    
     setIsArrowMenuOpen(false)
   };
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
-
+ 
   return (
     <div>
-      <div  onClick={handleClick}>
-        <Profile_Avatar/>
-      </div>
-      <Popover
-      className=''
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-        PaperProps={{
-          style: {
-            width: 150, 
-          },
-        }}
+      <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end"  
+      animate={{
+        mount: { y: 0 },
+        unmount: { y: 25 },
+      }}>
+        <MenuHandler>
+            <Button variant='text' color="blue"  onClick={handleClick}   className='flex flex-row items-center rounded-full py-0.5 pr-0.5 pl-0.5   backdrop-blur-3xl' >
+            <div className='border-blue-600 border-2 p-1 rounded-full '>
+            <Avatar variant='circle' className='' alt="Travis Howard" src="/images/s_avatar.jpg" 
+            sx={{ width: 30, height: 30,
+                bg:"red" }}
+            />
+            </div>
+            <div className='cursor-pointer' >
+              {isMenuOpen?
+              (<FaArrowUp size={10} color='gray' onClick={handlearrowclick} />):
+              (<FaArrowDown size={10} color='gray' onClick={handlearrowclick} />)
+                }
+            </div>
+            
+            </Button>
+        </MenuHandler>
+        <MenuList className="z-40 p-1">
+            {ProfileMenuItems.map(({ text, icon },index)=>{
+              const isLastItem = index === ProfileMenuItems.length - 1;
+              return (
+                <Link href="#" >
+                  <MenuItem key={index} 
+                  className={`group flex items-center gap-3 rounded ${isLastItem
+                    ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
+                    : "hover:bg-gray-500/10"
+                    }`}>
+                  {
+                    createElement( icon,{
+                    strokeWidth: 2,
+                    className:`h-4 w-4 mt-2 mx-1 ${isLastItem ?
+                      "text-red-500 group-hover:text-red-700 " : "text-gray-500 group-hover:text-gray-700"} 
+                      group-transition ease-in duration-300
+                      `}
+                    )}
+                  <Typography
+                  as="span"
+                  variant="small"
+                   
+                  color={isLastItem ? "red" : "gray"}
+                  className={`group-transition ease-in duration-300 font-normal mt-2 ${isLastItem ? "text-red-500 group-hover:text-red-700" : "text-gray-500 group-hover:text-gray-700"}`}
+                >
+                  {text}
+                  </Typography>
+                </MenuItem>
+                </Link>
+                )
+            })}
+        </MenuList>
+      </Menu>
+        
+       
+      {/* <Popover
+        open={isArrowMenuOpen}
         sx={{width:6600,absolute:true,top:10 }}
         
          
@@ -118,7 +137,7 @@ export default function ProfileCard() {
         })}
         </div>
        
-      </Popover>
+      </Popover> */}
     </div>
   );
 }
