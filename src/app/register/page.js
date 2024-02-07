@@ -58,31 +58,47 @@ export default function Register() {
     });
     let allValid = 1;
     // add toast messages unique to each of this if
-    if (name == "" || name == undefined || !validator.isAlpha(name)) {
+    if (
+      name == "" ||
+      name == undefined ||
+      !validator.isAlpha(name) ||
+      typeof name != String ||
+      name.length > 255
+    ) {
       allValid = 0;
     }
     if (phone == "" || phone == undefined || !validator.isMobilePhone(phone)) {
       allValid = 0;
     }
-    if (password == "" || password == undefined || password.length < 8) {
+    if (
+      password == "" ||
+      password == undefined ||
+      password.length < 8 ||
+      password.includes("-") ||
+      password.includes('"')
+    ) {
       allValid = 0;
     }
     if (
       collegeName == "" ||
       collegeName == undefined ||
-      !validator.isAlpha(collegeName)
+      !validator.isAlpha(collegeName) ||
+      typeof collegeName != String ||
+      collegeName.length > 255
     ) {
       allValid = 0;
     }
     if (
       collegeCity == "" ||
       collegeCity == undefined ||
-      !validator.isAlpha(collegeCity)
+      !validator.isAlpha(collegeCity) ||
+      typeof collegeCity != String ||
+      collegeCity.length > 255
     ) {
       allValid = 0;
     }
     if (isAmrita == 0) {
-      if (email == "" || email == undefined || !validator.isEmail(email)){
+      if (email == "" || email == undefined || !validator.isEmail(email)) {
         allValid = 0;
       }
     } else if (isAmrita == 1) {
@@ -90,7 +106,7 @@ export default function Register() {
         email == "" ||
         email == undefined ||
         !email.endsWith("cb.students.amrita.edu")
-      ){
+      ) {
         allValid = 0;
       }
     }

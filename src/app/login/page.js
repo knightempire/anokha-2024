@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import { LOGIN_URL } from "../_util/constants";
 import { hashPassword } from "../_util/hash";
 import toastAlert from "../_util/toastAlerts";
+import { Toast } from "primereact/toast";
+import validator from "validator";
 
 import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";
@@ -22,18 +24,33 @@ export default function Login() {
   const [studentPassword, setStudentPassword] = useState("");
 
   const toastBottomCenter = useRef(null);
-  const emailRegex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
-
-  const isValidEmail = studentEmail.length > 0 && emailRegex.test(studentEmail);
-  const isValidPassword = studentPassword.length > 0;
+  const show = (type, title, detail) => {
+    toastBottomCenter.current.show({
+      severity: type,
+      summary: title,
+      detail: detail,
+    });
+  };
 
   const router = useRouter();
 
   const HandleLogin = async (e) => {
     e.preventDefault();
 
-    if (!isValidEmail || !isValidPassword) {
-        toastAlert('error', 'Invalid Email', 'The email provided is invalid!');
+    if (
+      studentEmail == "" ||
+      studentEmail == undefined ||
+      !validator.isEmail(studentEmail)
+    ) {
+      show("error","Invalid Email", "Email Entered was incorrect");
+      return;
+    }
+    if (
+      studentPassword == "" ||
+      studentPassword == undefined ||
+      studentPassword.length < 8
+    ) {
+      show("error","Invalid Email", "Email Entered was incorrect");
       return;
     }
     try {
@@ -54,13 +71,13 @@ export default function Login() {
         console.log(data);
         router.replace("/");
       } else if (response.status === 500) {
-        toastAlert('error', 'Oops!', 'Something went wrong! Please try again.');
+        toastAlert("error", "Oops!", "Something went wrong! Please try again.");
         // alertError("Oops!", "Something went wrong! Please try again later!");
       } else if (data.message !== undefined || data.message !== null) {
-        toastAlert('error', 'Login Failed', `${data.message}`);
+        toastAlert("error", "Login Failed", `${data.message}`);
         // alertError("Login Failed", data.message);
       } else {
-        toastAlert('error', 'Oops!', 'Something went wrong! Please try again!');
+        toastAlert("error", "Oops!", "Something went wrong! Please try again!");
         // alertError("Oops!", "Something went wrong! Please try again later!");
       }
     } catch (error) {
@@ -96,6 +113,7 @@ export default function Login() {
       <div className="block">
         <Navbar />
         <div className="relative min-h-screen">
+          <Toast ref={toastBottomCenter} position="bottom-center" />
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
             <div
               className="w-full  rounded-md bg-clip-padding bg-opacity-80  md:mt-0 sm:max-w-md xl:p-0 bg-white "
@@ -166,8 +184,13 @@ export default function Login() {
                   >
                     Sign in
                   </button>
-                  <p className="text-sm font-light text-[#ed1d21] sm:flex sm:flex-col sm:justify-center" id="Others">
-                    <span className="sm:text-center">Don’t have an account yet?{" "}</span>
+                  <p
+                    className="text-sm font-light text-[#ed1d21] sm:flex sm:flex-col sm:justify-center"
+                    id="Others"
+                  >
+                    <span className="sm:text-center">
+                      Don’t have an account yet?{" "}
+                    </span>
                     <a
                       href="/register"
                       className="font-medium text-primary-500 hover:underline sm:text-center"

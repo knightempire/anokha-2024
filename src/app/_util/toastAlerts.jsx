@@ -2,9 +2,7 @@ import { Toast } from "primereact/toast";
 import React, { useRef } from "react";
 
 export default function ToastAlert(type, title, detail, ref) {
-    const toast = useRef(null);
-
-    toast.current.show({
+    ref.current.show({
         severity: `${type}`,
         title: `${title}`,
         detail: `${detail}`,
@@ -12,6 +10,6 @@ export default function ToastAlert(type, title, detail, ref) {
     });
 
     return(
-        <Toast ref={toast} position="bottom-center" />
+        <Toast ref={ref} position="bottom-center" />
     );
 }
