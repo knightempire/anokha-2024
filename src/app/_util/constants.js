@@ -1,4 +1,4 @@
-const BASE_URL = "https://anokha.abhinavramakrishnan.tech/api/auth"
+const BASE_URL = "https://web.abhinavramakrishnan.tech/api/auth"
 
 export const LOGIN_URL = BASE_URL + "/loginStudent"
 export const REGISTER_URL = BASE_URL + "/registerStudent"
