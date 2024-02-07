@@ -163,11 +163,11 @@ export default function Login() {
                   >
                     Sign in
                   </button>
-                  <p className="text-sm font-light text-[#ed1d21]" id="Others">
-                    Don’t have an account yet?{" "}
+                  <p className="text-sm font-light text-[#ed1d21] sm:flex sm:flex-col sm:justify-center" id="Others">
+                    <span className="sm:text-center">Don’t have an account yet?{" "}</span>
                     <a
                       href="/register"
-                      className="font-medium text-primary-500 hover:underline"
+                      className="font-medium text-primary-500 hover:underline sm:text-center"
                     >
                       Sign up
                     </a>
