@@ -6,7 +6,6 @@ import securelocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import { LOGIN_URL } from "../_util/constants";
 import { hashPassword } from "../_util/hash";
-import { Toast } from "primereact/toast";
 import "primereact/resources/themes/saga-blue/theme.css";
 import toastAlert from "../_util/toastAlerts";
 import { Toast } from "primereact/toast";
@@ -42,7 +41,12 @@ export default function Login() {
       studentEmail == undefined ||
       !validator.isEmail(studentEmail)
     ) {
-      toastAlert('error', 'Invalid Email', 'The email provided is invalid!', toastRef);
+      toastAlert(
+        "error",
+        "Invalid Email",
+        "The email provided is invalid!",
+        toastRef
+      );
       return;
     }
     if (
@@ -50,7 +54,12 @@ export default function Login() {
       studentPassword == undefined ||
       studentPassword.length < 8
     ) {
-      toastAlert('error', 'Invalid Password', 'The password provided is invalid!', toastRef);
+      toastAlert(
+        "error",
+        "Invalid Password",
+        "The password provided is invalid!",
+        toastRef
+      );
       return;
     }
     try {
@@ -71,13 +80,23 @@ export default function Login() {
         console.log(data);
         router.replace("/");
       } else if (response.status === 500) {
-        toastAlert('error', 'Oops!', 'Something went wrong! Please try again.', toastRef);
+        toastAlert(
+          "error",
+          "Oops!",
+          "Something went wrong! Please try again.",
+          toastRef
+        );
         // alertError("Oops!", "Something went wrong! Please try again later!");
       } else if (data.message !== undefined || data.message !== null) {
-        toastAlert('error', 'Login Failed', `${data.message}`, toastRef);
+        toastAlert("error", "Login Failed", `${data.message}`, toastRef);
         // alertError("Login Failed", data.message);
       } else {
-        toastAlert('error', 'Oops!', 'Something went wrong! Please try again!', toastRef);
+        toastAlert(
+          "error",
+          "Oops!",
+          "Something went wrong! Please try again!",
+          toastRef
+        );
         // alertError("Oops!", "Something went wrong! Please try again later!");
       }
     } catch (error) {
@@ -90,7 +109,6 @@ export default function Login() {
     color2: [11 / 255, 38 / 255, 59 / 255],
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
-    
 
   useGSAP(() => {
     let tl = new gsap.timeline();
@@ -107,9 +125,8 @@ export default function Login() {
       <WebGLApp colors={webGLColors} />
       <div className="block">
         <Navbar />
-        <Toast ref={toastRef} position="bottom-center" className="p-5"/>
+        <Toast ref={toastRef} position="bottom-center" className="p-5" />
         <div className="relative min-h-screen">
-          <Toast ref={toastBottomCenter} position="bottom-center" />
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
             <div
               className="w-full  rounded-md bg-clip-padding bg-opacity-80  md:mt-0 sm:max-w-md xl:p-0 bg-white "
