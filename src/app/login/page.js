@@ -54,12 +54,7 @@ export default function Login() {
       studentPassword == undefined ||
       studentPassword.length < 8
     ) {
-      toastAlert(
-        "error",
-        "Invalid Password",
-        "The password provided is invalid!",
-        toastRef
-      );
+      toastAlert("error","Invalid Password", "The password provided is invalid!", toastRef);
       return;
     }
     try {
@@ -78,6 +73,7 @@ export default function Login() {
       const data = await response.json();
       if (response.status === 200) {
         console.log(data);
+        toastAlert('success', "Successful Login", "You have logged in successfully!", toastRef);
         router.replace("/");
       } else if (response.status === 500) {
         toastAlert(
@@ -86,10 +82,8 @@ export default function Login() {
           "Something went wrong! Please try again.",
           toastRef
         );
-        // alertError("Oops!", "Something went wrong! Please try again later!");
       } else if (data.message !== undefined || data.message !== null) {
         toastAlert("error", "Login Failed", `${data.message}`, toastRef);
-        // alertError("Login Failed", data.message);
       } else {
         toastAlert(
           "error",
@@ -107,7 +101,7 @@ export default function Login() {
   const [webGLColors, setWebGLColors] = useState({
     color1: [43 / 255, 30 / 255, 56 / 255],
     color2: [11 / 255, 38 / 255, 59 / 255],
-    color3: [15 / 255, 21 / 255, 39 / 255],
+    color3: [15 / 255, 21 / 255, 39 / 255], 
   });
 
   useGSAP(() => {
@@ -125,7 +119,9 @@ export default function Login() {
       <WebGLApp colors={webGLColors} />
       <div className="block">
         <Navbar />
-        <Toast ref={toastRef} position="bottom-center" className="p-5" />
+        <div className="p-2">
+            <Toast ref={toastRef} position="bottom-center" className="p-5" />
+        </div>
         <div className="relative min-h-screen">
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
             <div
