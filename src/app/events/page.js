@@ -5,6 +5,7 @@ import Link from "next/link";
 import Navbar from "../components/EventHeader";
 import Footer from "../components/Footer";
 import FilterSection from "./components/FilterSection";
+import { TbArrowBigUpLinesFilled } from "react-icons/tb";
 
 const Events = () => {
   const [eventsData, setEventsData] = useState(null);
@@ -13,6 +14,25 @@ const Events = () => {
   const [DayFilter, setDayFilter] = useState(null);
   const [TechFilter, setTechFilter] = useState(null);
   const [RegisteredFilter, setRegisteredFilter] = useState(null);
+
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    console.log("Filtered Data: ", filteredData);
+    if (groupFilter != null) {
+      setFilteredData(
+        filteredData.filter((event) => event.isGroup == groupFilter)
+      );
+    } else {
+      setFilteredData(eventsData);
+    }
+    console.log("Filtered Group Data: ", filteredData);
+    if (TechFilter != null) {
+      setFilteredData(
+        filteredData.filter((event) => event.isTechnical == TechFilter)
+      );
+    }
+  }, [groupFilter, TypeFilter, DayFilter, TechFilter, RegisteredFilter]);
 
   const hanldeCurrentFilters = (filters) => {
     let grpCode = -1;
@@ -62,6 +82,10 @@ const Events = () => {
     }
     if (grpCode == -1 || grpCode == 2) setgroupFilter(null);
     else setgroupFilter(grpCode);
+    if (techCode == -1 || techCode == 2) setTechFilter(null);
+    else setTechFilter(techCode);
+    if (registerCode == -1 || registerCode == 2) setRegisteredFilter(null);
+    else setRegisteredFilter(registerCode);
   };
 
   useEffect(() => {
@@ -96,6 +120,7 @@ const Events = () => {
       .then((data) => {
         console.log("Recived Data:", data);
         setEventsData(data.EVENTS);
+        setFilteredData(data.EVENTS);
       })
       .catch((err) => {
         console.error("Error fetching data:", err);
@@ -115,7 +140,7 @@ const Events = () => {
           </div>
           <div className="grid grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {eventsData && eventsData.length > 0 ? (
-              eventsData.map((event) => {
+              filteredData.map((event) => {
                 if (groupFilter == null || event.isGroup == groupFilter) {
                   return (
                     <div key={event.eventId}>
