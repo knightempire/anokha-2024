@@ -12,6 +12,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import WebGLApp from "../bg/WebGLApp";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 import Background from "../components/user/Background";
 import anokhalogo from "@/../public/images/anokha_circle.svg";
@@ -98,26 +100,65 @@ export default function Register() {
     color2: [11 / 255, 38 / 255, 59 / 255],
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
+
+  const RegisterFame = useRef(null);
+  const Logo = useRef(null);
+  const Heading = useRef(null);
+  const Register = useRef(null);
+  const Form = useRef(null)
+
+  useGSAP(() => {
+    let tl = new gsap.timeline();
+    tl.from(RegisterFame.current, { opacity: 0, duration: 1 });
+    tl.from(
+      Logo.current,
+      { opacity: 0, rotation: -360, duration: 0.3 },
+      "start"
+    );
+    tl.from(Heading.current, { opacity: 0, y: -30, duration: 0.3 }, "start");
+    tl.from(Form.current, { opacity: 0, duration: 0.3 });
+    tl.from("#Fields", { opacity: 0, stagger: 0.1, duration: 0.3 });
+    tl.from(Register.current, { opacity: 0, y: 20, duration: 0.3 });
+    tl.from("#Others", { opacity: 0, duration: 0.3 });
+  });
+
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
       <WebGLApp colors={webGLColors} />
-  
+
       <div className="block space-y-24 md:space-y-10">
         <Navbar />
         <div className="relative min-h-screen">
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
-            <div className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
-              <Image src={anokhalogo} priority alt="Amrita logo" width={128} height={128} className='ml-auto mr-auto mt-4 h-16' />
+            <div
+              className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white"
+              ref={RegisterFame}
+            >
+              <Image
+                ref={Logo}
+                src={anokhalogo}
+                priority
+                alt="Amrita logo"
+                width={128}
+                height={128}
+                className="ml-auto mr-auto mt-4 h-16"
+              />
               <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1 className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl">
+                <h1
+                  className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl"
+                  ref={Heading}
+                >
                   Register
                 </h1>
                 <form
                   className="space-y-4 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
                   onSubmit={handleSignUp}
+                  ref={Form}
                 >
-                  <div className="flex flex-col justify-center flex-1 space-y-5 md:border-r md:border-black md:pr-10 max-w-600">
-                    <div>
+                  <div
+                    className="flex flex-col justify-center flex-1 space-y-5 md:border-r md:border-black md:pr-10 max-w-600"
+                  >
+                    <div id="Fields">
                       <label
                         htmlFor="name"
                         className="block mb-2 text-sm font-medium text-black"
@@ -136,7 +177,7 @@ export default function Register() {
                         required
                       />
                     </div>
-                    <div>
+                    <div id="Fields">
                       <label
                         htmlFor="phone"
                         className="block mb-2 text-sm font-medium text-black"
@@ -156,7 +197,7 @@ export default function Register() {
                       />
                     </div>
                     <div>
-                      <div>
+                      <div id="Fields">
                         <label
                           htmlFor="college"
                           className="block mb-2 text-sm font-medium text-black"
@@ -175,7 +216,7 @@ export default function Register() {
                           placeholder="Amrita School of Engineering, Coimbatore"
                         />
                       </div>
-                      <div className="flex items-center mb-4 mt-6">
+                      <div className="flex items-center mb-4 mt-6" id="Others">
                         <input
                           checked={isAmrita}
                           onChange={(e) => {
@@ -196,7 +237,7 @@ export default function Register() {
                     </div>
                   </div>
                   <div className="flex flex-col flex-1 space-y-5 ">
-                    <div>
+                    <div id="Fields">
                       <label
                         htmlFor="email"
                         className="block mb-2 text-sm font-medium text-black"
@@ -215,7 +256,7 @@ export default function Register() {
                         required
                       />
                     </div>
-                    <div>
+                    <div id="Fields">
                       <label
                         htmlFor="password"
                         className="block mb-2 text-sm font-medium text-black"
@@ -234,7 +275,7 @@ export default function Register() {
                         required
                       />
                     </div>
-                    <div>
+                    <div id="Fields">
                       <label
                         htmlFor="conf-password"
                         className="block mb-2 text-sm font-medium text-black"
@@ -255,13 +296,17 @@ export default function Register() {
                     </div>
                     <div className="text-center">
                       <button
+                        ref={Register}
                         type="submit"
                         className="w-[200px] text-black bg-[#f69c18] mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed"
                         disabled={loading}
                       >
                         Sign Up
                       </button>
-                      <p className="text-sm font-light text-[#ed1d21]">
+                      <p
+                        className="text-sm font-light text-[#ed1d21]"
+                        id="Others"
+                      >
                         Already have an account?{" "}
                         <a
                           href="/login"
@@ -280,5 +325,4 @@ export default function Register() {
       </div>
     </main>
   );
-  
 }

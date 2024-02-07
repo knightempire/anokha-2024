@@ -14,26 +14,18 @@ export default function FilterSection({ sendcurrentFilters }) {
     }
   };
   return (
-    <div>
-      <div className="flex flex-row gap-3 mb-3 min-h-[30px] w-full">
-        {filters.map((filter, index) => (
-          <div
-            key={index}
-            className="bg-white flex flex-row px-2 py-1 rounded-3xl"
-          >
-            <div className="mr-2">{filter}</div>
-            <div
-              className="cursor-pointer"
-              onClick={() => {
-                const f = filters.filter((item) => item != filter);
-                setFilters(f);
-              }}
-            >
-              X
+    <div className="border-2 p-5 rounded-xl">
+      {filters.length > 0 && (
+        <div className="flex flex-row gap-3 mb-3 min-h-[30px] w-full">
+          {filters.map((filter, index) => (
+            <div key={index} className="bg-white flex flex-row px-1">
+              <div className="mr-2">{filter}</div>
+              <div>X</div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
+
       <div className="flex flex-row gap-5 justify-evenly">
         {/* All of the following should be Dropdown-Checkbox Components*/}
         {/* Select Day: "01" | "02" | "03"; */}

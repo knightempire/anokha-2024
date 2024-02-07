@@ -58,7 +58,7 @@ export default function FilterComponent({
           {curr_options.map((filterItem, index) => (
             <div
               key={index}
-              className="bg-white text-black"
+              className="bg-white text-black hover:bg-blue-500"
               onClick={() => {
                 inputRef.current.value = filterItem;
                 setDisplayOptions(0);
