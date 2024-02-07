@@ -58,54 +58,60 @@ const Card = ({
 }) => {
   return (
     <div className="h-screen flex items-center justify-center sticky overflow-hidden top-10">
-      <div className="flex flex-col relative -top-20 -right-20 h-[75vh] w-[60vw] bg-[#121212]  b rounded-xl transform origin-top my-10 top-5">
+      <div className="flex flex-col relative -top-20 -right-20 h-[75vh] w-[65vw] bg-[#121212]  b rounded-xl transform origin-top my-10 top-5">
         <div className="flex absolute top-[35%] -left-[12%] text-white text-6xl z-10 rounded-xl">
           {title}
         </div>
-        <div className="flex absolute w-[225px] h-[225px] -top-[15%] -left-[15%]">
+        <div className="flex absolute w-[225px] h-[225px] -top-[15%] -left-[15%] rounded-xl shadow-custom-down">
           <Image
-            src={src}
+            src={src[0]}
             alt="Cover Image"
             layout="fill"
             objectFit="cover"
             className="rounded-xl brightness-75"
           />
         </div>
-        <div className="flex absolute w-[125px] h-[125px] top-[5%] left-[12%]">
+        <div className="flex absolute w-[125px] h-[125px] top-[5%] left-[12%] rounded-xl shadow-custom-down">
           <Image
-            src={src}
+            src={src[4]}
             alt="Cover Image"
             layout="fill"
             objectFit="cover"
             className="rounded-xl brightness-75"
           />
         </div>
-        <div className="flex absolute w-[250px] h-[250px] top-[55%] -left-[10%]">
+        <div className="flex absolute w-[250px] h-[250px] top-[55%] -left-[10%] rounded-xl shadow-custom-up">
           <Image
-            src={src}
+            src={src[2]}
             alt="Cover Image"
             layout="fill"
             objectFit="cover"
             className="rounded-xl brightness-75"
           />
         </div>
-        <div className="flex absolute w-[225px] h-[225px] top-[50%] left-[20%]">
+        <div className="flex absolute w-[225px] h-[225px] top-[50%] left-[20%] rounded-xl shadow-custom-up">
           <Image
-            src={src}
+            src={src[3]}
             alt="Cover Image"
             layout="fill"
             objectFit="cover"
             className="rounded-xl brightness-75"
           />
         </div>
-        <div className="flex absolute w-[200px] h-[200px] -top-[5%] left-[30%]">
+        <div className="flex absolute w-[200px] h-[200px] -top-[5%] left-[30%] rounded-xl shadow-custom-down">
           <Image
-            src={src}
+            src={src[1]}
             alt="Cover Image"
             layout="fill"
             objectFit="cover"
             className="rounded-xl brightness-75"
           />
+        </div>
+        <div className="grid relative grid-cols-[55%,40%] w-full h-full text-white text-lg">
+          <div className="flex flex-col justify-center items-center"></div>
+          <div className="flex flex-col justify-center items-center text-justify bg-gray-600 bg-opacity-10 rounded-xl p-4 my-10">
+            {description}
+          </div>
         </div>
       </div>
     </div>

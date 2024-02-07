@@ -98,9 +98,15 @@ export default function Home() {
       <Hero className="z-10" />
       <SponsorsMarquee />
       <Info
-        title="About Amrita"
-        src="https://i.imgur.com/LqLc1zR.jpg"
-        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Sed euismod, quam id aliquet ultricies, nunc nisl tincidunt nunc, ac tincidunt justo nisl id nunc. Sed euismod, quam id aliquet ultricies, nunc nisl tincidunt nunc, ac tincidunt justo nisl id nunc. Sed euismod, quam id aliquet ultricies, nunc nisl tincidunt nunc, ac tincidunt justo nisl id nunc. Sed euismod, quam id aliquet ultricies, nunc nisl tincidunt nunc, ac tincidunt"
+        title="About Anokha"
+        src={[
+          "https://i.imgur.com/LqLc1zR.jpg",
+          "https://i.imgur.com/NbYhQmE.jpg",
+          "https://i.imgur.com/wNMrU5H.jpg",
+          "https://i.imgur.com/7oW7AI9.jpg",
+          "https://i.imgur.com/BdM5523.jpg",
+        ]}
+        description="Anokha, the national techfest of Amrita Vishwa Vidyapeetham Coimbatore, is a 3-day congregation of some of the brightest minds in India. Founded in 2010, Anokha has grown by leaps and bounds and has progressed to become one of the leading techfests in India. Anokha has successfully completed ten editions and boasts an average annual participation of over 10,000 outstanding students from top-ranking engineering institutions in India like IITs, BITS, NITs and IIITs as well as partner universities in USA and Europe namely University of New Mexico, EVRY France and Uppsala University-Sweden."
       />
       <AnokhaMarquee />
       <Footer current_page="home" />{" "}
