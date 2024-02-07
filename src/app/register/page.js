@@ -49,7 +49,6 @@ export default function Register() {
   };
 
   const handleSignUp = async (e) => {
-    setLoading(true);
     e.preventDefault();
     console.log({
       studentFullName: name, // Max 255 chars. Min 1 char.
@@ -64,45 +63,73 @@ export default function Register() {
     if (
       name == "" ||
       name == undefined ||
-      !validator.isAlpha(name) ||
-      typeof name != String ||
-      name.length > 255
+      !validator.isAlpha(name)// ||
+      // typeof name != String ||
+      // name.length > 255
     ) {
       allValid = 0;
-    }
-    if (phone == "" || phone == undefined || !validator.isMobilePhone(phone)) {
+      toastAlert(
+        "error",
+        "Invalid Name",
+        "Please enter a valid name",
+        toastRef,
+      );
+      return;
+    } else if (phone == "" || phone == undefined || !validator.isMobilePhone(phone)) {
       allValid = 0;
-    }
-    if (
-      password == "" ||
-      password == undefined ||
-      password.length < 8 ||
-      password.includes("-") ||
-      password.includes('"')
-    ) {
+      toastAlert(
+        "error",
+        "Invalid Phone Number",
+        "Please enter a phone number",
+        toastRef,
+      );
+      return;
+    } else if (password == "" || password == undefined || password.length < 8 || password.includes("-") ||password.includes('"')) {
       allValid = 0;
-    }
-    if (
+      toastAlert(
+        "error",
+        "Invalid Password",
+        "Please enter a valid password",
+        toastRef,
+      );
+      return;
+    } else if (
       collegeName == "" ||
       collegeName == undefined ||
-      !validator.isAlpha(collegeName) ||
-      typeof collegeName != String ||
-      collegeName.length > 255
+      !validator.isAlpha(collegeName)
+      // typeof collegeName != String ||
+      // collegeName.length > 255
     ) {
       allValid = 0;
+      toastAlert(
+        "error",
+        "Invalid College Name",
+        "Please enter a valid college name",
+        toastRef,
+      );
+      return;
     }
     if (
       collegeCity == "" ||
       collegeCity == undefined ||
-      !validator.isAlpha(collegeCity) ||
-      typeof collegeCity != String ||
-      collegeCity.length > 255
+      !validator.isAlpha(collegeCity)// ||
+      // typeof collegeCity != String ||
+      // collegeCity.length > 255
     ) {
       allValid = 0;
-    }
+      toastAlert(
+        "error",
+        "Invalid City",
+        "Please enter a valid city.",
+        toastRef,
+      );
+        return;
+     }
     if (isAmrita == 0) {
       if (email == "" || email == undefined || !validator.isEmail(email)) {
         allValid = 0;
+        toastAlert("error", "Invalid Email", "Your email address seems invalid!");
+        return;
       }
     } else if (isAmrita == 1) {
       if (
@@ -111,10 +138,13 @@ export default function Register() {
         !email.endsWith("cb.students.amrita.edu")
       ) {
         allValid = 0;
+        toastAlert("error", "Invalid Email", "Your amrita-email seems invalid!");
+        return;
       }
     }
     if (allValid == 1) {
       try {
+        setLoading(true);
         const response = await fetch(REGISTER_URL, {
           method: "POST",
           headers: {
@@ -132,7 +162,12 @@ export default function Register() {
 
         const data = await response.json();
         if (response.status === 200) {
-          toastAlert("success", "Success", "Registration Successful!", toastRef);
+          toastAlert(
+            "success",
+            "Success",
+            "Registration Successful!",
+            toastRef,
+          );
           console.log(data);
           secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
           secureLocalStorage.setItem("registerEmail", email);
@@ -141,19 +176,32 @@ export default function Register() {
             router.replace("/register/verify");
           }, 500);
         } else if (response.status === 500) {
-
-          toastAlert('error', "Oops!", "Something went wrong! Please try again later!", toastRef);
+          toastAlert(
+            "error",
+            "Oops!",
+            "Something went wrong! Please try again later!",
+            toastRef,
+          );
+          return;
         } else if (data.message !== undefined || data.message !== null) {
-          toastAlert('error', "Registration Failed", data.message, toastRef);
+          toastAlert("error", "Registration Failed", data.message, toastRef);
         } else {
-          toastAlert('error', "Oops!", "Something went wrong! Please try again later!", toastRef);
+          toastAlert(
+            "error",
+            "Oops!",
+            "Something went wrong! Please try again later!",
+            toastRef,
+          );
+          return;
         }
       } catch (e) {
+        toastAlert('error', "Error", "Please try again!", toastRef);
         console.log(e);
       }
 
       setLoading(false);
     }
+
   };
 
   const [webGLColors, setWebGLColors] = useState({
@@ -175,7 +223,7 @@ export default function Register() {
     tl.from(
       Logo.current,
       { opacity: 0, rotation: -360, duration: 0.3 },
-      "start"
+      "start",
     );
     tl.from(Heading.current, { opacity: 0, y: -30, duration: 0.3 }, "start");
     tl.from(Form.current, { opacity: 0, duration: 0.3 });
