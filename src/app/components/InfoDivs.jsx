@@ -1,64 +1,103 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
-import { useTransform, motion, useScroll } from "framer-motion";
+
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/dist/ScrollTrigger"; // Import ScrollTrigger
 import Image from "next/image";
-import tinycolor from "tinycolor2";
 
-// const getRandomHSLColor = () => {
-//   const h = Math.random() * 360; // Random hue
-//   const s = Math.random() * 100; // Random saturation between 0 and 100
-//   const l = Math.random() * 100; // Random lightness between 0 and 25
-//   return [h, s, l];
-// };
+gsap.registerPlugin(ScrollTrigger);
 
-// const handleCardChange = () => {
-//   const [h, s, l] = getRandomHSLColor();
+const Card = ({ title, description, src }) => {
+  const container = useRef(null);
 
-//   // Convert HSL to RGB
-//   const hslColor = tinycolor({ h, s, l });
-//   const rgbColor = hslColor.toRgb();
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top 50%",
+        end: "bottom bottom",
+        scrub: true,
+        markers: true,
+      },
+    });
 
-//   // Extract RGB components
-//   const color1 = [rgbColor.r / 255, rgbColor.g / 255, rgbColor.b / 255];
+    // Animation for the Title
+    tl.from(
+      container.current.children[0],
+      {
+        opacity: 0,
+        x: 100,
+        duration: 0.5,
+        ease: "power3.out",
+      },
+      "=-0.3"
+    );
 
-//   // Generate monochromatic colors
-//   const monochromaticColors = hslColor.monochromatic();
-//   const color2 = [
-//     monochromaticColors[2]._r / 255,
-//     monochromaticColors[2]._g / 255,
-//     monochromaticColors[2]._b / 255,
-//   ];
-//   const color3 = [
-//     monochromaticColors[1]._r / 255,
-//     monochromaticColors[1]._g / 255,
-//     monochromaticColors[1]._b / 255,
-//   ];
+    // Animation for each image
+    tl.from(container.current.children[1], {
+      opacity: 0,
+      y: 100,
+      scale: 0.5,
+      duration: 0.3,
+      ease: "power3.out",
+    });
 
-//   // Create randomColors object
-//   const randomColors = {
-//     color1,
-//     color2,
-//     color3,
-//   };
+    tl.from(container.current.children[2], {
+      opacity: 0,
+      y: 100,
+      scale: 0.5,
+      duration: 0.3,
+      ease: "power3.out",
+    })
+      .from(
+        container.current.children[3],
+        {
+          opacity: 0,
+          y: 100,
+          scale: 0.5,
+          duration: 0.3,
+          ease: "power3.out",
+        },
+        "-=0.15"
+      )
+      .from(
+        container.current.children[4],
+        {
+          opacity: 0,
+          y: 100,
+          scale: 0.5,
+          duration: 0.3,
+          ease: "power3.out",
+        },
+        "-=0.15"
+      )
+      .from(
+        container.current.children[5],
+        {
+          opacity: 0,
+          y: 100,
+          scale: 0.5,
+          duration: 0.3,
+          ease: "power3.out",
+        },
+        "-=0.15"
+      );
 
-//   return randomColors;
-// };
+    // Animation for the Description
+    tl.from(container.current.children[6], {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power3.out",
+    });
+  });
 
-const Card = ({
-  i,
-  title,
-  description,
-  src,
-  url,
-  color,
-  progress,
-  range,
-  targetScale,
-  onColorChange,
-}) => {
   return (
     <div className="h-screen flex items-center justify-center sticky overflow-hidden top-10">
-      <div className="flex flex-col relative -top-20 -right-20 h-[75vh] w-[65vw] bg-[#121212]  b rounded-xl transform origin-top my-10 top-5">
+      <div
+        className="flex flex-col relative -top-20 -right-20 h-[75vh] w-[65vw] bg-[#121212]  b rounded-xl transform origin-top my-10 top-5"
+        ref={container}
+      >
         <div className="flex absolute top-[35%] -left-[12%] text-white text-6xl z-10 rounded-xl">
           {title}
         </div>
