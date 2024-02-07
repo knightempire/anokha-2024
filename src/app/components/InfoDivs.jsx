@@ -12,18 +12,18 @@ const Card = ({ title, description, src }) => {
   const container = useRef(null);
 
   useGSAP(() => {
-    const tl = gsap.timeline({
+    const tl1 = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
-        start: "top 50%",
-        end: "bottom bottom",
+        start: "top 40%",
+        end: "bottom 20%",
         scrub: true,
         markers: true,
       },
     });
 
     // Animation for the Title
-    tl.from(
+    tl1.from(
       container.current.children[0],
       {
         opacity: 0,
@@ -35,7 +35,7 @@ const Card = ({ title, description, src }) => {
     );
 
     // Animation for each image
-    tl.from(container.current.children[1], {
+    tl1.from(container.current.children[1], {
       opacity: 0,
       y: 100,
       scale: 0.5,
@@ -43,13 +43,14 @@ const Card = ({ title, description, src }) => {
       ease: "power3.out",
     });
 
-    tl.from(container.current.children[2], {
-      opacity: 0,
-      y: 100,
-      scale: 0.5,
-      duration: 0.3,
-      ease: "power3.out",
-    })
+    tl1
+      .from(container.current.children[2], {
+        opacity: 0,
+        y: 100,
+        scale: 0.5,
+        duration: 0.3,
+        ease: "power3.out",
+      })
       .from(
         container.current.children[3],
         {
@@ -85,8 +86,62 @@ const Card = ({ title, description, src }) => {
       );
 
     // Animation for the Description
-    tl.from(container.current.children[6], {
+    tl1.from(container.current.children[6], {
       opacity: 0,
+      duration: 0.5,
+      ease: "power3.out",
+    });
+
+    // Reverse animations in tl2
+    tl1.to(container.current.children[6], {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power3.out",
+    });
+
+    tl1.to(container.current.children[5], {
+      opacity: 0,
+      y: -100,
+      scale: 0.5,
+      duration: 0.3,
+      ease: "power3.out",
+    });
+
+    tl1.to(container.current.children[4], {
+      opacity: 0,
+      y: -100,
+      scale: 0.5,
+      duration: 0.3,
+      ease: "power3.out",
+    });
+
+    tl1.to(container.current.children[3], {
+      opacity: 0,
+      y: -100,
+      scale: 0.5,
+      duration: 0.3,
+      ease: "power3.out",
+    });
+
+    tl1.to(container.current.children[2], {
+      opacity: 0,
+      y: -100,
+      scale: 0.5,
+      duration: 0.3,
+      ease: "power3.out",
+    });
+
+    tl1.to(container.current.children[1], {
+      opacity: 0,
+      y: -100,
+      scale: 0.5,
+      duration: 0.3,
+      ease: "power3.out",
+    });
+
+    tl1.to(container.current.children[0], {
+      opacity: 0,
+      x: -100,
       duration: 0.5,
       ease: "power3.out",
     });
