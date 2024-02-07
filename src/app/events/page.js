@@ -144,12 +144,7 @@ const Events = () => {
                 if (groupFilter == null || event.isGroup == groupFilter) {
                   return (
                     <div key={event.eventId}>
-                      <Link
-                        href={{
-                          pathname: "/events/event",
-                          query: { id: event.eventId },
-                        }}
-                      >
+                      <Link href={`/events/${event.eventId}`}>
                         <EventCard
                           imgSrc={event.eventImageURL}
                           id={event.eventId}
