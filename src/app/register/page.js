@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Toast } from "primereact/toast";
-import "primereact/resources/primereact.min.css"
+import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
 import toastAlert from "../_util/toastAlerts";
 
@@ -64,7 +64,7 @@ export default function Register() {
     if (
       name == "" ||
       name == undefined ||
-      !validator.isAlpha(name)// ||
+      !validator.isAlpha(name) // ||
       // typeof name != String ||
       // name.length > 255
     ) {
@@ -73,47 +73,56 @@ export default function Register() {
         "error",
         "Invalid Name",
         "Please enter a valid name",
-        toastRef,
+        toastRef
       );
       return;
-    } else if (phone == "" || phone == undefined || !validator.isMobilePhone(phone)) {
+    } else if (
+      phone == "" ||
+      phone == undefined ||
+      !validator.isMobilePhone(phone)
+    ) {
       allValid = 0;
       toastAlert(
         "error",
         "Invalid Phone Number",
         "Please enter a phone number",
-        toastRef,
+        toastRef
       );
       return;
-    } else if (password == "" || password == undefined || password.length < 8 || password.includes("-") ||password.includes('"')) {
+    } else if (
+      password == "" ||
+      password == undefined ||
+      password.length < 8 ||
+      password.includes("-") ||
+      password.includes('"')
+    ) {
       allValid = 0;
       toastAlert(
         "error",
         "Invalid Password",
         "Please enter a valid password",
-        toastRef,
+        toastRef
       );
       return;
     } else if (
       collegeName == "" ||
       collegeName == undefined ||
-      !validator.isAlpha(collegeName)
-      // typeof collegeName != String ||
-      // collegeName.length > 255
+      typeof(collegeName) != 'string' ||
+      collegeName.length > 255
     ) {
       allValid = 0;
       toastAlert(
         "error",
         "Invalid College Name",
         "Please enter a valid college name",
-        toastRef,
+        toastRef
       );
       return;
     }
     if (
       collegeCity == "" ||
       collegeCity == undefined ||
-      !validator.isAlpha(collegeCity)// ||
+      !validator.isAlpha(collegeCity) // ||
       // typeof collegeCity != String ||
       // collegeCity.length > 255
     ) {
@@ -122,14 +131,18 @@ export default function Register() {
         "error",
         "Invalid City",
         "Please enter a valid city.",
-        toastRef,
+        toastRef
       );
-        return;
-     }
+      return;
+    }
     if (isAmrita == 0) {
       if (email == "" || email == undefined || !validator.isEmail(email)) {
         allValid = 0;
-        toastAlert("error", "Invalid Email", "Your email address seems invalid!");
+        toastAlert(
+          "error",
+          "Invalid Email",
+          "Your email address seems invalid!"
+        );
         return;
       }
     } else if (isAmrita == 1) {
@@ -139,7 +152,11 @@ export default function Register() {
         !email.endsWith("cb.students.amrita.edu")
       ) {
         allValid = 0;
-        toastAlert("error", "Invalid Email", "Your amrita-email seems invalid!");
+        toastAlert(
+          "error",
+          "Invalid Email",
+          "Your amrita-email seems invalid!"
+        );
         return;
       }
     }
@@ -167,7 +184,7 @@ export default function Register() {
             "success",
             "Success",
             "Registration Successful!",
-            toastRef,
+            toastRef
           );
           console.log(data);
           secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
@@ -181,7 +198,7 @@ export default function Register() {
             "error",
             "Oops!",
             "Something went wrong! Please try again later!",
-            toastRef,
+            toastRef
           );
           return;
         } else if (data.message !== undefined || data.message !== null) {
@@ -191,18 +208,17 @@ export default function Register() {
             "error",
             "Oops!",
             "Something went wrong! Please try again later!",
-            toastRef,
+            toastRef
           );
           return;
         }
       } catch (e) {
-        toastAlert('error', "Error", "Please try again!", toastRef);
+        toastAlert("error", "Error", "Please try again!", toastRef);
         console.log(e);
       }
 
       setLoading(false);
     }
-
   };
 
   const [webGLColors, setWebGLColors] = useState({
@@ -224,7 +240,7 @@ export default function Register() {
     tl.from(
       Logo.current,
       { opacity: 0, rotation: -360, duration: 0.3 },
-      "start",
+      "start"
     );
     tl.from(Heading.current, { opacity: 0, y: -30, duration: 0.3 }, "start");
     tl.from(Form.current, { opacity: 0, duration: 0.3 });
