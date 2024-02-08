@@ -13,6 +13,9 @@ import { useEffect, useRef, useState } from "react";
 import projects from "./info_data";
 import Gallery from "./components/Gallery";
 
+import {NextUIProvider} from "@nextui-org/react";
+
+ 
 export default function Home() {
   const container = useRef(null);
 
@@ -35,7 +38,9 @@ export default function Home() {
   const [cardColor, setCardColor] = useState(webGLColors);
 
   return (
+     
     <main className="flex min-h-screen flex-col bg-[#121212]">
+
       <WebGLApp colors={cardColor} />
       <Navbar login={true} />
       <Hero className="z-10" />
@@ -58,5 +63,6 @@ export default function Home() {
       <AnokhaMarquee />
       <Footer current_page="home" />
     </main>
+     
   );
 }
