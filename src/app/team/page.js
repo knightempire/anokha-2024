@@ -1,3 +1,5 @@
+"use client";
+
 import TeamMember from "./components/team-member";
 import WebGLApp from "@/app/bg/WebGLApp";
 
