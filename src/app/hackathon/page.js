@@ -14,7 +14,7 @@ export default function page() {
         <div className="" >
             
         <Navbar />
-        <div className='flex-1 min-h-screen bg-[#193056] flex items-center justify-center'>
+        <div className='flex-1 h-[600px] bg-[#193056] flex items-center justify-center'>
             HERO LANDER
             <Button variant='text'>Materials</Button>
             <Button variant='text'>Register</Button>
