@@ -1,29 +1,23 @@
 "use client";
 
-import Navbar from "../components/EventHeader";
-import Footer from "../components/Footer";
+import Navbar from "@/app/components/EventHeader";
+import Footer from "@/app/components/Footer";
 
-import { hashPassword } from "../_util/hash";
+import { hashPassword } from "@/app/_util/hash";
 import { useEffect, useState, useRef } from "react";
-import { REGISTER_URL } from "../_util/constants";
+import { REGISTER_URL } from "@/app/_util/constants";
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Toast } from "primereact/toast";
-import "primereact/resources/primereact.min.css";
-import "primereact/resources/themes/saga-blue/theme.css";
-import ToastAlert from "../_util/ToastAlerts";
-
-import WebGLApp from "../bg/WebGLApp";
+import WebGLApp from "@/app/bg/WebGLApp";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import validator from "validator";
 
-import Background from "../components/user/Background";
+import Background from "@/app/components/user/Background";
 import anokhalogo from "@/../public/images/anokha_circle.svg";
-import Helper from "./components/PasswordHelper";
 
 export default function Register() {
   useEffect(() => {
@@ -52,6 +46,7 @@ export default function Register() {
   };
 
   const handleSignUp = async (e) => {
+    setLoading(true);
     e.preventDefault();
     console.log({
       studentFullName: name, // Max 255 chars. Min 1 char.
@@ -63,108 +58,44 @@ export default function Register() {
     });
     let allValid = 1;
     // add toast messages unique to each of this if
+    if (name == "" || name == undefined || !validator.isAlpha(name)) {
+      allValid = 0;
+    }
+    if (phone == "" || phone == undefined || !validator.isMobilePhone(phone)) {
+      allValid = 0;
+    }
+    if (password == "" || password == undefined || password.length < 8) {
+      allValid = 0;
+    }
     if (
-      name == "" ||
-      name == undefined ||
-      typeof name != "string" ||
-      name.length > 255
-    ) {
-      allValid = 0;
-      ToastAlert(
-        "error",
-        "Invalid Name",
-        "Please enter a valid name",
-        toastRef
-      );
-      return;
-    } else if (
-      phone == "" ||
-      phone == undefined ||
-      !validator.isMobilePhone(phone)
-    ) {
-      allValid = 0;
-      ToastAlert(
-        "error",
-        "Invalid Phone Number",
-        "Please enter a phone number",
-        toastRef
-      );
-      return;
-    } else if (
-      password == "" ||
-      password == undefined ||
-      password.length < 8 ||
-      password.includes("-") ||
-      password.includes('"') ||
-      password != confirmPassword
-    ) {
-      allValid = 0;
-      ToastAlert(
-        "error",
-        "Invalid Password",
-        "Please enter a valid password",
-        toastRef
-      );
-      return;
-    } else if (
       collegeName == "" ||
       collegeName == undefined ||
-      typeof collegeName != "string" ||
-      collegeName.length > 255
+      !validator.isAlpha(collegeName)
     ) {
       allValid = 0;
-      ToastAlert(
-        "error",
-        "Invalid College Name",
-        "Please enter a valid college name",
-        toastRef
-      );
-      return;
     }
     if (
       collegeCity == "" ||
       collegeCity == undefined ||
-      typeof collegeCity != "string" ||
-      collegeCity.length > 255
+      !validator.isAlpha(collegeCity)
     ) {
       allValid = 0;
-      ToastAlert(
-        "error",
-        "Invalid City",
-        "Please enter a valid city.",
-        toastRef
-      );
-      return;
     }
     if (isAmrita == 0) {
-      if (email == "" || email == undefined || !validator.isEmail(email)) {
+      if (email == "" || email == undefined || !validator.isEmail(email)){
         allValid = 0;
-        ToastAlert(
-          "error",
-          "Invalid Email",
-          "Your email address seems invalid!",
-          toastRef
-        );
-        return;
       }
     } else if (isAmrita == 1) {
       if (
         email == "" ||
         email == undefined ||
         !email.endsWith("cb.students.amrita.edu")
-      ) {
+      ){
         allValid = 0;
-        ToastAlert(
-          "error",
-          "Invalid Email",
-          "Your amrita-email seems invalid!"
-        );
-        return;
       }
     }
     if (allValid == 1) {
       try {
-        setLoading(true);
         const response = await fetch(REGISTER_URL, {
           method: "POST",
           headers: {
@@ -182,12 +113,7 @@ export default function Register() {
 
         const data = await response.json();
         if (response.status === 200) {
-          ToastAlert(
-            "success",
-            "Success",
-            "Registration Successful!",
-            toastRef
-          );
+          alert("Registration Successful");
           console.log(data);
           secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
           secureLocalStorage.setItem("registerEmail", email);
@@ -196,26 +122,13 @@ export default function Register() {
             router.replace("/register/verify");
           }, 500);
         } else if (response.status === 500) {
-          ToastAlert(
-            "error",
-            "Oops!",
-            "Something went wrong! Please try again later!",
-            toastRef
-          );
-          return;
+          alertError("Oops!", "Something went wrong! Please try again later!");
         } else if (data.message !== undefined || data.message !== null) {
-          ToastAlert("error", "Registration Failed", data.message, toastRef);
+          alertError("Registration Failed", data.message);
         } else {
-          ToastAlert(
-            "error",
-            "Oops!",
-            "Something went wrong! Please try again later!",
-            toastRef
-          );
-          return;
+          alertError("Oops!", "Something went wrong! Please try again later!");
         }
       } catch (e) {
-        ToastAlert("error", "Error", "Please try again!", toastRef);
         console.log(e);
       }
 
@@ -229,7 +142,6 @@ export default function Register() {
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
 
-  const toastRef = useRef(null);
   const RegisterFame = useRef(null);
   const Logo = useRef(null);
   const Heading = useRef(null);
@@ -260,11 +172,7 @@ export default function Register() {
         <div className="relative min-h-screen">
           <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
-            <Toast ref={toastRef} position="bottom-center" />
-            <div
-              className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white"
-              ref={RegisterFame}
-            >
+            <div className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
               <Image
                 src={anokhalogo}
                 priority
@@ -272,22 +180,17 @@ export default function Register() {
                 width={128}
                 height={128}
                 className="ml-auto mr-auto mt-4 h-16"
-                ref={Logo}
               />
               <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1
-                  className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl"
-                  ref={Heading}
-                >
+                <h1 className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl">
                   Register
                 </h1>
                 <form
                   className="space-y-4 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
                   onSubmit={handleSignUp}
-                  ref={Form}
                 >
                   <div className="flex flex-col justify-center flex-1 space-y-5 md:border-r md:border-black md:pr-10 max-w-600">
-                    <div id="Fields">
+                    <div>
                       <label
                         htmlFor="name"
                         className="block mb-2 text-sm font-medium text-black"
@@ -306,7 +209,7 @@ export default function Register() {
                         required
                       />
                     </div>
-                    <div id="Fields">
+                    <div>
                       <label
                         htmlFor="phone"
                         className="block mb-2 text-sm font-medium text-black"
@@ -325,7 +228,7 @@ export default function Register() {
                         required
                       />
                     </div>
-                    <div id="Fields">
+                    <div>
                       <div>
                         <label
                           htmlFor="college"
@@ -346,7 +249,7 @@ export default function Register() {
                           disabled={isAmrita}
                         />
                       </div>
-                      <div id="Fields">
+                      <div>
                         <label
                           htmlFor="collegeCity"
                           className="block mb-2 text-sm mt-5 font-medium text-black"
@@ -380,15 +283,14 @@ export default function Register() {
                         <label
                           htmlFor="amrita-student"
                           className="text-sm font-medium text-black"
-                          id="Others"
                         >
                           Amrita Student?
                         </label>
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col flex-1 space-y-5">
-                    <div id="Fields">
+                  <div className="flex flex-col flex-1 space-y-5 ">
+                    <div>
                       <label
                         htmlFor="email"
                         className="block mb-2 text-sm font-medium text-black"
@@ -407,16 +309,13 @@ export default function Register() {
                         required
                       />
                     </div>
-                    <div id="Fields">
-                      <div className="flex flex-row gap-2">
-                        <label
-                          htmlFor="password"
-                          className="mb-2 text-sm font-medium text-black mt-3"
-                        >
-                          Password
-                        </label>
-                        <Helper />
-                      </div>
+                    <div>
+                      <label
+                        htmlFor="password"
+                        className="block mb-2 text-sm font-medium text-black"
+                      >
+                        Password
+                      </label>
                       <input
                         onChange={(e) => {
                           setPassword(e.target.value);
@@ -429,10 +328,10 @@ export default function Register() {
                         required
                       />
                     </div>
-                    <div id="Fields">
+                    <div>
                       <label
                         htmlFor="conf-password"
-                        className="block mb-2 text-sm font-medium text-black mt-3"
+                        className="block mb-2 text-sm font-medium text-black"
                       >
                         Confirm Password
                       </label>
@@ -451,16 +350,12 @@ export default function Register() {
                     <div className="text-center">
                       <button
                         type="submit"
-                        className="w-[200px] mt-3 text-black bg-[#f69c18] mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed"
+                        className="w-[200px] text-black bg-[#f69c18] mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed"
                         disabled={loading}
-                        ref={Register}
                       >
                         Sign Up
                       </button>
-                      <p
-                        className="text-sm font-light text-[#ed1d21]"
-                        id="Others"
-                      >
+                      <p className="text-sm font-light text-[#ed1d21]">
                         Already have an account?{" "}
                         <a
                           href="/login"

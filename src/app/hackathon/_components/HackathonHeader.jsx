@@ -21,11 +21,11 @@ const navLinks = [
   },
   {
     title: "Eventide",
-    path: "#eventide",
+    path: "/eventide",
   },
   {
     title: "TechFair",
-    path: "#techfair",
+    path: "/techfair",
   },
   {
     title: "Hackathon",
