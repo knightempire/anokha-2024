@@ -11,7 +11,7 @@ import WebGLApp from "./bg/WebGLApp";
 import Lenis from "@studio-freight/lenis";
 import { useEffect, useRef, useState } from "react";
 import projects from "./info_data";
-import Gallery from "./components/Gallery";
+import FilmGallery from "./components/FilmGallery";
 
 export default function Home() {
   const container = useRef(null);
@@ -54,7 +54,7 @@ export default function Home() {
           );
         })}
       </div>
-      <Gallery />
+      <FilmGallery />
       <AnokhaMarquee />
       <Footer current_page="home" />
     </main>
