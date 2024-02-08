@@ -65,9 +65,8 @@ export default function Register() {
     if (
       name == "" ||
       name == undefined ||
-      !validator.isAlpha(name) // ||
-      // typeof name != String ||
-      // name.length > 255
+      typeof name != 'string' ||
+      name.length > 255
     ) {
       allValid = 0;
       ToastAlert(
@@ -123,9 +122,8 @@ export default function Register() {
     if (
       collegeCity == "" ||
       collegeCity == undefined ||
-      !validator.isAlpha(collegeCity) // ||
-      // typeof collegeCity != String ||
-      // collegeCity.length > 255
+      typeof(collegeCity) != 'string' ||
+      collegeCity.length > 255
     ) {
       allValid = 0;
       ToastAlert(
