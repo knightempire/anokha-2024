@@ -3,38 +3,36 @@ import FilterComponent from "./filterMultiSelect";
 import FilterComponent2 from "./filterSelectButton";
 
 export default function FilterSection({ sendcurrentFilters }) {
-  const [filters, setFilters] = useState([""]);
-  const [regFilterList, setregFilterList] = useState([""]);
-  const [tagslist, settagslist] = useState([""]);
-  const [eventTypeList, seteventTypeList] = useState([""]);
-  const [participationList, setparticipationList] = useState([""]);
-  const [dayFilterList, setdayFilterList] = useState([""]);
+  const [filters, setFilters] = useState([]);
+  const [regFilterList, setregFilterList] = useState([]);
+  const [tagslist, settagslist] = useState([]);
+  const [eventTypeList, seteventTypeList] = useState([]);
+  const [participationList, setparticipationList] = useState([]);
+  const [dayFilterList, setdayFilterList] = useState([]);
+
+  useState(() => {
+    setdayFilterList([]);
+    seteventTypeList([]);
+    setparticipationList([]);
+    setregFilterList([]);
+    setregFilterList([]);
+    settagslist([]);
+  });
 
   useEffect(() => {
-    console.log(
-      dayFilterList,
+    sendcurrentFilters(filters);
+  }, [filters]);
+
+  useEffect(() => {
+    let newFilters = [].concat(
       tagslist,
+      regFilterList,
       eventTypeList,
       participationList,
-      regFilterList
+      dayFilterList
     );
-    if (
-      regFilterList != undefined &&
-      tagslist != undefined &&
-      eventTypeList != undefined &&
-      participationList != undefined &&
-      dayFilterList != undefined
-    ) {
-      console.log("DONE");
-      const newFilters = tagslist.concat(
-        regFilterList,
-        eventTypeList,
-        participationList,
-        dayFilterList
-      );
-      setFilters(newFilters);
-      sendcurrentFilters(filters);
-    }
+    newFilters = newFilters.filter((elem) => elem != null && elem != undefined);
+    setFilters(newFilters);
   }, [
     regFilterList,
     tagslist,
@@ -44,13 +42,7 @@ export default function FilterSection({ sendcurrentFilters }) {
   ]);
 
   const handleItemFromFilters = (filter, type) => {
-    if (type == "day"){
-      setdayFilterList(filter);
-      setregFilterList([]);
-      setparticipationList([]);
-      seteventTypeList([]);
-      set
-    }
+    if (type == "day") setdayFilterList(filter);
     else if (type == "tag") settagslist(filter);
     else if (type == "event") seteventTypeList(filter);
     else if (type == "team") setparticipationList(filter);
@@ -58,24 +50,6 @@ export default function FilterSection({ sendcurrentFilters }) {
   };
   return (
     <div className="p-5 ">
-      {filters.length > 0 && (
-        <div className="flex flex-row gap-3 mb-3 min-h-[30px] w-full flex-wrap">
-          {filters.map((filter, index) => (
-            <div key={index} className="bg-white flex flex-row px-1">
-              <div className="mr-2">{filter}</div>
-              <div
-                className="cursor-pointer m-1"
-                onClick={() => {
-                  setFilters(filters.filter((item) => item != filter));
-                }}
-              >
-                &#x2715;
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-
       <div className="flex flex-row gap-5 justify-evenly">
         {/* All of the following should be Dropdown-Checkbox Components*/}
         {/* Select Day: "01" | "02" | "03"; */}
