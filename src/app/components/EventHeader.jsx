@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
 import React, { useState,useEffect } from "react";
-import ProfileCard from "./Profile/ProfileCard";
+import ProfileCard from "@/app/components/Profile/ProfileCard";
 import Hamburger from 'hamburger-react'
-import MenuOverlay from "./MenuOverlay";
+import MenuOverlay from "@/app/components/MenuOverlay";
 import Image from 'next/image'
 import secureLocalStorage from "react-secure-storage"
 import {useAuth } from '@/app/_auth/useAuth'
@@ -73,35 +73,36 @@ const Navigationbar = () => {
     
     
 
-    <nav className="fixed z-20 h-fit rounded-md inset-2 max-w-full bg-opacity-50 backdrop-blur-xl mb-3 border-b-1 border-t-3 border-none bg-[#121212]">
-      <div className="flex container   flex-nowrap items-center justify-between mx-auto px-4 py-2  ">
+    <nav className="fixed z-20 h-fit rounded-md inset-1 max-w-full bg-opacity-50 backdrop-blur-xl mb-3 border-b-1 border-t-3 border-none bg-[#121212]">
+      <div className="flex items-center justify-between mx-auto px-4 py-2  ">
           <div className="mobile-menu lg:hidden">
             <Button variant="text" className="rounded-full p-1">
             <Hamburger toggled={navbarOpen} toggle={setNavbarOpen} size={24} color="#ffffff" /> 
             </Button>
           </div>
         
-        <Link
-          href={"/"}
-          className="text-2xl md:text-5xl text-white font-normal"
-        >
-          <Image
-            src="/images/anokha2024_logo.png"
-            alt="logo"
-            width={200}
-            height={200}
-            className="w-36 lg:h-full float-left "
-          />
-        </Link>
+        <div>
+            <Link
+              href={"/"}
+              className="text-2xl md:text-5xl text-gray-300 font-normal"
+            >
+              <Image
+                src="/images/anokha2024_logo.png"
+                alt="logo"
+                width={250}
+                height={250}
+                className="w-40 lg:h-full float-left "
+              />
+            </Link>
+        </div>
         
-        
-        <div className="menu hidden lg:block  lg:w-auto w-2/4" id="navbar">
-          <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0 ">
+        <div className="menu hidden lg:block justify-end  lg:w-auto w-2/4" id="navbar">
+          <ul className="flex p-4 md:p-0 md:flex-row lg:space-x-3 mt-0 ">
             {navLinks.map((link, index) => (
               <li key={index}>
-                <Button variant="text" size="sm" className=" text-gray-50 ml-auto mr-auto" >
+                <Button variant="text" size="sm" className=" text-white ml-auto mr-auto hover:bg-gray-700" >
                   <Link href={link.path}
-                    className="block py-2 pl-3 pr-4 text-[#ADB7BE] sm:text-xl rounded md:p-0 hover:text-white"
+                    className="block py-2 pl-3 pr-4 text-gray-300 lg:text-md text-md rounded md:p-0 hover:text-white"
                                 >
                     {link.title}
                   </Link>
@@ -110,9 +111,9 @@ const Navigationbar = () => {
             ))}
           </ul>
         </div>
-        <div className="flex flex-row justify-center items-center">
+        <div className="flex flex-row justify-center items-start">
           
-          <div className="">
+          <div className="mr-5">
             <ProfileCard/>
           </div>
          
