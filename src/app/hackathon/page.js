@@ -24,7 +24,7 @@ export default function page() {
             <Carousel />
         </div>
         <Themes/>
-        {/* <About/> */}
+        <About/>
         <Timeline/>
         <Footer/>
     </div>
