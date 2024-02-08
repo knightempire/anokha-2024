@@ -99,7 +99,7 @@ const Card = ({ title, description, src }) => {
         duration: 0.5,
         ease: "power3.out",
       },
-      ">0.5"
+      ">1"
     );
 
     tl1.to(container.current.children[5], {

@@ -92,11 +92,15 @@ const Card = ({ title, description, src }) => {
     });
 
     // Reverse animations in tl2
-    tl1.to(container.current.children[6], {
-      opacity: 0,
-      duration: 0.5,
-      ease: "power3.out",
-    });
+    tl1.to(
+      container.current.children[6],
+      {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power3.out",
+      },
+      ">1"
+    );
 
     tl1.to(container.current.children[5], {
       opacity: 0,
