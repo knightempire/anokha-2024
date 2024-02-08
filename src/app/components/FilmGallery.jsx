@@ -54,7 +54,7 @@ const FilmGallery = () => {
         x: 450,
         duration: 2,
       },
-      "-=1"
+      "-=2"
     );
   });
 
@@ -63,7 +63,7 @@ const FilmGallery = () => {
       <h1 className="text-white text-6xl text-center my-5">Gallery</h1>
       <div className="overflow-hidden" ref={container}>
         <div
-          className="grid grid-cols-7 gap-2 h-[40vh] w-[130vw] bg-[#121212] text-white my-3"
+          className="grid grid-cols-7 gap-2 h-[40vh] w-[130vw] text-white my-3"
           ref={row1}
         >
           {filmRow1.map((src) => (

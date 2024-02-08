@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+import { EVENT_DATA_URL } from "@/app/_util/constants";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -28,7 +29,7 @@ const Event = () => {
   useEffect(() => {
     if (eventId) {
       fetch(
-        `https://web.abhinavramakrishnan.tech/api/user/getEventData/${eventId}`,
+        `${EVENT_DATA_URL}/${eventId}`,
         {
           method: "GET",
           headers: {
