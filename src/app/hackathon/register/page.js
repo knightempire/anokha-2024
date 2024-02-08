@@ -1,6 +1,7 @@
 "use client"
 import {useState} from 'react'
-
+import {Button} from "@material-tailwind/react"
+import { FaArrowRight } from "react-icons/fa";
 const Register = () => {
     const [Member1Email, setMember1Email] = useState('')
     const [Member1IDC, setMember1IDC] = useState('')
@@ -88,12 +89,12 @@ const Register = () => {
       <main className="flex min-h-screen flex-col bg-[#121212]">
       {/* <WebGLApp colors={webGLColors} /> */}
 
-      <div className="block space-y-24 md:space-y-10">
+      <div className="block my-auto space-y-24 md:space-y-10">
         {/* <Navbar /> */}
         <div className="relative min-h-screen">
-          <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
+          <div className="absolute z-0 inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
-            <div className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
+            <div className="w-full md:w-[560px] md:h-[600px]  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
               {/* <Image
                 src={anokhalogo}
                 priority
@@ -110,7 +111,10 @@ const Register = () => {
                   className="space-y-4 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
                 //   onSubmit={handleSignUp}
                 >
-                  <div className="flex flex-col justify-center flex-1 space-y-5 md:border-r md:border-black md:pr-10 max-w-600">
+
+                   {/* First card */}
+
+                  <div className="flex flex-col justify-center md:space-y-10 flex-1 space-y-5  ">
                     <div>
                       <label
                         htmlFor="teamname"
@@ -192,7 +196,7 @@ const Register = () => {
 
 
 
-                  <div className="flex flex-col flex-1 space-y-5 pt-5">
+                  <div className="flex md:hidden flex-col flex-1 space-y-5 pt-5">
                      
                      {MemberList.map((link, index) => (
                          
@@ -225,7 +229,14 @@ const Register = () => {
                   </div>
                 </form>
               </div>
+              
             </div>
+            <div className='mt-5 z-10'>
+                      <Button variant='text' className='text-3xl bg-green-500 flex flex-row w-[120px] items-center' >
+                        <div className='-ml-2'>Next</div> 
+                        <FaArrowRight size={20} className='-mr-6 ml-2 '/>
+                      </Button>
+              </div>
           </div>
         </div>
       </div>
