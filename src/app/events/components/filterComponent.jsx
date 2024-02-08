@@ -1,6 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/primereact.min.css";
+import { MultiSelect } from "primereact/multiselect";
 
 export default function FilterComponent({
   icon,
@@ -8,70 +11,21 @@ export default function FilterComponent({
   options,
   sendSelectedOption,
 }) {
-  const [curr_options, setCurrOptions] = useState(options);
-  const [displayOptions, setDisplayOptions] = useState(0);
-  const componentRef = useRef(null);
-  const inputRef = useRef(null);
-
-  const handleClickOutside = (event) => {
-    if (componentRef.current && !componentRef.current.contains(event.target)) {
-      setDisplayOptions(0);
-    }
-  };
-
-  const handleSendingOption = (item) => {
-    sendSelectedOption(item);
-  };
-
+  const [curr_options, setCurrOptions] = useState(null);
+  const opt = [{ name: "hi", val: "hi", name: "hello", val: "hello" }];
   useEffect(() => {
-    // Attach event listener when component mounts
-    document.addEventListener("click", handleClickOutside);
-
-    // Detach event listener when component unmounts
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-    };
-  }, []);
+    console.log(curr_options);
+  }, [curr_options]);
 
   return (
-    <div className="z-13" ref={componentRef}>
-      <input
-        className="max-w-[170px] px-2 py-1 rounded-md border-2 border-gray-300"
-        type="text"
+    <div className="z-13">
+      <MultiSelect
+        options={options}
+        optionLabel="name"
+        optionValue="val"
         placeholder={name}
-        ref={inputRef}
-        onFocus={() => {
-          setDisplayOptions(1);
-        }}
-        onChange={(e) => {
-          console.log(curr_options);
-          const opt = options.filter((element) =>
-            element.toLowerCase().includes(e.target.value.toLowerCase())
-          );
-          console.log("OPT", opt);
-          if (opt != []) setCurrOptions(opt);
-          else setCurrOptions(options);
-        }}
+        onChange={(e) => console.log(e.value)}
       />
-      {displayOptions ? (
-        <div className="flex flex-col cursor-pointer absolute w-[170px]">
-          {curr_options.map((filterItem, index) => (
-            <div
-              key={index}
-              className="bg-white text-black hover:bg-blue-500"
-              onClick={() => {
-                inputRef.current.value = filterItem;
-                setDisplayOptions(0);
-                handleSendingOption(filterItem);
-              }}
-            >
-              {filterItem}
-            </div>
-          ))}
-        </div>
-      ) : (
-        ""
-      )}
     </div>
   );
 }
