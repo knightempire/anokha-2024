@@ -22,6 +22,7 @@ import validator from "validator";
 
 import Background from "../components/user/Background";
 import anokhalogo from "@/../public/images/anokha_circle.svg";
+import Helper from "./components/PasswordHelper";
 
 export default function Register() {
   useEffect(() => {
@@ -107,7 +108,7 @@ export default function Register() {
     } else if (
       collegeName == "" ||
       collegeName == undefined ||
-      typeof(collegeName) != 'string' ||
+      typeof collegeName != "string" ||
       collegeName.length > 255
     ) {
       allValid = 0;
@@ -406,12 +407,15 @@ export default function Register() {
                       />
                     </div>
                     <div id="Fields">
-                      <label
-                        htmlFor="password"
-                        className="block mb-2 text-sm font-medium text-black mt-3"
-                      >
-                        Password
-                      </label>
+                      <div className="flex flex-row gap-2">
+                        <label
+                          htmlFor="password"
+                          className="mb-2 text-sm font-medium text-black mt-3"
+                        >
+                          Password
+                        </label>
+                        <Helper />
+                      </div>
                       <input
                         onChange={(e) => {
                           setPassword(e.target.value);
