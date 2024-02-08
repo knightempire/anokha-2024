@@ -6,7 +6,7 @@ import securelocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import { LOGIN_URL } from "../_util/constants";
 import { hashPassword } from "../_util/hash";
-import toastAlert from "../_util/toastAlerts";
+import ToastAlert from "../_util/ToastAlerts";
 import validator from "validator";
 
 import WebGLApp from "../bg/WebGLApp";
@@ -44,7 +44,7 @@ export default function Login() {
       studentEmail == undefined ||
       !validator.isEmail(studentEmail)
     ) {
-      toastAlert(
+      ToastAlert(
         "error",
         "Invalid Email",
         "The email provided is invalid!",
@@ -57,7 +57,7 @@ export default function Login() {
       studentPassword == undefined ||
       studentPassword.length < 8
     ) {
-      toastAlert("error","Invalid Password", "The password provided is invalid!", toastRef);
+      ToastAlert("error","Invalid Password", "The password provided is invalid!", toastRef);
       return;
     }
     try {
@@ -76,19 +76,19 @@ export default function Login() {
       const data = await response.json();
       if (response.status === 200) {
         console.log(data);
-        toastAlert('success', "Successful Login", "You have logged in successfully!", toastRef);
+        ToastAlert('success', "Successful Login", "You have logged in successfully!", toastRef);
         router.replace("/");
       } else if (response.status === 500) {
-        toastAlert(
+        ToastAlert(
           "error",
           "Oops!",
           "Something went wrong! Please try again.",
           toastRef
         );
       } else if (data.message !== undefined || data.message !== null) {
-        toastAlert("error", "Login Failed", `${data.message}`, toastRef);
+        ToastAlert("error", "Login Failed", `${data.message}`, toastRef);
       } else {
-        toastAlert(
+        ToastAlert(
           "error",
           "Oops!",
           "Something went wrong! Please try again!",

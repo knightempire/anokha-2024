@@ -10,10 +10,11 @@ import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
-import toastAlert from "../_util/toastAlerts";
+import ToastAlert from "../_util/ToastAlerts";
 
 import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";
@@ -69,7 +70,7 @@ export default function Register() {
       // name.length > 255
     ) {
       allValid = 0;
-      toastAlert(
+      ToastAlert(
         "error",
         "Invalid Name",
         "Please enter a valid name",
@@ -82,7 +83,7 @@ export default function Register() {
       !validator.isMobilePhone(phone)
     ) {
       allValid = 0;
-      toastAlert(
+      ToastAlert(
         "error",
         "Invalid Phone Number",
         "Please enter a phone number",
@@ -97,7 +98,7 @@ export default function Register() {
       password.includes('"')
     ) {
       allValid = 0;
-      toastAlert(
+      ToastAlert(
         "error",
         "Invalid Password",
         "Please enter a valid password",
@@ -111,7 +112,7 @@ export default function Register() {
       collegeName.length > 255
     ) {
       allValid = 0;
-      toastAlert(
+      ToastAlert(
         "error",
         "Invalid College Name",
         "Please enter a valid college name",
@@ -127,7 +128,7 @@ export default function Register() {
       // collegeCity.length > 255
     ) {
       allValid = 0;
-      toastAlert(
+      ToastAlert(
         "error",
         "Invalid City",
         "Please enter a valid city.",
@@ -138,7 +139,7 @@ export default function Register() {
     if (isAmrita == 0) {
       if (email == "" || email == undefined || !validator.isEmail(email)) {
         allValid = 0;
-        toastAlert(
+        ToastAlert(
           "error",
           "Invalid Email",
           "Your email address seems invalid!"
@@ -152,7 +153,7 @@ export default function Register() {
         !email.endsWith("cb.students.amrita.edu")
       ) {
         allValid = 0;
-        toastAlert(
+        ToastAlert(
           "error",
           "Invalid Email",
           "Your amrita-email seems invalid!"
@@ -180,7 +181,7 @@ export default function Register() {
 
         const data = await response.json();
         if (response.status === 200) {
-          toastAlert(
+          ToastAlert(
             "success",
             "Success",
             "Registration Successful!",
@@ -194,7 +195,7 @@ export default function Register() {
             router.replace("/register/verify");
           }, 500);
         } else if (response.status === 500) {
-          toastAlert(
+          ToastAlert(
             "error",
             "Oops!",
             "Something went wrong! Please try again later!",
@@ -202,9 +203,9 @@ export default function Register() {
           );
           return;
         } else if (data.message !== undefined || data.message !== null) {
-          toastAlert("error", "Registration Failed", data.message, toastRef);
+          ToastAlert("error", "Registration Failed", data.message, toastRef);
         } else {
-          toastAlert(
+          ToastAlert(
             "error",
             "Oops!",
             "Something went wrong! Please try again later!",
@@ -213,7 +214,7 @@ export default function Register() {
           return;
         }
       } catch (e) {
-        toastAlert("error", "Error", "Please try again!", toastRef);
+        ToastAlert("error", "Error", "Please try again!", toastRef);
         console.log(e);
       }
 
