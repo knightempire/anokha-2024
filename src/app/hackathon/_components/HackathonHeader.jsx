@@ -1,13 +1,16 @@
 "use client";
 import Link from "next/link";
 import React, { useState,useEffect } from "react";
+import ProfileCard from "@/app/components/Profile/ProfileCard";
 import Hamburger from 'hamburger-react'
 import MenuOverlay from "@/app/components/MenuOverlay";
 import Image from 'next/image'
 import secureLocalStorage from "react-secure-storage"
 import {useAuth } from '@/app/_auth/useAuth'
-import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent, NavbarItem, Button} from "@nextui-org/react";
- 
+import {
+  Button,
+  Navbar
+} from "@material-tailwind/react";
 
 
 const navLinks = [
@@ -65,115 +68,61 @@ const Navigationbar = () => {
     SignOut()
   }
 
-  const menuItems = [
-    "Profile",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
-  ];
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  return (
+    
+    
+    
 
-    
-    
-   
-    
-      return (
-        <Navbar
-          isBordered
-          isMenuOpen={isMenuOpen}
-          onMenuOpenChange={setIsMenuOpen}
-          className="bg-gray-500 "
-        >
-
-          <NavbarContent className="sm:hidden" justify="start">
-            <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
-          </NavbarContent>
-    
-          <NavbarContent className="sm:hidden pr-3" justify="center">
-            <NavbarBrand>
-              
+    <nav className="fixed z-20 h-fit rounded-md inset-1 max-w-full bg-opacity-50 backdrop-blur-xl mb-3 border-b-1 border-t-3 border-none bg-[#121212]">
+      <div className="flex items-center justify-between mx-auto px-4 py-2  ">
+          <div className="mobile-menu lg:hidden">
+            <Button variant="text" className="rounded-full p-1">
+            <Hamburger toggled={navbarOpen} toggle={setNavbarOpen} size={24} color="#ffffff" /> 
+            </Button>
+          </div>
+        
+        <div>
             <Link
-          href={"/"}
-          className="text-2xl md:text-5xl text-white font-normal"
-        >
-          <Image
-            src="/images/anokha2024_logo.png"
-            alt="logo"
-            width={200}
-            height={200}
-            className="w-36 lg:h-full float-left "
-          />
-        </Link>
-            </NavbarBrand>
-          </NavbarContent>
-    
-          <NavbarContent className="hidden sm:flex gap-4" justify="center">
-            <NavbarBrand>
-              
-            <Link
-          href={"/"}
-          className="text-2xl md:text-5xl text-white font-normal"
-        >
-          <Image
-            src="/images/anokha2024_logo.png"
-            alt="logo"
-            width={200}
-            height={200}
-            className="w-36 lg:h-full float-left "
-          />
-        </Link>
-            </NavbarBrand>
-            <NavbarItem>
-              <Link color="foreground" href="#">
-              Link1
-              </Link>
-            </NavbarItem>
-            <NavbarItem isActive>
-              <Link href="#" aria-current="page">
-              Link1
-              </Link>
-            </NavbarItem>
-            <NavbarItem>
-              <Link color="foreground" href="#">
-                Link1
-              </Link>
-            </NavbarItem>
-          </NavbarContent>
-    
-          <NavbarContent justify="end">
-            <NavbarItem className="hidden lg:flex">
-              <Link href="#">Login</Link>
-            </NavbarItem>
-            <NavbarItem>
-              <Button as={Link} color="warning" href="#" variant="flat">
-                Sign Up
-              </Button>
-            </NavbarItem>
-          </NavbarContent>
-    
-          <NavbarMenu>
-            {menuItems.map((item, index) => (
-              <NavbarMenuItem key={`${item}-${index}`}>
-                <Link
-                  className="w-full"
-                  color={
-                    index === 2 ? "warning" : index === menuItems.length - 1 ? "danger" : "foreground"
-                  }
-                  href="#"
-                  size="lg"
-                >
-                  {item}
-                </Link>
-              </NavbarMenuItem>
+              href={"/"}
+              className="text-2xl md:text-5xl text-gray-300 font-normal"
+            >
+              <Image
+                src="/images/anokha2024_logo.png"
+                alt="logo"
+                width={250}
+                height={250}
+                className="w-40 lg:h-full float-left "
+              />
+            </Link>
+        </div>
+        
+        <div className="menu hidden lg:block justify-end  lg:w-auto w-2/4" id="navbar">
+          <ul className="flex p-4 md:p-0 md:flex-row lg:space-x-3 mt-0 ">
+            {navLinks.map((link, index) => (
+              <li key={index}>
+                <Button variant="text" size="sm" className=" text-white ml-auto mr-auto hover:bg-gray-700" >
+                  <Link href={link.path}
+                    className="block py-2 pl-3 pr-4 text-gray-300 lg:text-md text-md rounded md:p-0 hover:text-white"
+                                >
+                    {link.title}
+                  </Link>
+                </Button>
+              </li>
             ))}
-          </NavbarMenu>
-        </Navbar>
+          </ul>
+        </div>
+        <div className="flex flex-row justify-center items-start">
+          
+          <div className="mr-5">
+            <ProfileCard/>
+          </div>
+         
+         
+        </div>
+      </div>
+      {navbarOpen ? <MenuOverlay links={navLinks} /> : null}
+    
+    </nav>
 
   );
 };

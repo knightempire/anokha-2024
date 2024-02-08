@@ -15,14 +15,7 @@ import Gallery from "./components/Gallery";
 
 import {NextUIProvider} from "@nextui-org/react";
 
-function App() {
-  // 2. Wrap NextUIProvider at the root of your app
-  return (
-    <NextUIProvider>
-      <YourApplication />
-    </NextUIProvider>
-  );
-}
+ 
 export default function Home() {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -102,7 +95,7 @@ export default function Home() {
   // };
 
   return (
-    <NextUIProvider>
+     
     <main className="flex min-h-screen flex-col bg-[#121212]">
 
       <WebGLApp colors={cardColor} />
@@ -118,6 +111,6 @@ export default function Home() {
       <Footer current_page="home" />{" "}
       {/* current_page is a prop that is used to highlight the current page in the footer. Possible values are home, team, contact, privacy policy} */}
     </main>
-    </NextUIProvider>
+     
   );
 }
