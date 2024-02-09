@@ -95,3 +95,10 @@
     transform: translateY(80px);
   }
 }
+
+.card:nth-child(odd) {
+  padding: 30px 0 30px 30px;
+}
+.card:nth-child(even) {
+  padding: 30px 30px 30px 0;
+}

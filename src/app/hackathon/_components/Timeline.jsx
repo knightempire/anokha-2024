@@ -4,10 +4,10 @@ import Phases from './Phases'
 const Timeline = () => {
   return (
     <div>
-      <div className="font-poppins h-full w-full mx-auto py-5  text-black">
+      <div className="font-poppins h-full w-full py-5 text-black">
             <p className='text-[3rem] font-bold text-center'>Hackathon Phases</p>
-        
-            <ol className="items-center sm:flex px-[10%] py-10">
+
+            <ol className="items-center md:flex px-[10%] py-10">
                 <Phases/>
                 <Phases/>
                 <Phases/>

@@ -23,13 +23,13 @@ export default function page() {
             <Button variant='text'>Register</Button>
         </div> */}
         <IntelHero/>
-        <div className=' m-5'>
-            <Price />
-            <Carousel />
-        </div>
-        
+        <Price />
         <About/>
+        <Carousel />
+
+      
         <Timeline/>
+        {/* <Schedule/> */}
         <Footer/>
     </div>
      
