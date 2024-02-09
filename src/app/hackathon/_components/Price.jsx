@@ -25,8 +25,9 @@ export default function Price() {
             </div>
 
             <div className="flex flex-row">
-                <div className="flex flex-row gap-2 mt-10 w-[40%] px-2">
-                    <div className="mt-3 text-xl ml-3">Last Date To Register<br/> <span className="font-bold text-center text-[2rem]">29 Feb 2023</span></div>
+                <div className="flex flex-row gap-2 mt-10 md:w-[40%] sm:w-full ">
+                    <div className="mt-3 text-xl ml-3">Last Date To Register<br/> 
+                    <span className="font-bold text-center text-[2rem]">29 Feb 2023</span></div>
 
                 </div>
             </div>

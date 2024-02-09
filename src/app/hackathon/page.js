@@ -26,10 +26,9 @@ export default function page() {
         <IntelHero/>
         <Price />
         <About/>
-        <Carousel />
-
+        <Themes/>
         <Phases/>
-         <Timeline/> 
+        <Timeline/> 
         <Footer/>
     </div>
      

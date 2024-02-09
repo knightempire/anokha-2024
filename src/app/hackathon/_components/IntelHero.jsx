@@ -58,11 +58,11 @@ function IntelHero() {
             Amrita Vishwa Vidyapeetham, Coimbatore
           </div>
           {/* <button className='text-base p-3 bg-[#03C7FD] mt-3 rounded'>IDC Materials</button> */}
-          <div className="flex gap-4 flex-wrap mt-2">
-            <button className="text-[1rem] border border-black p-3 px-8 mt-2 rounded-[15px]">
+          <div className="flex md:gap-4 sm:gap-2 flex-wrap mt-2">
+            <button className="text-[1rem] border border-black p-3 px-8 sm:mt-0 md:mt-1  rounded-[15px]">
               IDC Materials
             </button>
-            <button className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-0 md:mt-2 rounded-[15px]">
+            <button className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-0 md:mt-1 rounded-[15px]">
               Register Now!
             </button>
           </div>
