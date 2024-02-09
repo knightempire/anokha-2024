@@ -10,6 +10,7 @@ import Footer from './_components/Footer'
 import {Button } from "@material-tailwind/react";
 import HeroSection from './_components/HeroSection'
 import IntelHero from './_components/IntelHero'
+import Phases from './_components/Phases'
 export default function page() {
   return (
   
@@ -27,9 +28,8 @@ export default function page() {
         <About/>
         <Carousel />
 
-      
-        <Timeline/>
-        {/* <Schedule/> */}
+        <Phases/>
+         <Timeline/> 
         <Footer/>
     </div>
      
