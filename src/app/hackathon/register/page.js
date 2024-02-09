@@ -2,6 +2,183 @@
 import {useState} from 'react'
 import {Button} from "@material-tailwind/react"
 import { FaArrowRight } from "react-icons/fa";
+
+const FirstRegister = () =>{
+  <div className="flex flex-col justify-center md:space-y-10 flex-1 space-y-5  ">
+                    <div>
+                      <label
+                        htmlFor="teamname"
+                        className="block mb-2 text-sm font-medium text-black"
+                      >
+                        Your Team Name
+                      </label>
+                      <input
+                        type="text"
+                        // onChange={(e) => {
+                        //   setName(e.target.value);
+                        // }}
+                        name="teamname"
+                        id="teamname"
+                        className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                        placeholder="Team Name"
+                        required
+                      />
+                    </div>
+
+
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="block mb-2 text-sm font-medium text-black">
+                        Number of Team Members
+                      </label>
+                      <input
+                        // onChange={(e) => {
+                        //   setPhone(e.target.value);
+                        // }}
+                        type="number"
+                        name="teamnumber"
+                        id="teamnumber"
+                        className="bg-transparent text-center border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5"
+                        placeholder="3" min="3" max="4" 
+                        required
+                      />
+                    </div>
+
+                    
+                    <div>
+                      <div>
+                        <label
+                          htmlFor="college"
+                          className="block mb-2 text-sm font-medium text-black"
+                        >
+                          Registered through
+                        </label>
+
+                        <div className='flex'>
+                        <select id="platform" className="bg-transparent mr-2 border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5 border-y-1">
+                        <option value="none" selected>None</option>
+                        <option value="devfolio">DevFolio</option>
+                        <option value="unstop">Unstop</option>
+                        <option value="devpost">Devpost</option>
+                        </select>
+                        <input
+                        //   onChange={(e) => {
+                        //     setCollegeName(e.target.value);
+                        //   }}
+                          type="text"
+                          name="platformid"
+                          id="platformid"
+                        //   value={collegeName}
+                          className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                          placeholder="Platform ID"
+                        //   disabled={isAmrita}
+                        />
+
+                        </div>
+                        
+                        
+
+                      </div>
+                    </div>
+                    
+                  </div>
+}
+
+const SecondRegister = () =>{
+  <div className="flex flex-col justify-center md:space-y-10 flex-1 space-y-5  ">
+                    <div>
+                      <label
+                        htmlFor="teamname"
+                        className="block mb-2 text-sm font-medium text-black"
+                      >
+                        Your Team Name
+                      </label>
+                      <input
+                        type="text"
+                        // onChange={(e) => {
+                        //   setName(e.target.value);
+                        // }}
+                        name="teamname"
+                        id="teamname"
+                        className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                        placeholder="Team Name"
+                        required
+                      />
+                    </div>
+
+
+                    <div>
+                      <label
+                        htmlFor="phone"
+                        className="block mb-2 text-sm font-medium text-black">
+                        Number of Team Members
+                      </label>
+                      <input
+                        // onChange={(e) => {
+                        //   setPhone(e.target.value);
+                        // }}
+                        type="number"
+                        name="teamnumber"
+                        id="teamnumber"
+                        className="bg-transparent text-center border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5"
+                        placeholder="3" min="3" max="4" 
+                        required
+                      />
+                    </div>
+
+                    
+                    <div>
+                      <div>
+                        <label
+                          htmlFor="college"
+                          className="block mb-2 text-sm font-medium text-black"
+                        >
+                          Registered through
+                        </label>
+
+                        <div className='flex'>
+                        <select id="platform" className="bg-transparent mr-2 border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5 border-y-1">
+                        <option value="none" selected>None</option>
+                        <option value="devfolio">DevFolio</option>
+                        <option value="unstop">Unstop</option>
+                        <option value="devpost">Devpost</option>
+                        </select>
+                        <input
+                        //   onChange={(e) => {
+                        //     setCollegeName(e.target.value);
+                        //   }}
+                          type="text"
+                          name="platformid"
+                          id="platformid"
+                        //   value={collegeName}
+                          className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                          placeholder="Platform ID"
+                        //   disabled={isAmrita}
+                        />
+
+                        </div>
+                        
+                        
+
+                      </div>
+                    </div>
+                    
+                  </div>
+}
+
+const ThirdRegister = () =>{
+  <div className="flex flex-col justify-center md:space-y-10 flex-1 space-y-5  ">
+    {MemberList.map((link, index) => (
+                         
+                         <Memberview member={link.name} idc = {link.idc} no={index+1}/>
+                     )
+                  ) }
+
+  </div>
+}
+
+const RegisterSteps = [FirstRegister,SecondRegister,ThirdRegister]
 const Register = () => {
     const [Member1Email, setMember1Email] = useState('')
     const [Member1IDC, setMember1IDC] = useState('')
@@ -86,13 +263,13 @@ const Register = () => {
 
   return (
     <div>
-      <main className="flex min-h-screen flex-col bg-[#121212]">
+      <main className="w-full h-full bg-[rgb(10,17,58)]">
       {/* <WebGLApp colors={webGLColors} /> */}
 
       <div className="block my-auto space-y-24 md:space-y-10">
-        {/* <Navbar /> */}
+        {/* <Navbar />/ */}
         <div className="relative min-h-screen">
-          <div className="absolute z-0 inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[120px] absolute blur-3xl levitate"></div>
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
             <div className="w-full md:w-[560px] md:h-[600px]  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
               {/* <Image
