@@ -20,7 +20,7 @@ export default function TimeLine() {
         gsap.fromTo(el, {opacity: 0, y: 100}, {opacity: 1, y: 0, duration: 1, scrollTrigger: {
             trigger: el,
             start: "top center+=100",
-            end: "bottom 20%",
+            end: "bottom 40%",
             toggleActions: "play none none reverse",
             // markers: true
         }})
