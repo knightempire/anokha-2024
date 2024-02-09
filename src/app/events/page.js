@@ -6,6 +6,7 @@ import Navbar from "../components/EventHeader";
 import Footer from "../components/Footer";
 import FilterSection from "./components/FilterSection";
 import { TbArrowBigUpLinesFilled } from "react-icons/tb";
+import { ALL_EVENTS_URL } from "../_util/constants";
 
 const Events = () => {
   const [groupFilter, setgroupFilter] = useState(null);

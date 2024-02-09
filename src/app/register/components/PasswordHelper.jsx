@@ -8,7 +8,7 @@ export default function Helper() {
       <FaCircleInfo onClick={() => setToggleHelp(!ToggleHelp)} />
       {ToggleHelp ? (
         <div className="absolute z-5 text-[12px] sm:bottom-[25px] bg-[#ffeeed] py-1 px-2 text-[#ff7171] rounded-md lg:left-[22px] bottom-[7px] xl:left-[22px] bottom-[7px]">
-          Password should be atleast 8 letters and should not contain " or -
+          Password should be atleast 8 letters and should not contain `&quot;` or -
         </div>
       ) : (
         ""

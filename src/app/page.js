@@ -12,7 +12,7 @@ import Lenis from "@studio-freight/lenis";
 import { useEffect, useRef, useState } from "react";
 import projects from "./info_data";
 import FilmGallery from "./components/FilmGallery";
-
+ 
 export default function Home() {
   const container = useRef(null);
 
