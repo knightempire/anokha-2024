@@ -102,7 +102,7 @@ const Navigationbar = () => {
               <li key={index}>
                 <Button variant="text" size="sm" className=" text-white ml-auto mr-auto hover:bg-gray-700" >
                   <Link href={link.path}
-                    className="block py-2 pl-3 pr-4 text-gray-300 lg:text-md text-md rounded md:p-0 hover:text-white"
+                    className="block py-2 pl-3 pr-4 text-gray-300 text-md lg:text-md  rounded md:p-0 hover:text-white"
                                 >
                     {link.title}
                   </Link>
