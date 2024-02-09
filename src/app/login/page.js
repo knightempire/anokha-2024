@@ -102,10 +102,9 @@ export default function Login() {
         ToastAlert(
           "error",
           "Oops!",
-          "Something went wrong! Please try again!,
+          "Something went wrong! Please try again!",
           toastRef
         );
-        // alertError("Oops!", "Something went wrong! Please try again later!");
       }
     } catch (error) {
       console.log(error);
