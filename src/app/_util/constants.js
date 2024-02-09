@@ -1,4 +1,4 @@
-const BASE_URL = "http://172.17.9.35:1957/api";
+const BASE_URL = "https://web.abhinavramakrishnan.tech/api/";
 
 export const LOGIN_URL = BASE_URL + "/loginStudent";
 export const REGISTER_URL = BASE_URL + "/registerStudent";

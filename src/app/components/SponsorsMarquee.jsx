@@ -2,18 +2,17 @@ import Image from "next/image";
 import React from "react";
 import Marquee from "react-fast-marquee";
 
-const SponsorElement = () => {
+const SponsorElement = ({ src }) => {
   return (
-    <div className="flex relative justify-center items-center h-14 bg-[#121212] px-5 rounded-full mx-10">
-      <div className="flex relative justify-center items-center h-7 w-7 rounded-full mr-2">
+    <div className="flex relative justify-center items-center h-32 w-48 bg-white mx-4 p-2 rounded-xl">
+      <div className="flex relative justify-center items-center h-full w-full rounded-xl p-2">
         <Image
-          src="https://imgur.com/VeFkJIy.png"
+          src={src}
           alt="sponsor"
           fill="contain"
-          className="h-10 w-10 rounded-full"
+          className="h-full w-full rounded-xl"
         />
       </div>
-      <div className="flex relative justify-center items-center">Intel</div>
     </div>
   );
 };
@@ -26,17 +25,18 @@ const SponsorsMarquee = () => {
         gradient="false"
         gradientColor="[0, 0, 0]"
         speed={50}
-        className="flex relative justify-between items-center h-20 text-white "
+        className="flex relative justify-between items-center h-30 text-white bg-white"
       >
-        <SponsorElement />
-        <SponsorElement />
-        <SponsorElement />
-        <SponsorElement />
-        <SponsorElement />
-        <SponsorElement />
-        <SponsorElement />
-        <SponsorElement />
-        <SponsorElement />
+        <SponsorElement src="https://i.imgur.com/5BlpVzJ.jpg" />
+        <SponsorElement src="https://i.imgur.com/dAzPvPb.jpg" />
+        <SponsorElement src="https://i.imgur.com/ACCqHNF.jpg" />
+        <SponsorElement src="https://i.imgur.com/rsx1kuG.jpg" />
+        <SponsorElement src="https://i.imgur.com/VeFkJIy.png" />
+        <SponsorElement src="https://i.imgur.com/5BlpVzJ.jpg" />
+        <SponsorElement src="https://i.imgur.com/dAzPvPb.jpg" />
+        <SponsorElement src="https://i.imgur.com/ACCqHNF.jpg" />
+        <SponsorElement src="https://i.imgur.com/rsx1kuG.jpg" />
+        <SponsorElement src="https://i.imgur.com/VeFkJIy.png" />
       </Marquee>
     </div>
   );
