@@ -87,6 +87,7 @@ export default function Login() {
           "You have logged in successfully!",
           toastRef
         );
+        securelocalStorage.setItem("SECRET_TOKEN", data.SECRET_TOKEN);
         router.replace("/");
       } else if (response.status === 500) {
         ToastAlert(
@@ -101,7 +102,7 @@ export default function Login() {
         ToastAlert(
           "error",
           "Oops!",
-          "Something went wrong! Please try again!",
+          "Something went wrong! Please try again!,
           toastRef
         );
         // alertError("Oops!", "Something went wrong! Please try again later!");
