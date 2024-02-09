@@ -5,29 +5,24 @@ import { useRef } from "react";
 
 const FilmGallery = () => {
   const filmRow1 = [
-    "https://i.imgur.com/LqLc1zR.jpg",
-    "https://i.imgur.com/NbYhQmE.jpg",
-    "https://i.imgur.com/wNMrU5H.jpg",
-    "https://i.imgur.com/7oW7AI9.jpg",
-    "https://i.imgur.com/BdM5523.jpg",
-    "https://i.imgur.com/NbYhQmE.jpg",
-    "https://i.imgur.com/wNMrU5H.jpg",
+    "https://i.imgur.com/bCSiGLj.jpg",
+    "https://i.imgur.com/bHtecHP.jpg",
+    "https://i.imgur.com/KUavNhA.jpg",
+    "https://i.imgur.com/kcYnqaV.jpg",
+    "https://i.imgur.com/KxZtGPq.jpg",
+    "https://i.imgur.com/ToIDLTm.jpg",
+    "https://i.imgur.com/93FXohU.jpg",
   ];
 
-  // Shuffle function
-  function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
-
-  // Clone the original array to avoid modifying it directly
-  const filmRow2 = [...filmRow1];
-
-  // Shuffle the cloned arrays
-  shuffle(filmRow2);
+  const filmRow2 = [
+    "https://i.imgur.com/ToIDLTm.jpg",
+    "https://i.imgur.com/KUavNhA.jpg",
+    "https://i.imgur.com/bCSiGLj.jpg",
+    "https://i.imgur.com/93FXohU.jpg",
+    "https://i.imgur.com/bHtecHP.jpg",
+    "https://i.imgur.com/KxZtGPq.jpg",
+    "https://i.imgur.com/kcYnqaV.jpg",
+  ];
 
   const row1 = useRef(null);
   const row2 = useRef(null);
