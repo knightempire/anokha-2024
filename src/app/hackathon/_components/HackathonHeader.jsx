@@ -52,7 +52,7 @@ const Navigationbar = () => {
   const [isAmritaCBE,setIsAmritaCBE] = useState(parseInt(secureLocalStorage.getItem("isAmritaCBE")));
   const [hasActivePassport,setHasActivePassport] = useState(parseInt(secureLocalStorage.getItem("hasActivePassport")))
   const [email,setEmail] = useState(secureLocalStorage.getItem("email"));
-  console.log(navbarOpen,isLoggedIn,isAmritaCBE,email)
+  
   
   useEffect(()=>{
     setIsLoggedIn(parseInt(0));

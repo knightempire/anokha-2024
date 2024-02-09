@@ -65,7 +65,7 @@ export default function Register() {
     if (
       name == "" ||
       name == undefined ||
-      typeof name != 'string' ||
+      typeof name != "string" ||
       name.length > 255
     ) {
       allValid = 0;
@@ -94,7 +94,8 @@ export default function Register() {
       password == undefined ||
       password.length < 8 ||
       password.includes("-") ||
-      password.includes('"')
+      password.includes('"') ||
+      password != confirmPassword
     ) {
       allValid = 0;
       ToastAlert(
@@ -107,7 +108,7 @@ export default function Register() {
     } else if (
       collegeName == "" ||
       collegeName == undefined ||
-      typeof(collegeName) != 'string' ||
+      typeof collegeName != "string" ||
       collegeName.length > 255
     ) {
       allValid = 0;
@@ -122,7 +123,7 @@ export default function Register() {
     if (
       collegeCity == "" ||
       collegeCity == undefined ||
-      typeof(collegeCity) != 'string' ||
+      typeof collegeCity != "string" ||
       collegeCity.length > 255
     ) {
       allValid = 0;
@@ -140,7 +141,8 @@ export default function Register() {
         ToastAlert(
           "error",
           "Invalid Email",
-          "Your email address seems invalid!"
+          "Your email address seems invalid!",
+          toastRef
         );
         return;
       }
