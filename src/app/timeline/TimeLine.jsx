@@ -22,7 +22,7 @@ export default function TimeLine() {
             start: "top center+=100",
             end: "bottom 40%",
             toggleActions: "play none none reverse",
-            // markers: true
+            markers: false
         }})
     })
   })
