@@ -2,35 +2,14 @@
 import React, { Component } from 'react'; 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from 'react-responsive-carousel';
+import Themes from './Themes';
 
 export default function NextJsCarousel() { 
 		return ( 
-			<div> 
-			<Carousel> 
+			<div className='bg-white w-full mt-11'> 
+			<Carousel className='p-0'> 
 				<div> 
-					<img src="../images/dummy.jpg" alt="image1"/> 
-					<p className="legend">Image 1</p> 
-
-				</div> 
-				<div> 
-					<img src="../images/dummy.jpg" alt="image2" /> 
-					<p className="legend">Image 2</p> 
-
-				</div> 
-				<div> 
-					<img src="../images/dummy.jpg" alt="image3"/> 
-					<p className="legend">Image 3</p> 
-
-				</div> 
-				<div> 
-					<img src="../images/dummy.jpg" alt="image4"/> 
-					<p className="legend">Image 4</p> 
-
-				</div> 
-				<div> 
-					<img src="../images/dummy.jpg" alt="image5"/> 
-					<p className="legend">Image 5</p> 
-
+					<Themes className='w-[100%] h-[100vh]'/>
 				</div> 
 			</Carousel> 
 			</div> 
