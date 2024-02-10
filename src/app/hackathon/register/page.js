@@ -208,7 +208,7 @@ const Register = () => {
 
                             <div className='flex'>
                             <select id="platform" className="bg-transparent mr-2 border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5 border-y-1">
-                            <option value="none" selected>None</option>
+                            <option value="none" defaultValue>None</option>
                             <option value="devfolio">DevFolio</option>
                             <option value="unstop">Unstop</option>
                             <option value="devpost">Devpost</option>

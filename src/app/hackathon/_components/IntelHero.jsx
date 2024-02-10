@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import oneapilogo from "../images/oneAPI-rgb-3000.png";
 import { IoLocation } from "react-icons/io5";
+import { Button} from "@material-tailwind/react";
+import { useRouter } from 'next/navigation'
 
 function IntelHero() {
   const [currentState, setCurrentState] = useState("guest");
-
+  const router = useRouter()
   useEffect(() => {}, []);
 
   const getButtonText = () => {
@@ -60,12 +62,12 @@ function IntelHero() {
           </div>
           {/* <button className='text-base p-3 bg-[#03C7FD] mt-3 rounded'>IDC Materials</button> */}
           <div className="flex md:gap-4 sm:gap-2 flex-wrap mt-2">
-            <button className="text-[1rem] border border-black p-3 px-8 sm:mt-0 md:mt-1  rounded-[15px]">
+            <Button className="text-[1rem] text-black border border-black p-3 px-8 sm:mt-0 md:mt-1  rounded-[15px]">
               IDC Materials
-            </button>
-            <button className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-0 md:mt-1 rounded-[15px]">
+            </Button>
+            <Button onClick={(e)=>{router.replace("/hackathon/register")}} className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-0 md:mt-1 rounded-[15px]">
               Register Now!
-            </button>
+            </Button>
           </div>
         </div>
       </div>

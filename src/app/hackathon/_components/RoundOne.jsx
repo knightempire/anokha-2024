@@ -32,16 +32,16 @@ function RoundOne({theme_val,theme,problem_val,problem,next}) {
   return (
 
     <div>
-      <div className="w-full h-[100vh] bg-[rgb(10,17,58)]">
+      <div className="w-full h-[100vh]  bg-[rgb(10,17,58)]">
         <div className="font-poppins text-black mx-auto">
-          <div className="bg-gradient-to-r from-cyan-500 z-0 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[80%] left-[25%] top-[100px] absolute blur-3xl levitate"></div>
-          <div className="bg-white relative z-10 sm:w-[90%] md:w-[60%] h-fit lg:w-[40%] bg-opacity-80  px-8 py-8 rounded-xl sm:mx-auto top-[120px]">
+          <div className="bg-gradient-to-r from-cyan-500 z-0 to-blue-500 md:w-[70%] sm:w-[80%] lg:w-[63%] xl:w-[55%] p-8 rounded-[50%] h-[80%] left-[25%] top-[50px] md:left-[17%] md:top-[40px] lg:left-[19%] xl:left-[23%] absolute blur-3xl levitate"></div>
+          <div className="bg-white relative z-10 sm:w-[90%] md:w-[650px] h-fit  bg-opacity-80  px-5  md:px-8 py-8 rounded-xl sm:mx-auto top-[120px]">
             <div className="flex gap-1 items-center text-center text-2xl font-bold justify-center mb-5">
               <IoDocumentText color="#4287f5" className="mr-2" /> 
               UPLOAD PDF LINK!
             </div>
 
-            <div className="border-slate-500 rounded border-2 border-dashed w-full h-full sm:px-4 md:px-10 mt-3 py-8">
+            <div className="border-slate-500 rounded border-2 border-dashed w-full h-full sm:px-4 mx md:px-10 mt-3 py-8">
             <label className="text-lg font-semibold">Theme</label><br/>
              <select value={theme_val} className="w-full p-3 rounded border-2 mx-auto bg-transparent border-black mt-3"
                     onChange={(e)=>theme(e.target.value)}>
@@ -62,7 +62,7 @@ function RoundOne({theme_val,theme,problem_val,problem,next}) {
               
               </label><br/>
               <Textarea 
-                    maxlength="100"
+                    maxLength="200"
                     name="ps" 
                     value={problem_val} 
                     className="w-full mt-2 h-[200px] border-black border-2 rounded p-3 bg-gray-100 overflow-auto" // Added overflow-auto
@@ -79,8 +79,8 @@ function RoundOne({theme_val,theme,problem_val,problem,next}) {
                   Upload Link
                 </button> */}
 
-                <Button onClick={next} className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
-                      <span relative="relative z-10">Next</span>
+                <Button onClick={next} className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+                      <span relative="relative z-10 text-xl ">Next</span>
                     </Button>
               </div>
               
