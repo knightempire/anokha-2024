@@ -11,7 +11,7 @@ import WebGLApp from "./bg/WebGLApp";
 import Lenis from "@studio-freight/lenis";
 import { useEffect, useRef, useState } from "react";
 import projects from "./info_data";
-import Gallery from "./components/Gallery";
+import FilmGallery from "./components/FilmGallery";
 
 import {NextUIProvider} from "@nextui-org/react";
 
@@ -59,7 +59,7 @@ export default function Home() {
           );
         })}
       </div>
-      <Gallery />
+      <FilmGallery />
       <AnokhaMarquee />
       <Footer current_page="home" />
     </main>
