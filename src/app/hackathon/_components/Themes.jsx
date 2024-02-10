@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Glow from "./Glow";
+ 
 const Themes = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   // const [selectedTab1, setSelectedTab1] = useState(0);
