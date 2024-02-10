@@ -9,7 +9,7 @@ export default function FirstRegister({handle_buttonone_click,TeamName,NoofMembe
   return (
           
              
-              <div className="w-full md:w-[560px] sm:hidden md:block  md:h-[600px]  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
+              // <div className="w-full md:w-[560px] sm:hidden md:block  md:h-[600px]  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2  xl:p-0 bg-white">
                 
                 {/* <Image
                   src={anokhalogo}
@@ -27,62 +27,62 @@ export default function FirstRegister({handle_buttonone_click,TeamName,NoofMembe
                   </h1>
                   <div className="border-slate-500 rounded border-2 border-dashed w-full h-full sm:px-4 md:px-10 mt-3 py-8">
   
-                     {/* First card */}
+              //        {/* First card */}
                     
-                    <div className="flex flex-col justify-center md:space-y-10 flex-1 space-y-5  ">
-                      <div>
-                        <label
-                          htmlFor="teamname"
-                          className="block mb-2 text-sm font-medium text-black"
-                        >
-                          Your Team Name
-                        </label>
-                        <input
-                          type="text"
-                          // onChange={(e) => {
-                          //   setName(e.target.value);
-                          // }}
-                          value={TeamName[0]}
-                          name="teamname"
-                          id="teamname"
-                          className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                          placeholder="Team Name"
-                          onChange={(e) => TeamName[1](e.target.value)}
-                          required
-                        />
-                      </div>
+              //       <div className="flex flex-col justify-center md:space-y-10 flex-1 space-y-5  ">
+              //         <div>
+              //           <label
+              //             htmlFor="teamname"
+              //             className="block mb-2 text-sm font-medium text-black"
+              //           >
+              //             Your Team Name
+              //           </label>
+              //           <input
+              //             type="text"
+              //             // onChange={(e) => {
+              //             //   setName(e.target.value);
+              //             // }}
+              //             value={TeamName[0]}
+              //             name="teamname"
+              //             id="teamname"
+              //             className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+              //             placeholder="Team Name"
+              //             onChange={(e) => TeamName[1](e.target.value)}
+              //             required
+              //           />
+              //         </div>
   
   
-                      <div>
-                        <label
-                          htmlFor="phone"
-                          className="block mb-2 text-sm font-medium text-black">
-                          Number of Team Members
-                        </label>
-                        <input
-                          // onChange={(e) => {
-                          //   setPhone(e.target.value);
-                          // }}
-                          type="number"
-                          name="teamnumber"
-                          id="teamnumber"
-                          value={NoofMembers[0]}
-                          className="bg-transparent text-center border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5"
-                          placeholder="3" min="3" max="4" 
-                          onChange={(e) => NoofMembers[1](e.target.value)}
-                          required
-                        />
-                      </div>
+              //         <div>
+              //           <label
+              //             htmlFor="phone"
+              //             className="block mb-2 text-sm font-medium text-black">
+              //             Number of Team Members
+              //           </label>
+              //           <input
+              //             // onChange={(e) => {
+              //             //   setPhone(e.target.value);
+              //             // }}
+              //             type="number"
+              //             name="teamnumber"
+              //             id="teamnumber"
+              //             value={NoofMembers[0]}
+              //             className="bg-transparent text-center border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5"
+              //             placeholder="3" min="3" max="4" 
+              //             onChange={(e) => NoofMembers[1](e.target.value)}
+              //             required
+              //           />
+              //         </div>
   
                       
-                      <div>
-                        <div>
-                          <label
-                            htmlFor="college"
-                            className="block mb-2 text-sm font-medium text-black"
-                          >
-                            Registered through
-                          </label>
+              //         <div>
+              //           <div>
+              //             <label
+              //               htmlFor="college"
+              //               className="block mb-2 text-sm font-medium text-black"
+              //             >
+              //               Registered through
+              //             </label>
   
                           <div className='flex'>
                           <select id="platform" className="bg-transparent mr-2 border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5 border-y-1">
@@ -105,12 +105,12 @@ export default function FirstRegister({handle_buttonone_click,TeamName,NoofMembe
                           //   disabled={isAmrita}
                           />
   
-                        </div>
+              //           </div>
                           
                           
   
-                        </div>
-                      </div>
+              //           </div>
+              //         </div>
                       
                       
   
