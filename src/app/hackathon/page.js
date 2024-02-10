@@ -26,7 +26,7 @@ export default function page() {
         <IntelHero/>
         <Price />
         <About/>
-        {/* <Themes/> */}
+        <Themes/>
         <Phases/>
         <Timeline/> 
         <Footer/>
