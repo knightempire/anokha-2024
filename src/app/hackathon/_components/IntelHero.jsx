@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import oneapilogo from "../images/oneAPI-rgb-3000.png";
+import { IoLocation } from "react-icons/io5";
 
 function IntelHero() {
   const [currentState, setCurrentState] = useState("guest");
@@ -54,8 +55,8 @@ function IntelHero() {
           <p className="text-[3rem]  font-bold sm:leading-[100%] mt-2">
             Intel AI Hackathon
           </p>
-          <div className="text-xs  w-fit py-2 bg-blue-600 px-4 mt-2 rounded-full text-white">
-            Amrita Vishwa Vidyapeetham, Coimbatore
+          <div className="text-xs  w-fit py-2 bg-blue-600 px-4 mt-2 rounded-full text-white flex items-center gap-1">
+          <IoLocation /> Amrita Vishwa Vidyapeetham, Coimbatore
           </div>
           {/* <button className='text-base p-3 bg-[#03C7FD] mt-3 rounded'>IDC Materials</button> */}
           <div className="flex md:gap-4 sm:gap-2 flex-wrap mt-2">

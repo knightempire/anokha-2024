@@ -5,9 +5,11 @@ import Image from "next/image";
 import oneapilogo from "../images/oneAPI-rgb-3000.png";
 import { IoDocumentText } from "react-icons/io5";
 import { Select, Option } from "@material-tailwind/react";
+
 function IntelHero() {
   const [currentState, setCurrentState] = useState("guest");
   const [value, setValue] = useState("Select Theme");
+  
   useEffect(() => {}, []);
 
   const getButtonText = () => {
@@ -47,51 +49,48 @@ function IntelHero() {
     //         </div>
     //     </div>
     // </div>
-    <div className="w-full h-[100vh] bg-[rgb(10,17,58)]">
-      <div className="font-poppins text-black mx-auto">
-        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[120px] absolute blur-3xl levitate"></div>
-        <div className="bg-white md:w-[40%] bg-opacity-80 sm:w-[80%] px-10 py-12 rounded-xl sm:mx-auto top-[250px] relative">
-            <div className="text-3xl font-bold font-mono flex justify-center"> 
-            <IoDocumentText color="#4287f5" className="mr-2"/> 
-            UPLOAD PDF LINK
+
+    <div>
+      <div className="w-full h-[100vh] bg-[rgb(10,17,58)]">
+        <div className="font-poppins text-black mx-auto">
+          <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[80%] left-[25%] top-[100px] absolute blur-3xl levitate"></div>
+          <div className="bg-white md:w-[40%] bg-opacity-80 sm:w-[80%] px-8 py-8 rounded-xl sm:mx-auto top-[120px] relative">
+            <div className="flex gap-1 items-center text-center text-2xl font-bold justify-center mb-5">
+              <IoDocumentText color="#4287f5" className="mr-2" /> 
+              UPLOAD PDF LINK!
             </div>
 
-            <div className="  border-1 h-full">
-               
-            
-            <div className="w-72 my-10">
-                <Select color="blue" variant="outlined"
-                    className="border-blue-900 border-2 rounded-md flex justify-center text-xl font-mono font-medium items-center"
-                    label="Select Theme"
-                    value={value}
-                    onChange={(val) => setValue(val)}
-                    animate={{
-                    mount: { y: 0 },
-                    unmount: { y: 25 },
-                    }}
-                    labelProps={{top:20}}
-                >
+            <div className="border-slate-500 rounded border-2 border-dashed w-full h-full px-10 mt-3 py-8">
+              <select className="w-full p-3 rounded border-2 mx-auto bg-transparent border-black mt-3">
+                <option value="" disabled selected>
+                  Select a Theme
+                </option>
+                <option value="0">Generative AI</option>
+                <option value="1">Internet of Things (IOT)</option>
+                <option value="2">Health Care</option>
+                <option value="3">Autonomous Vehicles</option>
+                <option value="4">Cyber Security</option>
+                <option value="5">Open Ended</option>
+              </select>
 
-                    <Option className="">Material Tailwind HTML</Option>
-                    <Option>Material Tailwind React</Option>
-                    <Option>Material Tailwind Vue</Option>
-                    <Option>Material Tailwind Angular</Option>
-                    <Option>Material Tailwind Svelte</Option>
-                </Select>
+              <div className="mt-7">
+              <label for="ps" >Problem Statement Description</label><br/>
+              <textarea name="ps" className="w-full h-[200px] rounded p-3" placeholder="Describe your problem statement here"/>
+
+              </div>
+              
+
+              <div className="w-full flex justify-center mt-5">
+                {/* <button className="text-[1rem] bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-2 md:mt-3 rounded-[15px] ">
+                  Upload Link
+                </button> */}
+
+                <button class="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+                      <span relative="relative z-10">Next</span>
+                    </button>
+              </div>
+              
             </div>
-            input to upload the link
-            </div> 
-          {/* <button className='text-base p-3 bg-[#03C7FD] mt-3 rounded'>IDC Materials</button> */}
-          <div className="flex md:gap-4 sm:gap-2 flex-wrap mt-2">
-            
-
-
-            <button className="text-[1rem] border border-black p-3 px-8 sm:mt-0 md:mt-1  rounded-[15px]">
-              IDC Materials
-            </button>
-            <button className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-0 md:mt-1 rounded-[15px]">
-              Register Now!
-            </button>
           </div>
         </div>
       </div>
