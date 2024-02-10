@@ -27,6 +27,9 @@ export default function page() {
     const handle_button_Prev_click = ()=>{
         setCurrentStep(currentStep-1)
       }
+    const handle_upload_click = ()=>{
+        console.log("uploaded")
+    }
 
       useEffect(() => {
         console.log('Current Step',currentStep)
@@ -49,7 +52,7 @@ export default function page() {
         
         {
                 currentStep === 0? <RoundOne theme_val={theme} theme={setTheme} problem_val={problemStatement} problem={setProblemStatement} next={handle_button_next_click}/>  
-                :currentStep === 1 ? <RoundOnePt2 />:null
+                :currentStep === 1 ? <RoundOnePt2  prev={handle_button_Prev_click} upload={handle_upload_click} github_val={githublink} github={setGithubLink} devmesh={setDevmeshLink} devmesh_val={devmeshlink} youtube={setYoutubeLink} youtube_val={youtubelink} pdf={setPdfLink} pdf_val={pdflink}  />:null
             
             }
         

@@ -62,7 +62,7 @@ function RoundOne({theme_val,theme,problem_val,problem,next}) {
               
               </label><br/>
               <Textarea 
-                    maxlength="100"
+                    maxLength="200"
                     name="ps" 
                     value={problem_val} 
                     className="w-full mt-2 h-[200px] border-black border-2 rounded p-3 bg-gray-100 overflow-auto" // Added overflow-auto

@@ -3,6 +3,8 @@ import { IoDocumentText } from "react-icons/io5";
 import { FaGithub } from "react-icons/fa";
 import { SiIntel } from "react-icons/si";
 import { FaYoutube } from "react-icons/fa";
+import { Button } from "@material-tailwind/react";
+
 
 const RoundOnePt2 = ({prev,upload,github_val,github,devmesh,devmesh_val,youtube,youtube_val,pdf,pdf_val}) => {
   return (
@@ -23,6 +25,8 @@ const RoundOnePt2 = ({prev,upload,github_val,github,devmesh,devmesh_val,youtube,
                     <FaGithub size={30}/>
                     <input
                     type="text"
+                    value={github_val}
+                    onChange={(e)=>github(e.target.value)}
                     placeholder="Enter Github Link Here"
                     className="w-full focus:outline-0"
                     />
@@ -31,6 +35,8 @@ const RoundOnePt2 = ({prev,upload,github_val,github,devmesh,devmesh_val,youtube,
                 <div className='flex bg-white items-center rounded px-4 py-2 gap-3 mt-3'>
                     <SiIntel size={30}/>
                     <input
+                    value={devmesh_val}
+                    onChange={(e)=>devmesh(e.target.value)}
                     type="text"
                     placeholder="Enter DevMesh Link Here"
                     className="w-full focus:outline-0"
@@ -40,6 +46,8 @@ const RoundOnePt2 = ({prev,upload,github_val,github,devmesh,devmesh_val,youtube,
                 <div className='flex bg-white items-center rounded px-4 py-2 gap-3 mt-3'>
                     <FaYoutube size={30}/>
                     <input
+                    value={youtube_val}
+                    onChange={(e)=>youtube(e.target.value)}
                     type="text"
                     placeholder="Enter Youtube Video Link Here"
                     className="w-full focus:outline-0"
@@ -50,6 +58,8 @@ const RoundOnePt2 = ({prev,upload,github_val,github,devmesh,devmesh_val,youtube,
 
               <input
                 type="text"
+                value={pdf_val}
+                onChange={(e)=>pdf(e.target.value)}
                 placeholder="Enter PDF Link Here"
                 className="w-full py-3 px-4 mt-4 rounded" required
               />
@@ -61,12 +71,12 @@ const RoundOnePt2 = ({prev,upload,github_val,github,devmesh,devmesh_val,youtube,
                 {/* <button className="text-[1rem] bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-2 md:mt-3 rounded-[15px] ">
                   Upload Link
                 </button> */}
-                <button className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+                <Button onClick={prev} className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
                       <span relative="relative z-10">Previous</span>
-                    </button>
-                <button className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+                    </Button>
+                <Button onClick={upload} className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
                       <span relative="relative z-10">Upload Link</span>
-                    </button>
+                    </Button>
               </div>
               
             </div>
