@@ -4,7 +4,7 @@ import { FaGithub } from "react-icons/fa";
 import { SiIntel } from "react-icons/si";
 import { FaYoutube } from "react-icons/fa";
 
-const RoundOnePt2 = () => {
+const RoundOnePt2 = ({prev,upload,github_val,github,devmesh,devmesh_val,youtube,youtube_val,pdf,pdf_val}) => {
   return (
     <div>
       
@@ -61,10 +61,10 @@ const RoundOnePt2 = () => {
                 {/* <button className="text-[1rem] bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-2 md:mt-3 rounded-[15px] ">
                   Upload Link
                 </button> */}
-                <button class="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+                <button className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
                       <span relative="relative z-10">Previous</span>
                     </button>
-                <button class="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+                <button className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
                       <span relative="relative z-10">Upload Link</span>
                     </button>
               </div>
