@@ -8,11 +8,7 @@ const About = () => {
         <div className='bg-white rounded-md pb-[60px] pt-[40px] px-10'>
           <p className='text-[3rem] font-bold'>About</p>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            <br/><br/>
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            <br/><br/>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          The Intel oneAPI Hackathon presents an online hybrid platform where developers are challenged to showcase their prowess in crafting innovative solutions for societal advancement through heterogeneous computing, leveraging Intel oneAPI as the core programming paradigm. Participants stand to benefit from immersive training sessions conducted by Intel experts, delving into a wide array of Intel AI Analytics Toolkits, libraries, SYCL/DPC++ Libraries, and optimized frameworks such as TensorFlow, PyTorch, Scikit-Learn, and XGBoost. Additionally, participants will have access to domain-specific reference kits and open AI software tools to augment their development journey.
           </p>
         </div>
       </div>
