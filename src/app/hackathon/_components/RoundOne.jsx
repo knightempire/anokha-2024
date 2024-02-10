@@ -75,7 +75,7 @@ function IntelHero() {
 
               <div className="mt-7">
               <label for="ps" >Problem Statement Description</label><br/>
-              <textarea name="ps" className="w-full h-[200px] rounded p-3" placeholder="Describe your problem statement here"/>
+              <textarea name="ps" className="w-full h-[200px] rounded p-3 resize-none" placeholder="Describe your problem statement here"/>
 
               </div>
               
