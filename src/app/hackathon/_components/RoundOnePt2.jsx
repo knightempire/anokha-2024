@@ -41,7 +41,7 @@ const RoundOnePt2 = ({prev,upload,github_val,github,devmesh,devmesh_val,youtube,
                     <FaYoutube size={30}/>
                     <input
                     type="text"
-                    placeholder="Enter Youtube Link Here"
+                    placeholder="Enter Youtube Video Link Here"
                     className="w-full focus:outline-0"
                     />
                 </div>
