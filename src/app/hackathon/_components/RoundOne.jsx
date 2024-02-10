@@ -53,36 +53,40 @@ function IntelHero() {
     <div>
       <div className="w-full h-[100vh] bg-[rgb(10,17,58)]">
         <div className="font-poppins text-black mx-auto">
-          <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[120px] absolute blur-3xl levitate"></div>
-          <div className="bg-white md:w-[40%] bg-opacity-80 sm:w-[80%] px-8 py-12 rounded-xl sm:mx-auto top-[210px] relative">
+          <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[80%] left-[25%] top-[100px] absolute blur-3xl levitate"></div>
+          <div className="bg-white md:w-[40%] bg-opacity-80 sm:w-[80%] px-8 py-8 rounded-xl sm:mx-auto top-[120px] relative">
             <div className="flex gap-1 items-center text-center text-2xl font-bold justify-center mb-5">
               <IoDocumentText color="#4287f5" className="mr-2" /> 
               UPLOAD PDF LINK!
             </div>
 
-            <div className="border-slate-700 rounded border-2 border-dashed w-full h-full px-10 mt-3 py-8">
-              <select className="w-full p-3 rounded border-2 mx-auto bg-transparent border-black">
+            <div className="border-slate-500 rounded border-2 border-dashed w-full h-full px-10 mt-3 py-8">
+              <select className="w-full p-3 rounded border-2 mx-auto bg-transparent border-black mt-3">
                 <option value="" disabled selected>
-                  Select a Problem Statement
+                  Select a Theme
                 </option>
-                <option value="theme1ps1">Theme 1: Problem Statement 1</option>
-                <option value="theme1ps1">Theme 1: Problem Statement 1</option>
-                <option value="theme1ps1">Theme 1: Problem Statement 1</option>
-                <option value="theme1ps1">Theme 1: Problem Statement 1</option>
+                <option value="0">Generative AI</option>
+                <option value="1">Internet of Things (IOT)</option>
+                <option value="2">Health Care</option>
+                <option value="3">Autonomous Vehicles</option>
+                <option value="4">Cyber Security</option>
+                <option value="5">Open Ended</option>
               </select>
-              <input
-                type="text"
-                placeholder="PDF Link Here!"
-                className="w-full p-3 mt-3 rounded"
-              />
 
-              <div className="w-full ml-[32%] mt-5">
+              <div className="mt-7">
+              <label for="ps" >Problem Statement Description</label><br/>
+              <textarea name="ps" className="w-full h-[200px] rounded p-3" placeholder="Describe your problem statement here"/>
+
+              </div>
+              
+
+              <div className="w-full flex justify-center mt-5">
                 {/* <button className="text-[1rem] bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-2 md:mt-3 rounded-[15px] ">
                   Upload Link
                 </button> */}
 
                 <button class="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
-                      <span relative="relative z-10">Upload Link</span>
+                      <span relative="relative z-10">Next</span>
                     </button>
               </div>
               

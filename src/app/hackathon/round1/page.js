@@ -9,6 +9,7 @@ import Footer from '../_components/Footer'
 import {Button } from "@material-tailwind/react";
  
 import RoundOne from '../_components/RoundOne'
+import RoundOnePt2 from '../_components/RoundOnePt2'
  
 export default function page() {
   return (
