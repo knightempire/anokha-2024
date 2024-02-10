@@ -12,7 +12,7 @@ import Link from 'next/link';
 
 const Footer = ({current_page}) => {
   return (
-    <div className="relative h-1/2 footer-font bg-black">
+    <div className="h-1/2   bg-black">
       {/* <div className="absolute inset-0 bg-black opacity-100">
         <h1 className="text-4xl text-white text-center content-center">Trust me this is the footer</h1>
       </div> */}

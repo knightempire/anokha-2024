@@ -21,11 +21,11 @@ const navLinks = [
   },
   {
     title: "Eventide",
-    path: "/eventide",
+    path: "#eventide",
   },
   {
     title: "TechFair",
-    path: "/techfair",
+    path: "#techfair",
   },
   {
     title: "Hackathon",
@@ -96,13 +96,13 @@ const Navigationbar = () => {
             </Link>
         </div>
         
-        <div className="menu hidden lg:block justify-end  lg:w-auto w-2/4" id="navbar">
-          <ul className="flex p-4 md:p-0 md:flex-row lg:space-x-3 mt-0 ">
+        <div className="menu hidden lg:block justify-end  lg:w-auto w-2/5" id="navbar">
+          <ul className="flex p-2 md:p-0 md:flex-row lg:space-x-2 mt-0 ">
             {navLinks.map((link, index) => (
               <li key={index}>
-                <Button variant="text" size="sm" className=" text-white ml-auto mr-auto hover:bg-gray-700" >
+                <Button variant="text"  className=" text-white  h-[35px] hover:bg-gray-700" >
                   <Link href={link.path}
-                    className="block py-2 pl-3 pr-4 text-gray-300 text-md lg:text-md  rounded md:p-0 hover:text-white"
+                    className="block   text-gray-300   text-[15px]  rounded md:p-0 hover:text-white"
                                 >
                     {link.title}
                   </Link>
