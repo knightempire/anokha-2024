@@ -1,9 +1,10 @@
 "use client"
 import React from 'react'
-
+import Image from 'next/image'
 import {useState} from 'react'
 import {Button} from "@material-tailwind/react"
 import { FaArrowRight } from "react-icons/fa";
+import oneapilogo from "../../images/oneAPI-rgb-3000.png";
 export default function FirstRegister({handle_buttonone_click,TeamName,NoofMembers,platform}) {
   return (
           
@@ -17,12 +18,14 @@ export default function FirstRegister({handle_buttonone_click,TeamName,NoofMembe
                   width={128}
                   height={128}
                   className="ml-auto mr-auto mt-4 h-16"
-                /> */}
-                <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
-                  <h1 className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl">
+                />  */}
+                <Image src={oneapilogo}  width={80} className="ml-auto mr-auto -mt-9" />
+                <div className="w-full flex flex-col justify-center p-2 space-y-4  md:space-y-6 sm:p-8">
+               
+                  <h1 className="text-xl -mt-4 mx-auto font-bold leading-tight tracking-tight text-black md:text-2xl">
                     Register
                   </h1>
-                  
+                  <div className="border-slate-500 rounded border-2 border-dashed w-full h-full sm:px-4 md:px-10 mt-3 py-8">
   
                      {/* First card */}
                     
@@ -83,7 +86,7 @@ export default function FirstRegister({handle_buttonone_click,TeamName,NoofMembe
   
                           <div className='flex'>
                           <select id="platform" className="bg-transparent mr-2 border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5 border-y-1">
-                          <option value="none" selected>None</option>
+                          <option value="none" defaultValue>None</option>
                           <option value="devfolio">DevFolio</option>
                           <option value="unstop">Unstop</option>
                           <option value="devpost">Devpost</option>
@@ -111,8 +114,8 @@ export default function FirstRegister({handle_buttonone_click,TeamName,NoofMembe
                       
                       
   
-                      <div className="flex sm:hidden md:block mx-auto  flex-col flex-1 space-y-5 pt-5">
-                            <div className='mt-5 z-10'>
+                      <div className="flex sm:hidden md:block mx-auto  flex-col     pt-1">
+                            <div className='mt-2 z-10'>
                                 <Button variant='text' className='text-3xl bg-blue-600 flex flex-row w-[120px] items-center' onClick={handle_buttonone_click} >
                                 <div className='-ml-2'>Next</div> 
                                 <FaArrowRight size={20} className='-mr-6 ml-2 '/>
@@ -121,7 +124,7 @@ export default function FirstRegister({handle_buttonone_click,TeamName,NoofMembe
                       
                       </div>
                     </div>
-  
+                </div>
                 </div>
               </div>
 
