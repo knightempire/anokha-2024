@@ -19,17 +19,21 @@ const Events = () => {
   const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
+    console.log("DAY: ", DayFilter);
     if (eventsData) {
-      console.log(
-        "isGroup: ",
-        eventsData[0].isGroup,
-        "groupFilter:",
-        groupFilter.toString()
-      );
       setFilteredData(
         eventsData.filter(
           (eventData) =>
-            groupFilter == -1 || eventData.isGroup == groupFilter.toString()
+            (groupFilter == -1 ||
+              eventData.isGroup == groupFilter.toString()) &&
+            (TechFilter == -1 ||
+              eventData.isTechnical == TechFilter.toString()) &&
+            (TypeFilter == -1 ||
+              eventData.isWorkshop == TypeFilter.toString()) &&
+            (DayFilter == [] ||
+              DayFilter == -1 ||
+              DayFilter.length == 0 ||
+              DayFilter.includes(eventData.eventDate.slice(0, 10)))
         )
       );
     }
@@ -37,9 +41,10 @@ const Events = () => {
 
   const hanldeCurrentFilters = (filters) => {
     let grpCode = -1;
-    let techCode = -1;
-    let evetypeCode = -1;
+    let techCode = 0;
+    let evetypeCode = 0;
     let registerCode = -1;
+    let Days = [];
     for (let i of filters) {
       console.log(i);
       switch (i) {
@@ -56,26 +61,43 @@ const Events = () => {
           registerCode = 0;
           break;
         case "Tech Workshop":
-          techCode = 1;
-          evetypeCode += 2;
+          techCode += 1;
+          evetypeCode += 1;
           break;
         case "Non-Tech Workshop":
-          techCode = 0;
-          evetypeCode += 2;
+          techCode -= 1;
+          evetypeCode += 1;
           break;
         case "Tech Event":
-          techCode = 1;
-          evetypeCode += 1;
+          techCode += 1;
+          evetypeCode -= 1;
           break;
         case "Non-Tech Event":
-          techCode = 0;
-          evetypeCode += 1;
+          techCode -= 1;
+          evetypeCode -= 1;
+          break;
+        case "01":
+          Days.push("2021-02-26");
+          break;
+        case "02":
+          Days.push("2021-03-02");
+          break;
+        case "03":
+          Days.push("2021-02-28");
           break;
       }
     }
     setgroupFilter(grpCode);
-    setTechFilter(techCode);
+    if (techCode == -1) setTechFilter(0);
+    else if (techCode == 0) setTechFilter(-1);
+    else setTechFilter(1);
+    if (evetypeCode == -1) setTypeFilter(0);
+    else if (evetypeCode == 0) setTypeFilter(-1);
+    else setTypeFilter(1);
     setRegisteredFilter(registerCode);
+    console.log("Day", Days);
+    if (Days == []) setDayFilter(-1);
+    else setDayFilter(Days);
   };
 
   useEffect(() => {
