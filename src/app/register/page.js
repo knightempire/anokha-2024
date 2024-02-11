@@ -23,6 +23,7 @@ import validator from "validator";
 
 import Background from "../components/user/Background";
 import anokhalogo from "@/../public/images/anokha_circle.svg";
+import Helper from "./components/PasswordHelper";
 
 export default function Register() {
   useEffect(() => {
@@ -39,6 +40,45 @@ export default function Register() {
   const [isAmrita, setisAmrita] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  // Regular expression for email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Regular expression for password validation
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+  //Regular expression to check amrita mail
+  const amritaRegex =
+    /^[a-zA-Z0-9._%+-]+@(cb\.students\.amrita\.edu|cb\.amrita\.edu|av\.students\.amrita\.edu|av\.amrita\.edu)$/;
+
+  // Check if email is valid
+  const isEmailValid = emailRegex.test(email);
+
+  //check if amrita mail or not
+  const isAmritaMail = amritaRegex.test(email);
+
+  // Regular expression for name validation max 25 chars
+  const nameRegex = /^[a-zA-Z ]{1,25}$/;
+
+  // Regular expression for college name validation max 100 chars
+  const collegeNameRegex = /^[a-zA-Z ,-]{1,100}$/;
+
+  // Check if password is valid
+  const isPasswordValid = passwordRegex.test(password);
+
+  //Regular expression for phone number validation
+  const phoneRegex = /^[0-9]{10}$/;
+
+  //check if phone numer is valid
+  const isPhoneValid = phoneRegex.test(phone);
+
+  // Check if name is valid
+  const isNameValid = nameRegex.test(name);
+
+  // Check if confirm password matches password
+  const isConfirmPasswordValid = password === confirmPassword;
+
+  // Check if college name is valid
+  const isCollegeNameValid = collegeNameRegex.test(collegeName);
 
   const handleCheckboxChange = (e) => {
     setisAmrita(e.target.checked);
@@ -183,7 +223,7 @@ export default function Register() {
             studentPhone: phone,
             studentPassword: hashPassword(password),
             studentCollegeName: collegeName,
-            studentCollegeCity: "Coimbatore",
+            studentCollegeCity: collegeCity,
           }),
         });
 
@@ -269,7 +309,7 @@ export default function Register() {
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
             <Toast ref={toastRef} position="bottom-center" />
             <div
-              className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white"
+              className="w-full rounded-[24px] bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white"
               ref={RegisterFame}
             >
               <Image
@@ -308,7 +348,12 @@ export default function Register() {
                         }}
                         name="name"
                         id="name"
-                        className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                        className={
+                          "bg-transparent border border-gray-700 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5 " +
+                          (isNameValid || !name || name == ""
+                            ? "border-gray-800"
+                            : "border-[#ff2020]")
+                        }
                         placeholder="Name"
                         required
                       />
@@ -327,7 +372,12 @@ export default function Register() {
                         type="text"
                         name="phone"
                         id="phone"
-                        className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                        className={
+                          "bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5 " +
+                          (isPhoneValid || !phone
+                            ? "border-gray-800"
+                            : "border-[#ff2020]")
+                        }
                         placeholder="+91 99999 99999"
                         required
                       />
@@ -348,7 +398,12 @@ export default function Register() {
                           name="college"
                           id="college"
                           value={collegeName}
-                          className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                          className={
+                            "bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5 " +
+                            (isCollegeNameValid || !collegeName
+                              ? "border-gray-800"
+                              : "border-[#ff2020]")
+                          }
                           placeholder="College Name"
                           disabled={isAmrita}
                         />
@@ -368,7 +423,14 @@ export default function Register() {
                           name="collegeCity"
                           id="collegeCity"
                           value={collegeCity}
-                          className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                          className={
+                            "bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5 " +
+                            (!collegeCity ||
+                            collegeCity == "" ||
+                            typeof collegeCity == "string"
+                              ? "border-gray-800"
+                              : "border-[#ff2020]")
+                          }
                           placeholder="City Name"
                           required
                         />
@@ -409,18 +471,30 @@ export default function Register() {
                         type="email"
                         name="email"
                         id="email"
-                        className=" bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                        className={
+                          "bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5 " +
+                          (isAmrita
+                            ? isAmritaMail || !email || email == ""
+                              ? "border-gray-800"
+                              : "border-[#ff2020]"
+                            : isEmailValid || !email || email == ""
+                            ? "border-gray-800"
+                            : "border-[#ff2020]")
+                        }
                         placeholder="eon@anokha.amrita.edu"
                         required
                       />
                     </div>
                     <div id="Fields">
-                      <label
-                        htmlFor="password"
-                        className="block mb-2 text-sm font-medium text-black mt-3"
-                      >
-                        Password
-                      </label>
+                      <div className="flex flex-row gap-2">
+                        <label
+                          htmlFor="password"
+                          className="mb-2 text-sm font-medium text-black mt-3"
+                        >
+                          Password
+                        </label>
+                        <Helper />
+                      </div>
                       <input
                         onChange={(e) => {
                           setPassword(e.target.value);
@@ -429,7 +503,12 @@ export default function Register() {
                         name="password"
                         id="password"
                         placeholder="••••••••"
-                        className=" border bg-transparent border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                        className={
+                          "border bg-transparent border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5 " +
+                          (isPasswordValid || !password || password == ""
+                            ? "border-gray-800"
+                            : "border-[#ff2020]")
+                        }
                         required
                       />
                     </div>
@@ -448,7 +527,12 @@ export default function Register() {
                         name="conf-password"
                         id="conf-password"
                         placeholder="••••••••"
-                        className=" border bg-transparent border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                        className={
+                          "border bg-transparent border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5 " +
+                          (isConfirmPasswordValid || !confirmPassword
+                            ? "border-gray-800"
+                            : "border-[#ff2020]")
+                        }
                         required
                       />
                     </div>
@@ -456,7 +540,15 @@ export default function Register() {
                       <button
                         type="submit"
                         className="w-[200px] mt-3 text-black bg-[#f69c18] mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed"
-                        disabled={loading}
+                        disabled={
+                          loading ||
+                          !isCollegeNameValid ||
+                          !isNameValid ||
+                          !isPhoneValid ||
+                          !isPasswordValid ||
+                          !isConfirmPasswordValid ||
+                          (isAmrita ? !isAmritaMail : !isEmailValid)
+                        }
                         ref={Register}
                       >
                         Sign Up
