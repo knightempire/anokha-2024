@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { Button } from "@material-tailwind/react";
 const Themes = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   // const [selectedTab1, setSelectedTab1] = useState(0);
@@ -76,27 +77,27 @@ const Themes = () => {
   const data = [
     {
       img: "https://i.imgur.com/xWYWhSP.png",
-      text: "GEN AI"
+      text: "GEN AI",
     },
     {
       img: "https://i.imgur.com/nRnbpu1.png",
-      text: "IOT"
+      text: "IOT",
     },
     {
       img: "https://i.imgur.com/EAk6FLg.png",
-      text: "HealthCare"
+      text: "HealthCare",
     },
     {
       img: "https://i.imgur.com/2SSMh8E.png",
-      text: "Autonomous Vehicles"
+      text: "Autonomous Vehicles",
     },
     {
       img: "https://i.imgur.com/hkCamEf.png",
-      text: "Cyber Security"
+      text: "Cyber Security",
     },
     {
       img: "https://i.imgur.com/mEpBmyc.png",
-      text: "OpenEnded"
+      text: "OpenEnded",
     },
   ];
 
@@ -204,65 +205,80 @@ const Themes = () => {
     // </div>
 
     <div>
-      <div className='h-full w-full bg-[#0A113A] relative overflow-hidden mt-10'>
-    <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[70%] p-8 rounded-[0%] left-[0%] top-[20%] md:h-[40%] blur-3xl levitate"></div>
-        
-    <div className='font-poppins h-[100%] mt-[50px]'>
-    <p className="font-bold text-[3rem] w-fit mx-auto relative z-10  text-white rounded-xl py-3 px-6">
-          Themes
-        </p>
-      
-      <div className="grid grid-cols-3 md:grid-cols-6  m-5 ">
-        {data.map((val, index) => (
-          
-          <div 
-            key={index} 
-            className={`cursor-pointer flex flex-col justify-center items-center m-3 ${selectedTab === index ? 'border-black border-4 ' : ''} p-[10%] md:p-5 
+      <div className="h-full w-full bg-[#0A113A] relative overflow-hidden ">
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[70%] p-8 rounded-[0%] left-[0%] top-[20%] md:h-[40%] blur-3xl levitate"></div>
+
+        <div className="font-poppins h-[100%] mt-[50px]">
+          <p className="font-bold text-[3rem] w-fit mx-auto relative z-10  text-white rounded-xl py-3 px-6">
+            Themes
+          </p>
+
+          <div className="grid grid-cols-3 md:grid-cols-6  m-5 ">
+            {data.map((val, index) => (
+              <div
+                key={index}
+                className={`cursor-pointer flex flex-col justify-center items-center m-3 ${
+                  selectedTab === index ? "border-black border-4 " : ""
+                } p-[10%] md:p-5 
             rounded-xl bg-opacity-60 backdrop-blur-3xl   bg-white `}
-            onClick={() => handleTabClick(index)}
-          >
-            
-            <Image 
-              src={val.img} 
-              width={200} // Adjust this to your desired width
-              height={200} // Adjust this to your desired height
-              alt={val.text} 
-              className='object-cover rounded-md'
-            /> 
-            <p className="mt-2 text-center">{val.text}</p>
+                onClick={() => handleTabClick(index)}
+              >
+                <Image
+                  src={val.img}
+                  width={200} // Adjust this to your desired width
+                  height={200} // Adjust this to your desired height
+                  alt={val.text}
+                  className="object-cover rounded-md"
+                />
+                <p className="mt-2 text-center">{val.text}</p>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      <div className="mt-4">
-        {data.map((val, index) => (
-          <div key={index} className={`${selectedTab === index ? 'block' : 'hidden'}`}>
-            <div className="mt-4">
-           {data.map((val, index) => (
-             <div
-               key={index}
-              className={`${selectedTab === index ? "block" : "hidden"}`}>
-               <div className="mb-9  md:justify-center gap-5  bg-white bg-opacity-70 backdrop-blur-3xl rounded mx-auto md:w-[70%] sm:w-[90%] py-8 ">
-                 {themes[selectedTab].problemStatements.map((statement, id) => (
-                   <div
-                     key={id}
-                     className="md:px-[100px] my-2 py-3 px-10">
-                     <h1 className=" font-bold text-xl mb-2">
-                       {themes[selectedTab].text} : Problem Statement</h1>
-                     <p>{statement}</p>
-                   </div>
-                 ))}
-               </div>
+          <div className="mt-4">
+            {data.map((val, index) => (
+              <div
+                key={index}
+                className={`${selectedTab === index ? "block" : "hidden"}`}
+              >
+                <div className="mt-4">
+                  {data.map((val, index) => (
+                    <div
+                      key={index}
+                      className={`${
+                        selectedTab === index ? "block" : "hidden"
+                      }`}
+                    >
+                      <div className="mb-9  md:justify-center gap-5  bg-white bg-opacity-70 backdrop-blur-3xl rounded mx-auto md:w-[70%] sm:w-[90%] py-8 ">
+                        {themes[selectedTab].problemStatements.map(
+                          (statement, id) => (
+                            <div
+                              key={id}
+                              className="md:px-[100px] my-2 py-3 px-10">
+                              <div className="border-2 border-black p-6 items-center marker rounded-xl md:flex gap-8 w-full">
+                                <div className="justify-start w-[80%]"><h1 className=" font-bold text-xl mb-2 w-full">
+                                  {themes[selectedTab].text} : Problem Statement
+                                </h1><p>{statement}</p></div>
+                                
+                                <div className="justify-end md:m-0 sm:mt-4 "><Button
+                  className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 flex-end"><span relative="relative z-10 text-xl">Read More</span>
+                  </Button></div>
+                                
+                              </div>
+                            </div>
+                          )
+                        )}
+                      </div>
 
-               {/* Add additional content as needed */}
-             </div>
-           ))}
-         </div>
+                      {/* Add additional content as needed */}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
-    </div>
-    </div>
     </div>
   );
 };

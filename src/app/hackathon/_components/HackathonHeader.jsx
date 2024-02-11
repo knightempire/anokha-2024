@@ -7,6 +7,7 @@ import MenuOverlay from "@/app/components/MenuOverlay";
 import Image from 'next/image'
 import secureLocalStorage from "react-secure-storage"
 import {useAuth } from '@/app/_auth/useAuth'
+import {useRouter} from "next/navigation"
 import {
   Button,
   Navbar
@@ -55,11 +56,13 @@ const Navigationbar = () => {
   
   
   useEffect(()=>{
-    setIsLoggedIn(parseInt(1));
+    setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
     setIsAmritaCBE(parseInt(secureLocalStorage.getItem("isAmritaCBE")));
     setHasActivePassport(parseInt(secureLocalStorage.getItem("hasActivePassport")));
     setEmail(secureLocalStorage.getItem("email"));
   },[])
+
+ 
 
   const {SignOut} = useAuth()
 
@@ -67,7 +70,10 @@ const Navigationbar = () => {
     setIsLoggedIn(0)
     SignOut()
   }
-
+  const router = useRouter()
+  const handleForgetPassword = ()=>{
+    router.push("/login")
+  }
   return (
     
     
@@ -100,11 +106,11 @@ const Navigationbar = () => {
           <ul className="flex p-2 md:p-0 md:flex-row lg:space-x-2 mt-0 ">
             {navLinks.map((link, index) => (
               <li key={index}>
-                <Button variant="text"  className=" text-white  h-[35px] hover:bg-gray-700" >
+                <Button variant="text"  className=" h-[40px] hover:bg-gray-700" >
                   <Link href={link.path}
-                    className="block   text-gray-300   text-[15px]  rounded md:p-0 hover:text-white"
+                    className="  text-gray-300   text-[13px]  rounded md:p-0 hover:text-white"
                                 >
-                    {link.title}
+                    <div className="my-auto">{link.title}</div>
                   </Link>
                 </Button>
               </li>
@@ -114,13 +120,13 @@ const Navigationbar = () => {
         <div className="flex flex-row justify-center items-start">
           
           <div className="mr-5">
-            {isLoggedIn===0?<ProfileCard/>
+            {isLoggedIn===1?<ProfileCard/>
             : <div className="sm:hidden md:block relative inline-flex  group">
                 <div
                     className="absolute transitiona-all w-[180px] h-[30px]   duration-1000 opacity-70  -inset-px bg-gradient-to-r from-[#ffffff] via-[#76adfa] to-[#0659ff] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt">
                 </div>
                 <Button className="relative inline-flex items-center justify-center px-6 py-2 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900"
-                 
+                 onClick={handleForgetPassword}
                 >Login / Sign Up</Button>
              </div>
             }

@@ -2,11 +2,17 @@
 import {useEffect, useState} from 'react'
 import {Button} from "@material-tailwind/react"
 import { FaArrowRight } from "react-icons/fa";
+import {HACKATHON_TEAM_REGISTER_URL} from  "@/app/_util/constants";
+import Navbar from '../_components/HackathonHeader'
+import { Toast } from "primereact/toast";
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/lara-light-blue/theme.css";
+import ToastAlert from "@/app/_util/toastAlerts";
 
 import FirstRegister  from '@/app/hackathon/_components/_form/FirstRegister';
 import SecondRegister from '@/app/hackathon/_components/_form/SecondRegister';
 import ThirdRegister from '@/app/hackathon/_components/_form/ThirdRegister';
- 
+import secureLocalStorage from 'react-secure-storage'
 
 const RegisterSteps = [FirstRegister,SecondRegister,ThirdRegister]
 const Register = () => {
@@ -22,17 +28,23 @@ const Register = () => {
     const [member4Email, setMember4Email] = useState('')
     const [member4IDC, setMember4IDC] = useState('')
     const [currentStep, setCurrentStep] = useState(0)
+
+    const [registerEmail, setRegisterEmail] = useState("");
+    const [secretToken, setSecretToken] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(0);
+    const [isAmritaCBE, setIsAmritaCBE] = useState(0);
+    const [hasActivePassport, setHasActivePassport] = useState(0);
+    
     useEffect(() => {
-      console.log('Current Step',currentStep)
-      console.log('Team Name',teamName)
-      console.log('No of Members',noofMembers)
-      console.log('Platform',platform)
-      console.log('Member 1 Email',member1Email)
-      console.log('Member 1 IDC',member1IDC)
-      console.log('Member 2 Email',member2Email)
-      console.log('Member 2 IDC',member2IDC)
+      setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
+      setIsAmritaCBE(parseInt(secureLocalStorage.getItem("isAmritaCBE")));
+      setHasActivePassport(parseInt(secureLocalStorage.getItem("hasActivePassport")));
+      setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
+      setSecretToken(secureLocalStorage.getItem("registerToken"));
+ 
+
     },
-    [currentStep,teamName,noofMembers,platform,member1Email,member1IDC,member2Email,member2IDC,member3Email,member3IDC,member4Email,member4IDC])    
+    [])    
         
     const handle_button_next_click = () =>{
       setCurrentStep(currentStep+1) 
@@ -51,9 +63,80 @@ const Register = () => {
     const handle_platform_change = (e) =>{
       setPlatform(e.target.value)
     }
-    const handle_button_register_click = () =>{
-      console.log('Registered')
+    const handle_button_register_click = async (e) =>{
+      try {
+        console.log(JSON.stringify({
+          teamName: teamName,
+          devfolioId: platform,
+          unstopId: "",
+          devpostId: "",
+          teamMembers: [member2Email,member3Email, ... (noofMembers==4) ? [member4Email] : []],
+          idcId:[member1IDC,member2IDC,member3IDC, ... (noofMembers==4) ? [member4IDC] : []]
+          }))
+        // setLoading(true);
+        const response = await fetch(HACKATHON_TEAM_REGISTER_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + secretToken,
+
+          },
+          body: JSON.stringify({
+            teamName: teamName,
+            devfolioId: platform,
+            unstopId: null,
+            devpostId: null,
+            teamMembers: [member2Email,member3Email, ... (noofMembers==4) ? [member4Email] : []],
+            idcId:[member1IDC,member2IDC,member3IDC, ... (noofMembers==4) ? [member4IDC] : []]
+            })
+        });
+
+        const data = await response.json();
+        if (response.status === 200) {
+          ToastAlert(
+            "success",
+            "Success",
+            "Registration Successful!",
+            toastRef
+          );
+          console.log(data);
+        //   secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
+        //   secureLocalStorage.setItem("registerEmail", email);
+
+          setTimeout(() => {
+            router.replace("/hackathon");
+          }, 500);
+        // } else if (response.status === 500) {
+        //   ToastAlert(
+        //     "error",
+        //     "Oops!",
+        //     "Something went wrong! Please try again later!",
+        //     toastRef
+        //   );
+        //   return;
+        // } else if (data.message !== undefined || data.message !== null) {
+        //   ToastAlert("error", "Registration Failed", data.message, toastRef);
+        // } else {
+        //   ToastAlert(
+        //     "error",
+        //     "Oops!",
+        //     "Something went wrong! Please try again later!",
+        //     toastRef
+        //   );
+        //   return;
+        // }
+
+        //  console.log(data);
+      } }catch (e) {
+        // ToastAlert("error", "Error", "Please try again!", toastRef);
+        console.log(e);
+      }
+
+      // setLoading(false);
     }
+  
+
+   
      
     const MemberList = [
         {
@@ -129,6 +212,7 @@ const Register = () => {
 
   return (
     <div>
+      <Navbar />
       <main className="w-full h-full bg-[rgb(10,17,58)]">
       {/* <WebGLApp colors={webGLColors} /> */}
 

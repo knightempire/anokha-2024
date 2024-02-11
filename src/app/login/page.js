@@ -8,7 +8,7 @@ import { LOGIN_URL } from "../_util/constants";
 import { hashPassword } from "../_util/hash";
 import ToastAlert from "../_util/ToastAlerts";
 import validator from "validator";
-
+import secureLocalStorage from "react-secure-storage";
 import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -81,13 +81,26 @@ export default function Login() {
       const data = await response.json();
       if (response.status === 200) {
         console.log(data);
+ 
+        secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
+        secureLocalStorage.setItem("StudentFullName", data["studentFullName"]);
+        secureLocalStorage.setItem("registerEmail", data["studentEmail"]);
+        secureLocalStorage.setItem("isLoggedIn", 1);
+        secureLocalStorage.setItem("isAmritaCBE", data["isAmritaCBE"]);
+        secureLocalStorage.setItem("needActivePassport", data["needPassport"]);
+        secureLocalStorage.setItem("studentAccountStatus", data["studentAccountStatus"]);
+        secureLocalStorage.setItem("studentPhone", data["studentPhone"]);
+
+        
+
+      
         ToastAlert(
           "success",
           "Successful Login",
           "You have logged in successfully!",
           toastRef
         );
-        securelocalStorage.setItem("SECRET_TOKEN", data.SECRET_TOKEN);
+         
         router.replace("/");
       } else if (response.status === 500) {
         ToastAlert(
