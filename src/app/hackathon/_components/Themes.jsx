@@ -9,25 +9,19 @@ const Themes = () => {
     {
       text: "Generative AI",
       problemStatements: [
-        "Develop a Gen-AI based Ecommerce personalized recommendation system , which asks the users about their requirements of the purchase, understands and then provide personalized recommendations on Ecommerce Platforms",
-        "Make it real : Leverage the power of Multimodal Models to create a Apps/websites just by Drawing/Image prompting which can ease the experience of software development",
-        "Other AI/ML related ideas to Gen AI are acceptable too",
+        "Develop a Gen-AI based Ecommerce personalized recommendation system, which asks the users about their requirements of purchase, understands and then provides personalized recommendations on Ecommerce Platforms.",
+        "GitHub Repository navigator: A Real time solution to understand a developer's problem statement (prompts), show relevant repositories (Not just generated based on keywords but rather analyzing the entire GitHub repositories and providing proper recommendations) and provide a workflow if the solution can't be tackled with just a single repository. ",
+        "• Make it real: Leverage the power of Multimodal Models to create an app or website just by Drawing/Image prompting which can ease the experience of software development.",
+        "You can select any problem statement coming under this theme other than the above",
       ],
     },
     {
       text: "IOT",
       problemStatements: [
-        "Create an innovative solution for optimizing energy consumption and enhancing user comfort in large spaces, such as classrooms or expansive rooms with multiple fans, lights, and AC units. Develop a system that integrates IoT devices and AI algorithms to intelligently control individual appliances based on occupancy. The objective is to dynamically activate and deactivate fans, lights, and AC units in response to the presence or absence of individuals within specific zones, ensuring efficient resource utilization and a comfortable environment.",
-        "Design an intelligent farming system that harmoniously integrates IoT and AI technologies. Your mission is to develop a solution that monitors soil moisture, temperature, and crop health through IoT sensors. Implement AI algorithms for predicting optimal planting times and detecting potential diseases. With a focus on resource optimization and informed decision-making, empower farmers to elevate crop yield and enhance overall crop management practices.",
-        "In the era of smart retail, the challenge is to develop an innovative inventory management system that leverages the power of IoT and AI. The goal is to create a solution that not only monitors product levels but also predicts demand, optimizes restocking schedules, and minimizes the risk of overstock or stockouts. Additionally, the system should prioritize enhancing the overall user experience through a user-friendly interface.",
-      ],
-    },
-    {
-      text: "Open Ended",
-      problemStatements: [
-        "Interactive Learning Experience for Kids : Develop an AI powered solution  that aligns and understands the behavior and caliber of Kids , and generates relevant interactive content for their immersive learning experience",
-        "Energy Estimation in buildings using Computer vision (Floor wise): Develop a Real time AI Powered solution using computer vision to track the amount of Energy being consumed in the frame of camera",
-        "Other AI/ML related ideas are acceptable too",
+        "Smart Classroom Environment Control System: Create an innovative solution for optimizing energy consumption and enhancing user comfort in large spaces, such as classrooms or expansive rooms with multiple fans, lights, and AC units. Develop a system that integrates IoT devices and AI algorithms to intelligently control individual appliances based on occupancy. The objective is to dynamically activate and deactivate fans, lights, and AC units in response to the presence or absence of individuals within specific zones, ensuring efficient resource utilization and a comfortable environment. ",
+        "Smart Farming Hackathon Challenge: Design an intelligent farming system that harmoniously integrates IoT and AI technologies. Your mission is to develop a solution that monitors soil moisture, temperature, and crop health through IoT sensors. Implement AI algorithms for predicting optimal planting times and detecting potential diseases. With a focus on resource optimization and informed decision- making, empower farmers to elevate crop yield and enhance overall crop management practices. ",
+        "Smart Retail Inventory Management: In the era of smart retail, the challenge is to develop an innovative inventory management system that leverages the power of IoT and AI. The goal is to create a solution that not only monitors product levels but also predicts demand, optimizes restocking schedules, and minimizes the risk of overstock or stockouts. Additionally, the system should prioritize enhancing the overall user experience through a user-friendly interface.",
+        "You can select any problem statement coming under this theme other than the above "
       ],
     },
     {
@@ -41,6 +35,12 @@ const Themes = () => {
     {
       text: "Cyber Security",
       problemStatements: ["Any problem statement can be chosen!"],
+    },
+    {
+      text: "Open Ended",
+      problemStatements: [
+        "Any problem statement can be chosen!",
+      ],
     },
   ];
 
@@ -210,7 +210,7 @@ const Themes = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[80%] top-10 md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>
 
         <div className="font-poppins h-[100%] mt-[30px]">
-          <p className="font-bold text-[3rem] w-fit mx-auto relative z-10   rounded-xl py-3 text-white">
+          <p className="font-bold text-[3rem] w-fit mx-auto relative z-10 rounded-xl py-3 text-white">
             Themes
           </p>
 
@@ -219,8 +219,7 @@ const Themes = () => {
               <div
                 key={index}
                 className={`cursor-pointer flex flex-col justify-center items-center m-3 ${
-                  selectedTab === index ? "border-black border-4 " : ""
-                } p-[10%] md:p-5 
+                  selectedTab === index ? "border-black border-4 " : "" } p-[10%] md:p-5 
             rounded-xl bg-opacity-60 backdrop-blur-3xl   bg-white `}
                 onClick={() => handleTabClick(index)}
               >
@@ -250,10 +249,10 @@ const Themes = () => {
                         selectedTab === index ? "block" : "hidden"
                       }`}
                     >
-                      <div className="mb-9 md:justify-center gap-5 bg-white bg-opacity-70 backdrop-blur-3xl rounded mx-auto md:w-[60%] sm:w-[90%] py-8 sm:px-6 md:px-0">
+                      <div className="mb-9 md:justify-center gap-5 bg-white bg-opacity-70 backdrop-blur-3xl rounded mx-auto md:w-[70%] sm:w-[90%] py-8 sm:px-6 md:px-0">
                         {themes[selectedTab].problemStatements.map(
                           (statement, id) => (
-                            <div key={id} className="md:px-[50px] my-2 py-3">
+                            <div key={id} className="md:px-[50px] my-1 py-3">
                               <div className="border-2 border-black p-6 items-center marker rounded-xl md:flex gap-8 w-full">
 
                                 <div className="justify-start w-[90%]"><h1 className=" font-bold text-xl mb-2 w-full">
