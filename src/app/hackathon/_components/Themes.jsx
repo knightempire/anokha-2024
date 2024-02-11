@@ -204,7 +204,7 @@ const Themes = () => {
     // </div>
 
     <div>
-      <div className='h-full w-full bg-[#0A113A] relative overflow-hidden mt-10'>
+      <div className='h-full w-full bg-[#0A113A] relative overflow-hidden '>
     <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[70%] p-8 rounded-[0%] left-[0%] top-[20%] md:h-[40%] blur-3xl levitate"></div>
         
     <div className='font-poppins h-[100%] mt-[50px]'>
