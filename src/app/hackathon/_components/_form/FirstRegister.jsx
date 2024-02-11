@@ -1,16 +1,23 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@material-tailwind/react";
+import Switch from "@mui/material/Switch";
 import { FaArrowRight } from "react-icons/fa";
 import oneapilogo from "../../images/oneAPI-rgb-3000.png";
+import { RiTeamFill } from "react-icons/ri";
+
 export default function FirstRegister({
   handle_buttonone_click,
   TeamName,
   NoofMembers,
   platform,
 }) {
+  const [switchVal, setSwitch] = useState(0);
+  useEffect(()=>{
+    console.log(NoofMembers[0], switchVal);
+  },[switchVal])
   return (
     <div className="w-full md:w-[560px] sm:hidden md:block  md:h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
       {/* <Image
@@ -21,7 +28,7 @@ export default function FirstRegister({
                   height={128}
                   className="ml-auto mr-auto mt-4 h-16"
                 />  */}
-      <Image src={oneapilogo} width={80} className="ml-auto mr-auto -mt-9" />
+      <Image src={oneapilogo} width={80} alt="oneapilogo" className="ml-auto mr-auto -mt-9" />
       <div className="w-full flex flex-col justify-center p-2 space-y-4  sm:p-8">
         <h1 className="text-xl -mt-4 mx-auto font-bold leading-tight tracking-tight text-black md:text-2xl">
           Register
@@ -37,16 +44,19 @@ export default function FirstRegister({
               >
                 Your Team Name
               </label>
-              <input
-                type="text"
-                value={TeamName[0]}
-                name="teamname"
-                id="teamname"
-                className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                placeholder="Team Name"
-                onChange={(e) => TeamName[1](e.target.value)}
-                required
-              />
+              <div className="flex flex-row bg-transparent border-2 border-gray-800 rounded-[5px]">
+                <RiTeamFill className="h-8 w-8 mt-[4px] ml-2" />
+                <input
+                  type="text"
+                  value={TeamName[0]}
+                  name="teamname"
+                  id="teamname"
+                  className="bg-transparent text-black font-medium text-[16px] py-1 px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
+                  placeholder="Team Name"
+                  onChange={(e) => TeamName[1](e.target.value)}
+                  required
+                />
+              </div>
             </div>
 
             <div>
@@ -56,18 +66,24 @@ export default function FirstRegister({
               >
                 Number of Team Members
               </label>
-              <input
-                type="number"
-                name="teamnumber"
-                id="teamnumber"
-                value={NoofMembers[0]}
-                className="bg-transparent text-center border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5"
-                placeholder="3"
-                min="3"
-                max="4"
-                onChange={(e) => NoofMembers[1](e.target.value)}
-                required
-              />
+              <div>
+                3
+                <Switch
+                  value={switchVal}
+                  checked={NoofMembers[0]==3?0:1}
+                  onChange={(e) => {
+                    console.log(NoofMembers[0], switchVal, e.target.checked);
+                    if(e.target.checked == true){
+                      NoofMembers[1](4)
+                      setSwitch(1)
+                    }else{
+                      NoofMembers[1](3)
+                      setSwitch(0);
+                    }
+                  }}
+                />
+                4
+              </div>
             </div>
 
             <div>
@@ -96,7 +112,7 @@ export default function FirstRegister({
                     name="platformid"
                     id="platformid"
                     value={platform[0]}
-                    className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                    className="bg-transparent text-black border-2 border-gray-800 font-medium text-[16px] py-1 rounded-[5px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
                     placeholder="Platform ID"
                     onChange={(e) => platform[1](e.target.value)}
                   />

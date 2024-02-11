@@ -21,7 +21,9 @@ import Resources from './_components/Resources'
 import FAQs from './_components/FAQs'
 import Rules from './_components/Rules'
 import Judging from './_components/Judging'
+ 
 import WinnerPrice from './_components/WinnerPrice'
+ 
 export default function page() {
 
   const [currentStep,setCurrentStep] = useState(0);

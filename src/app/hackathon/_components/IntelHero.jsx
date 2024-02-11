@@ -34,7 +34,7 @@ function IntelHero() {
       <div className="font-poppins text-black mx-auto">
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] md:left-[25%] sm:l-[5%] top-[120px] absolute blur-3xl levitate overflow-hidden"></div>
         <div className="bg-white md:w-[40%] bg-opacity-80 sm:w-[80%] px-10 py-12 rounded-xl sm:mx-auto top-[250px] relative">
-          <Image src={oneapilogo} width={150} className="mt-[-100px]" />
+          <Image src={oneapilogo} width={150} alt="oneapilogo" className="mt-[-100px]" />
           <p className="text-[3rem]  font-bold sm:leading-[100%] mt-2">
             Intel AI Hackathon
           </p>
@@ -43,10 +43,12 @@ function IntelHero() {
           </div>
           {/* <button className='text-base p-3 bg-[#03C7FD] mt-3 rounded'>IDC Materials</button> */}
           <div className="flex md:gap-4 sm:gap-2 flex-wrap mt-2">
+ 
             <Button onClick={(e)=>{router.replace("/hackathon/instructions")}} className="text-[1rem] text-black border border-black p-3 px-8 sm:mt-0 md:mt-0 rounded-xl bg-transparent">
               IDC Materials
             </Button>
             <Button onClick={(e)=>{router.replace("/hackathon/register")}} className="before:ease relative h-12 w-50 overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+ 
               Register Now!
             </Button>
           </div>
