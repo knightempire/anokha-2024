@@ -201,8 +201,16 @@ export default function Register() {
         return;
       }
     }
+    allValid = 1
     if (allValid == 1) {
       try {
+        console.log(JSON.stringify({
+          studentFullName: name,
+          studentEmail: email,
+          studentPhone: phone,
+          studentPassword: hashPassword(password),
+          studentCollegeName: collegeName,
+          studentCollegeCity: "Coimbatore"}))
         setLoading(true);
         const response = await fetch(REGISTER_URL, {
           method: "POST",
