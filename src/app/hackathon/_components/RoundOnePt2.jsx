@@ -14,7 +14,7 @@ const RoundOnePt2 = ({prev,upload,github_val,github,devmesh,devmesh_val,youtube,
       <div className="w-full h-[100vh] bg-[rgb(10,17,58)]">
         <div className="font-poppins text-black mx-auto">
         <div className="bg-gradient-to-r from-cyan-500 z-0 to-blue-500 md:w-[70%] sm:w-[80%] lg:w-[63%] xl:w-[50%] p-8 rounded-[50%] h-[80%] left-[25%] top-[50px] md:left-[17%] md:top-[40px] lg:left-[19%] xl:left-[26%] absolute blur-3xl levitate"></div>
-        <div className="bg-white relative z-10 sm:w-[90%] md:w-[620px] h-fit  bg-opacity-80  px-5  md:px-8 py-8 rounded-xl sm:mx-auto top-[120px]">
+        <div className="bg-white relative z-10 sm:w-[90%] md:w-[620px] h-fit  bg-opacity-80  px-5  md:px-8 py-8 rounded-xl sm:mx-auto top-[60px]">
             <div className="flex gap-1 items-center text-center text-2xl font-bold justify-center mb-5">
               <IoDocumentText color="#4287f5" className="mr-2" /> 
               UPLOAD PDF LINK!
@@ -65,7 +65,7 @@ const RoundOnePt2 = ({prev,upload,github_val,github,devmesh,devmesh_val,youtube,
               />
 
               <input type="checkbox" id="" className="w-[20px] mt-3"/>
-              <label htmlFor="" className="text-sm ml-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </label>
+              <label htmlFor="" className="text-sm ml-2">Lorem ipsum  </label>
 
               <div className="w-full justify-center gap-2 mt-5 flex">
                 {/* <button className="text-[1rem] bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-2 md:mt-3 rounded-[15px] ">

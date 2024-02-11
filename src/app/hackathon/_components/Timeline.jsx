@@ -61,66 +61,67 @@ const Timeline = () => {
         <div class="timeline">
           <div class="outer mx-500px" ref={container}>
             <div class="card">
-              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[65%] md:left-0 top-[-50px] absolute blur-3xl levitate"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur">
-                <h3 class="title">Title 1</h3>
+                <h3 class="title text-xl">February 15th 2024</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.{" "}
+                  Hackathon registration begins for the first round
                 </p>
               </div>
             </div>
 
             <div class="card">
-              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[-30px] absolute blur-3xl levitate"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur">
-                <h3 class="title">Title 1</h3>
+                <h3 class="title text-xl">February 29th 2024</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.{" "}
+                Deadline to submit PowerPoint presentations for the first round.{" "}
                 </p>
               </div>
             </div>
 
             <div class="card">
-              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[-30px] absolute blur-3xl levitate"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur">
-                <h3 class="title">Title 1</h3>
+                <h3 class="title text-xl">March 2nd 2024</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.{" "}
+                Announcement of the top 100 teams moving to the next round. Selected teams start building prototypes on @devmesh.{" "}
                 </p>
               </div>
             </div>
 
             <div class="card">
-              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[-30px]  absolute blur-3xl levitate"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur">
-                <h3 class="title">Title 1</h3>
+                <h3 class="title text-xl">March 20th 2024</h3>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.{" "}
+                Deadline to submit prototypes for the second round.{" "}
                 </p>
               </div>
             </div>
 
             <div class="card">
-              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
+
+ 
+            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[-30px] absolute blur-3xl levitate"></div>
+              <div class="info relative bg-opacity-60 bg-white bg-blur">
+ 
+                <h3 class="title text-xl">March 22nd 2024</h3>
+                <p>
+                Announcement of the top 100 teams advancing to the final round.{" "}
+                </p>
+              </div>
+            </div>
+
+            <div class="card">
+ 
+            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[-30px]  absolute blur-3xl levitate"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur mb-10">
-                <h3 class="title">Title 1</h3>
+ 
+                <h3 class="title text-xl">April 4th 2024</h3>
+
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.{" "}
+                The top 25 teams from the second round will participate in a 24-hour offline hackathon at Amrita University, Coimbatore, to determine the winners. {" "}
                 </p>
               </div>
             </div>

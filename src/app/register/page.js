@@ -14,7 +14,7 @@ import Link from "next/link";
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
-//import ToastAlert from "../_util/ToastAlerts";
+import ToastAlert from "../_util/ToastAlerts";
 
 import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";
@@ -208,7 +208,7 @@ export default function Register() {
                   <div className="flex flex-col justify-center flex-1 space-y-8 md:border-r md:border-black md:pr-10 max-w-600">
                     <div id="Fields">
                       <TextField
-                        error={!isNameValid && name}
+                        error={!isNameValid && name!=""}
                         id="outlined-error-helper-text"
                         placeholder={"Enter Name"}
                         label="Name"
@@ -230,7 +230,7 @@ export default function Register() {
                     </div>
                     <div id="Fields">
                       <TextField
-                        error={!isPhoneValid && phone}
+                        error={!isPhoneValid && phone!=""}
                         id="outlined-error-helper-text"
                         placeholder={"+91 99999 99999"}
                         label="Phone Number"
@@ -253,7 +253,7 @@ export default function Register() {
                     <div id="Fields">
                       <div>
                         <TextField
-                          error={!isCollegeNameValid && collegeName}
+                          error={!isCollegeNameValid && collegeName!= ""}
                           placeholder="Enter College Name"
                           label="College Name"
                           value={collegeName}
@@ -276,7 +276,7 @@ export default function Register() {
                       </div>
                       <div id="Fields" className="mt-8">
                         <TextField
-                          error={!isCollegeCityValid && collegeCity}
+                          error={!isCollegeCityValid && collegeCity!=""}
                           placeholder="Enter College City"
                           label="College City"
                           value={collegeCity}
@@ -322,8 +322,8 @@ export default function Register() {
                       <TextField
                         error={
                           isAmrita
-                            ? !isAmritaMail && email
-                            : !isEmailValid && email
+                            ? !isAmritaMail && email!=""
+                            : !isEmailValid && email!=""
                         }
                         placeholder="Enter Email"
                         label="Email"
@@ -350,7 +350,7 @@ export default function Register() {
                     </div>
                     <div id="Fields" className="mt-3">
                       <TextField
-                        error={!isPasswordValid && password}
+                        error={!isPasswordValid && password!=""}
                         type={showPassword ? "text" : "password"}
                         placeholder="Enter Password"
                         label="Password"
@@ -408,7 +408,7 @@ export default function Register() {
                     </div>
                     <div id="Fields">
                       <TextField
-                        error={confirmPassword != password && confirmPassword}
+                        error={confirmPassword != password && confirmPassword!=""}
                         type={showConPassword ? "text" : "password"}
                         placeholder="Confirm Password"
                         label="Password"
