@@ -58,7 +58,7 @@ export default function page() {
         
         
         
-        <Footer/>
+        <Footer  />
     </div>
      
   )
