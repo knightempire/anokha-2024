@@ -14,7 +14,7 @@ import Link from "next/link";
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
-import ToastAlert from "../_util/ToastAlerts";
+//import ToastAlert from "../_util/ToastAlerts";
 
 import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";
@@ -23,6 +23,12 @@ import validator from "validator";
 
 import Background from "../components/user/Background";
 import anokhalogo from "@/../public/images/anokha_circle.svg";
+import Helper from "./components/PasswordHelper";
+import TextField from "@mui/material/TextField";
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 export default function Register() {
   useEffect(() => {
@@ -39,6 +45,47 @@ export default function Register() {
   const [isAmrita, setisAmrita] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  // Regular expression for email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Regular expression for password validation
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+
+  //Regular expression to check amrita mail
+  const amritaRegex =
+    /^[a-zA-Z0-9._%+-]+@(cb\.students\.amrita\.edu|cb\.amrita\.edu|av\.students\.amrita\.edu|av\.amrita\.edu)$/;
+
+  // Check if email is valid
+  const isEmailValid = emailRegex.test(email);
+
+  //check if amrita mail or not
+  const isAmritaMail = amritaRegex.test(email);
+
+  // Regular expression for name validation max 25 chars
+  const nameRegex = /^[a-zA-Z ]{1,25}$/;
+
+  // Regular expression for college name validation max 100 chars
+  const collegeNameRegex = /^[a-zA-Z ,-]{1,100}$/;
+
+  // Check if password is valid
+  const isPasswordValid = passwordRegex.test(password);
+
+  //Regular expression for phone number validation
+  const phoneRegex = /^[0-9]{10}$/;
+
+  //check if phone numer is valid
+  const isPhoneValid = phoneRegex.test(phone);
+
+  // Check if name is valid
+  const isNameValid = nameRegex.test(name);
+
+  // Check if confirm password matches password
+  const isConfirmPasswordValid = password === confirmPassword;
+
+  // Check if college name is valid
+  const isCollegeNameValid = collegeNameRegex.test(collegeName);
+
+  const isCollegeCityValid = collegeNameRegex.test(collegeCity);
 
   const handleCheckboxChange = (e) => {
     setisAmrita(e.target.checked);
@@ -60,174 +107,59 @@ export default function Register() {
       studentCollegeName: collegeName, // Max 255 chars. Min 1 char.
       studentCollegeCity: collegeCity,
     });
-    let allValid = 1;
     // add toast messages unique to each of this if
-    if (
-      name == "" ||
-      name == undefined ||
-      typeof name != "string" ||
-      name.length > 255
-    ) {
-      allValid = 0;
-      ToastAlert(
-        "error",
-        "Invalid Name",
-        "Please enter a valid name",
-        toastRef
-      );
-      return;
-    } else if (
-      phone == "" ||
-      phone == undefined ||
-      !validator.isMobilePhone(phone)
-    ) {
-      allValid = 0;
-      ToastAlert(
-        "error",
-        "Invalid Phone Number",
-        "Please enter a phone number",
-        toastRef
-      );
-      return;
-    } else if (
-      password == "" ||
-      password == undefined ||
-      password.length < 8 ||
-      password.includes("-") ||
-      password.includes('"') ||
-      password != confirmPassword
-    ) {
-      allValid = 0;
-      ToastAlert(
-        "error",
-        "Invalid Password",
-        "Please enter a valid password",
-        toastRef
-      );
-      return;
-    } else if (
-      collegeName == "" ||
-      collegeName == undefined ||
-      typeof collegeName != "string" ||
-      collegeName.length > 255
-    ) {
-      allValid = 0;
-      ToastAlert(
-        "error",
-        "Invalid College Name",
-        "Please enter a valid college name",
-        toastRef
-      );
-      return;
-    }
-    if (
-      collegeCity == "" ||
-      collegeCity == undefined ||
-      typeof collegeCity != "string" ||
-      collegeCity.length > 255
-    ) {
-      allValid = 0;
-      ToastAlert(
-        "error",
-        "Invalid City",
-        "Please enter a valid city.",
-        toastRef
-      );
-      return;
-    }
-    if (isAmrita == 0) {
-      if (email == "" || email == undefined || !validator.isEmail(email)) {
-        allValid = 0;
-        ToastAlert(
-          "error",
-          "Invalid Email",
-          "Your email address seems invalid!",
-          toastRef
-        );
-        return;
-      }
-    } else if (isAmrita == 1) {
-      if (
-        email == "" ||
-        email == undefined ||
-        !email.endsWith("cb.students.amrita.edu")
-      ) {
-        allValid = 0;
-        ToastAlert(
-          "error",
-          "Invalid Email",
-          "Your amrita-email seems invalid!"
-        );
-        return;
-      }
-    }
-    allValid = 1
-    if (allValid == 1) {
-      try {
-        console.log(JSON.stringify({
+    try {
+      setLoading(true);
+      const response = await fetch(REGISTER_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
           studentFullName: name,
           studentEmail: email,
           studentPhone: phone,
           studentPassword: hashPassword(password),
           studentCollegeName: collegeName,
-          studentCollegeCity: "Coimbatore"}))
-        setLoading(true);
-        const response = await fetch(REGISTER_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            studentFullName: name,
-            studentEmail: email,
-            studentPhone: phone,
-            studentPassword: hashPassword(password),
-            studentCollegeName: collegeName,
-            studentCollegeCity: "Coimbatore",
-          }),
-        });
+          studentCollegeCity: collegeCity,
+        }),
+      });
 
-        const data = await response.json();
-        if (response.status === 200) {
-          ToastAlert(
-            "success",
-            "Success",
-            "Registration Successful!",
-            toastRef
-          );
-          console.log(data);
-          secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
-          secureLocalStorage.setItem("registerEmail", email);
+      const data = await response.json();
+      if (response.status === 200) {
+        ToastAlert("success", "Success", "Registration Successful!", toastRef);
+        console.log(data);
+        secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
+        secureLocalStorage.setItem("registerEmail", email);
 
-          setTimeout(() => {
-            router.replace("/register/verify");
-          }, 500);
-        } else if (response.status === 500) {
-          ToastAlert(
-            "error",
-            "Oops!",
-            "Something went wrong! Please try again later!",
-            toastRef
-          );
-          return;
-        } else if (data.message !== undefined || data.message !== null) {
-          ToastAlert("error", "Registration Failed", data.message, toastRef);
-        } else {
-          ToastAlert(
-            "error",
-            "Oops!",
-            "Something went wrong! Please try again later!",
-            toastRef
-          );
-          return;
-        }
-      } catch (e) {
-        ToastAlert("error", "Error", "Please try again!", toastRef);
-        console.log(e);
+        setTimeout(() => {
+          router.replace("/register/verify");
+        }, 500);
+      } else if (response.status === 500) {
+        ToastAlert(
+          "error",
+          "Oops!",
+          "Something went wrong! Please try again later!",
+          toastRef
+        );
+        return;
+      } else if (data.message !== undefined || data.message !== null) {
+        ToastAlert("error", "Registration Failed", data.message, toastRef);
+      } else {
+        ToastAlert(
+          "error",
+          "Oops!",
+          "Something went wrong! Please try again later!",
+          toastRef
+        );
+        return;
       }
-
+    } catch (e) {
+      ToastAlert("error", "Error", "Please try again!", toastRef);
+      console.log(e);
       setLoading(false);
     }
+    setLoading(false);
   };
 
   const [webGLColors, setWebGLColors] = useState({
@@ -237,26 +169,14 @@ export default function Register() {
   });
 
   const toastRef = useRef(null);
-  const RegisterFame = useRef(null);
-  const Logo = useRef(null);
-  const Heading = useRef(null);
-  const Register = useRef(null);
-  const Form = useRef(null);
 
-  useGSAP(() => {
-    let tl = new gsap.timeline();
-    tl.from(RegisterFame.current, { opacity: 0, duration: 1 });
-    tl.from(
-      Logo.current,
-      { opacity: 0, rotation: -360, duration: 0.3 },
-      "start"
-    );
-    tl.from(Heading.current, { opacity: 0, y: -30, duration: 0.3 }, "start");
-    tl.from(Form.current, { opacity: 0, duration: 0.3 });
-    tl.from("#Fields", { opacity: 0, stagger: 0.1, duration: 0.3 });
-    tl.from(Register.current, { opacity: 0, y: 20, duration: 0.3 });
-    tl.from("#Others", { opacity: 0, duration: 0.3 });
-  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConPassword, setShowConPassword] = useState(false);
+
+
+  const handleClickShowPassword = () => setShowPassword((showPassword) => !showPassword);
+  const handleClickShowConPassword = () => setShowConPassword((showConPassword) => !showConPassword);
+
 
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
@@ -269,8 +189,7 @@ export default function Register() {
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
             <Toast ref={toastRef} position="bottom-center" />
             <div
-              className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white"
-              ref={RegisterFame}
+              className="w-full rounded-[24px] bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white"
             >
               <Image
                 src={anokhalogo}
@@ -279,97 +198,105 @@ export default function Register() {
                 width={128}
                 height={128}
                 className="ml-auto mr-auto mt-4 h-16"
-                ref={Logo}
               />
               <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1
                   className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl"
-                  ref={Heading}
                 >
                   Register
                 </h1>
                 <form
                   className="space-y-4 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
                   onSubmit={handleSignUp}
-                  ref={Form}
                 >
-                  <div className="flex flex-col justify-center flex-1 space-y-5 md:border-r md:border-black md:pr-10 max-w-600">
+                  <div className="flex flex-col justify-center flex-1 space-y-8 md:border-r md:border-black md:pr-10 max-w-600">
                     <div id="Fields">
-                      <label
-                        htmlFor="name"
-                        className="block mb-2 text-sm font-medium text-black"
-                      >
-                        Your Name
-                      </label>
-                      <input
-                        type="text"
+                      <TextField
+                        error={!isNameValid && name}
+                        id="outlined-error-helper-text"
+                        placeholder={"Enter Name"}
+                        label="Name"
+                        value={name}
+                        helperText={
+                          !isNameValid && name
+                            ? "Should not contain special characters"
+                            : ""
+                        }
+                        sx={{
+                          width: "100%",
+                          borderRadius: 5,
+                        }}
                         onChange={(e) => {
                           setName(e.target.value);
                         }}
-                        name="name"
-                        id="name"
-                        className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                        placeholder="Name"
                         required
                       />
                     </div>
                     <div id="Fields">
-                      <label
-                        htmlFor="phone"
-                        className="block mb-2 text-sm font-medium text-black"
-                      >
-                        Phone Number
-                      </label>
-                      <input
+                      <TextField
+                        error={!isPhoneValid && phone}
+                        id="outlined-error-helper-text"
+                        placeholder={"+91 99999 99999"}
+                        label="Phone Number"
+                        value={phone}
+                        helperText={
+                          !isPhoneValid && phone
+                            ? "Should contain 10 digits"
+                            : ""
+                        }
+                        sx={{
+                          width: "100%",
+                          borderRadius: 5,
+                        }}
                         onChange={(e) => {
                           setPhone(e.target.value);
                         }}
-                        type="text"
-                        name="phone"
-                        id="phone"
-                        className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                        placeholder="+91 99999 99999"
                         required
                       />
                     </div>
                     <div id="Fields">
                       <div>
-                        <label
-                          htmlFor="college"
-                          className="block mb-2 text-sm font-medium text-black"
-                        >
-                          College Name
-                        </label>
-                        <input
+                        <TextField
+                          error={!isCollegeNameValid && collegeName}
+                          placeholder="Enter College Name"
+                          label="College Name"
+                          value={collegeName}
+                          helperText={
+                            !isCollegeNameValid && collegeName
+                              ? "Should contain only alphabets"
+                              : ""
+                          }
+                          sx={{
+                            width: "100%",
+                            borderRadius: 5,
+                            borderWidth: 5,
+                          }}
                           onChange={(e) => {
                             setCollegeName(e.target.value);
                           }}
-                          type="text"
-                          name="college"
-                          id="college"
-                          value={collegeName}
-                          className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                          placeholder="College Name"
+                          required
                           disabled={isAmrita}
                         />
                       </div>
-                      <div id="Fields">
-                        <label
-                          htmlFor="collegeCity"
-                          className="block mb-2 text-sm mt-5 font-medium text-black"
-                        >
-                          College City
-                        </label>
-                        <input
+                      <div id="Fields" className="mt-8">
+                        <TextField
+                          error={!isCollegeCityValid && collegeCity}
+                          placeholder="Enter College City"
+                          label="College City"
+                          value={collegeCity}
+                          helperText={
+                            !isCollegeCityValid && collegeCity
+                              ? "Should contain only alphabets"
+                              : ""
+                          }
+                          sx={{
+                            width: "100%",
+                            borderRadius: 5,
+                            borderWidth: 5,
+                          }}
                           onChange={(e) => {
                             setCollegeCity(e.target.value);
                           }}
-                          type="text"
-                          name="collegeCity"
-                          id="collegeCity"
-                          value={collegeCity}
-                          className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                          placeholder="City Name"
                           required
                         />
                       </div>
@@ -386,7 +313,7 @@ export default function Register() {
                         />
                         <label
                           htmlFor="amrita-student"
-                          className="text-sm font-medium text-black"
+                          className="text-sm font-medium text-[#1e1e1e]"
                           id="Others"
                         >
                           Amrita Student?
@@ -394,70 +321,173 @@ export default function Register() {
                       </div>
                     </div>
                   </div>
-                  <div className="flex flex-col flex-1 space-y-5">
+                  <div className="flex flex-col flex-1 gap-8">
                     <div id="Fields">
-                      <label
-                        htmlFor="email"
-                        className="block mb-2 text-sm font-medium text-black"
-                      >
-                        Your Email
-                      </label>
-                      <input
+                      <TextField
+                        error={
+                          isAmrita
+                            ? !isAmritaMail && email
+                            : !isEmailValid && email
+                        }
+                        placeholder="Enter Email"
+                        label="Email"
+                        value={email}
+                        helperText={
+                          isAmrita
+                            ? !isAmritaMail && email
+                              ? "Should match college email format"
+                              : ""
+                            : !isEmailValid && email
+                            ? "Not a valid email"
+                            : ""
+                        }
+                        sx={{
+                          width: "100%",
+                          borderRadius: 5,
+                          borderWidth: 5,
+                        }}
                         onChange={(e) => {
                           setEmail(e.target.value);
                         }}
-                        type="email"
-                        name="email"
-                        id="email"
-                        className=" bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                        placeholder="eon@anokha.amrita.edu"
                         required
                       />
                     </div>
-                    <div id="Fields">
-                      <label
-                        htmlFor="password"
-                        className="block mb-2 text-sm font-medium text-black mt-3"
-                      >
-                        Password
-                      </label>
-                      <input
+                    <div id="Fields" className="mt-3">
+                      <TextField
+                        error={!isPasswordValid && password}
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter Password"
+                        label="Password"
+                        value={password}
+                        sx={{
+                          width: "100%",
+                          borderRadius: 5,
+                          borderWidth: 5,
+                        }}
                         onChange={(e) => {
                           setPassword(e.target.value);
                         }}
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="••••••••"
-                        className=" border bg-transparent border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
                         required
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <IconButton
+                                onClick={handleClickShowPassword}
+                                edge="end"
+                              >
+                                {showPassword ? (
+                                  <VisibilityOff />
+                                ) : (
+                                  <Visibility />
+                                )}
+                              </IconButton>
+                            </InputAdornment>
+                          ),
+                        }}
                       />
+                      <div className="flex flex-row gap-8 text-[10px] mt-2 mx-2">
+                        <div className="flex flex-col gap-1">
+                          <div
+                            className={
+                              password
+                                ? /.*[A-Z].*/.test(password)
+                                  ? "text-green-600"
+                                  : "text-red-600"
+                                : ""
+                            }
+                          >
+                            Contains atleast 1 UPPERCASE alphabet
+                          </div>
+                          <div
+                            className={
+                              password
+                                ? /.*[a-z].*/.test(password)
+                                  ? "text-green-600"
+                                  : "text-red-600"
+                                : ""
+                            }
+                          >
+                            Contains atleast 1 lowercase alphabet
+                          </div>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <div
+                            className={
+                              password
+                                ? /.*[0-9].*/.test(password)
+                                  ? "text-green-600"
+                                  : "text-red-600"
+                                : ""
+                            }
+                          >
+                            Contains atleast 1 number
+                          </div>
+                          <div
+                            className={
+                              password
+                                ? /^.{8,}$/.test(password)
+                                  ? "text-green-600"
+                                  : "text-red-600"
+                                : ""
+                            }
+                          >
+                            8 characters in length
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div id="Fields">
-                      <label
-                        htmlFor="conf-password"
-                        className="block mb-2 text-sm font-medium text-black mt-3"
-                      >
-                        Confirm Password
-                      </label>
-                      <input
+                      <TextField
+                        error={confirmPassword != password && confirmPassword}
+                        type={showConPassword ? "text" : "password"}
+                        placeholder="Confirm Password"
+                        label="Password"
+                        value={confirmPassword}
+                        helperText={
+                          !isPasswordValid && password
+                            ? "Should match password"
+                            : ""
+                        }
+                        sx={{
+                          width: "100%",
+                          borderRadius: 5,
+                          borderWidth: 5,
+                        }}
                         onChange={(e) => {
                           setConfirmPassword(e.target.value);
                         }}
-                        type="password"
-                        name="conf-password"
-                        id="conf-password"
-                        placeholder="••••••••"
-                        className=" border bg-transparent border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
                         required
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <IconButton
+                                onClick={handleClickShowConPassword}
+                                edge="end"
+                              >
+                                {showConPassword ? (
+                                  <VisibilityOff />
+                                ) : (
+                                  <Visibility />
+                                )}
+                              </IconButton>
+                            </InputAdornment>
+                          ),
+                        }}
                       />
                     </div>
                     <div className="text-center">
                       <button
                         type="submit"
                         className="w-[200px] mt-3 text-black bg-[#f69c18] mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed"
-                        disabled={loading}
-                        ref={Register}
+                        disabled={
+                          loading ||
+                          !isCollegeNameValid ||
+                          !isNameValid ||
+                          !isPhoneValid ||
+                          !isPasswordValid ||
+                          !isConfirmPasswordValid ||
+                          (isAmrita ? !isAmritaMail : !isEmailValid)
+                        }
                       >
                         Sign Up
                       </button>

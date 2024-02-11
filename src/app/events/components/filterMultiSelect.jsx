@@ -1,12 +1,14 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import "primereact/resources/themes/saga-blue/theme.css";
+
+import "primereact/resources/themes/arya-orange/theme.css";
 import "primereact/resources/primereact.min.css";
 import { MultiSelect } from "primereact/multiselect";
 
 export default function FilterComponent({
-  icon,
+  needSearch,
+  type,
   name,
   options,
   sendSelectedOption,
@@ -14,17 +16,20 @@ export default function FilterComponent({
   const [curr_options, setCurrOptions] = useState(null);
   const opt = [{ name: "hi", val: "hi", name: "hello", val: "hello" }];
   useEffect(() => {
-    console.log(curr_options);
+    sendSelectedOption(curr_options, type)
   }, [curr_options]);
 
   return (
     <div className="z-13">
       <MultiSelect
+        filter={needSearch}
         options={options}
-        optionLabel="name"
-        optionValue="val"
         placeholder={name}
-        onChange={(e) => console.log(e.value)}
+        value={curr_options}
+        maxSelectedLabels={3}
+        onChange={(e) => setCurrOptions(e.value)}
+        display="chip"
+        className="w-[14rem]"
       />
     </div>
   );

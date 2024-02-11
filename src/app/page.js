@@ -12,9 +12,6 @@ import Lenis from "@studio-freight/lenis";
 import { useEffect, useRef, useState } from "react";
 import projects from "./info_data";
 import FilmGallery from "./components/FilmGallery";
-
-import {NextUIProvider} from "@nextui-org/react";
-
  
 export default function Home() {
   const container = useRef(null);
@@ -38,12 +35,11 @@ export default function Home() {
   const [cardColor, setCardColor] = useState(webGLColors);
 
   return (
-     
     <main className="flex min-h-screen flex-col bg-[#121212]">
-
       <WebGLApp colors={cardColor} />
       <Navbar login={true} />
       <Hero className="z-10" />
+      {/* This is temprovary sponsor component may change in future */}
       <SponsorsMarquee />
       <div ref={container} className="sticky z-10">
         {projects.map((project, index) => {
@@ -63,6 +59,5 @@ export default function Home() {
       <AnokhaMarquee />
       <Footer current_page="home" />
     </main>
-     
   );
 }

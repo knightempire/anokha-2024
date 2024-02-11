@@ -11,9 +11,16 @@ import {Button } from "@material-tailwind/react";
 import HeroSection from './_components/HeroSection'
 import IntelHero from './_components/IntelHero'
 import Phases from './_components/Phases'
+
 import { useState,useEffect } from 'react'
 import RoundOne from './_components/RoundOne'
 import RoundOnePt2 from './_components/RoundOnePt2'
+
+
+import Resources from './_components/Resources'
+import FAQs from './_components/FAQs'
+import Rules from './_components/Rules'
+import Judging from './_components/Judging'
 
 export default function page() {
 
@@ -55,7 +62,7 @@ export default function page() {
     }
   return (
   
-        <div>
+        <div className="overflow-x-hidden w-full"> 
             
         <Navbar />
         
@@ -64,13 +71,20 @@ export default function page() {
             <Button variant='text'>Materials</Button>
             <Button variant='text'>Register</Button>
         </div> */}
+
         
         {getButtonText()}
+
+       
         <Price />
         <About/>
-        <Themes/>
         <Phases/>
+        <Themes/>
         <Timeline/> 
+        <Rules/>
+        <Judging/>
+        <Resources/>
+        <FAQs/>
         <Footer/>
     </div>
      

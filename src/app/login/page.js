@@ -8,7 +8,7 @@ import { LOGIN_URL } from "../_util/constants";
 import { hashPassword } from "../_util/hash";
 import ToastAlert from "../_util/ToastAlerts";
 import validator from "validator";
-
+import secureLocalStorage from "react-secure-storage";
 import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -57,7 +57,12 @@ export default function Login() {
       studentPassword == undefined ||
       studentPassword.length < 8
     ) {
-      ToastAlert("error","Invalid Password", "The password provided is invalid!", toastRef);
+      ToastAlert(
+        "error",
+        "Invalid Password",
+        "The password provided is invalid!",
+        toastRef
+      );
       return;
     }
     try {
@@ -76,7 +81,26 @@ export default function Login() {
       const data = await response.json();
       if (response.status === 200) {
         console.log(data);
-        ToastAlert('success', "Successful Login", "You have logged in successfully!", toastRef);
+ 
+        secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
+        secureLocalStorage.setItem("StudentFullName", data["studentFullName"]);
+        secureLocalStorage.setItem("registerEmail", data["studentEmail"]);
+        secureLocalStorage.setItem("isLoggedIn", 1);
+        secureLocalStorage.setItem("isAmritaCBE", data["isAmritaCBE"]);
+        secureLocalStorage.setItem("needActivePassport", data["needPassport"]);
+        secureLocalStorage.setItem("studentAccountStatus", data["studentAccountStatus"]);
+        secureLocalStorage.setItem("studentPhone", data["studentPhone"]);
+
+        
+
+      
+        ToastAlert(
+          "success",
+          "Successful Login",
+          "You have logged in successfully!",
+          toastRef
+        );
+         
         router.replace("/");
       } else if (response.status === 500) {
         ToastAlert(
@@ -94,7 +118,6 @@ export default function Login() {
           "Something went wrong! Please try again!",
           toastRef
         );
-        // alertError("Oops!", "Something went wrong! Please try again later!");
       }
     } catch (error) {
       console.log(error);
@@ -104,7 +127,7 @@ export default function Login() {
   const [webGLColors, setWebGLColors] = useState({
     color1: [43 / 255, 30 / 255, 56 / 255],
     color2: [11 / 255, 38 / 255, 59 / 255],
-    color3: [15 / 255, 21 / 255, 39 / 255], 
+    color3: [15 / 255, 21 / 255, 39 / 255],
   });
 
   useGSAP(() => {
@@ -123,12 +146,12 @@ export default function Login() {
       <div className="block">
         <Navbar />
         <div className="p-2">
-            <Toast ref={toastRef} position="bottom-center" className="p-5" />
+          <Toast ref={toastRef} position="bottom-center" className="p-5" />
         </div>
         <div className="relative min-h-screen">
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
             <div
-              className="w-full  rounded-md bg-clip-padding bg-opacity-80  md:mt-0 sm:max-w-md xl:p-0 bg-white "
+              className="w-full  rounded-[24px] bg-clip-padding bg-opacity-80  md:mt-0 sm:max-w-md xl:p-0 bg-white "
               ref={loginFrame}
             >
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">

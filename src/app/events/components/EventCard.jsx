@@ -4,6 +4,7 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Star from "../../../../public/images/star.png";
 import Unstar from "../../../../public/images/unstar.png";
+import { STAR_UNSTAR_EVENT_URL } from "@/app/_util/constants";
 
 export default function EventCard({
   imgSrc,
@@ -23,7 +24,7 @@ export default function EventCard({
   const [starred, toggleStar] = useState(0);
 
   useEffect(() => {
-    fetch("https://web.abhinavramakrishnan.tech/api/user/toggleStarredEvent", {
+    fetch(STAR_UNSTAR_EVENT_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
