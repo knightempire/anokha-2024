@@ -31,7 +31,7 @@ const FAQs = () => {
       <h1 className="text-[3rem] font-bold text-center text-white md:pb-2">FAQs</h1>
       <div className='md:w-[50%] mx-auto sm:w-[90%]'>
         {qna.map((val, index) =>(
-            <Accordion >
+            <Accordion className='rounded my-2'>
             <AccordionSummary 
             expandIcon={<ArrowDownwardIcon />}
             aria-controls="panel1-content"
