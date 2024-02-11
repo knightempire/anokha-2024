@@ -21,7 +21,7 @@ export default function FirstRegister({
                   height={128}
                   className="ml-auto mr-auto mt-4 h-16"
                 />  */}
-      <Image src={oneapilogo} width={80} className="ml-auto mr-auto -mt-9" />
+      <Image src={oneapilogo} width={80} alt="oneapilogo" className="ml-auto mr-auto -mt-9" />
       <div className="w-full flex flex-col justify-center p-2 space-y-4  sm:p-8">
         <h1 className="text-xl -mt-4 mx-auto font-bold leading-tight tracking-tight text-black md:text-2xl">
           Register
