@@ -33,16 +33,16 @@ export default function Price() {
     });
   };
   return (
-    <div>
-        <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:ml-[20%] sm:ml-[10%] mb-20">
+    <div className=" ">
+        <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:ml-[20%]  sm:ml-[10%] mb-20">
             <div>
                 <div className="flex flex-row gap-4 items-center justify-start  mt-12">
-                    <FaTrophy size="30" color="darkblue"/>
+                    <FaTrophy size="30" color="#1c5dad"/>
                     <div className="text-2xl capitalize">Price money worth 1000</div>
                 </div>
 
                 <div className="flex flex-row gap-4 items-center justify-start mt-12">
-                  <MdGroups2 size="40" color="darkblue"/>
+                  <MdGroups2 size="40" color="#1c5dad"/>
                 <div className="text-2xl">Who can participate?</div> 
                 </div>
                 <div className="mt-4 text-xl w-4/5 ">
@@ -69,6 +69,33 @@ export default function Price() {
                       <div className="flex items-center gap-2">
                         <ImLocation/> Coimbatore, India
                       </div>
+                </div>
+
+                <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
+                    <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+                      <span className="countdown font-mono text-5xl">
+                        <span style={{"--value":15}}></span>
+                      </span>
+                      days
+                    </div> 
+                    <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+                      <span className="countdown font-mono text-5xl">
+                        <span style={{"--value":10}}></span>
+                      </span>
+                      hours
+                    </div> 
+                    <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+                      <span className="countdown font-mono text-5xl">
+                        <span style={{"--value":24}}></span>
+                      </span>
+                      min
+                    </div> 
+                    <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
+                      <span className="countdown font-mono text-5xl">
+                        <span style={{"--value":14}}></span>
+                      </span>
+                      sec
+                    </div>
                 </div>
               <div>
               <Button onClick={(e)=>{router.replace("/hackathon/register")}} className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-0 md:mt-1 rounded-[5px] mt-8 ml-3">
