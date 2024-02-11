@@ -219,3 +219,11 @@
 .card:nth-child(even) > .info > .title::before {
   right: -72px;
 }
+
+/*Instruction Carousel*/
+.crsl {
+  width: 350px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+}
+
