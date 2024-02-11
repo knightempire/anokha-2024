@@ -49,7 +49,7 @@ function IntelHero() {
     //         </div>
     //     </div>
     // </div>
-    <div className="w-full h-[100vh] bg-[rgb(10,17,58)] overflow-hidden">
+    <div className="w-[100%] overscroll-x-none h-[100vh] bg-[rgb(10,17,58)]">
       <div className="font-poppins text-black mx-auto">
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] md:left-[25%] sm:l-[5%] top-[120px] absolute blur-3xl levitate overflow-hidden"></div>
         <div className="bg-white md:w-[40%] bg-opacity-80 sm:w-[80%] px-10 py-12 rounded-xl sm:mx-auto top-[250px] relative">
@@ -58,7 +58,8 @@ function IntelHero() {
             Intel AI Hackathon
           </p>
           <div className="text-xs  w-fit py-2 bg-blue-600 px-4 mt-2 rounded-full text-white flex items-center gap-1">
-          <IoLocation /> Amrita Vishwa Vidyapeetham, Coimbatore</div>
+          <IoLocation /> Amrita Vishwa Vidyapeetham, Coimbatore
+          </div>
           {/* <button className='text-base p-3 bg-[#03C7FD] mt-3 rounded'>IDC Materials</button> */}
           <div className="flex md:gap-4 sm:gap-2 flex-wrap mt-2">
             <Button className="text-[1rem] text-black border border-black p-3 px-8 sm:mt-0 md:mt-1  rounded-[15px] bg-transparent">
