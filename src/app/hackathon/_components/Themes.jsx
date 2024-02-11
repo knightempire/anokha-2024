@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Image from "next/image";
-import Glow from "./Glow";
 const Themes = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   // const [selectedTab1, setSelectedTab1] = useState(0);
@@ -44,35 +43,35 @@ const Themes = () => {
     },
   ];
 
-  const data1 = [
-    {
-      img: "https://i.imgur.com/xWYWhSP.png",
-      text: "Generative AI",
-    },
-    {
-      img: "https://i.imgur.com/nRnbpu1.png",
-      text: "IOT",
-    },
-    {
-      img: "https://i.imgur.com/mEpBmyc.png",
-      text: "Open Ended",
-    },
-  ];
+  // const data1 = [
+  //   {
+  //     img: "https://i.imgur.com/xWYWhSP.png",
+  //     text: "Generative AI",
+  //   },
+  //   {
+  //     img: "https://i.imgur.com/nRnbpu1.png",
+  //     text: "IOT",
+  //   },
+  //   {
+  //     img: "https://i.imgur.com/mEpBmyc.png",
+  //     text: "Open Ended",
+  //   },
+  // ];
 
-  const data2 = [
-    {
-      img: "https://i.imgur.com/EAk6FLg.png",
-      text: "Health Care",
-    },
-    {
-      img: "https://i.imgur.com/2SSMh8E.png",
-      text: "Autonomous Vehicles",
-    },
-    {
-      img: "https://i.imgur.com/hkCamEf.png",
-      text: "Cyber Security",
-    },
-  ];
+  // const data2 = [
+  //   {
+  //     img: "https://i.imgur.com/EAk6FLg.png",
+  //     text: "Health Care",
+  //   },
+  //   {
+  //     img: "https://i.imgur.com/2SSMh8E.png",
+  //     text: "Autonomous Vehicles",
+  //   },
+  //   {
+  //     img: "https://i.imgur.com/hkCamEf.png",
+  //     text: "Cyber Security",
+  //   },
+  // ];
 
   const data = [
     {
