@@ -12,6 +12,8 @@ export const useAuth = ()=> {
         window.location.href = "/";
     }
 
+    
+
   return {
     SignUp,SignOut
 }
