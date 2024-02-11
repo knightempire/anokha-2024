@@ -16,7 +16,7 @@ import FAQs from './_components/FAQs'
 export default function page() {
   return (
   
-        <div>
+        <div className="overflow-x-hidden w-full"> 
             
         <Navbar />
         
@@ -25,7 +25,7 @@ export default function page() {
             <Button variant='text'>Materials</Button>
             <Button variant='text'>Register</Button>
         </div> */}
-        <IntelHero/>
+        <IntelHero className="overflow-x-hidden w-full"/>
         <Price />
         <About/>
         <Phases/>

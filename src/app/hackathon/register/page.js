@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react'
 import {Button} from "@material-tailwind/react"
 import { FaArrowRight } from "react-icons/fa";
 import {HACKATHON_TEAM_REGISTER_URL} from  "@/app/_util/constants";
-
+import Navbar from '../_components/HackathonHeader'
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
@@ -212,6 +212,7 @@ const Register = () => {
 
   return (
     <div>
+      <Navbar />
       <main className="w-full h-full bg-[rgb(10,17,58)]">
       {/* <WebGLApp colors={webGLColors} /> */}
 

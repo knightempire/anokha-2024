@@ -1,5 +1,6 @@
-const BASE_URL = ""
-const HACKATHON_URL = ""
+const BASE_URL = " "
+const HACKATHON_URL = " "
+
 
 export const LOGIN_URL = BASE_URL + "/loginStudent"
 export const REGISTER_URL = BASE_URL + "/registerStudent"

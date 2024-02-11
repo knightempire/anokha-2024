@@ -106,11 +106,11 @@ const Navigationbar = () => {
           <ul className="flex p-2 md:p-0 md:flex-row lg:space-x-2 mt-0 ">
             {navLinks.map((link, index) => (
               <li key={index}>
-                <Button variant="text"  className=" text-white  h-[35px] hover:bg-gray-700" >
+                <Button variant="text"  className=" h-[40px] hover:bg-gray-700" >
                   <Link href={link.path}
-                    className="block   text-gray-300   text-[15px]  rounded md:p-0 hover:text-white"
+                    className="  text-gray-300   text-[13px]  rounded md:p-0 hover:text-white"
                                 >
-                    {link.title}
+                    <div className="my-auto">{link.title}</div>
                   </Link>
                 </Button>
               </li>
@@ -143,4 +143,3 @@ const Navigationbar = () => {
 };
 
 export default Navigationbar;
-
