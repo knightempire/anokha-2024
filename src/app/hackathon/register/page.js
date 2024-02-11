@@ -135,7 +135,7 @@ const Register = () => {
       <div className="block my-auto space-y-24 md:space-y-10">
         {/* <Navbar />/ */}
         <div className="relative min-h-screen">
-        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[120px] absolute blur-3xl levitate"></div>
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[100px] absolute blur-3xl levitate"></div>
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
 
           <form className="space-y-4 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
@@ -208,7 +208,7 @@ const Register = () => {
 
                             <div className='flex'>
                             <select id="platform" className="bg-transparent mr-2 border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5 border-y-1">
-                            <option value="none" selected>None</option>
+                            <option value="none" defaultValue>None</option>
                             <option value="devfolio">DevFolio</option>
                             <option value="unstop">Unstop</option>
                             <option value="devpost">Devpost</option>
