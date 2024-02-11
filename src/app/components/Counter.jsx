@@ -46,7 +46,7 @@ const CountdownTimer = () => {
           </div>
           <div className="flex relative h-40 w-full m-2 text-[240px] font-thin items-center justify-center">
             {timeLeft.days}
-            <div className="absolute top-[80%] left-[90%] flex text-2xl bg-fuchsia-600 p-1">
+            <div className="absolute top-[80%] left-[90%] flex text-2xl bg-orange-500 p-1">
               Days
             </div>
           </div>

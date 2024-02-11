@@ -16,8 +16,8 @@ const Card = ({ title, description, src }) => {
     const tl1 = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
-        start: "top 60%",
-        end: "bottom 20%",
+        start: "-25% 50%",
+        end: "125% 20%",
         scrub: true,
       },
     });
@@ -174,8 +174,8 @@ const Card = ({ title, description, src }) => {
     const tl1 = gsap.timeline({
       scrollTrigger: {
         trigger: phoneContainer.current,
-        start: "top 50%",
-        end: "bottom 0%",
+        start: "20% 50%",
+        end: "120% 0%",
         scrub: true,
         markers: true,
       },
@@ -334,7 +334,7 @@ const Card = ({ title, description, src }) => {
 
   return (
     <div>
-      <div className="pc-view lg:flex xl:flex md:hidden sm:hidden h-screen items-center justify-center sticky overflow-hidden top-10">
+      <div className="pc-view lg:flex xl:flex md:hidden sm:hidden h-screen items-center justify-center sticky top-10">
         <div
           className="flex flex-col relative -top-20 h-[73vh] w-[65vw] bg-[#121212] rounded-xl transform origin-top my-10 top-5"
           ref={container}
