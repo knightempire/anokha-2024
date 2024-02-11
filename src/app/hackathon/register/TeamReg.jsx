@@ -222,7 +222,7 @@ const Register = () => {
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[100px] absolute blur-3xl levitate"></div>
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
 
-          <form className="space-y-4 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
+          <form className="space-y-4 mt-10 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
                 //   onSubmit={handleSignUp}
                 >
             <div className="w-full md:w-[560px] md:hidden  md:h-[600px]  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
@@ -357,7 +357,7 @@ const Register = () => {
             {
                 currentStep === 0? <FirstRegister  handle_buttonone_click={handle_button_next_click} TeamName = {[teamName,setTeamName]} NoofMembers={[noofMembers,setNoofMembers]} platform={[platform,setPlatform]} />
                 :currentStep === 1 ?  <SecondRegister me1={member1Email} mi1={member1IDC} me2={member2Email} mi2={member2IDC} member1Email={setMember1Email} member1IDC = {setMember1IDC} member2Email={setMember2Email } member2IDC={setMember2IDC}  handle_next_click={handle_button_next_click} handle_prev_click = {handle_button_Prev_click}/> 
-                : currentStep === 2 ? <ThirdRegister n={noofMembers} me3={member3Email} mi3={member3IDC} me4={member4Email} mi4={member4IDC} member3Email={setMember3Email} member3IDC={setMember3IDC} member4Email={setMember4Email} member4IDC={setMember4IDC} handle_register_click={handle_button_register_click} handle_prev_click = {handle_button_Prev_click} />:null
+                : currentStep === 2 ? <ThirdRegister n={noofMembers} me3={member3Email} mi3={member3IDC} me4={member4Email} mi4={member4IDC} member3Email={setMember3Email} member3IDC={setMember3IDC} member4Email={setMember4Email} member4IDC={setMember4IDC} mem12data={{"me1":member1Email, "mi1":member1IDC, "me2":member2Email, "mi2":member2IDC}} handle_register_click={handle_button_register_click} handle_prev_click = {handle_button_Prev_click} />:null
             
             }
 

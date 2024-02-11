@@ -29,13 +29,15 @@ export default function Login() {
 
   const [studentEmail, setStudentEmail] = useState("");
   const [studentPassword, setStudentPassword] = useState("");
+  const [loading, setLoading] = useState(false)
 
   const router = useRouter();
 
   const HandleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://anokha:1957", {
+      setLoading(true)
+      const response = await fetch(LOGIN_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +52,7 @@ export default function Login() {
       const data = await response.json();
       if (response.status === 200) {
         console.log(data);
-
+        setLoading(false)
         secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
         secureLocalStorage.setItem("StudentFullName", data["studentFullName"]);
         secureLocalStorage.setItem("registerEmail", data["studentEmail"]);
@@ -72,6 +74,7 @@ export default function Login() {
 
         router.replace("/");
       } else if (response.status === 500) {
+        setLoading(false)
         ToastAlert(
           "error",
           "Oops!",
@@ -79,8 +82,10 @@ export default function Login() {
           toastRef
         );
       } else if (data.message !== undefined || data.message !== null) {
+        setLoading(false)
         ToastAlert("error", "Login Failed", `${data.message}`, toastRef);
       } else {
+        setLoading(false)
         ToastAlert(
           "error",
           "Oops!",
@@ -89,6 +94,7 @@ export default function Login() {
         );
       }
     } catch (error) {
+      setLoading(false)
       console.log(error);
     }
   };
@@ -173,7 +179,7 @@ export default function Login() {
                     type="submit"
                     onClick={HandleLogin}
                     className="w-full text-black bg-[#f69c18] hover:bg-[#f69c18] focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed"
-                    disabled={!validator.isEmail(studentEmail)}
+                    disabled={!validator.isEmail(studentEmail) || loading}
                   >
                     Sign in
                   </button>
