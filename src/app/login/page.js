@@ -35,7 +35,7 @@ export default function Login() {
   const HandleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://anokha:1957", {
+      const response = await fetch(LOGIN_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

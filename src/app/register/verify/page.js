@@ -1,6 +1,4 @@
 "use client";
-
-import Background from "@/app/components/user/Background";
 import { LoadingScreen } from "@/app/_util/LoadingScreen/LoadingScreen";
 
 import { STUDENT_REGISTER_VERIFY_URL } from "@/app/_util/constants";
