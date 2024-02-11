@@ -101,7 +101,7 @@ const Events = () => {
   };
 
   useEffect(() => {
-    fetch("http://172.17.9.35:1957/api/user/getAllEvents", {
+    fetch(ALL_EVENTS_URL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

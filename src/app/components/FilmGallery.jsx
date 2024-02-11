@@ -35,7 +35,6 @@ const FilmGallery = () => {
         start: "top 50%",
         end: "+=100%",
         scrub: true,
-        markers: true,
       },
     });
 

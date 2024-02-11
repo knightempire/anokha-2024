@@ -31,12 +31,12 @@ const SponsorsMarquee = () => {
         <SponsorElement src="https://i.imgur.com/dAzPvPb.jpg" />
         <SponsorElement src="https://i.imgur.com/ACCqHNF.jpg" />
         <SponsorElement src="https://i.imgur.com/rsx1kuG.jpg" />
-        <SponsorElement src="https://i.imgur.com/VeFkJIy.png" />
+        <SponsorElement src="https://i.imgur.com/xr13mRq.png" />
         <SponsorElement src="https://i.imgur.com/5BlpVzJ.jpg" />
         <SponsorElement src="https://i.imgur.com/dAzPvPb.jpg" />
         <SponsorElement src="https://i.imgur.com/ACCqHNF.jpg" />
         <SponsorElement src="https://i.imgur.com/rsx1kuG.jpg" />
-        <SponsorElement src="https://i.imgur.com/VeFkJIy.png" />
+        <SponsorElement src="https://i.imgur.com/xr13mRq.png" />
       </Marquee>
     </div>
   );
