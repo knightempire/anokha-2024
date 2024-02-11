@@ -18,7 +18,7 @@ import Judging from './_components/Judging'
 export default function page() {
   return (
   
-        <div className="overflow-x-hidden w-full"> 
+        <div className="overflow-x-hidden w-full bg-gray-200"> 
             
         <Navbar />
         
@@ -31,7 +31,7 @@ export default function page() {
         <Price />
         <About/>
         <Phases/>
-        <Themes/>
+        <Themes />
         <Timeline/> 
         <Rules/>
         <Judging/>
