@@ -75,16 +75,15 @@ const Resources = () => {
         {toolkits.map((val, index) => (
           <div
             key={index}
-            className="w-[90%]  bg-gray-900 text-white rounded h-full mb-10 p-5"
+            className="w-[90%]  bg-blue-800 text-white rounded h-full mb-10 p-5"
           >
             <div className="m-auto h-full w-full">
-              <p className="text-lg px-6 py-8 text-left bg-blue-800 rounded">
+              <p className="text-lg md:px-6 py-8 text-left rounded">
                 {val.title}
               </p>
               <a
                 href={val.link}
-                className="select-none rounded-lg bg-white py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-black shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none mx-6 my-8 "
-              >
+                className="select-none rounded-lg bg-white py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-black shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none md:mx-6 my-5">
                 Learn More!
               </a>
             </div>

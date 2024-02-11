@@ -13,6 +13,8 @@ import IntelHero from './_components/IntelHero'
 import Phases from './_components/Phases'
 import Resources from './_components/Resources'
 import FAQs from './_components/FAQs'
+import Rules from './_components/Rules'
+import Judging from './_components/Judging'
 export default function page() {
   return (
   
@@ -30,8 +32,9 @@ export default function page() {
         <About/>
         <Phases/>
         <Themes/>
-        
         <Timeline/> 
+        <Rules/>
+        <Judging/>
         <Resources/>
         <FAQs/>
         <Footer/>

@@ -51,14 +51,14 @@ function IntelHero() {
     // </div>
     <div className="w-[100%] overscroll-x-none h-[100vh] bg-[rgb(10,17,58)]">
       <div className="font-poppins text-black mx-auto">
-        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[120px] absolute blur-3xl levitate"></div>
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] md:left-[25%] sm:l-[5%] top-[120px] absolute blur-3xl levitate overflow-hidden"></div>
         <div className="bg-white md:w-[40%] bg-opacity-80 sm:w-[80%] px-10 py-12 rounded-xl sm:mx-auto top-[250px] relative">
           <Image src={oneapilogo} width={150} className="mt-[-100px]" />
           <p className="text-[3rem]  font-bold sm:leading-[100%] mt-2">
             Intel AI Hackathon
           </p>
-          <div className="text-xs  w-fit py-2 bg-green-500 px-4 mt-2 rounded-full text-white flex items-center gap-1">
-          <IoLocation size={15}/> Amrita Vishwa Vidyapeetham, Coimbatore
+          <div className="text-xs  w-fit py-2 bg-blue-600 px-4 mt-2 rounded-full text-white flex items-center gap-1">
+          <IoLocation /> Amrita Vishwa Vidyapeetham, Coimbatore
           </div>
           {/* <button className='text-base p-3 bg-[#03C7FD] mt-3 rounded'>IDC Materials</button> */}
           <div className="flex md:gap-4 sm:gap-2 flex-wrap mt-2">
