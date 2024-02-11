@@ -1,4 +1,4 @@
-const BASE_URL = "https://web.abhinavramakrishnan.tech/api/";
+const BASE_URL = ""
 
 export const LOGIN_URL = BASE_URL + "/loginStudent";
 export const REGISTER_URL = BASE_URL + "/registerStudent";
