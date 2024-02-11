@@ -28,8 +28,9 @@ export default function page() {
         <IntelHero/>
         <Price />
         <About/>
-        <Themes/>
         <Phases/>
+        <Themes/>
+        
         <Timeline/> 
         <Resources/>
         <FAQs/>
