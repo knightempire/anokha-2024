@@ -1,7 +1,16 @@
 @font-face {
-    font-family: 'Roobert-Regular';
-    src: url('/fonts/Roobert-Font/Roobert-Regular/Roobert-Regular.tff') format('tff');
-    /* Add additional font formats if needed */
-    font-weight: normal;
-    font-style: normal;
+  font-family: "Roobert-Regular";
+  src: url("/fonts/Roobert-Font/Roobert-Regular/Roobert-Regular.tff")
+    format("tff");
+  /* Add additional font formats if needed */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Spin-cycle";
+  src: url("/fonts/SPINC___.TTF") format("tff");
+  /* Add additional font formats if needed */
+  font-weight: bold;
+  font-style: normal;
 }
