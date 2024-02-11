@@ -15,6 +15,7 @@ import Resources from './_components/Resources'
 import FAQs from './_components/FAQs'
 import Rules from './_components/Rules'
 import Judging from './_components/Judging'
+import WinnerPrice from './_components/WinnerPrice'
 export default function page() {
   return (
   
@@ -35,6 +36,7 @@ export default function page() {
         <Timeline/> 
         <Rules/>
         <Judging/>
+        <WinnerPrice/>
         <Resources/>
         <FAQs/>
         <Footer/>
