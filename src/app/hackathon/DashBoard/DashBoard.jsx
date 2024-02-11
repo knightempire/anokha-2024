@@ -1,5 +1,5 @@
 "use client"
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useRef} from 'react'
 import {Button } from "@material-tailwind/react";
 import {HACKATHON_DASHBOARD_URL} from "@/app/_util/constants";
 import secureLocalStorage from "react-secure-storage";
@@ -8,79 +8,92 @@ import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
 import ToastAlert from "@/app/_util/ToastAlerts";
 import Navbar from '../_components/HackathonHeader'
+import TeamDetails from '../_components/_DashBoard/TeamDetails';
+import RoundDetails from '../_components/_DashBoard/RoundDetails';
+import RoundOneComp from '../_components/_DashBoard/RoundOneComp';
  
 
 
 
 export default function page() {
+     
 
-const [registerEmail, setRegisterEmail] = useState("");
-const [registerToken, setRegisterToken] = useState("");
+    const [registerEmail, setRegisterEmail] = useState("");
+    const [registerToken, setRegisterToken] = useState("");
 
-const handleclick = async () => {
+    useEffect(() => {
+        setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
+        setRegisterToken(secureLocalStorage.getItem("registerToken"));
+      }, []);
+
+    const handleclick = async () => {
+        
+
+        try {
+        const response = await fetch(HACKATHON_DASHBOARD_URL, {
+            method: "GET",
+            headers: {
+            
+            "Authorization": "Bearer " + registerToken,
+            },
+            
+        });
+
+        const data = await response.json();
+        if (response.status === 200) {
+            // ToastAlert('success', "Success", "Registration successful", toastRef);
+            alertSuccess("Registration Successful");
+            console.log(data);
+            
+        } else if (response.status === 500) {
+            // ToastAlert('error', "Oops!", "Something went wrong! Please try again later!", toastRef);
+            alertError("Oops!", "Something went wrong! Please try again later!");
+        } else if (data.message !== undefined || data.message !== null) {
+            // ToastAlert('error', "Oops!", "Something went wrong! Please try again later!", toastRef);
+            alertError("Registration Failed", data.message);
+        } else {
+            // ToastAlert('error', "Oops!", 'Something went wrong! Please try again later', toastRef);
+            alertError("Oops!", "Something went wrong! Please try again later!");
+        }
+        } catch (e) {
+        console.log(e);
+        }
     
-
-    try {
-      const response = await fetch(HACKATHON_DASHBOARD_URL, {
-        method: "GET",
-        headers: {
-          
-          "Authorization": "Bearer " + registerToken,
-        },
-         
-      });
-
-      const data = await response.json();
-      if (response.status === 200) {
-        // ToastAlert('success', "Success", "Registration successful", toastRef);
-        // alert("Registration Successful");
-        console.log(data);
-         
-      } else if (response.status === 500) {
-        // ToastAlert('error', "Oops!", "Something went wrong! Please try again later!", toastRef);
-        // alertError("Oops!", "Something went wrong! Please try again later!");
-      } else if (data.message !== undefined || data.message !== null) {
-        // ToastAlert('error', "Oops!", "Something went wrong! Please try again later!", toastRef);
-        // alertError("Registration Failed", data.message);
-      } else {
-        // ToastAlert('error', "Oops!", 'Something went wrong! Please try again later', toastRef);
-        // alertError("Oops!", "Something went wrong! Please try again later!");
-      }
-    } catch (e) {
-      console.log(e);
     }
-  
-}
-useEffect(() => {
-    setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
-    setRegisterToken(secureLocalStorage.getItem("registerToken"));
-  }, []);
+
+    const alertError = (summary, detail) => {
+      toast.current.show({
+        severity: "error",
+        summary: summary,
+        detail: detail,
+      });
+    };
+    
+    const alertSuccess = (summary, detail) => {
+      toast.current.show({
+        severity: "success",
+        summary: summary,
+        detail: detail,
+      });
+    };
+
   return (
     
     <div>
       {/* <Navbar /> */}
-        <main className='flex my-auto flex-row w-full h-full justify-evenly bg-[rgb(10,17,58)] p-5'>
-            <div className='flex flex-col bg-white rounded'>
-                <div className='w-[40vh]'>
-                TeamName , PlatForm Type ,Platform Id,
-                
+        <main className='w-full h-full flex my-5 mx-10'>
+           
+          <div className='w-[70%]'>
+            <h1 className='text-black font-bold text-[2rem]'>Welcome TeamName!</h1>
+            <TeamDetails/>
 
-                </div>
-                <div>
-                Total Members, Team Status
-                </div>
-                <div>
-                    display 3/4 members separately
-                </div>
-            </div>
-            <div className='bg-white rounded' >
-                <div>
-                    First Round Submission
-                </div>
-                <div>
-                    Second Round Submission
-                </div>
-            </div>
+          </div>
+          <div className='justify-end w-[25%]'>
+            {/* <RoundDetails/> */}
+            <RoundOneComp/>
+
+          </div>
+          
             
         </main>
      
