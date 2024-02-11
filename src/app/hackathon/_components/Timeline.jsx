@@ -17,32 +17,37 @@ const Timeline = () => {
     tl.from(container.current.children[0].children[1], {
       opacity: 0,
       scale: 0.5,
-      duration: 0.4,
-      ease: "elastic.out(1,0.4)",
+      x: 300,
+      duration: 0.5,
+      ease: "power4.out",
     });
     tl.from(container.current.children[1].children[1], {
       opacity: 0,
       scale: 0.5,
-      duration: 0.4,
-      ease: "elastic.out(1,0.4)",
+      x: -300,
+      duration: 0.5,
+      ease: "power4.out",
     });
     tl.from(container.current.children[2].children[1], {
       opacity: 0,
       scale: 0.5,
-      duration: 0.4,
-      ease: "elastic.out(1,0.4)",
+      x: 300,
+      duration: 0.5,
+      ease: "power4.out",
     });
     tl.from(container.current.children[3].children[1], {
       opacity: 0,
       scale: 0.5,
-      duration: 0.4,
-      ease: "elastic.out(1,0.4)",
+      x: -300,
+      duration: 0.5,
+      ease: "power4.out",
     });
     tl.from(container.current.children[4].children[1], {
       opacity: 0,
       scale: 0.5,
-      duration: 0.4,
-      ease: "elastic.out(1,0.4)",
+      x: 300,
+      duration: 0.5,
+      ease: "power4.out",
     });
   });
   return (
