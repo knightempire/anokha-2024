@@ -78,12 +78,12 @@ const Resources = () => {
             className="w-[90%]  bg-blue-800 text-white rounded h-full mb-4 p-5"
           >
             <div className="m-auto h-full w-full">
-              <div className="flex-col flex">
-              <p className="text-lg md:px-6 py-8 text-left rounded justify-start">
+              <div className="flex-col flex h-full">
+              <p className="text-lg md:px-6 py-5 text-left rounded justify-start">
                 {val.title}
               </p>
               <a href={val.link}
-                className="select-none rounded-lg bg-white py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-black shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none md:mx-6 my-2 justify-end">
+                className="select-none rounded-lg bg-white py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-black shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none md:mx-6 justify-end">
                 Learn More!
               </a>
               </div>

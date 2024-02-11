@@ -206,10 +206,10 @@ const Themes = () => {
 
     <div>
       <div className="h-full w-full bg-[#0A113A] relative overflow-hidden ">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[70%] p-8 rounded-[0%] left-[0%] top-[20%] md:h-[40%] blur-3xl levitate"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[70%] sm:w-[70%] p-8 rounded-[0%] left-[20%] top-[-5%] md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>
 
-        <div className="font-poppins h-[100%] mt-[50px]">
-          <p className="font-bold text-[3rem] w-fit mx-auto relative z-10  text-white rounded-xl py-3 px-6">
+        <div className="font-poppins h-[100%] mt-[30px]">
+          <p className="font-bold text-[3rem] w-fit mx-auto relative z-10   rounded-xl py-3">
             Themes
           </p>
 
@@ -249,19 +249,17 @@ const Themes = () => {
                         selectedTab === index ? "block" : "hidden"
                       }`}
                     >
-                      <div className="mb-9  md:justify-center gap-5  bg-white bg-opacity-70 backdrop-blur-3xl rounded mx-auto md:w-[70%] sm:w-[90%] py-8 ">
+                      <div className="mb-9 md:justify-center gap-5 bg-white bg-opacity-70 backdrop-blur-3xl rounded mx-auto md:w-[60%] sm:w-[90%] py-8 ">
                         {themes[selectedTab].problemStatements.map(
                           (statement, id) => (
-                            <div
-                              key={id}
-                              className="md:px-[100px] my-2 py-3 px-10">
+                            <div key={id} className="md:px-[50px] my-2 py-3">
                               <div className="border-2 border-black p-6 items-center marker rounded-xl md:flex gap-8 w-full">
-                                <div className="justify-start w-[80%]"><h1 className=" font-bold text-xl mb-2 w-full">
-                                  {themes[selectedTab].text} : Problem Statement
+
+                                <div className="justify-start w-[90%]"><h1 className=" font-bold text-xl mb-2 w-full">
+                                {themes[selectedTab].text} : Problem Statement
                                 </h1><p>{statement}</p></div>
                                 
-                                <div className="justify-end md:m-0 sm:mt-4 "><Button
-                  className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 flex-end"><span relative="relative z-10 text-xl">Read More</span>
+                                <div className="justify-end md:m-0 sm:mt-4 "><Button className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 flex-end"><span relative="relative z-10 text-xl">Read More</span>
                   </Button></div>
                                 
                               </div>
