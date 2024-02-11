@@ -9,9 +9,9 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const Memberview =({member,idc,no,e_val,idc_val})=> {
     return(
-        
-            <div className="flex flex-col flex-1 space-y-5 ">
-                {no%2===0?<hr className="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700 w-"/>
+        <div className='w-full h-full px-5'>
+            <div className="flex flex-col flex-1 space-y-4">
+                {no%2===0?<hr className="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700 "/>
                 :null
                 }
                 <p className='text-lg font-medium text-black text-center'>Member {no} Information</p>
@@ -61,6 +61,7 @@ const Memberview =({member,idc,no,e_val,idc_val})=> {
                     
                   </div>
         </div>
+        </div>
     )
 }
 export default function ThirdRegister({n,me3,mi3,me4,mi4,member3Email,member3IDC,member4Email,member4IDC,handle_register_click,handle_prev_click} ) {
@@ -85,7 +86,7 @@ export default function ThirdRegister({n,me3,mi3,me4,mi4,member3Email,member3IDC
   return (
     
              
-    <div className="w-full md:w-[560px] sm:hidden md:block  md:h-[600px]  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
+    <div className="w-full md:w-[560px] sm:hidden md:block  md:h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
       
       {/* <Image
         src={anokhalogo}
@@ -95,12 +96,12 @@ export default function ThirdRegister({n,me3,mi3,me4,mi4,member3Email,member3IDC
         height={128}
         className="ml-auto mr-auto mt-4 h-16"
       /> */}
-      <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
+      <div className="w-full flex flex-col justify-center p-6 space-y-5  sm:p-8">
        
 
            {/* First card */}
           
-          <div className="flex flex-col justify-center md:space-y-10 flex-1 space-y-5  ">
+          <div className="flex flex-col justify-center flex-1 space-y-6  ">
             
             <div className="flex flex-col flex-1 space-y-5 pt-5">
 
@@ -113,8 +114,18 @@ export default function ThirdRegister({n,me3,mi3,me4,mi4,member3Email,member3IDC
             
             </div>
 
-            
-            <div className="flex mx-auto space-x-3 flex-row flex-1  space-y-5 pt-5">
+            <div className="w-full justify-center gap-2 mt-2 flex">
+                {/* <button className="text-[1rem] bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-2 md:mt-3 rounded-[15px] ">
+                  Upload Link
+                </button> */}
+                <Button onClick={handle_prev_click} className="text-md flex justify-center items-center before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+                      <span relative="relative z-10">Previous</span>
+                    </Button>
+                <Button onClick={handle_register_click} className="text-md flex justify-center items-center before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+                      <span relative="relative z-10">Register!</span>
+                    </Button>
+              </div>
+            {/* <div className="flex mx-auto space-x-3 flex-row flex-1  space-y-5 pt-5">
                     <div className='mt-5  z-10 '>
                         <Button variant='text' className='text-3xl bg-blue-600 flex flex-row w-[120px] items-center' onClick={handle_prev_click} >
                         <FaArrowLeft size={20} className='-ml-3 mr-3 '/>
@@ -128,7 +139,7 @@ export default function ThirdRegister({n,me3,mi3,me4,mi4,member3Email,member3IDC
                         </Button>
                     </div>        
                             
-            </div>
+            </div> */}
              
             
             
