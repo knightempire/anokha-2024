@@ -12,6 +12,7 @@ import secureLocalStorage from "react-secure-storage";
 import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import TextField from "@mui/material/TextField";
 
 import Link from "next/link";
 
@@ -33,35 +34,8 @@ export default function Login() {
 
   const HandleLogin = async (e) => {
     e.preventDefault();
-
-    if (
-      studentEmail == "" ||
-      studentEmail == undefined ||
-      !validator.isEmail(studentEmail)
-    ) {
-      ToastAlert(
-        "error",
-        "Invalid Email",
-        "The email provided is invalid!",
-        toastRef
-      );
-      return;
-    }
-    if (
-      studentPassword == "" ||
-      studentPassword == undefined ||
-      studentPassword.length < 8
-    ) {
-      ToastAlert(
-        "error",
-        "Invalid Password",
-        "The password provided is invalid!",
-        toastRef
-      );
-      return;
-    }
     try {
-      const response = await fetch(LOGIN_URL, {
+      const response = await fetch("http://anokha:1957", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,14 +50,17 @@ export default function Login() {
       const data = await response.json();
       if (response.status === 200) {
         console.log(data);
- 
+
         secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
         secureLocalStorage.setItem("StudentFullName", data["studentFullName"]);
         secureLocalStorage.setItem("registerEmail", data["studentEmail"]);
         secureLocalStorage.setItem("isLoggedIn", 1);
         secureLocalStorage.setItem("isAmritaCBE", data["isAmritaCBE"]);
         secureLocalStorage.setItem("needActivePassport", data["needPassport"]);
-        secureLocalStorage.setItem("studentAccountStatus", data["studentAccountStatus"]);
+        secureLocalStorage.setItem(
+          "studentAccountStatus",
+          data["studentAccountStatus"]
+        );
         secureLocalStorage.setItem("studentPhone", data["studentPhone"]);
 
         ToastAlert(
@@ -92,7 +69,7 @@ export default function Login() {
           "You have logged in successfully!",
           toastRef
         );
-         
+
         router.replace("/");
       } else if (response.status === 500) {
         ToastAlert(
@@ -132,13 +109,9 @@ export default function Login() {
         </div>
         <div className="relative min-h-screen">
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0">
-            <div
-              className="w-full  rounded-[24px] bg-clip-padding bg-opacity-80  md:mt-0 sm:max-w-md xl:p-0 bg-white "
-            >
+            <div className="w-full  rounded-[24px] bg-clip-padding bg-opacity-80  md:mt-0 sm:max-w-md xl:p-0 bg-white ">
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1
-                  className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl"
-                >
+                <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl">
                   Sign in to your account
                 </h1>
                 <form className="space-y-4 md:space-y-6" action="#">
@@ -149,15 +122,17 @@ export default function Login() {
                     >
                       Your email
                     </label>
-                    <input
+                    <TextField
+                      id="outlined-error-helper-text"
+                      placeholder={"Enter Email"}
+                      value={studentEmail}
+                      sx={{
+                        width: "100%",
+                        borderRadius: 5,
+                      }}
                       onChange={(e) => {
                         setStudentEmail(e.target.value);
                       }}
-                      type="email"
-                      name="email"
-                      id="email"
-                      className=" bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                      placeholder="eon@anokha.amrita.edu"
                       required
                     />
                   </div>
@@ -168,15 +143,18 @@ export default function Login() {
                     >
                       Password
                     </label>
-                    <input
+                    <TextField
+                      id="outlined-error-helper-text"
+                      placeholder={"Enter Password"}
+                      type="password"
+                      value={studentPassword}
+                      sx={{
+                        width: "100%",
+                        borderRadius: 5,
+                      }}
                       onChange={(e) => {
                         setStudentPassword(e.target.value);
                       }}
-                      type="password"
-                      name="password"
-                      id="password"
-                      placeholder="••••••••"
-                      className=" border bg-transparent border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
                       required
                     />
                   </div>
@@ -194,7 +172,8 @@ export default function Login() {
                   <button
                     type="submit"
                     onClick={HandleLogin}
-                    className="w-full text-black bg-[#f69c18] hover:bg-[#f69c18] focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    className="w-full text-black bg-[#f69c18] hover:bg-[#f69c18] focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    disabled={!validator.isEmail(studentEmail)}
                   >
                     Sign in
                   </button>

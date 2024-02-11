@@ -14,7 +14,7 @@ import Link from "next/link";
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
-//import ToastAlert from "../_util/ToastAlerts";
+import ToastAlert from "../_util/ToastAlerts";
 
 import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";
@@ -49,7 +49,7 @@ export default function Register() {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   // Regular expression for password validation
-  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+  const passwordRegex = /^(?!.*[-"]).{8,}$/;
 
   //Regular expression to check amrita mail
   const amritaRegex =
@@ -173,10 +173,10 @@ export default function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConPassword, setShowConPassword] = useState(false);
 
-
-  const handleClickShowPassword = () => setShowPassword((showPassword) => !showPassword);
-  const handleClickShowConPassword = () => setShowConPassword((showConPassword) => !showConPassword);
-
+  const handleClickShowPassword = () =>
+    setShowPassword((showPassword) => !showPassword);
+  const handleClickShowConPassword = () =>
+    setShowConPassword((showConPassword) => !showConPassword);
 
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
@@ -188,9 +188,7 @@ export default function Register() {
           <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
             <Toast ref={toastRef} position="bottom-center" />
-            <div
-              className="w-full rounded-[24px] bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white"
-            >
+            <div className="w-full rounded-[24px] bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
               <Image
                 src={anokhalogo}
                 priority
@@ -200,9 +198,7 @@ export default function Register() {
                 className="ml-auto mr-auto mt-4 h-16"
               />
               <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1
-                  className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl"
-                >
+                <h1 className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl">
                   Register
                 </h1>
                 <form
@@ -212,7 +208,7 @@ export default function Register() {
                   <div className="flex flex-col justify-center flex-1 space-y-8 md:border-r md:border-black md:pr-10 max-w-600">
                     <div id="Fields">
                       <TextField
-                        error={!isNameValid && name}
+                        error={!isNameValid && name!=""}
                         id="outlined-error-helper-text"
                         placeholder={"Enter Name"}
                         label="Name"
@@ -234,7 +230,7 @@ export default function Register() {
                     </div>
                     <div id="Fields">
                       <TextField
-                        error={!isPhoneValid && phone}
+                        error={!isPhoneValid && phone!=""}
                         id="outlined-error-helper-text"
                         placeholder={"+91 99999 99999"}
                         label="Phone Number"
@@ -257,7 +253,7 @@ export default function Register() {
                     <div id="Fields">
                       <div>
                         <TextField
-                          error={!isCollegeNameValid && collegeName}
+                          error={!isCollegeNameValid && collegeName!= ""}
                           placeholder="Enter College Name"
                           label="College Name"
                           value={collegeName}
@@ -280,7 +276,7 @@ export default function Register() {
                       </div>
                       <div id="Fields" className="mt-8">
                         <TextField
-                          error={!isCollegeCityValid && collegeCity}
+                          error={!isCollegeCityValid && collegeCity!=""}
                           placeholder="Enter College City"
                           label="College City"
                           value={collegeCity}
@@ -326,8 +322,8 @@ export default function Register() {
                       <TextField
                         error={
                           isAmrita
-                            ? !isAmritaMail && email
-                            : !isEmailValid && email
+                            ? !isAmritaMail && email!=""
+                            : !isEmailValid && email!=""
                         }
                         placeholder="Enter Email"
                         label="Email"
@@ -354,7 +350,7 @@ export default function Register() {
                     </div>
                     <div id="Fields" className="mt-3">
                       <TextField
-                        error={!isPasswordValid && password}
+                        error={!isPasswordValid && password!=""}
                         type={showPassword ? "text" : "password"}
                         placeholder="Enter Password"
                         label="Password"
@@ -385,63 +381,37 @@ export default function Register() {
                           ),
                         }}
                       />
-                      <div className="flex flex-row gap-8 text-[10px] mt-2 mx-2">
-                        <div className="flex flex-col gap-1">
-                          <div
-                            className={
-                              password
-                                ? /.*[A-Z].*/.test(password)
-                                  ? "text-green-600"
-                                  : "text-red-600"
-                                : ""
-                            }
-                          >
-                            Contains atleast 1 UPPERCASE alphabet
-                          </div>
-                          <div
-                            className={
-                              password
-                                ? /.*[a-z].*/.test(password)
-                                  ? "text-green-600"
-                                  : "text-red-600"
-                                : ""
-                            }
-                          >
-                            Contains atleast 1 lowercase alphabet
-                          </div>
+                      <div className="flex flex-row gap-[40px] text-[10px] mt-2">
+                        <div
+                          className={
+                            password
+                              ? /^[^-"']*$/.test(password)
+                                ? "text-green-600"
+                                : "text-red-600"
+                              : ""
+                          }
+                        >
+                          Should not contain - (hyphen) or " (quotes)
                         </div>
-                        <div className="flex flex-col gap-1">
-                          <div
-                            className={
-                              password
-                                ? /.*[0-9].*/.test(password)
-                                  ? "text-green-600"
-                                  : "text-red-600"
-                                : ""
-                            }
-                          >
-                            Contains atleast 1 number
-                          </div>
-                          <div
-                            className={
-                              password
-                                ? /^.{8,}$/.test(password)
-                                  ? "text-green-600"
-                                  : "text-red-600"
-                                : ""
-                            }
-                          >
-                            8 characters in length
-                          </div>
+                        <div
+                          className={
+                            password
+                              ? /^.{8,}$/.test(password)
+                                ? "text-green-600"
+                                : "text-red-600"
+                              : ""
+                          }
+                        >
+                          8 characters in length
                         </div>
                       </div>
                     </div>
                     <div id="Fields">
                       <TextField
-                        error={confirmPassword != password && confirmPassword}
+                        error={confirmPassword != password && confirmPassword!=""}
                         type={showConPassword ? "text" : "password"}
-                        placeholder="Confirm Password"
-                        label="Password"
+                        placeholder="Enter Password"
+                        label="Confirm Password"
                         value={confirmPassword}
                         helperText={
                           !isPasswordValid && password
