@@ -389,7 +389,7 @@ const Card = ({ title, description, src }) => {
           </div>
           <div className="grid relative grid-cols-[55%,40%] w-full h-full text-white text-md">
             <div className="flex flex-col justify-center items-center"></div>
-            <div className="flex flex-col justify-center items-center text-justify bg-gray-600 bg-opacity-10 rounded-xl p-4 my-10">
+            <div className="flex flex-col justify-center items-center text-justify bg-gray-600 bg-opacity-10 rounded-xl p-4 mt-6 mb-10">
               {description}
             </div>
           </div>
