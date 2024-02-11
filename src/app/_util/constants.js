@@ -1,5 +1,5 @@
-const BASE_URL = "http://172.17.9.35:1957/api/auth"
-const HACKATHON_URL = "http://172.17.9.35:1957/api/intel"
+const BASE_URL = ""
+const HACKATHON_URL = ""
 
 
 export const LOGIN_URL = BASE_URL + "/loginStudent"
