@@ -12,7 +12,7 @@ import Lenis from "@studio-freight/lenis";
 import { useEffect, useRef, useState } from "react";
 import projects from "./info_data";
 import FilmGallery from "./components/FilmGallery";
- 
+
 export default function Home() {
   const container = useRef(null);
 
@@ -41,7 +41,7 @@ export default function Home() {
       <Hero className="z-10" />
       {/* This is temprovary sponsor component may change in future */}
       <SponsorsMarquee />
-      <div ref={container} className="sticky z-10">
+      <div ref={container} className="sticky mt-10 z-10">
         {projects.map((project, index) => {
           const Component = index % 2 === 0 ? InfoLeft : InfoRight;
           return (
