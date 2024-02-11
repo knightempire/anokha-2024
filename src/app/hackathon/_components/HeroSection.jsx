@@ -8,7 +8,7 @@ const HeroSection = () => {
       <div className="font-poppins text-black mx-auto">
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[120px] absolute blur-3xl levitate"></div>
         <div className="bg-white md:w-[40%] bg-opacity-80 sm:w-[80%] px-10 py-12 rounded-xl sm:mx-auto top-[250px] relative">
-          <Image src={oneapilogo} width={150} className="mt-[-100px]" />
+          <Image src={oneapilogo} width={150} alt="oneapiicon" className="mt-[-100px]" />
           <p className="text-[3rem]  font-bold sm:leading-[100%] mt-2">
             Intel AI Hackathon
           </p>

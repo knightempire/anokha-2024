@@ -40,12 +40,11 @@ const Judging = () => {
 
       <div className="md:w-[80%] w-[90%] h-full md:flex justify-center gap-2 mx-auto pb-10">
         {judge.map((val, id) => (
-          <div className="md:w-[30%] sm:w-[90%] mx-auto backdrop-blur-sm bg-opacity-90 bg-white rounded-xl sm:my-7 shadow-xl shadow-blue-900">
+          <div key={id} className="md:w-[30%] sm:w-[90%] mx-auto backdrop-blur-sm bg-opacity-90 bg-white rounded-xl sm:my-7 shadow-xl shadow-blue-900">
                 <div className="flex justify-center bg-blue-800 w-full rounded-xl rounded-b-none backdrop-blur-3xl">
                 {
                 id === 0? <FaCode size={100} className="py-2 text-white sm:m-3"/>  
                 :id === 1 ? <IoMdBuild size={100} className="py-2 text-white sm:m-3"/> :id===2? <IoSparkles size={100} className="py-2 text-white sm:m-3"/> : null
-            
             }
                     
                 </div>
@@ -54,7 +53,7 @@ const Judging = () => {
                 </h2>
                 <ul className="list-disc pt-2 pb-10 text-md text-black space-y-1 sm:px-[50px] md:px-[60px] h-full ">
                 {val.criteria.map((c, id) => (
-                    <li>{c}</li>
+                    <li key={id}>{c}</li>
                 ))}
                 </ul>
             </div>
