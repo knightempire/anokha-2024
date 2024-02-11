@@ -11,6 +11,8 @@ import {Button } from "@material-tailwind/react";
 import HeroSection from './_components/HeroSection'
 import IntelHero from './_components/IntelHero'
 import Phases from './_components/Phases'
+import Resources from './_components/Resources'
+import FAQs from './_components/FAQs'
 export default function page() {
   return (
   
@@ -26,9 +28,12 @@ export default function page() {
         <IntelHero/>
         <Price />
         <About/>
-        <Themes/>
         <Phases/>
+        <Themes/>
+        
         <Timeline/> 
+        <Resources/>
+        <FAQs/>
         <Footer/>
     </div>
      
