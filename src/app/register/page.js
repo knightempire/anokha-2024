@@ -410,8 +410,8 @@ export default function Register() {
                       <TextField
                         error={confirmPassword != password && confirmPassword!=""}
                         type={showConPassword ? "text" : "password"}
-                        placeholder="Confirm Password"
-                        label="Password"
+                        placeholder="Enter Password"
+                        label="Confirm Password"
                         value={confirmPassword}
                         helperText={
                           !isPasswordValid && password
