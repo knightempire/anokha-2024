@@ -7,20 +7,18 @@ import { STUDENT_REGISTER_VERIFY_URL } from "@/app/_util/constants";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
+import { Toast } from "primereact/toast";
 import { useEffect, useRef, useState } from "react";
 import secureLocalStorage from "react-secure-storage";
 import { hashPassword } from "@/app/_util/hash";
 import WebGLApp from "../../bg/WebGLApp";
-import Navbar from "@/app/components/EventHeader";
 
-import { Toast } from "primereact/toast";
+import Navbar from "@/app/components/EventHeader";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
-import ToastAlert from "@/app/_util/toastAlerts";
 
 export default function RegisterVerify() {
-  const toastRef = useRef();
+  const toast = useRef(null);
 
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const otpRegex = /^[0-9]{6}$/;
@@ -51,7 +49,7 @@ export default function RegisterVerify() {
       registerToken.length == 0 ||
       registerEmail.length == 0
     ) {
-      ToastAlert("error", "Session Expired!", "Please try again", toastRef);
+      alertError("Error", "Session expired. Please try again.");
       secureLocalStorage.clear();
       setTimeout(() => {
         router.replace("/register");
@@ -75,42 +73,38 @@ export default function RegisterVerify() {
 
       const data = await response.json();
       if (response.status === 200) {
-        ToastAlert('success', "Success", "Registration successful", toastRef);
-        // alert("Registration Successful");
+        alert("Registration Successful");
         console.log(data);
         setTimeout(() => {
           router.replace("/login");
         }, 500);
       } else if (response.status === 500) {
-        ToastAlert('error', "Oops!", "Something went wrong! Please try again later!", toastRef);
-        // alertError("Oops!", "Something went wrong! Please try again later!");
+        alertError("Oops!", "Something went wrong! Please try again later!");
       } else if (data.message !== undefined || data.message !== null) {
-        ToastAlert('error', "Oops!", "Something went wrong! Please try again later!", toastRef);
-        // alertError("Registration Failed", data.message);
+        alertError("Registration Failed", data.message);
       } else {
-        ToastAlert('error', "Oops!", 'Something went wrong! Please try again later', toastRef);
-        // alertError("Oops!", "Something went wrong! Please try again later!");
+        alertError("Oops!", "Something went wrong! Please try again later!");
       }
     } catch (e) {
       console.log(e);
     }
   };
 
-  // const alertError = (summary, detail) => {
-  //   toast.current.show({
-  //     severity: "error",
-  //     summary: summary,
-  //     detail: detail,
-  //   });
-  // };
-  //
-  // const alertSuccess = (summary, detail) => {
-  //   toast.current.show({
-  //     severity: "success",
-  //     summary: summary,
-  //     detail: detail,
-  //   });
-  // };
+  const alertError = (summary, detail) => {
+    toast.current.show({
+      severity: "error",
+      summary: summary,
+      detail: detail,
+    });
+  };
+
+  const alertSuccess = (summary, detail) => {
+    toast.current.show({
+      severity: "success",
+      summary: summary,
+      detail: detail,
+    });
+  };
   const [webGLColors, setWebGLColors] = useState({
     color1: [43 / 255, 30 / 255, 56 / 255],
     color2: [11 / 255, 38 / 255, 59 / 255],
@@ -211,7 +205,7 @@ export default function RegisterVerify() {
         </div>
       </div>
 
-      <Toast position="bottom-center" ref={toastRef} />
+      <Toast position="bottom-center" ref={toast} />
     </main>
   );
 }
