@@ -135,7 +135,7 @@ const Register = () => {
       <div className="block my-auto space-y-24 md:space-y-10">
         {/* <Navbar />/ */}
         <div className="relative min-h-screen">
-        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[120px] absolute blur-3xl levitate"></div>
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[100px] absolute blur-3xl levitate"></div>
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
 
           <form className="space-y-4 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
