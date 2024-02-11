@@ -255,8 +255,8 @@ const Themes = () => {
                             <div
                               key={id}
                               className="md:px-[100px] my-2 py-3 px-10">
-                              <div className="border-2 border-black p-4 items-center marker rounded-xl md:flex gap-8 w-full">
-                                <div className="justify-start"><h1 className=" font-bold text-xl mb-2 ">
+                              <div className="border-2 border-black p-6 items-center marker rounded-xl md:flex gap-8 w-full">
+                                <div className="justify-start w-[80%]"><h1 className=" font-bold text-xl mb-2 w-full">
                                   {themes[selectedTab].text} : Problem Statement
                                 </h1><p>{statement}</p></div>
                                 
