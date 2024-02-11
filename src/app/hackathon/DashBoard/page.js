@@ -1,7 +1,8 @@
 import React from 'react'
-import HackathonRegister from './TeamReg'
+import DashBoard from "./DashBoard"
+
 export default function page() {
   return (
-    <HackathonRegister/>
+    <DashBoard/>
   )
 }
