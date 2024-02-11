@@ -5,58 +5,47 @@ import {useState} from 'react'
 import {Button} from "@material-tailwind/react"
 import { FaArrowRight } from "react-icons/fa";
 import oneapilogo from "../../images/oneAPI-rgb-3000.png";
+import { GiTeamIdea } from "react-icons/gi";
+import { Switch } from "@material-tailwind/react";
 export default function FirstRegister({handle_buttonone_click,TeamName,NoofMembers,platform}) {
   return (
           
-             
-              <div className="w-full md:w-[560px] sm:hidden md:block  md:h-[600px]  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
-                
-                {/* <Image
-                  src={anokhalogo}
-                  priority
-                  alt="Amrita logo"
-                  width={128}
-                  height={128}
-                  className="ml-auto mr-auto mt-4 h-16"
-                />  */}
-                <Image src={oneapilogo}  width={80} className="ml-auto mr-auto -mt-9" />
-                <div className="w-full flex flex-col justify-center p-2 space-y-4  md:space-y-6 sm:p-8">
-               
-                  <h1 className="text-xl -mt-4 mx-auto font-bold leading-tight tracking-tight text-black md:text-2xl">
-                    Register
-                  </h1>
-                  <div className="border-slate-500 rounded border-2 border-dashed w-full h-full sm:px-4 md:px-10 mt-3 py-8">
-  
-                     {/* First card */}
-                    
-                    <div className="flex flex-col justify-center md:space-y-10 flex-1 space-y-5  ">
-                      <div>
-                        <label
-                          htmlFor="teamname"
-                          className="block mb-2 text-sm font-medium text-black"
-                        >
-                          Your Team Name
-                        </label>
-                        <input
-                          type="text"
-                          
-                          value={TeamName[0]}
-                          name="teamname"
-                          id="teamname"
-                          className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                          placeholder="Team Name"
-                          onChange={(e) => TeamName[1](e.target.value)}
-                          required
-                        />
-                      </div>
-  
-  
-                      <div>
-                        <label
-                          htmlFor="phone"
-                          className="block mb-2 text-sm font-medium text-black">
+    <div className="w-full h-[100vh]  bg-[rgb(10,17,58)]">
+    <div className="font-poppins text-black mx-auto">
+      <div className="bg-gradient-to-r from-cyan-500 z-0 to-blue-500 md:w-[70%] sm:w-[80%] lg:w-[63%] xl:w-[55%] p-8 rounded-[50%] h-[80%] left-[25%] top-[50px] md:left-[17%] md:top-[40px] lg:left-[19%] xl:left-[23%] absolute blur-3xl levitate"></div>
+      <div className="bg-white relative z-10 sm:w-[90%] md:w-[650px] h-fit  bg-opacity-80  px-5  md:px-8 py-8 rounded-xl sm:mx-auto top-[120px]">
+              <div className="flex gap-1 items-center text-center text-2xl font-bold justify-center mb-5">
+                  <Image src={oneapilogo}  width={80} className="relative ml-auto mr-auto -mt-9" />
+                          Register
+              
+              </div>
+
+        <div className="border-slate-500 rounded border-2 border-dashed w-full h-full sm:px-4 mx md:px-10 mt-3 py-8">
+                           
+              <div className='flex bg-white items-center rounded px-4 py-2 gap-3 '>
+                  <GiTeamIdea size={30}/>
+                  <input type="text"
+                        
+                        value={TeamName[0]}
+                        name="teamname"
+                        id="teamname"
+                        className="w-full focus:outline-0"
+                        placeholder="Enter Your Team Name"
+                        onChange={(e) => TeamName[1](e.target.value)}
+                        required
+                      />
+              </div>
+                  
+                        
+                        
+              <label htmlFor="phone"
+                          className="block px-4 py-2 gap-3 mt-3 text-sm font-medium text-black">
                           Number of Team Members
                         </label>
+  
+                      <div className='flex bg-white items-center rounded px-4 py-2 gap-3'>
+                        
+                        
                         <input
                           
                           type="number"
@@ -116,11 +105,23 @@ export default function FirstRegister({handle_buttonone_click,TeamName,NoofMembe
                                 </Button>
                             </div>
                       
-                      </div>
-                    </div>
+                     
+                    
                 </div>
-                </div>
-              </div>
+                 
+          
+
+           
+          
+        </div>
+      </div>
+    </div>
+  </div>
+    
+             
+               
+                
+              
 
              
 
