@@ -28,7 +28,7 @@ const projects = [
     color: "#977F6D",
   },
   {
-    title: "Events and Workshops",
+    title: "Events & Workshops",
     description:
       "Our dynamic range of workshops and events create a vibrant environment for continuous learning and enjoyment. Workshops turn knowledge seekers into active explorers of topics such as programming languages and market trends, fueling life-long learning. This is complemented by our diverse event lineup, where technical rigor meets fun through coding competitions to gaming activities. This interwoven fabric of technical engagement and enjoyment allows for a comprehensive, enriching experience that encourages participant's skills showcase, camaraderie and expands their knowledge horizon.",
     src: [
