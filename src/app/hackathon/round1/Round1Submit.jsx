@@ -1,10 +1,10 @@
 "use client"
 import  {useState,useEffect} from 'react'
 import Navbar from '../_components/HackathonHeader'
- 
+import {HACKATHON_FIRST_ROUND_SUBMISSION_URL} from "@/app/_util/constants.js"
 import About from '../_components/About'
  
- 
+import secureLocalStorage from 'react-secure-storage'
 import Footer from '../_components/Footer'
 import {Button } from "@material-tailwind/react";
  
@@ -20,6 +20,23 @@ export default function Page() {
     const [youtubelink,setYoutubeLink] = useState("");
     const [pdflink,setPdfLink] = useState("");
 
+    const [registerEmail, setRegisterEmail] = useState("");
+    const [secretToken, setSecretToken] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(0);
+    const [isAmritaCBE, setIsAmritaCBE] = useState(0);
+    const [hasActivePassport, setHasActivePassport] = useState(0);
+    
+    useEffect(() => {
+      setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
+      setIsAmritaCBE(parseInt(secureLocalStorage.getItem("isAmritaCBE")));
+      setHasActivePassport(parseInt(secureLocalStorage.getItem("hasActivePassport")));
+      setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
+      setSecretToken(secureLocalStorage.getItem("registerToken"));
+ 
+
+    },
+    [])   
+
     const handle_button_next_click = () =>{
         setCurrentStep(currentStep+1) 
       }   
@@ -27,8 +44,80 @@ export default function Page() {
     const handle_button_Prev_click = ()=>{
         setCurrentStep(currentStep-1)
       }
-    const handle_upload_click = ()=>{
-        console.log("uploaded")
+    const handle_upload_click = async (e) =>{
+      try {
+        console.log(JSON.stringify({
+          "theme": theme,
+          "problemStatement": problemStatement,
+          "pptFileLink": pdflink,
+          "githubLink": githublink,
+          "youtubeVideoLink": youtubelink,
+          "devmeshLink": devmeshlink,
+         
+          }))
+        // setLoading(true);
+        const response = await fetch(HACKATHON_FIRST_ROUND_SUBMISSION_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + secretToken,
+
+          },
+          body: JSON.stringify({
+            "theme": theme,
+            "problemStatement": problemStatement,
+            "pptFileLink": pdflink,
+            "githubLink": githublink,
+            "youtubeVideoLink": youtubelink,
+            "devmeshLink": devmeshlink,
+           
+            })
+        });
+
+        console.log(response)
+        const data = await response.json();
+        console.log(data)
+        if (response.status === 200) {
+          // ToastAlert(
+          //   "success",
+          //   "Success",
+          //   "Registration Successful!",
+          //   toastRef
+          // );
+          console.log(data);
+        //   secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
+        //   secureLocalStorage.setItem("registerEmail", email);
+
+          setTimeout(() => {
+            router.replace("/hackathon");
+          }, 500);
+        // } else if (response.status === 500) {
+        //   ToastAlert(
+        //     "error",
+        //     "Oops!",
+        //     "Something went wrong! Please try again later!",
+        //     toastRef
+        //   );
+        //   return;
+        // } else if (data.message !== undefined || data.message !== null) {
+        //   ToastAlert("error", "Registration Failed", data.message, toastRef);
+        // } else {
+        //   ToastAlert(
+        //     "error",
+        //     "Oops!",
+        //     "Something went wrong! Please try again later!",
+        //     toastRef
+        //   );
+        //   return;
+        // }
+
+        //  console.log(data);
+      } }catch (e) {
+        // ToastAlert("error", "Error", "Please try again!", toastRef);
+        console.log(e);
+      }
+
+      // setLoading(false);
     }
 
       useEffect(() => {
@@ -57,7 +146,7 @@ export default function Page() {
             }
         
         
-        
+        <Toast position="bottom-center" ref={toastRef} />
         <Footer  />
     </div>
      
