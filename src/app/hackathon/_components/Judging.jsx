@@ -5,7 +5,7 @@ import { IoSparkles } from "react-icons/io5";
 
 const judge = [
   {
-    title: "Code Quality - 33.33%",
+    title: "Code Quality",
     criteria: [
       "Code is easy to understand and is reproducible",
       "Code is well tested, and functions without errors",
@@ -13,7 +13,7 @@ const judge = [
     ],
   },
   {
-    title: "Technical Implementation - 33.33%",
+    title: "Technical Implementation",
     criteria: [
       "Intel® AI Analytics Toolkits, its Libraries and SYCL/DPC++ Libraries are leveraged and used appropriately by developer",
       "Data Preprocessing and Exploratory Data Analysis (EDA)",
@@ -22,7 +22,7 @@ const judge = [
     ],
   },
   {
-    title: "Creativity & Originality - 33.33%",
+    title: "Creativity & Originality",
     criteria: [
       "Solution is original and clearly differentiates itself from submissions in the same category",
       "Solution creates clear additional value beyond competition",
@@ -38,13 +38,13 @@ const Judging = () => {
         Judging Criteria
       </h1>
 
-      <div className="w-[90%] h-full md:flex justify-center gap-10 mx-auto pb-10">
+      <div className="md:w-[80%] w-[90%] h-full md:flex justify-center gap-2 mx-auto pb-10">
         {judge.map((val, id) => (
-          <div className="md:w-[70%] sm:w-[90%] mx-auto backdrop-blur-sm bg-opacity-90 bg-white rounded-xl sm:my-7 shadow-xl shadow-blue-900">
+          <div className="md:w-[30%] sm:w-[90%] mx-auto backdrop-blur-sm bg-opacity-90 bg-white rounded-xl sm:my-7 shadow-xl shadow-blue-900">
                 <div className="flex justify-center bg-blue-800 w-full rounded-xl rounded-b-none backdrop-blur-3xl">
                 {
-                id === 0? <FaCode size={100} className="p-4 text-white sm:m-3"/>  
-                :id === 1 ? <IoMdBuild size={100} className="py-4 text-white sm:m-3"/> :id===2? <IoSparkles size={100} className="p-4 text-white sm:m-3"/> : null
+                id === 0? <FaCode size={100} className="py-2 text-white sm:m-3"/>  
+                :id === 1 ? <IoMdBuild size={100} className="py-2 text-white sm:m-3"/> :id===2? <IoSparkles size={100} className="py-2 text-white sm:m-3"/> : null
             
             }
                     
