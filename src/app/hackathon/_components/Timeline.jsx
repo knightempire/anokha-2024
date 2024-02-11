@@ -1,16 +1,58 @@
-import React from "react";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const Timeline = () => {
+  const container = useRef(null);
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top 75%",
+        end: "bottom 75%",
+        scrub: true,
+      },
+    });
+
+    tl.from(container.current.children[0].children[1], {
+      opacity: 0,
+      scale: 0.5,
+      duration: 0.4,
+      ease: "elastic.out(1,0.4)",
+    });
+    tl.from(container.current.children[1].children[1], {
+      opacity: 0,
+      scale: 0.5,
+      duration: 0.4,
+      ease: "elastic.out(1,0.4)",
+    });
+    tl.from(container.current.children[2].children[1], {
+      opacity: 0,
+      scale: 0.5,
+      duration: 0.4,
+      ease: "elastic.out(1,0.4)",
+    });
+    tl.from(container.current.children[3].children[1], {
+      opacity: 0,
+      scale: 0.5,
+      duration: 0.4,
+      ease: "elastic.out(1,0.4)",
+    });
+    tl.from(container.current.children[4].children[1], {
+      opacity: 0,
+      scale: 0.5,
+      duration: 0.4,
+      ease: "elastic.out(1,0.4)",
+    });
+  });
   return (
     <div className="w-full bg-[#0A113A] pt-10">
       <h1 className="text-[3rem] font-bold text-center text-white">Timeline</h1>
       <div className="flex justify-items-center">
         <div class="timeline">
-          <div class="outer mx-500px">
-
-
+          <div class="outer mx-500px" ref={container}>
             <div class="card">
-            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur">
                 <h3 class="title">Title 1</h3>
                 <p>
@@ -23,7 +65,7 @@ const Timeline = () => {
             </div>
 
             <div class="card">
-            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur">
                 <h3 class="title">Title 1</h3>
                 <p>
@@ -36,7 +78,7 @@ const Timeline = () => {
             </div>
 
             <div class="card">
-            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur">
                 <h3 class="title">Title 1</h3>
                 <p>
@@ -49,7 +91,7 @@ const Timeline = () => {
             </div>
 
             <div class="card">
-            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur">
                 <h3 class="title">Title 1</h3>
                 <p>
@@ -62,7 +104,7 @@ const Timeline = () => {
             </div>
 
             <div class="card">
-            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[10px] absolute blur-3xl levitate"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur">
                 <h3 class="title">Title 1</h3>
                 <p>
@@ -73,11 +115,6 @@ const Timeline = () => {
                 </p>
               </div>
             </div>
-
-
-            
-            
-
           </div>
         </div>
       </div>
