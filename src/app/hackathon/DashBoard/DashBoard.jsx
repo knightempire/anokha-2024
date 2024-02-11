@@ -8,6 +8,9 @@ import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
 import ToastAlert from "@/app/_util/ToastAlerts";
 import Navbar from '../_components/HackathonHeader'
+import TeamDetails from '../_components/_DashBoard/TeamDetails';
+import RoundDetails from '../_components/_DashBoard/RoundDetails';
+import RoundOneComp from '../_components/_DashBoard/RoundOneComp';
  
 
 
@@ -59,8 +62,19 @@ useEffect(() => {
     
     <div>
       {/* <Navbar /> */}
-        <main className='flex my-auto flex-row w-full h-full justify-evenly bg-[rgb(10,17,58)] p-5'>
-            <div className='flex flex-col bg-white rounded'>
+        <main className='w-full h-full flex my-5 mx-10'>
+          <div className='w-[70%]'>
+            <h1 className='text-black font-bold text-[2rem]'>Welcome TeamName!</h1>
+            <TeamDetails/>
+
+          </div>
+          <div className='justify-end w-[25%]'>
+            <RoundDetails/>
+
+          </div>
+          
+            {/* <div className='flex flex-col bg-white rounded'>
+              
                 <div className='w-[40vh]'>
                 TeamName , PlatForm Type ,Platform Id,
                 
@@ -80,7 +94,7 @@ useEffect(() => {
                 <div>
                     Second Round Submission
                 </div>
-            </div>
+            </div> */}
             
         </main>
      
