@@ -6,83 +6,102 @@ import Navbar from "../components/EventHeader";
 import Footer from "../components/Footer";
 import FilterSection from "./components/FilterSection";
 import { TbArrowBigUpLinesFilled } from "react-icons/tb";
+import { ALL_EVENTS_URL } from "../_util/constants";
 
 const Events = () => {
-  const [eventsData, setEventsData] = useState(null);
   const [groupFilter, setgroupFilter] = useState(null);
   const [TypeFilter, setTypeFilter] = useState(null);
   const [DayFilter, setDayFilter] = useState(null);
   const [TechFilter, setTechFilter] = useState(null);
-
   const [RegisteredFilter, setRegisteredFilter] = useState(null);
 
+  const [eventsData, setEventsData] = useState(null);
   const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
-    console.log("Filtered Data: ", filteredData);
-    if (groupFilter != null) {
+    console.log("DAY: ", DayFilter);
+    if (eventsData) {
       setFilteredData(
-        filteredData.filter((event) => event.isGroup == groupFilter)
-      );
-    } else {
-      setFilteredData(eventsData);
-    }
-    console.log("Filtered Group Data: ", filteredData);
-    if (TechFilter != null) {
-      setFilteredData(
-        filteredData.filter((event) => event.isTechnical == TechFilter)
+        eventsData.filter(
+          (eventData) =>
+            (groupFilter == -1 ||
+              eventData.isGroup == groupFilter.toString()) &&
+            (TechFilter == -1 ||
+              eventData.isTechnical == TechFilter.toString()) &&
+            (TypeFilter == -1 ||
+              eventData.isWorkshop == TypeFilter.toString()) &&
+            (DayFilter == [] ||
+              DayFilter == -1 ||
+              DayFilter.length == 0 ||
+              DayFilter.includes(eventData.eventDate.slice(0, 10)))
+        )
       );
     }
   }, [groupFilter, TypeFilter, DayFilter, TechFilter, RegisteredFilter]);
 
   const hanldeCurrentFilters = (filters) => {
     let grpCode = -1;
-    let techCode = -1;
-    let evetypeCode = -1;
+    let techCode = 0;
+    let evetypeCode = 0;
     let registerCode = -1;
+    let Days = [];
     for (let i of filters) {
       console.log(i);
       switch (i) {
         case "Group":
-          grpCode += 2;
+          grpCode = 1;
           break;
         case "Individual":
-          grpCode += 1;
+          grpCode = 0;
           break;
         case "Registered":
-          registerCode += 2;
+          registerCode = 1;
           break;
         case "Not Registered":
-          registerCode += 1;
+          registerCode = 0;
           break;
         case "Tech Workshop":
-          techCode += 2;
-          evetypeCode += 2;
+          techCode += 1;
+          evetypeCode += 1;
           break;
         case "Non-Tech Workshop":
-          techCode += 1;
-          evetypeCode += 2;
+          techCode -= 1;
+          evetypeCode += 1;
           break;
         case "Tech Event":
-          techCode += 2;
-          evetypeCode += 1;
+          techCode += 1;
+          evetypeCode -= 1;
           break;
         case "Non-Tech Event":
-          techCode += 1;
-          evetypeCode += 1;
+          techCode -= 1;
+          evetypeCode -= 1;
+          break;
+        case "01":
+          Days.push("2021-02-26");
+          break;
+        case "02":
+          Days.push("2021-03-02");
+          break;
+        case "03":
+          Days.push("2021-02-28");
           break;
       }
     }
-    if (grpCode == -1 || grpCode == 2) setgroupFilter(null);
-    else setgroupFilter(grpCode);
-    if (techCode == -1 || techCode == 2) setTechFilter(null);
-    else setTechFilter(techCode);
-    if (registerCode == -1 || registerCode == 2) setRegisteredFilter(null);
-    else setRegisteredFilter(registerCode);
+    setgroupFilter(grpCode);
+    if (techCode == -1) setTechFilter(0);
+    else if (techCode == 0) setTechFilter(-1);
+    else setTechFilter(1);
+    if (evetypeCode == -1) setTypeFilter(0);
+    else if (evetypeCode == 0) setTypeFilter(-1);
+    else setTypeFilter(1);
+    setRegisteredFilter(registerCode);
+    console.log("Day", Days);
+    if (Days == []) setDayFilter(-1);
+    else setDayFilter(Days);
   };
 
   useEffect(() => {
-    fetch("https://web.abhinavramakrishnan.tech/api/user/getAllEvents", {
+    fetch(ALL_EVENTS_URL, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -116,12 +135,12 @@ const Events = () => {
         setFilteredData(data.EVENTS);
       })
       .catch((err) => {
-        console.error("Error fetching data:", err);
-        throw err;
+        console.error(err);
       });
   }, []); // This empty bracket here is important
 
   console.log("Events Data:", eventsData);
+  console.log("Filter Data:", filteredData);
 
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
@@ -134,29 +153,27 @@ const Events = () => {
           <div className="grid grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {eventsData && eventsData.length > 0 ? (
               filteredData.map((event) => {
-                if (groupFilter == null || event.isGroup == groupFilter) {
-                  return (
-                    <div key={event.eventId}>
-                      <Link href={`/events/${event.eventId}`}>
-                        <EventCard
-                          imgSrc={event.eventImageURL}
-                          id={event.eventId}
-                          eventName={event.eventName}
-                          eventBlurb={event.eventDescription}
-                          eventDesc={event.eventDescription}
-                          date={event.eventDate}
-                          time={event.eventTime}
-                          goi={event.isGroup}
-                          tags={event.tags}
-                          price={event.eventPrice}
-                          isAllowed={event.eventStatus === "1"} // Adjust as needed
-                          maxseats={event.maxSeats}
-                          seats={event.seatsFilled}
-                        />
-                      </Link>
-                    </div>
-                  );
-                }
+                return (
+                  <div key={event.eventId}>
+                    <Link href={`/events/${event.eventId}`}>
+                      <EventCard
+                        imgSrc={event.eventImageURL}
+                        id={event.eventId}
+                        eventName={event.eventName}
+                        eventBlurb={event.eventDescription}
+                        eventDesc={event.eventDescription}
+                        date={event.eventDate}
+                        time={event.eventTime}
+                        goi={event.isGroup}
+                        tags={event.tags}
+                        price={event.eventPrice}
+                        isAllowed={event.eventStatus === "1"} // Adjust as needed
+                        maxseats={event.maxSeats}
+                        seats={event.seatsFilled}
+                      />
+                    </Link>
+                  </div>
+                );
               })
             ) : (
               <p>Loading...</p>

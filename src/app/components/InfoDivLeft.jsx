@@ -151,7 +151,7 @@ const Card = ({ title, description, src }) => {
   });
 
   return (
-    <div className="h-screen flex items-center justify-center sticky overflow-hidden top-10">
+    <div className="pc-view h-screen flex items-center justify-center sticky overflow-hidden top-10">
       <div
         className="flex flex-col relative -top-20 h-[73vh] w-[65vw] bg-[#121212]  b rounded-xl transform origin-top my-10 top-5"
         ref={container}
