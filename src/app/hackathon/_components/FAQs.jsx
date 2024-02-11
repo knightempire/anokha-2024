@@ -14,8 +14,16 @@ const FAQs = () => {
             answer: "No. You do not have to pay anything to anyone to register yourself for this Intel AI Hackathon for Anokha."
         },
         {
+            question: "What is the team size of a hackathon?",
+            answer: "A team should contain 3-4 members."
+        },
+        {
             question: "Do I need to have any specific qualifications to be a participant for the Hackathon? ",
             answer: "Undergraduate students pursuing B.Tech, B.E, Bsc or any other equivalent degree."
+        },
+        {
+            question: "When is the application deadline? ",
+            answer: "The application closes on 29th Feb. Make sure to register and submit a project based on the given problem statement and theme! "
         },
         {
             question: "How do I submit what I have made for the Hackathon? ",
@@ -48,7 +56,7 @@ const FAQs = () => {
       <h1 className="text-[3rem] font-bold text-center text-white md:pb-2">FAQs</h1>
       <div className='md:w-[50%] mx-auto sm:w-[90%]'>
         {qna.map((val, index) =>(
-            <Accordion className='rounded my-2 p-2'>
+            <Accordion key={index} className='rounded my-2 p-2'>
             <AccordionSummary 
             expandIcon={<ArrowDownwardIcon />}
             aria-controls="panel1-content"

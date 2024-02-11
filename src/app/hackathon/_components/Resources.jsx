@@ -102,9 +102,9 @@ const Resources = () => {
               height="250"
               src={val.link}
               title="YouTube video player"
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
+              allowFullScreen
               className="w-[90%] mx-auto"
             ></iframe>
             <p className="text-lg px-6 py-2 text-left">{val.title}</p>
