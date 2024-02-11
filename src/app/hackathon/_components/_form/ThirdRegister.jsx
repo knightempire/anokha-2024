@@ -24,7 +24,7 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
           >
             Member {no} : Email
           </label>
-          <div className="flex flex-row bg-transparent border-2 border-gray-800">
+          <div className="flex flex-row bg-transparent border-2 border-gray-800 rounded-[5px]">
             <IoPersonCircle className="h-8 w-8 mt-[4px] ml-2" />
             <input
               // onChange={(e) => {
@@ -34,7 +34,7 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
               name="email"
               id="email"
               value={e_val}
-              className=" bg-transparent text-black font-medium text-[16px] py-1 rounded-[10px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
+              className=" bg-transparent text-black font-medium text-[16px] py-1 px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
               placeholder="Enter Your Email"
               required
               onChange={(e) => member(e.target.value)}
@@ -49,7 +49,7 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
           >
             Member {no} : Intel Dev Cloud ID
           </label>
-          <div className="flex flex-row bg-transparent border-2 border-gray-800">
+          <div className="flex flex-row bg-transparent border-2 border-gray-800 rounded-[5px]">
             <PiIdentificationBadgeFill className="h-8 w-8 mt-[4px] ml-2" />
             <input
               //   onChange={(e) => {
