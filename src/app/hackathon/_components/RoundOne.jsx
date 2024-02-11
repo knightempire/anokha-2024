@@ -35,7 +35,7 @@ function RoundOne({theme_val,theme,problem_val,problem,next}) {
       <div className="w-full h-[100vh]  bg-[rgb(10,17,58)]">
         <div className="font-poppins text-black mx-auto">
           <div className="bg-gradient-to-r from-cyan-500 z-0 to-blue-500 md:w-[70%] sm:w-[80%] lg:w-[63%] xl:w-[55%] p-8 rounded-[50%] h-[80%] left-[25%] top-[50px] md:left-[17%] md:top-[40px] lg:left-[19%] xl:left-[23%] absolute blur-3xl levitate"></div>
-          <div className="bg-white relative z-10 sm:w-[90%] md:w-[650px] h-fit  bg-opacity-80  px-5  md:px-8 py-8 rounded-xl sm:mx-auto top-[150px]">
+          <div className="bg-white relative z-10 sm:w-[90%] md:w-[650px] h-fit  bg-opacity-80  px-5  md:px-8 py-8 rounded-xl sm:mx-auto top-[80px]">
             <div className="flex gap-1 items-center text-center text-2xl font-bold justify-center mb-5">
               <IoDocumentText color="#4287f5" className="mr-2" /> 
               UPLOAD PDF LINK!
