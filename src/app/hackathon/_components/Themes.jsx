@@ -206,10 +206,11 @@ const Themes = () => {
 
     <div>
       <div className="h-full w-full bg-[#0A113A] relative overflow-hidden ">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[70%] sm:w-[70%] p-8 rounded-[0%] left-[20%] top-[-5%] md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[30%] sm:w-[70%] p-8 rounded-full left-[10%] top-10 md:h-[30%] sm:h-[30%] blur-3xl levitate"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[80%] top-10 md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>
 
         <div className="font-poppins h-[100%] mt-[30px]">
-          <p className="font-bold text-[3rem] w-fit mx-auto relative z-10   rounded-xl py-3">
+          <p className="font-bold text-[3rem] w-fit mx-auto relative z-10   rounded-xl py-3 text-white">
             Themes
           </p>
 
@@ -249,7 +250,7 @@ const Themes = () => {
                         selectedTab === index ? "block" : "hidden"
                       }`}
                     >
-                      <div className="mb-9 md:justify-center gap-5 bg-white bg-opacity-70 backdrop-blur-3xl rounded mx-auto md:w-[60%] sm:w-[90%] py-8 ">
+                      <div className="mb-9 md:justify-center gap-5 bg-white bg-opacity-70 backdrop-blur-3xl rounded mx-auto md:w-[60%] sm:w-[90%] py-8 sm:px-6 md:px-0">
                         {themes[selectedTab].problemStatements.map(
                           (statement, id) => (
                             <div key={id} className="md:px-[50px] my-2 py-3">
