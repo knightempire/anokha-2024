@@ -1,6 +1,5 @@
-const BASE_URL = "http://172.17.9.35:1957/api/auth"
-const HACKATHON_URL = "http://172.17.9.35:1957/api/intel"
-
+const BASE_URL = ""
+const HACKATHON_URL = ""
 
 export const LOGIN_URL = BASE_URL + "/loginStudent"
 export const REGISTER_URL = BASE_URL + "/registerStudent"
@@ -9,3 +8,9 @@ export const STUDENT_FORGOT_PASSWORD_URL = BASE_URL + "/forgotPasswordStudent"
 export const STUDENT_RESET_PASSWORD_URL = BASE_URL + "/resetPasswordStudent"
 
 export const HACKATHON_TEAM_REGISTER_URL =  HACKATHON_URL + "/registerTeam" 
+
+export const ALL_EVENTS_URL = BASE_URL + "/user/getAllEvents";
+export const EVENT_DATA_URL = BASE_URL + "/user/getEventData";
+export const STAR_UNSTAR_EVENT_URL = BASE_URL + "/user/toggleStarredEvent";
+ 
+ 

@@ -5,7 +5,7 @@ import Navbar from "../../components/EventHeader";
 
 const TeamRegister = ({ minTeamSize, maxTeamSize }) => {
   minTeamSize = 2;
-  maxTeamSize = 4;
+  maxTeamSize = 2;
 
   const [TeamSize, setTeamSize] = useState(1);
   const [Team, setTeam] = useState(() => {
