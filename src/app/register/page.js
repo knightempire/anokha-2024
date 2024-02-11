@@ -14,7 +14,7 @@ import Link from "next/link";
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
-import ToastAlert from "../_util/ToastAlerts";
+//import ToastAlert from "../_util/ToastAlerts";
 
 import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";

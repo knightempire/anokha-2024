@@ -10,8 +10,8 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 const Memberview =({member,idc,no,e_val,idc_val})=> {
     return(
             <div className='w-full h-full px-5'>
-            <div className="flex flex-col flex-1 space-y-4 ">
-                {no%2===0?<hr className="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700 w-"/>
+            <div className="flex flex-col flex-1 space-y-1 -mt-2 ">
+                {no%2===0?<hr className="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700 "/>
                 :null
                 }
                 <p className='text-lg font-medium text-black text-center'>Member {no} Information</p>
@@ -37,10 +37,10 @@ const Memberview =({member,idc,no,e_val,idc_val})=> {
                 </div>
 
                 
-                  <div>
+                  <div className=''>
                     <label
                       htmlFor="idc"
-                      className="block mb-2 text-sm font-medium text-black"
+                      className="block mt-3 text-sm font-medium text-black"
                     >
                       Member {no} : Intel Dev Cloud ID
                     </label>
@@ -98,14 +98,14 @@ export default function SecondRegister({me1,mi1,me2,mi2,member1Email,member1IDC,
         height={128}
         className="ml-auto mr-auto mt-4 h-16"
       /> */}
-      <div className="w-full flex flex-col justify-center p-6 space-y-4  sm:p-8">
+      <div className="w-full flex flex-col justify-center p-4 space-y-2  sm:p-8">
        
 
            {/* First card */}
           
           <div className="flex flex-col justify-center space-y-6 flex-1 ">
             
-            <div className="flex flex-col flex-1 space-y-5 pt-5">
+            <div className="flex flex-col flex-1 space-y-2 ">
                      
                         {MemberList.map((link, index) => (
                             

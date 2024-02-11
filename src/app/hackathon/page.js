@@ -13,10 +13,12 @@ import IntelHero from './_components/IntelHero'
 import Phases from './_components/Phases'
 import Resources from './_components/Resources'
 import FAQs from './_components/FAQs'
+import Rules from './_components/Rules'
+import Judging from './_components/Judging'
 export default function page() {
   return (
   
-        <div>
+        <div className="overflow-x-hidden w-full"> 
             
         <Navbar />
         
@@ -25,13 +27,14 @@ export default function page() {
             <Button variant='text'>Materials</Button>
             <Button variant='text'>Register</Button>
         </div> */}
-        <IntelHero/>
+        <IntelHero className="overflow-x-hidden w-full"/>
         <Price />
         <About/>
         <Phases/>
         <Themes/>
-        
         <Timeline/> 
+        <Rules/>
+        <Judging/>
         <Resources/>
         <FAQs/>
         <Footer/>

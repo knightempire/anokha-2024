@@ -103,8 +103,9 @@
 /* Timeline Container */
 .timeline {
   background: #0A113A;
-  margin: 20px auto;
+  margin: 20px auto 0px auto;
   padding: 20px;
+  padding-bottom:0px;
 }
 
 /* Card container */
