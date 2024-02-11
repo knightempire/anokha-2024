@@ -16,7 +16,7 @@ import RoundOneComp from '../_components/_DashBoard/RoundOneComp';
 
 
 export default function page() {
-    const toastRef = useRef();
+     
 
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerToken, setRegisterToken] = useState("");
@@ -82,7 +82,7 @@ export default function page() {
     <div>
       {/* <Navbar /> */}
         <main className='w-full h-full flex my-5 mx-10'>
-          <Toast ref={toast}></Toast>
+           
           <div className='w-[70%]'>
             <h1 className='text-black font-bold text-[2rem]'>Welcome TeamName!</h1>
             <TeamDetails/>
