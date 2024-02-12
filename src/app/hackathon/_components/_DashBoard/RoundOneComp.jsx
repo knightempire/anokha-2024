@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@material-tailwind/react";
+import { Dropdown } from "primereact/dropdown";
 import { FaGithub } from "react-icons/fa";
 import { SiIntel } from "react-icons/si";
 import { FaYoutube } from "react-icons/fa";
@@ -7,10 +8,7 @@ import { MdEdit } from "react-icons/md";
 import { MdEditOff } from "react-icons/md";
 
 const RoundOneComp = ({ roundOneSubmission }) => {
-  const [gitEditable, setGitEditable] = useState(0);
-  const [ytEditable, setYTEditable] = useState(0);
-  const [devMeshEditable, setDevMeshEditable] = useState(0);
-  const [pptEditable, setPptEditable] = useState(0);
+  const [editable, setEditable] = useState(0);
 
   roundOneSubmission = [
     {
@@ -22,7 +20,22 @@ const RoundOneComp = ({ roundOneSubmission }) => {
       pptFileLink: "https://github.com/Sajithrajan03",
     },
   ];
-
+  const availThemes = [
+    { code: "0", val: "GenAI" },
+    { code: "1", val: "IOT" },
+    { code: "2", val: "Healthcare" },
+    { code: "3", val: "AutonomousVehicles" },
+    { code: "4", val: "CyberSecurity" },
+    { code: "5", val: "OpenEnded" },
+  ];
+  const ThemeCode = {
+    0: "GenAI",
+    1: "IOT",
+    2: "Healthcare",
+    3: "AutonomousVehicles",
+    4: "CyberSecurity",
+    5: "OpenEnded",
+  };
   const [gitLink, setGitLink] = useState(roundOneSubmission[0]["githubLink"]);
   const [ytLink, setYTLink] = useState(
     roundOneSubmission[0]["youtubeVideoLink"]
@@ -33,31 +46,41 @@ const RoundOneComp = ({ roundOneSubmission }) => {
   const [pptLink, setPptLink] = useState(roundOneSubmission[0]["pptFileLink"]);
   const [canSubmit, setCanSubmit] = useState(0);
 
+  //Use this for sending to backend
+  const [themeCode, setThemeCode] = useState("0");
+
+  const [theme, setTheme] = useState(ThemeCode[roundOneSubmission[0]["theme"]]);
+  const [probStatement, setProbStat] = useState(
+    roundOneSubmission[0]["problemStatement"]
+  );
+  const changeTheme = (e) => {
+    console.log(e.target.value);
+    for (let i in ThemeCode) {
+      if (ThemeCode[i] == e.target.value) {
+        console.log(i);
+        setTheme(e.target.value);
+        setThemeCode(toString(i));
+      }
+    }
+  };
   useEffect(() => {
     if (
-      (gitLink == roundOneSubmission[0]["githubLink"] &&
-      ytLink == roundOneSubmission[0]["youtubeVideoLink"] &&
-      devMeshLink == roundOneSubmission[0]["devmeshLink"] &&
-      pptLink == roundOneSubmission[0]["pptFileLink"]) || (gitEditable != 0 ||
-        ytEditable != 0 ||
-        devMeshEditable != 0 ||
-        pptEditable != 0)
+      ((gitLink == roundOneSubmission[0]["githubLink"] &&
+        ytLink == roundOneSubmission[0]["youtubeVideoLink"] &&
+        devMeshLink == roundOneSubmission[0]["devmeshLink"] &&
+        pptLink == roundOneSubmission[0]["pptFileLink"] &&
+        probStatement == roundOneSubmission[0]["problemStatement"]) ||
+      editable != 0)
     ) {
       setCanSubmit(0);
     } else {
       setCanSubmit(1);
     }
-  }, [gitEditable, ytEditable, devMeshEditable, pptEditable, gitLink, ytLink, devMeshLink, pptLink]);
+  }, [probStatement, theme, gitLink, ytLink, devMeshLink, pptLink]);
 
-  const handleSubmit = () => {
-  };
-  const SubmissionComponent = (
-    icon,
-    link,
-    linkEditState,
-    setLink,
-    setLinkEdit
-  ) => {
+  const handleSubmit = () => {};
+
+  const SubmissionComponent = (icon, link, setLink) => {
     return (
       <div className="flex bg-white  text-black items-center rounded px-4 py-2 gap-3 mt-3">
         {icon == "github" ? (
@@ -75,7 +98,7 @@ const RoundOneComp = ({ roundOneSubmission }) => {
           <a
             href={link}
             target="blank"
-            className={linkEditState ? "hidden" : "text-blue-400"}
+            className={editable ? "hidden" : "text-blue-400"}
           >
             {link}
           </a>
@@ -83,51 +106,59 @@ const RoundOneComp = ({ roundOneSubmission }) => {
             type="text"
             value={link}
             onChange={(e) => setLink(e.target.value)}
-            className={linkEditState ? "focus:outline-0 w-full" : "hidden"}
+            className={editable ? "focus:outline-0 w-full" : "hidden"}
           />
         </div>
-        {linkEditState ? (
-          <MdEditOff size={22} onClick={() => setLinkEdit(!linkEditState)} />
-        ) : (
-          <MdEdit size={22} onClick={() => setLinkEdit(!linkEditState)} />
-        )}
       </div>
     );
   };
 
   return (
-    <div className=" bg-[#0a113a] text-white w-full p-5 pt-0 h-[80%] rounded-b-xl">
-      <div className="bg-[#0a113a] text-white rounded-xl p-6 w-full h-full mx-auto py-[5%]">
-        <h1 className="font-bold text-3xl text-center">Round 1</h1>
-        <p className="text-center">PDF Submission</p>
-        {SubmissionComponent(
-          "github",
-          gitLink,
-          gitEditable,
-          setGitLink,
-          setGitEditable
-        )}
-        {SubmissionComponent(
-          "YT",
-          ytLink,
-          ytEditable,
-          setYTLink,
-          setYTEditable
-        )}
-        {SubmissionComponent(
-          "devmesh",
-          devMeshLink,
-          devMeshEditable,
-          setDevMeshLink,
-          setDevMeshEditable
-        )}
-        {SubmissionComponent(
-          "pdf",
-          pptLink,
-          pptEditable,
-          setPptLink,
-          setPptEditable
-        )}
+    <div className=" bg-[#0a113a] text-white w-full p-5 pt-0 h-[80%] rounded-b-xl ">
+      <div className="bg-[#0a113a] text-white rounded-xl p-6 w-full h-full mx-auto pt-1">
+        <div className="flex flex-row mx-auto justify-between">
+          <p className="text-center mb-8 text-xl ml-[43%] mt-3">Submission</p>
+          {editable ? (
+            <MdEditOff
+              onClick={(e) => setEditable(!editable)}
+              className="mt-2"
+            />
+          ) : (
+            <MdEdit onClick={(e) => setEditable(!editable)} className="mt-2" />
+          )}
+        </div>
+        <div className="flex flex-row gap-4">
+          <Dropdown
+            disabled={!editable}
+            value={theme}
+            onChange={(e) => changeTheme(e)}
+            options={availThemes}
+            optionLabel="val"
+            optionValue="val"
+            placeholder="Theme"
+            className="w-[100px] h-fit flex-1"
+          ></Dropdown>
+          <div className="flex-2 bg-white text-black items-center p-2 rounded-md">
+            <div className=" focus:outline-0 pl-2">
+              <textarea
+                style={{ resize: "none", height: "170px" }}
+                disabled={!editable}
+                placeholder="Enter problem statement"
+                value={probStatement}
+                onChange={(e) => setProbStat(e.target.value)}
+                className="focus:outline-0 w-full"
+                maxLength={500}
+                cols={400}
+              ></textarea>
+            </div>
+          </div>
+        </div>
+        <div className="space-y-3">
+          {SubmissionComponent("github", gitLink, setGitLink)}
+          {SubmissionComponent("YT", ytLink, setYTLink)}
+          {SubmissionComponent("devmesh", devMeshLink, setDevMeshLink)}
+          {SubmissionComponent("pdf", pptLink, setPptLink)}
+        </div>
 
         <Button
           className="mx-auto text-md flex justify-center items-center before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 mt-6"

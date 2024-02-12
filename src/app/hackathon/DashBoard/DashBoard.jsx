@@ -12,7 +12,7 @@ import TeamDetails from "../_components/_DashBoard/TeamDetails";
 import RoundDetails from "../_components/_DashBoard/RoundDetails";
 import RoundOneComp from "../_components/_DashBoard/RoundOneComp";
 
-export default function page(router) {
+export default function Page(router) {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerToken, setRegisterToken] = useState("");
   const [responseData, setResponseData] = useState("");
