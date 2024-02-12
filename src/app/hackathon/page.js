@@ -34,7 +34,7 @@ export default function Page() {
     const [devmeshlink,setDevmeshLink] = useState("");
     const [youtubelink,setYoutubeLink] = useState("");
     const [pdflink,setPdfLink] = useState("");
-    const [currentState, setCurrentState] = useState("registered");
+    const [currentState, setCurrentState] = useState("guest");
 
     useEffect(() => {}, []);
   
