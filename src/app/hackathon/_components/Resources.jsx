@@ -7,12 +7,20 @@ import { Button } from "@material-tailwind/react";
 const Resources = () => {
   const videos = [
     {
-      title: "Intel developer cloud registration and launching",
+      title: "Intel Developer Cloud Registration and Launching",
       link: "https://www.youtube.com/embed/Mk_DjL3ZUVo?si=c2EK1nKNqD04j8tu",
     },
     {
-      title: "Gen ai with intel developer cloud ",
+      title: "Installing oneAPI Base Toolkit and Intel Distribution of Python",
+      link: "https://www.youtube.com/embed/_y4bPjj8Gv4?si=c9bGRtmT7Ub29cgs",
+    },
+    {
+      title: "Generative AI with Intel Developer Cloud ",
       link: "https://www.youtube.com/embed/YWTXQWaPAZM?si=8nJTQT5S1eWaHmUC",
+    },
+    {
+      title: "oneAPI Basics Training Series | Intel software",
+      link: "https://www.youtube.com/embed/videoseries?si=5bqBqYoTuKxXi-dG&amp;list=PLg-UKERBljNxsCltpcXU_Haz9xQSCN_SB",
     },
     {
       title:
@@ -20,13 +28,10 @@ const Resources = () => {
       link: "https://www.youtube.com/embed/0YcMXO0FS5A?si=8MylGKaC75kssDM0",
     },
     {
-      title: "openvino intel software",
+      title: "OpenVINO Intel Software",
       link: "https://www.youtube.com/embed/otXim2lNFJ0?si=QItcFhC9KDrLFSf6",
     },
-    {
-      title: "oneAPI Basics Training Series | Intel software",
-      link: "https://www.youtube.com/embed/videoseries?si=5bqBqYoTuKxXi-dG&amp;list=PLg-UKERBljNxsCltpcXU_Haz9xQSCN_SB",
-    },
+    
   ];
 
   const toolkits = [
@@ -35,17 +40,34 @@ const Resources = () => {
       link: "https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit.html#gs.4tqxfx",
     },
     {
-      title: "Intel hpc toolkit cluster ",
+      title: "Intel Developer Catalog ",
+      link: "https://www.intel.com/content/www/us/en/developer/tools/software-catalog/overview.html",
+    },
+    {
+      title: "OpenVINO Intel Distribution",
+      link: "https://www.intel.com/content/www/us/en/developer/tools/openvino-toolkit/overview.html",
+    },
+    {
+      title: "oneAPI Samples",
+      link: "https://github.com/oneapi-src/oneAPI-samples",
+    },
+    {
+      title: "Water Quality Prediction using Intel oneAPI",
+      link: "https://github.com/Aditya3012Purwar/Intel-oneAPI",
+    },
+    {
+      title: "Intel Extension for scikit learn",
+      link: "https://github.com/intel/scikit-learn-intelex",
+    },
+    {
+      title: "Intel HPC toolkit Cluster ",
       link: "https://www.intel.com/content/www/us/en/developer/tools/oneapi/hpc-toolkit.html#gs.4tqy96",
     },
     {
       title: "Intel oneAPI Deep Neural Network",
       link: "https://www.intel.com/content/www/us/en/developer/tools/oneapi/onednn.html#gs.4tqyu9",
     },
-    {
-      title: "intel developer catalog ",
-      link: "https://www.intel.com/content/www/us/en/developer/tools/software-catalog/overview.html",
-    },
+    
   ];
 
   const responsive = {

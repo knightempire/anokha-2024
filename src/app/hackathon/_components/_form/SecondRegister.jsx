@@ -31,6 +31,7 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
               // onChange={(e) => {
               //   setEmail(e.target.value);
               // }}
+              
               type="email"
               name="email"
               id="email"

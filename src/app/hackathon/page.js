@@ -23,6 +23,7 @@ import Rules from './_components/Rules'
 import Judging from './_components/Judging'
  
 import WinnerPrice from './_components/WinnerPrice'
+import SubGuidelines from './_components/SubGuidelines'
  
 export default function Page() {
 
@@ -33,7 +34,7 @@ export default function Page() {
     const [devmeshlink,setDevmeshLink] = useState("");
     const [youtubelink,setYoutubeLink] = useState("");
     const [pdflink,setPdfLink] = useState("");
-    const [currentState, setCurrentState] = useState("guest");
+    const [currentState, setCurrentState] = useState("registered");
 
     useEffect(() => {}, []);
   
@@ -81,8 +82,9 @@ export default function Page() {
         <Price />
         <About/>
         <Phases/>
+        <SubGuidelines/>
         <Themes />
-        <Timeline/> 
+        <Timeline/>  
         <Rules/>
         <Judging/>
         <WinnerPrice/>
