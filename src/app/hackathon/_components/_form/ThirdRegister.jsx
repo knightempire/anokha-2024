@@ -40,7 +40,7 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
               name="email"
               id="email"
               value={e_val}
-              className=" bg-transparent text-black font-medium text-[16px] py-1 px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
+              className=" bg-transparent text-black font-medium text-[16px]  px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
               placeholder="Enter Your Email"
               required
               onChange={(e) => member(e.target.value)}
@@ -73,7 +73,7 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
               id="devcloudid"
               value={idc_val}
               //   value={collegeName}
-              className=" bg-transparent text-black font-medium text-[16px] py-1 rounded-[10px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
+              className=" bg-transparent text-black font-medium text-[16px]  rounded-[10px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
               placeholder="IDC ID"
               onChange={(e) => idc(e.target.value)}
               //   disabled={isAmrita}
@@ -114,7 +114,7 @@ export default function ThirdRegister({
   ];
 
   return (
-    <div className="w-full md:w-[560px] sm:hidden md:block  md:h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
+    <div className="md:w-[560px]    md:h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
       {/* <Image
         src={anokhalogo}
         priority

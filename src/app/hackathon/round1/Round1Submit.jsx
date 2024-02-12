@@ -141,6 +141,7 @@ export default function Page() {
   ]);
 
   return (
+ 
     <div>
       <Navbar />
 
@@ -167,8 +168,9 @@ export default function Page() {
         />
       ) : null}
 
-      <Toast position="bottom-center" ref={toastRef} />
+     
       <Footer />
+ 
     </div>
   );
 }
