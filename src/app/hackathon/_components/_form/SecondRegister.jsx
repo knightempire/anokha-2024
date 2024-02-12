@@ -35,7 +35,7 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
               name="email"
               id="email"
               value={e_val}
-              className="bg-transparent text-black font-medium text-[16px] py-1 rounded-[10px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
+              className="bg-transparent text-black font-medium text-[16px] rounded-[10px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
               placeholder="Enter Your Email"
               required
               onChange={(e) => member(e.target.value)}
@@ -61,7 +61,7 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
               id="devcloudid"
               value={idc_val}
               //   value={collegeName}
-              className=" bg-transparent text-black font-medium text-[16px] py-1 rounded-[10px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
+              className=" bg-transparent text-black font-medium text-[16px] rounded-[10px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
               placeholder="IDC ID"
               onChange={(e) => idc(e.target.value)}
               //   disabled={isAmrita}

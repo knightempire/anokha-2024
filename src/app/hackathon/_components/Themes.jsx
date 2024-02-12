@@ -18,37 +18,48 @@ const Themes = () => {
     {
       text: "Generative AI",
       problemStatements: [
-        "Develop a Gen-AI based Ecommerce personalized recommendation system, which asks the users about their requirements of purchase, understands and then provides personalized recommendations on Ecommerce Platforms.",
-        "GitHub Repository navigator: A Real time solution to understand a developer's problem statement (prompts), show relevant repositories (Not just generated based on keywords but rather analyzing the entire GitHub repositories and providing proper recommendations) and provide a workflow if the solution can't be tackled with just a single repository. ",
-        "Make it real: Leverage the power of Multimodal Models to create an app or website just by Drawing/Image prompting which can ease the experience of software development.",
-        "You can select any problem statement coming under this theme other than the above",
+        ["Gen-AI based Ecommerce personalized recommendation system", "Recomendation systems is an intresting and rapidly evolving field of study In this track, You will have to develop a chatbot that 1) Understands conducts a goal-oriented chat with the user and understand user requirements, and is able into represent it in a domai specific query language. 2)Take the query generated from the step (1) and  Integrate it with a recomendation system and present the relevent products to the user. "],
+        ["Github Repository navigator", "A Real time solution to understand a developer's problem statement (prompts) , show relevant repositories (Not just generated based on keywords but rather analyzing the entire github repositories and providing proper reccomendations) and provide a workflow if the solution can't be tackled with just a single repository"],
+        ["Make it real: WHAT YOU SHOW IS WHAT YOU GET", "In this track, you will build an application, that converts the user wireframe (Hand-drawn or digital), into front-end code, essentially developing an “WHAT YOU SHOW IS WHAT YOU GET APPLICATION”"],
+        ["Others ","You can select any problem statement coming under this theme other than the above"]
       ],
     },
     {
       text: "IOT",
       problemStatements: [
-        "Smart Classroom Environment Control System: Create an innovative solution for optimizing energy consumption and enhancing user comfort in large spaces, such as classrooms or expansive rooms with multiple fans, lights, and AC units. Develop a system that integrates IoT devices and AI algorithms to intelligently control individual appliances based on occupancy. The objective is to dynamically activate and deactivate fans, lights, and AC units in response to the presence or absence of individuals within specific zones, ensuring efficient resource utilization and a comfortable environment. ",
-        "Smart Farming Hackathon Challenge: Design an intelligent farming system that harmoniously integrates IoT and AI technologies. Your mission is to develop a solution that monitors soil moisture, temperature, and crop health through IoT sensors. Implement AI algorithms for predicting optimal planting times and detecting potential diseases. With a focus on resource optimization and informed decision- making, empower farmers to elevate crop yield and enhance overall crop management practices. ",
-        "Smart Retail Inventory Management: In the era of smart retail, the challenge is to develop an innovative inventory management system that leverages the power of IoT and AI. The goal is to create a solution that not only monitors product levels but also predicts demand, optimizes restocking schedules, and minimizes the risk of overstock or stockouts. Additionally, the system should prioritize enhancing the overall user experience through a user-friendly interface.",
-        "You can select any problem statement coming under this theme other than the above "
+        ["Smart Classroom Environment Control System:", "Create an innovative solution for optimizing energy consumption and enhancing user comfort in large spaces, such as classrooms or expansive rooms with multiple fans, lights, and AC units. Develop a system that integrates IoT devices and AI algorithms to intelligently control individual appliances based on occupancy. The objective is to dynamically activate and deactivate fans, lights, and AC units in response to the presence or absence of individuals within specific zones, ensuring efficient resource utilization and a comfortable environment. "],
+        ["Smart Farming Hackathon Challenge:", "Design an intelligent farming system that harmoniously integrates IoT and AI technologies. Your mission is to develop a solution that monitors soil moisture, temperature, and crop health through IoT sensors. Implement AI algorithms for predicting optimal planting times and detecting potential diseases. With a focus on resource optimization and informed decision- making, empower farmers to elevate crop yield and enhance overall crop management practices. "],
+        ["Smart Retail Inventory Management:", "In the era of smart retail, the challenge is to develop an innovative inventory management system that leverages the power of IoT and AI. The goal is to create a solution that not only monitors product levels but also predicts demand, optimizes restocking schedules, and minimizes the risk of overstock or stockouts. Additionally, the system should prioritize enhancing the overall user experience through a user-friendly interface."],
+        ["Others ", "You can select any problem statement coming under this theme other than the above "]
       ],
     },
     {
       text: "Health Care",
-      problemStatements: ["Any problem statement can be chosen!"],
+      problemStatements: [
+        ["Multimodal Mental Health Assessment", "Mental health seems to be the new pandemic. With increasing number of mental health related concerns, Tools for early detection of signs of detoriating mental health and depression is neccessary to maintain a healthy community. In this track, You are tasked to build a multi-modal mental health assesment suite, that analyses the mental health condition of the personal by 1) Analysing the vidio of the person. Specifically, by analyzing facial expressions and body langeuge.  2) Analysing the audio of the person.  3) You may also utilize some standard scales availabe for mental health assesment to support your model.  velop an innovative approach for mental health assessment by combining NLP analysis of patient interviews and written responses with alysis of facial expressions and body language. The system should provide a nuanced understanding of mental health conditions, aiding re accurate diagnostics and treatment planning."] ,
+        ["Others ","Any problem statement can be chosen!"]
+      ],
     },
     {
       text: "Autonomous Vehicles",
-      problemStatements: ["Any problem statement can be chosen!"],
+      problemStatements: [
+        ["Others ","Any problem statement can be chosen!"]
+      ],
     },
     {
       text: "Cyber Security",
-      problemStatements: ["Any problem statement can be chosen!"],
+      problemStatements: [
+        ["Others ","Any problem statement can be chosen!"]
+      ],
     },
     {
       text: "Open Ended",
       problemStatements: [
-        "Any problem statement can be chosen!",
+        ["Deepfake Detection Shield", "Deep-Fake is an umbrella term that represents the technologies used to generate audio, image and vedio hoaxes. With democratization o such tools, AI-driven content generation is seeing a never foreseen rise in interests. However, usage of a particular information t generate such hoaxes without the involved party's consent is a concern to be adressed. To this end, In this track, you would be require to come up with Techniques to detect “Deep-Fakes”. Additional points if your solution is scalable"],
+        
+        ["Interactive Learning Experience for Kids" ," Learning pedagogy design has been a very happening discussion amongst educators and teachers. Till date, the nature of pedagogies has  driven by the need of the world, and very care is taken to adress individual needs, even in well eshtablished institutions like sch and colleges. In this track, Given syllabus S, and outcomes O, you would have to develop an “AI-Agent” that does goal-orie conversations with the student to teach him a concept of choice from the syllabus. Further, Additional poitns if you could integra planning module, that gets real-time feedback from users and adapts itself realtime. In essense, Build a personalized Tutor. Over t you agent would have to adapt to a particular student’s strength and weaknesses. Additional points, If you could make the U interactive as possible."], 
+        ["Energy Estimation in buildings using Computer vision (Floor wise)", "Develop a Real time AI Powered solution using computer vision to track the amount of Energy being consumed in the frame of camera"], 
+        ["Others ","Any problem statement can be chosen!"],
       ],
     },
   ];
@@ -272,11 +283,11 @@ const Themes = () => {
                                 expandIcon={<FaPlus />}
                                 aria-controls="panel1-content"
                                 id="panel1-header">
-                                <Typography className='md:px-7 sm:px-2 py-1 text-md text-black font-bold text-lg'>Problem Statement: {id+1}</Typography>
+                                <Typography className='md:px-7 sm:px-2 py-1 text-md text-black font-bold text-lg'>{statement[0]}</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails >
                                 <Typography className='md:px-7 sm:px-2 text-lg'>
-                                {statement}
+                                {statement[1]}
                                 </Typography>
                                 </AccordionDetails>
                             </Accordion>

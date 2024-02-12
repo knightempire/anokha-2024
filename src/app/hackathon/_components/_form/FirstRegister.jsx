@@ -51,7 +51,7 @@ export default function FirstRegister({
                   value={TeamName[0]}
                   name="teamname"
                   id="teamname"
-                  className="bg-transparent text-black font-medium text-[16px] py-1 px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
+                  className="bg-transparent text-black font-medium text-[16px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
                   placeholder="Team Name"
                   onChange={(e) => TeamName[1](e.target.value)}
                   required
@@ -112,7 +112,7 @@ export default function FirstRegister({
                     name="platformid"
                     id="platformid"
                     value={platform[0]}
-                    className="bg-transparent text-black border-2 border-gray-800 font-medium text-[16px] py-1 rounded-[5px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
+                    className="bg-transparent text-black border-2 border-gray-800 font-medium text-[16px] rounded-[5px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
                     placeholder="Platform ID"
                     onChange={(e) => platform[1](e.target.value)}
                   />
