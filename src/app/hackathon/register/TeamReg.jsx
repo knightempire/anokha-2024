@@ -140,7 +140,7 @@ const Register = () => {
      
     const MemberList = [
         {
-            name: member1Email,
+            name: registerEmail,
             idc: member1IDC
         }
         ,
@@ -356,7 +356,7 @@ const Register = () => {
             
             {
                 currentStep === 0? <FirstRegister  handle_buttonone_click={handle_button_next_click} TeamName = {[teamName,setTeamName]} NoofMembers={[noofMembers,setNoofMembers]} platform={[platform,setPlatform]} />
-                :currentStep === 1 ?  <SecondRegister me1={member1Email} mi1={member1IDC} me2={member2Email} mi2={member2IDC} member1Email={setMember1Email} member1IDC = {setMember1IDC} member2Email={setMember2Email } member2IDC={setMember2IDC}  handle_next_click={handle_button_next_click} handle_prev_click = {handle_button_Prev_click}/> 
+                :currentStep === 1 ?  <SecondRegister me1={registerEmail} mi1={member1IDC} me2={member2Email} mi2={member2IDC} member1Email={setMember1Email} member1IDC = {setMember1IDC} member2Email={setMember2Email } member2IDC={setMember2IDC}  handle_next_click={handle_button_next_click} handle_prev_click = {handle_button_Prev_click}/> 
                 : currentStep === 2 ? <ThirdRegister n={noofMembers} me3={member3Email} mi3={member3IDC} me4={member4Email} mi4={member4IDC} member3Email={setMember3Email} member3IDC={setMember3IDC} member4Email={setMember4Email} member4IDC={setMember4IDC} handle_register_click={handle_button_register_click} handle_prev_click = {handle_button_Prev_click} />:null
             
             }
