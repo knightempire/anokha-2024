@@ -24,7 +24,7 @@ const phases = [
 const Timeline = () => {
   return (
     <div>
-      <div className="font-poppins  w-full py-10 text-black">
+      <div className="font-poppins  w-full py-10 pb-2 text-black">
         <p className="md:text-[3rem] sm:text-[2rem] font-bold text-center">
           Hackathon Phases
         </p>
@@ -45,7 +45,7 @@ const Timeline = () => {
               </div>
 
               {/* Div for headings */}
-              <div className="mt-3 max-w-[400px] mx-auto h-full w-full ">
+              <div className="mt-3 max-w-[400px] mx-auto h-full w-full mb-[100px]">
                 <p className="md:text-[2rem] sm:text-[1.6rem] font-bold text-center">
                   Phase {id + 1}
                 </p>
