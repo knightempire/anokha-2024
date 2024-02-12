@@ -1,71 +1,59 @@
 "use client";
 
-import QRCode from "react-qr-code";
 import Navbar from "../components/EventHeader";
-import securelocalStorage from "react-secure-storage";
+
+import { useState, useRef } from "react";
+import { EDIT_PROFILE_URL } from "../_util/constants";
+import secureLocalStorage from "react-secure-storage";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
-import "primereact/resources/themes/lara-light-blue/theme.css";
-
-import { useEffect, useState, useRef } from "react";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import WebGLApp from "../bg/WebGLApp";
+import "primereact/resources/themes/saga-blue/theme.css";
 import ToastAlert from "../_util/ToastAlerts";
-import secureLocalStorage from "react-secure-storage";
-import { useRouter } from "next/navigation";
 
-import { EDIT_PROFILE_URL } from "../_util/constants";
-import EditNoteIcon from "@mui/icons-material/EditNote";
+import WebGLApp from "../bg/WebGLApp";
 
-export default function Profile() {
-  // Manage references to toast notifications
-  const toastRef = useRef();
+import anokhalogo from "@/../public/images/anokha_circle.svg";
+import TextField from "@mui/material/TextField";
+import QRCode from "react-qr-code";
 
-  // state variables
-  const [toActivate, setToActivate] = useState(
-    securelocalStorage.getItem("studentAccountStatus"),
-  );
-  const [fullname, setFullName] = useState(
-    securelocalStorage.getItem("studentFullName"),
-  );
-  const [phoneNumber, setPhoneNumber] = useState(
-    securelocalStorage.getItem("studentPhone"),
-  );
-  const [email, setEmail] = useState(
-    securelocalStorage.getItem("studentEmail"),
-  );
-  const [collegeName, setCollegeName] = useState(
-    securelocalStorage.getItem("studentCollegeName"),
-  );
-  const [collegeCity, setCollegeCity] = useState(
-    securelocalStorage.getItem("studentCollegeCity"),
-  );
-  const [studentID, setStudentID] = useState(
-    securelocalStorage.getItem("studentId"),
-  );
+export default function Register() {
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [collegeName, setCollegeName] = useState("");
+  const [collegeCity, setCollegeCity] = useState("");
+  const [isAmrita, setisAmrita] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  // Validators for regex testing
-  const nameValid = /^[a-zA-Z ]{1,25}$/;
-  const collegeNameValid = /^[a-zA-Z ,-]{1,100}$/;
-  const collegeCityValid = /^[a-zA-Z ,-]{1,100}$/;
-  const phoneNumberValid = /^[0-9]{10}$/;
-  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //Regular expression to check amrita mail
+  const amritaRegex =
+    /^[a-zA-Z0-9._%+-]+@(cb\.students\.amrita\.edu|cb\.amrita\.edu|av\.students\.amrita\.edu|av\.amrita\.edu)$/;
 
-  const isNameValid = nameValid.test(fullname);
-  const isEmailValid = emailValid.test(email);
-  const isPhoneNumberValid = phoneNumberValid.test(phoneNumber);
-  const isCollegeNameValid = collegeNameValid.test(collegeName);
-  const isCollegeCityValid = collegeCityValid.test(collegeCity);
+  //check if amrita mail or not
+  const isAmritaMail = amritaRegex.test(email);
+
+  const nameRegex = /^[a-zA-Z ]{1,25}$/;
+  const collegeNameRegex = /^[a-zA-Z ,-]{1,100}$/;
+  const collegeCityRegex = /^[a-zA-Z ,-]{1,100}$/;
+  const phoneRegex = /^[0-9]{10}$/;
+
+  const isPhoneValid = phoneRegex.test(phone);
+  const isNameValid = nameRegex.test(name);
+  const isCollegeNameValid = collegeNameRegex.test(collegeName);
+  const isCollegeCityValid = collegeCityRegex.test(collegeCity);
 
   const [webGLColors, setWebGLColors] = useState({
     color1: [43 / 255, 30 / 255, 56 / 255],
     color2: [11 / 255, 38 / 255, 59 / 255],
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
+
+  const toastRef = useRef(null);
 
   // Confirm edit profile - changes
   const handleUpdate = async (e) => {
@@ -76,7 +64,7 @@ export default function Profile() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${securelocalStorage.getItem("SECRET_TOKEN")}`,
+          Authorization: `Bearer ${secureLocalStorage.getItem("SECRET_TOKEN")}`,
         },
         body: JSON.stringify({
           studentFullName: fullname,
@@ -139,123 +127,165 @@ export default function Profile() {
     }
   };
 
-  // Page Render
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
       <WebGLApp colors={webGLColors} />
+
       <div className="block space-y-24 md:space-y-10">
         <Navbar />
-        <Toast ref={toastRef} position="bottom-center" />
         <div className="relative min-h-screen">
-          <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl">
-            {/* Column 01 - Becomes bottom row in mobile view */}
-            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
-              <div id="name-field">
-                <TextField
-                  error={!isNameValid && fullname != ""}
-                  id="outlined-error-helper-text"
-                  placeholder="Can't be empty"
-                  label="Name"
-                  defaultValue={fullname}
-                  sx={{
-                    width: "100%",
-                    borderRadius: 5,
-                    borderWidth: 5,
-                  }}
-                  onChange={(e) => {
-                    setFullName(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <div id="email-field">
-                <TextField
-                  error={!isEmailValid && email != ""}
-                  id="outlined-error-helper-text"
-                  placeholder="Can't be empty"
-                  label="Email"
-                  defaultValue={email}
-                  sx={{
-                    width: "100%",
-                    borderRadius: 5,
-                    borderWidth: 5,
-                  }}
-                  disabled
-                  required
-                />
-              </div>
-              <div id="phone-field">
-                <TextField
-                  error={!isPhoneNumberValid && phoneNumber != ""}
-                  id="outlined-error-helper-text"
-                  placeholder="Can't be empty"
-                  label="Phone Field"
-                  defaultValue={phoneNumber}
-                  sx={{
-                    width: "100%",
-                    borderRadius: 5,
-                    borderWidth: 5,
-                  }}
-                  onChange={(e) => {
-                    setPhoneNumber(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <div id="collegeName-field">
-                <TextField
-                  error={!isCollegeNameValid && collegeName != ""}
-                  id="outlined-error-helper-text"
-                  placeholder="Can't be empty"
-                  label="College Name"
-                  defaultValue={collegeName}
-                  sx={{
-                    width: "100%",
-                    borderRadius: 5,
-                    borderWidth: 5,
-                  }}
-                  onChange={(e) => {
-                    setCollegeName(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-              <div id="collegeCity-field">
-                <TextField
-                  error={!isCollegeCityValid && collegeCity != ""}
-                  id="outlined-error-helper-text"
-                  placeholder="Can't be empty"
-                  label="College City"
-                  defaultValue={collegeCity}
-                  sx={{
-                    width: "100%",
-                    borderRadius: 5,
-                    borderWidth: 5,
-                  }}
-                  onChange={(e) => {
-                    setCollegeCity(e.target.value);
-                  }}
-                  required
-                />
-              </div>
-            </div>
-            {/* Column 02 - Becomes top row in mobile view*/}
-            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
-              <div className="flex flex-col">
-                <div
-                  id="qr-code-holder"
-                  className="p-10 bg-[#ffffff] max-w-256"
+          <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
+          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
+            <Toast ref={toastRef} position="bottom-center" />
+            <div className="w-full rounded-[24px] bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
+              <Image
+                src={anokhalogo}
+                priority
+                alt="Amrita logo"
+                width={128}
+                height={128}
+                className="ml-auto mr-auto mt-4 h-16"
+              />
+              <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl">
+                  Profile
+                </h1>
+                <form
+                  className="space-y-4 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
+                  onSubmit={handleUpdate}
                 >
-                  <QRCode
-                    value={`anokha://${studentID}`}
-                    style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-                    viewBox={`0 0 256 256`}
-                    size="256"
-                  />
-                </div>
-                <div id="confirm-btn-container">
-                  <Button variant="contained" endIcon={<EditNoteIcon />} onClick={handleUpdate}/>
-                </div>
+                  <div className="flex flex-col justify-center flex-1 space-y-8 md:border-r md:border-black md:pr-10 max-w-600">
+                    <div id="Fields">
+                      <TextField
+                        error={!isNameValid && name != ""}
+                        placeholder={"Enter Name"}
+                        label="Name"
+                        value={name}
+                        helperText={
+                          !isNameValid && name != ""
+                            ? "Should not contain special characters"
+                            : ""
+                        }
+                        sx={{
+                          width: "100%",
+                          borderRadius: 5,
+                        }}
+                        onChange={(e) => {
+                          setName(e.target.value);
+                        }}
+                        required
+                      />
+                    </div>
+                    <div id="Fields">
+                      <TextField
+                        error={!isPhoneValid && phone != ""}
+                        placeholder={"+91 99999 99999"}
+                        label="Phone Number"
+                        value={phone}
+                        helperText={
+                          !isPhoneValid && phone != ""
+                            ? "Should contain 10 digits"
+                            : ""
+                        }
+                        sx={{
+                          width: "100%",
+                          borderRadius: 5,
+                        }}
+                        onChange={(e) => {
+                          setPhone(e.target.value);
+                        }}
+                        required
+                      />
+                    </div>
+                    <div id="Fields">
+                      <div>
+                        <TextField
+                          error={!isCollegeNameValid && collegeName != ""}
+                          placeholder="Enter College Name"
+                          label="College Name"
+                          value={collegeName}
+                          helperText={
+                            !isCollegeNameValid && collegeName != ""
+                              ? "Should contain only alphabets"
+                              : ""
+                          }
+                          sx={{
+                            width: "100%",
+                            borderRadius: 5,
+                            borderWidth: 5,
+                          }}
+                          onChange={(e) => {
+                            setCollegeName(e.target.value);
+                          }}
+                          required
+                          disabled={isAmrita}
+                        />
+                      </div>
+                      <div id="Fields" className="mt-8 mb-8">
+                        <TextField
+                          error={!isCollegeCityValid && collegeCity != ""}
+                          placeholder="Enter College City"
+                          label="College City"
+                          value={collegeCity}
+                          helperText={
+                            !isCollegeCityValid && collegeCity != ""
+                              ? "Should contain only alphabets"
+                              : ""
+                          }
+                          sx={{
+                            width: "100%",
+                            borderRadius: 5,
+                            borderWidth: 5,
+                          }}
+                          onChange={(e) => {
+                            setCollegeCity(e.target.value);
+                          }}
+                          required
+                        />
+                      </div>
+                      <div id="Fields">
+                        <TextField
+                          placeholder="Enter Email"
+                          label="Email"
+                          value={email}
+                          sx={{
+                            width: "100%",
+                            borderRadius: 5,
+                            borderWidth: 5,
+                          }}
+                          disabled
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col flex-1 gap-8">
+                      <div id="Fields">
+                        <div className="bg-[#ffffff] m-10 ml-20 mr-20 p-8">
+                            {/*<QRCode */}
+                            {/*   className="" */}
+                            {/*   size={256} */}
+                            {/*   value={qrValue} */}
+                            {/*  viewBox={`0 0 256 256`} */}
+                            {/*>*/}
+                        </div>
+                      </div>
+                    <div className="text-center">
+                      <button
+                        type="submit"
+                        className="w-[200px] mt-3 text-black bg-[#f69c18] mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed"
+                        disabled={
+                          loading ||
+                          !isCollegeNameValid ||
+                          !isNameValid ||
+                          !isPhoneValid ||
+                          (isAmrita ? !isAmritaMail : !isEmailValid)
+                        }
+                      >
+                        Confirm Changes
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
