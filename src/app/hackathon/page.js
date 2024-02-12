@@ -137,7 +137,7 @@ export default function page() {
         <Themes />
         <Timeline/>  
         <Rules/>
-        <WinnerPrice/>
+        {/* <WinnerPrice/> */}
         <Judging/>
         <Resources/>
         <FAQs/>

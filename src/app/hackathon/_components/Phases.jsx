@@ -7,7 +7,7 @@ const phases = [
   {
     title: "Ideation",
     description:
-      " During this initial phase, participants are tasked with brainstorming ideas centered around provided problem statements. Submissions entail a PowerPoint presentation complemented by a succinct 500-character description elucidating the proposed concept, with explicit reference to the Intel toolkit employed.",
+      "During this initial phase, participants are tasked with brainstorming ideas centered around provided problem statements. Provide a submission with a PowerPoint presentation and a concise 200-character description that clearly explains the proposed concept, making specific reference to the Intel toolkit used.",
   },
   {
     title: "Prototype Development",
@@ -17,7 +17,7 @@ const phases = [
   {
     title: "Final Round",
     description:
-      "Shortlisted participants progress to the culminating 24-hour offline hackathon hosted at Amrita campus. Essential guidelines necessitate participants to furnish their own laptops, with hardware resources allocated based on prototype requirements.",
+      "Shortlisted participants progress to the culminating 24-hour offline hackathon hosted at the Amrita Vishwa Vidyapeetham, Coimbatore campus. Participants need to bring their laptops, and hardware resources will be provided based on the requirements of the prototype.",
   },
 ];
 
