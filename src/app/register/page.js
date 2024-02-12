@@ -382,7 +382,7 @@ export default function Register() {
                               : ""
                           }
                         >
-                          Should not contain - (hyphen) or " (quotes)
+                          Should not contain - (hyphen) or `&quot;` (quotes)
                         </div>
                         <div
                           className={
