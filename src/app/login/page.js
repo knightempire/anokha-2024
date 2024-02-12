@@ -64,6 +64,9 @@ export default function Login() {
           data["studentAccountStatus"]
         );
         secureLocalStorage.setItem("studentPhone", data["studentPhone"]);
+        secureLocalStorage.setItem("studentCollegeName", data["studentCollegeName"]);
+        secureLocalStorage.setItem("studentCollegeCity", data["studentCollegeCity"]);
+        secureLocalStorage.setItem("needPassport", data["needPassport"]);
 
         ToastAlert(
           "success",
@@ -71,8 +74,8 @@ export default function Login() {
           "You have logged in successfully!",
           toastRef
         );
-
         router.replace("/");
+
       } else if (response.status === 500) {
         setLoading(false)
         ToastAlert(
