@@ -264,8 +264,8 @@ const Themes = () => {
                       <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
                         {themes[selectedTab].problemStatements.map(
                           (statement, id) => (
-                            <div>
-                              <div key={id} className="md:px-[50px] my-3 ">
+                            <div key={id}>
+                              <div  className="md:px-[50px] my-3 ">
                                 <div className="w-full">
                                 <Accordion key={index} className='rounded p-2 bg-transparent bg-white bg-opacity-80 shadow-none'>
                                 <AccordionSummary 

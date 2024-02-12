@@ -11,10 +11,13 @@ import {Button } from "@material-tailwind/react";
 import HeroSection from './_components/HeroSection'
 import IntelHero from './_components/IntelHero'
 import Phases from './_components/Phases'
-
+import {useAuth} from "@/app/_auth/useAuth"
 import { useState,useEffect } from 'react'
 import RoundOne from './_components/RoundOne'
 import RoundOnePt2 from './_components/RoundOnePt2'
+import secureLocalStorage from 'react-secure-storage'
+import {HACKATHON_DASHBOARD_URL} from "@/app/_util/constants"
+import { useRouter } from 'next/navigation'
 
 
 import Resources from './_components/Resources'
@@ -26,18 +29,66 @@ import WinnerPrice from './_components/WinnerPrice'
 import SubGuidelines from './_components/SubGuidelines'
  
 export default function page() {
-
-  const [currentStep,setCurrentStep] = useState(0);
+    const router = useRouter()
+    const [currentStep,setCurrentStep] = useState(0);
     const [theme,setTheme] = useState( -1);
     const [problemStatement,setProblemStatement] = useState("");
     const [githublink,setGithubLink] = useState("");
     const [devmeshlink,setDevmeshLink] = useState("");
     const [youtubelink,setYoutubeLink] = useState("");
     const [pdflink,setPdfLink] = useState("");
-    const [currentState, setCurrentState] = useState("registered");
+    const [currentState, setCurrentState] = useState("guest");
 
-    useEffect(() => {}, []);
-  
+    
+    const [secretToken, setSecretToken] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(0);
+    const [userState,setUserState] = useState(0) 
+    const { GetDashboard } = useAuth();
+
+    useEffect(()=>{
+      console.log(isLoggedIn,secretToken,userState)
+      if (isLoggedIn===1 ) {
+         
+        GetDashboard(secretToken)
+        console.log("this is inside")
+         
+      }
+    },[isLoggedIn,secretToken])
+
+    useEffect(() => {
+      setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
+      setSecretToken(secureLocalStorage.getItem("registerToken"));
+    }, []);
+
+    const GetDashBoard =async()=>{
+
+      try{
+        const response = await fetch(HACKATHON_DASHBOARD_URL, {
+            method: "GET",
+            headers: {
+            
+            "Authorization": "Bearer " + secretToken,
+            },
+            
+        });
+
+        const data = await response.json();
+        if (response.status === 200) {
+            // ToastAlert('success', "Success", "Registration successful", toastRef);
+            secureLocalStorage.setItem("DashBoardData", data);
+            console.log(data)
+        }   
+        else if(response.status===400){
+
+        }
+
+    }catch{
+        console.log(e);
+    }
+    }
+
+    console.log(isLoggedIn,secretToken,userState)
+    // 
     const getButtonText = () => {
       switch (currentState) {
         case "guest":
@@ -76,8 +127,9 @@ export default function page() {
         </div> */}
 
         
-        {getButtonText()}
-
+        
+        
+        <IntelHero userState={isLoggedIn} />
        
         <Price />
         <About/>

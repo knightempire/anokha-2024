@@ -100,7 +100,7 @@ export default function ThirdRegister({
   ];
 
   return (
-    <div className="w-full md:w-[560px] sm:hidden md:block  md:h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
+    <div className="md:w-[560px]    md:h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
       {/* <Image
         src={anokhalogo}
         priority
