@@ -84,7 +84,7 @@ export default function page() {
         <Phases/>
         <SubGuidelines/>
         <Themes />
-        {/* <Timeline/>  */}
+        <Timeline/>  
         <Rules/>
         <Judging/>
         <WinnerPrice/>

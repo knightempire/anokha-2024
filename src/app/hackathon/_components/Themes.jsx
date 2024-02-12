@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Button } from "@material-tailwind/react";
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { FaPlus } from "react-icons/fa6";
+
 const Themes = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   // const [selectedTab1, setSelectedTab1] = useState(0);
+
 
   const themes = [
     {
@@ -11,7 +20,7 @@ const Themes = () => {
       problemStatements: [
         "Develop a Gen-AI based Ecommerce personalized recommendation system, which asks the users about their requirements of purchase, understands and then provides personalized recommendations on Ecommerce Platforms.",
         "GitHub Repository navigator: A Real time solution to understand a developer's problem statement (prompts), show relevant repositories (Not just generated based on keywords but rather analyzing the entire GitHub repositories and providing proper recommendations) and provide a workflow if the solution can't be tackled with just a single repository. ",
-        "• Make it real: Leverage the power of Multimodal Models to create an app or website just by Drawing/Image prompting which can ease the experience of software development.",
+        "Make it real: Leverage the power of Multimodal Models to create an app or website just by Drawing/Image prompting which can ease the experience of software development.",
         "You can select any problem statement coming under this theme other than the above",
       ],
     },
@@ -208,6 +217,7 @@ const Themes = () => {
       <div className="h-full w-full bg-[#0A113A] relative overflow-hidden ">
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[30%] sm:w-[70%] p-8 rounded-full left-[10%] top-10 md:h-[30%] sm:h-[30%] blur-3xl levitate"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[80%] top-10 md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[20%] top-[40%] md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>
 
         <div className="font-poppins h-[100%] mt-[30px]">
           <p className="font-bold text-[3rem] w-fit mx-auto relative z-10 rounded-xl py-3 text-white">
@@ -249,21 +259,34 @@ const Themes = () => {
                         selectedTab === index ? "block" : "hidden"
                       }`}
                     >
-                      <div className="mb-9 md:justify-center gap-5 bg-white bg-opacity-70 backdrop-blur-3xl rounded mx-auto md:w-[70%] sm:w-[90%] py-8 sm:px-6 md:px-0">
+                      <div className="mb-9 md:justify-center gap-5 bg-white bg-opacity-20 backdrop-blur-3xl rounded mx-auto md:w-[80%] sm:w-[90%] py-8 sm:px-6 md:px-0 shadow-xl">
+                      <h1 className="text-center text-white font-bold text-3xl">{themes[selectedTab].text}</h1>
+                      <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
                         {themes[selectedTab].problemStatements.map(
                           (statement, id) => (
-                            <div key={id} className="md:px-[50px] my-1 py-3">
-                              <div className="border-2 border-black p-6 items-center marker rounded-xl md:flex gap-8 w-full">
+                            <div>
+                              <div key={id} className="md:px-[50px] my-3 ">
+                                <div className="w-full">
+                                <Accordion key={index} className='rounded p-2 bg-transparent bg-white bg-opacity-80 shadow-none'>
+                                <AccordionSummary 
+                                expandIcon={<FaPlus />}
+                                aria-controls="panel1-content"
+                                id="panel1-header">
+                                <Typography className='md:px-7 sm:px-2 py-1 text-md text-black font-bold text-lg'>Problem Statement: {id+1}</Typography>
+                                </AccordionSummary>
+                                <AccordionDetails >
+                                <Typography className='md:px-7 sm:px-2 text-lg'>
+                                {statement}
+                                </Typography>
+                                </AccordionDetails>
+                            </Accordion>
 
-                                <div className="justify-start w-[90%]"><h1 className=" font-bold text-xl mb-2 w-full">
-                                {themes[selectedTab].text} : Problem Statement
-                                </h1><p>{statement}</p></div>
-                                
-                                <div className="justify-end md:m-0 sm:mt-4 "><Button className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 flex-end"><span relative="relative z-10 text-xl">Read More</span>
-                  </Button></div>
                                 
                               </div>
                             </div>
+                            </div>
+                            
+                            
                           )
                         )}
                       </div>
