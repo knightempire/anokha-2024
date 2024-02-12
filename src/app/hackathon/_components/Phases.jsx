@@ -50,7 +50,7 @@ const Timeline = () => {
                   Phase {id + 1}
                 </p>
                 <p className="text-lg font-bold mb-3 text-center">{ph.title}</p>
-                <div className="bg-[#017DC5] p-5 rounded-lg sm:mx-auto h-fit text-white w-full rounded-tr-none rounded-bl-none pe-3 md:mx-5">
+                <div className="bg-[#017DC5] p-5 rounded-lg sm:mx-auto h-fit text-white w-full rounded-tr-none rounded-bl-none ">
                   {ph.description}
                 </div>
               </div>
