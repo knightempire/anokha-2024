@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 const TeamDetails = (props) => {
 
-    const hash = "SajithRajan"
+    const hash = "isajithrajan@gmail.com"
   return (
     <div className='w-full bg-[#0A113A] text-white  p-12 rounded-xl text-lg'>
       <div className=' space-y-2'>
@@ -35,7 +35,7 @@ const TeamDetails = (props) => {
                 <td>
                 <div className="flex items-center gap-3">
                     <div className="avatar">
-                    <div className="mask mask-squircle bg-black rounded-full w-12 h-12">
+                    <div className="mask mask-squircle bg-gray-500 rounded-full w-12 h-12">
                     <img height={200} src={`https://www.gravatar.com/avatar/${hash}.jpg?s=200&d=robohash`} alt="Profile" width={200} className="rounded-lg"/> 
                     
                     </div>
@@ -65,8 +65,8 @@ const TeamDetails = (props) => {
                 <td>
                 <div className="flex items-center gap-3">
                     <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                        <img src="/tailwind-css-component-profile-3@56w.png" alt="Avatar Tailwind CSS Component" />
+                    <div className="mask bg-gray-500 mask-squircle w-12 h-12">
+                    <img height={200} src={`https://www.gravatar.com/avatar/${hash}.jpg?s=200&d=robohash`} alt="Profile" width={200} className="rounded-lg "/> 
                     </div>
                     </div>
                     <div>

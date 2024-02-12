@@ -120,7 +120,7 @@ const Navigationbar = () => {
         <div className="flex flex-row justify-center items-start">
           
           <div className="mr-5">
-            {isLoggedIn===0?<ProfileCard/>
+            {isLoggedIn===1?<ProfileCard/>
             : <div className="sm:hidden md:block relative inline-flex  group">
                 <div
                     className="absolute transitiona-all w-[180px] h-[30px]   duration-1000 opacity-70  -inset-px bg-gradient-to-r from-[#ffffff] via-[#76adfa] to-[#0659ff] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt">
