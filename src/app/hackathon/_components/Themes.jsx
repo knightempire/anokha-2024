@@ -220,7 +220,7 @@ const Themes = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[20%] top-[40%] md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>
 
         <div className="font-poppins h-[100%] mt-[30px]">
-          <p className="font-bold text-[3rem] w-fit mx-auto relative z-10 rounded-xl py-3 text-white">
+          <p className="font-bold text-[3rem] w-fit mx-auto relative z-10 rounded-xl text-white mt-4">
             Themes
           </p>
 
@@ -228,7 +228,7 @@ const Themes = () => {
             {data.map((val, index) => (
               <div
                 key={index}
-                className={`cursor-pointer flex flex-col justify-center items-center m-3 ${
+                className={`cursor-pointer flex flex-col justify-center items-center mx-3 my-2 ${
                   selectedTab === index ? "border-black border-4 " : "" } p-[10%] md:p-5 
             rounded-xl bg-opacity-60 backdrop-blur-3xl   bg-white `}
                 onClick={() => handleTabClick(index)}
