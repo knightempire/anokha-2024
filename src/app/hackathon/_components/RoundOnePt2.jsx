@@ -64,8 +64,11 @@ const RoundOnePt2 = ({prev,upload,github_val,github,devmesh,devmesh_val,youtube,
                 className="w-full py-3 px-4 mt-4 rounded" required
               />
 
+              <div className='mx-auto w-full'>
               <input type="checkbox" id="" className="w-[20px] mt-3"/>
-              <label htmlFor="" className="text-sm ml-2">Lorem ipsum  </label>
+              <label htmlFor="" className="text-sm ml-2">I have granted access to the above links and I accept full responsibility for functionality and information accuracy.</label>
+              </div>
+              
 
               <div className="w-full justify-center gap-2 mt-5 flex">
                 {/* <button className="text-[1rem] bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-2 md:mt-3 rounded-[15px] ">

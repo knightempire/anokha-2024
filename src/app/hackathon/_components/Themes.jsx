@@ -18,10 +18,10 @@ const Themes = () => {
     {
       text: "Generative AI",
       problemStatements: [
-        ["Gen-AI based Ecommerce personalized recommendation system", "Recomendation systems is an intresting and rapidly evolving field of study In this track, You will have to develop a chatbot that 1) Understands conducts a goal-oriented chat with the user and understand user requirements, and is able into represent it in a domai specific query language. 2)Take the query generated from the step (1) and  Integrate it with a recomendation system and present the relevent products to the user. "],
-        ["Github Repository navigator", "A Real time solution to understand a developer's problem statement (prompts) , show relevant repositories (Not just generated based on keywords but rather analyzing the entire github repositories and providing proper reccomendations) and provide a workflow if the solution can't be tackled with just a single repository"],
+        ["Gen-AI based Ecommerce Personalized Recommendation system", "The field of recommendation systems is intriguing and continuously advancing within this track. Your task involves creating a chatbot capable of: (1) Engaging in goal-oriented conversations with users, comprehending their requirements, and expressing them in a specialized query language. (2) Integrating the query from step (1) into a recommendation system, and subsequently presenting the user with pertinent product recommendations."],
+        ["Github Repository navigator", "Offering a real-time solution for comprehending a developer's problem statements (prompts), this tool goes beyond mere keyword-based generation. It analyzes entire GitHub repositories to provide relevant recommendations and offers a workflow when the solution requires more than a single repository."],
         ["Make it real: WHAT YOU SHOW IS WHAT YOU GET", "In this track, you will build an application, that converts the user wireframe (Hand-drawn or digital), into front-end code, essentially developing an “WHAT YOU SHOW IS WHAT YOU GET APPLICATION”"],
-        ["Other Problem Statements","Participants are free to choose any problem statement which comes under this theme."]
+        ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
       ],
     },
     {
@@ -30,26 +30,26 @@ const Themes = () => {
         ["Smart Classroom Environment Control System", "Create an innovative solution for optimizing energy consumption and enhancing user comfort in large spaces, such as classrooms or expansive rooms with multiple fans, lights, and AC units. Develop a system that integrates IoT devices and AI algorithms to intelligently control individual appliances based on occupancy. The objective is to dynamically activate and deactivate fans, lights, and AC units in response to the presence or absence of individuals within specific zones, ensuring efficient resource utilization and a comfortable environment. "],
         ["Smart Farming Hackathon Challenge", "Design an intelligent farming system that harmoniously integrates IoT and AI technologies. Your mission is to develop a solution that monitors soil moisture, temperature, and crop health through IoT sensors. Implement AI algorithms for predicting optimal planting times and detecting potential diseases. With a focus on resource optimization and informed decision- making, empower farmers to elevate crop yield and enhance overall crop management practices. "],
         ["Smart Retail Inventory Management", "In the era of smart retail, the challenge is to develop an innovative inventory management system that leverages the power of IoT and AI. The goal is to create a solution that not only monitors product levels but also predicts demand, optimizes restocking schedules, and minimizes the risk of overstock or stockouts. Additionally, the system should prioritize enhancing the overall user experience through a user-friendly interface."],
-        ["Other Problem Statements","Participants are free to choose any problem statement which comes under this theme."]
+        ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
       ],
     },
     {
       text: "Health Care",
       problemStatements: [
         ["Multimodal Mental Health Assessment", "Mental health seems to be the new pandemic. With increasing number of mental health related concerns, Tools for early detection of signs of detoriating mental health and depression is neccessary to maintain a healthy community. In this track, You are tasked to build a multi-modal mental health assesment suite, that analyses the mental health condition of the personal by 1) Analysing the vidio of the person. Specifically, by analyzing facial expressions and body langeuge.  2) Analysing the audio of the person.  3) You may also utilize some standard scales availabe for mental health assesment to support your model.  velop an innovative approach for mental health assessment by combining NLP analysis of patient interviews and written responses with alysis of facial expressions and body language. The system should provide a nuanced understanding of mental health conditions, aiding re accurate diagnostics and treatment planning."] ,
-        ["Other Problem Statements","Participants are free to choose any problem statement which comes under this theme."]
+        ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
       ],
     },
     {
       text: "Autonomous Vehicles",
       problemStatements: [
-        ["Other Problem Statements","Participants are free to choose any problem statement which comes under this theme."]
+        ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
       ],
     },
     {
       text: "Cyber Security",
       problemStatements: [
-        ["Other Problem Statements","Participants are free to choose any problem statement which comes under this theme."]
+        ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
       ],
     },
     {
@@ -61,7 +61,7 @@ const Themes = () => {
 
         ["Real-Time Energy Estimation in Buildings Using Computer Vision (Floor-wise)", "The task at hand involves creating an innovative, AI-powered solution using computer vision to track energy consumption within buildings in real-time, with a focus on monitoring consumption on a floor-by-floor basis. This solution aims to utilize advanced algorithms and machine learning techniques to analyze video frames captured by cameras installed within buildings. By leveraging computer vision capabilities, the system will be able to identify and quantify energy consumption patterns within the camera frame, providing insights into the usage of electricity, heating, and cooling systems across different floors of the building. The proposed solution will enable facility managers and building operators to gain a comprehensive understanding of energy usage t within their facilities, allowing for timely interventions to optimize energy efficiency and reduce costs. Additionally, by prov real-time feedback on energy consumption, the system can help identify potential anomalies or inefficiencies, enabling proactive mea to be taken to address them promptly In essence, the goal of this project is to develop an AI-powered solution that leverages computer vision technology to provide accu real-time estimates of energy consumption within buildings, on a floor-by-floor basis. This solution has the potential to revoluti energy management practices in buildings, enabling more efficient resource allocation and contributing to sustainability efforts."], 
 
-        ["Other Problem Statements","Participants are free to choose any problem statement which comes under this theme."],
+        ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."],
       ],
     },
   ];
@@ -285,7 +285,7 @@ const Themes = () => {
                                 expandIcon={<FaPlus />}
                                 aria-controls="panel1-content"
                                 id="panel1-header">
-                                <Typography className='md:px-7 sm:px-2 py-1 text-md text-black font-bold text-lg'>{statement[0]}</Typography>
+                                <Typography className='md:px-7 sm:px-2 py-1 text-md text-black font-bold text-lg capitalize'>{statement[0]}</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails >
                                 <Typography className='md:px-7 sm:px-2 text-lg'>

@@ -11,14 +11,14 @@ import {Button } from "@material-tailwind/react";
 import HeroSection from './_components/HeroSection'
 import IntelHero from './_components/IntelHero'
 import Phases from './_components/Phases'
-import {useAuth} from "@/app/_auth/useAuth"
+ 
 import { useState,useEffect } from 'react'
 import RoundOne from './_components/RoundOne'
 import RoundOnePt2 from './_components/RoundOnePt2'
 import secureLocalStorage from 'react-secure-storage'
 import {HACKATHON_DASHBOARD_URL} from "@/app/_util/constants"
 import { useRouter } from 'next/navigation'
-
+import {useAuth} from "@/app/_auth/useAuth"
 
 import Resources from './_components/Resources'
 import FAQs from './_components/FAQs'
@@ -30,6 +30,7 @@ import SubGuidelines from './_components/SubGuidelines'
  
 export default function page() {
     const router = useRouter()
+    const {SignOut} = useAuth()
     const [currentStep,setCurrentStep] = useState(0);
     const [theme,setTheme] = useState( -1);
     const [problemStatement,setProblemStatement] = useState("");
@@ -43,14 +44,18 @@ export default function page() {
     const [secretToken, setSecretToken] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(0);
     const [userState,setUserState] = useState(0) 
-    const { GetDashboard } = useAuth();
+    const [displayResult,setDisplayResult] = useState(0)
+
+    useEffect(()=>{
+        console.log(userState,displayResult)
+    },[userState,displayResult])
 
     useEffect(()=>{
       console.log(isLoggedIn,secretToken,userState)
       if (isLoggedIn===1 ) {
          
-        GetDashboard(secretToken)
-        console.log("this is inside")
+        setUserState(GetDashboard(secretToken))
+        console.log(GetDashboard(secretToken))
          
       }
     },[isLoggedIn,secretToken])
@@ -60,32 +65,54 @@ export default function page() {
       setSecretToken(secureLocalStorage.getItem("registerToken"));
     }, []);
 
-    const GetDashBoard =async()=>{
-
+    const GetDashboard = async (token) =>{
       try{
-        const response = await fetch(HACKATHON_DASHBOARD_URL, {
-            method: "GET",
-            headers: {
-            
-            "Authorization": "Bearer " + secretToken,
-            },
-            
-        });
+          const response = await fetch(HACKATHON_DASHBOARD_URL, {
+              method: "GET",
+              headers: {
+              
+              "Authorization": "Bearer " + token,
+              },
+              
+          });
+  
+          // userState -> 0 -> not logged in
+          // userState -> 1 -> logged in but not registered
+          // userState -> 2 -> logged in and registered
+          
 
-        const data = await response.json();
-        if (response.status === 200) {
-            // ToastAlert('success', "Success", "Registration successful", toastRef);
-            secureLocalStorage.setItem("DashBoardData", data);
-            console.log(data)
-        }   
-        else if(response.status===400){
-
+          const data = await response.json();
+          if (response.status === 200) {
+              // ToastAlert('success', "Success", "Registration successful", toastRef);
+              secureLocalStorage.setItem("DashBoardData", data);
+              if (data.secondRoundSubmission.length!=0) {
+                setDisplayResult(2)
+              }
+              else if (data.firstRoundSubmission.length!=0) {
+                setDisplayResult(1)
+              }
+              
+              setUserState(2)
+          }   
+          else if (response.status === 401) {
+            setUserState(0)
+            SignOut()
+              
+          }
+          else if (response.status === 400) {
+            
+            setUserState(1)
         }
 
-    }catch{
-        console.log(e);
-    }
-    }
+              
+
+
+      }catch(e){
+          console.log(e);
+          return -1;
+      }
+  }   
+
 
     console.log(isLoggedIn,secretToken,userState)
     // 
@@ -127,8 +154,9 @@ export default function page() {
         </div> */}
 
         
-        {getButtonText()}
-
+        
+        
+        <IntelHero userState={userState} displayResult={displayResult} />
        
         <Price />
         <About/>
@@ -137,8 +165,11 @@ export default function page() {
         <Themes />
         <Timeline/>  
         <Rules/>
-        <WinnerPrice/>
+ 
+        {/* <WinnerPrice/> */}
+ 
         <Judging/>
+        <WinnerPrice/>
         <Resources/>
         <FAQs/>
         <Footer/>
