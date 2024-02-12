@@ -25,7 +25,7 @@ import Judging from './_components/Judging'
 import WinnerPrice from './_components/WinnerPrice'
 import SubGuidelines from './_components/SubGuidelines'
  
-export default function page() {
+export default function Page() {
 
   const [currentStep,setCurrentStep] = useState(0);
     const [theme,setTheme] = useState( -1);
@@ -34,7 +34,7 @@ export default function page() {
     const [devmeshlink,setDevmeshLink] = useState("");
     const [youtubelink,setYoutubeLink] = useState("");
     const [pdflink,setPdfLink] = useState("");
-    const [currentState, setCurrentState] = useState("guest");
+    const [currentState, setCurrentState] = useState("registered");
 
     useEffect(() => {}, []);
   
