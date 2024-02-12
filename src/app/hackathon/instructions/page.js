@@ -3,12 +3,17 @@
 import React from 'react';
 import { SimpleCard } from '../_components/InstructCard';
 import Resources from '../_components/Resources';
+import Instructions from '../_components/Instructions';
+import SubGuidelines from '../_components/SubGuidelines';
 
 
 const Home = () => {
   return (
     <div>
-<div className="w-full h-screen bg-[rgb(10,17,58)] relative flex flex-col justify-center items-center">
+    <div className="w-full h-full py-10 bg-[#0A113A]">
+
+      <Instructions/>
+    {/* <div className="w-full h-screen  relative flex flex-col justify-center items-center bg-[#0A113A]">
     <div className="font-poppins text-white mx-auto text-center">
         <h1 className="text-4xl font-bold mb-4">INSTRUCTIONS</h1>
         <p className="text-lg mb-8">Follow these steps to get started</p>
@@ -18,9 +23,12 @@ const Home = () => {
 
 
        
-    </div>
+    </div> */}
+
+
 
     </div>
+    <SubGuidelines/>
     <Resources />
     </div>
     
