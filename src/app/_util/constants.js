@@ -14,5 +14,3 @@ export const HACKATHON_FIRST_ROUND_SUBMISSION_URL = HACKATHON_URL + "/submitFirs
 export const ALL_EVENTS_URL = BASE_URL + "/user/getAllEvents";
 export const EVENT_DATA_URL = BASE_URL + "/user/getEventData";
 export const STAR_UNSTAR_EVENT_URL = BASE_URL + "/user/toggleStarredEvent";
- 
- 

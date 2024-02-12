@@ -127,9 +127,8 @@ export default function page() {
         </div> */}
 
         
-        
-        
-        <IntelHero userState={isLoggedIn} />
+        {getButtonText()}
+
        
         <Price />
         <About/>
@@ -138,8 +137,8 @@ export default function page() {
         <Themes />
         <Timeline/>  
         <Rules/>
-        <Judging/>
         <WinnerPrice/>
+        <Judging/>
         <Resources/>
         <FAQs/>
         <Footer/>

@@ -15,7 +15,7 @@ import RoundOneComp from '../_components/_DashBoard/RoundOneComp';
 
 
 
-export default function page() {
+export default function Page() {
      
 
     const [registerEmail, setRegisterEmail] = useState("");

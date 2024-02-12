@@ -1,7 +1,6 @@
 "use client";
 
 import Navbar from "../components/EventHeader";
-import Footer from "../components/Footer";
 
 import { hashPassword } from "../_util/hash";
 import { useEffect, useState, useRef } from "react";
@@ -9,7 +8,6 @@ import { REGISTER_URL } from "../_util/constants";
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
@@ -17,13 +15,8 @@ import "primereact/resources/themes/saga-blue/theme.css";
 import ToastAlert from "../_util/ToastAlerts";
 
 import WebGLApp from "../bg/WebGLApp";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import validator from "validator";
 
-import Background from "../components/user/Background";
 import anokhalogo from "@/../public/images/anokha_circle.svg";
-import Helper from "./components/PasswordHelper";
 import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -208,13 +201,12 @@ export default function Register() {
                   <div className="flex flex-col justify-center flex-1 space-y-8 md:border-r md:border-black md:pr-10 max-w-600">
                     <div id="Fields">
                       <TextField
-                        error={!isNameValid && name!=""}
-                        id="outlined-error-helper-text"
+                        error={!isNameValid && name != ""}
                         placeholder={"Enter Name"}
                         label="Name"
                         value={name}
                         helperText={
-                          !isNameValid && name
+                          !isNameValid && name!=""
                             ? "Should not contain special characters"
                             : ""
                         }
@@ -230,13 +222,12 @@ export default function Register() {
                     </div>
                     <div id="Fields">
                       <TextField
-                        error={!isPhoneValid && phone!=""}
-                        id="outlined-error-helper-text"
+                        error={!isPhoneValid && phone != ""}
                         placeholder={"+91 99999 99999"}
                         label="Phone Number"
                         value={phone}
                         helperText={
-                          !isPhoneValid && phone
+                          !isPhoneValid && phone!=""
                             ? "Should contain 10 digits"
                             : ""
                         }
@@ -253,12 +244,12 @@ export default function Register() {
                     <div id="Fields">
                       <div>
                         <TextField
-                          error={!isCollegeNameValid && collegeName!= ""}
+                          error={!isCollegeNameValid && collegeName != ""}
                           placeholder="Enter College Name"
                           label="College Name"
                           value={collegeName}
                           helperText={
-                            !isCollegeNameValid && collegeName
+                            !isCollegeNameValid && collegeName != ""
                               ? "Should contain only alphabets"
                               : ""
                           }
@@ -276,12 +267,12 @@ export default function Register() {
                       </div>
                       <div id="Fields" className="mt-8">
                         <TextField
-                          error={!isCollegeCityValid && collegeCity!=""}
+                          error={!isCollegeCityValid && collegeCity != ""}
                           placeholder="Enter College City"
                           label="College City"
                           value={collegeCity}
                           helperText={
-                            !isCollegeCityValid && collegeCity
+                            !isCollegeCityValid && collegeCity != ""
                               ? "Should contain only alphabets"
                               : ""
                           }
@@ -322,18 +313,18 @@ export default function Register() {
                       <TextField
                         error={
                           isAmrita
-                            ? !isAmritaMail && email!=""
-                            : !isEmailValid && email!=""
+                            ? !isAmritaMail && email != ""
+                            : !isEmailValid && email != ""
                         }
                         placeholder="Enter Email"
                         label="Email"
                         value={email}
                         helperText={
                           isAmrita
-                            ? !isAmritaMail && email
+                            ? !isAmritaMail && email != ""
                               ? "Should match college email format"
                               : ""
-                            : !isEmailValid && email
+                            : !isEmailValid && email != ""
                             ? "Not a valid email"
                             : ""
                         }
@@ -350,7 +341,7 @@ export default function Register() {
                     </div>
                     <div id="Fields" className="mt-3">
                       <TextField
-                        error={!isPasswordValid && password!=""}
+                        error={!isPasswordValid && password != ""}
                         type={showPassword ? "text" : "password"}
                         placeholder="Enter Password"
                         label="Password"
@@ -384,14 +375,14 @@ export default function Register() {
                       <div className="flex flex-row gap-[40px] text-[10px] mt-2">
                         <div
                           className={
-                            password
+                            password != ""
                               ? /^[^-"']*$/.test(password)
                                 ? "text-green-600"
                                 : "text-red-600"
                               : ""
                           }
                         >
-                          Should not contain - (hyphen) or " (quotes)
+                          Should not contain - (hyphen) or `&quot;` (quotes)
                         </div>
                         <div
                           className={
@@ -408,13 +399,15 @@ export default function Register() {
                     </div>
                     <div id="Fields">
                       <TextField
-                        error={confirmPassword != password && confirmPassword!=""}
+                        error={
+                          confirmPassword != password && confirmPassword != ""
+                        }
                         type={showConPassword ? "text" : "password"}
                         placeholder="Enter Password"
                         label="Confirm Password"
                         value={confirmPassword}
                         helperText={
-                          !isPasswordValid && password
+                          confirmPassword != password && confirmPassword != ""
                             ? "Should match password"
                             : ""
                         }
