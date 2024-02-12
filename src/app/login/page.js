@@ -90,6 +90,12 @@ export default function Login() {
       }
     } catch (error) {
       console.log(error);
+      ToastAlert(
+        "error",
+        "Oops!",
+        "Something went wrong! Please try again!",
+        toastRef
+      );
     }
   };
 
