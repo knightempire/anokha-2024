@@ -16,6 +16,9 @@ import ToastAlert from "../_util/ToastAlerts";
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 
+import { EDIT_PROFILE_URL } from "../_util/constants";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+
 export default function Profile() {
   // Manage references to toast notifications
   const toastRef = useRef();
@@ -69,11 +72,11 @@ export default function Profile() {
     e.preventDefault;
     try {
       setLoading(true);
-      const response = await fetch(URL, {
+      const response = await fetch(EDIT_PROFILE_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: securelocalStorage.getItem("SECRET_TOKEN"),
+          Authorization: `Bearer ${securelocalStorage.getItem("SECRET_TOKEN")}`,
         },
         body: JSON.stringify({
           studentFullName: fullname,
@@ -91,10 +94,11 @@ export default function Profile() {
           "Your profile has been updated!",
           toastRef,
         );
-        secureLocalStorage.setItem();
-        secureLocalStorage.setItem();
-        secureLocalStorage.setItem();
-        secureLocalStorage.setItem();
+        secureLocalStorage.setItem("StudentFullName", fullname);
+        secureLocalStorage.setItem("studentPhone", phoneNumber);
+        secureLocalStorage.setItem("studentCollegeCity", collegeCity);
+        secureLocalStorage.setItem("studentCollegeName", collegeName);
+        return;
       } else if (response.status === 400) {
         ToastAlert(
           "error",
@@ -135,6 +139,7 @@ export default function Profile() {
     }
   };
 
+  // Page Render
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
       <WebGLApp colors={webGLColors} />
@@ -142,117 +147,118 @@ export default function Profile() {
         <Navbar />
         <Toast ref={toastRef} position="bottom-center" />
         <div className="relative min-h-screen">
-          <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
-          {/* Column 01 - Becomes bottom row in mobile view */}
-          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 "></div>
-          {/* Column 02 - Becomes top row in mobile view*/}
-          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 "></div>
-        </div>
-      </div>
-
-      <div className="flex">
-        <div id="name-field">
-          <TextField
-            error={!isNameValid && fullname != ""}
-            variant="outlined-error-helper-text"
-            placeholder="Can't be empty"
-            label="Name"
-            default={fullname}
-            sx={{
-              width: "100%",
-              borderRadius: 5,
-              borderWidth: 5,
-            }}
-            onChange={(e) => {
-              setFullName(e.target.value);
-            }}
-            required
-          />
-        </div>
-        <div id="email-field">
-          <TextField
-            error={!isEmailValid && email != ""}
-            variant="outlined-error-helper-text"
-            placeholder="Can't be empty"
-            label="Email"
-            default={email}
-            sx={{
-              width: "100%",
-              borderRadius: 5,
-              borderWidth: 5,
-            }}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-            required
-          />
-        </div>
-        <div id="phone-field">
-          <TextField
-            error={!isPhoneNumberValid && phoneNumber != ""}
-            variant="outlined-error-helper-text"
-            placeholder="Can't be empty"
-            label="Phone Field"
-            default={phoneNumber}
-            sx={{
-              width: "100%",
-              borderRadius: 5,
-              borderWidth: 5,
-            }}
-            onChange={(e) => {
-              setPhoneNumber(e.target.value);
-            }}
-            required
-          />
-        </div>
-        <div id="collegeName-field">
-          <TextField
-            error={!isCollegeNameValid && collegeName != ""}
-            variant="outlined-error-helper-text"
-            placeholder="Can't be empty"
-            label="College Name"
-            default={collegeName}
-            sx={{
-              width: "100%",
-              borderRadius: 5,
-              borderWidth: 5,
-            }}
-            onChange={(e) => {
-              setCollegeName(e.target.value);
-            }}
-            required
-          />
-        </div>
-        <div id="collegeCity-field">
-          <TextField
-            error={!isCollegeCityValid && collegeCity != ""}
-            variant="outlined-error-helper-text"
-            placeholder="Can't be empty"
-            label="College City"
-            default={collegeCity}
-            sx={{
-              width: "100%",
-              borderRadius: 5,
-              borderWidth: 5,
-            }}
-            onChange={(e) => {
-              setCollegeCity(e.target.value);
-            }}
-            required
-          />
-        </div>
-      </div>
-      <div className="flex flex-col">
-        <div id="qr-code-holder" className="p-10 bg-[#ffffff] max-w-256">
-          <QRCode
-            value={`anokha://${studentID}`}
-            style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-            viewBox={`0 0 256 256`}
-            size="256"
-          />
-        </div>
-        <div id="confirm-btn-container">
-          <Button />
+          <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl">
+            {/* Column 01 - Becomes bottom row in mobile view */}
+            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
+              <div id="name-field">
+                <TextField
+                  error={!isNameValid && fullname != ""}
+                  variant="outlined-error-helper-text"
+                  placeholder="Can't be empty"
+                  label="Name"
+                  default={fullname}
+                  sx={{
+                    width: "100%",
+                    borderRadius: 5,
+                    borderWidth: 5,
+                  }}
+                  onChange={(e) => {
+                    setFullName(e.target.value);
+                  }}
+                  required
+                />
+              </div>
+              <div id="email-field">
+                <TextField
+                  error={!isEmailValid && email != ""}
+                  variant="outlined-error-helper-text"
+                  placeholder="Can't be empty"
+                  label="Email"
+                  default={email}
+                  sx={{
+                    width: "100%",
+                    borderRadius: 5,
+                    borderWidth: 5,
+                  }}
+                  disabled
+                  required
+                />
+              </div>
+              <div id="phone-field">
+                <TextField
+                  error={!isPhoneNumberValid && phoneNumber != ""}
+                  variant="outlined-error-helper-text"
+                  placeholder="Can't be empty"
+                  label="Phone Field"
+                  default={phoneNumber}
+                  sx={{
+                    width: "100%",
+                    borderRadius: 5,
+                    borderWidth: 5,
+                  }}
+                  onChange={(e) => {
+                    setPhoneNumber(e.target.value);
+                  }}
+                  required
+                />
+              </div>
+              <div id="collegeName-field">
+                <TextField
+                  error={!isCollegeNameValid && collegeName != ""}
+                  variant="outlined-error-helper-text"
+                  placeholder="Can't be empty"
+                  label="College Name"
+                  default={collegeName}
+                  sx={{
+                    width: "100%",
+                    borderRadius: 5,
+                    borderWidth: 5,
+                  }}
+                  onChange={(e) => {
+                    setCollegeName(e.target.value);
+                  }}
+                  required
+                />
+              </div>
+              <div id="collegeCity-field">
+                <TextField
+                  error={!isCollegeCityValid && collegeCity != ""}
+                  variant="outlined-error-helper-text"
+                  placeholder="Can't be empty"
+                  label="College City"
+                  default={collegeCity}
+                  sx={{
+                    width: "100%",
+                    borderRadius: 5,
+                    borderWidth: 5,
+                  }}
+                  onChange={(e) => {
+                    setCollegeCity(e.target.value);
+                  }}
+                  required
+                />
+              </div>
+            </div>
+            {/* Column 02 - Becomes top row in mobile view*/}
+            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
+              <div className="flex flex-col">
+                <div
+                  id="qr-code-holder"
+                  className="p-10 bg-[#ffffff] max-w-256"
+                >
+                  <QRCode
+                    value={`anokha://${studentID}`}
+                    style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                    viewBox={`0 0 256 256`}
+                    size="256"
+                  />
+                </div>
+                <div id="confirm-btn-container">
+                  <Button variant="contained" endIcon={<EditNoteIcon />} />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
