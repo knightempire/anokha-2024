@@ -1,5 +1,9 @@
-const BASE_URL = "https://anokha.amrita.edu/api/auth"
-const HACKATHON_URL = "https://anokha.amrita.edu/api/intel"
+ 
+ 
+const BASE_URL = ""
+const HACKATHON_URL = ""
+ 
+ 
 
 
 export const LOGIN_URL = BASE_URL + "/loginStudent"

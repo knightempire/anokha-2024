@@ -58,7 +58,7 @@ function RoundOne({theme_val,theme,problem_val,problem,next}) {
 
               <div className="mt-7">
               <label className="text-lg font-semibold">Problem Statement Description
-              <span className="font-medium text-gray-700 text-sm"> (200 char Max)</span> 
+              <span className="font-medium text-gray-700 text-sm"> (200 characters)</span> 
               
               </label><br/>
               <Textarea 
