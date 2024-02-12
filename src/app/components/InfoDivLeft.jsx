@@ -395,7 +395,7 @@ const Card = ({ title, description, src }) => {
         </div>
       </div>
 
-      <div className="mobile-view xl:hidden lg:hidden md:flex sm:flex h-screen items-center justify-center sticky overflow-hidden top-10">
+      <div className="mobile-view xl:hidden lg:hidden md:flex sm:flex h-screen items-center justify-center sticky overflow-hidden top-10 pt-10">
         <div
           className="flex flex-col relative -top-20 h-[80vh] w-[90vw] bg-[#121212] rounded-xl transform origin-top my-10 top-5"
           ref={phoneContainer}

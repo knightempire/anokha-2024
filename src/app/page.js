@@ -55,7 +55,12 @@ export default function Home() {
           );
         })}
       </div>
-      <FilmGallery />
+      <div>
+        <div className="mt-32 z-30 text-white text-6xl text-center">
+          GALLERY
+        </div>
+        <FilmGallery />
+      </div>
       <AnokhaMarquee />
       <Footer current_page="home" />
     </main>

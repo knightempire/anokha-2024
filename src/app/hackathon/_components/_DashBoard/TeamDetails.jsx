@@ -1,158 +1,116 @@
-import React from 'react'
-import Image from 'next/image'
-const TeamDetails = (props) => {
+import React from "react";
 
-    const hash = "SajithRajan"
+const TeamDetails = ({
+  teamStatus,
+  teamName,
+  noOfMembers,
+  platform,
+  platformID,
+  teamMembers,
+}) => {
+  teamName = "Chumma";
+  noOfMembers = "3";
+  platform = "DevPost";
+  platformID = "1234";
+  teamMembers = [
+    {
+      studentEmail: "cb.en.u4cse21001@cb.students.amrita.edu",
+      studentFullName: "Abhinav R",
+      studentPhone: "9791544487",
+      idcId: "14625871654",
+      isLeader: "1",
+    },
+    {
+      studentEmail: "cb.en.u4cse21008@cb.students.amrita.edu",
+      studentFullName: "Ashwin S",
+      studentPhone: "9791544487",
+      idcId: "12314489",
+      isLeader: "0",
+    },
+    {
+      studentEmail: "saisajith03@gmail.com",
+      studentFullName: "sajith",
+      studentPhone: "9791544487",
+      idcId: "14625871654",
+      isLeader: "0",
+    },
+  ];
   return (
-    <div className='w-full bg-[#0A113A] text-white  p-12 rounded-xl text-lg'>
-      <div className=' space-y-2'>
-        <p className='font-bold'>Team Name: <span className='font-normal'>TeamName</span></p>
-        <p className='font-bold'>Number of Team Members: <span className='font-normal'>3</span></p>
-        <p className='font-bold'>Registered Through: <span className='font-normal'>DevPost</span></p>
-        <p className='font-bold'>Platform ID: <span className='font-normal'>dfskjfnsfk</span></p>
-        <p className='font-bold'>Team Member Details: </p>
+    <div className="w-full bg-[#172786] text-white w-full rounded-xl text-lg">
+      <div className="flex flex-col space-y-4 p-7 text-black rounded my-1 bg-opacity-80 space-between">
+        <h1 className="text-white font-light text-[2rem]">
+          Welcome {teamName}!
+        </h1>
+        <p className="w-full text-center font-thin test-md mt-3 text-white">
+          Team Details
+        </p>
 
-
-        
-      </div>
-
-      <div className="overflow-x-auto">
-        <table className="table">
-            {/* head */}
-            <thead>
-            <tr className='bg-[#007FFF]'>
-                 
-                <th>Name</th>
-                <th>Email</th>
-                <th>IDC ID</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {/* row 1 */}
+        <table className="table-auto w-full border-collapse mt-2 text-sm text-center">
+          <thead className="text-white bg-[#0e1853]">
             <tr>
-                 
-                <td>
-                <div className="flex items-center gap-3">
-                    <div className="avatar">
-                    <div className="mask mask-squircle bg-black rounded-full w-12 h-12">
-                    <img height={200} src={`https://www.gravatar.com/avatar/${hash}.jpg?s=200&d=robohash`} alt="Profile" width={200} className="rounded-lg"/> 
-                    
-                    </div>
-                    </div>
-                    <div>
-                    <div className="font-bold">
-                        Sajith Rajan
-                        props.me1["studentEmail"]
-                    </div>
-                    <div className="text-sm opacity-50"></div>
-                    </div>
-                </div>
-                </td>
-                <td>
-                isajithrajan
-                <br/>
-                <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                </td>
-                <td>Purple</td>
-                <th>
-                <button className="btn btn-ghost btn-xs">details</button>
-                </th>
+              <th className="border border-gray-800 px-4 font-light py-2">
+                Team Name
+              </th>
+              <th className="border border-gray-800 px-4 font-light py-2">
+                Number Of Members
+              </th>
+              <th className="border border-gray-800 font-light px-4 py-2">
+                Registered Platform
+              </th>
+              <th className="border border-gray-800 font-light px-4 py-2">
+                Platform ID
+              </th>
             </tr>
-            {/* row 2 */}
+          </thead>
+          <tbody className="bg-white">
             <tr>
-                 
-                <td>
-                <div className="flex items-center gap-3">
-                    <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                        <img src="/tailwind-css-component-profile-3@56w.png" alt="Avatar Tailwind CSS Component" />
-                    </div>
-                    </div>
-                    <div>
-                    <div className="font-bold">Brice Swyre</div>
-                    <div className="text-sm opacity-50">China</div>
-                    </div>
-                </div>
-                </td>
-                <td>
-                Carroll Group
-                <br/>
-                <span className="badge badge-ghost badge-sm">Tax Accountant</span>
-                </td>
-                <td>Red</td>
-                <th>
-                <button className="btn btn-ghost btn-xs">details</button>
-                </th>
+              <td className="border border-gray-400 px-4 py-2">{teamName}</td>
+              <td className="border border-gray-400 px-4 py-2">
+                {noOfMembers}
+              </td>
+              <td className="border border-gray-400 px-4 py-2">{platform}</td>
+              <td className="border border-gray-400 px-4 py-2">{platformID}</td>
             </tr>
-            {/* row 3 */}
+          </tbody>
+        </table>
+        <p className="w-full text-center test-md mt-3 text-white font-thin">
+          Team Member Details{" "}
+        </p>
+        <table className="table-auto w-full border-collapse mt-2 text-sm">
+          <thead className="text-white bg-[#0e1853] ">
             <tr>
-                
-                <td>
-                <div className="flex items-center gap-3">
-                    <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                        <img src="/tailwind-css-component-profile-4@56w.png" alt="Avatar Tailwind CSS Component" />
-                    </div>
-                    </div>
-                    <div>
-                    <div className="font-bold">Marjy Ferencz</div>
-                    <div className="text-sm opacity-50">Russia</div>
-                    </div>
-                </div>
-                </td>
-                <td>
-                Rowe-Schoen
-                <br/>
-                <span className="badge badge-ghost badge-sm">Office Assistant I</span>
-                </td>
-                <td>Crimson</td>
-                <th>
-                <button className="btn btn-ghost btn-xs">details</button>
-                </th>
+              <th className="border border-black px-4 font-light py-2">Name</th>
+              <th className="border border-black px-4 font-light py-2 w-[500px]">
+                Contact
+              </th>
+              <th className="border border-black px-4 font-light py-2">
+                IDC ID
+              </th>
             </tr>
-            {/* row 4 */}
-            <tr>
-                 
-                <td>
-                <div className="flex items-center gap-3">
-                    <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                        <img src="/tailwind-css-component-profile-5@56w.png" alt="Avatar Tailwind CSS Component" />
-                    </div>
-                    </div>
-                    <div>
-                    <div className="font-bold">Yancy Tear</div>
-                    <div className="text-sm opacity-50">Brazil</div>
-                    </div>
-                </div>
+          </thead>
+          <tbody className="bg-white">
+            {teamMembers.map((member, index) => (
+              <tr key={index}>
+                <td className="border border-gray-400 px-4 py-2">
+                  <p>{member.studentFullName}</p>
+                  <p className="text-xs text-gray-500">
+                    {member.isLeader === "1" ? "Team Lead" : "Member"}
+                  </p>
                 </td>
-                <td>
-                Wyman-Ledner
-                <br/>
-                <span className="badge badge-ghost badge-sm">Community Outreach Specialist</span>
+                <td className="border border-gray-400 px-4 py-2">
+                  <p>{member.studentEmail}</p>
+                  <p className="text-xs text-gray-500">{member.studentPhone}</p>
                 </td>
-                <td>Indigo</td>
-                <th>
-                <button className="btn btn-ghost btn-xs">details</button>
-                </th>
-            </tr>
-            </tbody>
-            {/* foot */}
-            <tfoot>
-            <tr>
-                <th></th>
-                <th>Name</th>
-                <th>Job</th>
-                <th>Favorite Color</th>
-                <th></th>
-            </tr>
-            </tfoot>
-            
+                <td className="border border-gray-400 px-4 py-2">
+                  <p>{member.idcId}</p>
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TeamDetails
+export default TeamDetails;

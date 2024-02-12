@@ -7,7 +7,7 @@ import { IoLocation } from "react-icons/io5";
 import { Button} from "@material-tailwind/react";
 import { useRouter } from 'next/navigation'
 
-function IntelHero() {
+function IntelHero( {userState}) {
   const router = useRouter()
 
   return (
@@ -47,10 +47,14 @@ function IntelHero() {
             <Button onClick={(e)=>{router.replace("/hackathon/instructions")}} className="text-[1rem] text-black border border-black p-3 px-8 sm:mt-0 md:mt-0 rounded-xl bg-transparent">
               IDC Materials
             </Button>
-            <Button onClick={(e)=>{router.replace("/hackathon/register")}} className="before:ease relative h-12 w-50 overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
- 
-              Register Now!
-            </Button>
+            {userState==0? <Button onClick={(e)=>{router.replace("/register")}} className="before:ease relative h-12 w-50 overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+                          Sign Up for Anokha !
+                          </Button> 
+              : userState===1? <Button onClick={(e)=>{router.replace("/hackathon/register")}} className="before:ease relative h-12 w-50 overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+              Register your Team !
+              </Button> : null
+              }
+            
           </div>
         </div>
       </div>
