@@ -13,7 +13,7 @@ import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import TextField from "@mui/material/TextField";
-
+ 
 import Link from "next/link";
 
 import { Toast } from "primereact/toast";
@@ -21,6 +21,13 @@ import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
 
 export default function Login() {
+ 
+
+    
+  useEffect(()=>{
+    securelocalStorage.clear()
+},[])
+ 
   const toastRef = useRef();
 
   const [studentEmail, setStudentEmail] = useState("");
@@ -77,7 +84,7 @@ export default function Login() {
           "You have logged in successfully!",
           toastRef,
         );
-        router.replace("/");
+        router.replace("/hackathon");
       } else if (response.status === 500) {
         setLoading(false);
         ToastAlert(
@@ -86,9 +93,10 @@ export default function Login() {
           "Something went wrong! Please try again.",
           toastRef,
         );
-      } else if (data.message !== undefined || data.message !== null) {
+      
+      } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
         setLoading(false);
-        ToastAlert("error", "Login Failed", `${data.message}`, toastRef);
+        ToastAlert("error", "Login Failed", `${data.MESSAGE}`, toastRef);
       } else {
         setLoading(false);
         ToastAlert(

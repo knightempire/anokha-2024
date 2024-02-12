@@ -4,10 +4,10 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import oneapilogo from "../images/oneAPI-rgb-3000.png";
 import { IoLocation } from "react-icons/io5";
-import { Button} from "@material-tailwind/react";
+import { Button,Chip} from "@material-tailwind/react";
 import { useRouter } from 'next/navigation'
 
-function IntelHero( {userState}) {
+function IntelHero( {userState,displayResult}) {
   const router = useRouter()
 
   return (
@@ -47,16 +47,27 @@ function IntelHero( {userState}) {
             <Button onClick={(e)=>{router.replace("/hackathon/instructions")}} className="text-[1rem] text-black border border-black p-3 px-8 sm:mt-0 md:mt-0 rounded-xl bg-transparent">
               Instructions
             </Button>
-            {userState==0? <Button onClick={(e)=>{router.replace("/register")}} className="before:ease relative h-12 w-50 overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+            {userState===0? <Button onClick={(e)=>{router.replace("/register")}} className="before:ease relative h-12 w-50 overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
                           Sign Up for Anokha !
                           </Button> 
               : userState===1? <Button onClick={(e)=>{router.replace("/hackathon/register")}} className="before:ease relative h-12 w-50 overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
               Register your Team !
-              </Button> : null
+              </Button> 
+              :userState===2? <Button onClick={(e)=>{router.replace("/hackathon/DashBoard")}} className="before:ease relative h-12 w-50 overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+              DashBoard!
+              </Button>
+              : null
               }
             
           </div>
+          <div className="flex md:gap-2 sm:gap-2 justify-center items-center flex-wrap -mb-6 mt-5 bg-[rgb(9,11,60)] border-black border-2 w-fit mx-auto rounded-full text-white font-mono text-[14px]  px-2">
+          {displayResult===2? <p>You have submitted for Round 2 </p> 
+              : displayResult===1? <p>You have submitted for Round 1</p> 
+              : null
+              }
+          </div>
         </div>
+        
       </div>
     </div>
   );

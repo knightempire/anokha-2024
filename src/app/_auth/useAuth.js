@@ -14,33 +14,10 @@ export const useAuth = ()=> {
         window.location.href = "/";
     }
 
-    const GetDashboard = async (token) =>{
-        try{
-            const response = await fetch(HACKATHON_DASHBOARD_URL, {
-                method: "GET",
-                headers: {
-                
-                "Authorization": "Bearer " + token,
-                },
-                
-            });
     
-            const data = await response.json();
-            if (response.status === 200) {
-                // ToastAlert('success', "Success", "Registration successful", toastRef);
-                secureLocalStorage.setItem("DashBoardData", data);
-                console.log(data)
-            }   
-                
-
-        }catch{
-            console.log(e);
-        }
-    }   
-  
 
   return {
-    SignUp,SignOut,GetDashboard
+    SignUp,SignOut 
 }
 }
 
