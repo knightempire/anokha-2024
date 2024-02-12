@@ -153,10 +153,10 @@ export default function Profile() {
               <div id="name-field">
                 <TextField
                   error={!isNameValid && fullname != ""}
-                  variant="outlined-error-helper-text"
+                  id="outlined-error-helper-text"
                   placeholder="Can't be empty"
                   label="Name"
-                  default={fullname}
+                  defaultValue={fullname}
                   sx={{
                     width: "100%",
                     borderRadius: 5,
@@ -171,10 +171,10 @@ export default function Profile() {
               <div id="email-field">
                 <TextField
                   error={!isEmailValid && email != ""}
-                  variant="outlined-error-helper-text"
+                  id="outlined-error-helper-text"
                   placeholder="Can't be empty"
                   label="Email"
-                  default={email}
+                  defaultValue={email}
                   sx={{
                     width: "100%",
                     borderRadius: 5,
@@ -187,10 +187,10 @@ export default function Profile() {
               <div id="phone-field">
                 <TextField
                   error={!isPhoneNumberValid && phoneNumber != ""}
-                  variant="outlined-error-helper-text"
+                  id="outlined-error-helper-text"
                   placeholder="Can't be empty"
                   label="Phone Field"
-                  default={phoneNumber}
+                  defaultValue={phoneNumber}
                   sx={{
                     width: "100%",
                     borderRadius: 5,
@@ -205,10 +205,10 @@ export default function Profile() {
               <div id="collegeName-field">
                 <TextField
                   error={!isCollegeNameValid && collegeName != ""}
-                  variant="outlined-error-helper-text"
+                  id="outlined-error-helper-text"
                   placeholder="Can't be empty"
                   label="College Name"
-                  default={collegeName}
+                  defaultValue={collegeName}
                   sx={{
                     width: "100%",
                     borderRadius: 5,
@@ -223,10 +223,10 @@ export default function Profile() {
               <div id="collegeCity-field">
                 <TextField
                   error={!isCollegeCityValid && collegeCity != ""}
-                  variant="outlined-error-helper-text"
+                  id="outlined-error-helper-text"
                   placeholder="Can't be empty"
                   label="College City"
-                  default={collegeCity}
+                  defaultValue={collegeCity}
                   sx={{
                     width: "100%",
                     borderRadius: 5,
@@ -254,7 +254,7 @@ export default function Profile() {
                   />
                 </div>
                 <div id="confirm-btn-container">
-                  <Button variant="contained" endIcon={<EditNoteIcon />} />
+                  <Button variant="contained" endIcon={<EditNoteIcon />} onClick={handleUpdate}/>
                 </div>
               </div>
             </div>
