@@ -1,5 +1,10 @@
 import React from "react";
 
+ 
+//     const hash = "isajithrajan@gmail.com"
+    
+//   <img height={200} src={`https://www.gravatar.com/avatar/${hash}.jpg?s=200&d=robohash`} alt="Profile" width={200} className="rounded-lg"/> 
+ 
 const TeamDetails = ({
   teamStatus,
   teamName,
@@ -114,3 +119,4 @@ const TeamDetails = ({
 };
 
 export default TeamDetails;
+ 
