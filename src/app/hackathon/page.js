@@ -23,6 +23,7 @@ import Rules from './_components/Rules'
 import Judging from './_components/Judging'
  
 import WinnerPrice from './_components/WinnerPrice'
+import SubGuidelines from './_components/SubGuidelines'
  
 export default function page() {
 
@@ -81,8 +82,9 @@ export default function page() {
         <Price />
         <About/>
         <Phases/>
+        <SubGuidelines/>
         <Themes />
-        <Timeline/> 
+        {/* <Timeline/>  */}
         <Rules/>
         <Judging/>
         <WinnerPrice/>

@@ -90,7 +90,7 @@ export default function page() {
           </div>
           <div className='justify-end w-[25%]'>
             {/* <RoundDetails/> */}
-            <RoundOneComp/>
+            <RoundDetails/>
 
           </div>
           
