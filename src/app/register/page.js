@@ -206,7 +206,7 @@ export default function Register() {
                         label="Name"
                         value={name}
                         helperText={
-                          !isNameValid && name!=""
+                          !isNameValid && name != ""
                             ? "Should not contain special characters"
                             : ""
                         }
@@ -227,7 +227,7 @@ export default function Register() {
                         label="Phone Number"
                         value={phone}
                         helperText={
-                          !isPhoneValid && phone!=""
+                          !isPhoneValid && phone != ""
                             ? "Should contain 10 digits"
                             : ""
                         }
