@@ -19,7 +19,7 @@ export default function FirstRegister({
     console.log(NoofMembers[0], switchVal);
   },[switchVal])
   return (
-    <div className="w-full md:w-[560px] sm:hidden md:block  md:h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
+    <div className="md:w-[560px]  h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
       {/* <Image
                   src={anokhalogo}
                   priority
@@ -120,7 +120,7 @@ export default function FirstRegister({
               </div>
             </div>
 
-            <div className="flex sm:hidden md:block mx-auto  flex-col  pt-1">
+            <div className="flex   mx-auto  flex-col  pt-4">
               <div className="mt-1 z-10">
                 <Button
                   onClick={handle_buttonone_click}
@@ -128,10 +128,7 @@ export default function FirstRegister({
                 >
                   <span relative="relative z-10 text-xl ">Next</span>
                 </Button>
-                {/* <Button variant='text' className='text-3xl bg-blue-600 flex flex-row w-[120px] items-center' onClick={handle_buttonone_click} >
-                                <div className='-ml-2'>Next</div> 
-                                <FaArrowRight size={20} className='-mr-6 ml-2 '/>
-                                </Button> */}
+                
               </div>
             </div>
           </div>

@@ -82,7 +82,6 @@ const FilmGallery = () => {
   return (
     <div>
       <div className="pc-view z-10 sm:hidden md:hidden lg:block xl:block">
-        <div className="text-white text-6xl text-center my-5">GALLERY</div>
         <div className="overflow-hidden" ref={container}>
           <div
             className="grid grid-cols-7 gap-2 h-[40vh] w-[130vw] text-white my-3"
@@ -127,7 +126,6 @@ const FilmGallery = () => {
       </div>
 
       <div className="mobile-view z-10 sm:block md:block lg:hidden xl:hidden">
-        <h1 className="text-white text-6xl text-center my-5">Gallery</h1>
         <div className="overflow-hidden" ref={phoneContainer}>
           <div
             className="grid grid-cols-5 gap-2 h-[25vh] w-[180vw] text-white my-3"

@@ -18,6 +18,7 @@ import {
   PowerIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import secureLocalStorage from "react-secure-storage";
 
 const ProfileMenuItems = [
   {
@@ -43,6 +44,11 @@ export default function ProfileCard() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleClick = (event) => {};
+
+  const handleLogOut = () => {
+    secureLocalStorage.clear();
+    window.location.reload();
+  };
 
   const handleClose = () => {
     setIsArrowMenuOpen(false);
@@ -100,6 +106,7 @@ export default function ProfileCard() {
                       ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
                       : "hover:bg-gray-500/10"
                   }`}
+                  onClick={handleLogOut}
                 >
                   {createElement(icon, {
                     strokeWidth: 2,
@@ -133,8 +140,6 @@ export default function ProfileCard() {
       {/* <Popover
         open={isArrowMenuOpen}
         sx={{width:6600,absolute:true,top:10 }}
-        
-         
       >
         <div className='w-58'>
           {ProfileMenuItems.map(({ text, icon },index)=>{

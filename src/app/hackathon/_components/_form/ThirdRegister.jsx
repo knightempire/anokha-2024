@@ -6,6 +6,7 @@ import { Button } from "@material-tailwind/react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { IoPersonCircle } from "react-icons/io5";
 import { PiIdentificationBadgeFill } from "react-icons/pi";
+import validator from "validator";
 
 const Memberview = ({ member, idc, no, e_val, idc_val }) => {
   return (
@@ -24,7 +25,12 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
           >
             Member {no} : Email
           </label>
-          <div className="flex flex-row bg-transparent border-2 border-gray-800 rounded-[5px]">
+          <div
+            className={
+              "flex flex-row bg-transparent border-2 border-gray-800 rounded-[5px] " +
+              (validator.isEmail(e_val) || e_val == "" ? "" : "border-red-600")
+            }
+          >
             <IoPersonCircle className="h-8 w-8 mt-[4px] ml-2" />
             <input
               // onChange={(e) => {
@@ -49,7 +55,14 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
           >
             Member {no} : Intel Dev Cloud ID
           </label>
-          <div className="flex flex-row bg-transparent border-2 border-gray-800 rounded-[5px]">
+          <div
+            className={
+              "flex flex-row bg-transparent border-2 border-gray-800 rounded-[5px] " +
+              (validator.isNumeric(idc_val) || idc_val == ""
+                ? ""
+                : " border-red-600")
+            }
+          >
             <PiIdentificationBadgeFill className="h-8 w-8 mt-[4px] ml-2" />
             <input
               //   onChange={(e) => {
@@ -81,6 +94,7 @@ export default function ThirdRegister({
   member3IDC,
   member4Email,
   member4IDC,
+  mem12data,
   handle_register_click,
   handle_prev_click,
 }) {
@@ -100,7 +114,7 @@ export default function ThirdRegister({
   ];
 
   return (
-    <div className="w-full md:w-[560px] sm:hidden md:block  md:h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
+    <div className="md:w-[560px]    md:h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
       {/* <Image
         src={anokhalogo}
         priority
@@ -148,6 +162,22 @@ export default function ThirdRegister({
               <span relative="relative z-10">Previous</span>
             </Button>
             <Button
+              disabled={
+                !validator.isNumeric(mi3) ||
+                !validator.isEmail(me3) ||
+                (!validator.isNumeric(mi4) && mi4 != "") ||
+                (!validator.isEmail(me4) && me4 != "") ||
+                (me3 == me4 && me4 != "") ||
+                (mi3 == mi4 && mi4 != "") ||
+                mem12data["me1"] == me3 ||
+                mem12data["me2"] == me3 ||
+                (me4 != "" && mem12data["me1"] == me4) ||
+                (me4 != "" && mem12data["me2"] == me4) ||
+                mem12data["mi1"] == mi3 ||
+                mem12data["mi2"] == mi3 ||
+                (me4 != "" && mem12data["mi1"] == mi4) ||
+                (me4 != "" && mem12data["mi2"] == mi4)
+              }
               onClick={(e) => handle_register_click(e)}
               className="text-md flex justify-center items-center before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
             >
