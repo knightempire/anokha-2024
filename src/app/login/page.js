@@ -21,10 +21,6 @@ import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
 
 export default function Login() {
-  useEffect(() => {
-    securelocalStorage.clear();
-  });
-
   const toastRef = useRef();
 
   const [studentEmail, setStudentEmail] = useState("");
