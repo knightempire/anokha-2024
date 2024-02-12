@@ -72,18 +72,26 @@ export default function page(router) {
   return (
     <div className=" min-h-screen relative bg-[rgb(10,17,58)] overflow-hidden">
       <Navbar />
-      <main className="absolute w-full h-full flex flex-row top-[90px]">
-        <div className="w-[70%] mx-auto my-12 lg:my-15">
+      <main className="absolute w-full h-full flex flex-row gap-4 top-[90px]">
+        <div className="w-[50%] mx-auto my-12 lg:my-15">
           <TeamDetails teamMembers={responseData["teamMembers"]} />
         </div>
-        <div className="justify-end w-[25%] bg-[#172786]">
-          <div className="flex flex-row gap-4 justify-evenly">
-            <button className="bg-[#172786] p-1">Round 1</button>
-            <button className="bg-[#172786] p-1">Round 2</button>
-            <button className="bg-[#172786] p-1">Round 3</button>
+        <div className="justify-end w-[50%] bg-[#172786] px-3 flex-1">
+          <div className="flex flex-row justify-evenly">
+            <button className="bg-[#0a113a] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg">
+              Round 1
+            </button>
+            <button className="bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg">
+              Round 2
+            </button>
+            <button className="bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg">
+              Round 3
+            </button>
           </div>
           {/* <RoundDetails/> */}
-          <RoundOneComp />
+          <RoundOneComp
+            roundOneSubmission={responseData["firstRoundSubmission"]}
+          />
         </div>
       </main>
     </div>
