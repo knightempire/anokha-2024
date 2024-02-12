@@ -8,24 +8,42 @@ import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
 
-import validator from "validator";
 import { useEffect, useState, useRef } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import WebGLApp from "../bg/WebGLApp";
-// import
+import ToastAlert from "../_util/ToastAlerts";
+import secureLocalStorage from "react-secure-storage";
+import { useRouter } from "next/navigation";
 
 export default function Profile() {
   // Manage references to toast notifications
   const toastRef = useRef();
 
   // state variables
-  const [toActivate, setToActivate] = useState(1);
-  const [fullname, setFullName] = useState(securelocalStorage.getItem("studentFullName"));
-  const [phoneNumber, setPhoneNumber] = useState(securelocalStorage.getItem("studentPhone"));
-  const [email, setEmail] = useState(securelocalStorage.getItem("studentEmail"));
-  const [collegeName, setCollegeName] = useState(securelocalStorage.getItem("studentCollegeName"));
-  const [collegeCity, setCollegeCity] = useState(securelocalStorage.getItem("studentCollegeCity"));
+  const [toActivate, setToActivate] = useState(
+    securelocalStorage.getItem("studentAccountStatus"),
+  );
+  const [fullname, setFullName] = useState(
+    securelocalStorage.getItem("studentFullName"),
+  );
+  const [phoneNumber, setPhoneNumber] = useState(
+    securelocalStorage.getItem("studentPhone"),
+  );
+  const [email, setEmail] = useState(
+    securelocalStorage.getItem("studentEmail"),
+  );
+  const [collegeName, setCollegeName] = useState(
+    securelocalStorage.getItem("studentCollegeName"),
+  );
+  const [collegeCity, setCollegeCity] = useState(
+    securelocalStorage.getItem("studentCollegeCity"),
+  );
+  const [studentID, setStudentID] = useState(
+    securelocalStorage.getItem("studentId"),
+  );
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   // Validators for regex testing
   const nameValid = /^[a-zA-Z ]{1,25}$/;
@@ -45,6 +63,77 @@ export default function Profile() {
     color2: [11 / 255, 38 / 255, 59 / 255],
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
+
+  // Confirm edit profile - changes
+  const handleUpdate = async (e) => {
+    e.preventDefault;
+    try {
+      setLoading(true);
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: securelocalStorage.getItem("SECRET_TOKEN"),
+        },
+        body: JSON.stringify({
+          studentFullName: fullname,
+          studentPhone: phoneNumber,
+          studentCollegeName: collegeName,
+          studentCollegeCity: collegeCity,
+        }),
+      });
+
+      const data = await response.json();
+      if (response.status === 200) {
+        ToastAlert(
+          "success",
+          "Successful Update",
+          "Your profile has been updated!",
+          toastRef,
+        );
+        secureLocalStorage.setItem();
+        secureLocalStorage.setItem();
+        secureLocalStorage.setItem();
+        secureLocalStorage.setItem();
+      } else if (response.status === 400) {
+        ToastAlert(
+          "error",
+          "Invalid Request",
+          "The details are invalid",
+          toastRef,
+        );
+        return;
+      } else if (response.status === 401) {
+        ToastAlert(
+          "error",
+          "Unauthorized Access",
+          "Operation not permitted",
+          toastRef,
+        );
+        secureLocalStorage.clear();
+        router.replace("/login");
+      } else if (response.status === 500) {
+        ToastAlert(
+          "error",
+          "Error",
+          "Updation unsuccessful! Try again.",
+          toastRef,
+        );
+        return;
+      } else if (data.message !== undefined || data.message !== null) {
+        ToastAlert(
+          "error",
+          "Error",
+          "Updation unsuccessful! Try again.",
+          toastRef,
+        );
+        return;
+      }
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
 
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
@@ -68,7 +157,7 @@ export default function Profile() {
             variant="outlined-error-helper-text"
             placeholder="Can't be empty"
             label="Name"
-            default={securelocalStorage.fullname}
+            default={fullname}
             sx={{
               width: "100%",
               borderRadius: 5,
@@ -86,7 +175,7 @@ export default function Profile() {
             variant="outlined-error-helper-text"
             placeholder="Can't be empty"
             label="Email"
-            default={securelocalStorage.email}
+            default={email}
             sx={{
               width: "100%",
               borderRadius: 5,
@@ -104,7 +193,7 @@ export default function Profile() {
             variant="outlined-error-helper-text"
             placeholder="Can't be empty"
             label="Phone Field"
-            default={securelocalStorage.phoneNumber}
+            default={phoneNumber}
             sx={{
               width: "100%",
               borderRadius: 5,
@@ -122,7 +211,7 @@ export default function Profile() {
             variant="outlined-error-helper-text"
             placeholder="Can't be empty"
             label="College Name"
-            default={securelocalStorage.collegeName}
+            default={collegeName}
             sx={{
               width: "100%",
               borderRadius: 5,
@@ -140,7 +229,7 @@ export default function Profile() {
             variant="outlined-error-helper-text"
             placeholder="Can't be empty"
             label="College City"
-            default={securelocalStorage.CollegeCity}
+            default={collegeCity}
             sx={{
               width: "100%",
               borderRadius: 5,
@@ -155,7 +244,12 @@ export default function Profile() {
       </div>
       <div className="flex flex-col">
         <div id="qr-code-holder" className="p-10 bg-[#ffffff] max-w-256">
-          <QRCode value={securelocalStorage.studentId} />
+          <QRCode
+            value={`anokha://${studentID}`}
+            style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+            viewBox={`0 0 256 256`}
+            size="256"
+          />
         </div>
         <div id="confirm-btn-container">
           <Button />
