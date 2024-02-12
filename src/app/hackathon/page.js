@@ -78,7 +78,6 @@ export default function Page() {
         
         {getButtonText()}
 
-       
         <Price />
         <About/>
         <Phases/>
@@ -86,8 +85,8 @@ export default function Page() {
         <Themes />
         <Timeline/>  
         <Rules/>
-        <Judging/>
         <WinnerPrice/>
+        <Judging/>
         <Resources/>
         <FAQs/>
         <Footer/>
