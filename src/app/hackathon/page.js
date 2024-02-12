@@ -24,7 +24,7 @@ import Judging from './_components/Judging'
  
 import WinnerPrice from './_components/WinnerPrice'
  
-export default function page() {
+export default function Page() {
 
   const [currentStep,setCurrentStep] = useState(0);
     const [theme,setTheme] = useState( -1);

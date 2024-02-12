@@ -1,7 +1,6 @@
 "use client";
 
 import Navbar from "../components/EventHeader";
-import Footer from "../components/Footer";
 
 import { hashPassword } from "../_util/hash";
 import { useEffect, useState, useRef } from "react";
@@ -9,7 +8,6 @@ import { REGISTER_URL } from "../_util/constants";
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
@@ -17,13 +15,8 @@ import "primereact/resources/themes/saga-blue/theme.css";
 import ToastAlert from "../_util/ToastAlerts";
 
 import WebGLApp from "../bg/WebGLApp";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import validator from "validator";
 
-import Background from "../components/user/Background";
 import anokhalogo from "@/../public/images/anokha_circle.svg";
-import Helper from "./components/PasswordHelper";
 import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
@@ -389,7 +382,7 @@ export default function Register() {
                               : ""
                           }
                         >
-                          Should not contain - (hyphen) or " (quotes)
+                          Should not contain - (hyphen) or `&quot;` (quotes)
                         </div>
                         <div
                           className={

@@ -29,14 +29,14 @@ export default function Login() {
 
   const [studentEmail, setStudentEmail] = useState("");
   const [studentPassword, setStudentPassword] = useState("");
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
   const HandleLogin = async (e) => {
     e.preventDefault();
     try {
-      setLoading(true)
+      setLoading(true);
       const response = await fetch(LOGIN_URL, {
         method: "POST",
         headers: {
@@ -52,7 +52,7 @@ export default function Login() {
       const data = await response.json();
       if (response.status === 200) {
         console.log(data);
-        setLoading(false)
+        setLoading(false);
         secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
         secureLocalStorage.setItem("StudentFullName", data["studentFullName"]);
         secureLocalStorage.setItem("registerEmail", data["studentEmail"]);
@@ -61,41 +61,56 @@ export default function Login() {
         secureLocalStorage.setItem("needActivePassport", data["needPassport"]);
         secureLocalStorage.setItem(
           "studentAccountStatus",
-          data["studentAccountStatus"]
+          data["studentAccountStatus"],
         );
         secureLocalStorage.setItem("studentPhone", data["studentPhone"]);
+        secureLocalStorage.setItem(
+          "studentCollegeName",
+          data["studentCollegeName"],
+        );
+        secureLocalStorage.setItem(
+          "studentCollegeCity",
+          data["studentCollegeCity"],
+        );
+        secureLocalStorage.setItem("needPassport", data["needPassport"]);
+        secureLocalStorage.setItem("studentId", data["studentId"]);
 
         ToastAlert(
           "success",
           "Successful Login",
           "You have logged in successfully!",
-          toastRef
+          toastRef,
         );
-
         router.replace("/");
       } else if (response.status === 500) {
-        setLoading(false)
+        setLoading(false);
         ToastAlert(
           "error",
           "Oops!",
           "Something went wrong! Please try again.",
-          toastRef
+          toastRef,
         );
       } else if (data.message !== undefined || data.message !== null) {
-        setLoading(false)
+        setLoading(false);
         ToastAlert("error", "Login Failed", `${data.message}`, toastRef);
       } else {
-        setLoading(false)
+        setLoading(false);
         ToastAlert(
           "error",
           "Oops!",
           "Something went wrong! Please try again!",
-          toastRef
+          toastRef,
         );
       }
     } catch (error) {
-      setLoading(false)
+      setLoading(false);
       console.log(error);
+      ToastAlert(
+        "error",
+        "Oops!",
+        "Something went wrong! Please try again!",
+        toastRef
+      );
     }
   };
 

@@ -4,8 +4,6 @@ import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 const Timeline = () => {
-  gsap.registerPlugin(ScrollTrigger);
-
   const container = useRef(null);
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -49,6 +47,13 @@ const Timeline = () => {
       opacity: 0,
       scale: 0.5,
       x: 300,
+      duration: 0.5,
+      ease: "power4.out",
+    });
+    tl.from(container.current.children[5].children[1], {
+      opacity: 0,
+      scale: 0.5,
+      x: -300,
       duration: 0.5,
       ease: "power4.out",
     });
