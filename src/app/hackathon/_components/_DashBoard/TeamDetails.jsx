@@ -1,43 +1,116 @@
-import React from 'react'
+import React from "react";
 
-const TeamDetails = () => {
+const TeamDetails = ({
+  teamStatus,
+  teamName,
+  noOfMembers,
+  platform,
+  platformID,
+  teamMembers,
+}) => {
+  teamName = "Chumma";
+  noOfMembers = "3";
+  platform = "DevPost";
+  platformID = "1234";
+  teamMembers = [
+    {
+      studentEmail: "cb.en.u4cse21001@cb.students.amrita.edu",
+      studentFullName: "Abhinav R",
+      studentPhone: "9791544487",
+      idcId: "14625871654",
+      isLeader: "1",
+    },
+    {
+      studentEmail: "cb.en.u4cse21008@cb.students.amrita.edu",
+      studentFullName: "Ashwin S",
+      studentPhone: "9791544487",
+      idcId: "12314489",
+      isLeader: "0",
+    },
+    {
+      studentEmail: "saisajith03@gmail.com",
+      studentFullName: "sajith",
+      studentPhone: "9791544487",
+      idcId: "14625871654",
+      isLeader: "0",
+    },
+  ];
   return (
-    <div className='w-full bg-[#0A113A] text-white  p-12 rounded-xl text-lg'>
-      <div className=' space-y-2'>
-        <p className='font-bold'>Team Name: <span className='font-normal'>TeamName</span></p>
-        <p className='font-bold'>Number of Team Members: <span className='font-normal'>3</span></p>
-        <p className='font-bold'>Registered Through: <span className='font-normal'>DevPost</span></p>
-        <p className='font-bold'>Platform ID: <span className='font-normal'>dfskjfnsfk</span></p>
-        <p className='font-bold'>Team Member Details: </p>
+    <div className="w-full bg-[#172786] text-white w-full rounded-xl text-lg">
+      <div className="flex flex-col space-y-4 p-7 text-black rounded my-1 bg-opacity-80 space-between">
+        <h1 className="text-white font-light text-[2rem]">
+          Welcome {teamName}!
+        </h1>
+        <p className="w-full text-center font-thin test-md mt-3 text-white">
+          Team Details
+        </p>
 
-
-        
-      </div>
-      <div className='flex bg-white p-7 text-black rounded my-1 bg-opacity-80 space-between'>
-        <div className='m-4 w-full'>
-          <p className='font-bold'>Team Member 1:</p>
-          <p className='bg-transparent border-2 border-black px-5 w-full py-3 rounded-xl mb-2'>Email ID here</p>
-          <p className='bg-transparent border-2 border-black px-5 w-full py-3 rounded-xl mb-3'>IDC ID here</p>
-          
-          <p className='font-bold'>Team Member 2:</p>
-          <p className='bg-transparent border-2 border-black px-5 w-full py-3 rounded-xl mb-2'>Email ID here</p>
-          <p className='bg-transparent border-2 border-black px-5 w-full py-3 rounded-xl mb-3'>IDC ID here</p>
-        </div>
-
-        <div className='m-4 border-left-2 border-black w-full'>
-          <p className='font-bold'>Team Member 3:</p>
-          <p className='bg-transparent border-2 border-black px-5 w-full py-3 rounded-xl mb-2'>Email ID here</p>
-          <p className='bg-transparent border-2 border-black px-5 w-full py-3 rounded-xl mb-3'>IDC ID here</p>
-
-          <p className='font-bold'>Team Member 4:</p>
-          <p className='bg-transparent border-2 border-black px-5 w-full py-3 rounded-xl mb-2'>Email ID here</p>
-          <p className='bg-transparent border-2 border-black px-5 w-full py-3 rounded-xl mb-3'>IDC ID here</p>
-        </div>
-
-        
+        <table className="table-auto w-full border-collapse mt-2 text-sm text-center">
+          <thead className="text-white bg-[#0e1853]">
+            <tr>
+              <th className="border border-gray-800 px-4 font-light py-2">
+                Team Name
+              </th>
+              <th className="border border-gray-800 px-4 font-light py-2">
+                Number Of Members
+              </th>
+              <th className="border border-gray-800 font-light px-4 py-2">
+                Registered Platform
+              </th>
+              <th className="border border-gray-800 font-light px-4 py-2">
+                Platform ID
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white">
+            <tr>
+              <td className="border border-gray-400 px-4 py-2">{teamName}</td>
+              <td className="border border-gray-400 px-4 py-2">
+                {noOfMembers}
+              </td>
+              <td className="border border-gray-400 px-4 py-2">{platform}</td>
+              <td className="border border-gray-400 px-4 py-2">{platformID}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p className="w-full text-center test-md mt-3 text-white font-thin">
+          Team Member Details{" "}
+        </p>
+        <table className="table-auto w-full border-collapse mt-2 text-sm">
+          <thead className="text-white bg-[#0e1853] ">
+            <tr>
+              <th className="border border-black px-4 font-light py-2">Name</th>
+              <th className="border border-black px-4 font-light py-2 w-[500px]">
+                Contact
+              </th>
+              <th className="border border-black px-4 font-light py-2">
+                IDC ID
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white">
+            {teamMembers.map((member, index) => (
+              <tr key={index}>
+                <td className="border border-gray-400 px-4 py-2">
+                  <p>{member.studentFullName}</p>
+                  <p className="text-xs text-gray-500">
+                    {member.isLeader === "1" ? "Team Lead" : "Member"}
+                  </p>
+                </td>
+                <td className="border border-gray-400 px-4 py-2">
+                  <p>{member.studentEmail}</p>
+                  <p className="text-xs text-gray-500">{member.studentPhone}</p>
+                </td>
+                <td className="border border-gray-400 px-4 py-2">
+                  <p>{member.idcId}</p>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TeamDetails
+export default TeamDetails;
