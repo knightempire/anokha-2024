@@ -24,8 +24,10 @@ export default function page() {
     useEffect(() => {
         setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
         setRegisterToken(secureLocalStorage.getItem("registerToken"));
+        handleclick()
       }, []);
-
+    
+    const [dashboardData, setDashboardData] = useState({});
     const handleclick = async () => {
         
 
@@ -43,7 +45,8 @@ export default function page() {
         if (response.status === 200) {
             // ToastAlert('success', "Success", "Registration successful", toastRef);
             alertSuccess("Registration Successful");
-            console.log(data);
+            setDashboardData(data);
+            console.log(data)
             
         } else if (response.status === 500) {
             // ToastAlert('error', "Oops!", "Something went wrong! Please try again later!", toastRef);

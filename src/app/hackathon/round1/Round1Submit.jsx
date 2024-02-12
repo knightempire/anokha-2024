@@ -146,7 +146,7 @@ export default function Page() {
             }
         
         
-        <Toast position="bottom-center" ref={toastRef} />
+        
         <Footer  />
     </div>
      
