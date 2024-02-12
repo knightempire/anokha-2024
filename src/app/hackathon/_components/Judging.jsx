@@ -34,13 +34,13 @@ const judge = [
 const Judging = () => {
   return (
     <div className="w-full md:h-full bg-[#0A113A]">
-      <h1 className="text-[3rem] font-bold text-center text-white pt-10 pb-0">
+      <h1 className="text-[3rem] font-bold text-center text-white  pb-0">
         Judging Criteria
       </h1>
 
-      <div className="md:w-[80%] w-[90%] h-full md:flex justify-center gap-2 mx-auto pb-10">
+      <div className="md:w-[90%] w-[90%] h-full md:flex justify-center gap-2 mx-auto pb-10">
         {judge.map((val, id) => (
-          <div key={id} className="md:w-[30%] sm:w-[90%] mx-auto backdrop-blur-sm bg-opacity-90 bg-white rounded-xl sm:my-7 shadow-xl shadow-blue-900">
+          <div key={id} className="md:w-[30%] sm:w-[90%] mx-auto backdrop-blur-sm bg-opacity-90 bg-white rounded-xl sm:my-7 shadow-2xl shadow-blue-950">
                 <div className="flex justify-center bg-blue-800 w-full rounded-xl rounded-b-none backdrop-blur-3xl">
                 {
                 id === 0? <FaCode size={100} className="py-2 text-white sm:m-3"/>  

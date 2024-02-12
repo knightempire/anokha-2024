@@ -71,32 +71,8 @@ export default function Price() {
                       </div>
                 </div>
 
-                <div className="grid grid-flow-col gap-5 text-center auto-cols-max">
-                    <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-                      <span className="countdown font-mono text-5xl">
-                        <span style={{"--value":15}}></span>
-                      </span>
-                      days
-                    </div> 
-                    <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-                      <span className="countdown font-mono text-5xl">
-                        <span style={{"--value":10}}></span>
-                      </span>
-                      hours
-                    </div> 
-                    <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-                      <span className="countdown font-mono text-5xl">
-                        <span style={{"--value":24}}></span>
-                      </span>
-                      min
-                    </div> 
-                    <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content">
-                      <span className="countdown font-mono text-5xl">
-                        <span style={{"--value":14}}></span>
-                      </span>
-                      sec
-                    </div>
-                </div>
+                 {/* Timer here if possible  */}
+
               <div>
               <Button onClick={(e)=>{router.replace("/hackathon/register")}} className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-4  rounded-[5px] mt-3 ml-3">
               Registrations Open!
