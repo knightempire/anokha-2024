@@ -7,7 +7,7 @@ const phases = [
   {
     title: "Ideation",
     description:
-      " During this initial phase, participants are tasked with brainstorming ideas centered around provided problem statements. Submissions entail a PowerPoint presentation complemented by a succinct 500-character description elucidating the proposed concept, with explicit reference to the Intel toolkit employed.",
+      "During this initial phase, participants are tasked with brainstorming ideas centered around provided problem statements. Provide a submission with a PowerPoint presentation and a concise 200-character description that clearly explains the proposed concept, making specific reference to the Intel toolkit used.",
   },
   {
     title: "Prototype Development",
@@ -17,20 +17,20 @@ const phases = [
   {
     title: "Final Round",
     description:
-      "Shortlisted participants progress to the culminating 24-hour offline hackathon hosted at Amrita campus. Essential guidelines necessitate participants to furnish their own laptops, with hardware resources allocated based on prototype requirements.",
+      "Shortlisted participants progress to the culminating 24-hour offline hackathon hosted at the Amrita Vishwa Vidyapeetham, Coimbatore campus. Participants need to bring their laptops, and hardware resources will be provided based on the requirements of the prototype.",
   },
 ];
 
 const Timeline = () => {
   return (
     <div>
-      <div className="font-poppins  w-full py-10 text-black">
+      <div className="font-poppins  w-full py-10 pb-2 text-black">
         <p className="md:text-[3rem] sm:text-[2rem] font-bold text-center">
           Hackathon Phases
         </p>
         <ol className="md:flex w-[90%] h-full justify-center mx-auto ">
           {phases.map((ph, id) => (
-            <li className="my-5 md:w-[100%] sm:w-[90%] mx-auto">
+            <li key={id} className="my-5 md:w-[100%] sm:w-[90%] mx-auto">
               {/* Div for line and icon */}
               <div className="flex md:justify-center items-center">
                 <div className="hidden md:flex w-[50%] bg-gray-200 h-0.5 dark:bg-gray-700"></div>
@@ -45,12 +45,12 @@ const Timeline = () => {
               </div>
 
               {/* Div for headings */}
-              <div className="mt-3 max-w-[400px] mx-auto h-full w-full ">
+              <div className="mt-3 max-w-[400px] mx-auto h-full w-full mb-[100px] px-3">
                 <p className="md:text-[2rem] sm:text-[1.6rem] font-bold text-center">
                   Phase {id + 1}
                 </p>
                 <p className="text-lg font-bold mb-3 text-center">{ph.title}</p>
-                <div className="bg-[#017DC5] p-5 rounded-lg sm:mx-auto h-fit text-white w-full rounded-tr-none rounded-bl-none pe-3 md:mx-5">
+                <div className="bg-[#017DC5] p-5 rounded-lg sm:mx-auto h-fit text-white w-full rounded-tr-none rounded-bl-none">
                   {ph.description}
                 </div>
               </div>

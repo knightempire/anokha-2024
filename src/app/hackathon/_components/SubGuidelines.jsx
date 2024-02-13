@@ -13,8 +13,7 @@ const rules = [
             "The prototype submission should be made on a GitHub public repository.",
             "The entire code base needs to be present on the team's GitHub repository.",
             "The prototype submission must lay down equal emphasis on the deployment/inference benchmarking for both, with and without Intel® one API.",
-            "Pull requests of the forked repository need to be generated.",
-            "To know more about details about the registration and the rules of the hackathon. Please click on this link <Amrita Hack Website>"
+            "Pull requests of the forked repository need to be generated."
         ]
     },
 ]
@@ -22,7 +21,7 @@ const rules = [
 const SubGuidelines = () => {
   return (
     <div>
-      <div className='w-full h-full my-10'>
+      <div className='w-full h-full my-2 mt-2'>
         {rules.map((val, id)=>(
             <div key={id} className='bg-blue-900 md:w-[80%] sm:w-[90%] mx-auto odd:rounded-bl-[50px] even:rounded-br-[50px]'>
                 <div className=' mb-10 rounded-tr-none rounded-bl-none '>
