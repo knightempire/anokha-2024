@@ -142,9 +142,6 @@ export default function FirstRegister({
                     !validator.isEmail(platform[0])
                   }
                 >
-                  
-
-
                   <span relative="relative z-10 text-xl ">Next</span>
                 </Button>
               </div>
