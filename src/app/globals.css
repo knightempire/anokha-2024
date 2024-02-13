@@ -11,9 +11,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Blinker:wght@600&family=Monoton&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 @font-face {
   font-family: arista;
   src: url('/fonts/arista.otf');
+}
+
+.anton-regular {
+  font-family: "Anton", sans-serif;
+  font-weight: 900;
+  font-style: normal;
 }
 
 /* width */

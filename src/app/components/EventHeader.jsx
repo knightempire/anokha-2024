@@ -20,7 +20,7 @@ const navLinks = [
     path: "/comingSoon",
   },
   {
-    title: "EventTide",
+    title: "Eventide",
     path: "/comingSoon",
   },
   {
