@@ -29,13 +29,13 @@ const SponsorsMarquee = () => {
       >
         <SponsorElement src="https://i.imgur.com/X1qoxbQ.png" />
         <SponsorElement src="https://i.imgur.com/5BlpVzJ.jpg" />
-        <SponsorElement src="https://i.imgur.com/xr13mRq.png" />
+        <SponsorElement src="https://i.imgur.com/YDgP3qU.png" /> {/* OneAPI logo */}
         <SponsorElement src="https://i.imgur.com/X1qoxbQ.png" />
         <SponsorElement src="https://i.imgur.com/5BlpVzJ.jpg" />
-        <SponsorElement src="https://i.imgur.com/xr13mRq.png" />
+        <SponsorElement src="https://i.imgur.com/YDgP3qU.png" />
         <SponsorElement src="https://i.imgur.com/X1qoxbQ.png" />
         <SponsorElement src="https://i.imgur.com/5BlpVzJ.jpg" />
-        <SponsorElement src="https://i.imgur.com/xr13mRq.png" />
+        <SponsorElement src="https://i.imgur.com/YDgP3qU.png" />
       </Marquee>
     </div>
   );
