@@ -1,25 +1,17 @@
 import React from "react";
+import secureLocalStorage from "react-secure-storage";
 
 //     const hash = "isajithrajan@gmail.com"
 
 //   <img height={200} src={https://www.gravatar.com/avatar/${hash}.jpg?s=200&d=robohash} alt="Profile" width={200} className="rounded-lg"/>
 
 const TeamDetails = ({
-  teamStatus,
   teamName,
   noOfMembers,
   platform,
   platformID,
   teamMembers,
 }) => {
-  const details = JSON.parse(secureLocalStorage.getItem("DashBoardData"));
-
-  teamName = details.teamName;
-  noOfMembers = details.totalMembers;
-  platform = "DevPost";
-  platformID = details.platformId;
-  teamMembers = details.teamMembers;
-
   return (
     <div className="w-full bg-[#172786] text-white w-full rounded-xl text-lg">
       <div className="flex flex-col space-y-4 p-7 text-black rounded my-1 bg-opacity-80 space-between">
@@ -74,23 +66,27 @@ const TeamDetails = ({
             </tr>
           </thead>
           <tbody className="bg-white">
-            {teamMembers.map((member, index) => (
-              <tr key={index}>
-                <td className="border border-gray-400 px-4 py-2">
-                  <p>{member.studentFullName}</p>
-                  <p className="text-xs text-gray-500">
-                    {member.isLeader === "1" ? "Team Lead" : "Member"}
-                  </p>
-                </td>
-                <td className="border border-gray-400 px-4 py-2">
-                  <p>{member.studentEmail}</p>
-                  <p className="text-xs text-gray-500">{member.studentPhone}</p>
-                </td>
-                <td className="border border-gray-400 px-4 py-2">
-                  <p>{member.idcId}</p>
-                </td>
-              </tr>
-            ))}
+            {Array.isArray(teamMembers)
+              ? teamMembers.map((member, index) => (
+                  <tr key={index}>
+                    <td className="border border-gray-400 px-4 py-2">
+                      <p>{member.studentFullName}</p>
+                      <p className="text-xs text-gray-500">
+                        {member.isLeader === "1" ? "Team Lead" : "Member"}
+                      </p>
+                    </td>
+                    <td className="border border-gray-400 px-4 py-2">
+                      <p>{member.studentEmail}</p>
+                      <p className="text-xs text-gray-500">
+                        {member.studentPhone}
+                      </p>
+                    </td>
+                    <td className="border border-gray-400 px-4 py-2">
+                      <p>{member.idcId}</p>
+                    </td>
+                  </tr>
+                ))
+              : null}
           </tbody>
         </table>
       </div>
