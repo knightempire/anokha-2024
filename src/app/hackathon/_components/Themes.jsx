@@ -227,7 +227,7 @@ const Themes = () => {
     // </div>
 
     <div>
-      <div className="h-full w-full bg-[#0A113A] relative overflow-hidden ">
+      <div className="h-full w-full bg-[#0A113A] relative overflow-hidden mt-5">
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[30%] sm:w-[70%] p-8 rounded-full left-[10%] top-10 md:h-[30%] sm:h-[30%] blur-3xl levitate"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[80%] top-10 md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[20%] top-[40%] md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>
@@ -242,8 +242,8 @@ const Themes = () => {
               <div
                 key={index}
                 className={`cursor-pointer flex flex-col justify-center items-center mx-3 my-2 ${
-                  selectedTab === index ? "border-black border-4 " : "" } p-[10%] md:p-5 
-            rounded-xl bg-opacity-60 backdrop-blur-3xl   bg-white `}
+                  selectedTab === index ? "border-black border-4 " : "" } p-[10%] md:p-5 sm:mx-1 
+            rounded-xl bg-opacity-60 backdrop-blur-3xl  bg-white `}
                 onClick={() => handleTabClick(index)}
               >
                 <Image
@@ -253,7 +253,7 @@ const Themes = () => {
                   alt={val.text}
                   className="object-cover rounded-md"
                 />
-                <p className="mt-2 text-center">{val.text}</p>
+                <p className="mt-2 text-center md:text-lg sm:text-sm">{val.text}</p>
               </div>
             ))}
           </div>
@@ -285,10 +285,10 @@ const Themes = () => {
                                 expandIcon={<FaPlus />}
                                 aria-controls="panel1-content"
                                 id="panel1-header">
-                                <Typography className='md:px-7 sm:px-2 py-1 text-md text-black font-bold text-lg capitalize'>{statement[0]}</Typography>
+                                <Typography className='md:px-7 sm:px-2 py-1 text-black font-bold md:text-lg sm:text-md capitalize'>{statement[0]}</Typography>
                                 </AccordionSummary>
                                 <AccordionDetails >
-                                <Typography className='md:px-7 sm:px-2 text-lg'>
+                                <Typography className='md:px-7 sm:px-2 md:text-lg sm:text-md'>
                                 {statement[1]}
                                 </Typography>
                                 </AccordionDetails>

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-
+import Link from 'next/link'
 import { useState } from "react";
 import { Button } from "@material-tailwind/react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
@@ -141,6 +141,10 @@ export default function SecondRegister({
               />
             ))}
           </div>
+          
+          <Link href="https://console.cloud.intel.com/" className="w-fit mx-auto" target="_blank">
+            <Button  className="bg-blue-800 ">Click here to get your IDC ID!</Button>
+            </Link>
 
           <div className="w-full justify-center gap-2 mt-3 flex">
             {/* <button className="text-[1rem] bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-2 md:mt-3 rounded-[15px] ">

@@ -52,10 +52,10 @@ const Rules = () => {
       <h1 className="text-[3rem] font-bold text-center mt-10 mb-4">Rules</h1>
       <div className='w-full h-full'>
         {rules.map((val, id)=>(
-            <div key={id} className='bg-blue-900 md:w-[70%] sm:w-[90%] mx-auto odd:rounded-bl-[50px] even:rounded-br-[50px]'>
+            <div key={id} className='bg-blue-900 md:w-[70%] sm:w-[95%] mx-auto odd:rounded-bl-[50px] even:rounded-br-[50px]'>
                 <div className=' mb-10 rounded-tr-none rounded-bl-none '>
                 <h2 className='font-bold text-2xl py-5 px-12 bg-gradient-to-r from-[#0A113A]  to-blue-900  w-full text-white odd:rounded-bl-[50px] even:rounded-tl-[50px]'>{val.title}</h2>
-                <ul className='list-disc md:px-[80px] sm:px-10 md:pb-10  pt-0 sm:py-8 text-md  text-white space-y-1'>
+                <ul className='list-disc md:px-[80px] sm:px-10 md:pb-10  pt-0 sm:py-5 text-md  text-white space-y-1'>
                 {val.rules.map((rule, id)=>(
                     <li key={id}>{rule}</li>
                 ))}

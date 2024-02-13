@@ -239,19 +239,20 @@ const Register = () => {
   return (
     <div>
       <Navbar />
-      <main className="w-full h-full bg-[rgb(10,17,58)]">
-        {/* <WebGLApp colors={webGLColors} /> */}
+      <main className="w-full h-full bg-[rgb(10,17,58)] overflow-x-hidden">
+      {/* <WebGLApp colors={webGLColors} /> */}
 
-        <div className="block my-auto space-y-24 md:space-y-10">
-          {/* <Navbar />/ */}
-          <div className="p-2">
-            <Toast ref={toastRef} position="bottom-center" className="p-5" />
-          </div>
-          <div className="relative min-h-screen">
-            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[100px] absolute blur-3xl levitate"></div>
-            <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
-              <form
-                className="space-y-4 mt-10 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
+      <div className="block my-auto space-y-24 md:space-y-10">
+        {/* <Navbar />/ */}
+        <div className="p-2">
+          <Toast ref={toastRef} position="bottom-center" className="p-5" />
+
+        </div>
+        <div className="relative min-h-screen">
+        <div className="bg-gradient-to-r overflow-x-hidden inset-0 from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[100px] absolute blur-3xl levitate"></div>
+          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
+
+          <form className="space-y-4 mt-10 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
                 //   onSubmit={handleSignUp}
               >
                 {currentStep === 0 ? (
