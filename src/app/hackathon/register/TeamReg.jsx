@@ -138,7 +138,7 @@ const Register = () => {
 
         setTimeout(() => {
           router.replace("/hackathon");
-        }, 500);
+        }, 1500);
       } else if (response.status === 400) {
         ToastAlert(
           "error",

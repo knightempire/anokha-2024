@@ -99,6 +99,9 @@ export default function Page() {
             //timeout
             setUserState(0)
             SignOut()
+            setTimeout(() => {
+              router.replace("/login");
+            }, 1500)
               
           }
           else if (response.status === 400) {
