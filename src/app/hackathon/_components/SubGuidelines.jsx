@@ -13,8 +13,7 @@ const rules = [
             "The prototype submission should be made on a GitHub public repository.",
             "The entire code base needs to be present on the team's GitHub repository.",
             "The prototype submission must lay down equal emphasis on the deployment/inference benchmarking for both, with and without Intel® one API.",
-            "Pull requests of the forked repository need to be generated.",
-            "To know more about details about the registration and the rules of the hackathon. Please click on this link <Amrita Hack Website>"
+            "Pull requests of the forked repository need to be generated."
         ]
     },
 ]
