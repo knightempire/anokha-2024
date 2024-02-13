@@ -56,7 +56,7 @@ export default function Login() {
         console.log(data);
         setLoading(false);
         secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
-        secureLocalStorage.setItem("StudentFullName", data["studentFullName"]);
+        secureLocalStorage.setItem("studentFullName", data["studentFullName"]);
         secureLocalStorage.setItem("registerEmail", data["studentEmail"]);
         secureLocalStorage.setItem("isLoggedIn", 1);
         secureLocalStorage.setItem("isAmritaCBE", data["isAmritaCBE"]);

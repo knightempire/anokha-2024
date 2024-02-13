@@ -19,7 +19,9 @@ import TextField from "@mui/material/TextField";
 import QRCode from "react-qr-code";
 
 export default function Register() {
-  const [name, setName] = useState(secureLocalStorage.getItem("StudentFullName"));
+  const [name, setName] = useState(
+    secureLocalStorage.getItem("studentFullName")
+  );
   const [email, setEmail] = useState(
     secureLocalStorage.getItem("registerEmail")
   );
@@ -57,7 +59,7 @@ export default function Register() {
 
         const data = await response.json();
         if (response.status === 200) {
-          secureLocalStorage.setItem("StudentFullName", fullname);
+          secureLocalStorage.setItem("studentFullName", fullname);
           secureLocalStorage.setItem("studentPhone", phoneNumber);
           secureLocalStorage.setItem("studentCollegeCity", collegeCity);
           secureLocalStorage.setItem("studentCollegeName", collegeName);
@@ -117,12 +119,12 @@ export default function Register() {
 
   const toastRef = useRef(null);
 
-  const genSHA256 = (email) => {
+  const genSHA256 = (email = "riteshkoushik39@gmail.com") => {
     return createHash("sha256").update(email).digest("hex");
   };
 
   const enableUpdate = () => {
-    const nameCheck = name === secureLocalStorage.getItem("StudentFullName");
+    const nameCheck = name === secureLocalStorage.getItem("studentFullName");
     const phoneCheck = phoneNumber === secureLocal.getItem("studentPhone");
     const collegeNameCheck =
       collegeName === secureLocalStorage.getItem("studentCollegeCity");
@@ -159,7 +161,7 @@ export default function Register() {
           "Your profile has been updated!",
           toastRef
         );
-        secureLocalStorage.setItem("StudentFullName", fullname);
+        secureLocalStorage.setItem("studentFullName", fullname);
         secureLocalStorage.setItem("studentPhone", phoneNumber);
         secureLocalStorage.setItem("studentCollegeCity", collegeCity);
         secureLocalStorage.setItem("studentCollegeName", collegeName);
@@ -221,7 +223,7 @@ export default function Register() {
                   alt="Travis Howard"
                   src={
                     "https://www.gravatar.com/avatar/" +
-                    genSHA256(email) +
+                    genSHA256 +
                     ".jpg?s=200&d=robohash"
                   }
                   width={80}
