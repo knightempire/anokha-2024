@@ -44,7 +44,7 @@ const WinnerPrice = () => {
       <div className="md:w-[40%] sm:w-[70%]  mx-auto bg-white backdrop-blur-3xl rounded-xl sm:my-5 p-8 shadow-xl shadow-blue-900">
         <FaMedal size={100}  className='w-full mx-auto ' />
         <h1 className='text-center text-[1.5rem] mt-6 font-bold'> Prize Pool </h1>
-        <p className="font-bold text-center text-[2rem] bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white rounded w-fit px-4 mx-auto">  ₹ 1,50,000/- </p>
+        <p className="font-bold text-center text-[2rem] bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white rounded w-fit px-4 mx-auto">  ₹ 1,25,000/- </p>
       </div>
     </div>
   </div>

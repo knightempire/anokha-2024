@@ -38,7 +38,7 @@ export default function Price() {
             <div>
                 <div className="flex flex-row gap-4 items-center justify-start  mt-12">
                     <FaTrophy size="30" color="#1c5dad"/>
-                    <div className="text-2xl capitalize">Price money worth 1000</div>
+                    <div className="text-2xl capitalize">Prize money upto <span className="font-black text-3xl bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white rounded bg-clip-text text-transparent">₹1,25,000/-</span></div>
                 </div>
 
                 <div className="flex flex-row gap-4 items-center justify-start mt-12">
@@ -46,7 +46,7 @@ export default function Price() {
                 <div className="text-2xl">Who can participate?</div> 
                 </div>
                 <div className="mt-4 text-xl w-4/5 ">
-                Professionals, Developer Communities, AI/ML Enthusiasts, Ph.D. - First Year Students/ M.Tech students working along with their professors, research scholars, start-ups, and freelancers.
+                AI/ML Enthusiasts, Undergraduate and Postgraduate Students
                 </div>
 
             </div>
