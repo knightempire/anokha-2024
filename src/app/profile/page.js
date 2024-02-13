@@ -76,7 +76,9 @@ export default function Register() {
             toastRef
           );
           secureLocalStorage.clear();
-          router.replace("/");
+          setTimeout(() => {
+            router.replace("/");
+          }, 1500)
         } else if (response.status === 500) {
           ToastAlert(
             "error",
@@ -182,7 +184,9 @@ export default function Register() {
           toastRef
         );
         secureLocalStorage.clear();
-        router.replace("/login");
+        setTimeout(() => {
+          router.replace("/login");
+        }, 1500)
       } else if (response.status === 500) {
         ToastAlert(
           "error",
