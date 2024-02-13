@@ -82,7 +82,7 @@ export default function ProfileCard({email}) {
                 variant="circle"
                 className=""
                 alt="Travis Howard"
-                src={"https://www.gravatar.com/avatar/${hash}.jpg?s=200&d=robohash"}
+                src={"https://www.gravatar.com/avatar/"+(hash)+".jpg?s=200&d=robohash"}
                 width={340}
                 height={30}
                 sx={{ width: 30, height: 30, bg: "red" }}
