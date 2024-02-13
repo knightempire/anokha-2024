@@ -11,8 +11,9 @@ import Navbar from "../_components/HackathonHeader";
 import TeamDetails from "../_components/_DashBoard/TeamDetails";
 
 import RoundOneComp from "../_components/_DashBoard/RoundOneComp";
+import Round1NotFound from "../_components/_DashBoard/RoundOneNotFound";
 
-export default function Page(router) {
+export default function Page({router}) {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerToken, setRegisterToken] = useState("");
   const [responseData, setResponseData] = useState("");
@@ -32,28 +33,28 @@ export default function Page(router) {
   const [RoundTwoSub, setRoundTwoSub] = useState("");
 
   useEffect(() => {
-    console.log(detailsJson)
+    console.log(detailsJson);
     if (detailsJson) {
       try {
         const details = JSON.parse(detailsJson);
         setTeamName(details.teamName);
         setNoOfMembers(details.totalMembers);
-        setPlatform('DevPost');
+        setPlatform("DevPost");
         setPlatformID(details.platformId);
         setTeamMembers(details.teamMembers);
-        setRoundOneSub(details.firstRoundSubmission);
+        setRoundOneSub([]);
         setRoundTwoSub(details.secondRoundSubmission);
       } catch (error) {
-        console.error('Error parsing JSON:', error);
+        console.error("Error parsing JSON:", error);
       }
     } else {
-      console.error('DashBoardData not found in secureLocalStorage');
+      console.error("DashBoardData not found in secureLocalStorage");
     }
   }, [detailsJson]);
 
-  useEffect(()=>{
-    console.log(teamName, teamMembers)
-  },[teamName, teamMembers])
+  useEffect(() => {
+    console.log(teamName, teamMembers);
+  }, [teamName, teamMembers]);
 
   // useEffect(async () => {
   //   // try {
@@ -128,7 +129,11 @@ export default function Page(router) {
             </button>
           </div>
 
-          <RoundOneComp roundOneSubmission={RoundOneSub} />
+          {!RoundOneSub ? (
+            <Round1NotFound router={router} />
+          ) : (
+            <RoundOneComp roundOneSubmission={RoundOneSub} />
+          )}
         </div>
       </main>
     </div>
