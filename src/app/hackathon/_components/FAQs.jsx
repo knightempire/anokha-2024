@@ -19,7 +19,7 @@ const FAQs = () => {
         },
         {
             question: "Do I need to have any specific qualifications to be a participant in the Hackathon? ",
-            answer: "Open to undergraduates and postgraduates pursuing B.Tech, M.Tech, B.E, M.E, B.Sc, M.Sc, or equivalent degrees."
+            answer: "The hackathon is open to undergraduates and postgraduates currently pursuing B.Tech, M.Tech, B.E, M.E, B.Sc, M.Sc, or equivalent degrees."
         },
         {
             question: "When is the application deadline? ",
@@ -34,7 +34,7 @@ const FAQs = () => {
             answer: "While a complete implementation is not mandatory, the submission should be functional, accompanied by proof of concepts/prototypes for review by the judges."
         },
         {
-            question: "How is the environment? Will your environment support any language? Will you provide any IDE and DB for us to work on ideas?",
+            question: "How is the environment? Will your environment support any language? Will you provide any IDE and database for us to work on ideas?",
             answer: "You will be required to develop the entire software application on your local system or Intel DevCloud and submit it on GitHub. Include instructions for running the application and share the source code."
         },
         {
@@ -42,7 +42,7 @@ const FAQs = () => {
             answer: "Feel free to enhance your submission by providing a brief presentation or video. If you choose to do so, upload it as a private video on YouTube and share the link with us. Keep in mind that this is optional and not a mandatory requirement."
         },
         {
-            question: "A fully developed application needs to have a solid backend for data storage like SQL, SharePoint, etc. since it's online, is it acceptable to show only the prototype of it?",
+            question: "A fully developed application needs to have a solid backend for data storage like SQL, SharePoint, etc. Considering that it is online, is it acceptable to show only the prototype of it?",
             answer: "It is acceptable to submit only the prototype. If you utilize databases such as MySQL or PostgreSQL, you have the option to include a database dump along with your submission. "
         },
         {
