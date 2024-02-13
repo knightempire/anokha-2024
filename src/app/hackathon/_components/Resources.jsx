@@ -124,7 +124,6 @@ const Resources = () => {
               height="250"
               src={val.link}
               title="YouTube video player"
-              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
               className="w-[90%] mx-auto"

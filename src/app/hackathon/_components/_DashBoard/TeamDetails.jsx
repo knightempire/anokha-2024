@@ -21,7 +21,7 @@ const TeamDetails = ({
   teamMembers = details.teamMembers;
 
   return (
-    <div className="w-full bg-[#172786] text-white w-full rounded-xl text-lg">
+    <div className="w-full bg-[#172786] text-white rounded-xl text-lg">
       <div className="flex flex-col space-y-4 p-7 text-black rounded my-1 bg-opacity-80 space-between">
         <h1 className="text-white font-light text-[2rem]">
           Welcome {teamName}!
