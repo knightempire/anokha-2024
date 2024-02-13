@@ -19,7 +19,7 @@ import TextField from "@mui/material/TextField";
 import QRCode from "react-qr-code";
 
 export default function Register() {
-  const [name, setName] = useState("StudentFullName");
+  const [name, setName] = useState(secureLocalStorage.getItem("StudentFullName"));
   const [email, setEmail] = useState(
     secureLocalStorage.getItem("registerEmail")
   );
@@ -117,7 +117,7 @@ export default function Register() {
 
   const toastRef = useRef(null);
 
-  const genSHA256 = (email = "riteshkoushik39@gmail.com") => {
+  const genSHA256 = (email) => {
     return createHash("sha256").update(email).digest("hex");
   };
 
@@ -221,7 +221,7 @@ export default function Register() {
                   alt="Travis Howard"
                   src={
                     "https://www.gravatar.com/avatar/" +
-                    genSHA256 +
+                    genSHA256(email) +
                     ".jpg?s=200&d=robohash"
                   }
                   width={80}
