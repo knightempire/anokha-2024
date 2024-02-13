@@ -20,7 +20,7 @@ const Themes = () => {
       problemStatements: [
         ["Gen-AI based Ecommerce Personalized Recommendation system", "The field of recommendation systems is intriguing and continuously advancing within this track. Your task involves creating a chatbot capable of: (1) Engaging in goal-oriented conversations with users, comprehending their requirements, and expressing them in a specialized query language. (2) Integrating the query from step (1) into a recommendation system, and subsequently presenting the user with pertinent product recommendations."],
         ["Github Repository navigator", "Offering a real-time solution for comprehending a developer's problem statements (prompts), this tool goes beyond mere keyword-based generation. It analyzes entire GitHub repositories to provide relevant recommendations and offers a workflow when the solution requires more than a single repository."],
-        ["Bring Your Designs to Life: WHAT YOU SHOW IS WHAT YOU GET", "In this project, you will build an app that turns your hand-drawn or digital sketches into actual front-end code. Create a straightforward 'WHAT YOU SHOW IS WHAT YOU GET APPLICATION' where your design ideas instantly become a reality."],
+        ["Bring Your Designs to Life", "Craft an application that seamlessly translates your design concepts into live front-end code, ensuring a direct correlation between what you envision and the end result."],
         ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
       ],
     },
