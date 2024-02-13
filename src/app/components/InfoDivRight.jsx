@@ -19,7 +19,6 @@ const Card = ({ title, description, src }) => {
         start: "-35% 60%",
         end: "125% 20%",
         scrub: true,
-        markers: true,
       },
     });
 

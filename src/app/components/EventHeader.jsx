@@ -125,7 +125,7 @@ const Navigationbar = () => {
             {isLoggedIn === 1 ? (
               <ProfileCard email={email}/>
             ) : (
-              <div className="sm:hidden md:block relative inline-flex  group">
+              <div className="md:block relative inline-flex  group">
                 <div className="absolute transitiona-all w-[180px] h-[30px]   duration-1000 opacity-70  -inset-px bg-gradient-to-r from-[#ffffff] via-[#76adfa] to-[#0659ff] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
                 <Button
                   className="relative inline-flex items-center justify-center px-6 py-2 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900"
