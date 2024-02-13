@@ -5,24 +5,24 @@ const rules = [
         title: "General Hackathon Rules",
         rules: [
             "Teams should build their product from scratch (Mobile App / Consumer Web App / Business Web App).",
-            "Teams cannot choose multiple problem statements; they are only allowed to choose one problem statement and theme at a time. Problem statements are mentioned in the given tracks.",
+            "Teams must select a single problem statement and theme; multiple choices are not allowed. The available problem statements are specified within the provided tracks.",
             "Teams must be between 3 - 4 members.",
-            "Students aged from 15-22 are only allowed to participate.", 
-            "Working Professionals are not allowed to participate.",
-            "Participants are encouraged to form teams before the Hackathon starts.",
-            "Participants, from their DevPost accounts, may “Look for Teammates”."
+            "Participation is open only to students aged 15-22.", 
+            "Working professionals are not eligible to participate.",
+            "Participants are encouraged to form teams before the hackathon starts.",
+            "Participants may use their DevPost accounts to “Look for Teammates”."
         ]
     },
     {
         title: "Round 1: Idea Submission Phase",
         rules: [
-            "Participants are mandated to exclusively leverage Intel® AI Analytics Toolkits, Libraries & SYCL/DPC++ Libraries in formulating their ideations.",
-            "Ideations must be presented in PowerPoint format converted to PDF for submission. Uploaded via Google Drive links.",
-            "A designated template shall be provided, covering all requisite points for inclusion in submissions.",
-            "Optional inclusion of GitHub repository link for ideation phase.",
-            "Timely submission through the hackathon dashboard is imperative to avoid disqualification.",
-            "Submitting a video explaining your idea and the problem statement will give your team a better chance to qualify for the next round.",
-            "Only the Top 100 teams will qualify for round 2."
+            "Participants are required to use only Intel® AI Analytics Toolkits, Libraries & SYCL/DPC++ Libraries for their ideations.",
+            "Ideations should be presented in PowerPoint format and converted to PDF for submission. Upload via Google Drive links.",
+            "A specific template will be provided, covering all essential points for submissions.",
+            " Optionally, include the GitHub repository link for the ideation phase.",
+            "Timely submission through the hackathon dashboard is crucial to avoid disqualification.",
+            "Submitting a video that explains your idea and the problem statement will increase your team's chances of qualifying for the next round.",
+            "Only the top 100 teams will qualify for round 2."
         ]
     },
     {
@@ -52,10 +52,10 @@ const Rules = () => {
       <h1 className="text-[3rem] font-bold text-center mt-10 mb-4">Rules</h1>
       <div className='w-full h-full'>
         {rules.map((val, id)=>(
-            <div key={id} className='bg-blue-900 md:w-[70%] sm:w-[90%] mx-auto odd:rounded-bl-[50px] even:rounded-br-[50px]'>
+            <div key={id} className='bg-blue-900 md:w-[70%] sm:w-[95%] mx-auto odd:rounded-bl-[50px] even:rounded-br-[50px]'>
                 <div className=' mb-10 rounded-tr-none rounded-bl-none '>
                 <h2 className='font-bold text-2xl py-5 px-12 bg-gradient-to-r from-[#0A113A]  to-blue-900  w-full text-white odd:rounded-bl-[50px] even:rounded-tl-[50px]'>{val.title}</h2>
-                <ul className='list-disc md:px-[80px] sm:px-10 md:pb-10  pt-0 sm:py-8 text-md  text-white space-y-1'>
+                <ul className='list-disc md:px-[80px] sm:px-10 md:pb-10  pt-0 sm:py-5 text-md  text-white space-y-1'>
                 {val.rules.map((rule, id)=>(
                     <li key={id}>{rule}</li>
                 ))}

@@ -38,14 +38,14 @@ const WinnerPrice = () => {
     //     ))}
     //   </div>
     // </div>
-    <div className='w-full h-full pt-10 bg-[#0A113A]'>
+    <div className='w-full h-full bg-[#0A113A]'>
       <h1 className="text-[3rem] font-bold text-center text-white">Prizes</h1>
-      <div className="md:w-[80%] w-[90%] h-full md:flex mx-auto pb-10 items-center ">
-      <div className="md:w-[40%] sm:w-[70%]  mx-auto bg-white backdrop-blur-3xl rounded-xl sm:my-5 p-8 shadow-xl shadow-blue-900">
-        <FaMedal size={100}  className='w-full mx-auto ' />
-        <h1 className='text-center text-[1.5rem] mt-6 font-bold'> Prize Pool </h1>
-        <p className="font-bold text-center text-[2rem] bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white rounded w-fit px-4 mx-auto">  ₹ 1,25,000/- </p>
-      </div>
+      <div className="md:w-[80%] sm:w-[100%] h-full md:flex mx-auto pb-10 items-center ">
+        <div className="md:w-[40%] sm:w-[90%]  mx-auto bg-white backdrop-blur-3xl rounded-xl sm:my-5 p-8 shadow-xl shadow-blue-900">
+          <FaMedal size={100}  className='w-full mx-auto ' />
+          <h1 className='text-center text-[1.5rem] mt-6 font-bold'> Prize Pool </h1>
+          <p className="font-bold text-center text-[2rem] bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white rounded w-fit px-4 mx-auto">  ₹ 1,25,000/- </p>
+        </div>
     </div>
   </div>
       

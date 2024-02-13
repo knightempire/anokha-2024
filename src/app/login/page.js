@@ -23,7 +23,6 @@ import "primereact/resources/themes/lara-light-blue/theme.css";
 export default function Login() {
  
 
-    
   useEffect(()=>{
     securelocalStorage.clear()
 },[])
@@ -84,7 +83,10 @@ export default function Login() {
           "You have logged in successfully!",
           toastRef,
         );
-        router.replace("/hackathon");
+        setTimeout(() => {
+          router.replace("/hackathon");
+        }, 1500);
+        
       } else if (response.status === 500) {
         setLoading(false);
         ToastAlert(

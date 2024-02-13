@@ -9,18 +9,52 @@ import "primereact/resources/themes/saga-blue/theme.css";
 import ToastAlert from "@/app/_util/ToastAlerts";
 import Navbar from "../_components/HackathonHeader";
 import TeamDetails from "../_components/_DashBoard/TeamDetails";
-import RoundDetails from "../_components/_DashBoard/RoundDetails";
-import RoundOneComp from "../_components/_DashBoard/RoundOneComp";
 
-export default function Page(router) {
+import RoundOneComp from "../_components/_DashBoard/RoundOneComp";
+import Round1NotFound from "../_components/_DashBoard/RoundOneNotFound";
+
+export default function Page({router}) {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerToken, setRegisterToken] = useState("");
   const [responseData, setResponseData] = useState("");
-
+  const [detailsJson, setDetailsJson] = useState("");
   useEffect(() => {
     setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
     setRegisterToken(secureLocalStorage.getItem("registerToken"));
-  }, []);
+    setDetailsJson(secureLocalStorage.getItem("DashBoardData"));
+  }, [router]);
+
+  const [teamName, setTeamName] = useState("");
+  const [noOfMembers, setNoOfMembers] = useState("");
+  const [platform, setPlatform] = useState("");
+  const [platformID, setPlatformID] = useState("");
+  const [teamMembers, setTeamMembers] = useState("");
+  const [RoundOneSub, setRoundOneSub] = useState("");
+  const [RoundTwoSub, setRoundTwoSub] = useState("");
+
+  useEffect(() => {
+    console.log(detailsJson);
+    if (detailsJson) {
+      try {
+        const details = JSON.parse(detailsJson);
+        setTeamName(details.teamName);
+        setNoOfMembers(details.totalMembers);
+        setPlatform("DevPost");
+        setPlatformID(details.platformId);
+        setTeamMembers(details.teamMembers);
+        setRoundOneSub([]);
+        setRoundTwoSub(details.secondRoundSubmission);
+      } catch (error) {
+        console.error("Error parsing JSON:", error);
+      }
+    } else {
+      console.error("DashBoardData not found in secureLocalStorage");
+    }
+  }, [detailsJson]);
+
+  useEffect(() => {
+    console.log(teamName, teamMembers);
+  }, [teamName, teamMembers]);
 
   // useEffect(async () => {
   //   // try {
@@ -72,18 +106,34 @@ export default function Page(router) {
   return (
     <div className=" min-h-screen relative bg-[rgb(10,17,58)] overflow-hidden">
       <Navbar />
-      <main className="absolute w-full h-full flex flex-row top-[90px]">
-        <div className="w-[70%] mx-auto my-12 lg:my-15">
-          <TeamDetails teamMembers={responseData["teamMembers"]} />
+      <main className="absolute w-full h-full flex flex-row gap-4 top-[90px]">
+        <div className="w-[50%] mx-auto my-12 lg:my-15">
+          <TeamDetails
+            teamName={teamName}
+            noOfMembers={noOfMembers}
+            platform={platform}
+            platformID={platformID}
+            teamMembers={teamMembers}
+          />
         </div>
-        <div className="justify-end w-[25%] bg-[#172786]">
-          <div className="flex flex-row gap-4 justify-evenly">
-            <button className="bg-[#172786] p-1">Round 1</button>
-            <button className="bg-[#172786] p-1">Round 2</button>
-            <button className="bg-[#172786] p-1">Round 3</button>
+        <div className="justify-end w-[50%] bg-[#172786] px-3 flex-1">
+          <div className="flex flex-row justify-evenly">
+            <button className="bg-[#0a113a] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg">
+              Round 1
+            </button>
+            <button className="bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg">
+              Round 2
+            </button>
+            <button className="bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg">
+              Round 3
+            </button>
           </div>
-          {/* <RoundDetails/> */}
-          <RoundOneComp />
+
+          {!RoundOneSub ? (
+            <Round1NotFound router={router} />
+          ) : (
+            <RoundOneComp roundOneSubmission={RoundOneSub} />
+          )}
         </div>
       </main>
     </div>

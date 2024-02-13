@@ -34,19 +34,19 @@ const judge = [
 const Judging = () => {
   return (
     <div className="w-full md:h-full bg-[#0A113A] py-10">
-      <h1 className="text-[3rem] font-bold text-center text-white  pb-0">
+      <h1 className="md:text-[3rem] sm:text-xl font-bold text-center text-white  pb-0">
         Judging Criteria
       </h1>
 
-      <div className="md:w-[90%] w-[90%] h-full md:flex justify-center gap-2 mx-auto pb-10">
+      <div className="md:w-[90%] sm:w-[97%] h-full md:flex justify-center gap-2 mx-auto pb-10">
         {judge.map((val, id) => (
-          <div key={id} className="md:w-[30%] sm:w-[90%] mx-auto backdrop-blur-sm bg-opacity-90 bg-white rounded-xl sm:my-7 shadow-xl shadow-blue-900">
+          <div key={id} className="md:w-[30%] sm:w-[95%] mx-auto backdrop-blur-sm bg-opacity-90 bg-white rounded-xl sm:my-7 shadow-xl shadow-blue-900 md:text-lg sm:text-md">
                 <div className="flex justify-center bg-blue-800 w-full rounded-xl rounded-b-none backdrop-blur-3xl">
                 {
                 id === 0? <FaCode size={100} className="py-2 text-white sm:m-3"/>  
                 :id === 1 ? <IoMdBuild size={100} className="py-2 text-white sm:m-3"/> :id===2? <IoSparkles size={100} className="py-2 text-white sm:m-3"/> : null
             }
-                    
+
                 </div>
                 <h2 className="font-bold text-2xl pt-7 pb-4 sm:px-5 w-full text-black text-center">
                 {val.title}

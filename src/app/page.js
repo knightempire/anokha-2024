@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col bg-[#121212]">
-      <WebGLApp colors={cardColor} />
+      <WebGLApp colors={cardColor} className="-z-10" />
       <Navbar login={true} />
       <Hero className="z-10" />
       {/* This is temprovary sponsor component may change in future */}

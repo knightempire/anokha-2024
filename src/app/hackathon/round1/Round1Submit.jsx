@@ -6,7 +6,7 @@ import About from "../_components/About";
 import { Toast } from "primereact/toast";
 
 import secureLocalStorage from "react-secure-storage";
-import Footer from "../_components/Footer";
+import Footer from "../../components/Footer";
 import { Button } from "@material-tailwind/react";
 
 import RoundOne from "../_components/RoundOne";
@@ -141,7 +141,6 @@ export default function Page() {
   ]);
 
   return (
- 
     <div>
       <Navbar />
 
@@ -168,9 +167,7 @@ export default function Page() {
         />
       ) : null}
 
-     
       <Footer />
- 
     </div>
   );
 }

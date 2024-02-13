@@ -5,8 +5,10 @@ import { useState } from "react";
 import { Button } from "@material-tailwind/react";
 import Switch from "@mui/material/Switch";
 import { FaArrowRight } from "react-icons/fa";
+import validator from "validator";
 import oneapilogo from "../../images/oneAPI-rgb-3000.png";
 import { RiTeamFill } from "react-icons/ri";
+import Link from 'next/link'
 
 export default function FirstRegister({
   handle_buttonone_click,
@@ -15,9 +17,9 @@ export default function FirstRegister({
   platform,
 }) {
   const [switchVal, setSwitch] = useState(0);
-  useEffect(()=>{
+  useEffect(() => {
     console.log(NoofMembers[0], switchVal);
-  },[switchVal])
+  }, [switchVal]);
   return (
     <div className="md:w-[560px]  h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
       {/* <Image
@@ -28,12 +30,17 @@ export default function FirstRegister({
                   height={128}
                   className="ml-auto mr-auto mt-4 h-16"
                 />  */}
-      <Image src={oneapilogo} width={80} alt="oneapilogo" className="ml-auto mr-auto -mt-9" />
-      <div className="w-full flex flex-col justify-center p-2 space-y-4  sm:p-8">
+      <Image
+        src={oneapilogo}
+        width={80}
+        alt="oneapilogo"
+        className="ml-auto mr-auto -mt-9"
+      />
+      <div className="w-full flex flex-col justify-center p-2 space-y-4  sm:p-4">
         <h1 className="text-xl -mt-4 mx-auto font-bold leading-tight tracking-tight text-black md:text-2xl">
           Register
         </h1>
-        <div className=" w-full h-full px-5">
+        <div className=" w-full h-full md:px-5">
           {/* First card */}
 
           <div className="flex flex-col justify-center md:space-y-4 flex-1 ">
@@ -70,14 +77,14 @@ export default function FirstRegister({
                 3
                 <Switch
                   value={switchVal}
-                  checked={NoofMembers[0]==3?0:1}
+                  checked={NoofMembers[0] == 3 ? 0 : 1}
                   onChange={(e) => {
                     console.log(NoofMembers[0], switchVal, e.target.checked);
-                    if(e.target.checked == true){
-                      NoofMembers[1](4)
-                      setSwitch(1)
-                    }else{
-                      NoofMembers[1](3)
+                    if (e.target.checked == true) {
+                      NoofMembers[1](4);
+                      setSwitch(1);
+                    } else {
+                      NoofMembers[1](3);
                       setSwitch(0);
                     }
                   }}
@@ -95,7 +102,7 @@ export default function FirstRegister({
                   Registered through
                 </label>
 
-                <div className="flex">
+                <div className="md:flex">
                   <select
                     id="platform"
                     className="bg-transparent mr-2 border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5 border-y-1"
@@ -113,24 +120,33 @@ export default function FirstRegister({
                     id="platformid"
                     value={platform[0]}
                     className="bg-transparent text-black border-2 border-gray-800 font-medium text-[16px] rounded-[5px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
-                    placeholder="Platform ID"
+                    placeholder="Platform email"
                     onChange={(e) => platform[1](e.target.value)}
                   />
                 </div>
               </div>
             </div>
+            
+            <Link href="https://console.cloud.intel.com/" className="w-fit mx-auto" target="_blank">
+            <Button  className="bg-blue-800 sm:my-2">Click here to get your IDC ID!</Button>
+            </Link>
 
-            <div className="flex   mx-auto  flex-col  pt-4">
-              <div className="mt-1 z-10">
+            <div className="flex mx-auto flex-col">
+              <div className=" z-10">
                 <Button
                   onClick={handle_buttonone_click}
                   className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
+                  disabled={
+                    TeamName[0] == "" ||
+                    platform[0] == "" ||
+                    !validator.isEmail(platform[0])
+                  }
                 >
                   <span relative="relative z-10 text-xl ">Next</span>
                 </Button>
-                
               </div>
             </div>
+
           </div>
         </div>
       </div>

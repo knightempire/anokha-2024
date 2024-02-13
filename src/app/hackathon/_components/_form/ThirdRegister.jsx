@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-
+import Link from 'next/link'
 import { useState } from "react";
 import { Button } from "@material-tailwind/react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
@@ -98,6 +98,7 @@ export default function ThirdRegister({
   handle_register_click,
   handle_prev_click,
 }) {
+  console.log(mem12data);
   const MemberList = [
     {
       name: member3Email,
@@ -114,7 +115,7 @@ export default function ThirdRegister({
   ];
 
   return (
-    <div className="md:w-[560px]    md:h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
+    <div className="md:w-[560px] sm:mx-[5%] md:h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2  xl:p-0 bg-white">
       {/* <Image
         src={anokhalogo}
         priority
@@ -150,14 +151,18 @@ export default function ThirdRegister({
               ))
             )}
           </div>
+          
+          <Link href="https://console.cloud.intel.com/" className="w-fit mx-auto" target="_blank">
+            <Button  className="bg-blue-800 ">Click here to get your IDC ID!</Button>
+            </Link>
 
-          <div className="w-full justify-center gap-2 mt-2 flex">
+          <div className="w-full justify-center gap-2  mt-3 md:flex sm:w-fit mx-auto">
             {/* <button className="text-[1rem] bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-2 md:mt-3 rounded-[15px] ">
                   Upload Link
                 </button> */}
             <Button
               onClick={handle_prev_click}
-              className="text-md flex justify-center items-center before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
+              className="text-md flex justify-center items-center before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 sm:mb-2"
             >
               <span relative="relative z-10">Previous</span>
             </Button>
@@ -176,7 +181,7 @@ export default function ThirdRegister({
                 mem12data["mi1"] == mi3 ||
                 mem12data["mi2"] == mi3 ||
                 (me4 != "" && mem12data["mi1"] == mi4) ||
-                (me4 != "" && mem12data["mi2"] == mi4)
+                (mi4 != "" && mem12data["mi2"] == mi4)
               }
               onClick={(e) => handle_register_click(e)}
               className="text-md flex justify-center items-center before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"

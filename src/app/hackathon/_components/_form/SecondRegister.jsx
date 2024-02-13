@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-
+import Link from 'next/link'
 import { useState } from "react";
 import { Button } from "@material-tailwind/react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
@@ -10,7 +10,7 @@ import validator from "validator";
 
 const Memberview = ({ member, idc, no, e_val, idc_val }) => {
   return (
-    <div className="w-full h-full px-5">
+    <div className="w-full h-full  px-5">
       <div className="flex flex-col flex-1 space-y-1 -mt-2 ">
         {no % 2 === 0 ? (
           <hr className="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700 " />
@@ -25,18 +25,26 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
           >
             Member {no} : Email
           </label>
-          <div className={"flex flex-row bg-transparent border-2 border-gray-800 rounded-[5px] "+ (validator.isEmail(e_val) || e_val=="" ?"":"border-red-600")}>
+          <div
+            className={
+              "flex flex-row border-2 border-gray-800 rounded-[5px] " +
+              (e_val == null || e_val == "" || validator.isEmail(e_val)
+                ? ""
+                : "border-red-600 ") +
+              (no == 1 ? " bg-gray-400 " : " bg-transparent")
+            }
+          >
             <IoPersonCircle className="h-8 w-8 mt-[4px] ml-2" />
             <input
               // onChange={(e) => {
               //   setEmail(e.target.value);
               // }}
-              
+              disabled={no === 1}
               type="email"
               name="email"
               id="email"
               value={e_val}
-              className="bg-transparent text-black font-medium text-[16px] rounded-[10px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
+              className="bg-transparent text-black font-medium text-[16px] rounded-[10px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light "
               placeholder="Enter Your Email"
               required
               onChange={(e) => member(e.target.value)}
@@ -51,7 +59,14 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
           >
             Member {no} : Intel Dev Cloud ID
           </label>
-          <div className={"flex flex-row bg-transparent border-2 border-gray-800 rounded-[5px] "+ (validator.isNumeric(idc_val) || idc_val=="" ?"":"border-red-600")}>
+          <div
+            className={
+              "flex flex-row bg-transparent border-2 border-gray-800 rounded-[5px] " +
+              (idc_val == null || idc_val == "" || validator.isNumeric(idc_val)
+                ? ""
+                : "border-red-600")
+            }
+          >
             <PiIdentificationBadgeFill className="h-8 w-8 mt-[4px] ml-2" />
             <input
               //   onChange={(e) => {
@@ -73,6 +88,7 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
     </div>
   );
 };
+
 export default function SecondRegister({
   me1,
   mi1,
@@ -101,7 +117,7 @@ export default function SecondRegister({
   ];
 
   return (
-    <div className=" md:w-[560px]   md:h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
+    <div className=" md:w-[560px] sm:mx-[5%] md:h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2  xl:p-0 bg-white">
       {/* <Image
         src={anokhalogo}
         priority
@@ -110,7 +126,7 @@ export default function SecondRegister({
         height={128}
         className="ml-auto mr-auto mt-4 h-16"
       /> */}
-      <div className="w-full flex flex-col justify-center p-4 space-y-2  sm:p-8">
+      <div className="w-full  flex flex-col justify-center p-6 space-y-2  sm:px-2 md:px-4">
         {/* First card */}
 
         <div className="flex flex-col justify-center space-y-6 flex-1 ">
@@ -126,19 +142,30 @@ export default function SecondRegister({
               />
             ))}
           </div>
+          
+          <Link href="https://console.cloud.intel.com/" className="w-fit mx-auto" target="_blank">
+            <Button  className="bg-blue-800 ">Click here to get your IDC ID!</Button>
+            </Link>
 
-          <div className="w-full justify-center gap-2 mt-3 flex">
+          <div className="w-full justify-center gap-2 mt-3 md:flex sm:w-fit  mx-auto">
             {/* <button className="text-[1rem] bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-2 md:mt-3 rounded-[15px] ">
                   Upload Link
                 </button> */}
             <Button
               onClick={handle_prev_click}
-              className="text-md flex justify-center items-center before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
+              className="text-md flex justify-center items-center before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 sm:mb-2"
             >
               <span relative="relative z-10">Previous</span>
             </Button>
             <Button
-              disabled={!validator.isNumeric(mi1) || !validator.isEmail(me1) || !validator.isNumeric(mi2) || !validator.isEmail(me2) || me1==me2 || mi1==mi2 }
+              disabled={
+                (mi1 != null && !validator.isNumeric(mi1)) ||
+                (me1 != null && !validator.isEmail(me1)) ||
+                (mi2 != null && !validator.isNumeric(mi2)) ||
+                (me2 != null && !validator.isEmail(me2)) ||
+                (me1 != null && me2 != null && me1 == me2) ||
+                (mi1 != null && mi2 != null && mi1 == mi2)
+              }
               onClick={handle_next_click}
               className="text-md flex justify-center items-center before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
             >
