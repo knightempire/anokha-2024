@@ -7,10 +7,10 @@ const FilmGallery = () => {
   const filmRow1 = [
     "https://i.imgur.com/bCSiGLj.jpg",
     "https://i.imgur.com/bHtecHP.jpg",
-    "https://i.imgur.com/KUavNhA.jpg",
-    "https://i.imgur.com/kcYnqaV.jpg",
     "https://i.imgur.com/KxZtGPq.jpg",
     "https://i.imgur.com/ToIDLTm.jpg",
+    "https://i.imgur.com/KUavNhA.jpg",
+    "https://i.imgur.com/kcYnqaV.jpg",
     "https://i.imgur.com/93FXohU.jpg",
   ];
 

@@ -65,12 +65,12 @@ const RoundOneComp = ({ roundOneSubmission }) => {
   };
   useEffect(() => {
     if (
-      ((gitLink == roundOneSubmission[0]["githubLink"] &&
+      (gitLink == roundOneSubmission[0]["githubLink"] &&
         ytLink == roundOneSubmission[0]["youtubeVideoLink"] &&
         devMeshLink == roundOneSubmission[0]["devmeshLink"] &&
         pptLink == roundOneSubmission[0]["pptFileLink"] &&
         probStatement == roundOneSubmission[0]["problemStatement"]) ||
-      editable != 0)
+      editable != 0
     ) {
       setCanSubmit(0);
     } else {
@@ -117,7 +117,9 @@ const RoundOneComp = ({ roundOneSubmission }) => {
     <div className=" bg-[#0a113a] text-white w-full p-5 pt-0 h-[80%] rounded-b-xl ">
       <div className="bg-[#0a113a] text-white rounded-xl p-6 w-full h-full mx-auto pt-1">
         <div className="flex flex-row mx-auto justify-between">
-          <p className="text-center mb-8 text-xl ml-[43%] mt-3">Submission</p>
+          <p className="text-center mb-8 text-xl ml-[30%] mt-3">
+            Problem Statements & Submission
+          </p>
           {editable ? (
             <MdEditOff
               onClick={(e) => setEditable(!editable)}
