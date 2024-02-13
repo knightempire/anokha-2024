@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
-import { Button } from "@material-tailwind/react";
 import { FaArrowRight } from "react-icons/fa";
 import { HACKATHON_TEAM_REGISTER_URL } from "@/app/_util/constants";
 import Navbar from "../_components/HackathonHeader";
