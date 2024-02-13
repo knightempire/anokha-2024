@@ -8,7 +8,7 @@ import Image from "next/image";
 import secureLocalStorage from "react-secure-storage";
 import { useAuth } from "@/app/_auth/useAuth";
 import { useRouter } from "next/navigation";
-import { Button, Navbar } from "@material-tailwind/react";
+import { Button} from "@material-tailwind/react";
 
 const navLinks = [
   {
@@ -108,14 +108,14 @@ const Navigationbar = () => {
           <ul className="flex p-2 md:p-0 md:flex-row lg:space-x-2 mt-0 ">
             {navLinks.map((link, index) => (
               <li key={index}>
-                <Button variant="text" className=" h-[40px] hover:bg-gray-700">
-                  <Link
+                <Link
                     href={link.path}
-                    className="  text-gray-300   text-[13px]  rounded md:p-0 hover:text-white"
+                     
                   >
-                    <div className="my-auto">{link.title}</div>
-                  </Link>
-                </Button>
+                  <Button variant="text" className=" h-[40px] hover:bg-gray-700">
+                       <div className="my-auto   text-gray-300   text-[13px]  rounded md:p-0 hover:text-white">{link.title}</div>
+                  </Button>
+                </Link>
               </li>
             ))}
           </ul>
