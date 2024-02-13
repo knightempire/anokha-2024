@@ -20,66 +20,15 @@ export default function Page() {
 
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerToken, setRegisterToken] = useState("");
+    const [dashBoardData, setDashBoardData] = useState({});
 
     useEffect(() => {
         setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
         setRegisterToken(secureLocalStorage.getItem("registerToken"));
-        handleclick()
+        setDashBoardData(secureLocalStorage.getItem("DashBoardData"))
+         
       }, []);
-    
-    const [dashboardData, setDashboardData] = useState({});
-    const handleclick = async () => {
-        
-
-        try {
-        const response = await fetch(HACKATHON_DASHBOARD_URL, {
-            method: "GET",
-            headers: {
-            
-            "Authorization": "Bearer " + registerToken,
-            },
-            
-        });
-
-        const data = await response.json();
-        if (response.status === 200) {
-            // ToastAlert('success', "Success", "Registration successful", toastRef);
-            alertSuccess("Registration Successful");
-            setDashboardData(data);
-            console.log(data)
-            
-        } else if (response.status === 500) {
-            // ToastAlert('error', "Oops!", "Something went wrong! Please try again later!", toastRef);
-            alertError("Oops!", "Something went wrong! Please try again later!");
-        } else if (data.message !== undefined || data.message !== null) {
-            // ToastAlert('error', "Oops!", "Something went wrong! Please try again later!", toastRef);
-            alertError("Registration Failed", data.message);
-        } else {
-            // ToastAlert('error', "Oops!", 'Something went wrong! Please try again later', toastRef);
-            alertError("Oops!", "Something went wrong! Please try again later!");
-        }
-        } catch (e) {
-        console.log(e);
-        }
-    
-    }
-
-    const alertError = (summary, detail) => {
-      toast.current.show({
-        severity: "error",
-        summary: summary,
-        detail: detail,
-      });
-    };
-    
-    const alertSuccess = (summary, detail) => {
-      toast.current.show({
-        severity: "success",
-        summary: summary,
-        detail: detail,
-      });
-    };
-
+  
   return (
     
     <div>
@@ -88,7 +37,7 @@ export default function Page() {
            
           <div className='w-[70%]'>
             <h1 className='text-black font-bold text-[2rem]'>Welcome TeamName!</h1>
-            <TeamDetails/>
+            <TeamDetails data={dashBoardData}/>
 
           </div>
           <div className='justify-end w-[25%]'>
@@ -100,9 +49,7 @@ export default function Page() {
             
         </main>
      
-        <Button onClick={handleclick}>
-                getValues
-            </Button>    
+         
     </div>
   )
 }

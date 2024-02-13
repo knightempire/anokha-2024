@@ -82,9 +82,10 @@ export default function page() {
           
 
           const data = await response.json();
+          console.log(data)
           if (response.status === 200) {
               // ToastAlert('success', "Success", "Registration successful", toastRef);
-              secureLocalStorage.setItem("DashBoardData", data);
+              secureLocalStorage.setItem("DashBoardData",  JSON.stringify(data));
               if (data.secondRoundSubmission.length!=0) {
                 setDisplayResult(2)
               }
@@ -95,6 +96,7 @@ export default function page() {
               setUserState(2)
           }   
           else if (response.status === 401) {
+            //timeout
             setUserState(0)
             SignOut()
               

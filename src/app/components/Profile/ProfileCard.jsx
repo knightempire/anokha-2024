@@ -2,8 +2,10 @@
 import React, { useState, useRef, createElement } from "react";
 
 import { Avatar, Popover } from "@mui/material";
+import { MD5 } from "crypto-js";
 
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
+import { hashPassword } from "@/app/_util/hash";
 import {
   Button,
   Menu,
@@ -33,7 +35,9 @@ const ProfileMenuItems = [
     icon: PowerIcon,
   },
 ];
-export default function ProfileCard() {
+export default function ProfileCard({email}) {
+  console.log("Email sis",email)
+  const hash = MD5(email + email);
   const [isArrowMenuOpen, setIsArrowMenuOpen] = useState(false);
   const handlearrowclick = () => {
     setIsArrowMenuOpen(!isArrowMenuOpen);
@@ -47,6 +51,7 @@ export default function ProfileCard() {
   const handleClose = () => {
     setIsArrowMenuOpen(false);
   };
+  
 
   return (
     <div>
@@ -66,12 +71,14 @@ export default function ProfileCard() {
             onClick={handleClick}
             className="flex flex-row items-center rounded-full py-0.5 pr-0.5 pl-0.5   backdrop-blur-3xl"
           >
-            <div className="border-blue-600 border-2 p-1 rounded-full ">
+            <div className="border-blue-600 border-2 p-1 rounded-full bg-gray-300 ">
               <Avatar
                 variant="circle"
                 className=""
                 alt="Travis Howard"
-                src="/images/s_avatar.jpg"
+                src={"https://www.gravatar.com/avatar/${hash}.jpg?s=200&d=robohash"}
+                width={340}
+                height={30}
                 sx={{ width: 30, height: 30, bg: "red" }}
               />
             </div>
