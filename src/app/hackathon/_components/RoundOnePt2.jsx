@@ -23,7 +23,7 @@ const RoundOnePt2 = ({
       <div>
         <div className="w-full h-[100vh] bg-[rgb(10,17,58)]">
           <div className="font-poppins text-black mx-auto">
-            <div className="bg-gradient-to-r from-cyan-500 z-0 to-blue-500 md:w-[70%] sm:w-[80%] lg:w-[63%] xl:w-[50%] p-8 rounded-[50%] h-[80%] left-[25%] top-[50px] md:left-[17%] md:top-[40px] lg:left-[19%] xl:left-[26%] absolute blur-3xl levitate"></div>
+            <div className="bg-gradient-to-r from-cyan-500 z-0 to-blue-500 md:w-[70%] sm:w-[60%] lg:w-[63%] xl:w-[50%] p-8 rounded-[50%] h-[60%] left-[25%] top-[50px] md:left-[17%] md:top-[40px] lg:left-[19%] xl:left-[26%] absolute blur-3xl levitate"></div>
             <div className="bg-white relative z-10 sm:w-[90%] md:w-[620px] h-fit  bg-opacity-80  px-5  md:px-8 py-8 rounded-xl sm:mx-auto top-[150px]">
               <div className="flex gap-1 items-center text-center text-2xl font-bold justify-center mb-5">
                 <IoDocumentText color="#4287f5" className="mr-2" />
@@ -36,8 +36,8 @@ const RoundOnePt2 = ({
                   <input
                     type="text"
                     value={github_val}
-                    onChange={(e) => github(e.target.value)}
-                    placeholder="Enter Github Link Here"
+                    onChange={(e)=>github(e.target.value)}
+                    placeholder="Enter Github Link Here (Optional)"
                     className="w-full focus:outline-0"
                   />
                 </div>
@@ -48,7 +48,7 @@ const RoundOnePt2 = ({
                     value={devmesh_val}
                     onChange={(e) => devmesh(e.target.value)}
                     type="text"
-                    placeholder="Enter DevMesh Link Here"
+                    placeholder="Enter DevMesh Link Here (Optional)"
                     className="w-full focus:outline-0"
                   />
                 </div>
@@ -59,7 +59,7 @@ const RoundOnePt2 = ({
                     value={youtube_val}
                     onChange={(e) => youtube(e.target.value)}
                     type="text"
-                    placeholder="Enter Youtube Video Link Here"
+                    placeholder="Enter Youtube Video Link Here (Optional)"
                     className="w-full focus:outline-0"
                   />
                 </div>

@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@material-tailwind/react";
 import { HACKATHON_DASHBOARD_URL } from "@/app/_util/constants";
-import secureLocalStorage from "react-secure-storage";
+import secureLocalStorage from 'react-secure-storage';
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
@@ -11,8 +11,9 @@ import Navbar from "../_components/HackathonHeader";
 import TeamDetails from "../_components/_DashBoard/TeamDetails";
 
 import RoundOneComp from "../_components/_DashBoard/RoundOneComp";
+import Round1NotFound from "../_components/_DashBoard/RoundOneNotFound";
 
-export default function Page(router) {
+export default function Page({router}) {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerToken, setRegisterToken] = useState("");
   const [responseData, setResponseData] = useState("");
@@ -41,7 +42,7 @@ export default function Page(router) {
         setPlatform("DevPost");
         setPlatformID(details.platformId);
         setTeamMembers(details.teamMembers);
-        setRoundOneSub(details.firstRoundSubmission);
+        setRoundOneSub([]);
         setRoundTwoSub(details.secondRoundSubmission);
       } catch (error) {
         console.error("Error parsing JSON:", error);
@@ -128,7 +129,11 @@ export default function Page(router) {
             </button>
           </div>
 
-          <RoundOneComp roundOneSubmission={RoundOneSub} />
+          {!RoundOneSub ? (
+            <Round1NotFound router={router} />
+          ) : (
+            <RoundOneComp roundOneSubmission={RoundOneSub} />
+          )}
         </div>
       </main>
     </div>

@@ -8,25 +8,24 @@ const judge = [
     title: "Code Quality",
     criteria: [
       "Code is easy to understand and is reproducible",
-      "Code is well tested, and functions without errors",
-      "Code is well documented",
+      "Code is well tested and fully functional",
     ],
   },
   {
     title: "Technical Implementation",
     criteria: [
-      "Intel® AI Analytics Toolkits, its Libraries and SYCL/DPC++ Libraries are leveraged and used appropriately by developer",
-      "Data Preprocessing and Exploratory Data Analysis (EDA)",
-      "Model Training and Inference",
-      "Implementation of Intel® oneAPI is a must",
+      "Intel® AI Analytics Toolkits, its Libraries and SYCL/DPC++ Libraries are leveraged and used appropriately by the developer",
+      "Data Preprocessing and Exploratory Data Analysis (EDA) should be included",
+      "Model Training and Inference is an evaluation metric",
+      "Implementation of Intel® oneAPI is mandatory",
     ],
   },
   {
     title: "Creativity & Originality",
     criteria: [
-      "Solution is original and clearly differentiates itself from submissions in the same category",
-      "Solution creates clear additional value beyond competition",
-      "Scale and novelty of technology",
+      "The solution should be original and clearly differentiable from submissions in the same category",
+      "The solution must effectively address a real-life problem",
+      "Scale and novelty of technology is an evaluation metric",
     ],
   },
 ];

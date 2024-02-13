@@ -6,7 +6,8 @@ import Themes from './_components/Themes'
 import About from './_components/About'
 import Carousel from './_components/Carousel'
 import Timeline from './_components/Timeline'
-import Footer from './_components/Footer'
+import Footer from '../components/Footer'
+import IeteInfo from './_components/IeteInfo'
 import {Button } from "@material-tailwind/react";
 import HeroSection from './_components/HeroSection'
 import IntelHero from './_components/IntelHero'
@@ -177,6 +178,7 @@ export default function Page() {
         <WinnerPrice/>
         <Resources/>
         <FAQs/>
+        <IeteInfo/>
         <Footer/>
     </div>
      
