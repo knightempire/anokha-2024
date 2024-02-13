@@ -2,13 +2,13 @@ const projects = [
   {
     title: "About Anokha",
     description:
-      "Amrita Coimbatore Campus's annual techfest, Anokha, is a vibrant celebration of innovation and technological prowess. Bringing together students, professionals, and tech enthusiasts nationwide, this dynamic 3-day event features competitions, workshops, and interactive sessions spanning engineering, robotics, artificial intelligence, and sustainable technologies. Beyond fostering healthy competition, Anokha promotes collaboration and knowledge exchange. With diverse events catering to various interests and skill sets, it embodies curiosity and creativity, becoming a highlight in the academic calendar. The fest goes beyond the technological realm, incorporating cultural elements for a lively and engaging atmosphere, making Anokha a unique celebration of innovation.",
+      "Amrita Vishwa Vidyapeetham's Coimbatore Campus hosts Anokha, a lively tech extravaganza! This dynamic 3-day event brings together students, professionals, and tech enthusiasts from across the nation for exciting competitions, workshops, and interactive sessions covering engineering, robotics, AI, and sustainable technologies. More than just a competition, Anokha is a celebration of collaboration and knowledge exchange. With diverse events catering to different interests and skill sets, it's a vibrant showcase of curiosity and creativity. Beyond tech, Anokha incorporates cultural elements, creating a festive and engaging atmosphere.  ",
     src: [
-      "https://i.imgur.com/ecQNYUu.jpg",
-      "https://i.imgur.com/LPwhQSf.jpg",
-      "https://i.imgur.com/7tOFSVp.jpg",
-      "https://i.imgur.com/ToIDLTm.jpg",
-      "https://i.imgur.com/bHtecHP.jpg",
+      "https://i.imgur.com/59VI4bH.jpg",
+      "https://i.imgur.com/aIbdm2i.jpg",
+      "https://i.imgur.com/qOU9nOu.jpg",
+      "https://i.imgur.com/TgVyKuL.jpg",
+      "https://i.imgur.com/ia12Whu.jpg",
     ],
     link: "https://www.ignant.com/2023/03/25/ad2186-matthias-leidingers-photographic-exploration-of-awe-and-wonder/",
     color: "#BBACAF",
@@ -16,13 +16,13 @@ const projects = [
   {
     title: "About Amrita",
     description:
-      "Nestled in the Western Ghats, Amrita Vishwa Vidyapeetham's Coimbatore campus is a serene hub of academic excellence. Offering diverse undergraduate and postgraduate programs, including engineering, sciences, arts, and management, the campus is equipped with modern facilities for a dynamic learning environment. Emphasizing research and innovation, it encourages entrepreneurial thinking. Beyond academics, the campus promotes extracurricular engagement through cultural events, sports, and community service. With a holistic approach that nurtures intellect and character, Amrita Vishwa Vidyapeetham is a coveted destination for students seeking a transformative educational experience.",
+      "Amrita Vishwa Vidyapeetham's Coimbatore campus is dedicated to fostering academic excellence with a range of undergraduate and postgraduate programs spanning diverse disciplines – engineering, management, and sciences. Renowned for its dedication to research and innovation, the campus boasts world-class facilities and actively cultivates an environment conducive to personal growth. Beyond academics, Amrita emphasizes holistic student development, encouraging participation in cultural events, sports, and community service initiatives. This commitment creates a vibrant and enriching learning environment, making Amrita Vishwa Vidyapeetham a great choice for students from across India. ",
     src: [
-      "https://i.imgur.com/bCSiGLj.jpg",
-      "https://i.imgur.com/zGW31tC.jpg",
-      "https://i.imgur.com/W9kniFN.jpg",
-      "https://i.imgur.com/KlpdkTZ.jpg",
-      "https://i.imgur.com/KxZtGPq.jpg",
+      "https://i.imgur.com/uieA2G8.jpg",
+      "https://i.imgur.com/r2oGSa9.jpg",
+      "https://i.imgur.com/6ZmXFoP.jpg",
+      "https://i.imgur.com/rEmHjdZ.jpg",
+      "https://i.imgur.com/0IvtFJG.jpg",
     ],
     link: "https://www.ignant.com/2022/09/30/clement-chapillon-questions-geographical-and-mental-isolation-with-les-rochers-fauves/",
     color: "#977F6D",
@@ -30,13 +30,13 @@ const projects = [
   {
     title: "Events & Workshops",
     description:
-      "Our dynamic range of workshops and events create a vibrant environment for continuous learning and enjoyment. Workshops turn knowledge seekers into active explorers of topics such as programming languages and market trends, fueling life-long learning. This is complemented by our diverse event lineup, where technical rigor meets fun through coding competitions to gaming activities. This interwoven fabric of technical engagement and enjoyment allows for a comprehensive, enriching experience that encourages participant's skills showcase, camaraderie and expands their knowledge horizon.",
+      "Embark on a valuable journey with our diverse workshops and events. We offer a lively atmosphere that encourages continuous learning, shifting participants from passive observers to active explorers. Unite technical expertise with engaging experiences in our programming language events. Explore the captivating realms of coding and current market trends through activities like coding challenges and interactive games. This balanced blend ensures a well-rounded and fulfilling experience for everyone involved. Showcase your skills, build meaningful connections, and expand your knowledge. Join us and let the fun of exploration be your guide! ",
     src: [
-      "https://i.imgur.com/BuxXBmL.jpg",
-      "https://i.imgur.com/uBOlPoY.jpg",
-      "https://i.imgur.com/HYFk0Fu.jpg",
-      "https://i.imgur.com/0RIWnLX.jpg",
-      "https://i.imgur.com/pEEzOKT.jpg",
+      "https://i.imgur.com/kWBGAkz.jpg",
+      "https://i.imgur.com/aH94zxw.jpg",
+      "https://i.imgur.com/c1V7G0v.jpg",
+      "https://i.imgur.com/YudUnK4.jpg",
+      "https://i.imgur.com/PU23Gax.jpg",
     ],
     link: "https://www.ignant.com/2023/10/28/capturing-balis-many-faces-zissou-documents-the-sacred-and-the-mundane-of-a-fragile-island/",
     color: "#C2491D",
@@ -44,13 +44,13 @@ const projects = [
   {
     title: "Techfair",
     description:
-      "Techfair acts as a unifying force, drawing students from various universities nationwide to showcase their ingenuity to industry experts. Recognized as a premier stage for talent and innovation, this expansive fair creates a platform for diverse talents under one roof. Beyond showcasing skills, it serves as an exceptional opportunity for learning and growth. Techfair stands as a testament to the synergy between academia and industry, where students not only exhibit technical prowess but also cultivate valuable insights and experiences for their professional journey. It is a unique blend of collaboration and innovation, emphasizing the bridge between academic excellence and practical industry application.",
+      "Tech Fair serves as a unifying platform, bringing students from various universities nationwide to showcase their creativity to industry experts. Recognized as a premier event for talent and innovation, this expansive fair provides a stage for diverse talents to shine. Beyond showcasing skills, Tech Fair stands as a clear testament to the collaboration between academia and industry, where students not only display technical skills but also gain valuable insights for their professional journey. It represents a unique blend of teamwork and creativity, emphasizing the crucial connection between academic excellence and practical application in the industry. ",
     src: [
-      "https://i.imgur.com/L4PdQZs.jpg",
-      "https://i.imgur.com/3mMboSi.jpg",
-      "https://i.imgur.com/E6iE4g4.jpg",
-      "https://i.imgur.com/MGJd7Pa.jpg",
-      "https://i.imgur.com/cee4M4s.jpg",
+      "https://i.imgur.com/hMvLF8h.jpg",
+      "https://i.imgur.com/cpjEpw4.jpg",
+      "https://i.imgur.com/FFWieHJ.jpg",
+      "https://i.imgur.com/KoN9dZ2.jpg",
+      "https://i.imgur.com/cpjEpw4.jpg",
     ],
     link: "https://www.ignant.com/2023/10/28/capturing-balis-many-faces-zissou-documents-the-sacred-and-the-mundane-of-a-fragile-island/",
     color: "#C2491D",
@@ -60,11 +60,11 @@ const projects = [
     description:
       "Eventide, a decade-long celebration nestled within Anokha's cultural showcase, is a jubilant ode to India's cultural richness. Featuring explosive performances by a stellar cast of skilled artists, including percussionist Sivamani, playback singers Vijay Prakash, Karthik, Benny Dayal, Haricharan, Rahul Nambiar, Alaap Raju, Shaktisree Gopalan, Sunitha Sarathy, Ranjani-Gayatri, Nikita Gandhi, and Andrea Jeremiah, the stage transforms into a canvas for diverse and enchanting musical expressions. Beyond entertainment, Eventide resonates with classical notes and pulsating beats, offering a captivating journey that blends dedication and talent into an unforgettable cultural odyssey, representing every corner of the country. ",
     src: [
-      "https://i.imgur.com/xOiz0vQ.jpg",
-      "https://i.imgur.com/vLWsF91.jpg",
-      "https://i.imgur.com/kcYnqaV.jpg",
-      "https://i.imgur.com/wVHmuBJ.jpg",
-      "https://i.imgur.com/agEz6KB.jpg",
+      "https://i.imgur.com/7r8gQN5.jpg",
+      "https://i.imgur.com/63NLNh8.jpg",
+      "https://i.imgur.com/OV3UoKl.jpg",
+      "https://i.imgur.com/9SPl12a.jpg",
+      "https://i.imgur.com/eXMInpb.jpg",
     ],
     link: "https://www.ignant.com/2023/10/28/capturing-balis-many-faces-zissou-documents-the-sacred-and-the-mundane-of-a-fragile-island/",
     color: "#C2491D",

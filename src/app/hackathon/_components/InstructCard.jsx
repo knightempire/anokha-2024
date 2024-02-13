@@ -10,7 +10,7 @@ import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
  
 export function SimpleCard() {
   return (
-    <Card className="mt-10 w-102 rounded-lg shadow-lg bg-white">
+    <Card className="mt-10 w-102 rounded-lg shadow-lg bg-white ">
     <CardBody className="p-6">
         <div className="w-96 h-68">
             <LiteYouTubeEmbed 

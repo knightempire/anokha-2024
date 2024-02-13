@@ -16,11 +16,11 @@ const Home = () => {
     <div>
 
       {/* <Instructions/> */}
-    <div className="w-full h-screen  relative flex flex-col justify-center items-center bg-[#0A113A]">
+    <div className="w-full h-screen  relative flex flex-col justify-center items-center bg-[#0A113A] ">
     <div className="font-poppins text-white mx-auto text-center">
         <h1 className="text-4xl font-bold mb-4">INSTRUCTIONS</h1>
         <p className="text-lg mb-8">Follow these steps to get started</p>
-        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[120px] absolute blur-3xl levitate"></div>
+        <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[50%] left-[25%] top-[180px] absolute blur-3xl levitate"></div>
 
                 <SimpleCard  />
 
@@ -31,7 +31,7 @@ const Home = () => {
 
 
     </div>
-    <Image src={flowChart} width={1050} alt="intel flowchart" className="mx-auto" />
+    <Image src={flowChart} width={900} alt="intel flowchart" className="mx-auto mt-10" />
     <div class="card ml-auto mr-auto mt-[7%] mb-[7%]">
               <div className="bg-gradient-to-r from-gray-500 to-gray-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[65%] md:left-0 top-[50px] absolute blur-3xl"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur">

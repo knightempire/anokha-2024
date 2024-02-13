@@ -46,7 +46,7 @@ const Judging = () => {
                 id === 0? <FaCode size={100} className="py-2 text-white sm:m-3"/>  
                 :id === 1 ? <IoMdBuild size={100} className="py-2 text-white sm:m-3"/> :id===2? <IoSparkles size={100} className="py-2 text-white sm:m-3"/> : null
             }
-                    
+
                 </div>
                 <h2 className="font-bold text-2xl pt-7 pb-4 sm:px-5 w-full text-black text-center">
                 {val.title}

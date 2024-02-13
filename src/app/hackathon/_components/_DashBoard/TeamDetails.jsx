@@ -1,10 +1,9 @@
 import React from "react";
 
- 
 //     const hash = "isajithrajan@gmail.com"
-    
-//   <img height={200} src={https://www.gravatar.com/avatar/${hash}.jpg?s=200&d=robohash} alt="Profile" width={200} className="rounded-lg"/> 
- 
+
+//   <img height={200} src={https://www.gravatar.com/avatar/${hash}.jpg?s=200&d=robohash} alt="Profile" width={200} className="rounded-lg"/>
+
 const TeamDetails = ({
   teamStatus,
   teamName,
@@ -13,33 +12,14 @@ const TeamDetails = ({
   platformID,
   teamMembers,
 }) => {
-  teamName = "Chumma";
-  noOfMembers = "3";
+  const details = JSON.parse(secureLocalStorage.getItem("DashBoardData"));
+
+  teamName = details.teamName;
+  noOfMembers = details.totalMembers;
   platform = "DevPost";
-  platformID = "1234";
-  teamMembers = [
-    {
-      studentEmail: "cb.en.u4cse21001@cb.students.amrita.edu",
-      studentFullName: "Abhinav R",
-      studentPhone: "9791544487",
-      idcId: "14625871654",
-      isLeader: "1",
-    },
-    {
-      studentEmail: "cb.en.u4cse21008@cb.students.amrita.edu",
-      studentFullName: "Ashwin S",
-      studentPhone: "9791544487",
-      idcId: "12314489",
-      isLeader: "0",
-    },
-    {
-      studentEmail: "saisajith03@gmail.com",
-      studentFullName: "sajith",
-      studentPhone: "9791544487",
-      idcId: "14625871654",
-      isLeader: "0",
-    },
-  ];
+  platformID = details.platformId;
+  teamMembers = details.teamMembers;
+
   return (
     <div className="w-full bg-[#172786] text-white w-full rounded-xl text-lg">
       <div className="flex flex-col space-y-4 p-7 text-black rounded my-1 bg-opacity-80 space-between">
