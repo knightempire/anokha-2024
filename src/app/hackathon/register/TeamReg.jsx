@@ -1,9 +1,9 @@
-"use client"
-import {useEffect, useState ,useRef} from 'react'
-import {Button} from "@material-tailwind/react"
+"use client";
+import { useEffect, useState, useRef } from "react";
+import { Button } from "@material-tailwind/react";
 import { FaArrowRight } from "react-icons/fa";
-import {HACKATHON_TEAM_REGISTER_URL} from  "@/app/_util/constants";
-import Navbar from '../_components/HackathonHeader'
+import { HACKATHON_TEAM_REGISTER_URL } from "@/app/_util/constants";
+import Navbar from "../_components/HackathonHeader";
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
@@ -17,7 +17,7 @@ import secureLocalStorage from 'react-secure-storage'
 import { useRouter } from "next/navigation";
  
 
-const RegisterSteps = [FirstRegister,SecondRegister,ThirdRegister]
+const RegisterSteps = [FirstRegister, SecondRegister, ThirdRegister];
 const Register = () => {
     const toastRef = useRef();
     const router = useRouter();
@@ -35,76 +35,108 @@ const Register = () => {
     const [currentStep, setCurrentStep] = useState(0);
     const [memOneTwo, setMemONeTwo] = useState([]);
 
-    const [registerEmail, setRegisterEmail] = useState("");
-    const [secretToken, setSecretToken] = useState("");
-    const [isLoggedIn, setIsLoggedIn] = useState(0);
-    const [isAmritaCBE, setIsAmritaCBE] = useState(0);
-    const [hasActivePassport, setHasActivePassport] = useState(0);
-    
-    useEffect(() => {
-      setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
-      setIsAmritaCBE(parseInt(secureLocalStorage.getItem("isAmritaCBE")));
-      setHasActivePassport(parseInt(secureLocalStorage.getItem("hasActivePassport")));
-      setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
-      
-      setSecretToken(secureLocalStorage.getItem("registerToken"));
-    },
-    [])    
-        
-    const handle_button_next_click = () =>{
-      setCurrentStep(currentStep+1) 
-    }   
-    
-    const handle_button_Prev_click = ()=>{
-      setCurrentStep(currentStep-1)
-    }
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [secretToken, setSecretToken] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(0);
+  const [isAmritaCBE, setIsAmritaCBE] = useState(0);
+  const [hasActivePassport, setHasActivePassport] = useState(0);
 
-    const handle_teamname_change = (e) =>{
-      setTeamName(e.target.value)
-    }
-    const handle_noofMembers_change = (e) =>{
-      setNoofMembers(e.target.value)
-    }
-    const handle_platform_change = (e) =>{
-      setPlatform(e.target.value)
-    }
-    const handle_button_register_click = async (e) =>{
-      try {
-        console.log(JSON.stringify({
+  useEffect(() => {
+    setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
+    setIsAmritaCBE(parseInt(secureLocalStorage.getItem("isAmritaCBE")));
+    setHasActivePassport(
+      parseInt(secureLocalStorage.getItem("hasActivePassport"))
+    );
+    setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
+
+    setSecretToken(secureLocalStorage.getItem("registerToken"));
+  }, []);
+
+  const handle_button_next_click = () => {
+    setCurrentStep(currentStep + 1);
+  };
+
+  const handle_button_Prev_click = () => {
+    setCurrentStep(currentStep - 1);
+  };
+
+  const handle_teamname_change = (e) => {
+    setTeamName(e.target.value);
+  };
+  const handle_noofMembers_change = (e) => {
+    setNoofMembers(e.target.value);
+  };
+  const handle_platform_change = (e) => {
+    setPlatform(e.target.value);
+  };
+  const handle_button_register_click = async (e) => {
+    try {
+      // Determine the selected platform ID based on the platform
+      let selectedPlatformId;
+      switch (platform) {
+        case "Devfolio":
+          selectedPlatformId = member1Email;
+          break;
+        case "Unstoppable":
+          selectedPlatformId = member2Email;
+          break;
+        case "DevPost":
+          selectedPlatformId = member3Email;
+          break;
+        default:
+          break;
+      }
+
+      console.log(
+        JSON.stringify({
           teamName: teamName,
-          devfolioId: platform,
-          unstopId: "",
-          devpostId: "",
-          teamMembers: [member2Email,member3Email, ... (noofMembers==4) ? [member4Email] : []],
-          idcId:[member1IDC,member2IDC,member3IDC, ... (noofMembers==4) ? [member4IDC] : []]
-          }))
-        // setLoading(true);
-        const response = await fetch(HACKATHON_TEAM_REGISTER_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + secretToken,
+          devfolioId: platform === "Devfolio" ? selectedPlatformId : "",
+          unstopId: platform === "Unstoppable" ? selectedPlatformId : "",
+          devpostId: platform === "DevPost" ? selectedPlatformId : "",
+          teamMembers: [
+            member2Email,
+            member3Email,
+            ...(noofMembers === 4 ? [member4Email] : []),
+          ],
+          idcId: [
+            member1IDC,
+            member2IDC,
+            member3IDC,
+            ...(noofMembers === 4 ? [member4IDC] : []),
+          ],
+        })
+      );
 
-          },
-          body: JSON.stringify({
-            teamName: teamName,
-            devfolioId: platform,
-            unstopId: null,
-            devpostId: null,
-            teamMembers: [member2Email,member3Email, ... (noofMembers==4) ? [member4Email] : []],
-            idcId:[member1IDC,member2IDC,member3IDC, ... (noofMembers==4) ? [member4IDC] : []]
-            })
-        });
+      // Make the API call with the updated request body
+      const response = await fetch(HACKATHON_TEAM_REGISTER_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + secretToken,
+        },
+        body: JSON.stringify({
+          teamName: teamName,
+          devfolioId: platform === "Devfolio" ? selectedPlatformId : "",
+          unstopId: platform === "Unstoppable" ? selectedPlatformId : "",
+          devpostId: platform === "DevPost" ? selectedPlatformId : "",
+          teamMembers: [
+            member2Email,
+            member3Email,
+            ...(noofMembers === 4 ? [member4Email] : []),
+          ],
+          idcId: [
+            member1IDC,
+            member2IDC,
+            member3IDC,
+            ...(noofMembers === 4 ? [member4IDC] : []),
+          ],
+        }),
+      });
 
-        const data = await response.json();
-        if (response.status === 200) {
-          ToastAlert(
-            "success",
-            "Success",
-            "Registration Successful!",
-            toastRef
-          );
-          console.log(data);
+      const data = await response.json();
+      if (response.status === 200) {
+        ToastAlert("success", "Success", "Registration Successful!", toastRef);
+        console.log(data);
         //   secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
         //   secureLocalStorage.setItem("registerEmail", email);
 
@@ -235,31 +267,50 @@ useEffect(()=>{
 
           <form className="space-y-4 mt-10 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
                 //   onSubmit={handleSignUp}
-                >
-            
-            
-            {
-                currentStep === 0? <FirstRegister  handle_buttonone_click={handle_button_next_click} TeamName = {[teamName,setTeamName]} NoofMembers={[noofMembers,setNoofMembers]} platform={[platform,setPlatform]} />
- 
-                :currentStep === 1 ?  <SecondRegister me1={registerEmail} mi1={member1IDC} me2={member2Email} mi2={member2IDC} member1Email={setMember1Email} member1IDC = {setMember1IDC} member2Email={setMember2Email } member2IDC={setMember2IDC}  handle_next_click={handle_button_next_click} handle_prev_click = {handle_button_Prev_click}/> 
-                : currentStep === 2 ? <ThirdRegister n={noofMembers} me3={member3Email} mi3={member3IDC} me4={member4Email} mi4={member4IDC} member3Email={setMember3Email} member3IDC={setMember3IDC} member4Email={setMember4Email} member4IDC={setMember4IDC} mem12data={memOneTwo} handle_register_click={handle_button_register_click} handle_prev_click = {handle_button_Prev_click} />:null
- 
-            
-            }
-
-
-          </form>
-              
-              
-            
-           
+              >
+                {currentStep === 0 ? (
+                  <FirstRegister
+                    handle_buttonone_click={handle_button_next_click}
+                    TeamName={[teamName, setTeamName]}
+                    NoofMembers={[noofMembers, setNoofMembers]}
+                    platform={[platform, setPlatform]}
+                  />
+                ) : currentStep === 1 ? (
+                  <SecondRegister
+                    me1={registerEmail}
+                    mi1={member1IDC}
+                    me2={member2Email}
+                    mi2={member2IDC}
+                    member1Email={setMember1Email}
+                    member1IDC={setMember1IDC}
+                    member2Email={setMember2Email}
+                    member2IDC={setMember2IDC}
+                    handle_next_click={handle_button_next_click}
+                    handle_prev_click={handle_button_Prev_click}
+                  />
+                ) : currentStep === 2 ? (
+                  <ThirdRegister
+                    n={noofMembers}
+                    me3={member3Email}
+                    mi3={member3IDC}
+                    me4={member4Email}
+                    mi4={member4IDC}
+                    member3Email={setMember3Email}
+                    member3IDC={setMember3IDC}
+                    member4Email={setMember4Email}
+                    member4IDC={setMember4IDC}
+                    mem12data={memOneTwo}
+                    handle_register_click={handle_button_register_click}
+                    handle_prev_click={handle_button_Prev_click}
+                  />
+                ) : null}
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    </main>
- 
+      </main>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;
