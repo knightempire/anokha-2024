@@ -1,17 +1,22 @@
 "use client";
 
+import dynamic from 'next/dynamic'
+
 import Navbar from "./components/EventHeader";
 import Hero from "./components/Hero";
-import InfoLeft from "./components/InfoDivLeft";
-import InfoRight from "./components/InfoDivRight";
-import SponsorsMarquee from "./components/SponsorsMarquee";
-import AnokhaMarquee from "./components/AnokhaMarquee";
-import Footer from "./components/Footer";
-import WebGLApp from "./bg/WebGLApp";
 import Lenis from "@studio-freight/lenis";
+import WebGLApp from "./bg/WebGLApp";
+
+
+const InfoLeft = dynamic(() => import("./components/InfoDivLeft"));
+const InfoRight = dynamic(() => import("./components/InfoDivRight"));
+const SponsorsMarquee = dynamic(() => import("./components/SponsorsMarquee"));
+const AnokhaMarquee = dynamic(() => import("./components/AnokhaMarquee"));
+const Footer = dynamic(() => import("./components/Footer"));
+const FilmGallery = dynamic(() => import("./components/FilmGallery"));
+
 import { useEffect, useRef, useState } from "react";
 import projects from "./info_data";
-import FilmGallery from "./components/FilmGallery";
 
 export default function Home() {
   const container = useRef(null);
@@ -40,7 +45,7 @@ export default function Home() {
       <Navbar login={true} />
       <Hero className="z-10" />
       {/* This is temprovary sponsor component may change in future */}
-   
+      <SponsorsMarquee />
       <div ref={container} className="sticky mt-10 z-10">
         {projects.map((project, index) => {
           const Component = index % 2 === 0 ? InfoLeft : InfoRight;
