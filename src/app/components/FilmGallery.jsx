@@ -4,25 +4,24 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
 const FilmGallery = () => {
-  const filmRow1 = [
-    "https://i.imgur.com/bCSiGLj.jpg",
-    "https://i.imgur.com/bHtecHP.jpg",
-    "https://i.imgur.com/KUavNhA.jpg",
-    "https://i.imgur.com/kcYnqaV.jpg",
-    "https://i.imgur.com/KxZtGPq.jpg",
-    "https://i.imgur.com/ToIDLTm.jpg",
-    "https://i.imgur.com/93FXohU.jpg",
-  ];
-
+  const filmRow1 =  [
+    "https://i.imgur.com/kWBGAkz.jpg",
+    "https://i.imgur.com/CTW97kM.jpg",
+    "https://i.imgur.com/wRjbQu6.jpg",
+    "https://i.imgur.com/IuJyj2l.jpg",
+    "https://i.imgur.com/dlS1TaE.jpg",
+    "https://i.imgur.com/aIbdm2i.jpg",
+    "https://i.imgur.com/7r8gQN5.jpg",
+  ]
   const filmRow2 = [
-    "https://i.imgur.com/ToIDLTm.jpg",
-    "https://i.imgur.com/KUavNhA.jpg",
-    "https://i.imgur.com/bCSiGLj.jpg",
-    "https://i.imgur.com/93FXohU.jpg",
-    "https://i.imgur.com/bHtecHP.jpg",
-    "https://i.imgur.com/KxZtGPq.jpg",
-    "https://i.imgur.com/kcYnqaV.jpg",
-  ];
+    "https://i.imgur.com/EWdfaYj.jpg",
+    "https://i.imgur.com/uEtxZMb.jpg",
+    "https://i.imgur.com/0IvtFJG.jpg",
+    "https://i.imgur.com/qI4UYV7.jpg",
+    "https://i.imgur.com/uieA2G8.jpg",
+    "https://i.imgur.com/AbUjXL8.jpg",
+    "https://i.imgur.com/59VI4bH.jpg",
+  ]
 
   const row1 = useRef(null);
   const row2 = useRef(null);
