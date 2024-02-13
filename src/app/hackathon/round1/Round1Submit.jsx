@@ -12,7 +12,7 @@ import ToastAlert from "@/app/_util/ToastAlerts";
 import { useRouter } from "next/navigation";
 
 import secureLocalStorage from "react-secure-storage";
-import Footer from "../_components/Footer";
+import Footer from "@/app/components/Footer";
 import { Button } from "@material-tailwind/react";
 
 import RoundOne from "../_components/RoundOne";
