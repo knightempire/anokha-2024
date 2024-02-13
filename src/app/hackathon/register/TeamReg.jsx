@@ -249,7 +249,7 @@ const Register = () => {
         </div>
         <div className="relative min-h-screen">
         <div className="bg-gradient-to-r overflow-x-hidden inset-0 from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[100px] absolute blur-3xl levitate"></div>
-          <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
+          <div className="flex flex-col items-center justify-center px-6 py-5 sm:px-2 sm:py-2 mx-auto min-h-screen lg:py-0 sm:my-0 sm:mx-0">
 
           <form className="space-y-4 mt-10 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
                 //   onSubmit={handleSignUp}

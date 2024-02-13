@@ -36,11 +36,11 @@ export default function FirstRegister({
         alt="oneapilogo"
         className="ml-auto mr-auto -mt-9"
       />
-      <div className="w-full flex flex-col justify-center p-2 space-y-4  sm:p-8">
+      <div className="w-full flex flex-col justify-center p-2 space-y-4  sm:p-4">
         <h1 className="text-xl -mt-4 mx-auto font-bold leading-tight tracking-tight text-black md:text-2xl">
           Register
         </h1>
-        <div className=" w-full h-full px-5">
+        <div className=" w-full h-full md:px-5">
           {/* First card */}
 
           <div className="flex flex-col justify-center md:space-y-4 flex-1 ">
@@ -102,7 +102,7 @@ export default function FirstRegister({
                   Registered through
                 </label>
 
-                <div className="flex">
+                <div className="md:flex">
                   <select
                     id="platform"
                     className="bg-transparent mr-2 border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5 border-y-1"
@@ -128,10 +128,10 @@ export default function FirstRegister({
             </div>
             
             <Link href="https://console.cloud.intel.com/" className="w-fit mx-auto" target="_blank">
-            <Button  className="bg-blue-800 ">Click here to get your IDC ID!</Button>
+            <Button  className="bg-blue-800 sm:my-2">Click here to get your IDC ID!</Button>
             </Link>
 
-            <div className="flex   mx-auto  flex-col">
+            <div className="flex mx-auto flex-col">
               <div className=" z-10">
                 <Button
                   onClick={handle_buttonone_click}
@@ -142,9 +142,6 @@ export default function FirstRegister({
                     !validator.isEmail(platform[0])
                   }
                 >
-                  
-
-
                   <span relative="relative z-10 text-xl ">Next</span>
                 </Button>
               </div>
