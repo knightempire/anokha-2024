@@ -30,7 +30,7 @@ const Timeline = () => {
         </p>
         <ol className="md:flex w-[90%] h-full justify-center mx-auto ">
           {phases.map((ph, id) => (
-            <li className="my-5 md:w-[100%] sm:w-[90%] mx-auto">
+            <li key={id} className="my-5 md:w-[100%] sm:w-[90%] mx-auto">
               {/* Div for line and icon */}
               <div className="flex md:justify-center items-center">
                 <div className="hidden md:flex w-[50%] bg-gray-200 h-0.5 dark:bg-gray-700"></div>
@@ -45,12 +45,12 @@ const Timeline = () => {
               </div>
 
               {/* Div for headings */}
-              <div className="mt-3 max-w-[400px] mx-auto h-full w-full mb-[100px]">
+              <div className="mt-3 max-w-[400px] mx-auto h-full w-full mb-[100px] px-3">
                 <p className="md:text-[2rem] sm:text-[1.6rem] font-bold text-center">
                   Phase {id + 1}
                 </p>
                 <p className="text-lg font-bold mb-3 text-center">{ph.title}</p>
-                <div className="bg-[#017DC5] p-5 rounded-lg sm:mx-auto h-fit text-white w-full rounded-tr-none rounded-bl-none ">
+                <div className="bg-[#017DC5] p-5 rounded-lg sm:mx-auto h-fit text-white w-full rounded-tr-none rounded-bl-none">
                   {ph.description}
                 </div>
               </div>

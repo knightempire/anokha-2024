@@ -7,17 +7,19 @@ import { STUDENT_FORGOT_PASSWORD_URL, STUDENT_REGISTER_VERIFY_URL } from "@/app/
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Toast } from "primereact/toast";
+
 import { useEffect, useRef, useState } from "react";
 import secureLocalStorage from "react-secure-storage";
 import { hashPassword } from "@/app/_util/hash";
 import Navbar from "@/app/components/EventHeader";
+
+import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
-
+import ToastAlert from "@/app/_util/ToastAlerts";
 
 export default function ForgetPassword() {
-    const toast = useRef(null);
+    const toastRef  = useRef();
 
  
     const [registerEmail, setRegisterEmail] = useState("");
@@ -26,25 +28,16 @@ export default function ForgetPassword() {
     const [loading, setLoading] = useState(false);
 
     const router = useRouter();
-
+              
     
 
 
     const handleVerify = async (e) => {
         e.preventDefault();
 
-        // const otpString = otp[0] + otp[1] + otp[2] + otp[3] + otp[4] + otp[5];
-        console.log(registerEmail)
-        // if (registerEmail === null || registerToken === null || registerToken.length == 0 || registerEmail.length == 0) {
-        //     alertError("Error", "Session expired. Please try again.");
-        //     secureLocalStorage.clear();
-        //     setTimeout(() => {
-        //         router.replace("/register");
-        //     }, 2000);
-        //     return;
-        // }
-
-        // setLoading(true);
+         
+         
+         
 
         try {
             
@@ -69,12 +62,24 @@ export default function ForgetPassword() {
               secureLocalStorage.setItem("registerEmail", registerEmail);
                 secureLocalStorage.setItem("registerToken", data['SECRET_TOKEN']);
               console.log(data);
+              
+
+              ToastAlert(
+                "success",
+                "Enter OTP to reset password!",
+                `${data.MESSAGE}`,
+                toastRef,
+              );
               setTimeout(()=>{
                 router.replace("/resetpassword")
-              },500)
+              },1500)
               
             } else if (response.status === 400) {
-              alertError("Account not found", "Please check your email and try again!");
+                ToastAlert(
+                    "error",
+                    "Account not found", "Please check your email and try again!",
+                    toastRef,
+                  );
             } 
              else if (response.status === 500) {
                 alertError("Oops!", "Something went wrong! Please try again later!");
@@ -89,31 +94,13 @@ export default function ForgetPassword() {
           }
     }
 
-    const alertError = (summary, detail) => {
-        toast.current.show({
-            severity: 'error',
-            summary: summary,
-            detail: detail,
-            
-                
-            
-        });
-    };
-
-    const alertSuccess = (summary, detail) => {
-        toast.current.show({
-            severity: 'success',
-            summary: summary,
-            detail: detail,
-        });
-    };
 
     return (
         // registerEmail === null || registerToken === null || registerEmail.length == 0 || registerToken.length == 0 ?
         //     <LoadingScreen /> :
             <main className='flex h-screen flex-1 flex-col justify-center'>
-                {/* <Toast ref={toast}></Toast> */}
-                <Background />
+                 <Toast ref={toastRef} position="bottom-center" className="p-5" />
+                
                 <Navbar />
 
                 <div className="border border-gray-300 rounded-2xl mx-auto w-11/12 sm:max-w-11/12 md:max-w-md lg:max-w-md backdrop-blur-xl bg-gray-50 ">
@@ -167,7 +154,7 @@ export default function ForgetPassword() {
                     </div>
                 </div>
 
-                <Toast position="bottom-center" ref={toast} />
+                <Toast position="bottom-center" ref={toastRef} />
             </main>
     );
 }

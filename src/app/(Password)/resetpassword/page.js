@@ -7,16 +7,18 @@ import { STUDENT_REGISTER_VERIFY_URL, STUDENT_RESET_PASSWORD_URL } from "@/app/_
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Toast } from "primereact/toast";
+
 import { useEffect, useRef, useState } from "react";
 import secureLocalStorage from "react-secure-storage";
 import { hashPassword } from "@/app/_util/hash";
 import Navbar from "@/app/components/EventHeader";
+import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
+import ToastAlert from "@/app/_util/ToastAlerts";
 
 export default function RegisterVerify() {
-    const toast = useRef(null);
+    const toastRef = useRef();
 
     const [otp, setOtp] = useState(new Array(6).fill(""));
     const otpRegex = /^[0-9]{6}$/;
@@ -74,17 +76,32 @@ export default function RegisterVerify() {
       
             const data = await response.json();
             if (response.status === 200) {
-              alert("Password Reset Successful");
+                ToastAlert("success",
+              "Password Reset Successful",
+              "Please Login to continue",
+              toastRef);
               console.log(data);
               setTimeout(()=>{
                 router.replace("/login")
               },500)
               
             } else if (response.status === 401) {
-              alertError("Unauthorized access. Warning! Session expired. Please try again.");
+                ToastAlert("error",
+                "Session expired!",
+                "Please try again",
+                toastRef);
+                 
+              setTimeout(()=>{
+                router.replace("/forgotpassword")
+              },500)
             } 
             else if (response.status === 400) {
-                alertError("Invalid OTP");
+                ToastAlert("error",
+                "Invalid OTP",
+                "Please Verify OTP again!",
+                toastRef);
+                 
+                 
               } 
             else if (data.message !== undefined || data.message !== null) {
               alertError("Registration Failed", data.message);
@@ -96,33 +113,16 @@ export default function RegisterVerify() {
           }
     }
 
-    const alertError = (summary, detail) => {
-        toast.current.show({
-            severity: 'error',
-            summary: summary,
-            detail: detail,
-            
-                
-            
-        });
-    };
-
-    const alertSuccess = (summary, detail) => {
-        toast.current.show({
-            severity: 'success',
-            summary: summary,
-            detail: detail,
-        });
-    };
+    
 
     return (
         registerEmail === null || registerToken === null || registerEmail.length == 0 || registerToken.length == 0 ?
             <LoadingScreen /> :
             <main className='flex h-screen flex-1 flex-col justify-center'>
-                {/* <Toast ref={toast}></Toast> */}
+                
                 <Background />
                 <Navbar />
-
+                <Toast ref={toastRef} position="bottom-center" />
                 <div className="border border-gray-300 rounded-2xl mx-auto w-11/12 sm:max-w-11/12 md:max-w-md lg:max-w-md backdrop-blur-xl bg-gray-50 ">
                     <div
                         className="absolute inset-x-0 -top-10 -z-10 transform-gpu overflow-hidden blur-2xl"
@@ -216,7 +216,7 @@ export default function RegisterVerify() {
                                         id="password"
                                         autoComplete="off"
                                         className="w-full px-2 py-2 rounded-xl text-center border border-gray-500 focus:ring-0 text-lg font-semibold"
-                                        value={password}
+                                        value={confirmPassword}
                                         onChange={(e) => {
                                             setConfirmPassword(e.target.value);
                                         }}
@@ -235,7 +235,7 @@ export default function RegisterVerify() {
                     </div>
                 </div>
 
-                <Toast position="bottom-center" ref={toast} />
+                 
             </main>
     );
 }
