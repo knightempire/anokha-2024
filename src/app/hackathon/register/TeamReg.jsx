@@ -6,29 +6,33 @@ import Navbar from "../_components/HackathonHeader";
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
+import ToastAlert from "@/app/_util/ToastAlerts";
 
-import FirstRegister from "@/app/hackathon/_components/_form/FirstRegister";
-import SecondRegister from "@/app/hackathon/_components/_form/SecondRegister";
-import ThirdRegister from "@/app/hackathon/_components/_form/ThirdRegister";
-import secureLocalStorage from "react-secure-storage";
+import FirstRegister  from '@/app/hackathon/_components/_form/FirstRegister';
+import SecondRegister from '@/app/hackathon/_components/_form/SecondRegister';
+import ThirdRegister from '@/app/hackathon/_components/_form/ThirdRegister';
+import secureLocalStorage from 'react-secure-storage'
+
+import { useRouter } from "next/navigation";
+ 
 
 const RegisterSteps = [FirstRegister, SecondRegister, ThirdRegister];
 const Register = () => {
-  const toastRef = useRef();
-
-  const [teamName, setTeamName] = useState("");
-  const [noofMembers, setNoofMembers] = useState(3);
-  const [platform, setPlatform] = useState("");
-  const [member1Email, setMember1Email] = useState("");
-  const [member1IDC, setMember1IDC] = useState("");
-  const [member2Email, setMember2Email] = useState("");
-  const [member2IDC, setMember2IDC] = useState("");
-  const [member3Email, setMember3Email] = useState("");
-  const [member3IDC, setMember3IDC] = useState("");
-  const [member4Email, setMember4Email] = useState("");
-  const [member4IDC, setMember4IDC] = useState("");
-  const [currentStep, setCurrentStep] = useState(0);
-  const [memOneTwo, setMemONeTwo] = useState([]);
+    const toastRef = useRef();
+    const router = useRouter();
+    const [teamName,setTeamName] = useState("")
+    const [noofMembers,setNoofMembers] = useState(3)
+    const [platform,setPlatform] = useState("")
+    const [member1Email, setMember1Email] = useState("")
+    const [member1IDC, setMember1IDC] = useState("")
+    const [member2Email, setMember2Email] = useState("")
+    const [member2IDC, setMember2IDC] = useState("")
+    const [member3Email, setMember3Email] = useState("")
+    const [member3IDC, setMember3IDC] = useState("")
+    const [member4Email, setMember4Email] = useState("")
+    const [member4IDC, setMember4IDC] = useState("")
+    const [currentStep, setCurrentStep] = useState(0);
+    const [memOneTwo, setMemONeTwo] = useState([]);
 
   const [registerEmail, setRegisterEmail] = useState("");
   const [secretToken, setSecretToken] = useState("");
@@ -135,105 +139,114 @@ const Register = () => {
         //   secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
         //   secureLocalStorage.setItem("registerEmail", email);
 
-        setTimeout(() => {
-          router.replace("/hackathon");
-        }, 500);
-      } else if (response.status === 400) {
-        ToastAlert(
-          "error",
-          "Oops!",
-          "Something went wrong! Please try again later!",
-          toastRef
-        );
-        return;
+          setTimeout(() => {
+            router.replace("/hackathon");
+          }, 1500);
+          
+        } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
+          ToastAlert("error", "Registration Failed", data.MESSAGE, toastRef);
+        
+        // else {
+        //   ToastAlert(
+        //     "error",
+        //     "Oops!",
+        //     "Something went wrong! Please try again later!",
+        //     toastRef
+        //   );
+        //   return;
+        // }
+
+        //  console.log(data);
+      } }catch (e) {
+        // ToastAlert("error", "Error", "Please try again!", toastRef);
+        console.log(e);
       }
-    } catch (e) {
-      // ToastAlert("error", "Error", "Please try again!", toastRef);
-      console.log(e);
+
+      // setLoading(false);
     }
+  
+     
+    const MemberList = [
+        {
+            name: registerEmail,
+            idc: member1IDC
+        }
+        ,
+        {
+            name: member2Email,
+            idc: member2IDC
+        }
+        ,
+        {
+            name: member3Email,
+            idc: member3IDC
+        },
+        {
+            name: member4Email,
+            idc: member4IDC
+        }
+    ]
 
-    // setLoading(false);
-  };
+useEffect(()=>{
+  const mem_12 = {
+    "me1":registerEmail,
+    "mi1":member1IDC,
+    "me2":member2Email,
+    "mi2":member2IDC,
+  }
+  setMemONeTwo(mem_12);
+},[ member1IDC, member2Email, member2IDC])
 
-  const MemberList = [
-    {
-      name: registerEmail,
-      idc: member1IDC,
-    },
-    {
-      name: member2Email,
-      idc: member2IDC,
-    },
-    {
-      name: member3Email,
-      idc: member3IDC,
-    },
-    {
-      name: member4Email,
-      idc: member4IDC,
-    },
-  ];
-
-  useEffect(() => {
-    const mem_12 = {
-      me1: registerEmail,
-      mi1: member1IDC,
-      me2: member2Email,
-      mi2: member2IDC,
-    };
-    setMemONeTwo(mem_12);
-  }, [member1IDC, member2Email, member2IDC]);
-
-  const Memberview = ({ member, idc, no }) => {
-    return (
-      <div className="flex flex-col flex-1 space-y-5 ">
-        <hr className="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700 w-" />
-        <p className="text-lg font-medium text-black text-center">
-          Member {no} Information
-        </p>
-        <div>
-          <label
-            htmlFor="email"
-            className="block mb-2 text-sm font-medium text-black"
-          >
-            Member {no} : Email
-          </label>
-          <input
-            // onChange={(e) => {
-            //   setEmail(e.target.value);
-            // }}
-            type="email"
-            name="email"
-            id="email"
-            className=" bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-            placeholder="eon@anokha.amrita.edu"
-            required
-          />
-        </div>
-
-        <div>
-          <label
-            htmlFor="idc"
-            className="block mb-2 text-sm font-medium text-black"
-          >
-            Member {no} : Intel Dev Cloud ID
-          </label>
-          <input
-            //   onChange={(e) => {
-            //     setCollegeName(e.target.value);
-            //   }}
-            type="text"
-            name="devcloudid"
-            id="devcloudid"
-            //   value={collegeName}
-            className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-            placeholder="IDC ID"
-            //   disabled={isAmrita}
-          />
-        </div>
-      </div>
-    );
-  };
+    const Memberview =({member,idc,no})=> {
+        return(
+            
+                <div className="flex flex-col flex-1 space-y-5 ">
+                    <hr className="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700 w-"/>
+                    <p className='text-lg font-medium text-black text-center'>Member {no} Information</p>
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="block mb-2 text-sm font-medium text-black">
+                        Member {no} : Email
+                      </label>
+                      <input
+                        // onChange={(e) => {
+                        //   setEmail(e.target.value);
+                        // }}
+                        type="email"
+                        name="email"
+                        id="email"
+                        className=" bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                        placeholder="eon@anokha.amrita.edu"
+                        required
+                      />
+                    </div>
+                      
+                    
+                      <div>
+                        <label
+                          htmlFor="idc"
+                          className="block mb-2 text-sm font-medium text-black"
+                        >
+                          Member {no} : Intel Dev Cloud ID
+                        </label>
+                        <input
+                        //   onChange={(e) => {
+                        //     setCollegeName(e.target.value);
+                        //   }}
+                          type="text"
+                          name="devcloudid"
+                          id="devcloudid"
+                        //   value={collegeName}
+                          className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+                          placeholder="IDC ID"
+                        //   disabled={isAmrita}
+                        />
+                        
+                      </div>
+            </div>
+        )
+    }
 
   return (
     <div>
