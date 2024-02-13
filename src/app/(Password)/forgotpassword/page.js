@@ -1,7 +1,5 @@
 "use client";
 
-import Background from "@/app/components/background";
-import { LoadingScreen } from "@/app/_util/LoadingScreen/LoadingScreen";
 import { AiOutlineMail } from "react-icons/ai";
 
 import {
@@ -129,7 +127,7 @@ export default function ForgetPassword() {
                   }}
                 />
                 <input
-                  type="text"
+                  type="email"
                   id="email"
                   onChange={(e) => {
                     setRegisterEmail(e.target.value);
