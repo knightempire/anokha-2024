@@ -28,7 +28,7 @@ import Judging from './_components/Judging'
 import WinnerPrice from './_components/WinnerPrice'
 import SubGuidelines from './_components/SubGuidelines'
  
-export default function page() {
+export default function Page() {
     const router = useRouter()
     const {SignOut} = useAuth()
     const [currentStep,setCurrentStep] = useState(0);

@@ -29,7 +29,7 @@ export function TimelineWithIcon() {
     <div className="sm:w-[95%] md:w-[70%] mx-auto mt-6 bg-white p-5 rounded-xl bg-opacity-70 relative md:px-[60px]">
       <Timeline>
         {instr.map((val, id)=>(
-            <TimelineItem className="my-3">
+            <TimelineItem key={id} className="my-3">
             <TimelineConnector />
             <TimelineHeader>
               <TimelineIcon className="p-2 px-4">{id+1}</TimelineIcon>
