@@ -7,18 +7,19 @@ import { STUDENT_REGISTER_VERIFY_URL } from "@/app/_util/constants";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Toast } from "primereact/toast";
 import { useEffect, useRef, useState } from "react";
 import secureLocalStorage from "react-secure-storage";
 import { hashPassword } from "@/app/_util/hash";
 import WebGLApp from "../../bg/WebGLApp";
-
 import Navbar from "@/app/components/EventHeader";
+
+import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
+import ToastAlert from "@/app/_util/ToastAlerts";
 
 export default function RegisterVerify() {
-  const toast = useRef(null);
+  const toastRef = useRef();
 
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const otpRegex = /^[0-9]{6}$/;
@@ -35,27 +36,19 @@ export default function RegisterVerify() {
 
   useEffect(() => {
     setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
-    setRegisterToken(secureLocalStorage.getItem("registerToken"));
+    setRegisterToken(secureLocalStorage.getItem("tempRegisterToken"));
   }, []);
+
+   
+    
+
 
   const handleVerify = async (e) => {
     e.preventDefault();
 
     const otpString = otp[0] + otp[1] + otp[2] + otp[3] + otp[4] + otp[5];
-
-    if (
-      registerEmail === null ||
-      registerToken === null ||
-      registerToken.length == 0 ||
-      registerEmail.length == 0
-    ) {
-      alertError("Error", "Session expired. Please try again.");
-      secureLocalStorage.clear();
-      setTimeout(() => {
-        router.replace("/register");
-      }, 2000);
-      return;
-    }
+    
+    
 
     setLoading(true);
 
@@ -73,52 +66,76 @@ export default function RegisterVerify() {
 
       const data = await response.json();
       if (response.status === 200) {
-        alert("Registration Successful");
-        console.log(data);
+        ToastAlert("success", 
+        "Registration Successful",
+        "You can now login with your credentials",
+        toastRef);
+
         setTimeout(() => {
           router.replace("/login");
         }, 500);
+
       } else if (response.status === 500) {
-        alertError("Oops!", "Something went wrong! Please try again later!");
-      } else if (data.message !== undefined || data.message !== null) {
-        alertError("Registration Failed", data.message);
-      } else {
-        alertError("Oops!", "Something went wrong! Please try again later!");
+        ToastAlert(
+          "error",
+          "Oops!",
+          "Something went wrong! Please try again.",
+          toastRef,
+        );
+        setTimeout(() => {
+          router.replace("/register");
+        }, 500);
+      } 
+      else if (response.status === 400) {
+        ToastAlert(
+          "error",
+          "Registration Failed",
+          `${data.MESSAGE}`,
+          toastRef,
+        );
       }
+    
+    else if (response.status === 401) {
+      ToastAlert(
+        "error",
+        "Session Expired",
+        "Please register again.",
+        toastRef,
+      );
+      setTimeout(() => {
+        router.replace("/register");
+      }, 500);
+    }
+      else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
+        ToastAlert(
+          "error",
+          "Registration Failed",
+          `${data.MESSAGE}`,
+          toastRef,
+        );
+      }  
+      
     } catch (e) {
       console.log(e);
     }
+    setLoading(false);
   };
 
-  const alertError = (summary, detail) => {
-    toast.current.show({
-      severity: "error",
-      summary: summary,
-      detail: detail,
-    });
-  };
-
-  const alertSuccess = (summary, detail) => {
-    toast.current.show({
-      severity: "success",
-      summary: summary,
-      detail: detail,
-    });
-  };
+ 
   const [webGLColors, setWebGLColors] = useState({
     color1: [43 / 255, 30 / 255, 56 / 255],
     color2: [11 / 255, 38 / 255, 59 / 255],
     color3: [15 / 255, 21 / 255, 39 / 255], 
   });
 
-  return registerEmail === null ||
+  return (registerEmail === null ||
     registerToken === null ||
     registerEmail.length == 0 ||
-    registerToken.length == 0 ? (
+    registerToken.length == 0) ? (
     <LoadingScreen />
   ) : (
     <main className="flex h-screen flex-1 flex-col justify-center">
-      {/* <Toast ref={toast}></Toast> */}
+     <Toast position="bottom-center" ref={toastRef} />
       <WebGLApp colors={webGLColors} />
       <Navbar />
 
@@ -205,7 +222,7 @@ export default function RegisterVerify() {
         </div>
       </div>
 
-      <Toast position="bottom-center" ref={toast} />
+      
     </main>
   );
 }

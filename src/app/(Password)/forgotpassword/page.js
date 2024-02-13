@@ -100,7 +100,7 @@ export default function ForgetPassword() {
         //     <LoadingScreen /> :
             <main className='flex h-screen flex-1 flex-col justify-center'>
                  <Toast ref={toastRef} position="bottom-center" className="p-5" />
-                <Background />
+                
                 <Navbar />
 
                 <div className="border border-gray-300 rounded-2xl mx-auto w-11/12 sm:max-w-11/12 md:max-w-md lg:max-w-md backdrop-blur-xl bg-gray-50 ">

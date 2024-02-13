@@ -2,13 +2,13 @@
 
 import { useEffect, useState, useRef } from "react";
 import Navbar from "../components/EventHeader";
-import secureLocalStorage from "react-secure-storage";
+import securelocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import { LOGIN_URL } from "../_util/constants";
 import { hashPassword } from "../_util/hash";
 import ToastAlert from "../_util/ToastAlerts";
 import validator from "validator";
- 
+import secureLocalStorage from "react-secure-storage";
 import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -23,11 +23,8 @@ import "primereact/resources/themes/lara-light-blue/theme.css";
 export default function Login() {
  
 
-  const toast = useRef(null);
-
-    
   useEffect(()=>{
-    secureLocalStorage.clear()
+    securelocalStorage.clear()
 },[])
  
   const toastRef = useRef();
