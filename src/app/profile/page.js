@@ -3,7 +3,7 @@
 import Navbar from "../components/EventHeader";
 
 import { useState, useRef } from "react";
-import { EDIT_PROFILE_URL } from "../_util/constants";
+import { EDIT_PROFILE_URL, STUDENT_PROFILE_URL } from "../_util/constants";
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -17,10 +17,10 @@ import WebGLApp from "../bg/WebGLApp";
 
 import anokhalogo from "@/../public/images/anokha_circle.svg";
 import TextField from "@mui/material/TextField";
+import { Avatar } from "@mui/materail";
 import QRCode from "react-qr-code";
 
 export default function Register() {
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -29,6 +29,10 @@ export default function Register() {
   const [isAmrita, setisAmrita] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    getProfile();
+  }, []); // Calling the function once on mount
 
   //Regular expression to check amrita mail
   const amritaRegex =
@@ -54,6 +58,51 @@ export default function Register() {
   });
 
   const toastRef = useRef(null);
+
+  const getProfile = async () => {
+    try{
+    setLoading(true);
+    const response = await fetch(STUDENT_PROFILE_URL, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+        Authorization: `Bearer ${secureLocalStorage.getItem("SECRET_TOKEN")}`,
+      },
+    });
+
+    const data = await response.json();
+    if (response.status === 200) {
+      secureLocalStorage.setItem("StudentFullName", fullname);
+      secureLocalStorage.setItem("studentPhone", phoneNumber);
+      secureLocalStorage.setItem("studentCollegeCity", collegeCity);
+      secureLocalStorage.setItem("studentCollegeName", collegeName);
+      return;
+    } else if (response.status === 400) {
+      secureLocalStorage.clear();
+      ToastAlert("error", "Error", "Access restricted!", toastRef);
+      router.replace("/login");
+    } else if (response.status === 401) {
+      ToastAlert(
+        "error",
+        "Unauthorized Access",
+        "Please login and try again.",
+        toastRef,
+      );
+        secureLocalStorage.clear();
+        router.replace("/");
+    } else if (response.status === 500) {
+      ToastAlert(
+        "error",
+        "Internal Server Error",
+        "Oops! Please try again.",
+        toastRef,
+      );
+      return;
+        }
+    }catch (error){
+        setLoading(false);
+        console.log(error);
+    }
 
   // Confirm edit profile - changes
   const handleUpdate = async (e) => {
@@ -259,16 +308,16 @@ export default function Register() {
                     </div>
                   </div>
                   <div className="flex flex-col flex-1 gap-8">
-                      <div id="Fields">
-                        <div className="bg-[#ffffff] m-10 ml-20 mr-20 p-8">
-                            {/*<QRCode */}
-                            {/*   className="" */}
-                            {/*   size={256} */}
-                            {/*   value={qrValue} */}
-                            {/*  viewBox={`0 0 256 256`} */}
-                            {/*>*/}
-                        </div>
+                    <div id="Fields">
+                      <div className="bg-[#ffffff] m-10 ml-20 mr-20 p-8">
+                        {/*<QRCode */}
+                        {/*   className="" */}
+                        {/*   size={256} */}
+                        {/*   value={qrValue} */}
+                        {/*  viewBox={`0 0 256 256`} */}
+                        {/*>*/}
                       </div>
+                    </div>
                     <div className="text-center">
                       <button
                         type="submit"
