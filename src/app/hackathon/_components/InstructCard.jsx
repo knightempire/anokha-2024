@@ -20,13 +20,13 @@ export function SimpleCard() {
             <iframe
               width="560"
               height="250"
-              src="https://www.youtube.com/embed/L2vS_050c-M?si=h2wAEa83j0EPbIgY"
+              src="https://www.youtube.com/embed/PhzlMQ8-GE4?si=y667CiUsTqjbGlGM"
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
-              className="w-[95%] mx-auto"
+              className="w-[100%] mx-auto sm:px-1 md:px-3"
             ></iframe>
-            <p className="text-lg">What’s new in Material Design for the web (Chrome Dev Summit 2019)</p> 
+            <p className="text-lg text-center">What’s new in Material Design for the web (Chrome Dev Summit 2019)</p> 
         </div>
     </CardBody>
 </Card>
