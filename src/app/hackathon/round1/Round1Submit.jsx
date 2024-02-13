@@ -12,7 +12,7 @@ import ToastAlert from "@/app/_util/ToastAlerts";
 import { useRouter } from "next/navigation";
 
 import secureLocalStorage from "react-secure-storage";
-import Footer from "../_components/Footer";
+import Footer from "../../components/Footer";
 import { Button } from "@material-tailwind/react";
 
 import RoundOne from "../_components/RoundOne";
@@ -150,7 +150,6 @@ export default function Page() {
   ]);
 
   return (
- 
     <div>
       <Navbar />
       <Toast ref={toastRef} position="bottom-center" className="p-5" />
@@ -177,9 +176,7 @@ export default function Page() {
         />
       ) : null}
 
-     
       <Footer />
- 
     </div>
   );
 }
