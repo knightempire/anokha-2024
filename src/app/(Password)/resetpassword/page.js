@@ -69,6 +69,16 @@ export default function RegisterVerify() {
       return;
     }
 
+    if (password !== confirmPassword) {
+      ToastAlert(
+        "error",
+        "Password Not Matching",
+        "Both passwords do not match",
+        toastRef,
+      );
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -95,7 +105,7 @@ export default function RegisterVerify() {
           "success",
           "Password Reset Successful",
           "Please Login to continue",
-          toastRef
+          toastRef,
         );
         console.log(data);
         setTimeout(() => {
@@ -115,7 +125,7 @@ export default function RegisterVerify() {
           "error",
           "Invalid OTP",
           "Please Verify OTP again!",
-          toastRef
+          toastRef,
         );
       } else if (data.message !== undefined || data.message !== null) {
         alertError("Registration Failed", data.message);
