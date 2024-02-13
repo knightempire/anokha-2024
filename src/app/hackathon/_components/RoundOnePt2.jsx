@@ -27,7 +27,7 @@ const RoundOnePt2 = ({prev,upload,github_val,github,devmesh,devmesh_val,youtube,
                     type="text"
                     value={github_val}
                     onChange={(e)=>github(e.target.value)}
-                    placeholder="Enter Github Link Here"
+                    placeholder="Enter Github Link Here (Optional)"
                     className="w-full focus:outline-0"
                     />
                 </div>
@@ -38,7 +38,7 @@ const RoundOnePt2 = ({prev,upload,github_val,github,devmesh,devmesh_val,youtube,
                     value={devmesh_val}
                     onChange={(e)=>devmesh(e.target.value)}
                     type="text"
-                    placeholder="Enter DevMesh Link Here"
+                    placeholder="Enter DevMesh Link Here (Optional)"
                     className="w-full focus:outline-0"
                     />
                 </div>
@@ -49,7 +49,7 @@ const RoundOnePt2 = ({prev,upload,github_val,github,devmesh,devmesh_val,youtube,
                     value={youtube_val}
                     onChange={(e)=>youtube(e.target.value)}
                     type="text"
-                    placeholder="Enter Youtube Video Link Here"
+                    placeholder="Enter Youtube Video Link Here (Optional)"
                     className="w-full focus:outline-0"
                     />
                 </div>

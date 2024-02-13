@@ -7,19 +7,20 @@ import Navbar from '../_components/HackathonHeader'
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
-
+import ToastAlert from "@/app/_util/ToastAlerts";
 
 import FirstRegister  from '@/app/hackathon/_components/_form/FirstRegister';
 import SecondRegister from '@/app/hackathon/_components/_form/SecondRegister';
 import ThirdRegister from '@/app/hackathon/_components/_form/ThirdRegister';
 import secureLocalStorage from 'react-secure-storage'
 
+import { useRouter } from "next/navigation";
  
 
 const RegisterSteps = [FirstRegister,SecondRegister,ThirdRegister]
 const Register = () => {
     const toastRef = useRef();
-
+    const router = useRouter();
     const [teamName,setTeamName] = useState("")
     const [noofMembers,setNoofMembers] = useState(3)
     const [platform,setPlatform] = useState("")
@@ -109,18 +110,12 @@ const Register = () => {
 
           setTimeout(() => {
             router.replace("/hackathon");
-          }, 500);
-        } else if (response.status === 400) {
-          ToastAlert(
-            "error",
-            "Oops!",
-            "Something went wrong! Please try again later!",
-            toastRef
-          );
-          return;
-        // } else if (data.message !== undefined || data.message !== null) {
-        //   ToastAlert("error", "Registration Failed", data.message, toastRef);
-        // } else {
+          }, 1500);
+          
+        } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
+          ToastAlert("error", "Registration Failed", data.MESSAGE, toastRef);
+        
+        // else {
         //   ToastAlert(
         //     "error",
         //     "Oops!",
@@ -195,7 +190,7 @@ useEffect(()=>{
                         required
                       />
                     </div>
-
+                      
                     
                       <div>
                         <label
