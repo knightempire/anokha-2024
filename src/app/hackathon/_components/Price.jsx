@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from "react";
 
 import React from 'react'
+import CountdownTimer from "@/app/components/Counter";
 
 
 export default function Price() {
@@ -38,14 +39,14 @@ export default function Price() {
             <div>
                 <div className="flex flex-row gap-4 items-center justify-start  mt-12">
                     <FaTrophy size="30" color="#1c5dad"/>
-                    <div className="text-2xl capitalize">Prize money upto <span className="font-black text-3xl  text-[#3306B5] ">₹1,25,000/-</span></div>
+                    <div className="md:text-2xl sm:text-xl capitalize">Prize money upto <span className="font-black md:text-3xl sm:text-2xl text-[#3306B5] ">₹1,25,000/-</span></div>
                 </div>
 
                 <div className="flex flex-row gap-4 items-center justify-start mt-12">
                   <MdGroups2 size="40" color="#1c5dad"/>
-                <div className="text-2xl">Who can participate?</div> 
+                <div className="md:text-2xl sm:text-xl ">Who can participate?</div> 
                 </div>
-                <div className="mt-4 text-xl w-4/5 ">
+                <div className="mt-4 text-xl w-4/5 md:text-2xl sm:text-xl ">
                 AI/ML Enthusiasts, Undergraduate and Postgraduate Students
                 </div>
 
@@ -56,6 +57,7 @@ export default function Price() {
                     <div className="mt-3 text-xl ml-3">Last Date To Register<br/> 
                     <span className="font-bold text-center text-[2rem]">29 Feb 2023</span></div>
                 </div>
+                {/* <CountdownTimer/> */}
 
                 <div className="md:flex gap-4 mt-5 ml-3 text-lg">
                       <div className="flex items-center gap-2">

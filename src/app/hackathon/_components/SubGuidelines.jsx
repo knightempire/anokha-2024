@@ -24,12 +24,12 @@ const SubGuidelines = () => {
     <div>
       <div className='w-full h-full my-2 mt-2'>
         {rules.map((val, id)=>(
-            <div key={id} className='bg-blue-900 md:w-[80%] sm:w-[90%] mx-auto odd:rounded-bl-[50px] even:rounded-br-[50px]'>
+            <div key={id} className='bg-blue-900 md:w-[80%] sm:w-[95%] mx-auto odd:rounded-bl-[50px] even:rounded-br-[50px]'>
                 <div className=' mb-10 rounded-tr-none rounded-bl-none '>
                 <h2 className='font-bold text-2xl py-5 px-12 bg-gradient-to-r from-[#0A113A]  to-blue-900  w-full text-white odd:rounded-bl-[50px] even:rounded-tl-[50px]'>{val.title}</h2>
-                <ul className='list-disc md:px-[80px] sm:px-10 md:pb-10  pt-0 sm:py-8 text-md  text-white space-y-1'>
+                <ul className='list-disc md:px-[80px] sm:px-6 md:pb-10  pt-0 sm:py-8 text-md  text-white space-y-1'>
                 {val.rules.map((rule, id)=>(
-                    <li key={id}>{rule}</li>
+                    <li key={id} className='ml-5'>{rule}</li>
                 ))}
                 
             </ul>

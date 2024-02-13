@@ -8,6 +8,7 @@ import { FaArrowRight } from "react-icons/fa";
 import validator from "validator";
 import oneapilogo from "../../images/oneAPI-rgb-3000.png";
 import { RiTeamFill } from "react-icons/ri";
+import Link from 'next/link'
 
 export default function FirstRegister({
   handle_buttonone_click,
@@ -125,9 +126,13 @@ export default function FirstRegister({
                 </div>
               </div>
             </div>
+            
+            <Link href="https://console.cloud.intel.com/" className="w-fit mx-auto" target="_blank">
+            <Button  className="bg-blue-800 ">Click here to get your IDC ID!</Button>
+            </Link>
 
-            <div className="flex   mx-auto  flex-col  pt-4">
-              <div className="mt-1 z-10">
+            <div className="flex   mx-auto  flex-col">
+              <div className=" z-10">
                 <Button
                   onClick={handle_buttonone_click}
                   className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
@@ -137,10 +142,14 @@ export default function FirstRegister({
                     !validator.isEmail(platform[0])
                   }
                 >
+                  
+
+
                   <span relative="relative z-10 text-xl ">Next</span>
                 </Button>
               </div>
             </div>
+
           </div>
         </div>
       </div>

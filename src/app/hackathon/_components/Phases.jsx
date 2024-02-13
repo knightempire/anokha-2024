@@ -28,7 +28,7 @@ const Timeline = () => {
         <p className="md:text-[3rem] sm:text-[2rem] font-bold text-center">
           Hackathon Phases
         </p>
-        <ol className="md:flex w-[90%] h-full justify-center mx-auto ">
+        <ol className="md:flex md:w-[90%] sm:w-[100%] h-full justify-center mx-auto ">
           {phases.map((ph, id) => (
             <li key={id} className="my-5 md:w-[100%] sm:w-[90%] mx-auto">
               {/* Div for line and icon */}

@@ -1,126 +1,79 @@
-import { useCallback, useEffect, useState } from "react";
-const Timer3 = () => {
-  const [countDownTime, setCountDownTIme] = useState({
-    days: "00",
-    hours: "00",
-    minutes: "00",
-    seconds: "00",
-  });
-  const getTimeDifference = (countDownTime) => {
-    const currentTime = new Date().getTime();
-    const timeDiffrence = countDownTime - currentTime;
-    let days =
-      Math.floor(timeDiffrence / (24 * 60 * 60 * 1000)) >= 10
-        ? Math.floor(timeDiffrence / (24 * 60 * 60 * 1000))
-        : `0${Math.floor(timeDiffrence / (24 * 60 * 60 * 1000))}`;
-    const hours =
-      Math.floor((timeDiffrence % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60)) >=
-      10
-        ? Math.floor((timeDiffrence % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60))
-        : `0${Math.floor(
-            (timeDiffrence % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60)
-          )}`;
-    const minutes =
-      Math.floor((timeDiffrence % (60 * 60 * 1000)) / (1000 * 60)) >= 10
-        ? Math.floor((timeDiffrence % (60 * 60 * 1000)) / (1000 * 60))
-        : `0${Math.floor((timeDiffrence % (60 * 60 * 1000)) / (1000 * 60))}`;
-    const seconds =
-      Math.floor((timeDiffrence % (60 * 1000)) / 1000) >= 10
-        ? Math.floor((timeDiffrence % (60 * 1000)) / 1000)
-        : `0${Math.floor((timeDiffrence % (60 * 1000)) / 1000)}`;
-    if (timeDiffrence < 0) {
-      setCountDownTIme({
-        days: "00",
-        hours: "00",
-        minutes: "00",
-        seconds: "00",
-      });
-      clearInterval();
-    } else {
-      setCountDownTIme({
-        days: days,
-        hours: hours,
-        minutes: minutes,
-        seconds: seconds,
-      });
+"use client";
+import React, { useState, useEffect } from "react";
+
+const CountdownTimer = () => {
+  const eventDate = new Date("April 4, 2024 00:00:00 GMT+0530"); // Set your event date here
+
+  const [timeLeft, setTimeLeft] = useState({});
+
+  const calculateTimeLeft = () => {
+    const difference = +eventDate - +new Date();
+    let timeLeft = {};
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
     }
+
+    return timeLeft;
   };
-  const startCountDown = useCallback(() => {
-    const customDate = new Date();
-    const countDownDate = new Date(
-      customDate.getFullYear(),
-      customDate.getMonth() + 1,
-      customDate.getDate() + 6,
-      customDate.getHours(),
-      customDate.getMinutes(),
-      customDate.getSeconds() + 1
-    );
-    setInterval(() => {
-      getTimeDifference(countDownDate.getTime());
-    }, 1000);
-  }, []);
+
   useEffect(() => {
-    startCountDown();
-  }, [startCountDown]);
+    const timer = setTimeout(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [calculateTimeLeft]);
+
+  const formatTime = (time) => {
+    // Pad single digits with leading zero
+    return time < 10 ? `0${time}` : time;
+  };
 
   return (
-    <div className=" h-screen">
-      <div className="flex flex-col items-center justify-center w-full h-full gap-8 sm:gap-16">
-        <span className="text-2xl sm:text-3xl font-semibold  text-center tracking-widest px-2">
-          Registration Closes In
-        </span>
-        <div className="flex justify-center gap-3 sm:gap-8">
-          <div className="flex flex-col gap-5 relative">
-            <div className="h-16 w-16 sm:w-32 sm:h-32 lg:w-40 lg:h-40 flex justify-between items-center bg-[#343650] rounded-lg">
-              <div className="relative h-2.5 w-2.5 sm:h-3 sm:w-3 !-left-[6px] rounded-full bg-[#191A24]"></div>
-              <span className="lg:text-7xl sm:text-6xl text-3xl font-semibold text-[#a5b4fc]">
-                {countDownTime?.days}
-              </span>
-              <div className="relative h-2.5 w-2.5 sm:h-3 sm:w-3 -right-[6px] rounded-full bg-[#191A24]"></div>
-            </div>
-            <span className="text-[#8486A9] text-xs sm:text-2xl text-center capitalize">
-              {countDownTime?.days == 1 ? "Day" : "Days"}
-            </span>
+    <div>
+      {timeLeft.days === undefined ? (
+        <div></div>
+      ) : (
+        <div className="flex relative flex-col justify-center items-center w-30 xl:mr-24 lg:mr-24 ">
+          <div className="flex relative my-4 p-1 h-10 w-full items-center justify-center">
+            Registration closes in
           </div>
-          <div className="flex flex-col gap-5 relative">
-            <div className="h-16 w-16 sm:w-32 sm:h-32 lg:w-40 lg:h-40 flex justify-between items-center bg-[#343650] rounded-lg">
-              <div className="relative h-2.5 w-2.5 sm:h-3 sm:w-3 !-left-[6px] rounded-full bg-[#191A24]"></div>
-              <span className="lg:text-7xl sm:text-6xl text-3xl font-semibold text-[#a5b4fc]">
-                {countDownTime?.hours}
-              </span>
-              <div className="relative h-2.5 w-2.5 sm:h-3 sm:w-3 -right-[6px] rounded-full bg-[#191A24]"></div>
+          <div className="flex relative h-40 w-full m-2 text-[240px] font-thin items-center justify-center">
+            {timeLeft.days}
+            <div className="absolute top-[80%] left-[90%] flex text-2xl bg-orange-500 p-1">
+              Days
             </div>
-            <span className="text-[#8486A9] text-xs sm:text-2xl text-center font-medium">
-              {countDownTime?.hours == 1 ? "Hour" : "Hours"}
-            </span>
           </div>
-          <div className="flex flex-col gap-5 relative">
-            <div className="h-16 w-16 sm:w-32 sm:h-32 lg:w-40 lg:h-40 flex justify-between items-center bg-[#343650] rounded-lg">
-              <div className="relative h-2.5 w-2.5 sm:h-3 sm:w-3 !-left-[6px] rounded-full bg-[#191A24]"></div>
-              <span className="lg:text-7xl sm:text-6xl text-3xl font-semibold text-[#a5b4fc]">
-                {countDownTime?.minutes}
+          <div className="flex flex-row mx-4 my-8 h-10 w-full justify-between">
+            <div className="flex relative h-full font-thin text-4xl">
+              {formatTime(timeLeft.hours)}{" "}
+              <span className="align-baseline mx-2 mt-2 text-2xl font-light text-slate-600">
+                H
               </span>
-              <div className="relative h-2.5 w-2.5 sm:h-3 sm:w-3 -right-[6px] rounded-full bg-[#191A24]"></div>
             </div>
-            <span className="text-[#8486A9] text-xs sm:text-2xl text-center capitalize">
-              {countDownTime?.minutes == 1 ? "Minute" : "Minutes"}
-            </span>
-          </div>
-          <div className="flex flex-col gap-5 relative">
-            <div className="h-16 w-16 sm:w-32 sm:h-32 lg:w-40 lg:h-40 flex justify-between items-center bg-[#343650] rounded-lg">
-              <div className="relative h-2.5 w-2.5 sm:h-3 sm:w-3 !-left-[6px] rounded-full bg-[#191A24]"></div>
-              <span className="lg:text-7xl sm:text-6xl text-3xl font-semibold text-[#a5b4fc]">
-                {countDownTime?.seconds}
+            <div className="flex relative h-full font-thin text-4xl">
+              {formatTime(timeLeft.minutes)}{" "}
+              <span className="align-baseline mx-2 mt-2 text-2xl font-light text-slate-600">
+                M
               </span>
-              <div className="relative h-2.5 w-2.5 sm:h-3 sm:w-3 -right-[6px] rounded-full bg-[#191A24]"></div>
             </div>
-            <span className="text-[#8486A9] text-xs sm:text-2xl text-center capitalize">
-              {countDownTime?.seconds == 1 ? "Second" : "Seconds"}
-            </span>
+            <div className="flex relative h-full font-thin text-4xl">
+              {formatTime(timeLeft.seconds)}{" "}
+              <span className="align-baseline mx-2 mt-2 text-2xl font-light text-slate-600">
+                S
+              </span>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
-export default Timer3;
+
+export default CountdownTimer;
