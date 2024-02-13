@@ -15,24 +15,82 @@ import ToastAlert from "../_util/ToastAlerts";
 
 import WebGLApp from "../bg/WebGLApp";
 
-import anokhalogo from "@/../public/images/anokha_circle.svg";
 import TextField from "@mui/material/TextField";
 import QRCode from "react-qr-code";
 
 export default function Register() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [collegeName, setCollegeName] = useState("");
-  const [collegeCity, setCollegeCity] = useState("");
-  const [isAmrita, setisAmrita] = useState(false);
+  const [name, setName] = useState("StudentFullName");
+  const [email, setEmail] = useState(
+    secureLocalStorage.getItem("registerEmail"),
+  );
+  const [phone, setPhone] = useState(
+    secureLocalStorage.getItem("studentPhone"),
+  );
+  const [collegeName, setCollegeName] = useState(
+    secureLocalStorage.getItem("studentCollegeName"),
+  );
+  const [collegeCity, setCollegeCity] = useState(
+    secureLocalStorage.getItem("studentCollegeCity"),
+  );
+  const [isAmrita, setisAmrita] = useState(
+    secureLocalStorage.getItem("isAmritaCBE"),
+  );
   const [loading, setLoading] = useState(false);
+  const [studentID, setStudentID] = useState(
+    secureLocalStorage.getItem("studentId"),
+  );
   const router = useRouter();
 
-  // useEffect(() => {
-  //   getProfile();
-  // }, []); // Calling the function once on mount
-  const qrValue = "https://www.amrita.edu"
+  useEffect(() => {
+    const getProfile = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(STUDENT_PROFILE_URL, {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${secureLocalStorage.getItem("SECRET_TOKEN")}`,
+          },
+        });
+
+        const data = await response.json();
+        if (response.status === 200) {
+          secureLocalStorage.setItem("StudentFullName", fullname);
+          secureLocalStorage.setItem("studentPhone", phoneNumber);
+          secureLocalStorage.setItem("studentCollegeCity", collegeCity);
+          secureLocalStorage.setItem("studentCollegeName", collegeName);
+          return;
+        } else if (response.status === 400) {
+          secureLocalStorage.clear();
+          ToastAlert("error", "Error", "Access restricted!", toastRef);
+          router.replace("/login");
+        } else if (response.status === 401) {
+          ToastAlert(
+            "error",
+            "Unauthorized Access",
+            "Please login and try again.",
+            toastRef,
+          );
+          secureLocalStorage.clear();
+          router.replace("/");
+        } else if (response.status === 500) {
+          ToastAlert(
+            "error",
+            "Internal Server Error",
+            "Oops! Please try again.",
+            toastRef,
+          );
+          return;
+        }
+      } catch (error) {
+        setLoading(false);
+        console.log(error);
+      }
+    };
+    getProfile();
+  }, [collegeCity, collegeName, router]); // Calling the function once on mount
+
+  const qrValue = `anokha://${studentID}`;
 
   //Regular expression to check amrita mail
   const amritaRegex =
@@ -57,54 +115,8 @@ export default function Register() {
 
   const toastRef = useRef(null);
 
-  const genSHA256 = (email="riteshkoushik39@gmail.com") => {
-    return createHash('sha256').update(email).digest('hex');
-}
-
-  const getProfile = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(STUDENT_PROFILE_URL, {
-        method: "GET",
-        headers: {
-          "Content-type": "application/json",
-          Authorization: `Bearer ${secureLocalStorage.getItem("SECRET_TOKEN")}`,
-        },
-      });
-
-      const data = await response.json();
-      if (response.status === 200) {
-        secureLocalStorage.setItem("StudentFullName", fullname);
-        secureLocalStorage.setItem("studentPhone", phoneNumber);
-        secureLocalStorage.setItem("studentCollegeCity", collegeCity);
-        secureLocalStorage.setItem("studentCollegeName", collegeName);
-        return;
-      } else if (response.status === 400) {
-        secureLocalStorage.clear();
-        ToastAlert("error", "Error", "Access restricted!", toastRef);
-        router.replace("/login");
-      } else if (response.status === 401) {
-        ToastAlert(
-          "error",
-          "Unauthorized Access",
-          "Please login and try again.",
-          toastRef,
-        );
-        secureLocalStorage.clear();
-        router.replace("/");
-      } else if (response.status === 500) {
-        ToastAlert(
-          "error",
-          "Internal Server Error",
-          "Oops! Please try again.",
-          toastRef,
-        );
-        return;
-      }
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
+  const genSHA256 = (email = "riteshkoushik39@gmail.com") => {
+    return createHash("sha256").update(email).digest("hex");
   };
 
   // Confirm edit profile - changes
@@ -190,15 +202,19 @@ export default function Register() {
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
             <Toast ref={toastRef} position="bottom-center" />
             <div className="w-full rounded-[24px] bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
-                <div className="p-1 rounded-full ml-auto mr-auto flex justify-center">
-                  <Image
-                    className=""
-                    alt="Travis Howard"
-                    src={"https://www.gravatar.com/avatar/"+(genSHA256)+".jpg?s=200&d=robohash"}
-                    width={80}
-                    height={80}
-                   />
-                </div>
+              <div className="p-1 rounded-full ml-auto mr-auto flex justify-center">
+                <Image
+                  className=""
+                  alt="Travis Howard"
+                  src={
+                    "https://www.gravatar.com/avatar/" +
+                    genSHA256 +
+                    ".jpg?s=200&d=robohash"
+                  }
+                  width={80}
+                  height={80}
+                />
+              </div>
               <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl">
                   Profile
@@ -314,11 +330,11 @@ export default function Register() {
                   <div className="flex flex-col flex-1 gap-8">
                     <div id="Fields">
                       <div className="bg-[#ffffff] m-10 ml-20 mr-20 p-8 flex justify-center">
-                        <QRCode 
-                           className="" 
-                           size={256} 
-                           value={qrValue}
-                          viewBox={`0 0 256 256`} 
+                        <QRCode
+                          className=""
+                          size={256}
+                          value={qrValue}
+                          viewBox={`0 0 256 256`}
                         />
                       </div>
                     </div>
