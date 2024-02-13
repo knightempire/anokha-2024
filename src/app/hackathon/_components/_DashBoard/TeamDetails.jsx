@@ -3,7 +3,7 @@ import React from "react";
  
 //     const hash = "isajithrajan@gmail.com"
     
-//   <img height={200} src={`https://www.gravatar.com/avatar/${hash}.jpg?s=200&d=robohash`} alt="Profile" width={200} className="rounded-lg"/> 
+//   <img height={200} src={https://www.gravatar.com/avatar/${hash}.jpg?s=200&d=robohash} alt="Profile" width={200} className="rounded-lg"/> 
  
 const TeamDetails = ({
   teamStatus,
@@ -46,7 +46,7 @@ const TeamDetails = ({
         <h1 className="text-white font-light text-[2rem]">
           Welcome {teamName}!
         </h1>
-        <p className="w-full text-center font-thin test-md mt-3 text-white">
+        <p className="w-full text-center font-light test-md mt-3 text-white">
           Team Details
         </p>
 
@@ -78,14 +78,14 @@ const TeamDetails = ({
             </tr>
           </tbody>
         </table>
-        <p className="w-full text-center test-md mt-3 text-white font-thin">
-          Team Member Details{" "}
+        <p className="w-full text-center test-md mt-3 text-white font-light">
+          Team Member Details
         </p>
         <table className="table-auto w-full border-collapse mt-2 text-sm">
           <thead className="text-white bg-[#0e1853] ">
             <tr>
               <th className="border border-black px-4 font-light py-2">Name</th>
-              <th className="border border-black px-4 font-light py-2 w-[500px]">
+              <th className="border border-black px-4 font-light py-2">
                 Contact
               </th>
               <th className="border border-black px-4 font-light py-2">
@@ -119,4 +119,3 @@ const TeamDetails = ({
 };
 
 export default TeamDetails;
- 

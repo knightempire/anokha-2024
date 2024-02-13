@@ -130,7 +130,7 @@ export default function Register() {
         console.log(data);
         setTimeout(() => {
           router.replace("/register/verify");
-        }, 500);
+        }, 1500);
       } else if (response.status === 500) {
         ToastAlert(
           "error",

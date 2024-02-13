@@ -25,18 +25,26 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
           >
             Member {no} : Email
           </label>
-          <div className={"flex flex-row bg-transparent border-2 border-gray-800 rounded-[5px] "+ (validator.isEmail(e_val) || e_val=="" ?"":"border-red-600")}>
+          <div
+            className={
+              "flex flex-row border-2 border-gray-800 rounded-[5px] " +
+              (e_val == null || e_val == "" || validator.isEmail(e_val)
+                ? ""
+                : "border-red-600 ") +
+              (no == 1 ? " bg-gray-400 " : " bg-transparent")
+            }
+          >
             <IoPersonCircle className="h-8 w-8 mt-[4px] ml-2" />
             <input
               // onChange={(e) => {
               //   setEmail(e.target.value);
               // }}
-              
+              disabled={no === 1}
               type="email"
               name="email"
               id="email"
               value={e_val}
-              className="bg-transparent text-black font-medium text-[16px] rounded-[10px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
+              className="bg-transparent text-black font-medium text-[16px] rounded-[10px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light "
               placeholder="Enter Your Email"
               required
               onChange={(e) => member(e.target.value)}
@@ -51,7 +59,14 @@ const Memberview = ({ member, idc, no, e_val, idc_val }) => {
           >
             Member {no} : Intel Dev Cloud ID
           </label>
-          <div className={"flex flex-row bg-transparent border-2 border-gray-800 rounded-[5px] "+ (validator.isNumeric(idc_val) || idc_val=="" ?"":"border-red-600")}>
+          <div
+            className={
+              "flex flex-row bg-transparent border-2 border-gray-800 rounded-[5px] " +
+              (idc_val == null || idc_val == "" || validator.isNumeric(idc_val)
+                ? ""
+                : "border-red-600")
+            }
+          >
             <PiIdentificationBadgeFill className="h-8 w-8 mt-[4px] ml-2" />
             <input
               //   onChange={(e) => {
@@ -138,7 +153,14 @@ export default function SecondRegister({
               <span relative="relative z-10">Previous</span>
             </Button>
             <Button
-              disabled={!validator.isNumeric(mi1) || !validator.isEmail(me1) || !validator.isNumeric(mi2) || !validator.isEmail(me2) || me1==me2 || mi1==mi2 }
+              disabled={
+                (mi1 != null && !validator.isNumeric(mi1)) ||
+                (me1 != null && !validator.isEmail(me1)) ||
+                (mi2 != null && !validator.isNumeric(mi2)) ||
+                (me2 != null && !validator.isEmail(me2)) ||
+                (me1 != null && me2 != null && me1 == me2) ||
+                (mi1 != null && mi2 != null && mi1 == mi2)
+              }
               onClick={handle_next_click}
               className="text-md flex justify-center items-center before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
             >
