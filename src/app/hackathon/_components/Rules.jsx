@@ -6,11 +6,11 @@ const rules = [
         rules: [
             "Teams should build their product from scratch (Mobile App / Consumer Web App / Business Web App).",
             "Teams must select a single problem statement and theme; multiple choices are not allowed. The available problem statements are specified within the provided tracks.",
-            "Teams must be between 3 - 4 members.",
-            "Participation is open only to students aged 15-22.", 
+            "A team must have only 3 - 4 members.",
+            "Students currently pursuing undergraduate and postgraduate programmes are allowed to participate.", 
             "Working professionals are not eligible to participate.",
             "Participants are encouraged to form teams before the hackathon starts.",
-            "Participants may use their DevPost accounts to “Look for Teammates”."
+            "Participants are encouraged to utilize their DevPost accounts to seek teammates for collaboration."
         ]
     },
     {
@@ -22,7 +22,7 @@ const rules = [
             " Optionally, include the GitHub repository link for the ideation phase.",
             "Timely submission through the hackathon dashboard is crucial to avoid disqualification.",
             "Submitting a video that explains your idea and the problem statement will increase your team's chances of qualifying for the next round.",
-            "Only the top 100 teams will qualify for round 2."
+            "Only the top 25 teams will qualify for round 2."
         ]
     },
     {

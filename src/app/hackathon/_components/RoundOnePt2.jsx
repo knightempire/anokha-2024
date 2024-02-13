@@ -36,8 +36,8 @@ const RoundOnePt2 = ({
                   <input
                     type="text"
                     value={github_val}
-                    onChange={(e) => github(e.target.value)}
-                    placeholder="Enter Github Link Here"
+                    onChange={(e)=>github(e.target.value)}
+                    placeholder="Enter Github Link Here (Optional)"
                     className="w-full focus:outline-0"
                   />
                 </div>
@@ -48,7 +48,7 @@ const RoundOnePt2 = ({
                     value={devmesh_val}
                     onChange={(e) => devmesh(e.target.value)}
                     type="text"
-                    placeholder="Enter DevMesh Link Here"
+                    placeholder="Enter DevMesh Link Here (Optional)"
                     className="w-full focus:outline-0"
                   />
                 </div>
@@ -59,7 +59,7 @@ const RoundOnePt2 = ({
                     value={youtube_val}
                     onChange={(e) => youtube(e.target.value)}
                     type="text"
-                    placeholder="Enter Youtube Video Link Here"
+                    placeholder="Enter Youtube Video Link Here (Optional)"
                     className="w-full focus:outline-0"
                   />
                 </div>

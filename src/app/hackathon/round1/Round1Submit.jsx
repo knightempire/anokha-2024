@@ -3,10 +3,16 @@ import { useState, useEffect, useRef } from "react";
 import Navbar from "../_components/HackathonHeader";
 import { HACKATHON_FIRST_ROUND_SUBMISSION_URL } from "@/app/_util/constants.js";
 import About from "../_components/About";
+
+
 import { Toast } from "primereact/toast";
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/lara-light-blue/theme.css";
+import ToastAlert from "@/app/_util/ToastAlerts";
+import { useRouter } from "next/navigation";
 
 import secureLocalStorage from "react-secure-storage";
-import Footer from "../../components/Footer";
+import Footer from "@/app/components/Footer";
 import { Button } from "@material-tailwind/react";
 
 import RoundOne from "../_components/RoundOne";
@@ -27,8 +33,8 @@ export default function Page() {
   const [isAmritaCBE, setIsAmritaCBE] = useState(0);
   const [hasActivePassport, setHasActivePassport] = useState(0);
 
-  const toastRef = useRef(null);
-
+  const toastRef = useRef();
+  const router = useRouter();
   useEffect(() => {
     setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
     setIsAmritaCBE(parseInt(secureLocalStorage.getItem("isAmritaCBE")));
@@ -79,41 +85,44 @@ export default function Page() {
       const data = await response.json();
       console.log(data);
       if (response.status === 200) {
-        // ToastAlert(
-        //   "success",
-        //   "Success",
-        //   "Registration Successful!",
-        //   toastRef
-        // );
-        console.log(data);
-        //   secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
-        //   secureLocalStorage.setItem("registerEmail", email);
-
+        ToastAlert(
+          "success",
+          "Success",
+          `${data.MESSAGE}`,
+          toastRef
+        );
+        
+    
         setTimeout(() => {
           router.replace("/hackathon");
-        }, 500);
-        // } else if (response.status === 500) {
-        //   ToastAlert(
-        //     "error",
-        //     "Oops!",
-        //     "Something went wrong! Please try again later!",
-        //     toastRef
-        //   );
-        //   return;
-        // } else if (data.message !== undefined || data.message !== null) {
-        //   ToastAlert("error", "Registration Failed", data.message, toastRef);
-        // } else {
-        //   ToastAlert(
-        //     "error",
-        //     "Oops!",
-        //     "Something went wrong! Please try again later!",
-        //     toastRef
-        //   );
-        //   return;
-        // }
+        }, 1500);
+        } else if (response.status === 401) {
+          ToastAlert(
+            "error",
+            "Session Expired",
+        "Please register again.",
+            toastRef
+           
+          );
+          setTimeout(() => {
+            router.replace("/hackathon");
+          }, 1500);
+
+          
+        } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
+          ToastAlert("error", "Registration Failed", data.MESSAGE, toastRef);
+        } else {
+          ToastAlert(
+            "error",
+            "Oops!",
+            "Something went wrong! Please try again later!",
+            toastRef
+          );
+          return;
+        }
 
         //  console.log(data);
-      }
+      
     } catch (e) {
       // ToastAlert("error", "Error", "Please try again!", toastRef);
       console.log(e);
@@ -143,7 +152,7 @@ export default function Page() {
   return (
     <div>
       <Navbar />
-
+      <Toast ref={toastRef} position="bottom-center" className="p-5" />
       {currentStep === 0 ? (
         <RoundOne
           theme_val={theme}
