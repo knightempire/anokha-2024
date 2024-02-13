@@ -1,12 +1,12 @@
 "use client";
 
 import Navbar from "../components/EventHeader";
-
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { EDIT_PROFILE_URL, STUDENT_PROFILE_URL } from "../_util/constants";
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { createHash } from "crypto";
 
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
@@ -17,7 +17,6 @@ import WebGLApp from "../bg/WebGLApp";
 
 import anokhalogo from "@/../public/images/anokha_circle.svg";
 import TextField from "@mui/material/TextField";
-import { Avatar } from "@mui/materail";
 import QRCode from "react-qr-code";
 
 export default function Register() {
@@ -30,15 +29,14 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  useEffect(() => {
-    getProfile();
-  }, []); // Calling the function once on mount
+  // useEffect(() => {
+  //   getProfile();
+  // }, []); // Calling the function once on mount
+  const qrValue = "https://www.amrita.edu"
 
   //Regular expression to check amrita mail
   const amritaRegex =
     /^[a-zA-Z0-9._%+-]+@(cb\.students\.amrita\.edu|cb\.amrita\.edu|av\.students\.amrita\.edu|av\.amrita\.edu)$/;
-
-  //check if amrita mail or not
   const isAmritaMail = amritaRegex.test(email);
 
   const nameRegex = /^[a-zA-Z ]{1,25}$/;
@@ -59,50 +57,55 @@ export default function Register() {
 
   const toastRef = useRef(null);
 
-  const getProfile = async () => {
-    try{
-    setLoading(true);
-    const response = await fetch(STUDENT_PROFILE_URL, {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-        Authorization: `Bearer ${secureLocalStorage.getItem("SECRET_TOKEN")}`,
-      },
-    });
+  const genSHA256 = (email="riteshkoushik39@gmail.com") => {
+    return createHash('sha256').update(email).digest('hex');
+}
 
-    const data = await response.json();
-    if (response.status === 200) {
-      secureLocalStorage.setItem("StudentFullName", fullname);
-      secureLocalStorage.setItem("studentPhone", phoneNumber);
-      secureLocalStorage.setItem("studentCollegeCity", collegeCity);
-      secureLocalStorage.setItem("studentCollegeName", collegeName);
-      return;
-    } else if (response.status === 400) {
-      secureLocalStorage.clear();
-      ToastAlert("error", "Error", "Access restricted!", toastRef);
-      router.replace("/login");
-    } else if (response.status === 401) {
-      ToastAlert(
-        "error",
-        "Unauthorized Access",
-        "Please login and try again.",
-        toastRef,
-      );
+  const getProfile = async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(STUDENT_PROFILE_URL, {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${secureLocalStorage.getItem("SECRET_TOKEN")}`,
+        },
+      });
+
+      const data = await response.json();
+      if (response.status === 200) {
+        secureLocalStorage.setItem("StudentFullName", fullname);
+        secureLocalStorage.setItem("studentPhone", phoneNumber);
+        secureLocalStorage.setItem("studentCollegeCity", collegeCity);
+        secureLocalStorage.setItem("studentCollegeName", collegeName);
+        return;
+      } else if (response.status === 400) {
+        secureLocalStorage.clear();
+        ToastAlert("error", "Error", "Access restricted!", toastRef);
+        router.replace("/login");
+      } else if (response.status === 401) {
+        ToastAlert(
+          "error",
+          "Unauthorized Access",
+          "Please login and try again.",
+          toastRef,
+        );
         secureLocalStorage.clear();
         router.replace("/");
-    } else if (response.status === 500) {
-      ToastAlert(
-        "error",
-        "Internal Server Error",
-        "Oops! Please try again.",
-        toastRef,
-      );
-      return;
-        }
-    }catch (error){
-        setLoading(false);
-        console.log(error);
+      } else if (response.status === 500) {
+        ToastAlert(
+          "error",
+          "Internal Server Error",
+          "Oops! Please try again.",
+          toastRef,
+        );
+        return;
+      }
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
     }
+  };
 
   // Confirm edit profile - changes
   const handleUpdate = async (e) => {
@@ -187,14 +190,15 @@ export default function Register() {
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
             <Toast ref={toastRef} position="bottom-center" />
             <div className="w-full rounded-[24px] bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
-              <Image
-                src={anokhalogo}
-                priority
-                alt="Amrita logo"
-                width={128}
-                height={128}
-                className="ml-auto mr-auto mt-4 h-16"
-              />
+                <div className="p-1 rounded-full ml-auto mr-auto flex justify-center">
+                  <Image
+                    className=""
+                    alt="Travis Howard"
+                    src={"https://www.gravatar.com/avatar/"+(genSHA256)+".jpg?s=200&d=robohash"}
+                    width={80}
+                    height={80}
+                   />
+                </div>
               <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
                 <h1 className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl">
                   Profile
@@ -309,13 +313,13 @@ export default function Register() {
                   </div>
                   <div className="flex flex-col flex-1 gap-8">
                     <div id="Fields">
-                      <div className="bg-[#ffffff] m-10 ml-20 mr-20 p-8">
-                        {/*<QRCode */}
-                        {/*   className="" */}
-                        {/*   size={256} */}
-                        {/*   value={qrValue} */}
-                        {/*  viewBox={`0 0 256 256`} */}
-                        {/*>*/}
+                      <div className="bg-[#ffffff] m-10 ml-20 mr-20 p-8 flex justify-center">
+                        <QRCode 
+                           className="" 
+                           size={256} 
+                           value={qrValue}
+                          viewBox={`0 0 256 256`} 
+                        />
                       </div>
                     </div>
                     <div className="text-center">

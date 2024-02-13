@@ -10,8 +10,6 @@ import ToastAlert from "../_util/ToastAlerts";
 import validator from "validator";
 import secureLocalStorage from "react-secure-storage";
 import WebGLApp from "../bg/WebGLApp";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import TextField from "@mui/material/TextField";
  
 import Link from "next/link";
