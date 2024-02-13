@@ -23,7 +23,6 @@ import "primereact/resources/themes/lara-light-blue/theme.css";
 export default function Login() {
  
 
-    
   useEffect(()=>{
     securelocalStorage.clear()
 },[])

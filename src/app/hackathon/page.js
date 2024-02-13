@@ -28,7 +28,7 @@ import Judging from './_components/Judging'
 import WinnerPrice from './_components/WinnerPrice'
 import SubGuidelines from './_components/SubGuidelines'
  
-export default function page() {
+export default function Page() {
     const router = useRouter()
     const {SignOut} = useAuth()
     const [currentStep,setCurrentStep] = useState(0);
@@ -82,9 +82,10 @@ export default function page() {
           
 
           const data = await response.json();
+          console.log(data)
           if (response.status === 200) {
               // ToastAlert('success', "Success", "Registration successful", toastRef);
-              secureLocalStorage.setItem("DashBoardData", data);
+              secureLocalStorage.setItem("DashBoardData",  JSON.stringify(data));
               if (data.secondRoundSubmission.length!=0) {
                 setDisplayResult(2)
               }
@@ -95,6 +96,7 @@ export default function page() {
               setUserState(2)
           }   
           else if (response.status === 401) {
+            //timeout
             setUserState(0)
             SignOut()
               

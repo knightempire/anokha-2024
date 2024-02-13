@@ -24,9 +24,11 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 export default function Register() {
+
   useEffect(() => {
     secureLocalStorage.clear();
   }, []);
+  const toastRef = useRef();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -117,14 +119,15 @@ export default function Register() {
           studentCollegeCity: collegeCity,
         }),
       });
-
+       
       const data = await response.json();
       if (response.status === 200) {
-        ToastAlert("success", "Success", "Registration Successful!", toastRef);
-        console.log(data);
-        secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
+        console.log("inside")
+        secureLocalStorage.setItem("tempRegisterToken", data["SECRET_TOKEN"]);
         secureLocalStorage.setItem("registerEmail", email);
-
+        
+        ToastAlert("success","Email Verification", `${data.MESSAGE}`, toastRef);
+        console.log(data);
         setTimeout(() => {
           router.replace("/register/verify");
         }, 500);
@@ -135,9 +138,9 @@ export default function Register() {
           "Something went wrong! Please try again later!",
           toastRef
         );
-        return;
-      } else if (data.message !== undefined || data.message !== null) {
-        ToastAlert("error", "Registration Failed", data.message, toastRef);
+         
+      } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
+        ToastAlert("error", "Registration Failed", data.MESSAGE, toastRef);
       } else {
         ToastAlert(
           "error",
@@ -145,7 +148,7 @@ export default function Register() {
           "Something went wrong! Please try again later!",
           toastRef
         );
-        return;
+         
       }
     } catch (e) {
       ToastAlert("error", "Error", "Please try again!", toastRef);
@@ -161,7 +164,7 @@ export default function Register() {
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
 
-  const toastRef = useRef(null);
+   
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConPassword, setShowConPassword] = useState(false);
@@ -180,7 +183,7 @@ export default function Register() {
         <div className="relative min-h-screen">
           <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
-            <Toast ref={toastRef} position="bottom-center" />
+            <Toast ref={toastRef} position="bottom-center" className="p-5" />
             <div className="w-full rounded-[24px] bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
               <Image
                 src={anokhalogo}
