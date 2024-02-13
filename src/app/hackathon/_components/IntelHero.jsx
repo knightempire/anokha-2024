@@ -60,9 +60,9 @@ function IntelHero( {userState,displayResult}) {
               }
             
           </div>
-          <div className="flex md:gap-2 sm:gap-2 justify-center items-center flex-wrap -mb-6 mt-5 bg-[rgb(9,11,60)] border-black border-2 w-fit mx-auto rounded-full text-white font-mono text-[14px]  px-2">
-          {displayResult===2? <p>You have submitted for Round 2 </p> 
-              : displayResult===1? <p>You have submitted for Round 1</p> 
+          <div className="flex md:gap-2 sm:gap-2 justify-center items-center flex-wrap -mb-6 mt-5 bg-[rgb(9,11,60)] mx-auto rounded-full text-white text-[14px] px-2 ">
+          {displayResult===2? <p className="p-3 ">You have submitted for Round 2 </p> 
+              : displayResult===1? <p className="p-3">You have submitted for Round 1</p> 
               : null
               }
           </div>
