@@ -6,7 +6,7 @@ import securelocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import { LOGIN_URL } from "../_util/constants";
 import { hashPassword } from "../_util/hash";
-import ToastAlert from "../_util/ToastAlerts";
+
 import validator from "validator";
 import secureLocalStorage from "react-secure-storage";
 import WebGLApp from "../bg/WebGLApp";
@@ -19,7 +19,7 @@ import Link from "next/link";
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
-
+import ToastAlert from "../_util/ToastAlerts";
 export default function Login() {
  
 

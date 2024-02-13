@@ -111,7 +111,7 @@ const Timeline = () => {
               <div class="info relative bg-opacity-60 bg-white bg-blur">
                 <h3 class="title text-xl">March 22nd 2024</h3>
                 <p>
-                  Announcement of the top 100 teams advancing to the final
+                  Announcement of the top 25 teams advancing to the final
                   round.{" "}
                 </p>
               </div>
