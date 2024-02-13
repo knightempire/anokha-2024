@@ -119,6 +119,15 @@ export default function Register() {
     return createHash("sha256").update(email).digest("hex");
   };
 
+  const enableUpdate = () => {
+        const nameCheck = name === secureLocalStorage.getItem("StudentFullName");
+        const phoneCheck = phoneNumber === secureLocal.getItem("studentPhone");
+        const collegeNameCheck = collegeName === secureLocalStorage.getItem("studentCollegeCity");
+        const collegeCityCheck = collegeCity === secureLocalStorage.getItem("studentCollegeName");
+
+        return !nameCheck && !phoneCheck && !collegeNameCheck && !collegeCityCheck
+    }
+
   // Confirm edit profile - changes
   const handleUpdate = async (e) => {
     e.preventDefault;
@@ -137,7 +146,7 @@ export default function Register() {
           studentCollegeCity: collegeCity,
         }),
       });
-
+j
       const data = await response.json();
       if (response.status === 200) {
         ToastAlert(
@@ -342,13 +351,7 @@ export default function Register() {
                       <button
                         type="submit"
                         className="w-[200px] mt-3 text-black bg-[#f69c18] mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed"
-                        disabled={
-                          loading ||
-                          !isCollegeNameValid ||
-                          !isNameValid ||
-                          !isPhoneValid ||
-                          (isAmrita ? !isAmritaMail : !isEmailValid)
-                        }
+                        disabled={enableUpdate}
                       >
                         Confirm Changes
                       </button>
