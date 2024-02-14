@@ -20,8 +20,7 @@ const FAQs = () => {
                 "The prototype submission should be made on a GitHub public repository.",
                 "The entire code base needs to be present on the team's GitHub repository.",
                 "The prototype submission must emphasize on both deployment and inference, with and without Intel® one API.",
-                "Pull requests of the forked repository need to be generated. ",
-                "To know more details about the registration and the rules of the hackathon, please click on this link " 
+                "Pull requests of the forked repository need to be generated. ", 
             ]
         },
     ]
@@ -72,12 +71,30 @@ const FAQs = () => {
   return (
     <div className='bg-[rgb(10,17,58)] w-full h-full py-[100px]'>
       <div className='md:w-[70%] mx-auto sm:w-[90%]'>
+      <Accordion key={0} className="rounded my-2 p-2">
+            <AccordionSummary
+                expandIcon={<ArrowDownwardIcon />}
+                aria-controls='panel1-content'
+                id='faq-header'>
+                <Typography className='font-bold text-center border-black b-4 px-7 py-1 text-xl text-black'>Hackathon Guidelines</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <Typography className='px-7'>
+                <ul className='list-disc md:px-[60px] sm:px-0 md:pb-10  pt-0 sm:py-3 text-md  text-black space-y-1'>
+                {guidelines[0].rules.map((val, index)=>(
+                    <li key={index}>{val}</li>
+                ))}
+                </ul>
+                </Typography>
+            </AccordionDetails>
+        </Accordion>
+
         <Accordion key={0} className="rounded my-2 p-2 ">
             <AccordionSummary
                 expandIcon={<ArrowDownwardIcon />}
                 aria-controls='panel1-content'
                 id='faq-header'>
-                <Typography className='font-bold text-center border-black b-4 px-7 py-1 text-xl text-black'>FAQ Section</Typography>
+                <Typography className='font-bold text-center border-black b-4 px-7 py-1 text-xl text-black'>FAQs</Typography>
             </AccordionSummary>
             <AccordionDetails>
         {qna.map((val, index) =>(
@@ -86,7 +103,7 @@ const FAQs = () => {
             expandIcon={<ArrowDownwardIcon />}
             aria-controls="panel1-content"
             id="panel1-header">
-            <Typography className='px-7 py-1 text-md text-black'>{val.question}</Typography>
+            <Typography className='px-2 py-1 text-md text-black'>{val.question}</Typography>
             </AccordionSummary>
             <AccordionDetails >
             <Typography className='px-7 '>
@@ -98,24 +115,7 @@ const FAQs = () => {
 
             </AccordionDetails>
         </Accordion>
-        <Accordion key={0} className="rounded my-2 p-2">
-            <AccordionSummary
-                expandIcon={<ArrowDownwardIcon />}
-                aria-controls='panel1-content'
-                id='faq-header'>
-                <Typography className='font-bold text-center border-black b-4 px-7 py-1 text-xl text-black'>Hackathon Guidelines</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-                <Typography className='px-7'>
-                <ul className='list-disc md:px-[80px] sm:px-6 md:pb-10  pt-0 sm:py-8 text-md  text-black space-y-1'>
-                {guidelines[0].rules.map((val, index)=>(
-                    <li key={index} className='ml-5'>{val}</li>
-                ))}
-                </ul>
-                </Typography>
-            </AccordionDetails>
-        </Accordion>
-
+        
       </div>
     </div>
   )

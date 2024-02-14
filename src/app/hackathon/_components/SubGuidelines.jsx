@@ -15,7 +15,6 @@ const rules = [
             "The entire code base needs to be present on the team's GitHub repository.",
             "The prototype submission must emphasize on both deployment and inference, with and without Intel® one API.",
             "Pull requests of the forked repository need to be generated. ",
-            "To know more details about the registration and the rules of the hackathon, please click on this link " 
         ]
     },
 ]
@@ -25,8 +24,8 @@ const SubGuidelines = () => {
     <div>
       <div className='w-full h-full my-2 mt-10'>
         {rules.map((val, id)=>(
-            <div key={id} className='bg-blue-900 md:w-[80%] sm:w-[95%] mx-auto odd:rounded-bl-[50px] even:rounded-br-[50px]'>
-                <div className=' mb-10 rounded-tr-none rounded-bl-none '>
+            <div key={id} className='bg-blue-900 md:w-[70%] sm:w-[95%] mx-auto odd:rounded-bl-[50px] even:rounded-br-[50px]'>
+                <div className=' mb-0 rounded-tr-none rounded-bl-none '>
                 <h2 className='font-bold text-2xl py-5 px-12 bg-gradient-to-r from-[#0A113A]  to-blue-900  w-full text-white odd:rounded-bl-[50px] even:rounded-tl-[50px]'>{val.title}</h2>
                 <ul className='list-disc md:px-[80px] sm:px-6 md:pb-10  pt-0 sm:py-8 text-md  text-white space-y-1'>
                 {val.rules.map((rule, id)=>(
@@ -35,9 +34,9 @@ const SubGuidelines = () => {
                 
             </ul>
         </div>
-        <div class="card-submit ml-auto mr-auto mt-[7%] mb-[7%]">
+        <div class="card-submit mx-auto mt-[0px] mb-[2%]">
               <div class="info relative bg-opacity-60 bg-white bg-blur">
-                <h3 class="text-xl mb-[2%] ml-[25%]">Download Sample PPT</h3>
+                <h3 class="text-xl mb-[2%] text-center">Download Sample PPT</h3>
                 <a
                 href="https://amritavishwavidyapeetham-my.sharepoint.com/:p:/g/personal/cb_en_u4cse21608_cb_students_amrita_edu/EaAaxjKyWIVLsBlk1ZIgHHABXoTydcJakpTu6g0Tp3ZXug"
                 download
