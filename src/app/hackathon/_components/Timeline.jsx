@@ -43,18 +43,23 @@ const Timeline = () => {
     {
             title: "Round 1: Ideation",
       description:
-        "During this initial phase, participants are tasked with brainstorming ideas centered around provided problem statements. Provide a submission with a PowerPoint presentation and a concise 200-character description that clearly explains the proposed concept, making specific reference to the Intel toolkit used.",
-    },
+"During this initial phase, participants are tasked with brainstorming ideas centred around the provided problem statements. They are required to submit a PowerPoint presentation along with a concise description that clearly explains the proposed concept, with specific reference to the Intel toolkit employed.",
+        Date: "February 15th - 29th"
+
+
+},
     {
             title: "Round 2: Prototype Development",
       description:
-        "In the subsequent phase, participants embark on crafting prototypes based on their ideation submissions. Comprehensive resources including intensive video playlists accessible via the official ANOKHA website facilitate the development process. Prototypes are to be shared via GitHub repositories, with linkage to DevMesh for streamlined visibility.",
-    },
+"The resources essential for building with OneAPI can be found in the learning resources section. Prototypes are to be shared through GitHub repositories, with a link to DevMesh."
+,Date: "March 2nd - 20th"    
+},
     {
             title: "Round 3: Final Round",
       description:
-        "Shortlisted participants progress to the culminating 24-hour offline hackathon hosted at the Amrita Vishwa Vidyapeetham, Coimbatore campus. Participants need to bring their laptops, and hardware resources will be provided based on the requirements of the prototype.",
-    },
+"Shortlisted participants will advance to the culminating 24-hour offline hackathon hosted at Amrita Vishwa Vidyapeetham, Coimbatore. During the grand finale, participants are required to bring their laptops and develop their prototypes into end products."
+,Date: "April 4th - 5th",    
+},
   ];
 
   return (
@@ -70,6 +75,7 @@ const Timeline = () => {
               <div class="info relative bg-opacity-60 bg-white bg-blur">
                 <h3 class="title text-xl">{phases[0].title}</h3>
                 <p>{phases[0].description}</p>
+                <h4 className="bg-[#87a5cb] text-black rounded-full w-fit border-1 border-black py-1 px-2 font-medium mx-auto">{phases[0].Date}</h4>
               </div>
             </div>
 
@@ -78,6 +84,7 @@ const Timeline = () => {
               <div class="info relative bg-opacity-60 bg-white bg-blur">
                 <h3 class="title text-xl">{phases[1].title}</h3>
                 <p>{phases[1].description}</p>
+                <h4 className="bg-[#87a5cb] text-black rounded-full w-fit border-1 border-black py-1 px-2 font-medium mx-auto">{phases[1].Date}</h4>
               </div>
             </div>
 
@@ -86,6 +93,7 @@ const Timeline = () => {
               <div class="info relative bg-opacity-60 bg-white bg-blur">
                 <h3 class="title text-xl">{phases[2].title}</h3>
                 <p>{phases[2].description}</p>
+                <h4 className="bg-[#87a5cb] text-black rounded-full w-fit border-1 border-black py-1 px-2 font-medium mx-auto">{phases[2].Date}</h4>
               </div>
             </div>
           </div>
