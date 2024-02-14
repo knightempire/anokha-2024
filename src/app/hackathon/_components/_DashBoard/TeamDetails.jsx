@@ -11,13 +11,17 @@ const TeamDetails = ({
   platform,
   platformID,
   teamMembers,
+  teamStatus,
 }) => {
   return (
     <div className="w-full bg-[#172786] text-white rounded-xl text-lg">
       <div className="flex flex-col space-y-4 p-7 text-black rounded my-1 bg-opacity-80 space-between">
-        <h1 className="text-white font-light text-[2rem]">
-          Welcome {teamName}!
+        <h1 className="text-white  text-center font-light text-[2rem]">
+          Welcome <i className="font-bold">{teamName}</i>
         </h1>
+        <h3 className="mx-auto text-white font-normal bg-[rgba(255,255,255,0.5)] py-1 px-2 rounded-2xl">
+          You are currently in Round {teamStatus}
+        </h3>
         <p className="w-full text-center font-light test-md mt-3 text-white">
           Team Details
         </p>
