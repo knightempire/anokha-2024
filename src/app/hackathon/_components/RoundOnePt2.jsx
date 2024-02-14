@@ -68,7 +68,7 @@ const RoundOnePt2 = ({
                   type="text"
                   value={pdf_val}
                   onChange={(e) => pdf(e.target.value)}
-                  placeholder="Enter PDF Link Here"
+                  placeholder="Enter PDF Link Here (Required)"
                   className="w-full py-3 px-4 mt-4 rounded"
                   required
                 />

@@ -10,7 +10,7 @@ export default function ROund1NotFound({router}) {
         </div>
         <div>
           <button className="before:ease mx-auto mt-8 relative h-12 w-40 bg-blue-800 overflow-hidden border rounded border-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
-          onClick={()=>router.replace("/hackathon/round1")}
+          onClick={()=>router.push("/hackathon/round1")}
           >
             Submit Now
           </button>

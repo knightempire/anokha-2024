@@ -6,10 +6,16 @@ import oneapilogo from "../images/oneAPI-rgb-3000.png";
 import { IoLocation } from "react-icons/io5";
 import { Button,Chip} from "@material-tailwind/react";
 import { useRouter } from 'next/navigation'
+import { FaAngleDoubleDown } from "react-icons/fa";
 
 function IntelHero( {userState,displayResult}) {
   const router = useRouter()
-
+  const handleScrollMore =()=>{
+    window.scrollTo({
+      top: window.scrollY + 700, // Adjust the value as needed for your desired scroll distance
+      behavior: 'smooth' // Optional: Smooth scrolling animation
+    });
+  }
   return (
     // <div className="hero py-12 bg-gradient-to-t from-blue-500 to-purple-700">
     //     <div className="hero-content md:px-0 px-4 max-w-6xl flex-col lg:flex-row-reverse">
@@ -67,9 +73,15 @@ function IntelHero( {userState,displayResult}) {
               }
           </div>
         </div>
+   
         
       </div>
+
+      {/* <div className="absolute inset-0 flex justify-center items-center">
+      <div onClick={handleScrollMore} className="bg-white tex animate-bounce absolute top-[92%]  w-60 rounded-full px-3 py-2 flex items-center justify-center">Scroll More  <FaAngleDoubleDown className="ml-2"/></div>
+      </div> */}
     </div>
+
   );
 }
 

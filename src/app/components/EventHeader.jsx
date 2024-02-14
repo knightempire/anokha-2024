@@ -20,7 +20,7 @@ const navLinks = [
     path: "/comingSoon",
   },
   {
-    title: "Eventide",
+    title: "EventTide",
     path: "/comingSoon",
   },
   {
@@ -128,10 +128,10 @@ const Navigationbar = () => {
             {isLoggedIn === 1 ? (
               <ProfileCard email={email} />
             ) : (
-              <div className="md:block relative inline-flex  group">
-                <div className="absolute transitiona-all w-[180px] h-[30px]   duration-1000 opacity-70  -inset-px bg-gradient-to-r from-[#ffffff] via-[#76adfa] to-[#0659ff] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+              <div className=" relative inline-flex  group">
+                <div className="hidden md:block absolute transitiona-all w-[180px] h-[30px]   duration-1000 opacity-70  -inset-px bg-gradient-to-r from-[#ffffff] via-[#76adfa] to-[#0659ff] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
                 <Button
-                  className="relative inline-flex items-center justify-center px-6 py-2 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900"
+                  className="relative  inline-flex items-center w-[100px] md:w-[200px] justify-center px-2  md:px-2 md:py-2 md:text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900"
                   onClick={handleForgetPassword}
                 >
                   Login / Sign Up
