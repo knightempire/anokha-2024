@@ -33,7 +33,7 @@ const navLinks = [
   },
   {
     title: "Contact Us",
-    path: "/contactus",
+    path: "/",
   },
 ];
 

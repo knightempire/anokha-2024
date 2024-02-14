@@ -16,13 +16,28 @@ export default function FirstRegister({
   NoofMembers,
   platform,
   platformID,
-  registeredEmail
+  registeredEmail,
+  router
 }) {
   const [switchVal, setSwitch] = useState(0);
 
   useEffect(() => {
+    platform[0]=="anokha"?platformID[1](registeredEmail):"";
+  }, [router,platformID,registeredEmail, platform]);
+
+  useEffect(() => {
     console.log(NoofMembers[0], switchVal);
   }, [switchVal]);
+
+  console.log(TeamName[0] == "", //||
+  platformID[0] == "", //||
+  platformID[0],
+  (platformID[0] != "", //&&
+    platformID[0] != null, //&&
+    platformID[0] != undefined, //&&
+    !validator.isEmail(platformID[0].trim()) //||
+    ));
+
   return (
     <div className="md:w-[560px]  h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
       {/* <Image
@@ -152,7 +167,7 @@ export default function FirstRegister({
                     (platformID[0] != "" &&
                       platformID[0] != null &&
                       platformID[0] != undefined &&
-                      !validator.isEmail(platformID[0]))
+                      !validator.isEmail(platformID[0].trim()))
                   }
                 >
                   <span relative="relative z-10 text-xl ">Next</span>
