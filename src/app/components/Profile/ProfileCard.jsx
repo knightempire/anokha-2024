@@ -47,7 +47,7 @@ export default function ProfileCard({ email }) {
 
   const handleLogOut = () => {
     secureLocalStorage.clear();
-    window.location.reload();
+    window.location.href = "/login";
   };
 
   const handleProfileClick = () => {
