@@ -36,18 +36,6 @@ const Themes = () => {
      
     },
     {
-      text: "Autonomous Vehicles",
-      problemStatements: [
-        ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
-      ],
-    },
-    {
-      text: "Cyber Security",
-      problemStatements: [
-        ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
-      ],
-    },
-    {
       text: "Open Ended",
       problemStatements: [
         ["DeepFake Detection Shield", "Deep-Fake encompasses various technologies employed to create audio, image, and video hoaxes. The widespread accessibility of these tools has led to an unprecedented surge in AI-driven content generation. However, the unauthorized use of individuals' information to create such hoaxes raises significant concerns. In this track, participants are tasked with devising techniques to detect Deep-Fakes, addressing the need to safeguard against the misuse of personal data in fabricated media content."],
@@ -126,13 +114,11 @@ const Themes = () => {
             ))}
           </div> */}
 
-        <div id="tabbed-component" className="pt-3 pb-3 flex flex-wrap justify-center mt-2 mb-2 ml-10 mr-10 rounded bg-opacity-20 bg-white md:gap-6 sm:gap-2">
+        <div id="tabbed-component" className="pt-3 pb-3 sm:px-2 flex flex-wrap justify-center mb-2 ml-10 mr-10 rounded bg-opacity-20 bg-white md:gap-6 sm:gap-2">
             <Button label="Generative AI" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 0 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(0)}/>
             <Button label="Internet of Things" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 1 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(1)}/>
             <Button label="HealthCare" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 2 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(2)}/>
-            <Button label="Autonomous Vehicles" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 3 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(3)}/>
-            <Button label="Cyber Security" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 4 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(4)}/>
-            <Button label="Open Ended" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 5 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(5)}/>
+            <Button label="Open Ended" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 3 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(3)}/>
 
             {data.map((val, index) => (
               <div
