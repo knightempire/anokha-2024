@@ -53,8 +53,15 @@ const FAQs = () => {
     ]
   return (
     <div className='bg-gradient-to-r from-[#0A113A] to-blue-800  w-full h-full py-[60px]'>
-      <h1 className="text-[3rem] font-bold text-center text-white md:pb-2">FAQs</h1>
       <div className='md:w-[70%] mx-auto sm:w-[90%]'>
+        <Accordion key={0} className="rounded my-2 p-2">
+            <AccordionSummary
+                expandIcon={<ArrowDownwardIcon />}
+                aria-controls='panel1-content'
+                id='faq-header'>
+                <Typography className='font-bold text-center border-black b-4 px-7 py-1 text-xl text-black'>FAQ Section</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
         {qna.map((val, index) =>(
             <Accordion key={index} className='rounded my-2 p-2'>
             <AccordionSummary 
@@ -70,6 +77,10 @@ const FAQs = () => {
             </AccordionDetails>
         </Accordion>
         ))}
+
+            </AccordionDetails>
+        </Accordion>
+
       </div>
     </div>
   )
