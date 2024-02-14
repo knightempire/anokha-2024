@@ -4,12 +4,10 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import { FaPlus } from "react-icons/fa6";
-import { TabView, TabPanel } from 'primereact/tabview';
+import { Button } from "primereact/button";
         
 const Themes = () => {
   const [selectedTab, setSelectedTab] = useState(0);
-    const [activeIndex, setActiveIndex] = useState(0);
-
 
   const themes = [
     {
@@ -22,7 +20,7 @@ const Themes = () => {
       ],
     },
     {
-      text: "IOT",
+      text: "Internet Of Things",
       problemStatements: [
         ["Smart Classroom Environment Control System", "Create an innovative solution for optimizing energy consumption and enhancing user comfort in large spaces, such as classrooms or expansive rooms with multiple fans, lights, and AC units. Develop a system that integrates IoT devices and AI algorithms to intelligently control individual appliances based on occupancy. The objective is to dynamically activate and deactivate fans, lights, and AC units in response to the presence or absence of individuals within specific zones, ensuring efficient resource utilization and a comfortable environment. "],
         ["Smart Farming Hackathon Challenge", "Design an intelligent farming system that harmoniously integrates IoT and AI technologies. Your mission is to develop a solution that monitors soil moisture, temperature, and crop health through IoT sensors. Implement AI algorithms for predicting optimal time for planting crops, and detecting potential diseases. With a focus on resource optimization and informed decision-making, empower farmers to elevate crop yield and enhance overall crop management practices. "],
@@ -36,18 +34,6 @@ const Themes = () => {
         ["Multimodal Mental Health Assessment", "With increasing number of mental health related concerns, tools for early detection of deteriorating mental health and depression is necessary to maintain a healthy community. In this track, you are tasked to build a multimodal mental health assessment suite, that analyzes the mental health condition of an individual by  (1) Analyzing the video of the person. Specifically, by analyzing facial expressions and body language. (2) Analyzing the audio of the person. (3) You may also utilize some standard scales available for mental health assessment to support your model. Develop an innovative approach for mental health assessment by combining NLP analysis of patient interviews and written responses with CV analysis of facial expressions and body language. The system should provide a nuanced understanding of mental health conditions, aiding in more accurate diagnostics and treatment planning."], ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
       ],
      
-    },
-    {
-      text: "Autonomous Vehicles",
-      problemStatements: [
-        ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
-      ],
-    },
-    {
-      text: "Cyber Security",
-      problemStatements: [
-        ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
-      ],
     },
     {
       text: "Open Ended",
@@ -97,10 +83,10 @@ const Themes = () => {
   return (
 
     <div>
-      <div className="h-full w-full bg-[#0A113A] relative overflow-hidden mt-5">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[30%] sm:w-[70%] p-8 rounded-full left-[10%] top-10 md:h-[30%] sm:h-[30%] blur-3xl levitate"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[80%] top-10 md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[20%] top-[40%] md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>
+      <div className="h-full w-full bg-[#0A113A] relative overflow-hidden px-[5%]">
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[30%] sm:w-[70%] p-8 rounded-full left-[10%] top-10 md:h-[30%] sm:h-[30%] blur-3xl levitate"></div> */}
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[80%] top-[20%] md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>  */}
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[20%] top-[40%] md:h-[40%] sm:h-[30%] blur-3xl levitate"></div> */}
 
         <div className="font-poppins h-[100%] mt-[30px]">
           <p className="font-bold text-[3rem] w-fit mx-auto relative z-10 rounded-xl text-white mt-4">
@@ -128,50 +114,14 @@ const Themes = () => {
             ))}
           </div> */}
 
-        <div id="tabbed-component">
-           <TabView className="mb-9 md:ustify-center gap-5 bg-white bg-opacity-20 backdrop-blur-3xl rounded mx-auto md:w-[80%] sm:w-[90%] py-8 sm:px-6 md:px-0 shadow-xl">
-                <TabPanel header="GenerativeAI">
-                    <p className="m-0">
-                      <h1 className="text-center text-white font-bold text-3xl">Generative AI</h1>
-                      <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
+ 
+        <div id="tabbed-component" className="pt-10 sm:px-2 md:w-fit sm:w-full flex flex-wrap justify-center mb-2 mx-0 my-5 rounded bg-opacity-20 bg-white md:gap-6 sm:gap-2 ">
+ 
+            <Button label="Generative AI" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 0 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(0)}/>
+            <Button label="Internet of Things" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 1 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(1)}/>
+            <Button label="HealthCare" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 2 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(2)}/>
+            <Button label="Open Ended" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 3 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(3)}/>
 
-                    </p>
-                </TabPanel>
-                <TabPanel header="IOT">
-                    <p className="m-0">
-                      <h1 className="text-center text-white font-bold text-3xl">Internet of Things</h1>
-                      <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                    </p>
-                </TabPanel>
-                <TabPanel header="HealthCare">
-                    <p className="m-0">
-                      <h1 className="text-center text-white font-bold text-3xl">HealthCare</h1>
-                      <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                    </p>
-                </TabPanel>
-                <TabPanel header="Autonomous Vehicles">
-                    <p className="m-0">
-                      <h1 className="text-center text-white font-bold text-3xl">Autonomous Vehicles</h1>
-                      <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                    </p>
-                </TabPanel>
-                <TabPanel header="Cyber Security">
-                    <p className="m-0">
-                      <h1 className="text-center text-white font-bold text-3xl">Cyber Security</h1>
-                      <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                    </p>
-                </TabPanel>
-                <TabPanel header="Open Ended">
-                    <p className="m-0">
-                      <h1 className="text-center text-white font-bold text-3xl">Open-Ended</h1>
-                      <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                    </p>
-                </TabPanel>
-            </TabView> 
-        </div>
-
-        {/* Div to remove */}
-          <div className="mt-4">
             {data.map((val, index) => (
               <div
                 key={index}
@@ -185,7 +135,9 @@ const Themes = () => {
                         selectedTab === index ? "block" : "hidden"
                       }`}
                     >
-                      <div className="mb-9 md:justify-center gap-5 bg-white bg-opacity-20 backdrop-blur-3xl rounded mx-auto md:w-[80%] sm:w-[90%] py-8 sm:px-6 md:px-0 shadow-xl">
+ 
+                      <div className="mb-9 md:justify-center gap-5 rounded mx-auto md:w-[80%] sm:w-full py-3 sm:px-3 md:px-0">
+ 
                       <h1 className="text-center text-white font-bold text-3xl">{themes[selectedTab].text}</h1>
                       <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
                         {themes[selectedTab].problemStatements.map(
@@ -223,6 +175,11 @@ const Themes = () => {
                 </div>
               </div>
             ))}
+
+        </div>
+
+        {/* Div to remove */}
+          <div className="mt-4">
           </div>
         </div>
       </div>

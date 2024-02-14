@@ -11,7 +11,6 @@ import IeteInfo from './_components/IeteInfo'
 import {Button } from "@material-tailwind/react";
 import HeroSection from './_components/HeroSection'
 import IntelHero from './_components/IntelHero'
-import Phases from './_components/Phases'
  
 import { useState,useEffect } from 'react'
 import RoundOne from './_components/RoundOne'
@@ -101,7 +100,7 @@ export default function Page() {
             setUserState(0)
             SignOut()
             setTimeout(() => {
-              router.replace("/login");
+              router.push("/login");
             }, 1500)
               
           }
@@ -149,10 +148,11 @@ export default function Page() {
     }
   return (
   
+ 
         <div className="overflow-x-hidden w-full bg-gray-200"> 
-            
+ 
+ 
         <Navbar />
-        
         {/* <div className='flex-1 min-h-screen bg-[#193056] flex items-center justify-center'>
              HERO LANDER
             <Button variant='text'>Materials</Button>
@@ -165,9 +165,8 @@ export default function Page() {
         <IntelHero userState={userState} displayResult={displayResult} />
        
         <Price />
+        
         <About/>
-        <Phases/>
-        <SubGuidelines/>
         <Themes />
         <Timeline/>  
         <FAQs/>

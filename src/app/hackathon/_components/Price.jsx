@@ -34,12 +34,12 @@ export default function Price() {
     });
   };
   return (
-    <div className=" ">
+    <div className="">
         <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:ml-[20%]  sm:ml-[10%] mb-20">
             <div>
                 <div className="flex flex-row gap-4 items-center justify-start  mt-12">
                     <FaTrophy size="30" color="#1c5dad"/>
-                    <div className="md:text-2xl sm:text-xl capitalize">Prize money upto <span className="font-black md:text-3xl sm:text-2xl text-[#3306B5] ">₹1,25,000/-</span></div>
+                    <div className="md:text-2xl sm:text-xl capitalize  sm:px-2 md:px-0">Prize money upto <span className="font-black md:text-3xl sm:text-2xl text-[#3306B5] ">₹1,25,000/-</span></div>
                 </div>
 
                 <div className="flex flex-row gap-4 items-center justify-start mt-12">
@@ -53,7 +53,7 @@ export default function Price() {
             </div>
 
             <div className="flex flex-col">
-                <div className="flex flex-row gap-2 mt-10 md:w-[40%] sm:w-full ">
+                <div className="flex flex-row gap-2 mt-10 md:w-[40%] sm:w-full">
                     <div className="mt-3 text-xl ml-3">Last Date To Register<br/> 
                     <span className="font-bold text-center text-[2rem]">29 Feb 2023</span></div>
                 </div>
@@ -76,13 +76,12 @@ export default function Price() {
                  {/* Timer here if possible  */}
 
               <div>
-              <Button onClick={(e)=>{router.replace("/hackathon/register")}} className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-4  rounded-[5px] mt-3 ml-3">
+              <Button onClick={(e)=>{router.push("/hackathon/register")}} className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-4  rounded-[5px] mt-3 ml-3">
               Registrations Open!
             </Button>
               </div>
             </div>
         </div>
     </div>
-    
   )
 }

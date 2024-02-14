@@ -23,7 +23,7 @@ const rules = [
 const SubGuidelines = () => {
   return (
     <div>
-      <div className='w-full h-full my-2 mt-2'>
+      <div className='w-full h-full my-2 mt-10'>
         {rules.map((val, id)=>(
             <div key={id} className='bg-blue-900 md:w-[80%] sm:w-[95%] mx-auto odd:rounded-bl-[50px] even:rounded-br-[50px]'>
                 <div className=' mb-10 rounded-tr-none rounded-bl-none '>

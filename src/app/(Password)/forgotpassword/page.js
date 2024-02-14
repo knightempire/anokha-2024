@@ -68,7 +68,7 @@ export default function ForgetPassword() {
           toastRef
         );
         setTimeout(() => {
-          router.replace("/resetpassword");
+          router.push("/resetpassword");
         }, 1500);
       } else if (response.status === 400) {
         ToastAlert(
