@@ -24,7 +24,7 @@ export function SimpleCard() {
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
-              className="w-[95%] mx-auto"
+              className="w-[100%] mx-auto"
             ></iframe>
             <p className="text-lg">What’s new in Material Design for the web (Chrome Dev Summit 2019)</p> 
         </div>
