@@ -83,10 +83,10 @@ const Themes = () => {
   return (
 
     <div>
-      <div className="h-full w-full bg-[#0A113A] relative overflow-hidden mt-5">
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[30%] sm:w-[70%] p-8 rounded-full left-[10%] top-10 md:h-[30%] sm:h-[30%] blur-3xl levitate"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[80%] top-10 md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[20%] top-[40%] md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>
+      <div className="h-full w-full bg-[#0A113A] relative overflow-hidden mt-5 px-[5%]">
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[30%] sm:w-[70%] p-8 rounded-full left-[10%] top-10 md:h-[30%] sm:h-[30%] blur-3xl levitate"></div> */}
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[80%] top-10 md:h-[40%] sm:h-[30%] blur-3xl levitate"></div> 
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[20%] top-[40%] md:h-[40%] sm:h-[30%] blur-3xl levitate"></div> */}
 
         <div className="font-poppins h-[100%] mt-[30px]">
           <p className="font-bold text-[3rem] w-fit mx-auto relative z-10 rounded-xl text-white mt-4">
@@ -114,7 +114,7 @@ const Themes = () => {
             ))}
           </div> */}
 
-        <div id="tabbed-component" className="pt-3 pb-3 sm:px-2 flex flex-wrap justify-center mb-2 ml-10 mr-10 rounded bg-opacity-20 bg-white md:gap-6 sm:gap-2">
+        <div id="tabbed-component" className="pt-10 sm:px-2 md:w-fit sm:w-full flex flex-wrap justify-center mb-2 mx-0 my-5 rounded bg-opacity-20 bg-white md:gap-6 sm:gap-2 ">
             <Button label="Generative AI" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 0 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(0)}/>
             <Button label="Internet of Things" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 1 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(1)}/>
             <Button label="HealthCare" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 2 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(2)}/>
@@ -133,7 +133,7 @@ const Themes = () => {
                         selectedTab === index ? "block" : "hidden"
                       }`}
                     >
-                      <div className="mb-9 md:justify-center gap-5 rounded mx-auto md:w-[80%] sm:w-[90%] py-8 sm:px-6 md:px-0">
+                      <div className="mb-9 md:justify-center gap-5 rounded mx-auto md:w-[80%] sm:w-full py-3 sm:px-3 md:px-0">
                       <h1 className="text-center text-white font-bold text-3xl">{themes[selectedTab].text}</h1>
                       <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
                         {themes[selectedTab].problemStatements.map(
