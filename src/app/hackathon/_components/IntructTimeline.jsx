@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
-const Timeline = () => {
+const TimelineInstruct = () => {
   const container = useRef(null);
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -37,35 +37,52 @@ const Timeline = () => {
       duration: 0.5,
       ease: "power4.out",
     });
+    tl.from(container.current.children[3].children[1], {
+      opacity: 0,
+      scale: 0.5,
+      x: -300,
+      duration: 0.5,
+      ease: "power4.out",
+    });
+    tl.from(container.current.children[4].children[1], {
+      opacity: 0,
+      scale: 0.5,
+      x: 300,
+      duration: 0.5,
+      ease: "power4.out",
+    });
   });
 
   const phases = [
     {
-            title: "Round 1: Ideation",
+            title: "Feb 15th - 29th",
       description:
-"During this initial phase, participants are tasked with brainstorming ideas centred around the provided problem statements. They are required to submit a PowerPoint presentation along with a concise description that clearly explains the proposed concept, with specific reference to the Intel toolkit employed.",
-        Date: "February 15th - 29th"
-
-
-},
+        "Registrations and submissions for first round",
+    },
     {
-            title: "Round 2: Prototype Development",
+            title: "March 2nd",
       description:
-"The resources essential for building with OneAPI can be found in the learning resources section. Prototypes are to be shared through GitHub repositories, with a link to DevMesh."
-,Date: "March 2nd - 20th"    
-},
+        "Announcement for shortlisted teams for 2nd round (prototype )",
+    },
     {
-            title: "Round 3: Final Round",
+            title: "March 2nd to 20th",
       description:
-"Shortlisted participants will advance to the culminating 24-hour offline hackathon hosted at Amrita Vishwa Vidyapeetham, Coimbatore. During the grand finale, participants are required to bring their laptops and develop their prototypes into end products."
-,Date: "April 4th - 5th",    
+        "Prototype development",
+    },{
+            title: "March 22nd",
+      description:
+        "Announcement for the shortlisted teams for offline round",
+    },{
+            title: "April 4th - 5th",
+      description:
+        "24 hour offline hackathon (final round)",
 },
   ];
 
   return (
     <div className="w-full bg-[#0A113A] pt-10  overflow-hidden">
       <h1 className="text-[3rem] font-bold text-center text-white mt-6">
-        Hackathon Phases
+        Hackathon Timeline
       </h1>
       <div className="flex justify-items-center">
         <div class="timeline">
@@ -75,7 +92,6 @@ const Timeline = () => {
               <div class="info relative bg-opacity-60 bg-white bg-blur">
                 <h3 class="title text-xl">{phases[0].title}</h3>
                 <p>{phases[0].description}</p>
-                <h4 className="bg-[#87a5cb] text-black rounded-full w-fit border-1 border-black py-1 px-2 font-medium mx-auto">{phases[0].Date}</h4>
               </div>
             </div>
 
@@ -84,7 +100,6 @@ const Timeline = () => {
               <div class="info relative bg-opacity-60 bg-white bg-blur">
                 <h3 class="title text-xl">{phases[1].title}</h3>
                 <p>{phases[1].description}</p>
-                <h4 className="bg-[#87a5cb] text-black rounded-full w-fit border-1 border-black py-1 px-2 font-medium mx-auto">{phases[1].Date}</h4>
               </div>
             </div>
 
@@ -93,7 +108,20 @@ const Timeline = () => {
               <div class="info relative bg-opacity-60 bg-white bg-blur">
                 <h3 class="title text-xl">{phases[2].title}</h3>
                 <p>{phases[2].description}</p>
-                <h4 className="bg-[#87a5cb] text-black rounded-full w-fit border-1 border-black py-1 px-2 font-medium mx-auto">{phases[2].Date}</h4>
+              </div>
+            </div>
+            <div class="card">
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[-30px] absolute blur-3xl levitate"></div>
+              <div class="info relative bg-opacity-60 bg-white bg-blur">
+                <h3 class="title text-xl">{phases[3].title}</h3>
+                <p>{phases[3].description}</p>
+              </div>
+            </div>
+            <div class="card">
+              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[-30px] absolute blur-3xl levitate"></div>
+              <div class="info relative bg-opacity-60 bg-white bg-blur">
+                <h3 class="title text-xl">{phases[4].title}</h3>
+                <p>{phases[4].description}</p>
               </div>
             </div>
           </div>
@@ -103,4 +131,4 @@ const Timeline = () => {
   );
 };
 
-export default Timeline;
+export default TimelineInstruct;

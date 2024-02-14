@@ -15,31 +15,14 @@ import CountdownTimer from "@/app/components/Counter";
 export default function Price() {
   const [currentState, setCurrentState] = useState("guest");
   const router = useRouter()
-  useEffect(() => {}, []);
-
-  const getButtonText = () => {
-    switch (currentState) {
-      case "guest":
-        return "Register";
-      case "registered":
-        return "View Details";
-      default:
-        return "Register";
-    }
-  };
-
-  const handleStateChange = () => {
-    setCurrentState((prevState) => {
-      return prevState === "guest" ? "registered" : "guest";
-    });
-  };
+ 
   return (
     <div className="">
         <div className="grid lg:grid-cols-2 sm:grid-cols-1 md:ml-[20%]  sm:ml-[10%] mb-20">
             <div>
                 <div className="flex flex-row gap-4 items-center justify-start  mt-12">
                     <FaTrophy size="30" color="#1c5dad"/>
-                    <div className="md:text-2xl sm:text-xl capitalize  sm:px-2 md:px-0">Prize money upto <span className="font-black md:text-3xl sm:text-2xl text-[#3306B5] ">₹1,25,000/-</span></div>
+                    <div className="md:text-2xl sm:text-xl capitalize  sm:px-2 md:px-0">Prize money upto <span className="font-black md:text-3xl sm:text-2xl text-[#1c5dad] ">₹1,25,000/-</span></div>
                 </div>
 
                 <div className="flex flex-row gap-4 items-center justify-start mt-12">

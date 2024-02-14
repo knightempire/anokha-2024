@@ -20,7 +20,7 @@ const navLinks = [
     path: "/comingSoon",
   },
   {
-    title: "EventTide",
+    title: "Eventide",
     path: "/comingSoon",
   },
   {
@@ -33,7 +33,7 @@ const navLinks = [
   },
   {
     title: "Contact Us",
-    path: "/contactus",
+    path: "/",
   },
 ];
 
