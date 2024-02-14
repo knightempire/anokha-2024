@@ -12,6 +12,7 @@ export const STUDENT_RESET_PASSWORD_URL = BASE_URL + "/resetPasswordStudent";
 export const HACKATHON_TEAM_REGISTER_URL =  HACKATHON_URL + "/registerTeam"; 
 export const HACKATHON_DASHBOARD_URL =  HACKATHON_URL + "/getDashBoard"; 
 export const HACKATHON_FIRST_ROUND_SUBMISSION_URL = HACKATHON_URL + "/submitFirstRound";
+export const HACKATHON_EDIT_FIRST_ROUND_SUBMISSION_URL = HACKATHON_URL + "/editFirstRoundSubmission";
 export const ALL_EVENTS_URL = BASE_URL + "/user/getAllEvents";
 export const EVENT_DATA_URL = BASE_URL + "/user/getEventData";
 export const STAR_UNSTAR_EVENT_URL = BASE_URL + "/user/toggleStarredEvent";
