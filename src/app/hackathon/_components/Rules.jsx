@@ -22,7 +22,7 @@ const rules = [
             " Optionally, include the GitHub repository link for the ideation phase.",
             "Timely submission through the hackathon dashboard is crucial to avoid disqualification.",
             "Submitting a video that explains your idea and the problem statement will increase your team's chances of qualifying for the next round.",
-            "Only the top 25 teams will qualify for round 2."
+            "Only the top 100 teams will qualify for round 2."
         ]
     },
     {

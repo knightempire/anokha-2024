@@ -5,6 +5,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import { FaPlus } from "react-icons/fa6";
 import { Button } from "primereact/button";
+import { FaDownload } from "react-icons/fa";
         
 const Themes = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -175,7 +176,6 @@ const Themes = () => {
                 </div>
               </div>
             ))}
-
         </div>
 
         {/* Div to remove */}

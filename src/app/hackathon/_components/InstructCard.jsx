@@ -8,8 +8,8 @@ import {
 
 export function SimpleCard() {
   return (
-    <Card className="mt-10 sm:w-[200px] md:mx-auto md:w-full rounded-lg shadow-lg bg-white mx-6 ls:w-[400px]">
-      <CardBody className="p-6 sm:w-[200px] md:w-[400px] lg:w-[600px] h-full">
+    <Card className="mt-10 sm:w-[80%] md:mx-auto md:w-full rounded-lg shadow-lg bg-white mx-6 lg:w-[150%]  sm:ml-[10%] lg:right-[20%] relative">
+      <CardBody className="p-6 sm:w-[100%] md:w-[100%] lg:w-[100%] h-full">
         <div className="w-full h-full sm:mx-2">
           <iframe
             width="102"

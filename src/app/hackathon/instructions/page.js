@@ -10,6 +10,7 @@ import Rules from '../_components/Rules';
 import Judging from '../_components/Judging';
 import Navigationbar from '@/app/components/EventHeader';
 import Footer from '@/app/components/Footer';
+import TimelineInstruct from '../_components/IntructTimeline';
 import { FaAngleDoubleDown } from "react-icons/fa";
 
 const Home = () => {
@@ -43,6 +44,7 @@ const Home = () => {
     </div>
     <Image src={flowChart} width={1050} alt="intel flowchart" className="mx-auto" />
     <SubGuidelines/>
+    <TimelineInstruct/>
     <Resources />
     <Rules/>
     <Judging/>
