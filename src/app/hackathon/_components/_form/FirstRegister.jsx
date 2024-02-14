@@ -8,13 +8,16 @@ import { FaArrowRight } from "react-icons/fa";
 import validator from "validator";
 import oneapilogo from "../../images/oneAPI-rgb-3000.png";
 import { RiTeamFill } from "react-icons/ri";
-import Link from 'next/link'
+import Link from "next/link";
+
 
 export default function FirstRegister({
   handle_buttonone_click,
   TeamName,
   NoofMembers,
   platform,
+  platformEmail,
+  registeredEmail
 }) {
   const [switchVal, setSwitch] = useState(0);
   useEffect(() => {
@@ -104,12 +107,12 @@ export default function FirstRegister({
                 <div className="md:flex">
                   <select
                     value={platform[0]}
-                    onChange={(e)=> platform[1](e.target.value)}
+                    onChange={(e) => platform[1](e.target.value)}
                     id="platform"
-                    className="bg-transparent mr-2 border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5 border-y-1"
+                    className="bg-transparent mr-2 border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5 border-y-1"
                   >
-                    <option value="none" defaultValue>
-                      None
+                    <option value="anokha" defaultValue>
+                      Anokha
                     </option>
                     <option value="devfolio">DevFolio</option>
                     <option value="unstop">Unstop</option>
@@ -119,17 +122,23 @@ export default function FirstRegister({
                     type="text"
                     name="platformid"
                     id="platformid"
-                    value={platform[0]}
+                    value={platform[0]=="anokha"?registeredEmail:platformEmail[0]}
                     className="bg-transparent text-black border-2 border-gray-800 font-medium text-[16px] rounded-[5px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
                     placeholder="Platform email"
-                    onChange={(e) => platform[1](e.target.value)}
+                    onChange={(e) => platformEmail[1](e.target.value)}
                   />
                 </div>
               </div>
             </div>
-            
-            <Link href="https://console.cloud.intel.com/" className="w-fit mx-auto" target="_blank">
-            <Button  className="bg-blue-800 sm:my-2">Click here to get your IDC ID!</Button>
+
+            <Link
+              href="https://console.cloud.intel.com/"
+              className="w-fit mx-auto"
+              target="_blank"
+            >
+              <Button className="bg-blue-800 sm:my-2">
+                Click here to get your IDC ID!
+              </Button>
             </Link>
 
             <div className="flex mx-auto flex-col">
@@ -140,14 +149,13 @@ export default function FirstRegister({
                   disabled={
                     TeamName[0] == "" ||
                     platform[0] == "" ||
-                    !validator.isEmail(platform[0])
+                    !validator.isEmail(platformEmail[0])
                   }
                 >
                   <span relative="relative z-10 text-xl ">Next</span>
                 </Button>
               </div>
             </div>
-
           </div>
         </div>
       </div>
