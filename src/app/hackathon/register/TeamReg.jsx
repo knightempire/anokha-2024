@@ -21,7 +21,7 @@ const Register = () => {
   const router = useRouter();
   const [teamName, setTeamName] = useState("");
   const [noofMembers, setNoofMembers] = useState(3);
-  const [platform, setPlatform] = useState("Anokha");
+  const [platform, setPlatform] = useState("anokha");
   const [selectedPlatformId, setSelectedPlatformID] = useState("");
   const [member1Email, setMember1Email] = useState("");
   const [member1IDC, setMember1IDC] = useState("");
@@ -103,6 +103,7 @@ const Register = () => {
         },
         body: JSON.stringify({
           teamName: teamName,
+          //platformType: platform == "anokha"?
           devfolioId: platform === "Devfolio" ? selectedPlatformId : "",
           unstopId: platform === "Unstoppable" ? selectedPlatformId : "",
           devpostId: platform === "DevPost" ? selectedPlatformId : "",

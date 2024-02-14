@@ -18,6 +18,7 @@ export default function Page({ router }) {
   const [registerToken, setRegisterToken] = useState("");
   const [responseData, setResponseData] = useState("");
   const [detailsJson, setDetailsJson] = useState("");
+  const [teamStatus, setTeamStatus] = useState("");
   useEffect(() => {
     setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
     setRegisterToken(secureLocalStorage.getItem("registerToken"));
@@ -39,12 +40,18 @@ export default function Page({ router }) {
         const details = JSON.parse(detailsJson);
         setTeamName(details.teamName);
         setNoOfMembers(details.totalMembers);
-        setPlatform("DevPost");
+        let platformType;
+        if (details.platformType=="1") platformType = "Anokha"
+        else if (details.platformType=="2") platformType = "Devfolio"
+        else if (details.platformType=="3") platformType = "Unstop"
+        else if (details.platformType=="4") platformType = "Devpost"
+        setPlatform(platformType);
         setPlatformID(details.platformId);
         setTeamMembers(details.teamMembers);
         setRoundOneSub(details.firstRoundSubmission);
         setRoundTwoSub(details.secondRoundSubmission);
-        console.log(details.firstRoundSubmission, RoundOneSub)
+        setTeamStatus(details.teamStatus);
+        console.log(details.firstRoundSubmission, RoundOneSub);
       } catch (error) {
         console.error("Error parsing JSON:", error);
       }
@@ -115,6 +122,7 @@ export default function Page({ router }) {
             platform={platform}
             platformID={platformID}
             teamMembers={teamMembers}
+            teamStatus={teamStatus}
           />
         </div>
         <div className="justify-end w-[50%] bg-[#172786] px-3 flex-1">
@@ -122,16 +130,16 @@ export default function Page({ router }) {
             <button className="bg-[#0a113a] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg">
               Round 1
             </button>
-            <button className="bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg">
+            <button className="bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg cursor-not-allowed">
               Round 2
             </button>
-            <button className="bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg">
+            <button className="bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg cursor-not-allowed">
               Round 3
             </button>
           </div>
 
-          { RoundOneSub=='' || RoundOneSub==null || RoundOneSub==[] ? (
-            <Round1NotFound router={router}  />
+          {RoundOneSub == "" || RoundOneSub == null || RoundOneSub == [] ? (
+            <Round1NotFound router={router} />
           ) : (
             <RoundOneComp router={router} roundOneSubmission={RoundOneSub} />
           )}

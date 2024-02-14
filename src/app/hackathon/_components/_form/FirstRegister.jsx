@@ -16,7 +16,7 @@ export default function FirstRegister({
   NoofMembers,
   platform,
   platformID,
-  registeredEmail,
+  registeredEmail
 }) {
   const [switchVal, setSwitch] = useState(0);
 
@@ -109,9 +109,9 @@ export default function FirstRegister({
                     value={platform[0]}
                     onChange={(e) => platform[1](e.target.value)}
                     id="platform"
-                    className="bg-transparent mr-2 border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5 border-y-1"
+                    className="bg-transparent mr-2 border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-25 p-2.5 border-y-1"
                   >
-                    <option value="none" defaultValue>
+                    <option value="anokha" defaultValue>
                       Anokha
                     </option>
                     <option value="devfolio">DevFolio</option>
@@ -122,7 +122,7 @@ export default function FirstRegister({
                     type="email"
                     name="platformid"
                     id="platformid"
-                    value={platformID[0]}
+                    value={platform[0]=="anokha"?registeredEmail:platformID[0]}
                     className="bg-transparent text-black border-2 border-gray-800 font-medium text-[16px] rounded-[5px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
                     placeholder="Platform email"
                     onChange={(e) => platformID[1](e.target.value)}
