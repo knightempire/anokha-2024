@@ -8,31 +8,31 @@ import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
 import ToastAlert from "@/app/_util/ToastAlerts";
 
-import FirstRegister  from '@/app/hackathon/_components/_form/FirstRegister';
-import SecondRegister from '@/app/hackathon/_components/_form/SecondRegister';
-import ThirdRegister from '@/app/hackathon/_components/_form/ThirdRegister';
-import secureLocalStorage from 'react-secure-storage'
+import FirstRegister from "@/app/hackathon/_components/_form/FirstRegister";
+import SecondRegister from "@/app/hackathon/_components/_form/SecondRegister";
+import ThirdRegister from "@/app/hackathon/_components/_form/ThirdRegister";
+import secureLocalStorage from "react-secure-storage";
 
 import { useRouter } from "next/navigation";
- 
 
 const RegisterSteps = [FirstRegister, SecondRegister, ThirdRegister];
 const Register = () => {
-    const toastRef = useRef();
-    const router = useRouter();
-    const [teamName,setTeamName] = useState("")
-    const [noofMembers,setNoofMembers] = useState(3)
-    const [platform,setPlatform] = useState("")
-    const [member1Email, setMember1Email] = useState("")
-    const [member1IDC, setMember1IDC] = useState("")
-    const [member2Email, setMember2Email] = useState("")
-    const [member2IDC, setMember2IDC] = useState("")
-    const [member3Email, setMember3Email] = useState("")
-    const [member3IDC, setMember3IDC] = useState("")
-    const [member4Email, setMember4Email] = useState("")
-    const [member4IDC, setMember4IDC] = useState("")
-    const [currentStep, setCurrentStep] = useState(0);
-    const [memOneTwo, setMemONeTwo] = useState([]);
+  const toastRef = useRef();
+  const router = useRouter();
+  const [teamName, setTeamName] = useState("");
+  const [noofMembers, setNoofMembers] = useState(3);
+  const [platform, setPlatform] = useState("Anokha");
+  const [selectedPlatformId, setSelectedPlatformID] = useState("");
+  const [member1Email, setMember1Email] = useState("");
+  const [member1IDC, setMember1IDC] = useState("");
+  const [member2Email, setMember2Email] = useState("");
+  const [member2IDC, setMember2IDC] = useState("");
+  const [member3Email, setMember3Email] = useState("");
+  const [member3IDC, setMember3IDC] = useState("");
+  const [member4Email, setMember4Email] = useState("");
+  const [member4IDC, setMember4IDC] = useState("");
+  const [currentStep, setCurrentStep] = useState(0);
+  const [memOneTwo, setMemONeTwo] = useState([]);
 
   const [registerEmail, setRegisterEmail] = useState("");
   const [secretToken, setSecretToken] = useState("");
@@ -50,6 +50,8 @@ const Register = () => {
 
     setSecretToken(secureLocalStorage.getItem("registerToken"));
   }, []);
+
+  console.log(platform);
 
   const handle_button_next_click = () => {
     setCurrentStep(currentStep + 1);
@@ -70,21 +72,7 @@ const Register = () => {
   };
   const handle_button_register_click = async (e) => {
     try {
-      // Determine the selected platform ID based on the platform
-      let selectedPlatformId;
-      switch (platform) {
-        case "Devfolio":
-          selectedPlatformId = member1Email;
-          break;
-        case "Unstoppable":
-          selectedPlatformId = member2Email;
-          break;
-        case "DevPost":
-          selectedPlatformId = member3Email;
-          break;
-        default:
-          break;
-      }
+      // Determine the selected platform ID based on the platform}
 
       console.log(
         JSON.stringify({
@@ -139,13 +127,12 @@ const Register = () => {
         //   secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
         //   secureLocalStorage.setItem("registerEmail", email);
 
-          setTimeout(() => {
-            router.push("/hackathon");
-          }, 1500);
-          
-        } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
-          ToastAlert("error", "Registration Failed", data.MESSAGE, toastRef);
-        
+        setTimeout(() => {
+          router.push("/hackathon");
+        }, 1500);
+      } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
+        ToastAlert("error", "Registration Failed", data.MESSAGE, toastRef);
+
         // else {
         //   ToastAlert(
         //     "error",
@@ -157,114 +144,111 @@ const Register = () => {
         // }
 
         //  console.log(data);
-      } }catch (e) {
-        // ToastAlert("error", "Error", "Please try again!", toastRef);
-        console.log(e);
       }
-
-      // setLoading(false);
+    } catch (e) {
+      // ToastAlert("error", "Error", "Please try again!", toastRef);
+      console.log(e);
     }
-  
-     
-    const MemberList = [
-        {
-            name: registerEmail,
-            idc: member1IDC
-        }
-        ,
-        {
-            name: member2Email,
-            idc: member2IDC
-        }
-        ,
-        {
-            name: member3Email,
-            idc: member3IDC
-        },
-        {
-            name: member4Email,
-            idc: member4IDC
-        }
-    ]
 
-useEffect(()=>{
-  const mem_12 = {
-    "me1":registerEmail,
-    "mi1":member1IDC,
-    "me2":member2Email,
-    "mi2":member2IDC,
-  }
-  setMemONeTwo(mem_12);
-},[ member1IDC, member2Email, member2IDC])
+    // setLoading(false);
+  };
 
-    const Memberview =({member,idc,no})=> {
-        return(
-            
-                <div className="flex flex-col flex-1 space-y-5 ">
-                    <hr className="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700 w-"/>
-                    <p className='text-lg font-medium text-black text-center'>Member {no} Information</p>
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block mb-2 text-sm font-medium text-black">
-                        Member {no} : Email
-                      </label>
-                      <input
-                        // onChange={(e) => {
-                        //   setEmail(e.target.value);
-                        // }}
-                        type="email"
-                        name="email"
-                        id="email"
-                        className=" bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                        placeholder="eon@anokha.amrita.edu"
-                        required
-                      />
-                    </div>
-                      
-                    
-                      <div>
-                        <label
-                          htmlFor="idc"
-                          className="block mb-2 text-sm font-medium text-black"
-                        >
-                          Member {no} : Intel Dev Cloud ID
-                        </label>
-                        <input
-                        //   onChange={(e) => {
-                        //     setCollegeName(e.target.value);
-                        //   }}
-                          type="text"
-                          name="devcloudid"
-                          id="devcloudid"
-                        //   value={collegeName}
-                          className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                          placeholder="IDC ID"
-                        //   disabled={isAmrita}
-                        />
-                        
-                      </div>
-            </div>
-        )
-    }
+  const MemberList = [
+    {
+      name: registerEmail,
+      idc: member1IDC,
+    },
+    {
+      name: member2Email,
+      idc: member2IDC,
+    },
+    {
+      name: member3Email,
+      idc: member3IDC,
+    },
+    {
+      name: member4Email,
+      idc: member4IDC,
+    },
+  ];
+
+  useEffect(() => {
+    const mem_12 = {
+      me1: registerEmail,
+      mi1: member1IDC,
+      me2: member2Email,
+      mi2: member2IDC,
+    };
+    setMemONeTwo(mem_12);
+  }, [member1IDC, member2Email, member2IDC]);
+
+  const Memberview = ({ member, idc, no }) => {
+    return (
+      <div className="flex flex-col flex-1 space-y-5 ">
+        <hr className="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700 w-" />
+        <p className="text-lg font-medium text-black text-center">
+          Member {no} Information
+        </p>
+        <div>
+          <label
+            htmlFor="email"
+            className="block mb-2 text-sm font-medium text-black"
+          >
+            Member {no} : Email
+          </label>
+          <input
+            // onChange={(e) => {
+            //   setEmail(e.target.value);
+            // }}
+            type="email"
+            name="email"
+            id="email"
+            className=" bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+            placeholder="eon@anokha.amrita.edu"
+            required
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor="idc"
+            className="block mb-2 text-sm font-medium text-black"
+          >
+            Member {no} : Intel Dev Cloud ID
+          </label>
+          <input
+            //   onChange={(e) => {
+            //     setCollegeName(e.target.value);
+            //   }}
+            type="text"
+            name="devcloudid"
+            id="devcloudid"
+            //   value={collegeName}
+            className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
+            placeholder="IDC ID"
+            //   disabled={isAmrita}
+          />
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div>
       <Navbar />
       <main className="w-full h-full bg-[rgb(10,17,58)] overflow-x-hidden">
-      {/* <WebGLApp colors={webGLColors} /> */}
+        {/* <WebGLApp colors={webGLColors} /> */}
 
-      <div className="block my-auto space-y-24 md:space-y-10">
-        {/* <Navbar />/ */}
-        <div className="p-2">
-          <Toast ref={toastRef} position="bottom-center" className="p-5" />
-
-        </div>
-        <div className="relative min-h-screen">
-        <div className="bg-gradient-to-r overflow-x-hidden inset-0 from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[100px] absolute blur-3xl levitate"></div>
-          <div className="flex flex-col items-center justify-center px-6 py-5 sm:px-2 sm:py-2 mx-auto min-h-screen lg:py-0 sm:my-0 sm:mx-0">
-
-          <form className="space-y-4 mt-10 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
+        <div className="block my-auto space-y-24 md:space-y-10">
+          {/* <Navbar />/ */}
+          <div className="p-2">
+            <Toast ref={toastRef} position="bottom-center" className="p-5" />
+          </div>
+          <div className="relative min-h-screen">
+            <div className="bg-gradient-to-r overflow-x-hidden inset-0 from-cyan-500 to-blue-500 md:w-[50%] sm:w-[80%] p-8 rounded-[50%] h-[60%] left-[25%] top-[100px] absolute blur-3xl levitate"></div>
+            <div className="flex flex-col items-center justify-center px-6 py-5 sm:px-2 sm:py-2 mx-auto min-h-screen lg:py-0 sm:my-0 sm:mx-0">
+              <form
+                className="space-y-4 mt-10 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center"
                 //   onSubmit={handleSignUp}
               >
                 {currentStep === 0 ? (
@@ -273,6 +257,8 @@ useEffect(()=>{
                     TeamName={[teamName, setTeamName]}
                     NoofMembers={[noofMembers, setNoofMembers]}
                     platform={[platform, setPlatform]}
+                    platformID={[selectedPlatformId, setSelectedPlatformID]}
+                    registeredEmail={registerEmail}
                   />
                 ) : currentStep === 1 ? (
                   <SecondRegister
