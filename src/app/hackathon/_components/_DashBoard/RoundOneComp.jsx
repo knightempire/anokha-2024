@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Button } from "@material-tailwind/react";
 import { Dropdown } from "primereact/dropdown";
 import { FaGithub } from "react-icons/fa";
@@ -6,20 +6,17 @@ import { SiIntel } from "react-icons/si";
 import { FaYoutube } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { MdEditOff } from "react-icons/md";
+import {
+  HACKATHON_DASHBOARD_URL,
+  HACKATHON_EDIT_FIRST_ROUND_SUBMISSION_URL,
+} from "../../../_util/constants";
+import secureLocalStorage from "react-secure-storage";
+import ToastAlert from "@/app/_util/ToastAlerts";
+import { Toast } from "primereact/toast";
 
-const RoundOneComp = ({ roundOneSubmission }) => {
+const RoundOneComp = ({ router, roundOneSubmission }) => {
   const [editable, setEditable] = useState(0);
 
-  roundOneSubmission = [
-    {
-      theme: "0",
-      problemStatement: "github.com/Sajithrajan03",
-      githubLink: "github.com/Sajithrajan03",
-      youtubeVideoLink: "github.com/Sajithrajan03",
-      devmeshLink: "https://github.com/Sajithrajan03",
-      pptFileLink: "https://github.com/Sajithrajan03",
-    },
-  ];
   const availThemes = [
     { code: "0", val: "GenAI" },
     { code: "1", val: "IOT" },
@@ -53,24 +50,31 @@ const RoundOneComp = ({ roundOneSubmission }) => {
   const [probStatement, setProbStat] = useState(
     roundOneSubmission[0]["problemStatement"]
   );
-  const changeTheme = (e) => {
-    console.log(e.target.value);
+
+  const toastRef = useRef();
+
+  useEffect(() => {
+    setThemeCode(roundOneSubmission[0]["theme"]);
+    setCanSubmit(0);
+  }, [router, themeCode]);
+
+  useEffect(() => {
     for (let i in ThemeCode) {
-      if (ThemeCode[i] == e.target.value) {
-        console.log(i);
-        setTheme(e.target.value);
-        setThemeCode(toString(i));
+      if (ThemeCode[i] == theme) {
+        console.log(i.toString());
+        setThemeCode(i.toString());
+        console.log(themeCode);
       }
     }
-  };
+  }, [theme]);
   useEffect(() => {
     if (
-      (gitLink == roundOneSubmission[0]["githubLink"] &&
-        ytLink == roundOneSubmission[0]["youtubeVideoLink"] &&
-        devMeshLink == roundOneSubmission[0]["devmeshLink"] &&
-        pptLink == roundOneSubmission[0]["pptFileLink"] &&
-        probStatement == roundOneSubmission[0]["problemStatement"]) ||
-      editable != 0
+      gitLink == roundOneSubmission[0]["githubLink"] &&
+      ytLink == roundOneSubmission[0]["youtubeVideoLink"] &&
+      devMeshLink == roundOneSubmission[0]["devmeshLink"] &&
+      pptLink == roundOneSubmission[0]["pptFileLink"] &&
+      probStatement == roundOneSubmission[0]["problemStatement"] &&
+      themeCode == roundOneSubmission[0]["theme"]
     ) {
       setCanSubmit(0);
     } else {
@@ -78,7 +82,55 @@ const RoundOneComp = ({ roundOneSubmission }) => {
     }
   }, [probStatement, theme, gitLink, ytLink, devMeshLink, pptLink]);
 
-  const handleSubmit = () => {};
+  const handleSubmit = async () => {
+    const response = await fetch(HACKATHON_EDIT_FIRST_ROUND_SUBMISSION_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${secureLocalStorage.getItem("registerToken")}`,
+      },
+      body: JSON.stringify({
+        problemStatement: probStatement,
+        theme: themeCode,
+        pptFileLink: pptLink,
+        githubLink: gitLink,
+        youtubeVideoLink: ytLink,
+        devmeshLink: devMeshLink,
+      }),
+    });
+    const data = await response.json();
+    if (response.status == 200) {
+      ToastAlert("success", "Updation Successful", data.MESSAGE, toastRef);
+      try {
+        const response = await fetch(HACKATHON_DASHBOARD_URL, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${secureLocalStorage.getItem(
+              "registerToken"
+            )}`,
+          },
+        });
+        const data = await response.json();
+        console.log(data);
+        if (response.status === 200) {
+          secureLocalStorage.setItem("DashBoardData", JSON.stringify(data));
+          window.location.reload();
+        } else {
+          ToastAlert("error", "Error", data.MESSAGE, toastRef);
+        }
+      } catch (err) {
+        console.error(err);
+        ToastAlert(
+          "error",
+          "Error",
+          "Error retriving information from server",
+          toastRef
+        );
+      }
+    } else if (response.status == 400) {
+      ToastAlert("error", "Error", data.MESSAGE, toastRef);
+    }
+  };
 
   const SubmissionComponent = (icon, link, setLink) => {
     return (
@@ -115,6 +167,9 @@ const RoundOneComp = ({ roundOneSubmission }) => {
 
   return (
     <div className=" bg-[#0a113a] text-white w-full p-5 pt-0 h-[80%] rounded-b-xl ">
+      <div className="p-2">
+        <Toast ref={toastRef} position="bottom-center" className="p-5" />
+      </div>
       <div className="bg-[#0a113a] text-white rounded-xl p-6 w-full h-full mx-auto pt-1">
         <div className="flex flex-row mx-auto justify-between">
           <p className="text-center mb-8 text-xl ml-[30%] mt-3">
@@ -133,17 +188,17 @@ const RoundOneComp = ({ roundOneSubmission }) => {
           <Dropdown
             disabled={!editable}
             value={theme}
-            onChange={(e) => changeTheme(e)}
+            onChange={(e) => setTheme(e.target.value)}
             options={availThemes}
             optionLabel="val"
             optionValue="val"
             placeholder="Theme"
             className="w-[100px] h-fit flex-1"
           ></Dropdown>
-          <div className="flex-2 bg-white text-black items-center p-2 rounded-md">
-            <div className=" focus:outline-0 pl-2">
+          <div className="flex-2 bg-white text-black items-center p-2 rounded-md lg:h-[170px] md:h-[150px] sm:h-[120px]">
+            <div className=" focus:outline-0 pl-2 h-[100%]">
               <textarea
-                style={{ resize: "none", height: "170px" }}
+                style={{ resize: "none", height: "100%" }}
                 disabled={!editable}
                 placeholder="Enter problem statement"
                 value={probStatement}

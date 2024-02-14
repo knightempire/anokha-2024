@@ -119,7 +119,7 @@ const Event = () => {
   } = eventData;
 
   return (
-    <main className="flex min-h-screen max-h-screen flex-col bg-[#121212] text-white items-center justify-center">
+    <main className="flex min-h-screen max-h-screen flex-col bg-[#192032] text-white items-center justify-center">
       <div className="h-4/5 w-5/6 z-10 grid grid-cols-2 gap-4">
         <div className="flex-row relative">
           {/* Image Section */}

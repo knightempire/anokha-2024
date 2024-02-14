@@ -38,6 +38,9 @@ export default function EventCard({
     })
       .then((res) => {
         if (res.status === 401) {
+          setTimeout(() => {
+            router.replace("/login");
+          }, 1500)
           // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
           // openModal();
           // Session Expired or not logged in. Clear Cache and Navigate to login screen.
