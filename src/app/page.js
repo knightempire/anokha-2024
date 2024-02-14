@@ -39,7 +39,7 @@ export default function Home() {
   const [cardColor, setCardColor] = useState(webGLColors);
 
   return (
-    <main className="flex min-h-screen flex-col bg-[#121212]">
+    <main className="flex min-h-screen flex-col bg-[#192032]">
       <WebGLApp colors={cardColor} className="-z-10" />
       <Navbar login={true} />
       <Hero className="z-10" />

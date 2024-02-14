@@ -130,7 +130,7 @@ export default function Login() {
   });
 
   return (
-    <main className="flex min-h-screen flex-col bg-[#121212]">
+    <main className="flex min-h-screen flex-col bg-[#192032]">
       <WebGLApp colors={webGLColors} />
       <div className="block">
         <Navbar />

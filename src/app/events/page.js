@@ -146,7 +146,7 @@ const Events = () => {
   console.log("Filter Data:", filteredData);
 
   return (
-    <main className="flex min-h-screen flex-col bg-[#121212]">
+    <main className="flex min-h-screen flex-col bg-[#192032]">
       <div className="block">
         <Navbar />
         <div className="flex flex-col gap-5 min-h-screen justify-center items-center mx-10 pt-10 mt-10">
