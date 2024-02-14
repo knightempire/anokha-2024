@@ -72,7 +72,7 @@ const FAQs = () => {
   return (
     <div className='bg-[rgb(10,17,58)] w-full h-full py-[100px]'>
       <div className='md:w-[70%] mx-auto sm:w-[90%]'>
-        <Accordion key={0} className="rounded my-2 p-2">
+        <Accordion key={0} className="rounded my-2 p-2 ">
             <AccordionSummary
                 expandIcon={<ArrowDownwardIcon />}
                 aria-controls='panel1-content'
@@ -81,7 +81,7 @@ const FAQs = () => {
             </AccordionSummary>
             <AccordionDetails>
         {qna.map((val, index) =>(
-            <Accordion key={index} className='rounded my-2 p-2'>
+            <Accordion key={index} className='rounded my-2 p-2 bg-gray-300'>
             <AccordionSummary 
             expandIcon={<ArrowDownwardIcon />}
             aria-controls="panel1-content"

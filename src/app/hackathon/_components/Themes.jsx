@@ -83,9 +83,9 @@ const Themes = () => {
   return (
 
     <div>
-      <div className="h-full w-full bg-[#0A113A] relative overflow-hidden mt-5 px-[5%]">
+      <div className="h-full w-full bg-[#0A113A] relative overflow-hidden px-[5%]">
         {/* <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[30%] sm:w-[70%] p-8 rounded-full left-[10%] top-10 md:h-[30%] sm:h-[30%] blur-3xl levitate"></div> */}
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[80%] top-10 md:h-[40%] sm:h-[30%] blur-3xl levitate"></div> 
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[80%] top-[20%] md:h-[40%] sm:h-[30%] blur-3xl levitate"></div>  */}
         {/* <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[40%] sm:w-[70%] p-8 rounded-full left-[20%] top-[40%] md:h-[40%] sm:h-[30%] blur-3xl levitate"></div> */}
 
         <div className="font-poppins h-[100%] mt-[30px]">
