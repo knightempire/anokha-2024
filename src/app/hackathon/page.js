@@ -166,18 +166,10 @@ export default function Page() {
        
         <Price />
         <About/>
-        <SubGuidelines/>
+        <Phases/>
         <Themes />
         <Timeline/>  
-        <Rules/>
- 
-        {/* <WinnerPrice/> */}
- 
-        <Judging/>
-        <WinnerPrice/>
-        <Resources/>
         <FAQs/>
-        <IeteInfo/>
         <Footer/>
     </div>
      
