@@ -8,7 +8,7 @@ import { MdEdit } from "react-icons/md";
 import { MdEditOff } from "react-icons/md";
 import {
   HACKATHON_DASHBOARD_URL,
-  HACKATHON_FIRST_ROUND_SUBMISSION_URL,
+  HACKATHON_EDIT_FIRST_ROUND_SUBMISSION_URL,
 } from "../../../_util/constants";
 import secureLocalStorage from "react-secure-storage";
 import ToastAlert from "@/app/_util/ToastAlerts";
@@ -77,7 +77,7 @@ const RoundOneComp = ({ roundOneSubmission, dashDetails }) => {
   }, [probStatement, theme, gitLink, ytLink, devMeshLink, pptLink]);
 
   const handleSubmit = async () => {
-    const response = await fetch(HACKATHON_FIRST_ROUND_SUBMISSION_URL, {
+    const response = await fetch(HACKATHON_EDIT_FIRST_ROUND_SUBMISSION_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +85,7 @@ const RoundOneComp = ({ roundOneSubmission, dashDetails }) => {
       },
       body: JSON.stringify({
         problemStatement: probStatement,
-        theme: theme,
+        theme: themeCode,
         pptFileLink: pptLink,
         githubLink: gitLink,
         youtubeVideoLink: ytLink,
@@ -99,29 +99,22 @@ const RoundOneComp = ({ roundOneSubmission, dashDetails }) => {
         const response = await fetch(HACKATHON_DASHBOARD_URL, {
           method: "GET",
           headers: {
-            Authorization: "Bearer " + token,
+            Authorization: `Bearer ${secureLocalStorage.getItem(
+              "registerToken"
+            )}`,
           },
         });
         const data = await response.json();
         console.log(data);
         if (response.status === 200) {
-          // ToastAlert('success', "Success", "Registration successful", toastRef);
           secureLocalStorage.setItem("DashBoardData", JSON.stringify(data));
+          window.location.reload();
         } else {
-          ToastAlert(
-            "error",
-            "Error",
-            "Error retriving information from server",
-            toastRef
-          );
+          ToastAlert("error", "Error", data.MESSAGE, toastRef);
         }
       } catch (err) {
-        ToastAlert(
-          "error",
-          "Error",
-          "Error retriving information from server",
-          toastRef
-        );
+        console.error(err);
+        ToastAlert("error", "Error", "Error retriving information from server", toastRef);
       }
     } else if (response.status == 400) {
       ToastAlert("error", "Error", data.MESSAGE, toastRef);
@@ -191,10 +184,10 @@ const RoundOneComp = ({ roundOneSubmission, dashDetails }) => {
             placeholder="Theme"
             className="w-[100px] h-fit flex-1"
           ></Dropdown>
-          <div className="flex-2 bg-white text-black items-center p-2 rounded-md">
-            <div className=" focus:outline-0 pl-2">
+          <div className="flex-2 bg-white text-black items-center p-2 rounded-md lg:h-[170px] md:h-[150px] sm:h-[120px]">
+            <div className=" focus:outline-0 pl-2 h-[100%]">
               <textarea
-                style={{ resize: "none", height: "170px" }}
+                style={{ resize: "none", height: "100%" }}
                 disabled={!editable}
                 placeholder="Enter problem statement"
                 value={probStatement}
