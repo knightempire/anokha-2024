@@ -165,6 +165,7 @@ export default function Page() {
         <IntelHero userState={userState} displayResult={displayResult} />
        
         <Price />
+        
         <About/>
         <Phases/>
         <SubGuidelines/>

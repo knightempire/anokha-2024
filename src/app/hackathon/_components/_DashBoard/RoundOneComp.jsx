@@ -8,13 +8,13 @@ import { MdEdit } from "react-icons/md";
 import { MdEditOff } from "react-icons/md";
 import {
   HACKATHON_DASHBOARD_URL,
-  HACKATHON_FIRST_ROUND_SUBMISSION_URL,
+  HACKATHON_EDIT_FIRST_ROUND_SUBMISSION_URL,
 } from "../../../_util/constants";
 import secureLocalStorage from "react-secure-storage";
 import ToastAlert from "@/app/_util/ToastAlerts";
 import { Toast } from "primereact/toast";
 
-const RoundOneComp = ({ roundOneSubmission, dashDetails }) => {
+const RoundOneComp = ({ router, roundOneSubmission }) => {
   const [editable, setEditable] = useState(0);
 
   const availThemes = [
@@ -52,23 +52,29 @@ const RoundOneComp = ({ roundOneSubmission, dashDetails }) => {
   );
 
   const toastRef = useRef();
-  const changeTheme = (e) => {
-    console.log(e.target.value);
+
+  useEffect(() => {
+    setThemeCode(roundOneSubmission[0]["theme"]);
+    setCanSubmit(0);
+  }, [router, themeCode]);
+
+  useEffect(() => {
     for (let i in ThemeCode) {
-      if (ThemeCode[i] == e.target.value) {
-        console.log(i);
-        setTheme(e.target.value);
-        setThemeCode(toString(i));
+      if (ThemeCode[i] == theme) {
+        console.log(i.toString());
+        setThemeCode(i.toString());
+        console.log(themeCode);
       }
     }
-  };
+  }, [theme]);
   useEffect(() => {
     if (
       gitLink == roundOneSubmission[0]["githubLink"] &&
       ytLink == roundOneSubmission[0]["youtubeVideoLink"] &&
       devMeshLink == roundOneSubmission[0]["devmeshLink"] &&
       pptLink == roundOneSubmission[0]["pptFileLink"] &&
-      probStatement == roundOneSubmission[0]["problemStatement"]
+      probStatement == roundOneSubmission[0]["problemStatement"] &&
+      themeCode == roundOneSubmission[0]["theme"]
     ) {
       setCanSubmit(0);
     } else {
@@ -77,7 +83,7 @@ const RoundOneComp = ({ roundOneSubmission, dashDetails }) => {
   }, [probStatement, theme, gitLink, ytLink, devMeshLink, pptLink]);
 
   const handleSubmit = async () => {
-    const response = await fetch(HACKATHON_FIRST_ROUND_SUBMISSION_URL, {
+    const response = await fetch(HACKATHON_EDIT_FIRST_ROUND_SUBMISSION_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +91,7 @@ const RoundOneComp = ({ roundOneSubmission, dashDetails }) => {
       },
       body: JSON.stringify({
         problemStatement: probStatement,
-        theme: theme,
+        theme: themeCode,
         pptFileLink: pptLink,
         githubLink: gitLink,
         youtubeVideoLink: ytLink,
@@ -99,23 +105,21 @@ const RoundOneComp = ({ roundOneSubmission, dashDetails }) => {
         const response = await fetch(HACKATHON_DASHBOARD_URL, {
           method: "GET",
           headers: {
-            Authorization: "Bearer " + token,
+            Authorization: `Bearer ${secureLocalStorage.getItem(
+              "registerToken"
+            )}`,
           },
         });
         const data = await response.json();
         console.log(data);
         if (response.status === 200) {
-          // ToastAlert('success', "Success", "Registration successful", toastRef);
           secureLocalStorage.setItem("DashBoardData", JSON.stringify(data));
+          window.location.reload();
         } else {
-          ToastAlert(
-            "error",
-            "Error",
-            "Error retriving information from server",
-            toastRef
-          );
+          ToastAlert("error", "Error", data.MESSAGE, toastRef);
         }
       } catch (err) {
+        console.error(err);
         ToastAlert(
           "error",
           "Error",
@@ -184,17 +188,17 @@ const RoundOneComp = ({ roundOneSubmission, dashDetails }) => {
           <Dropdown
             disabled={!editable}
             value={theme}
-            onChange={(e) => changeTheme(e)}
+            onChange={(e) => setTheme(e.target.value)}
             options={availThemes}
             optionLabel="val"
             optionValue="val"
             placeholder="Theme"
             className="w-[100px] h-fit flex-1"
           ></Dropdown>
-          <div className="flex-2 bg-white text-black items-center p-2 rounded-md">
-            <div className=" focus:outline-0 pl-2">
+          <div className="flex-2 bg-white text-black items-center p-2 rounded-md lg:h-[170px] md:h-[150px] sm:h-[120px]">
+            <div className=" focus:outline-0 pl-2 h-[100%]">
               <textarea
-                style={{ resize: "none", height: "170px" }}
+                style={{ resize: "none", height: "100%" }}
                 disabled={!editable}
                 placeholder="Enter problem statement"
                 value={probStatement}
