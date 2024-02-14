@@ -4,6 +4,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import { FaDownload } from 'react-icons/fa6';
 
 const FAQs = () => {
 
@@ -113,6 +114,18 @@ const FAQs = () => {
                 ))}
                 </ul>
                 </Typography>
+                <div class="card-submit ml-auto mr-auto mt-[0%] mb-[1%] w-[100%y]">
+              <div class="info relative bg-opacity-60 bg-white bg-blur">
+                <h3 class="text-xl mb-[2%] ml-[25%]">Download Sample PPT</h3>
+                <a
+                href="https://amritavishwavidyapeetham-my.sharepoint.com/:p:/g/personal/cb_en_u4cse21608_cb_students_amrita_edu/EaAaxjKyWIVLsBlk1ZIgHHABXoTydcJakpTu6g0Tp3ZXug"
+                download
+                className="before:ease relative h-12 w-50 overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
+            >
+                <FaDownload size={30}/>
+            </a>
+              </div>
+            </div>
             </AccordionDetails>
         </Accordion>
 
