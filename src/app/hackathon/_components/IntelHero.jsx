@@ -101,13 +101,8 @@ function IntelHero({ userState, displayResult }) {
         </div>
       </div>
 
-      <div className="mx-auto flex justify-center items-center">
-        <div
-          onClick={handleScrollMore}
-          className="bg-white tex animate-bounce absolute top-[92%]  w-60 rounded-full px-3 py-2 flex items-center justify-center"
-        >
-        Scroll More <FaAngleDoubleDown className="ml-2" />
-        </div>
+      <div className=" inset-0 flex justify-center items-center">
+      <div onClick={handleScrollMore} className="bg-white tex animate-bounce absolute md:top-[92%] sm:top-[90%]  w-60 rounded-full px-3 py-2 flex items-center justify-center">Scroll More  <FaAngleDoubleDown className="ml-2"/></div>
       </div>
     </div>
   );

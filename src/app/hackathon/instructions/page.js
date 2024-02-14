@@ -41,7 +41,7 @@ const Home = () => {
     </div>
 
     </div>
-    <Image src={flowChart} width={1050} alt="intel flowchart" className="mx-auto" />
+    {/* <Image src={flowChart} width={1050} alt="intel flowchart" className="mx-auto" /> */}
     <SubGuidelines/>
     <Resources />
     <Rules/>
