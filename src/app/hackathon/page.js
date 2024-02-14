@@ -166,7 +166,6 @@ export default function Page() {
        
         <Price />
         <About/>
-        <Phases/>
         <SubGuidelines/>
         <Themes />
         <Timeline/>  
