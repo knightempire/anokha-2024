@@ -148,7 +148,10 @@ export default function Page() {
     }
   return (
   
+ 
         <div className="overflow-x-hidden w-full bg-gray-200"> 
+ 
+ 
         <Navbar />
         {/* <div className='flex-1 min-h-screen bg-[#193056] flex items-center justify-center'>
              HERO LANDER

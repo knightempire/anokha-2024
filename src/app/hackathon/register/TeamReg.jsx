@@ -22,7 +22,7 @@ const Register = () => {
   const [teamName, setTeamName] = useState("");
   const [noofMembers, setNoofMembers] = useState(3);
   const [platform, setPlatform] = useState("anokha");
-  const [platformEmail, setPlatformEmail] = useState("");
+  const [selectedPlatformId, setSelectedPlatformID] = useState("");
   const [member1Email, setMember1Email] = useState("");
   const [member1IDC, setMember1IDC] = useState("");
   const [member2Email, setMember2Email] = useState("");
@@ -51,6 +51,8 @@ const Register = () => {
     setSecretToken(secureLocalStorage.getItem("registerToken"));
   }, []);
 
+  console.log(platform);
+
   const handle_button_next_click = () => {
     setCurrentStep(currentStep + 1);
   };
@@ -70,12 +72,14 @@ const Register = () => {
   };
   const handle_button_register_click = async (e) => {
     try {
+      // Determine the selected platform ID based on the platform}
+
       console.log(
         JSON.stringify({
           teamName: teamName,
-          devfolioId: platform === "Devfolio" ? platformEmail : "",
-          unstopId: platform === "Unstoppable" ? platformEmail : "",
-          devpostId: platform === "DevPost" ? platformEmail : "",
+          devfolioId: platform === "Devfolio" ? selectedPlatformId : "",
+          unstopId: platform === "Unstoppable" ? selectedPlatformId : "",
+          devpostId: platform === "DevPost" ? selectedPlatformId : "",
           teamMembers: [
             member2Email,
             member3Email,
@@ -124,13 +128,12 @@ const Register = () => {
         //   secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
         //   secureLocalStorage.setItem("registerEmail", email);
 
-          setTimeout(() => {
-            router.push("/hackathon");
-          }, 1500);
-          
-        } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
-          ToastAlert("error", "Registration Failed", data.MESSAGE, toastRef);
-        
+        setTimeout(() => {
+          router.push("/hackathon");
+        }, 1500);
+      } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
+        ToastAlert("error", "Registration Failed", data.MESSAGE, toastRef);
+
         // else {
         //   ToastAlert(
         //     "error",
@@ -255,7 +258,7 @@ const Register = () => {
                     TeamName={[teamName, setTeamName]}
                     NoofMembers={[noofMembers, setNoofMembers]}
                     platform={[platform, setPlatform]}
-                    platformEmail={[platformEmail, setPlatformEmail]}
+                    platformID={[selectedPlatformId, setSelectedPlatformID]}
                     registeredEmail={registerEmail}
                   />
                 ) : currentStep === 1 ? (
