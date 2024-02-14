@@ -1,12 +1,30 @@
-import React from 'react'
+import React from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const FAQs = () => {
+
+    const rules = [
+        {
+            title: "Submission Guidelines",
+            rules: [
+                "Participants must strictly engage in the use of Intel® AI Analytics Toolkits, its libraries & SYCL/DPC++ libraries while framing their ideations. If not, your project will not be considered for further evaluation. ",
+                "The ideations of the participants must be compiled in the form of a PowerPoint Presentation (PPT) converted into a PDF format for submission. ",
+                "A sample template for idea submission will be given to the participants in their hackathon dashboard, all the points mentioned in the template should strictly be covered in their submission. ",
+                "Link of the GitHub repository will be given to the participants in their hackathon dashboard. ",
+                "Participants will be required to fork this repository and update the README file, filling in the required details. ",
+                "To avoid disqualification, participants must submit their ideas in the hackathon dashboard before the deadline. ",
+                "The prototype submission should be made on a GitHub public repository.",
+                "The entire code base needs to be present on the team's GitHub repository.",
+                "The prototype submission must emphasize on both deployment and inference, with and without Intel® one API.",
+                "Pull requests of the forked repository need to be generated. ",
+                "To know more details about the registration and the rules of the hackathon, please click on this link " 
+            ]
+        },
+    ]
 
     const qna = [
         {
@@ -78,6 +96,23 @@ const FAQs = () => {
         </Accordion>
         ))}
 
+            </AccordionDetails>
+        </Accordion>
+        <Accordion key={0} className="rounded my-2 p-2">
+            <AccordionSummary
+                expandIcon={<ArrowDownwardIcon />}
+                aria-controls='panel1-content'
+                id='faq-header'>
+                <Typography className='font-bold text-center border-black b-4 px-7 py-1 text-xl text-black'>Hackathon Guidelines</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <Typography className='px-7'>
+                <ul className='list-disc md:px-[80px] sm:px-6 md:pb-10  pt-0 sm:py-8 text-md  text-black space-y-1'>
+                {rules.map((rule, id)=>(
+                    <li key={id} className='ml-5'>{rule}</li>
+                ))}
+                </ul>
+                </Typography>
             </AccordionDetails>
         </Accordion>
 
