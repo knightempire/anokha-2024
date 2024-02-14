@@ -14,7 +14,7 @@ import secureLocalStorage from "react-secure-storage";
 import ToastAlert from "@/app/_util/ToastAlerts";
 import { Toast } from "primereact/toast";
 
-const RoundOneComp = ({ roundOneSubmission, dashDetails }) => {
+const RoundOneComp = ({ router, roundOneSubmission }) => {
   const [editable, setEditable] = useState(0);
 
   const availThemes = [
@@ -52,23 +52,29 @@ const RoundOneComp = ({ roundOneSubmission, dashDetails }) => {
   );
 
   const toastRef = useRef();
-  const changeTheme = (e) => {
-    console.log(e.target.value);
+
+  useEffect(() => {
+    setThemeCode(roundOneSubmission[0]["theme"]);
+    setCanSubmit(0);
+  }, [router, themeCode]);
+
+  useEffect(() => {
     for (let i in ThemeCode) {
-      if (ThemeCode[i] == e.target.value) {
-        console.log(i);
-        setTheme(e.target.value);
-        setThemeCode(toString(i));
+      if (ThemeCode[i] == theme) {
+        console.log(i.toString());
+        setThemeCode(i.toString());
+        console.log(themeCode);
       }
     }
-  };
+  }, [theme]);
   useEffect(() => {
     if (
       gitLink == roundOneSubmission[0]["githubLink"] &&
       ytLink == roundOneSubmission[0]["youtubeVideoLink"] &&
       devMeshLink == roundOneSubmission[0]["devmeshLink"] &&
       pptLink == roundOneSubmission[0]["pptFileLink"] &&
-      probStatement == roundOneSubmission[0]["problemStatement"]
+      probStatement == roundOneSubmission[0]["problemStatement"] &&
+      themeCode == roundOneSubmission[0]["theme"]
     ) {
       setCanSubmit(0);
     } else {
@@ -114,7 +120,12 @@ const RoundOneComp = ({ roundOneSubmission, dashDetails }) => {
         }
       } catch (err) {
         console.error(err);
-        ToastAlert("error", "Error", "Error retriving information from server", toastRef);
+        ToastAlert(
+          "error",
+          "Error",
+          "Error retriving information from server",
+          toastRef
+        );
       }
     } else if (response.status == 400) {
       ToastAlert("error", "Error", data.MESSAGE, toastRef);
@@ -177,7 +188,7 @@ const RoundOneComp = ({ roundOneSubmission, dashDetails }) => {
           <Dropdown
             disabled={!editable}
             value={theme}
-            onChange={(e) => changeTheme(e)}
+            onChange={(e) => setTheme(e.target.value)}
             options={availThemes}
             optionLabel="val"
             optionValue="val"

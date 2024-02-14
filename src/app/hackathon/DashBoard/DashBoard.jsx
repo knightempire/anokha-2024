@@ -133,7 +133,7 @@ export default function Page({ router }) {
           { RoundOneSub=='' || RoundOneSub==null || RoundOneSub==[] ? (
             <Round1NotFound router={router}  />
           ) : (
-            <RoundOneComp roundOneSubmission={RoundOneSub} dashDetails={detailsJson} />
+            <RoundOneComp router={router} roundOneSubmission={RoundOneSub} />
           )}
         </div>
       </main>
