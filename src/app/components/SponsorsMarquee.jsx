@@ -10,7 +10,7 @@ const SponsorElement = ({ src }) => {
           src={src}
           alt="sponsor"
           fill="contain"
-          className="h-full w-full rounded-xl"
+          className="h-full w-full"
         />
       </div>
     </div>
@@ -29,13 +29,14 @@ const SponsorsMarquee = () => {
       >
         <SponsorElement src="https://i.imgur.com/X1qoxbQ.png" />
         <SponsorElement src="https://i.imgur.com/5BlpVzJ.jpg" />
-        <SponsorElement src="https://i.imgur.com/YDgP3qU.png" /> {/* OneAPI logo */}
+        <SponsorElement src="https://i.imgur.com/AK9UfYT.png" />
+        {/* OneAPI logo */}
         <SponsorElement src="https://i.imgur.com/X1qoxbQ.png" />
         <SponsorElement src="https://i.imgur.com/5BlpVzJ.jpg" />
-        <SponsorElement src="https://i.imgur.com/YDgP3qU.png" />
+        <SponsorElement src="https://i.imgur.com/AK9UfYT.png" />
         <SponsorElement src="https://i.imgur.com/X1qoxbQ.png" />
         <SponsorElement src="https://i.imgur.com/5BlpVzJ.jpg" />
-        <SponsorElement src="https://i.imgur.com/YDgP3qU.png" />
+        <SponsorElement src="https://i.imgur.com/AK9UfYT.png" />
       </Marquee>
     </div>
   );

@@ -24,20 +24,16 @@ import secureLocalStorage from "react-secure-storage";
 
 const ProfileMenuItems = [
   {
-    text: "View Profile",
+    text: "Profile",
     icon: UserCircleIcon,
-  },
-  {
-    text: "Edit Profile",
-    icon: Cog6ToothIcon,
   },
   {
     text: "Sign Out",
     icon: PowerIcon,
   },
 ];
-export default function ProfileCard({email}) {
-  console.log("Email sis",email)
+export default function ProfileCard({ email }) {
+  console.log("Email sis", email);
   const hash = MD5(email + email);
   const [isArrowMenuOpen, setIsArrowMenuOpen] = useState(false);
   const handlearrowclick = () => {
@@ -54,10 +50,13 @@ export default function ProfileCard({email}) {
     window.location.reload();
   };
 
+  const handleProfileClick = () => {
+    window.location.href = "/profile";
+  };
+
   const handleClose = () => {
     setIsArrowMenuOpen(false);
   };
-  
 
   return (
     <div>
@@ -82,7 +81,11 @@ export default function ProfileCard({email}) {
                 variant="circle"
                 className=""
                 alt="Travis Howard"
-                src={"https://www.gravatar.com/avatar/"+(hash)+".jpg?s=200&d=robohash"}
+                src={
+                  "https://www.gravatar.com/avatar/" +
+                  hash +
+                  ".jpg?s=200&d=robohash"
+                }
                 width={340}
                 height={30}
                 sx={{ width: 30, height: 30, bg: "red" }}
@@ -113,7 +116,7 @@ export default function ProfileCard({email}) {
                       ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
                       : "hover:bg-gray-500/10"
                   }`}
-                  onClick={handleLogOut}
+                  onClick={isLastItem ? handleLogOut : handleProfileClick}
                 >
                   {createElement(icon, {
                     strokeWidth: 2,
