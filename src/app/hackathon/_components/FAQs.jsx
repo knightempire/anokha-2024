@@ -7,7 +7,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 
 const FAQs = () => {
 
-    const rules = [
+    const guidelines = [
         {
             title: "Submission Guidelines",
             rules: [
@@ -108,8 +108,8 @@ const FAQs = () => {
             <AccordionDetails>
                 <Typography className='px-7'>
                 <ul className='list-disc md:px-[80px] sm:px-6 md:pb-10  pt-0 sm:py-8 text-md  text-black space-y-1'>
-                {rules.map((rule, id)=>(
-                    <li key={id} className='ml-5'>{rule}</li>
+                {guidelines[0].rules.map((val, index)=>(
+                    <li key={index} className='ml-5'>{val}</li>
                 ))}
                 </ul>
                 </Typography>

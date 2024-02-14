@@ -134,29 +134,6 @@ const Themes = () => {
                     <p className="m-0">
                       <h1 className="text-center text-white font-bold text-3xl">Generative AI</h1>
                       <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                        {themes[0].problemStatements.map(
-                          (statement, id) => (
-                            <div key={id}>
-                              <div  className="md:px-[50px] my-3 ">
-                                <div className="w-full">
-                                <Accordion key={index} className='rounded p-2 bg-transparent bg-white bg-opacity-80 shadow-none'>
-                                <AccordionSummary 
-                                expandIcon={<FaPlus />}
-                                aria-controls="panel1-content"
-                                id="panel1-header">
-                                <Typography className='md:px-7 sm:px-2 py-1 text-black font-bold md:text-lg sm:text-md capitalize'>{statement[0]}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails >
-                                <Typography className='md:px-7 sm:px-2 md:text-lg sm:text-md'>
-                                {statement[1]}
-                                </Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                              </div>
-                            </div>
-                            </div>
-                          )
-                        )}
 
                     </p>
                 </TabPanel>
@@ -164,146 +141,30 @@ const Themes = () => {
                     <p className="m-0">
                       <h1 className="text-center text-white font-bold text-3xl">Internet of Things</h1>
                       <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                        {themes[1].problemStatements.map(
-                          (statement, id) => (
-                            <div key={id}>
-                              <div  className="md:px-[50px] my-3 ">
-                                <div className="w-full">
-                                <Accordion key={index} className='rounded p-2 bg-transparent bg-white bg-opacity-80 shadow-none'>
-                                <AccordionSummary 
-                                expandIcon={<FaPlus />}
-                                aria-controls="panel1-content"
-                                id="panel1-header">
-                                <Typography className='md:px-7 sm:px-2 py-1 text-black font-bold md:text-lg sm:text-md capitalize'>{statement[0]}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails >
-                                <Typography className='md:px-7 sm:px-2 md:text-lg sm:text-md'>
-                                {statement[1]}
-                                </Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                              </div>
-                            </div>
-                            </div>
-                          )
-                        )}
                     </p>
                 </TabPanel>
                 <TabPanel header="HealthCare">
                     <p className="m-0">
                       <h1 className="text-center text-white font-bold text-3xl">HealthCare</h1>
                       <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                        {themes[2].problemStatements.map(
-                          (statement, id) => (
-                            <div key={id}>
-                              <div  className="md:px-[50px] my-3 ">
-                                <div className="w-full">
-                                <Accordion key={index} className='rounded p-2 bg-transparent bg-white bg-opacity-80 shadow-none'>
-                                <AccordionSummary 
-                                expandIcon={<FaPlus />}
-                                aria-controls="panel1-content"
-                                id="panel1-header">
-                                <Typography className='md:px-7 sm:px-2 py-1 text-black font-bold md:text-lg sm:text-md capitalize'>{statement[0]}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails >
-                                <Typography className='md:px-7 sm:px-2 md:text-lg sm:text-md'>
-                                {statement[1]}
-                                </Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                              </div>
-                            </div>
-                            </div>
-                          )
-                        )}
                     </p>
                 </TabPanel>
                 <TabPanel header="Autonomous Vehicles">
                     <p className="m-0">
                       <h1 className="text-center text-white font-bold text-3xl">Autonomous Vehicles</h1>
                       <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                        {themes[3].problemStatements.map(
-                          (statement, id) => (
-                            <div key={id}>
-                              <div  className="md:px-[50px] my-3 ">
-                                <div className="w-full">
-                                <Accordion key={index} className='rounded p-2 bg-transparent bg-white bg-opacity-80 shadow-none'>
-                                <AccordionSummary 
-                                expandIcon={<FaPlus />}
-                                aria-controls="panel1-content"
-                                id="panel1-header">
-                                <Typography className='md:px-7 sm:px-2 py-1 text-black font-bold md:text-lg sm:text-md capitalize'>{statement[0]}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails >
-                                <Typography className='md:px-7 sm:px-2 md:text-lg sm:text-md'>
-                                {statement[1]}
-                                </Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                              </div>
-                            </div>
-                            </div>
-                          )
-                        )}
                     </p>
                 </TabPanel>
                 <TabPanel header="Cyber Security">
                     <p className="m-0">
                       <h1 className="text-center text-white font-bold text-3xl">Cyber Security</h1>
                       <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                        {themes[4].problemStatements.map(
-                          (statement, id) => (
-                            <div key={id}>
-                              <div  className="md:px-[50px] my-3 ">
-                                <div className="w-full">
-                                <Accordion key={index} className='rounded p-2 bg-transparent bg-white bg-opacity-80 shadow-none'>
-                                <AccordionSummary 
-                                expandIcon={<FaPlus />}
-                                aria-controls="panel1-content"
-                                id="panel1-header">
-                                <Typography className='md:px-7 sm:px-2 py-1 text-black font-bold md:text-lg sm:text-md capitalize'>{statement[0]}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails >
-                                <Typography className='md:px-7 sm:px-2 md:text-lg sm:text-md'>
-                                {statement[1]}
-                                </Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                              </div>
-                            </div>
-                            </div>
-                          )
-                        )}
-
                     </p>
                 </TabPanel>
                 <TabPanel header="Open Ended">
                     <p className="m-0">
                       <h1 className="text-center text-white font-bold text-3xl">Open-Ended</h1>
                       <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                        {themes[5].problemStatements.map(
-                          (statement, id) => (
-                            <div key={id}>
-                              <div  className="md:px-[50px] my-3 ">
-                                <div className="w-full">
-                                <Accordion key={index} className='rounded p-2 bg-transparent bg-white bg-opacity-80 shadow-none'>
-                                <AccordionSummary 
-                                expandIcon={<FaPlus />}
-                                aria-controls="panel1-content"
-                                id="panel1-header">
-                                <Typography className='md:px-7 sm:px-2 py-1 text-black font-bold md:text-lg sm:text-md capitalize'>{statement[0]}</Typography>
-                                </AccordionSummary>
-                                <AccordionDetails >
-                                <Typography className='md:px-7 sm:px-2 md:text-lg sm:text-md'>
-                                {statement[1]}
-                                </Typography>
-                                </AccordionDetails>
-                            </Accordion>
-                              </div>
-                            </div>
-                            </div>
-                          )
-                        )}
                     </p>
                 </TabPanel>
             </TabView> 
