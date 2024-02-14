@@ -101,7 +101,7 @@ export default function Page() {
             setUserState(0)
             SignOut()
             setTimeout(() => {
-              router.replace("/login");
+              router.push("/login");
             }, 1500)
               
           }
@@ -171,15 +171,7 @@ export default function Page() {
         <SubGuidelines/>
         <Themes />
         <Timeline/>  
-        <Rules/>
- 
-        {/* <WinnerPrice/> */}
- 
-        <Judging/>
-        <WinnerPrice/>
-        <Resources/>
         <FAQs/>
-        <IeteInfo/>
         <Footer/>
     </div>
      
