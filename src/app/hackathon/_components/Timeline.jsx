@@ -1,9 +1,8 @@
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
- 
-import ScrollTrigger from "gsap/dist/ScrollTrigger"; 
- 
+
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 const Timeline = () => {
   const container = useRef(null);
@@ -38,32 +37,30 @@ const Timeline = () => {
       duration: 0.5,
       ease: "power4.out",
     });
-    tl.from(container.current.children[3].children[1], {
-      opacity: 0,
-      scale: 0.5,
-      x: -300,
-      duration: 0.5,
-      ease: "power4.out",
-    });
-    tl.from(container.current.children[4].children[1], {
-      opacity: 0,
-      scale: 0.5,
-      x: 300,
-      duration: 0.5,
-      ease: "power4.out",
-    });
-    tl.from(container.current.children[5].children[1], {
-      opacity: 0,
-      scale: 0.5,
-      x: -300,
-      duration: 0.5,
-      ease: "power4.out",
-    });
   });
+
+  const phases = [
+    {
+      title: "1 Ideation",
+      description:
+        "During this initial phase, participants are tasked with brainstorming ideas centered around provided problem statements. Provide a submission with a PowerPoint presentation and a concise 200-character description that clearly explains the proposed concept, making specific reference to the Intel toolkit used.",
+    },
+    {
+      title: "2 Prototype Development",
+      description:
+        "In the subsequent phase, participants embark on crafting prototypes based on their ideation submissions. Comprehensive resources including intensive video playlists accessible via the official ANOKHA website facilitate the development process. Prototypes are to be shared via GitHub repositories, with linkage to DevMesh for streamlined visibility.",
+    },
+    {
+      title: "3 Final Round",
+      description:
+        "Shortlisted participants progress to the culminating 24-hour offline hackathon hosted at the Amrita Vishwa Vidyapeetham, Coimbatore campus. Participants need to bring their laptops, and hardware resources will be provided based on the requirements of the prototype.",
+    },
+  ];
+
   return (
     <div className="w-full bg-[#0A113A] pt-10  overflow-hidden">
       <h1 className="text-[3rem] font-bold text-center text-white mt-6">
-        Timeline
+        Hackathon Phases
       </h1>
       <div className="flex justify-items-center">
         <div class="timeline">
@@ -71,62 +68,24 @@ const Timeline = () => {
             <div class="card">
               <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[65%] md:left-0 top-[-50px] absolute blur-3xl levitate"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur">
-                <h3 class="title text-xl">February 15th 2024</h3>
-                <p>Hackathon registration begins for the first round</p>
+                <h3 class="title text-xl">{phases[0].title}</h3>
+                <p>{phases[0].description}</p>
               </div>
             </div>
 
             <div class="card">
               <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[-30px] absolute blur-3xl levitate"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur">
-                <h3 class="title text-xl">February 29th 2024</h3>
-                <p>
-                  Deadline to submit PowerPoint presentations for the first
-                  round.{" "}
-                </p>
+                <h3 class="title text-xl">{phases[1].title}</h3>
+                <p>{phases[1].description}</p>
               </div>
             </div>
 
             <div class="card">
               <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[-30px] absolute blur-3xl levitate"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur">
-                <h3 class="title text-xl">March 2nd 2024</h3>
-                <p>
-                  Announcement of the top 100 teams moving to the next round.
-                  Selected teams start building prototypes on @devmesh.{" "}
-                </p>
-              </div>
-            </div>
-
-            <div class="card">
-              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[-30px]  absolute blur-3xl levitate"></div>
-              <div class="info relative bg-opacity-60 bg-white bg-blur">
-                <h3 class="title text-xl">March 20th 2024</h3>
-                <p>Deadline to submit prototypes for the second round. </p>
-              </div>
-            </div>
-
-            <div class="card">
-              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[-30px] absolute blur-3xl levitate"></div>
-              <div class="info relative bg-opacity-60 bg-white bg-blur">
-                <h3 class="title text-xl">March 22nd 2024</h3>
-                <p>
-                  Announcement of the top 25 teams advancing to the final
-                  round.{" "}
-                </p>
-              </div>
-            </div>
-
-            <div class="card">
-              <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[100%] sm:w-[500px] p-8 rounded-[50%] h-[70%] md:left-0 top-[-30px]  absolute blur-3xl levitate"></div>
-              <div class="info relative bg-opacity-60 bg-white bg-blur mb-10">
-                <h3 class="title text-xl">April 4th 2024</h3>
-
-                <p>
-                  The top 25 teams from the second round will participate in a
-                  24-hour offline hackathon at Amrita University, Coimbatore, to
-                  determine the winners.{" "}
-                </p>
+                <h3 class="title text-xl">{phases[2].title}</h3>
+                <p>{phases[2].description}</p>
               </div>
             </div>
           </div>

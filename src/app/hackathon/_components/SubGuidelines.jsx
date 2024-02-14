@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaDownload } from 'react-icons/fa'
 
 const rules = [
     {
@@ -12,7 +13,7 @@ const rules = [
             "To avoid disqualification, participants must submit their ideas in the hackathon dashboard before the deadline. ",
             "The prototype submission should be made on a GitHub public repository.",
             "The entire code base needs to be present on the team's GitHub repository.",
-            "The prototype submission must lay down equal emphasis on the deployment and inference, with and without Intel® one API.",
+            "The prototype submission must emphasize on both deployment and inference, with and without Intel® one API.",
             "Pull requests of the forked repository need to be generated. ",
             "To know more details about the registration and the rules of the hackathon, please click on this link " 
         ]
@@ -34,13 +35,24 @@ const SubGuidelines = () => {
                 
             </ul>
         </div>
-
+        <div class="card-submit ml-auto mr-auto mt-[7%] mb-[7%]">
+              <div class="info relative bg-opacity-60 bg-white bg-blur">
+                <h3 class="text-xl mb-[2%] ml-[25%]">Download Sample PPT</h3>
+                <a
+                href="https://amritavishwavidyapeetham-my.sharepoint.com/:p:/g/personal/cb_en_u4cse21608_cb_students_amrita_edu/EaAaxjKyWIVLsBlk1ZIgHHABXoTydcJakpTu6g0Tp3ZXug"
+                download
+                className="before:ease relative h-12 w-50 overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
+            >
+                <FaDownload size={30}/>
+            </a>
+              </div>
+            </div>
             </div>
 
             
 
         ))}
-        
+
       </div>
     </div>
   )

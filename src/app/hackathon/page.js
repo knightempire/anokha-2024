@@ -100,6 +100,9 @@ export default function Page() {
             //timeout
             setUserState(0)
             SignOut()
+            setTimeout(() => {
+              router.replace("/login");
+            }, 1500)
               
           }
           else if (response.status === 400) {
@@ -167,15 +170,7 @@ export default function Page() {
         <SubGuidelines/>
         <Themes />
         <Timeline/>  
-        <Rules/>
- 
-        {/* <WinnerPrice/> */}
- 
-        <Judging/>
-        <WinnerPrice/>
-        <Resources/>
         <FAQs/>
-        <IeteInfo/>
         <Footer/>
     </div>
      

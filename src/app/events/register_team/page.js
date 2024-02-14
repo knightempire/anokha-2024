@@ -49,7 +49,7 @@ const TeamRegister = ({ minTeamSize, maxTeamSize }) => {
   });
 
   return (
-    <main className="flex min-h-screen flex-col bg-[#121212]">
+    <main className="flex min-h-screen flex-col bg-[#192032]">
       <webGLApp colors={webGLColors} />
       <div className="block space-y-24 md:space-y-10">
         <Navbar />

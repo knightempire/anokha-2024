@@ -1,12 +1,30 @@
-import React from 'react'
+import React from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 const FAQs = () => {
+
+    const guidelines = [
+        {
+            title: "Submission Guidelines",
+            rules: [
+                "Participants must strictly engage in the use of Intel® AI Analytics Toolkits, its libraries & SYCL/DPC++ libraries while framing their ideations. If not, your project will not be considered for further evaluation. ",
+                "The ideations of the participants must be compiled in the form of a PowerPoint Presentation (PPT) converted into a PDF format for submission. ",
+                "A sample template for idea submission will be given to the participants in their hackathon dashboard, all the points mentioned in the template should strictly be covered in their submission. ",
+                "Link of the GitHub repository will be given to the participants in their hackathon dashboard. ",
+                "Participants will be required to fork this repository and update the README file, filling in the required details. ",
+                "To avoid disqualification, participants must submit their ideas in the hackathon dashboard before the deadline. ",
+                "The prototype submission should be made on a GitHub public repository.",
+                "The entire code base needs to be present on the team's GitHub repository.",
+                "The prototype submission must emphasize on both deployment and inference, with and without Intel® one API.",
+                "Pull requests of the forked repository need to be generated. ",
+                "To know more details about the registration and the rules of the hackathon, please click on this link " 
+            ]
+        },
+    ]
 
     const qna = [
         {
@@ -19,7 +37,7 @@ const FAQs = () => {
         },
         {
             question: "Do I need to have any specific qualifications to be a participant in the Hackathon? ",
-            answer: "Open to undergraduates and postgraduates pursuing B.Tech, M.Tech, B.E, M.E, B.Sc, M.Sc, or equivalent degrees."
+            answer: "The hackathon is open to undergraduates and postgraduates currently pursuing B.Tech, M.Tech, B.E, M.E, B.Sc, M.Sc, or equivalent degrees."
         },
         {
             question: "When is the application deadline? ",
@@ -34,7 +52,7 @@ const FAQs = () => {
             answer: "While a complete implementation is not mandatory, the submission should be functional, accompanied by proof of concepts/prototypes for review by the judges."
         },
         {
-            question: "How is the environment? Will your environment support any language? Will you provide any IDE and DB for us to work on ideas?",
+            question: "How is the environment? Will your environment support any language? Will you provide any IDE and database for us to work on ideas?",
             answer: "You will be required to develop the entire software application on your local system or Intel DevCloud and submit it on GitHub. Include instructions for running the application and share the source code."
         },
         {
@@ -42,7 +60,7 @@ const FAQs = () => {
             answer: "Feel free to enhance your submission by providing a brief presentation or video. If you choose to do so, upload it as a private video on YouTube and share the link with us. Keep in mind that this is optional and not a mandatory requirement."
         },
         {
-            question: "A fully developed application needs to have a solid backend for data storage like SQL, SharePoint, etc. since it's online, is it acceptable to show only the prototype of it?",
+            question: "A fully developed application needs to have a solid backend for data storage like SQL, SharePoint, etc. Considering that it is online, is it acceptable to show only the prototype of it?",
             answer: "It is acceptable to submit only the prototype. If you utilize databases such as MySQL or PostgreSQL, you have the option to include a database dump along with your submission. "
         },
         {
@@ -53,8 +71,15 @@ const FAQs = () => {
     ]
   return (
     <div className='bg-gradient-to-r from-[#0A113A] to-blue-800  w-full h-full py-[60px]'>
-      <h1 className="text-[3rem] font-bold text-center text-white md:pb-2">FAQs</h1>
       <div className='md:w-[70%] mx-auto sm:w-[90%]'>
+        <Accordion key={0} className="rounded my-2 p-2">
+            <AccordionSummary
+                expandIcon={<ArrowDownwardIcon />}
+                aria-controls='panel1-content'
+                id='faq-header'>
+                <Typography className='font-bold text-center border-black b-4 px-7 py-1 text-xl text-black'>FAQ Section</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
         {qna.map((val, index) =>(
             <Accordion key={index} className='rounded my-2 p-2'>
             <AccordionSummary 
@@ -70,6 +95,27 @@ const FAQs = () => {
             </AccordionDetails>
         </Accordion>
         ))}
+
+            </AccordionDetails>
+        </Accordion>
+        <Accordion key={0} className="rounded my-2 p-2">
+            <AccordionSummary
+                expandIcon={<ArrowDownwardIcon />}
+                aria-controls='panel1-content'
+                id='faq-header'>
+                <Typography className='font-bold text-center border-black b-4 px-7 py-1 text-xl text-black'>Hackathon Guidelines</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+                <Typography className='px-7'>
+                <ul className='list-disc md:px-[80px] sm:px-6 md:pb-10  pt-0 sm:py-8 text-md  text-black space-y-1'>
+                {guidelines[0].rules.map((val, index)=>(
+                    <li key={index} className='ml-5'>{val}</li>
+                ))}
+                </ul>
+                </Typography>
+            </AccordionDetails>
+        </Accordion>
+
       </div>
     </div>
   )

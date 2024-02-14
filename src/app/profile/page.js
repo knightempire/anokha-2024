@@ -19,7 +19,9 @@ import TextField from "@mui/material/TextField";
 import QRCode from "react-qr-code";
 
 export default function Register() {
-  const [name, setName] = useState("StudentFullName");
+  const [name, setName] = useState(
+    secureLocalStorage.getItem("studentFullName")
+  );
   const [email, setEmail] = useState(
     secureLocalStorage.getItem("registerEmail")
   );
@@ -57,7 +59,7 @@ export default function Register() {
 
         const data = await response.json();
         if (response.status === 200) {
-          secureLocalStorage.setItem("StudentFullName", fullname);
+          secureLocalStorage.setItem("studentFullName", fullname);
           secureLocalStorage.setItem("studentPhone", phoneNumber);
           secureLocalStorage.setItem("studentCollegeCity", collegeCity);
           secureLocalStorage.setItem("studentCollegeName", collegeName);
@@ -74,7 +76,9 @@ export default function Register() {
             toastRef
           );
           secureLocalStorage.clear();
-          router.replace("/");
+          setTimeout(() => {
+            router.replace("/");
+          }, 1500)
         } else if (response.status === 500) {
           ToastAlert(
             "error",
@@ -122,7 +126,7 @@ export default function Register() {
   };
 
   const enableUpdate = () => {
-    const nameCheck = name === secureLocalStorage.getItem("StudentFullName");
+    const nameCheck = name === secureLocalStorage.getItem("studentFullName");
     const phoneCheck = phoneNumber === secureLocal.getItem("studentPhone");
     const collegeNameCheck =
       collegeName === secureLocalStorage.getItem("studentCollegeCity");
@@ -159,7 +163,7 @@ export default function Register() {
           "Your profile has been updated!",
           toastRef
         );
-        secureLocalStorage.setItem("StudentFullName", fullname);
+        secureLocalStorage.setItem("studentFullName", fullname);
         secureLocalStorage.setItem("studentPhone", phoneNumber);
         secureLocalStorage.setItem("studentCollegeCity", collegeCity);
         secureLocalStorage.setItem("studentCollegeName", collegeName);
@@ -180,7 +184,9 @@ export default function Register() {
           toastRef
         );
         secureLocalStorage.clear();
-        router.replace("/login");
+        setTimeout(() => {
+          router.replace("/login");
+        }, 1500)
       } else if (response.status === 500) {
         ToastAlert(
           "error",
@@ -205,7 +211,7 @@ export default function Register() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col bg-[#121212]">
+    <main className="flex min-h-screen flex-col bg-[#192032]">
       <WebGLApp colors={webGLColors} />
 
       <div className="block space-y-24 md:space-y-10">

@@ -13,7 +13,7 @@ const Team = () => {
 
   return (
     <ComingSoon />
-    // <main className="flex min-h-screen flex-col bg-[#121212]">
+    // <main className="flex min-h-screen flex-col bg-[#192032]">
     //   <WebGLApp colors={webGLColors} />
     //   <div className="grid grid-cols-5 gap-4 m-10">
     //     <TeamMember
