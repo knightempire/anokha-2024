@@ -124,12 +124,13 @@ const Register = () => {
         //   secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
         //   secureLocalStorage.setItem("registerEmail", email);
 
-        setTimeout(() => {
-          router.replace("/hackathon");
-        }, 1500);
-      } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
-        ToastAlert("error", "Registration Failed", data.MESSAGE, toastRef);
-
+          setTimeout(() => {
+            router.push("/hackathon");
+          }, 1500);
+          
+        } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
+          ToastAlert("error", "Registration Failed", data.MESSAGE, toastRef);
+        
         // else {
         //   ToastAlert(
         //     "error",

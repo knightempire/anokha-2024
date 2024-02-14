@@ -113,7 +113,7 @@ const Navigationbar = () => {
                      
                   >
                   <Button variant="text" className=" h-[40px] hover:bg-gray-700">
-                       <div className="my-auto   text-gray-300   text-[13px]  rounded md:p-0 hover:text-white">{link.title}</div>
+                       <div className="my-auto   text-gray-300   text-[13px]   rounded md:p-0 hover:text-white">{link.title}</div>
                   </Button>
                 </Link>
               </li>
@@ -126,9 +126,9 @@ const Navigationbar = () => {
               <ProfileCard email={email}/>
             ) : (
               <div className=" relative inline-flex  group">
-                <div className="absolute transitiona-all w-[180px] h-[30px]   duration-1000 opacity-70  -inset-px bg-gradient-to-r from-[#ffffff] via-[#76adfa] to-[#0659ff] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
+                <div className="hidden md:block absolute transitiona-all w-[180px] h-[30px]   duration-1000 opacity-70  -inset-px bg-gradient-to-r from-[#ffffff] via-[#76adfa] to-[#0659ff] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
                 <Button
-                  className="relative inline-flex items-center justify-center px-6 py-2 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900"
+                  className="relative  inline-flex items-center w-[100px] md:w-[200px] justify-center px-2  md:px-2 md:py-2 md:text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900"
                   onClick={handleForgetPassword}
                 >
                   Login / Sign Up

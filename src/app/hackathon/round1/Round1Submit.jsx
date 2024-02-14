@@ -94,18 +94,18 @@ export default function Page() {
         
     
         setTimeout(() => {
-          router.replace("/hackathon");
+          router.push("/hackathon");
         }, 1500);
         } else if (response.status === 401) {
           ToastAlert(
             "error",
             "Session Expired",
-        "Please login again.",
+        "Please Login again.",
             toastRef
            
           );
           setTimeout(() => {
-            router.replace("/hackathon");
+            router.push("/hackathon");
           }, 1500);
 
           
