@@ -47,6 +47,7 @@ function IntelHero({ userState, displayResult }) {
             <IoLocation size={15} /> Amrita Vishwa Vidyapeetham, Coimbatore
           </div>
           {/* <button className='text-base p-3 bg-[#03C7FD] mt-3 rounded'>IDC Materials</button> */}
+<<<<<<< Updated upstream
           <div className="flex md:gap-4 sm:gap-2 flex-wrap mt-2 relative">
             <Button
               onClick={(e) => {
@@ -64,6 +65,21 @@ function IntelHero({ userState, displayResult }) {
                 className="before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
               >
                 Sign Up for Anokha !
+=======
+          <div className="flex md:gap-4 sm:gap-2 flex-wrap mt-2 2xl:left-[30%] relative">
+ 
+            <Button onClick={(e)=>{router.push("/hackathon/instructions")}} className="text-[1rem] text-black border border-black p-3 px-8 sm:mt-0 md:mt-0 rounded-xl bg-transparent md:w-fit sm:w-full">
+              Instructions
+            </Button>
+            {userState===0? <Button onClick={(e)=>{router.push("/register")}} className="before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+                          Sign Up for Anokha !
+                          </Button> 
+              : userState===1? <Button onClick={(e)=>{router.push("/hackathon/register")}} className="before:ease relative  md:w-fit   sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+              Register your Team !
+              </Button> 
+              :userState===2? <Button onClick={(e)=>{router.push("/hackathon/dashboard")}} className="before:ease relative h-12 w-50 md:w-fit sm:w-fulloverflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40">
+              DashBoard!
+>>>>>>> Stashed changes
               </Button>
             ) : userState === 1 ? (
               <Button

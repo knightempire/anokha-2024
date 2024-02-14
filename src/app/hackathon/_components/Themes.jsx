@@ -5,6 +5,8 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import { FaPlus } from "react-icons/fa6";
 import { TabView, TabPanel } from 'primereact/tabview';
+// import "primereact/resources/primereact.min.css";
+// import "primereact/resources/themes/lara-light-blue/theme.css";
         
 const Themes = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -130,7 +132,7 @@ const Themes = () => {
 
         <div id="tabbed-component">
            <TabView className="mb-9 md:ustify-center gap-5 bg-white bg-opacity-20 backdrop-blur-3xl rounded mx-auto md:w-[80%] sm:w-[90%] py-8 sm:px-6 md:px-0 shadow-xl">
-                <TabPanel header="GenerativeAI">
+                <TabPanel header="GenerativeAI" className="bg-transparent">
                     <p className="m-0">
                       <h1 className="text-center text-white font-bold text-3xl">Generative AI</h1>
                       <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 

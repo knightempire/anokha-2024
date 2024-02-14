@@ -76,7 +76,7 @@ export default function Price() {
                  {/* Timer here if possible  */}
 
               <div>
-              <Button onClick={(e)=>{router.replace("/hackathon/register")}} className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-4  rounded-[5px] mt-3 ml-3">
+              <Button onClick={(e)=>{router.push("/hackathon/register")}} className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-4  rounded-[5px] mt-3 ml-3">
               Registrations Open!
             </Button>
               </div>

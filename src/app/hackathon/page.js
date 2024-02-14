@@ -101,7 +101,7 @@ export default function Page() {
             setUserState(0)
             SignOut()
             setTimeout(() => {
-              router.replace("/login");
+              router.push("/login");
             }, 1500)
               
           }

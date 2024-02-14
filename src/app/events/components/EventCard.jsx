@@ -39,7 +39,7 @@ export default function EventCard({
       .then((res) => {
         if (res.status === 401) {
           setTimeout(() => {
-            router.replace("/login");
+            router.push("/login");
           }, 1500)
           // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
           // openModal();

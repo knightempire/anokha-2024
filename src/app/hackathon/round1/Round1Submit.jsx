@@ -94,7 +94,7 @@ export default function Page() {
         
     
         setTimeout(() => {
-          router.replace("/hackathon");
+          router.push("/hackathon");
         }, 1500);
         } else if (response.status === 401) {
           ToastAlert(
@@ -105,7 +105,7 @@ export default function Page() {
            
           );
           setTimeout(() => {
-            router.replace("/hackathon");
+            router.push("/hackathon");
           }, 1500);
 
           
