@@ -4,14 +4,10 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import { FaPlus } from "react-icons/fa6";
-import { TabView, TabPanel } from 'primereact/tabview';
-// import "primereact/resources/primereact.min.css";
-// import "primereact/resources/themes/lara-light-blue/theme.css";
+import { Button } from "primereact/button";
         
 const Themes = () => {
   const [selectedTab, setSelectedTab] = useState(0);
-    const [activeIndex, setActiveIndex] = useState(0);
-
 
   const themes = [
     {
@@ -24,7 +20,7 @@ const Themes = () => {
       ],
     },
     {
-      text: "IOT",
+      text: "Internet Of Things",
       problemStatements: [
         ["Smart Classroom Environment Control System", "Create an innovative solution for optimizing energy consumption and enhancing user comfort in large spaces, such as classrooms or expansive rooms with multiple fans, lights, and AC units. Develop a system that integrates IoT devices and AI algorithms to intelligently control individual appliances based on occupancy. The objective is to dynamically activate and deactivate fans, lights, and AC units in response to the presence or absence of individuals within specific zones, ensuring efficient resource utilization and a comfortable environment. "],
         ["Smart Farming Hackathon Challenge", "Design an intelligent farming system that harmoniously integrates IoT and AI technologies. Your mission is to develop a solution that monitors soil moisture, temperature, and crop health through IoT sensors. Implement AI algorithms for predicting optimal time for planting crops, and detecting potential diseases. With a focus on resource optimization and informed decision-making, empower farmers to elevate crop yield and enhance overall crop management practices. "],
@@ -130,46 +126,14 @@ const Themes = () => {
             ))}
           </div> */}
 
-        <div id="tabbed-component">
-           <TabView className="mb-9 md:ustify-center gap-5 bg-white bg-opacity-20 backdrop-blur-3xl rounded mx-auto md:w-[80%] sm:w-[90%] py-8 sm:px-6 md:px-0 shadow-xl">
-                <TabPanel header="GenerativeAI" className="bg-transparent">
-                    <p className="m-0">
-                      <h1 className="text-center text-white font-bold text-3xl">Generative AI</h1>
-                      <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
+        <div id="tabbed-component" className="pt-3 pb-3 flex flex-wrap justify-center mt-2 mb-2 ml-10 mr-10 rounded bg-opacity-20 bg-white md:gap-6 sm:gap-2">
+            <Button label="Generative AI" className="before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40" onClick={() => handleTabClick(0)}/>
+            <Button label="Internet of Things" className="before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40" onClick={() => handleTabClick(1)}/>
+            <Button label="HealthCare" className="before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40" onClick={() => handleTabClick(2)}/>
+            <Button label="Autonomous Vehicles" className="before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40" onClick={() => handleTabClick(3)}/>
+            <Button label="Cyber Security" className="before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40" onClick={() => handleTabClick(4)}/>
+            <Button label="Open Ended" className="before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40" onClick={() => handleTabClick(5)}/>
 
-                    </p>
-                </TabPanel>
-                <TabPanel header="IOT">
-                    <p className="m-0">
-                      <h1 className="text-center text-white font-bold text-3xl">Internet of Things</h1>
-                      <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                    </p>
-                </TabPanel>
-                <TabPanel header="HealthCare">
-                    <p className="m-0">
-                      <h1 className="text-center text-white font-bold text-3xl">HealthCare</h1>
-                      <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                    </p>
-                </TabPanel>
-                <TabPanel header="Autonomous Vehicles">
-                    <p className="m-0">
-                      <h1 className="text-center text-white font-bold text-3xl">Autonomous Vehicles</h1>
-                      <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                    </p>
-                </TabPanel>
-                <TabPanel header="Cyber Security">
-                    <p className="m-0">
-                      <h1 className="text-center text-white font-bold text-3xl">Cyber Security</h1>
-                      <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                    </p>
-                </TabPanel>
-                <TabPanel header="Open Ended">
-                    <p className="m-0">
-                      <h1 className="text-center text-white font-bold text-3xl">Open-Ended</h1>
-                      <h3 className="text-xl text-white text-center font-normal">Problem Statements</h3> 
-                    </p>
-                </TabPanel>
-            </TabView> 
         </div>
 
         {/* Div to remove */}
