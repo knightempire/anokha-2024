@@ -10,16 +10,16 @@ import oneapilogo from "../../images/oneAPI-rgb-3000.png";
 import { RiTeamFill } from "react-icons/ri";
 import Link from "next/link";
 
-
 export default function FirstRegister({
   handle_buttonone_click,
   TeamName,
   NoofMembers,
   platform,
-  platformEmail,
+  platformID,
   registeredEmail
 }) {
   const [switchVal, setSwitch] = useState(0);
+
   useEffect(() => {
     console.log(NoofMembers[0], switchVal);
   }, [switchVal]);
@@ -119,13 +119,13 @@ export default function FirstRegister({
                     <option value="devpost">Devpost</option>
                   </select>
                   <input
-                    type="text"
+                    type="email"
                     name="platformid"
                     id="platformid"
-                    value={platform[0]=="anokha"?registeredEmail:platformEmail[0]}
+                    value={platform[0]=="anokha"?registeredEmail:platformID[0]}
                     className="bg-transparent text-black border-2 border-gray-800 font-medium text-[16px] rounded-[5px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
                     placeholder="Platform email"
-                    onChange={(e) => platformEmail[1](e.target.value)}
+                    onChange={(e) => platformID[1](e.target.value)}
                   />
                 </div>
               </div>
@@ -148,8 +148,11 @@ export default function FirstRegister({
                   className="before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
                   disabled={
                     TeamName[0] == "" ||
-                    platform[0] == "" ||
-                    !validator.isEmail(platformEmail[0])
+                    platformID[0] == "" ||
+                    (platformID[0] != "" &&
+                      platformID[0] != null &&
+                      platformID[0] != undefined &&
+                      !validator.isEmail(platformID[0]))
                   }
                 >
                   <span relative="relative z-10 text-xl ">Next</span>
