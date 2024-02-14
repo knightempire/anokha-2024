@@ -7,6 +7,7 @@ import SubGuidelines from '../_components/SubGuidelines';
 import Image from 'next/image';
 import flowChart from '../images/process.jpg'
 import { FaDownload } from 'react-icons/fa';
+import RegProcess from '../_components/RegProcess';
 
 
 const Home = () => {
@@ -21,15 +22,13 @@ const Home = () => {
         <p className="text-lg mb-8">Follow these steps to get started</p>
         <div className="bg-gradient-to-r from-cyan-500 to-blue-500 md:w-[50%] p-8 rounded-[50%] lg:h-[60%] md:h-[30%] sm:h-[25%] lg:left-[25%] sm:left-[12%] md:left-[23%] lg:top-[20%] md:top-[60%] sm:top-[35%] absolute blur-3xl levitate sm:w-[80%]"></div>
                 <SimpleCard  />
-
-
-       
     </div>
 
 
 
     </div>
     <Image src={flowChart} width={1050} alt="intel flowchart" className="mx-auto" />
+    {/* <RegProcess/>  */}
     <div class="card mx-auto my-[7%]">
               <div className="bg-gradient-to-r from-gray-500 to-black-500 md:w-[50%] p-8 rounded-[50%] lg:h-[60%] md:h-[40%] sm:h-[25%] lg:left-[25%] sm:left-[12%] md:left-[23%] lg:top-[10%] md:top-[30%] sm:top-[40%] absolute blur-3xl levitate sm:w-[80%] lg:w-[100%]"></div>
               <div class="info relative bg-opacity-60 bg-white bg-blur">
