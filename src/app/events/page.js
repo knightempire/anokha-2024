@@ -117,7 +117,7 @@ const Events = () => {
             "Okay"
           );
           setTimeout(() => {
-            router.replace("/login");
+            router.push("/login");
           }, 1500)
           // openModal();
           // Session Expired or not logged in. Clear Cache and Navigate to login screen.

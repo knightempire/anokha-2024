@@ -72,7 +72,7 @@ export default function RegisterVerify() {
         toastRef);
 
         setTimeout(() => {
-          router.replace("/login");
+          router.push("/login");
         }, 1500);
 
       } else if (response.status === 500) {
@@ -83,7 +83,7 @@ export default function RegisterVerify() {
           toastRef,
         );
         setTimeout(() => {
-          router.replace("/register");
+          router.push("/register");
         }, 1500);
       } 
       else if (response.status === 400) {
@@ -103,7 +103,7 @@ export default function RegisterVerify() {
         toastRef,
       );
       setTimeout(() => {
-        router.replace("/register");
+        router.push("/register");
       }, 1500);
     }
       else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {

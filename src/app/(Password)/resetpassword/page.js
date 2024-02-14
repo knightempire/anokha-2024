@@ -64,7 +64,7 @@ export default function RegisterVerify() {
       alertError("Error", "Session expired. Please try again.");
       secureLocalStorage.clear();
       setTimeout(() => {
-        router.replace("/login");
+        router.push("/login");
       }, 2000);
       return;
     }
@@ -109,16 +109,16 @@ export default function RegisterVerify() {
         );
         console.log(data);
         setTimeout(() => {
-          router.replace("/login");
+          router.push("/login");
         }, 1500);
       } else if (response.status === 401) {
         ToastAlert("error", "Session expired!", "Please try again", toastRef);
         setTimeout(() => {
-          router.replace("/login");
+          router.push("/login");
         }, 1500);
 
         setTimeout(() => {
-          router.replace("/forgotpassword");
+          router.push("/forgotpassword");
         }, 1500);
       } else if (response.status === 400) {
         ToastAlert(

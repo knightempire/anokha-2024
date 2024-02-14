@@ -129,7 +129,7 @@ export default function Register() {
         ToastAlert("success","Email Verification", `${data.MESSAGE}`, toastRef);
         console.log(data);
         setTimeout(() => {
-          router.replace("/register/verify");
+          router.push("/register/verify");
         }, 1500);
       } else if (response.status === 500) {
         ToastAlert(

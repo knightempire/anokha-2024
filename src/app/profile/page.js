@@ -67,7 +67,7 @@ export default function Register() {
         } else if (response.status === 400) {
           secureLocalStorage.clear();
           ToastAlert("error", "Error", "Access restricted!", toastRef);
-          router.replace("/login");
+          router.push("/login");
         } else if (response.status === 401) {
           ToastAlert(
             "error",
@@ -77,7 +77,7 @@ export default function Register() {
           );
           secureLocalStorage.clear();
           setTimeout(() => {
-            router.replace("/");
+            router.push("/");
           }, 1500)
         } else if (response.status === 500) {
           ToastAlert(
@@ -185,7 +185,7 @@ export default function Register() {
         );
         secureLocalStorage.clear();
         setTimeout(() => {
-          router.replace("/login");
+          router.push("/login");
         }, 1500)
       } else if (response.status === 500) {
         ToastAlert(

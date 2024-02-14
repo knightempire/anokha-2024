@@ -18,7 +18,7 @@ export function SimpleCard() {
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
-              className="w-[100%] mx-auto sm:px-1 md:px-3"
+              className="w-[100%] mx-auto"
             ></iframe>
             <p className="text-lg text-center">Steps to register for the event</p> 
         </div>

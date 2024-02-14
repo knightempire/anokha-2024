@@ -140,7 +140,7 @@ const Register = () => {
         //   secureLocalStorage.setItem("registerEmail", email);
 
           setTimeout(() => {
-            router.replace("/hackathon");
+            router.push("/hackathon");
           }, 1500);
           
         } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
