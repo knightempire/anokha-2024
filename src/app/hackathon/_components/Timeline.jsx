@@ -41,17 +41,17 @@ const Timeline = () => {
 
   const phases = [
     {
-      title: "1 Ideation",
+            title: "Round 1: Ideation",
       description:
         "During this initial phase, participants are tasked with brainstorming ideas centered around provided problem statements. Provide a submission with a PowerPoint presentation and a concise 200-character description that clearly explains the proposed concept, making specific reference to the Intel toolkit used.",
     },
     {
-      title: "2 Prototype Development",
+            title: "Round 2: Prototype Development",
       description:
         "In the subsequent phase, participants embark on crafting prototypes based on their ideation submissions. Comprehensive resources including intensive video playlists accessible via the official ANOKHA website facilitate the development process. Prototypes are to be shared via GitHub repositories, with linkage to DevMesh for streamlined visibility.",
     },
     {
-      title: "3 Final Round",
+            title: "Round 3: Final Round",
       description:
         "Shortlisted participants progress to the culminating 24-hour offline hackathon hosted at the Amrita Vishwa Vidyapeetham, Coimbatore campus. Participants need to bring their laptops, and hardware resources will be provided based on the requirements of the prototype.",
     },
