@@ -12,25 +12,18 @@ const About = () => {
 
             
             
-            The Intel AI is a 3 round Hackathon which presents an online hybrid platform where
-            developers are challenged to showcase their prowess in crafting innovative
-            solutions for societal advancement through heterogeneous computing, leveraging
-            Intel one API as the core programming paradigm. Participants stand to benefit from
-            immersive training sessions conducted by Intel experts, delving into a wide array of
-            Intel AI Analytics Toolkits, libraries, SYCL/DPC++ Libraries, and optimized
-            frameworks such as Optimum Intel Pandas, PyTorch, Quantum SDK, SciPy, SGX,
-            SigOpt, SynapseAl, Tensorflow, TGX, Transformers, vTune, BigDL, cnvrg.io, Daal4py,
-            Docker, DPCTL, GCP, Geti, Hugging Face, Intel Extension for PyTorch, Intel
-            Extension for Scikit-learn, Intel Extension for Transformers, Intel Neural
-            Compressor, Kubeflow, Kubernetes, Langchain, Modin, Numba (IDP), NumPy,
-            oneDNN,oneMKL, OpenVINO, Optimum Habana, Optimum Intel, XGBoost.
-            Additionally, participants will have access to domain-specific reference kits and
-            open AI software tools to augment their development journey.
-            <br/><br/>
-            Anokha, the national techfest of Amrita Vishwa Vidyapeetham Coimbatore, is a 3-day congregation of some of the brightest minds in India. Founded in 2010, Anokha has grown by leaps and bounds and has progressed to become one of the leading techfests in India. 
-            The Institution of Electronics and Telecommunication Engineers (IETE) Amrita Student Forum helps imparting knowledge to young and enthusiastic engineers that will help them to grow and develop in the area of electronics and telecommunication and software. IETE plan and organize technical programmes and activities, such as, special lectures, workshops, seminars, exhibitions etc. for the benefit of student members on a regular basis. Provide a common platform for the student members to exchange ideas and information.
-          
-
+            The Intel AI is a 3 round Hackathon which presents an online hybrid platform where developers are challenged to showcase their prowess in crafting innovative solutions 
+            for societal advancement through heterogeneous computing, leveraging Intel one API as the core programming paradigm. Participants stand to benefit from immersive 
+            training sessions conducted by Intel experts, delving into a wide array of Intel AI Analytics Toolkits, libraries, SYCL/DPC++ Libraries, and optimized frameworks such as 
+             Pandas, PyTorch, Quantum SDK, SciPy, Tensorflow, Transformers, vTune, Daal4py, DPCTL, Intel Extension for PyTorch, Intel Extension for Scikit-learn, Intel Extension for 
+             Transformers, Intel Neural Compressor, Modin, Numba (IDP), NumPy, oneDNN,oneMKL, OpenVINO, Optimum Habana, Optimum Intel, XGBoost. Additionally, participants will have 
+             access to domain-specific reference kits and open AI software tools to augment their development journey.
+            <br/> <br/>
+            Anokha, the national techfest of Amrita Vishwa Vidyapeetham Coimbatore, is a 3-day congregation of some of the brightest minds in India. Founded in 2010, 
+            Anokha has experienced remarkable growth and has progressed to become one of the leading techfests in India. The Institution of Electronics and Telecommunication 
+            Engineers (IETE) Amrita Student Forum helps in imparting knowledge to young and enthusiastic engineers that will help them to grow and develop in the area of electronics, 
+            telecommunication, and software. IETE conducts regular technical programs, including special lectures, workshops, seminars, and exhibitions, benefiting student members. It 
+            serves as a shared platform for students to exchange ideas and information.
           </div>
         </div>
       </div>

@@ -30,7 +30,7 @@ const Timeline = () => {
         </p>
         <ol className="md:flex md:w-[90%] sm:w-[100%] h-full justify-center mx-auto ">
           {phases.map((ph, id) => (
-            <li key={id} className="my-5 md:w-[100%] sm:w-[90%] mx-auto">
+            <li key={id} className="md:my-5 md:w-[100%] sm:w-[90%] mx-auto sm:my-0">
               {/* Div for line and icon */}
               <div className="flex md:justify-center items-center">
                 <div className="hidden md:flex w-[50%] bg-gray-200 h-0.5 dark:bg-gray-700"></div>

@@ -13,7 +13,10 @@ import WebGLApp from "../bg/WebGLApp";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import TextField from "@mui/material/TextField";
- 
+import IconButton from "@mui/material/IconButton";
+import InputAdornment from "@mui/material/InputAdornment";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Link from "next/link";
 
 import { Toast } from "primereact/toast";
@@ -21,17 +24,19 @@ import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
 import ToastAlert from "../_util/ToastAlerts";
 export default function Login() {
- 
+  useEffect(() => {
+    securelocalStorage.clear();
+  }, []);
 
-  useEffect(()=>{
-    securelocalStorage.clear()
-},[])
- 
   const toastRef = useRef();
 
   const [studentEmail, setStudentEmail] = useState("");
   const [studentPassword, setStudentPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () =>
+    setShowPassword((showPassword) => !showPassword);
 
   const router = useRouter();
 
@@ -56,23 +61,23 @@ export default function Login() {
         console.log(data);
         setLoading(false);
         secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
-        secureLocalStorage.setItem("StudentFullName", data["studentFullName"]);
+        secureLocalStorage.setItem("studentFullName", data["studentFullName"]);
         secureLocalStorage.setItem("registerEmail", data["studentEmail"]);
         secureLocalStorage.setItem("isLoggedIn", 1);
         secureLocalStorage.setItem("isAmritaCBE", data["isAmritaCBE"]);
         secureLocalStorage.setItem("needActivePassport", data["needPassport"]);
         secureLocalStorage.setItem(
           "studentAccountStatus",
-          data["studentAccountStatus"],
+          data["studentAccountStatus"]
         );
         secureLocalStorage.setItem("studentPhone", data["studentPhone"]);
         secureLocalStorage.setItem(
           "studentCollegeName",
-          data["studentCollegeName"],
+          data["studentCollegeName"]
         );
         secureLocalStorage.setItem(
           "studentCollegeCity",
-          data["studentCollegeCity"],
+          data["studentCollegeCity"]
         );
         secureLocalStorage.setItem("needPassport", data["needPassport"]);
         secureLocalStorage.setItem("studentId", data["studentId"]);
@@ -81,21 +86,19 @@ export default function Login() {
           "success",
           "Successful Login",
           "You have logged in successfully!",
-          toastRef,
+          toastRef
         );
         setTimeout(() => {
           router.replace("/hackathon");
         }, 1500);
-        
       } else if (response.status === 500) {
         setLoading(false);
         ToastAlert(
           "error",
           "Oops!",
           "Something went wrong! Please try again.",
-          toastRef,
+          toastRef
         );
-      
       } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
         setLoading(false);
         ToastAlert("error", "Login Failed", `${data.MESSAGE}`, toastRef);
@@ -105,7 +108,7 @@ export default function Login() {
           "error",
           "Oops!",
           "Something went wrong! Please try again!",
-          toastRef,
+          toastRef
         );
       }
     } catch (error) {
@@ -127,7 +130,7 @@ export default function Login() {
   });
 
   return (
-    <main className="flex min-h-screen flex-col bg-[#121212]">
+    <main className="flex min-h-screen flex-col bg-[#192032]">
       <WebGLApp colors={webGLColors} />
       <div className="block">
         <Navbar />
@@ -171,18 +174,34 @@ export default function Login() {
                       Password
                     </label>
                     <TextField
-                      id="outlined-error-helper-text"
-                      placeholder={"Enter Password"}
-                      type="password"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Enter Password"
                       value={studentPassword}
                       sx={{
                         width: "100%",
                         borderRadius: 5,
+                        borderWidth: 5,
                       }}
                       onChange={(e) => {
                         setStudentPassword(e.target.value);
                       }}
                       required
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton
+                              onClick={handleClickShowPassword}
+                              edge="end"
+                            >
+                              {showPassword ? (
+                                <VisibilityOff />
+                              ) : (
+                                <Visibility />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
                     />
                   </div>
                   <div className="flex items-center justify-between">
@@ -200,7 +219,11 @@ export default function Login() {
                     type="submit"
                     onClick={HandleLogin}
                     className="w-full text-black bg-[#f69c18] hover:bg-[#f69c18] focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed"
-                    disabled={!validator.isEmail(studentEmail) || loading || studentPassword==""}
+                    disabled={
+                      !validator.isEmail(studentEmail) ||
+                      loading ||
+                      studentPassword == ""
+                    }
                   >
                     Sign in
                   </button>

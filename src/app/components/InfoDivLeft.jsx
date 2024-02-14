@@ -16,7 +16,7 @@ const Card = ({ title, description, src }) => {
     const tl1 = gsap.timeline({
       scrollTrigger: {
         trigger: container.current,
-        start: "-25% 50%",
+        start: "-25% 55%",
         end: "125% 20%",
         scrub: true,
       },

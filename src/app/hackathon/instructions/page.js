@@ -3,7 +3,6 @@
 import React from 'react';
 import { SimpleCard } from '../_components/InstructCard';
 import Resources from '../_components/Resources';
-import Instructions from '../_components/Instructions';
 import SubGuidelines from '../_components/SubGuidelines';
 import Image from 'next/image';
 import flowChart from '../images/process.jpg'
