@@ -82,7 +82,7 @@ const TimelineInstruct = () => {
   return (
     <div className="w-full bg-[#0A113A] pt-10  overflow-hidden">
       <h1 className="text-[3rem] font-bold text-center text-white mt-6">
-        Hackathon Phases
+        Hackathon Timeline
       </h1>
       <div className="flex justify-items-center">
         <div class="timeline">

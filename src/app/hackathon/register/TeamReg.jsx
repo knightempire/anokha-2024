@@ -276,6 +276,7 @@ const Register = () => {
                     platform={[platform, setPlatform]}
                     platformID={[selectedPlatformId, setSelectedPlatformID]}
                     registeredEmail={registerEmail}
+                    router={router}
                   />
                 ) : currentStep === 1 ? (
                   <SecondRegister
