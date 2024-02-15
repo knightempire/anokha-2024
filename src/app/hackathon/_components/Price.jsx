@@ -7,6 +7,7 @@ import { ImLocation } from "react-icons/im";
 import { Button} from "@material-tailwind/react";
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from "react";
+import secureLocalStorage from "react-secure-storage";
 
 import React from 'react'
 import CountdownTimer from "@/app/components/Counter";
@@ -27,6 +28,14 @@ export default function Price() {
         return "Register";
     }
   };
+
+  const disableCondition = () => {
+        const token = secureLocalStorage.getItem("SECRET_TOKEN");
+        if(token == null || token == undefined){
+            return true;
+        }
+        return false;
+    }
 
   const handleStateChange = () => {
     setCurrentState((prevState) => {
@@ -76,7 +85,11 @@ export default function Price() {
                  {/* Timer here if possible  */}
 
               <div>
-              <Button onClick={(e)=>{router.push("/hackathon/register")}} className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-4  rounded-[5px] mt-3 ml-3">
+              <Button 
+                onClick={(e)=>{router.push("/hackathon/register")}} 
+                className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-4  rounded-[5px] mt-3 ml-3"
+                disabled={disableCondition}
+              >
               Registrations Open!
             </Button>
               </div>
