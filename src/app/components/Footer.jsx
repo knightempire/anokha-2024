@@ -82,7 +82,7 @@ const Footer = ({ current_page }) => {
                   </Link>
                   <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" />
                 </div>
-                <div className="flex flex-nowrap">
+                {/* <div className="flex flex-nowrap">
                   <Link
                     href={"https://www.google.com"}
                     className="text-gray-200 hover:text-white hover:font-bold"
@@ -90,7 +90,7 @@ const Footer = ({ current_page }) => {
                     PLAYSTORE APP
                   </Link>
                   <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" />
-                </div>
+                </div> */}
               </div>
             </div>
             <div className="mt-3">
