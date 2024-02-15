@@ -33,8 +33,19 @@ const navLinks = [
   },
   {
     title: "Contact Us",
-    path: "/contactus",
+    path: "/",
   },
+];
+
+const optNavLink = [
+    {
+        title: "Login",
+        path: "/login",
+    },
+    {
+        title: "Sign Up",
+        path: "/register",
+    },
 ];
 
 const Navigationbar = () => {
@@ -128,20 +139,19 @@ const Navigationbar = () => {
             {isLoggedIn === 1 ? (
               <ProfileCard email={email} />
             ) : (
-              <div className=" relative inline-flex  group">
+              <div className=" relative inline-flex  group md:block sm:hidden">
                 <div className="hidden md:block absolute transitiona-all w-[180px] h-[30px]   duration-1000 opacity-70  -inset-px bg-gradient-to-r from-[#ffffff] via-[#76adfa] to-[#0659ff] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
                 <Button
-                  className="relative  inline-flex items-center w-[100px] md:w-[200px] justify-center px-2  md:px-2 md:py-2 md:text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900"
+                  className="relative  inline-flex items-center w-[100px] md:w-[200px] justify-center px-2  md:px-2 md:py-2 md:text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900 sm:before:content-['Login'] md:before:content-['Login_\/_Sign_In']"
                   onClick={handleForgetPassword}
                 >
-                  Login / Sign Up
                 </Button>
               </div>
             )}
           </div>
         </div>
       </div>
-      {navbarOpen ? <MenuOverlay links={navLinks} /> : null}
+      {navbarOpen ? <MenuOverlay links={[...navLinks, ...optNavLink]} /> : null}
     </nav>
   );
 };
