@@ -33,7 +33,7 @@ const navLinks = [
   },
   {
     title: "Contact Us",
-    path: "/contactus",
+    path: "/",
   },
 ];
 
@@ -129,12 +129,10 @@ const Navigationbar = () => {
               <ProfileCard email={email} />
             ) : (
               <div className=" relative inline-flex  group">
-                <div className="hidden md:block absolute transitiona-all w-[180px] h-[30px]   duration-1000 opacity-70  -inset-px bg-gradient-to-r from-[#ffffff] via-[#76adfa] to-[#0659ff] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
                 <Button
-                  className="relative  inline-flex items-center w-[100px] md:w-[200px] justify-center px-2  md:px-2 md:py-2 md:text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900"
+                  className="relative border-[#1a4d76] border-0 inline-flex items-center w-[100px] md:w-[200px] justify-center px-2  md:px-2 md:py-2 md:text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900 sm:before:content-['Login'] md:before:content-['Login_\/_Sign_In'] hover:scale-[1.02] hover:border-[#1a4d76] hover:border-2"
                   onClick={handleForgetPassword}
                 >
-                  Login / Sign Up
                 </Button>
               </div>
             )}
