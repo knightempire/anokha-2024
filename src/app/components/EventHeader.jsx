@@ -37,6 +37,17 @@ const navLinks = [
   },
 ];
 
+const optNavLink = [
+    {
+        title: "Login",
+        path: "/login",
+    },
+    {
+        title: "Sign Up",
+        path: "/register",
+    },
+];
+
 const Navigationbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -140,7 +151,7 @@ const Navigationbar = () => {
           </div>
         </div>
       </div>
-      {navbarOpen ? <MenuOverlay links={navLinks} /> : null}
+      {navbarOpen ? <MenuOverlay links={[...navLinks, ...optNavLink]} /> : null}
     </nav>
   );
 };
