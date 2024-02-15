@@ -141,7 +141,7 @@ const Navigationbar = () => {
             ) : (
               <div className=" relative inline-flex  group md:block sm:hidden">
                 <Button
-                  className="relative border-[#1a4d76] border-0 inline-flex items-center w-[100px] md:w-[200px] justify-center px-2  md:px-2 md:py-2 md:text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900 sm:before:content-['Login'] md:before:content-['Login_\/_Sign_In'] hover:scale-[1.02] hover:border-[#1a4d76] hover:border-2"
+                  className="relative border-[#1a4d76] border-0 inline-flex items-center w-[100px] md:w-[200px] justify-center px-2  md:px-2 md:py-2 md:text-lg font-bold text-white transition-all duration-100 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900 sm:before:content-['Login'] md:before:content-['Login_\/_Sign_In'] hover:scale-[1.02] hover:border-[#1a4d76] hover:border-2"
                   onClick={handleForgetPassword}
                 ></Button>
               </div>
