@@ -23,7 +23,7 @@ const SponsorsMarquee = () => {
         gradient="false"
         gradientColor="[0, 0, 0]"
         speed={50}
-        className="flex h-30 text-white bg-white py-4"
+        className="flex h-30 text-white bg-white py-4 overflow-hidden"
       >
         <SponsorElement src="https://i.imgur.com/X1qoxbQ.png" title="H&R" />
         <SponsorElement src="https://i.imgur.com/5BlpVzJ.jpg" title="IETE" />
