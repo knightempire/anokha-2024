@@ -180,7 +180,7 @@ const Card = ({ title, description, src }) => {
       },
     });
 
-    //Animation for container opacity
+    // Animation for the container opacity
     tl1.from(
       phoneContainer.current,
       {
@@ -193,7 +193,7 @@ const Card = ({ title, description, src }) => {
 
     // Animation for the Title
     tl1.from(
-      phoneContainer.current.children[0],
+      phoneContainer.current.children[0], // Selecting the first child element (title)
       {
         opacity: 0,
         y: 100,
@@ -204,24 +204,10 @@ const Card = ({ title, description, src }) => {
     );
 
     // Animation for each image
-    tl1.from(phoneContainer.current.children[1], {
-      opacity: 0,
-      y: 100,
-      scale: 0.5,
-      duration: 0.3,
-      ease: "power3.out",
-    });
-
-    tl1
-      .from(phoneContainer.current.children[2], {
-        opacity: 0,
-        y: 100,
-        scale: 0.5,
-        duration: 0.3,
-        ease: "power3.out",
-      })
-      .from(
-        phoneContainer.current.children[3],
+    for (let i = 1; i <= 3; i++) {
+      // Looping through the image elements
+      tl1.from(
+        phoneContainer.current.children[i], // Selecting the image elements
         {
           opacity: 0,
           y: 100,
@@ -229,97 +215,37 @@ const Card = ({ title, description, src }) => {
           duration: 0.3,
           ease: "power3.out",
         },
-        "-=0.15"
-      )
-      .from(
-        phoneContainer.current.children[4],
-        {
-          opacity: 0,
-          y: 100,
-          scale: 0.5,
-          duration: 0.3,
-          ease: "power3.out",
-        },
-        "-=0.15"
-      )
-      .from(
-        phoneContainer.current.children[5],
-        {
-          opacity: 0,
-          y: 100,
-          scale: 0.5,
-          duration: 0.3,
-          ease: "power3.out",
-        },
-        "-=0.15"
+        `=-${0.3 + 0.15 * (i - 1)}` // Delaying each image animation
       );
+    }
 
     // Animation for the Description
-    tl1.from(phoneContainer.current.children[6], {
-      opacity: 0,
-      duration: 0.5,
-      ease: "power3.out",
-    });
-
-    // Reverse animations in tl2
-    tl1.to(
-      phoneContainer.current.children[5],
+    tl1.from(
+      phoneContainer.current.children[4], // Selecting the description element
       {
         opacity: 0,
-        y: -100,
-        scale: 0.5,
-        duration: 0.3,
+        duration: 0.5,
         ease: "power3.out",
-      },
-      "+=1"
+      }
     );
 
-    tl1.to(phoneContainer.current.children[4], {
-      opacity: 0,
-      y: -100,
-      scale: 0.5,
-      duration: 0.3,
-      ease: "power3.out",
-    });
+    // Reverse animations
+    for (let i = 3; i >= 1; i--) {
+      // Looping through the image elements in reverse order
+      tl1.to(
+        phoneContainer.current.children[i], // Selecting the image elements
+        {
+          opacity: 0,
+          y: -100,
+          scale: 0.5,
+          duration: 0.3,
+          ease: "power3.out",
+        },
+        `+=${0.15}` // Delaying each reverse animation
+      );
+    }
 
-    tl1.to(phoneContainer.current.children[3], {
-      opacity: 0,
-      y: -100,
-      scale: 0.5,
-      duration: 0.3,
-      ease: "power3.out",
-    });
-
-    tl1.to(phoneContainer.current.children[2], {
-      opacity: 0,
-      y: -100,
-      scale: 0.5,
-      duration: 0.3,
-      ease: "power3.out",
-    });
-
-    tl1.to(phoneContainer.current.children[1], {
-      opacity: 0,
-      y: -100,
-      scale: 0.5,
-      duration: 0.3,
-      ease: "power3.out",
-    });
-
-    tl1.to(phoneContainer.current.children[6], {
-      opacity: 0,
-      duration: 0.5,
-      ease: "power3.out",
-    });
-
-    tl1.to(phoneContainer.current.children[0], {
-      opacity: 0,
-      y: -100,
-      duration: 0.5,
-      ease: "power3.out",
-    });
-
-    //Animation for phoneContainer opacity
+    // Animation for the container opacity (reversed)
     tl1.to(
       phoneContainer.current,
       {
@@ -327,7 +253,7 @@ const Card = ({ title, description, src }) => {
         duration: 2,
         ease: "slow(0.7,0.7,false)",
       },
-      "=-1"
+      "+=1" // Delaying the reverse animation
     );
   });
 
