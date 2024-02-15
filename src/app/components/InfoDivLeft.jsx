@@ -176,7 +176,6 @@ const Card = ({ title, description, src }) => {
         start: "-10% 50%", // Adjust the start value to start the animation earlier
         end: "120% 0%",
         scrub: true,
-        markers: true,
       },
     });
 
