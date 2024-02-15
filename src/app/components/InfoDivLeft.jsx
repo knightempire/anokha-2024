@@ -169,14 +169,14 @@ const Card = ({ title, description, src }) => {
       "=-1"
     );
   });
-
   useGSAP(() => {
     const tl1 = gsap.timeline({
       scrollTrigger: {
         trigger: phoneContainer.current,
-        start: "20% 50%",
+        start: "-10% 50%", // Adjust the start value to start the animation earlier
         end: "120% 0%",
         scrub: true,
+        markers: true,
       },
     });
 
@@ -212,7 +212,7 @@ const Card = ({ title, description, src }) => {
           opacity: 0,
           y: 100,
           scale: 0.5,
-          duration: 0.3,
+          duration: 0.5,
           ease: "power3.out",
         },
         `=-${0.3 + 0.15 * (i - 1)}` // Delaying each image animation
@@ -229,6 +229,8 @@ const Card = ({ title, description, src }) => {
       }
     );
 
+    tl1.to({}, { duration: 3 });
+
     // Reverse animations
     for (let i = 3; i >= 1; i--) {
       // Looping through the image elements in reverse order
@@ -238,7 +240,7 @@ const Card = ({ title, description, src }) => {
           opacity: 0,
           y: -100,
           scale: 0.5,
-          duration: 0.3,
+          duration: 0.5,
           ease: "power3.out",
         },
         `+=${0.15}` // Delaying each reverse animation
