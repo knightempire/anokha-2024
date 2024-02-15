@@ -12,6 +12,7 @@ import FirstRegister from "@/app/hackathon/_components/_form/FirstRegister";
 import SecondRegister from "@/app/hackathon/_components/_form/SecondRegister";
 import ThirdRegister from "@/app/hackathon/_components/_form/ThirdRegister";
 import secureLocalStorage from "react-secure-storage";
+import { LoadingScreen } from "@/app/_util/LoadingScreen/LoadingScreen";
 
 import { useRouter } from "next/navigation";
 
@@ -183,6 +184,9 @@ const Register = () => {
     setMemONeTwo(mem_12);
   }, [member1IDC, member2Email, member2IDC]);
 
+  
+
+   
   const Memberview = ({ member, idc, no }) => {
     return (
       <div className="flex flex-col flex-1 space-y-5 ">
@@ -234,7 +238,19 @@ const Register = () => {
     );
   };
 
+   
+
   return (
+    registerEmail === null ||
+    secretToken === null ||
+    registerEmail.length == 0 ||
+    secretToken.length == 0) ? (
+      
+     
+      <LoadingScreen />
+       
+     
+  ) : (
     <div>
       <Navbar />
       <main className="w-full h-full bg-[rgb(10,17,58)] overflow-x-hidden">

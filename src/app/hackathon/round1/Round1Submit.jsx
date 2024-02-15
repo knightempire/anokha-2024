@@ -17,6 +17,7 @@ import { Button } from "@material-tailwind/react";
 
 import RoundOne from "../_components/RoundOne";
 import RoundOnePt2 from "../_components/RoundOnePt2";
+import { LoadingScreen } from "@/app/_util/LoadingScreen/LoadingScreen";
 
 export default function Page() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -150,6 +151,17 @@ export default function Page() {
   ]);
 
   return (
+    (
+      registerEmail === null ||
+      secretToken === null ||
+      registerEmail.length == 0 ||
+      secretToken.length == 0) ? (
+        
+       
+        <LoadingScreen />
+         
+       
+    ) : 
     <div>
       <Navbar />
       <Toast ref={toastRef} position="bottom-center" className="p-5" />

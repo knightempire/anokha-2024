@@ -82,8 +82,8 @@ const RoundOnePt2 = ({
                     onClick={(e) => setTandCButton(!TandCButton)}
                   />
                   <label htmlFor="" className="text-sm ml-2">
-                    I have granted access to the above links and I accept full
-                    responsibility for functionality and information accuracy.
+                  I confirm that I am solely responsible for the functionality and accuracy of the provided link.
+                   Any issues with the link's performance is not the responsibility of the platform.
                   </label>
                 </div>
 

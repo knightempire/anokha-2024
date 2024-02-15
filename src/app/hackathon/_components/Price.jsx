@@ -29,7 +29,7 @@ export default function Price() {
                   <MdGroups2 size="40" color="#1c5dad"/>
                 <div className="md:text-2xl sm:text-xl ">Who can participate?</div> 
                 </div>
-                <div className="mt-4 text-xl w-4/5 md:text-2xl sm:text-xl ">
+                <div className="mt-4 text-md w-4/5 md:text-xl sm:text-md ">
                 AI/ML Enthusiasts, Undergraduate and Postgraduate Students
                 </div>
 

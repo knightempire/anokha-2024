@@ -8,7 +8,7 @@ import Image from "next/image";
 import secureLocalStorage from "react-secure-storage";
 import { useAuth } from "@/app/_auth/useAuth";
 import { useRouter } from "next/navigation";
-import { Button} from "@material-tailwind/react";
+import { Button } from "@material-tailwind/react";
 
 const navLinks = [
   {
@@ -20,7 +20,7 @@ const navLinks = [
     path: "/comingSoon",
   },
   {
-    title: "EventTide",
+    title: "Eventide",
     path: "/comingSoon",
   },
   {
@@ -33,7 +33,7 @@ const navLinks = [
   },
   {
     title: "Contact Us",
-    path: ".relative h-1/2 footer-font bg-black",
+    path: "/contactus",
   },
 ];
 
@@ -51,16 +51,17 @@ const Navigationbar = () => {
   const [email, setEmail] = useState(secureLocalStorage.getItem("email"));
 
   useEffect(() => {
-    
     setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
     setIsAmritaCBE(parseInt(secureLocalStorage.getItem("isAmritaCBE")));
-    setHasActivePassport(parseInt(secureLocalStorage.getItem("hasActivePassport")));
+    setHasActivePassport(
+      parseInt(secureLocalStorage.getItem("hasActivePassport"))
+    );
     setEmail(secureLocalStorage.getItem("registerEmail"));
   }, []);
 
   useEffect(() => {
     console.log("Updated Email", email);
-  },[email])
+  }, [email]);
 
   const { SignOut } = useAuth();
 
@@ -108,12 +109,14 @@ const Navigationbar = () => {
           <ul className="flex p-2 md:p-0 md:flex-row lg:space-x-2 mt-0 ">
             {navLinks.map((link, index) => (
               <li key={index}>
-                <Link
-                    href={link.path}
-                     
+                <Link href={link.path}>
+                  <Button
+                    variant="text"
+                    className=" h-[40px] hover:bg-gray-700"
                   >
-                  <Button variant="text" className=" h-[40px] hover:bg-gray-700">
-                       <div className="my-auto   text-gray-300   text-[13px]   rounded md:p-0 hover:text-white">{link.title}</div>
+                    <div className="my-auto   text-gray-300   text-[13px]  rounded md:p-0 hover:text-white">
+                      {link.title}
+                    </div>
                   </Button>
                 </Link>
               </li>
@@ -123,7 +126,7 @@ const Navigationbar = () => {
         <div className="flex flex-row justify-center items-start">
           <div className="mr-5">
             {isLoggedIn === 1 ? (
-              <ProfileCard email={email}/>
+              <ProfileCard email={email} />
             ) : (
               <div className=" relative inline-flex  group">
                 <div className="hidden md:block absolute transitiona-all w-[180px] h-[30px]   duration-1000 opacity-70  -inset-px bg-gradient-to-r from-[#ffffff] via-[#76adfa] to-[#0659ff] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
