@@ -174,7 +174,7 @@ const Card = ({ title, description, src }) => {
       scrollTrigger: {
         trigger: phoneContainer.current,
         start: "-10% 50%", // Adjust the start value to start the animation earlier
-        end: "120% 0%",
+        end: "120% 10%",
         scrub: true,
       },
     });
@@ -214,7 +214,7 @@ const Card = ({ title, description, src }) => {
           duration: 0.5,
           ease: "power3.out",
         },
-        `=-${0.3 + 0.15 * (i - 1)}` // Delaying each image animation
+        `=-${0.15 * (3 - i + 1)}` // Delaying each image animation
       );
     }
 
@@ -242,7 +242,7 @@ const Card = ({ title, description, src }) => {
           duration: 0.5,
           ease: "power3.out",
         },
-        `+=${0.15}` // Delaying each reverse animation
+        `+=${0.1}`
       );
     }
 
