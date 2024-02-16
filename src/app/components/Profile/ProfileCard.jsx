@@ -1,11 +1,10 @@
 "use client";
-import React, { useState, useRef, createElement } from "react";
+import React, { useState, createElement } from "react";
 
-import { Avatar, Popover } from "@mui/material";
+import { Avatar } from "primereact/avatar";
 import { MD5 } from "crypto-js";
 
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
-import { hashPassword } from "@/app/_util/hash";
 import {
   Button,
   Menu,
@@ -16,7 +15,6 @@ import {
 } from "@material-tailwind/react";
 import {
   UserCircleIcon,
-  Cog6ToothIcon,
   PowerIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
@@ -78,17 +76,15 @@ export default function ProfileCard({ email }) {
           >
             <div className="border-blue-600 border-2 p-1 rounded-full bg-gray-300 ">
               <Avatar
-                variant="circle"
+                shape="circle"
                 className=""
                 alt="Travis Howard"
-                src={
+                image={
                   "https://www.gravatar.com/avatar/" +
                   hash +
-                  ".jpg?s=200&d=robohash"
+                  ".jpg?s=50&d=robohash"
                 }
-                width={340}
-                height={30}
-                sx={{ width: 30, height: 30, bg: "red" }}
+                size="xlarge"
               />
             </div>
             <div className="cursor-pointer">
