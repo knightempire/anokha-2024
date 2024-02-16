@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@material-tailwind/react";
-import InputSwitch from "primereact/inputswitch";
+import InputSwitch from "@mui/material/Switch";
 import validator from "validator";
 import oneapilogo from "../../images/oneAPI-rgb-3000.png";
 import { RiTeamFill } from "react-icons/ri";
@@ -96,7 +96,7 @@ export default function FirstRegister({
                   value={switchVal}
                   checked={NoofMembers[0] == 3 ? 0 : 1}
                   onChange={(e) => {
-                    console.log(NoofMembers[0], switchVal, e.target.checked);
+                    console.log(NoofMembers[0], switchVal, e.target.value);
                     if (e.target.checked == true) {
                       NoofMembers[1](4);
                       setSwitch(1);
