@@ -1,8 +1,6 @@
-import { LinkOff } from "@mui/icons-material";
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Button } from "@material-tailwind/react";
 
 const Resources = () => {
   const videos = [
