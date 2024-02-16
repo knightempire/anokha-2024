@@ -55,17 +55,17 @@ function IntelHero({ userState, displayResult }) {
           {/* <button className='text-base p-3 bg-[#03C7FD] mt-3 rounded'>IDC Materials</button> */}
           <div className="flex md:gap-4 sm:gap-2 flex-wrap mt-2">
             <Button
-              // onClick={(e) => {
-              //   router.push("/hackathon/instructions");
-              // }}
+              onClick={(e) => {
+                router.push("/hackathon/instructions");
+              }}
               // disabled={1}
-              
-              
-              className="text-[1rem] cursor-not-allowed text-black border border-black p-3 px-8 sm:mt-0 md:mt-0 rounded-xl bg-transparent md:w-fit sm:w-full"
+
+
+              className="text-[1rem] text-black border border-black p-3 px-8 sm:mt-0 md:mt-0 rounded-xl bg-transparent md:w-fit sm:w-full"
             >
               Instructions
             </Button>
-             
+
             {userState === 0 ? (
               <Button
                 onClick={(e) => {
@@ -106,7 +106,7 @@ function IntelHero({ userState, displayResult }) {
       </div>
 
       <div className=" inset-0 flex justify-center items-center">
-      <div onClick={handleScrollMore} className="bg-white tex animate-bounce absolute md:top-[92%] sm:top-[90%]  w-60 rounded-full px-3 py-2 flex items-center justify-center">Scroll More  <FaAngleDoubleDown className="ml-2"/></div>
+        <div onClick={handleScrollMore} className="bg-white tex animate-bounce absolute md:top-[92%] sm:top-[90%]  w-60 rounded-full px-3 py-2 flex items-center justify-center">Scroll More  <FaAngleDoubleDown className="ml-2" /></div>
       </div>
     </div>
   );

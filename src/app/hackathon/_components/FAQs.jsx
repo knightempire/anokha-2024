@@ -22,7 +22,6 @@ const FAQs = () => {
                 "The entire code base needs to be present on the team's GitHub repository.",
                 "The prototype submission must emphasize on both deployment and inference, with and without Intel® one API.",
                 "Pull requests of the forked repository need to be generated. ",
-                "To know more details about the registration and the rules of the hackathon, please click on this link " 
             ]
         },
     ]
