@@ -13,7 +13,15 @@ module.exports = withBundleAnalyzer({
   },
 
   images: {
-    domains: ["anokha.amrita.edu", "i.imgur.com", 'imgur.com'],
+    domains: ["anokha.amrita.edu", "i.imgur.com", "imgur.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**gravatar.com",
+        port: "",
+        pathname: "/avatar/**",
+      },
+    ],
   },
 
   env: {
