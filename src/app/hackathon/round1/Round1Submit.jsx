@@ -55,16 +55,6 @@ export default function Page() {
   };
   const handle_upload_click = async (e) => {
     try {
-      console.log(
-        JSON.stringify({
-          theme: theme,
-          problemStatement: problemStatement,
-          pptFileLink: pdflink,
-          githubLink: githublink,
-          youtubeVideoLink: youtubelink,
-          devmeshLink: devmeshlink,
-        })
-      );
       // setLoading(true);
       const response = await fetch(HACKATHON_FIRST_ROUND_SUBMISSION_URL, {
         method: "POST",
@@ -82,9 +72,7 @@ export default function Page() {
         }),
       });
 
-      console.log(response);
       const data = await response.json();
-      console.log(data);
       if (response.status === 200) {
         ToastAlert(
           "success",
@@ -122,24 +110,15 @@ export default function Page() {
           return;
         }
 
-        //  console.log(data);
       
     } catch (e) {
-      // ToastAlert("error", "Error", "Please try again!", toastRef);
-      console.log(e);
+      ToastAlert("error", "Error", "Please try again!", toastRef);
     }
 
     // setLoading(false);
   };
 
   useEffect(() => {
-    console.log("Current Step", currentStep);
-    console.log("Theme", theme);
-    console.log("Problem Statement", problemStatement);
-    console.log("Github Link", githublink);
-    console.log("Devmesh Link", devmeshlink);
-    console.log("Youtube Link", youtubelink);
-    console.log("PDF Link", pdflink);
   }, [
     currentStep,
     theme,

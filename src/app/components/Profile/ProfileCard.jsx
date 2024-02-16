@@ -31,12 +31,10 @@ const ProfileMenuItems = [
   },
 ];
 export default function ProfileCard({ email }) {
-  console.log("Email sis", email);
   const hash = MD5(email + email);
   const [isArrowMenuOpen, setIsArrowMenuOpen] = useState(false);
   const handlearrowclick = () => {
     setIsArrowMenuOpen(!isArrowMenuOpen);
-    console.log(isArrowMenuOpen);
   };
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);

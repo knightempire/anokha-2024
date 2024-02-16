@@ -71,7 +71,6 @@ const Navigationbar = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Updated Email", email);
   }, [email]);
 
   const { SignOut } = useAuth();

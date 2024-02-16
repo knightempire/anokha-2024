@@ -54,11 +54,9 @@ export default function Login() {
           studentPassword: hashPassword(studentPassword), //
         }),
       });
-      console.log(response);
 
       const data = await response.json();
       if (response.status === 200) {
-        console.log(data);
         setLoading(false);
         secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
         secureLocalStorage.setItem("studentFullName", data["studentFullName"]);
@@ -113,7 +111,6 @@ export default function Login() {
       }
     } catch (error) {
       setLoading(false);
-      console.log(error);
       ToastAlert(
         "error",
         "Oops!",

@@ -52,7 +52,6 @@ const Register = () => {
     setSecretToken(secureLocalStorage.getItem("registerToken"));
   }, []);
 
-  console.log(platform);
 
   const handle_button_next_click = () => {
     setCurrentStep(currentStep + 1);
@@ -75,7 +74,6 @@ const Register = () => {
     try {
       // Determine the selected platform ID based on the platform}
 
-      console.log(
         JSON.stringify({
           teamName: teamName,
           devfolioId: platform === "Devfolio" ? selectedPlatformId : "",
@@ -125,7 +123,6 @@ const Register = () => {
       const data = await response.json();
       if (response.status === 200) {
         ToastAlert("success", "Success", "Registration Successful!", toastRef);
-        console.log(data);
         //   secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
         //   secureLocalStorage.setItem("registerEmail", email);
 
@@ -145,11 +142,9 @@ const Register = () => {
         //   return;
         // }
 
-        //  console.log(data);
       }
     } catch (e) {
-      // ToastAlert("error", "Error", "Please try again!", toastRef);
-      console.log(e);
+      ToastAlert("error", "Error", "Please try again!", toastRef);
     }
 
     // setLoading(false);

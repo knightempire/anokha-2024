@@ -16,7 +16,6 @@ const Event = () => {
   const [showFullText, setShowFullText] = useState(false);
 
   const { eventId } = useParams();
-  console.log("Event ID:", eventId);
 
   const Poster = useRef(null);
   const Register = useRef(null);
@@ -46,7 +45,6 @@ const Event = () => {
           }
         })
         .then((data) => {
-          console.log("Received Data:", data);
           setEventData(data);
           // Trigger GSAP animations once data is fetched and rendered
           let tl = gsap.timeline();
@@ -78,7 +76,6 @@ const Event = () => {
     }
   }, [eventId]);
 
-  console.log("Event Data:", eventData);
 
   if (loading) {
     return <div>Loading...</div>;

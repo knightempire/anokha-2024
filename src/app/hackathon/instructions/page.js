@@ -4,19 +4,14 @@ import React from 'react';
 import { SimpleCard } from '../_components/InstructCard';
 import Resources from '../_components/Resources';
 import SubGuidelines from '../_components/SubGuidelines';
-import Image from 'next/image';
-import flowChart from '../images/process.jpg'
 import Rules from '../_components/Rules';
 import Judging from '../_components/Judging';
 import Navigationbar from '@/app/components/EventHeader';
 import Footer from '@/app/components/Footer';
 import TimelineInstruct from '../_components/IntructTimeline';
-import { FaAngleDoubleDown } from "react-icons/fa";
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
-import { Typography } from '@material-tailwind/react';
+import { Accordion, AccordionTab } from 'primereact/accordion';
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/saga-blue/theme.css";
 
 const Home = () => {
   const handleScrollMore = () => {
@@ -40,9 +35,40 @@ const Home = () => {
 
     </div>
     <div className='md:w-[70%] mx-auto sm:w-[90%]'>
-        <Accordion key={0} className="rounded my-2 p-2 ">
+        {/* Primereact way of doing accordion is different from MUI */}
+        <Accordion activeIndex={0}>
+            <AccordionTab header="Submission Guidelines">
+                <p>
+                    <SubGuidelines />
+                </p>
+            </AccordionTab>
+            <AccordionTab header="Timeline Instructions">
+                <p>
+                    <TimelineInstruct/>
+                </p>
+            </AccordionTab>
+            <AccordionTab header="Rules and Regulations">
+                <p>
+                    <Rules/>
+                </p>
+            </AccordionTab>
+            <AccordionTab header="Judging Criteria">
+                <p>
+                    <Judging />
+                </p>
+            </AccordionTab>
+            <AccordionTab header="Starter Resources">
+                <p>
+                    <Resources />
+                </p>
+            </AccordionTab>
+
+
+        </Accordion>
+
+        {/*<Accordion activeIndex={0} className="rounded my-2 p-2 ">
             <AccordionSummary
-                expandIcon={<ArrowDownwardIcon />}
+                expandIcon={<i className="pi pi-arrow-down"></i>}
                 aria-controls='panel1-content'
                 id='faq-header'>
                 <Typography className='font-bold text-center border-black b-4 px-7 py-1 text-xl text-black'>Submission Guidelines</Typography>
@@ -51,9 +77,11 @@ const Home = () => {
             <SubGuidelines/>
             </AccordionDetails>
         </Accordion>
+
+
         <Accordion key={0} className="rounded my-2 p-2">
             <AccordionSummary
-                expandIcon={<ArrowDownwardIcon />}
+                expandIcon={<i className="pi pi-arrow-down"></i>}
                 aria-controls='panel1-content'
                 id='faq-header'>
                 <Typography className='font-bold text-center border-black b-4 px-7 py-1 text-xl text-black'>Hackathon Timeline</Typography>
@@ -64,7 +92,7 @@ const Home = () => {
         </Accordion>
         <Accordion key={0} className="rounded my-2 p-2">
             <AccordionSummary
-                expandIcon={<ArrowDownwardIcon />}
+                expandIcon={<i className="pi pi-arrow-down"></i>}
                 aria-controls='panel1-content'
                 id='faq-header'>
                 <Typography className='font-bold text-center border-black b-4 px-7 py-1 text-xl text-black'>Rules</Typography>
@@ -75,7 +103,7 @@ const Home = () => {
         </Accordion>
         <Accordion key={0} className="rounded my-2 p-2">
             <AccordionSummary
-                expandIcon={<ArrowDownwardIcon />}
+                expandIcon={<i className="pi pi-arrow-down"></i>}
                 aria-controls='panel1-content'
                 id='faq-header'>
                 <Typography className='font-bold text-center border-black b-4 px-7 py-1 text-xl text-black'>Judging Criteria</Typography>
@@ -86,7 +114,7 @@ const Home = () => {
         </Accordion>
         <Accordion key={0} className="rounded my-2 p-2">
             <AccordionSummary
-                expandIcon={<ArrowDownwardIcon />}
+                expandIcon={<i className="pi pi-arrow-down"></i>}
                 aria-controls='panel1-content'
                 id='faq-header'>
                 <Typography className='font-bold text-center border-black b-4 px-7 py-1 text-xl text-black'>Resources</Typography>
@@ -94,7 +122,7 @@ const Home = () => {
             <AccordionDetails>
             <Resources />
             </AccordionDetails>
-        </Accordion>
+        </Accordion> */}
 
       </div>
 

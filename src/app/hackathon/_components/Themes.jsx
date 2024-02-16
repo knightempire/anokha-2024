@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
+import { Accordion, AccordionTab } from 'primereact/accordion';
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/saga-blue/theme.css";
 import { FaPlus } from "react-icons/fa6";
 import { Button } from "primereact/button";
 import { FaDownload } from "react-icons/fa";

@@ -85,23 +85,10 @@ export default function Register() {
   const handleCheckboxChange = (e) => {
     setisAmrita(e.target.checked);
     setCollegeName(e.target.checked ? "Amrita Vishwa Vidyapeetham" : "");
-    if (e.target.checked) {
-      console.log(e);
-    } else {
-      console.log("Checkbox is unchecked");
-    }
   };
 
   const handleSignUp = async (e) => {
     e.preventDefault();
-    console.log({
-      studentFullName: name, // Max 255 chars. Min 1 char.
-      studentEmail: email, // Valid Email. Max 255 chars.
-      studentPhone: phone, // 10-digit exactly.
-      studentPassword: hashPassword(password), // min 8 chars. Cannot include '-'(hiphen) and "'"(quotes) as part of the password. SHA256 hashed version.
-      studentCollegeName: collegeName, // Max 255 chars. Min 1 char.
-      studentCollegeCity: collegeCity,
-    });
     // add toast messages unique to each of this if
     try {
       setLoading(true);
@@ -122,12 +109,10 @@ export default function Register() {
        
       const data = await response.json();
       if (response.status === 200) {
-        console.log("inside")
         secureLocalStorage.setItem("tempRegisterToken", data["SECRET_TOKEN"]);
         secureLocalStorage.setItem("registerEmail", email);
         
         ToastAlert("success","Email Verification", `${data.MESSAGE}`, toastRef);
-        console.log(data);
         setTimeout(() => {
           router.push("/register/verify");
         }, 1500);
@@ -152,7 +137,6 @@ export default function Register() {
       }
     } catch (e) {
       ToastAlert("error", "Error", "Please try again!", toastRef);
-      console.log(e);
       setLoading(false);
     }
     setLoading(false);

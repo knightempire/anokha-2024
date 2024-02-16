@@ -52,7 +52,6 @@ export default function RegisterVerify() {
 
   const handleVerify = async (e) => {
     e.preventDefault();
-    console.log(password, confirmPassword, registerEmail);
     const otpString = otp[0] + otp[1] + otp[2] + otp[3] + otp[4] + otp[5];
 
     if (
@@ -86,7 +85,6 @@ export default function RegisterVerify() {
         otp: hashPassword(otpString),
         studentPassword: password,
       });
-      console.log(s);
       const response = await fetch(STUDENT_RESET_PASSWORD_URL, {
         method: "POST",
         headers: {
@@ -107,7 +105,6 @@ export default function RegisterVerify() {
           "Please Login to continue",
           toastRef,
         );
-        console.log(data);
         setTimeout(() => {
           router.push("/login");
         }, 1500);
@@ -133,7 +130,6 @@ export default function RegisterVerify() {
         alertError("Oops!", "Something went wrong! Please try again later!");
       }
     } catch (e) {
-      console.log(e);
     }
   };
 

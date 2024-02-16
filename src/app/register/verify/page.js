@@ -116,7 +116,6 @@ export default function RegisterVerify() {
       }  
       
     } catch (e) {
-      console.log(e);
     }
     setLoading(false);
   };

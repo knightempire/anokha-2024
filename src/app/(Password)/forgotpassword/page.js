@@ -44,7 +44,6 @@ export default function ForgetPassword() {
       const ser = JSON.stringify({
         studentEmail: registerEmail,
       });
-      console.log(ser);
       const response = await fetch(STUDENT_FORGOT_PASSWORD_URL, {
         method: "POST",
         headers: {
@@ -59,7 +58,6 @@ export default function ForgetPassword() {
       if (response.status === 200) {
         secureLocalStorage.setItem("registerEmail", registerEmail);
         secureLocalStorage.setItem("registerToken", data["SECRET_TOKEN"]);
-        console.log(data);
 
         ToastAlert(
           "success",
@@ -85,7 +83,6 @@ export default function ForgetPassword() {
         alertError("Oops!", "Something went wrong! Please try again later!");
       }
     } catch (e) {
-      console.log(e);
     }
   };
 

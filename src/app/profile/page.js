@@ -90,7 +90,6 @@ export default function Register() {
         }
       } catch (error) {
         setLoading(false);
-        console.log(error);
       }
     };
     getProfile();
@@ -121,7 +120,7 @@ export default function Register() {
 
   const toastRef = useRef(null);
 
-  const genSHA256 = (email = "riteshkoushik39@gmail.com") => {
+  const genSHA256 = (email) => {
     return createHash("sha256").update(email).digest("hex");
   };
 
@@ -206,7 +205,6 @@ export default function Register() {
       }
     } catch (error) {
       setLoading(false);
-      console.log(error);
     }
   };
 
@@ -227,7 +225,7 @@ export default function Register() {
                   alt="Travis Howard"
                   src={
                     "https://www.gravatar.com/avatar/" +
-                    genSHA256 +
+                    genSHA256(email) +
                     ".jpg?s=200&d=robohash"
                   }
                   width={80}
