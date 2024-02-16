@@ -34,7 +34,6 @@ export default function Page({ router }) {
   const [RoundTwoSub, setRoundTwoSub] = useState("");
 
   useEffect(() => {
-    console.log(detailsJson);
     if (detailsJson) {
       try {
         const details = JSON.parse(detailsJson);
@@ -51,7 +50,6 @@ export default function Page({ router }) {
         setRoundOneSub(details.firstRoundSubmission);
         setRoundTwoSub(details.secondRoundSubmission);
         setTeamStatus(details.teamStatus);
-        console.log(details.firstRoundSubmission, RoundOneSub);
       } catch (error) {
         console.error("Error parsing JSON:", error);
       }
@@ -61,7 +59,6 @@ export default function Page({ router }) {
   }, [detailsJson]);
 
   useEffect(() => {
-    console.log(teamName, teamMembers);
   }, [teamName, teamMembers]);
 
   // useEffect(async () => {
@@ -77,7 +74,6 @@ export default function Page({ router }) {
   //   //   if (response.status === 200) {
   //   //     // ToastAlert('success', "Success", "Registration successful", toastRef);
   //   //     alertSuccess("Registration Successful");
-  //   //     console.log(data);
   //   //     setResponseData(data);
   //   //   } else if (response.status === 500) {
   //   //     // ToastAlert('error', "Oops!", "Something went wrong! Please try again later!", toastRef);
@@ -90,7 +86,6 @@ export default function Page({ router }) {
   //   //     alertError("Oops!", "Something went wrong! Please try again later!");
   //   //   }
   //   // } catch (e) {
-  //   //   console.log(e);
   //   // }
   //   }
   // , [router]);

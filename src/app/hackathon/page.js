@@ -47,15 +47,12 @@ export default function Page() {
     const [displayResult,setDisplayResult] = useState(0)
 
     useEffect(()=>{
-        console.log(userState,displayResult)
     },[userState,displayResult])
 
     useEffect(()=>{
-      console.log(isLoggedIn,secretToken,userState)
       if (isLoggedIn===1 ) {
          
         setUserState(GetDashboard(secretToken))
-        console.log(GetDashboard(secretToken))
          
       }
     },[isLoggedIn,secretToken])
@@ -82,7 +79,6 @@ export default function Page() {
           
 
           const data = await response.json();
-          console.log(data)
           if (response.status === 200) {
               // ToastAlert('success', "Success", "Registration successful", toastRef);
               secureLocalStorage.setItem("DashBoardData",  JSON.stringify(data));
@@ -113,13 +109,11 @@ export default function Page() {
 
 
       }catch(e){
-          console.log(e);
           return -1;
       }
   }   
 
 
-    console.log(isLoggedIn,secretToken,userState)
     // 
     const getButtonText = () => {
       switch (currentState) {
@@ -144,7 +138,6 @@ export default function Page() {
         setCurrentStep(currentStep-1)
       }
     const handle_upload_click = ()=>{
-        console.log("uploaded")
     }
   return (
   

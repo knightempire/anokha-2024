@@ -13,7 +13,6 @@ const TeamRegister = ({ minTeamSize, maxTeamSize }) => {
       { length: parseInt(minTeamSize, 10) },
       (_, index) => index
     );
-    console.log(t);
     return t;
   });
   let Emails = [];
@@ -38,8 +37,6 @@ const TeamRegister = ({ minTeamSize, maxTeamSize }) => {
   };
 
   useEffect(() => {
-    console.log("SIZE:", TeamSize);
-    console.log("TEAM:", Team);
   }, [TeamSize]);
 
   const [webGLColors, setWebGLColors] = useState({
@@ -115,7 +112,6 @@ const TeamRegister = ({ minTeamSize, maxTeamSize }) => {
                           type="text"
                           onChange={(e) => {
                             handleEmails(member, e.target.value);
-                            console.log(Emails);
                           }}
                           name="email"
                           id="email"

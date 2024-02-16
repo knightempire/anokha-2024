@@ -98,7 +98,6 @@ export default function ThirdRegister({
   handle_register_click,
   handle_prev_click,
 }) {
-  console.log(mem12data);
   const MemberList = [
     {
       name: member3Email,

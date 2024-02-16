@@ -25,17 +25,7 @@ export default function FirstRegister({
   }, [router, platformID, registeredEmail, platform]);
 
   useEffect(() => {
-    console.log(NoofMembers[0], switchVal);
   }, [switchVal]);
-
-  console.log(TeamName[0] == "", //||
-    platformID[0] == "", //||
-    platformID[0],
-    (platformID[0] != "", //&&
-      platformID[0] != null, //&&
-      platformID[0] != undefined, //&&
-      !validator.isEmail(platformID[0].trim()) //||
-    ));
 
   return (
     <div className="md:w-[560px]  h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
@@ -96,7 +86,6 @@ export default function FirstRegister({
                   value={switchVal}
                   checked={NoofMembers[0] == 3 ? 0 : 1}
                   onChange={(e) => {
-                    console.log(NoofMembers[0], switchVal, e.target.checked);
                     if (e.target.checked == true) {
                       NoofMembers[1](4);
                       setSwitch(1);

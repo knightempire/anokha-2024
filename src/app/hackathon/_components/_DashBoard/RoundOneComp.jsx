@@ -61,9 +61,7 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
   useEffect(() => {
     for (let i in ThemeCode) {
       if (ThemeCode[i] == theme) {
-        console.log(i.toString());
         setThemeCode(i.toString());
-        console.log(themeCode);
       }
     }
   }, [theme]);
@@ -111,7 +109,6 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
           },
         });
         const data = await response.json();
-        console.log(data);
         if (response.status === 200) {
           secureLocalStorage.setItem("DashBoardData", JSON.stringify(data));
           window.location.reload();

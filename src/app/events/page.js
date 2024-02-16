@@ -19,7 +19,6 @@ const Events = () => {
   const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
-    console.log("DAY: ", DayFilter);
     if (eventsData) {
       setFilteredData(
         eventsData.filter(
@@ -46,7 +45,6 @@ const Events = () => {
     let registerCode = -1;
     let Days = [];
     for (let i of filters) {
-      console.log(i);
       switch (i) {
         case "Group":
           grpCode = 1;
@@ -95,7 +93,6 @@ const Events = () => {
     else if (evetypeCode == 0) setTypeFilter(-1);
     else setTypeFilter(1);
     setRegisteredFilter(registerCode);
-    console.log("Day", Days);
     if (Days == []) setDayFilter(-1);
     else setDayFilter(Days);
   };
@@ -133,17 +130,13 @@ const Events = () => {
         }
       })
       .then((data) => {
-        console.log("Recived Data:", data);
         setEventsData(data.EVENTS);
         setFilteredData(data.EVENTS);
       })
       .catch((err) => {
-        console.error(err);
       });
   }, []); // This empty bracket here is important
 
-  console.log("Events Data:", eventsData);
-  console.log("Filter Data:", filteredData);
 
   return (
     <main className="flex min-h-screen flex-col bg-[#192032]">
