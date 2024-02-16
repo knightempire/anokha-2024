@@ -24,9 +24,4 @@ module.exports = withBundleAnalyzer({
     ],
   },
 
-  env: {
-    name: "sajith",
-    email: "isajithrajan@gmail.com",
-    phone: "6379132006",
-  },
 });
