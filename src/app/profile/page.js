@@ -52,7 +52,7 @@ export default function Register() {
           headers: {
             "Content-type": "application/json",
             Authorization: `Bearer ${secureLocalStorage.getItem(
-              "SECRET_TOKEN"
+              "registerToken"
             )}`,
           },
         });
@@ -137,14 +137,14 @@ export default function Register() {
 
   // Confirm edit profile - changes
   const handleUpdate = async (e) => {
-    e.preventDefault;
+    e.preventDefault();
     try {
       setLoading(true);
       const response = await fetch(EDIT_PROFILE_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${secureLocalStorage.getItem("SECRET_TOKEN")}`,
+          Authorization: `Bearer ${secureLocalStorage.getItem("registerToken")}`,
         },
         body: JSON.stringify({
           studentFullName: fullname,
