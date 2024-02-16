@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Accordion, AccordionTab } from 'primereact/accordion';
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
 
