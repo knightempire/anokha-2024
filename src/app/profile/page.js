@@ -78,7 +78,7 @@ export default function Register() {
           secureLocalStorage.clear();
           setTimeout(() => {
             router.push("/");
-          }, 1500)
+          }, 1500);
         } else if (response.status === 500) {
           ToastAlert(
             "error",
@@ -90,7 +90,6 @@ export default function Register() {
         }
       } catch (error) {
         setLoading(false);
-        console.log(error);
       }
     };
     getProfile();
@@ -121,7 +120,7 @@ export default function Register() {
 
   const toastRef = useRef(null);
 
-  const genSHA256 = (email = "riteshkoushik39@gmail.com") => {
+  const genSHA256 = (email) => {
     return createHash("sha256").update(email).digest("hex");
   };
 
@@ -186,7 +185,7 @@ export default function Register() {
         secureLocalStorage.clear();
         setTimeout(() => {
           router.push("/login");
-        }, 1500)
+        }, 1500);
       } else if (response.status === 500) {
         ToastAlert(
           "error",
@@ -195,7 +194,11 @@ export default function Register() {
           toastRef
         );
         return;
-      } else if (data.message !== undefined || data.message !== null) {
+      } else if (
+        typeof data === "undefined" ||
+        data.message !== undefined ||
+        data.message !== null
+      ) {
         ToastAlert(
           "error",
           "Error",
@@ -206,7 +209,6 @@ export default function Register() {
       }
     } catch (error) {
       setLoading(false);
-      console.log(error);
     }
   };
 
@@ -227,7 +229,7 @@ export default function Register() {
                   alt="Travis Howard"
                   src={
                     "https://www.gravatar.com/avatar/" +
-                    genSHA256 +
+                    genSHA256(email ?? "anokhapr@cb.amrita.edu") +
                     ".jpg?s=200&d=robohash"
                   }
                   width={80}
