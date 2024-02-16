@@ -3,8 +3,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@material-tailwind/react";
-import Switch from "@mui/material/Switch";
-import { FaArrowRight } from "react-icons/fa";
+import InputSwitch from "primereact/inputswitch";
 import validator from "validator";
 import oneapilogo from "../../images/oneAPI-rgb-3000.png";
 import { RiTeamFill } from "react-icons/ri";
@@ -93,7 +92,7 @@ export default function FirstRegister({
               </label>
               <div>
                 3
-                <Switch
+                <InputSwitch
                   value={switchVal}
                   checked={NoofMembers[0] == 3 ? 0 : 1}
                   onChange={(e) => {
