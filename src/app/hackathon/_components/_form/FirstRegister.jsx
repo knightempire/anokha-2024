@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@material-tailwind/react";
-import InputSwitch from "primereact/inputswitch";
+import { InputSwitch } from "primereact/inputswitch";
 import validator from "validator";
 import oneapilogo from "../../images/oneAPI-rgb-3000.png";
 import { RiTeamFill } from "react-icons/ri";
@@ -21,20 +21,20 @@ export default function FirstRegister({
   const [switchVal, setSwitch] = useState(0);
 
   useEffect(() => {
-    platform[0]=="anokha"?platformID[1](registeredEmail):"";
-  }, [router,platformID,registeredEmail, platform]);
+    platform[0] == "anokha" ? platformID[1](registeredEmail) : "";
+  }, [router, platformID, registeredEmail, platform]);
 
   useEffect(() => {
     console.log(NoofMembers[0], switchVal);
   }, [switchVal]);
 
   console.log(TeamName[0] == "", //||
-  platformID[0] == "", //||
-  platformID[0],
-  (platformID[0] != "", //&&
-    platformID[0] != null, //&&
-    platformID[0] != undefined, //&&
-    !validator.isEmail(platformID[0].trim()) //||
+    platformID[0] == "", //||
+    platformID[0],
+    (platformID[0] != "", //&&
+      platformID[0] != null, //&&
+      platformID[0] != undefined, //&&
+      !validator.isEmail(platformID[0].trim()) //||
     ));
 
   return (
@@ -136,7 +136,7 @@ export default function FirstRegister({
                     type="email"
                     name="platformid"
                     id="platformid"
-                    value={platform[0]=="anokha"?registeredEmail:platformID[0]}
+                    value={platform[0] == "anokha" ? registeredEmail : platformID[0]}
                     className="bg-transparent text-black border-2 border-gray-800 font-medium text-[16px] rounded-[5px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
                     placeholder="Platform email"
                     onChange={(e) => platformID[1](e.target.value)}
