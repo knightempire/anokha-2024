@@ -37,6 +37,17 @@ const navLinks = [
   },
 ];
 
+const optNavLink = [
+  {
+    title: "Login",
+    path: "/login",
+  },
+  {
+    title: "Sign Up",
+    path: "/register",
+  },
+];
+
 const Navigationbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(
