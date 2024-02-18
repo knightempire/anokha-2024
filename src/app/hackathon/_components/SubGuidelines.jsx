@@ -30,7 +30,7 @@ const SubGuidelines = () => {
                             <li key={id} className='ml-5'>{rule}</li>
                         ))}
                     </ul>
-                    <div className="card-submit ml-auto mr-auto mt-[7%] mb-[7%]">
+                    <div className="card-submit ml-auto mr-auto mt-[2%] mb-[7%] ">
                         <div className="info relative">
                             <h3 className="text-xl mb-[2%] ml-[25%]">Download Sample PPT</h3>
                             <a
