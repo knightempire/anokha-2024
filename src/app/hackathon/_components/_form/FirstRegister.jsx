@@ -96,7 +96,7 @@ export default function FirstRegister({
                 <div className="mb-1">3</div>
                 <InputSwitch
                   className="mx-3"
-                  checked={switchVal}
+                  checked={NoofMembers[0]==3 ? false : true}
                   onChange={(e) => {
                     if (e.value == true) {
                       NoofMembers[1](4);
