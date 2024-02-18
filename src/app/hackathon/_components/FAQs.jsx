@@ -87,13 +87,13 @@ const FAQs = () => {
       <div className="md:w-[70%] mx-auto sm:w-[90%]">
 
 
-        <Accordion key={0} className="rounded my-2">
+        <Accordion key={0} className="rounded my-2 p-2">
           <AccordionSummary
             expandIcon={<ArrowDownwardIcon />}
             aria-controls="panel1-content"
-            id="faq-header"  className="bg-blue-900 p-2 rounded"
+            id="faq-header" 
           >
-            <Typography className="font-bold  border-black b-4 px-7 py-1 text-xl text-white">
+            <Typography className="font-bold  border-black b-4 px-7 py-1 text-xl text-black">
               Hackathon Guidelines
             </Typography>
           </AccordionSummary>
@@ -123,13 +123,13 @@ const FAQs = () => {
         </Accordion>
 
 
-        <Accordion key={0} className="rounded my-2  ">
+        <Accordion key={0} className="rounded my-2  p-2">
           <AccordionSummary
             expandIcon={<ArrowDownwardIcon />}
             aria-controls="panel1-content"
-            id="faq-header" className="bg-blue-900 p-2 rounded"
+            id="faq-header"
           >
-            <Typography className="font-bold border-black b-4 px-7 py-1 text-xl text-white">
+            <Typography className="font-bold border-black b-4 px-7 py-1 text-xl text-black">
               Organizer Contact Details
             </Typography>
           </AccordionSummary>
@@ -139,13 +139,13 @@ const FAQs = () => {
         </Accordion>
                        
 
-        <Accordion key={0} className="rounded my-2  ">
+        <Accordion key={0} className="rounded my-2 p-2 ">
           <AccordionSummary
             expandIcon={<ArrowDownwardIcon />}
             aria-controls="panel1-content"
-            id="faq-header" className="bg-blue-900 p-2 rounded"
+            id="faq-header"
           >
-            <Typography className="font-bold  border-black b-4 px-7 py-1 text-xl text-white">
+            <Typography className="font-bold  border-black b-4 px-7 py-1 text-xl text-black">
               FAQs
             </Typography>
           </AccordionSummary>
