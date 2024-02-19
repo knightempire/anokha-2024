@@ -106,7 +106,7 @@ export default function Page() {
            
           );
           setTimeout(() => {
-            router.push("/hackathon");
+            router.push("/login");
           }, 1500);
 
           

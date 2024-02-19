@@ -132,6 +132,18 @@ const Register = () => {
         setTimeout(() => {
           router.push("/hackathon");
         }, 1500);
+      } else if (response.status === 401) {
+        ToastAlert(
+          "error",
+          "Session Expired",
+      "Please Login again.",
+          toastRef
+         
+        );
+        setTimeout(() => {
+          router.push("/login");
+        }, 1500);
+
       } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
         ToastAlert("error", "Registration Failed", data.MESSAGE, toastRef);
 
