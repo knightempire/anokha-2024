@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "@material-tailwind/react";
-import InputSwitch from "@mui/material/Switch";
+import { InputSwitch } from "primereact/inputswitch";
+import { FaArrowRight } from "react-icons/fa";
 import validator from "validator";
 import oneapilogo from "../../images/oneAPI-rgb-3000.png";
 import { RiTeamFill } from "react-icons/ri";
@@ -16,26 +17,27 @@ export default function FirstRegister({
   platform,
   platformID,
   registeredEmail,
-  router
+  router,
 }) {
-  const [switchVal, setSwitch] = useState(0);
+  const [switchVal, setSwitch] = useState(false);
 
   useEffect(() => {
-    platform[0]=="anokha"?platformID[1](registeredEmail):"";
-  }, [router,platformID,registeredEmail, platform]);
+    platform[0] == "anokha" ? platformID[1](registeredEmail) : "";
+  }, [router, platformID, registeredEmail, platform]);
 
   useEffect(() => {
     console.log(NoofMembers[0], switchVal);
   }, [switchVal]);
 
-  console.log(TeamName[0] == "", //||
-  platformID[0] == "", //||
-  platformID[0],
-  (platformID[0] != "", //&&
+  console.log(
+    TeamName[0] == "", //||
+    platformID[0] == "", //||
+    platformID[0],
+    (platformID[0] != "", //&&
     platformID[0] != null, //&&
     platformID[0] != undefined, //&&
-    !validator.isEmail(platformID[0].trim()) //||
-    ));
+    !validator.isEmail(platformID[0].trim())) //||
+  );
 
   return (
     <div className="md:w-[560px]  h-fit  rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2   xl:p-0 bg-white">
@@ -86,27 +88,26 @@ export default function FirstRegister({
             <div>
               <label
                 htmlFor="phone"
-                className="block mb-2 text-sm font-medium text-black"
+                className="block mb-3 text-sm font-medium text-black"
               >
                 Number of Team Members
               </label>
-              <div>
-                3
+              <div className="flex flex-row">
+                <div className="mb-1">3</div>
                 <InputSwitch
-                  value={switchVal}
-                  checked={NoofMembers[0] == 3 ? 0 : 1}
+                  className="mx-3"
+                  checked={NoofMembers[0]==3 ? false : true}
                   onChange={(e) => {
-                    console.log(NoofMembers[0], switchVal, e.target.value);
-                    if (e.target.checked == true) {
+                    if (e.value == true) {
                       NoofMembers[1](4);
-                      setSwitch(1);
+                      setSwitch(e.value);
                     } else {
                       NoofMembers[1](3);
-                      setSwitch(0);
+                      setSwitch(e.value);
                     }
                   }}
                 />
-                4
+                <div className="mb-1">4</div>
               </div>
             </div>
 
@@ -136,7 +137,9 @@ export default function FirstRegister({
                     type="email"
                     name="platformid"
                     id="platformid"
-                    value={platform[0]=="anokha"?registeredEmail:platformID[0]}
+                    value={
+                      platform[0] == "anokha" ? registeredEmail : platformID[0]
+                    }
                     className="bg-transparent text-black border-2 border-gray-800 font-medium text-[16px] rounded-[5px] px-5 py-2.5 block w-full p-2.5 focus:outline-none placeholder:font-light"
                     placeholder="Platform email"
                     onChange={(e) => platformID[1](e.target.value)}

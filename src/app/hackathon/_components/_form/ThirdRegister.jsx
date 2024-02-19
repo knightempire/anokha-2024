@@ -181,7 +181,8 @@ export default function ThirdRegister({
                 mem12data["mi1"] == mi3 ||
                 mem12data["mi2"] == mi3 ||
                 (me4 != "" && mem12data["mi1"] == mi4) ||
-                (mi4 != "" && mem12data["mi2"] == mi4)
+                (mi4 != "" && mem12data["mi2"] == mi4) ||
+                (n==4 && (me4 ==  "" || mi4 == ""))
               }
               onClick={(e) => handle_register_click(e)}
               className="text-md flex justify-center items-center before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
