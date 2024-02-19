@@ -2,7 +2,6 @@
 import { useEffect, useState, useRef } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { HACKATHON_TEAM_REGISTER_URL } from "@/app/_util/constants";
-import Navbar from "../_components/HackathonHeader";
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
@@ -15,6 +14,7 @@ import secureLocalStorage from "react-secure-storage";
 import { LoadingScreen } from "@/app/_util/LoadingScreen/LoadingScreen";
 
 import { useRouter } from "next/navigation";
+import Navigationbar from "@/app/components/EventHeader";
 
 const RegisterSteps = [FirstRegister, SecondRegister, ThirdRegister];
 const Register = () => {
@@ -252,7 +252,7 @@ const Register = () => {
      
   ) : (
     <div>
-      <Navbar />
+      <Navigationbar />
       <main className="w-full h-full bg-[rgb(10,17,58)] overflow-x-hidden">
         {/* <WebGLApp colors={webGLColors} /> */}
 

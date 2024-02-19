@@ -7,11 +7,11 @@ import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
 import ToastAlert from "@/app/_util/ToastAlerts";
-import Navbar from "../_components/HackathonHeader";
 import TeamDetails from "../_components/_DashBoard/TeamDetails";
 
 import RoundOneComp from "../_components/_DashBoard/RoundOneComp";
 import Round1NotFound from "../_components/_DashBoard/RoundOneNotFound";
+import Navigationbar from "@/app/components/EventHeader";
 
 export default function Page({ router }) {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -113,7 +113,7 @@ export default function Page({ router }) {
 
   return (
     <div className=" min-h-screen relative bg-[rgb(10,17,58)] overflow-hidden">
-      <Navbar />
+      <Navigationbar />
       <main className="absolute w-full h-full flex flex-row gap-4 top-[90px]">
         <div className="w-[50%] mx-auto my-12 lg:my-15">
           <TeamDetails
