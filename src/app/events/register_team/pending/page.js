@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { useParams, useRouter } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import WebGLApp from "@/app/bg/WebGLApp";
-import React, { useState, useEffect } from "react";
 import Lottie from 'react-lottie';
-import animationData from '@/app/_util/lotties/transactionSuccess';
+import { VERIFY_TRANSACTIONS_URL } from "@/app/_util/constants";
+import animationData from '@/app/_util/lotties/transactionPending';
 
 
-export default function PaymentSuccess() {
+export default function PaymentPending() {
     const [webGLColors, setWebGLColors] = useState({
         color1: [43 / 255, 30 / 255, 56 / 255],
         color2: [11 / 255, 38 / 255, 59 / 255],
@@ -22,25 +24,24 @@ export default function PaymentSuccess() {
           preserveAspectRatio: "xMidYMid slice"
         }
     };
-
     return (
         <main className="flex min-h-screen flex-col bg-[#192032]">
         <WebGLApp colors={webGLColors} className="-z-10"/>
-        <div className="text-[#04002a] items-center justify-center mx-auto my-auto bg-white rounded-3xl px-8 py-8 z-10">
-                <>
-                    <div className="flex items-center justify-center">
+        <div className="text-[#04002a] items-center justify-center bg-white rounded-3xl px-8 py-8 z-10 mx-auto my-auto">
+            <>
+                <div className="flex items-center justify-center">
                     <Lottie 
                         options={defaultOptions}
                         height={250}
                         width={250}
                     />
-                    </div>
-                </>
+                </div>
+                <h1 className="mt-8 text-center justify-center text-4xl font-bold mb-4">Payment Pending</h1>
+                <p className="text-gray-700 text-sm text-center">{"Head over to your Profile then click on My Transactions."}</p>
+                <p className="text-gray-700 text-sm text-center">{"Click on Verify Now to the corresponding transaction to complete the registration."}</p>
+            </>
 
-                <h1 className="text-center justify-center text-4xl font-bold">Payment Successful</h1>
-                {/* <p className="text-gray-700 text-sm text-center">Head over to your profile to see the receipt.</p> */}
-
-            <Link href={"/"} className="flex justify-center mt-8">
+            <Link href={"/"} className="flex justify-center">
                 <button
                     className="rounded-2xl px-4 py-3"
                     style={{ backgroundColor: "#00223a", color: "white", marginTop: "1rem" }}>

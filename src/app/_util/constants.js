@@ -1,13 +1,14 @@
-const BASE_URL = "https://anokha.amrita.edu/api/auth";
+const BASE_URL = "https://anokha.amrita.edu/api";
+// const BASE_URL = "http://localhost:5000/api";
 const HACKATHON_URL = "https://anokha.amrita.edu/api/intel";
 
-export const EDIT_PROFILE_URL = "https://anokha.amrita.edu/api/user/editStudentProfile";
-export const STUDENT_PROFILE_URL = "https://anokha.amrita.edu/api/user/getStudentProfile";
-export const LOGIN_URL = BASE_URL + "/loginStudent";
-export const REGISTER_URL = BASE_URL + "/registerStudent";
-export const STUDENT_REGISTER_VERIFY_URL = BASE_URL + "/verifyStudent";
-export const STUDENT_FORGOT_PASSWORD_URL = BASE_URL + "/forgotPasswordStudent";
-export const STUDENT_RESET_PASSWORD_URL = BASE_URL + "/resetPasswordStudent";
+export const EDIT_PROFILE_URL = BASE_URL+"/user/editStudentProfile";
+export const STUDENT_PROFILE_URL = BASE_URL+"/user/getStudentProfile";
+export const LOGIN_URL = BASE_URL + "/auth/loginStudent";
+export const REGISTER_URL = BASE_URL + "/auth/registerStudent";
+export const STUDENT_REGISTER_VERIFY_URL = BASE_URL + "/auth/verifyStudent";
+export const STUDENT_FORGOT_PASSWORD_URL = BASE_URL + "/auth/forgotPasswordStudent";
+export const STUDENT_RESET_PASSWORD_URL = BASE_URL + "/auth/resetPasswordStudent";
 
 export const HACKATHON_TEAM_REGISTER_URL =  HACKATHON_URL + "/registerTeam"; 
 export const HACKATHON_DASHBOARD_URL =  HACKATHON_URL + "/getDashBoard"; 
@@ -18,3 +19,5 @@ export const HACKATHON_EDIT_FIRST_ROUND_SUBMISSION_URL = HACKATHON_URL + "/editF
 export const ALL_EVENTS_URL = BASE_URL + "/user/getAllEvents";
 export const EVENT_DATA_URL = BASE_URL + "/user/getEventData";
 export const STAR_UNSTAR_EVENT_URL = BASE_URL + "/user/toggleStarredEvent";
+
+export const VERIFY_TRANSACTIONS_URL = BASE_URL + "/user/verifyTransaction";
