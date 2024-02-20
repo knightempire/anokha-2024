@@ -50,7 +50,7 @@ export default function FilterSection({ sendcurrentFilters }) {
   };
   return (
     <div className="p-5 ">
-      <div className="flex flex-row gap-5 justify-evenly">
+      <div className="flex flex-row gap-5 justify-evenly flex-wrap">
         {/* All of the following should be Dropdown-Checkbox Components*/}
         {/* Select Day: "01" | "02" | "03"; */}
         <FilterComponent

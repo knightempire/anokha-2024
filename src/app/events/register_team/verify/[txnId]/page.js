@@ -24,7 +24,7 @@ export default function PaymentVerify() {
                 setTimeout(() => {
                     router.push("/events/register_team/success");
                 }, 4000);
-            } else if (res.status === 201) {
+            } else if (res.status === 202) {
                 setTimeout(() => {
                     router.push("/events/register_team/failure");
                 }, 4000);
@@ -35,7 +35,7 @@ export default function PaymentVerify() {
             }
         }).catch(err => {
             console.log(err);
-            router.push('/event/register/pending')
+            router.push('/events/register_team/pending')
         });
     }, [router, txnId]);
 
