@@ -27,6 +27,7 @@ import Judging from './_components/Judging'
 import WinnerPrice from './_components/WinnerPrice'
 import SubGuidelines from './_components/SubGuidelines'
 import Navigationbar from '../components/EventHeader'
+
  
 export default function Page() {
     const router = useRouter()
@@ -165,6 +166,7 @@ export default function Page() {
         <IntelHero userState={userState} displayResult={displayResult} />
        
         <Price />
+        <WinnerPrice />
         
         <About/>
         <Themes />
