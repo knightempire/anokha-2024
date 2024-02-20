@@ -22,6 +22,7 @@ export default function EventCard({
   seats,
 }) {
   const [starred, toggleStar] = useState(0);
+  const [tagAbb, setTagAbb] = useState(-1);
 
   useEffect(() => {
     fetch(STAR_UNSTAR_EVENT_URL, {
@@ -40,7 +41,7 @@ export default function EventCard({
         if (res.status === 401) {
           setTimeout(() => {
             router.push("/login");
-          }, 1500)
+          }, 1500);
           // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
           // openModal();
           // Session Expired or not logged in. Clear Cache and Navigate to login screen.
@@ -68,83 +69,123 @@ export default function EventCard({
     toggleStar(!starred);
   };
 
+  const toogleTag = (e, i) => {
+    tagAbb == -1 ? setTagAbb(i) : setTagAbb(-1);
+  };
+
   return (
-    <div className="flex flex-col group relative bg-white w-[270px] rounded-xl hover:scale-105 cursor-pointer transition-transform duration-100 ease-in-out">
-      <div className="absolute -left-[5px] -top-[5px] -right-[5px] -bottom-[5px] z-[1] rounded-xl bg-white group-hover:bg-gradient-to-r from-[#ef9a17] to-[#e42120]"></div>
-      <div
-        className={`${
-          maxseats == seats
-            ? "absolute -left-[5px] -top-[5px] -right-[5px] -bottom-[5px] z-[11] rounded-xl bg-[rgba(0,0,0,0.6)]"
-            : ""
-        }`}
-      ></div>
-      {/* Image Section */}
-      <div className="z-10 bg-white rounded-xl">
-        <div className="flex-none h-[350px] w-full relative group/img overflow-hidden">
+    <div class="bg-gray-900 min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-purple-600 transition duration-150">
+      <div class="flex flex-col relative group">
+        <div class="relative h-[400px] w-full mb-3">
           <Image
-            src={imgSrc}
-            alt="Event Image"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-            className="rounded-xl transition-transform transform-gpu duration-300 ease-in-out group-hover/img:filter group-hover/img:brightness-[20%]"
+            src={"https://i.imgur.com/iQy8GLM.jpg"}
+            width={400}
+            height={400}
+            objectFit="contain"
+            alt="https://i.imgur.com/iQy8GLM.jpg"
+            class=" rounded-2xl h-full transition duration-300 hover:filter hover:brightness-0 hover:grayscale-100 hover:opacity-0"
           />
-          <div className="absolute inset-0 opacity-0 transition-opacity duration-300 ease-in-out group-hover/img:opacity-100 text-white text-center p-7 pt-12">
-            {eventDesc}
+
+          <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
+            Registered
           </div>
-        </div>
-        {/* Main Content Section */}
-        <div className="flex flex-col">
-          <div className="px-6 py-4">
-            <div className="font-bold text-xl mb-2">{eventName}</div>
-            <div className="flex flex-row justify-between">
-              <p className="text-gray-700 text-sm">{date.slice(0, 10)}</p>
-              <span className="text-sm font-bold text-gray-900 ">{`$${price}`}</span>
-            </div>
-          </div>
-          {/* Tags Section */}
-          <div className="flex flex-row">
-            <div className="px-2 pb-2 flex flex-row flex-wrap w-[95%]">
-              {tags &&
-                tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2 h-[23px]"
-                  >
-                    #{tag.tagName}{" "}
-                  </span>
-                ))}
-              <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
-                #Hello
-              </span>
-              <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
-                #Hello
-              </span>
-              <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
-                #Hello
-              </span>
-              <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
-                #Hello
-              </span>
-              <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
-                #Hello
-              </span>
-              <span className="inline-block bg-gray-400 rounded-full px-3 py-1 text-[10px] font-semibold text-gray-900 mr-2 mb-2">
-                #Hello
-              </span>
-            </div>
-            {/* Star Section */}
-            <div className="mt-[auto] mb-[20px] mr-3">
-              <Image
-                src={starred == 0 ? Unstar : Star}
-                alt=""
-                width={20}
-                height={20}
-                onClick={handleStarToggle}
-              ></Image>
+
+          <div class=" absolute rounded-2xl inset-0 bg-black bg-opacity-80 text-white p-3 text-center opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-center items-center">
+            <span>{eventDesc}</span>
+            <div class="flex justify-center mt-3">
+              <div class="flex justify-center mt-3">
+                <div class="flex space-x-2 text-sm font-medium">
+                  <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
+                    <span>Register</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="flex-auto justify-between flex flex-col">
+        <div class="flex flex-wrap items-center justify-between">
+          <h1 class="text-2xl cursor-pointer text-gray-200 hover:text-purple-500 break-word">
+            {eventName}
+          </h1>
+          <button
+            onClick={handleStarToggle}
+            id="heartButton2"
+            class="transition ease-in duration-300 bg-gray-800 hover:text-purple-500 shadow hover:shadow-md text-gray-500 rounded-full w-8 h-8 text-center p-1"
+          >
+            <svg
+              id="heartSVG2"
+              class="h-6 w-6"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                id="heartPath2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                fill="none"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <p class="text-gray-400 text-md flex flex-row">
+            <svg
+              class="h-6 w-6 inline-block mr-2"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 10h16M4 14h16M4 18h16"
+              ></path>
+            </svg>
+            {date.slice(0, 10)} {time.slice(0, 5)}
+          </p>
+          <div class="text-xl flex justify-center items-center text-white font-semibold h-10 w-20 rounded-full ">
+            ₹{price}
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center justify-start mt-2">
+          <div class="flex flex-wrap mt-2">
+            {tags.map((tag, index) => {
+              return (
+                <div
+                  onMouseEnter={(e) => toogleTag(e, index)}
+                  onMouseLeave={(e) => toogleTag(e, index)}
+                  class="flex items-center text-xs px-2 py-1 mr-2 mb-2 rounded-lg bg-gray-400 text-white "
+                >
+                  {tagAbb == index ? tag.tagName : tag.tagAbbreviation}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* <script>
+            const tags = document.querySelectorAll('.tag');
+        
+            tags.forEach(tag => {
+                let originalText = tag.innerText; // Store the original text content of the tag
+        
+                tag.addEventListener('mouseover', () => {
+                    const abbreviation = tag.getAttribute('data-title');
+                    tag.innerText = abbreviation;
+                });
+        
+                tag.addEventListener('mouseout', () => {
+                    tag.innerText = originalText; // Restore the original text content of the tag
+                });
+            });
+        </script> */}
       </div>
     </div>
   );
