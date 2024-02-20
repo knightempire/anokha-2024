@@ -7,7 +7,7 @@ import Lottie from 'react-lottie';
 import animationData from '@/app/_util/lotties/transactionFailed';
 
 
-export default function PaymentSuccess() {
+export default function PaymentFailure() {
     const [webGLColors, setWebGLColors] = useState({
         color1: [43 / 255, 30 / 255, 56 / 255],
         color2: [11 / 255, 38 / 255, 59 / 255],
@@ -42,7 +42,7 @@ export default function PaymentSuccess() {
 
             <Link href={"/"} className="flex justify-center mt-8">
                 <button
-                    className="rounded-2xl px-2 py-3"
+                    className="rounded-2xl px-4 py-3"
                     style={{ backgroundColor: "#00223a", color: "white", marginTop: "1rem" }}>
                     Back to Home
                 </button>
