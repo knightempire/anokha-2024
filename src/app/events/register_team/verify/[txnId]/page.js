@@ -18,7 +18,7 @@ export default function PaymentVerify() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ txnId })
+            body: JSON.stringify({"transactionId":txnId})
         }).then(res => {
             if (res.status === 200) {
                 setTimeout(() => {
