@@ -103,17 +103,20 @@ const Card = ({ title, description, src }) => {
     });
 
     // Reverse animations in tl2
+
     tl1.to(
-      container.current.children[6],
+      container.current.children[5],
       {
         opacity: 0,
-        duration: 0.5,
+        y: -100,
+        scale: 0.5,
+        duration: 0.3,
         ease: "power3.out",
       },
       ">1"
     );
 
-    tl1.to(container.current.children[5], {
+    tl1.to(container.current.children[1], {
       opacity: 0,
       y: -100,
       scale: 0.5,
@@ -129,14 +132,6 @@ const Card = ({ title, description, src }) => {
       ease: "power3.out",
     });
 
-    tl1.to(container.current.children[3], {
-      opacity: 0,
-      y: -100,
-      scale: 0.5,
-      duration: 0.3,
-      ease: "power3.out",
-    });
-
     tl1.to(container.current.children[2], {
       opacity: 0,
       y: -100,
@@ -145,7 +140,13 @@ const Card = ({ title, description, src }) => {
       ease: "power3.out",
     });
 
-    tl1.to(container.current.children[1], {
+    tl1.to(container.current.children[6], {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power3.out",
+    });
+
+    tl1.to(container.current.children[3], {
       opacity: 0,
       y: -100,
       scale: 0.5,
@@ -170,94 +171,94 @@ const Card = ({ title, description, src }) => {
     );
   });
 
-    useGSAP(() => {
-      const tl1 = gsap.timeline({
-        scrollTrigger: {
-          trigger: phoneContainer.current,
-          start: "-10% 50%", // Adjust the start value to start the animation earlier
-          end: "120% 10%",
-          scrub: true,
-        },
-      });
+  useGSAP(() => {
+    const tl1 = gsap.timeline({
+      scrollTrigger: {
+        trigger: phoneContainer.current,
+        start: "-10% 50%", // Adjust the start value to start the animation earlier
+        end: "120% 10%",
+        scrub: true,
+      },
+    });
 
-      // Animation for the container opacity
-      tl1.from(
-        phoneContainer.current,
-        {
-          opacity: 0,
-          duration: 2,
-          ease: "slow(0.7,0.7,false)",
-        },
-        "=-1"
-      );
+    // Animation for the container opacity
+    tl1.from(
+      phoneContainer.current,
+      {
+        opacity: 0,
+        duration: 2,
+        ease: "slow(0.7,0.7,false)",
+      },
+      "=-1"
+    );
 
-      // Animation for the Title
+    // Animation for the Title
+    tl1.from(
+      phoneContainer.current.children[0], // Selecting the first child element (title)
+      {
+        opacity: 0,
+        y: 100,
+        duration: 0.5,
+        ease: "power3.out",
+      },
+      "=-0.3"
+    );
+
+    // Animation for each image
+    for (let i = 1; i <= 3; i++) {
+      // Looping through the image elements
       tl1.from(
-        phoneContainer.current.children[0], // Selecting the first child element (title)
+        phoneContainer.current.children[i], // Selecting the image elements
         {
           opacity: 0,
           y: 100,
+          scale: 0.5,
           duration: 0.5,
           ease: "power3.out",
         },
-        "=-0.3"
+        `=-${0.15 * (3 - i + 1)}` // Delaying each image animation
       );
+    }
 
-      // Animation for each image
-      for (let i = 1; i <= 3; i++) {
-        // Looping through the image elements
-        tl1.from(
-          phoneContainer.current.children[i], // Selecting the image elements
-          {
-            opacity: 0,
-            y: 100,
-            scale: 0.5,
-            duration: 0.5,
-            ease: "power3.out",
-          },
-          `=-${0.15 * (3 - i + 1)}` // Delaying each image animation
-        );
+    // Animation for the Description
+    tl1.from(
+      phoneContainer.current.children[4], // Selecting the description element
+      {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power3.out",
       }
+    );
 
-      // Animation for the Description
-      tl1.from(
-        phoneContainer.current.children[4], // Selecting the description element
-        {
-          opacity: 0,
-          duration: 0.5,
-          ease: "power3.out",
-        }
-      );
+    tl1.to({}, { duration: 3 });
 
-      tl1.to({}, { duration: 3 });
-
-      // Reverse animations
-      for (let i = 3; i >= 1; i--) {
-        // Looping through the image elements in reverse order
-        tl1.to(
-          phoneContainer.current.children[i], // Selecting the image elements
-          {
-            opacity: 0,
-            y: -100,
-            scale: 0.5,
-            duration: 0.5,
-            ease: "power3.out",
-          },
-          `+=${0.1}`
-        );
-      }
-
-      // Animation for the container opacity (reversed)
+    // Reverse animations
+    for (let i = 3; i >= 1; i--) {
+      // Looping through the image elements in reverse order
       tl1.to(
-        phoneContainer.current,
+        phoneContainer.current.children[i], // Selecting the image elements
         {
           opacity: 0,
-          duration: 2,
-          ease: "slow(0.7,0.7,false)",
+          y: -100,
+          scale: 0.5,
+          duration: 0.5,
+          ease: "power3.out",
         },
-        "+=1" // Delaying the reverse animation
+        `+=${0.1}`
       );
-    });
+    }
+
+    // Animation for the container opacity (reversed)
+    tl1.to(
+      phoneContainer.current,
+      {
+        opacity: 0,
+        duration: 2,
+        ease: "slow(0.7,0.7,false)",
+      },
+      "+=1" // Delaying the reverse animation
+    );
+  });
 
   return (
     <div>

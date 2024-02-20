@@ -103,17 +103,20 @@ const Card = ({ title, description, src }) => {
     });
 
     // Reverse animations in tl2
+
     tl1.to(
-      container.current.children[6],
+      container.current.children[5],
       {
         opacity: 0,
-        duration: 0.5,
+        y: -100,
+        scale: 0.5,
+        duration: 0.3,
         ease: "power3.out",
       },
       ">1"
     );
 
-    tl1.to(container.current.children[5], {
+    tl1.to(container.current.children[1], {
       opacity: 0,
       y: -100,
       scale: 0.5,
@@ -129,14 +132,6 @@ const Card = ({ title, description, src }) => {
       ease: "power3.out",
     });
 
-    tl1.to(container.current.children[3], {
-      opacity: 0,
-      y: -100,
-      scale: 0.5,
-      duration: 0.3,
-      ease: "power3.out",
-    });
-
     tl1.to(container.current.children[2], {
       opacity: 0,
       y: -100,
@@ -145,7 +140,13 @@ const Card = ({ title, description, src }) => {
       ease: "power3.out",
     });
 
-    tl1.to(container.current.children[1], {
+    tl1.to(container.current.children[6], {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power3.out",
+    });
+
+    tl1.to(container.current.children[3], {
       opacity: 0,
       y: -100,
       scale: 0.5,
