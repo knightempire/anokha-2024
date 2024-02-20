@@ -14,7 +14,7 @@ export function SimpleCard() {
           <iframe
             width="102"
             height="280"
-            src="https://www.youtube.com/embed/PhzlMQ8-GE4?si=y667CiUsTqjbGlGM"
+            src="https://www.youtube.com/embed/hiO-2K8ToA4"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen

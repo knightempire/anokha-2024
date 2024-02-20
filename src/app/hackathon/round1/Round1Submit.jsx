@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import Navbar from "../_components/HackathonHeader";
 import { HACKATHON_FIRST_ROUND_SUBMISSION_URL } from "@/app/_util/constants.js";
 import About from "../_components/About";
 
@@ -18,6 +17,7 @@ import { Button } from "@material-tailwind/react";
 import RoundOne from "../_components/RoundOne";
 import RoundOnePt2 from "../_components/RoundOnePt2";
 import { LoadingScreen } from "@/app/_util/LoadingScreen/LoadingScreen";
+import Navigationbar from "@/app/components/EventHeader";
 
 export default function Page() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -106,7 +106,7 @@ export default function Page() {
            
           );
           setTimeout(() => {
-            router.push("/hackathon");
+            router.push("/login");
           }, 1500);
 
           
@@ -163,7 +163,7 @@ export default function Page() {
        
     ) : 
     <div>
-      <Navbar />
+      <Navigationbar />
       <Toast ref={toastRef} position="bottom-center" className="p-5" />
       {currentStep === 0 ? (
         <RoundOne

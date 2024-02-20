@@ -74,17 +74,16 @@ export default function ProfileCard({ email }) {
             onClick={handleClick}
             className="flex flex-row items-center rounded-full py-0.5 pr-0.5 pl-0.5   backdrop-blur-3xl"
           >
-            <div className="border-blue-600 border-2 p-1 rounded-full bg-gray-300 ">
+            <div className="border-blue-600 border-2 p-0 rounded-full bg-gray-300 ">
               <Avatar
                 shape="circle"
-                className=""
                 alt="Travis Howard"
                 image={
                   "https://www.gravatar.com/avatar/" +
                   hash +
                   ".jpg?s=50&d=robohash"
                 }
-                size="xlarge"
+                size="large"
               />
             </div>
             <div className="cursor-pointer">

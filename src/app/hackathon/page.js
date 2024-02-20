@@ -1,6 +1,5 @@
 "use client"
 import React from 'react'
-import Navbar from './_components/HackathonHeader'
 import Price from './_components/Price'
 import Themes from './_components/Themes'
 import About from './_components/About'
@@ -27,6 +26,8 @@ import Judging from './_components/Judging'
  
 import WinnerPrice from './_components/WinnerPrice'
 import SubGuidelines from './_components/SubGuidelines'
+import Navigationbar from '../components/EventHeader'
+
  
 export default function Page() {
     const router = useRouter()
@@ -152,7 +153,7 @@ export default function Page() {
         <div className="overflow-x-hidden w-full bg-gray-200"> 
  
  
-        <Navbar />
+        <Navigationbar />
         {/* <div className='flex-1 min-h-screen bg-[#193056] flex items-center justify-center'>
              HERO LANDER
             <Button variant='text'>Materials</Button>
@@ -165,6 +166,7 @@ export default function Page() {
         <IntelHero userState={userState} displayResult={displayResult} />
        
         <Price />
+        <WinnerPrice />
         
         <About/>
         <Themes />
