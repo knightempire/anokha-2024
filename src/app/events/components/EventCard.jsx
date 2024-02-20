@@ -74,7 +74,7 @@ export default function EventCard({
   };
 
   return (
-    <div class="bg-gray-900 min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-purple-600 transition duration-150">
+    <div class="bg-[#0c111c] min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-purple-600 transition duration-150">
       <div class="flex flex-col relative group">
         <div class="relative h-[400px] w-full mb-3">
           <Image
@@ -127,7 +127,7 @@ export default function EventCard({
                 stroke-linejoin="round"
                 stroke-width="2"
                 d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                fill="none"
+                fill={starred == 0 ? "none" : "currentColor"}
               />
             </svg>
           </button>
@@ -159,9 +159,10 @@ export default function EventCard({
             {tags.map((tag, index) => {
               return (
                 <div
+                  key={index}
                   onMouseEnter={(e) => toogleTag(e, index)}
                   onMouseLeave={(e) => toogleTag(e, index)}
-                  class="flex items-center text-xs px-2 py-1 mr-2 mb-2 rounded-lg bg-gray-400 text-white "
+                  class="flex items-center text-xs px-2 py-1 mr-2 mb-2 transition-200 rounded-xl bg-black text-white border-[2px] border-purple-600"
                 >
                   {tagAbb == index ? tag.tagName : tag.tagAbbreviation}
                 </div>
