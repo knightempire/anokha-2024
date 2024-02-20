@@ -15,8 +15,290 @@ const Events = () => {
   const [TechFilter, setTechFilter] = useState(null);
   const [RegisteredFilter, setRegisteredFilter] = useState(null);
 
-  const [eventsData, setEventsData] = useState(null);
-  const [filteredData, setFilteredData] = useState([]);
+  const [eventsData, setEventsData] = useState([
+    // {
+    //   eventId: 1,
+    //   eventName: "Code Clash",
+    //   eventDescription:
+    //     "Welcome to the Code Clash Championship, where the brightest minds in the world of programming come together to engage in an exhilarating battle of algorithms and logic!",
+    //   eventDate: "2021-02-28T18:30:00.000Z",
+    //   eventTime: "10:00:00",
+    //   eventVenue: "Anugraha Hall",
+    //   eventImageURL:
+    //     "https://anokha.amrita.edu/2023/static/media/anokha_app.07f6b3b86aebf193cfc4.png",
+    //   eventPrice: 200,
+    //   maxSeats: 10,
+    //   seatsFilled: 0,
+    //   minTeamSize: 2,
+    //   maxTeamSize: 4,
+    //   isWorkshop: "0",
+    //   isTechnical: "1",
+    //   isGroup: "1",
+    //   needGroupData: "1",
+    //   isPerHeadPrice: "0",
+    //   isRefundable: "1",
+    //   eventStatus: "1",
+    //   departmentName: "Computer Science and Engineering",
+    //   departmentAbbreviation: "CSE",
+    //   tags: [
+    //     {
+    //       tagName: "Computer Science",
+    //       tagAbbreviation: "CS",
+    //     },
+    //     {
+    //       tagName: "Competitive Programming",
+    //       tagAbbreviation: "CP",
+    //     },
+    //   ],
+    // },
+    // {
+    //   eventId: 2,
+    //   eventName: "IOT Workshop",
+    //   eventDescription:
+    //     "Participants will explore the concepts, technologies, and practical applications of IoT that are transforming the way we interact with the world.",
+    //   eventDate: "2021-03-02T18:30:00.000Z",
+    //   eventTime: "11:00:00",
+    //   eventVenue: "Anugraha Hall",
+    //   eventImageURL:
+    //     "https://anokha.amrita.edu/2023/static/media/anokha_app.07f6b3b86aebf193cfc4.png",
+    //   eventPrice: 100,
+    //   maxSeats: 100,
+    //   seatsFilled: 0,
+    //   minTeamSize: 1,
+    //   maxTeamSize: 1,
+    //   isWorkshop: "1",
+    //   isTechnical: "1",
+    //   isGroup: "0",
+    //   needGroupData: "0",
+    //   isPerHeadPrice: "1",
+    //   isRefundable: "1",
+    //   eventStatus: "1",
+    //   departmentName: "Computer Science and Engineering",
+    //   departmentAbbreviation: "CSE",
+    //   tags: [
+    //     {
+    //       tagName: "Computer Science",
+    //       tagAbbreviation: "CS",
+    //     },
+    //     {
+    //       tagName: "Internet Of Things",
+    //       tagAbbreviation: "IOT",
+    //     },
+    //   ],
+    // },
+    // {
+    //   eventId: 1,
+    //   eventName: "Code Clash",
+    //   eventDescription:
+    //     "Welcome to the Code Clash Championship, where the brightest minds in the world of programming come together to engage in an exhilarating battle of algorithms and logic!",
+    //   eventDate: "2021-02-28T18:30:00.000Z",
+    //   eventTime: "10:00:00",
+    //   eventVenue: "Anugraha Hall",
+    //   eventImageURL:
+    //     "https://anokha.amrita.edu/2023/static/media/anokha_app.07f6b3b86aebf193cfc4.png",
+    //   eventPrice: 200,
+    //   maxSeats: 10,
+    //   seatsFilled: 0,
+    //   minTeamSize: 2,
+    //   maxTeamSize: 4,
+    //   isWorkshop: "0",
+    //   isTechnical: "1",
+    //   isGroup: "1",
+    //   needGroupData: "1",
+    //   isPerHeadPrice: "0",
+    //   isRefundable: "1",
+    //   eventStatus: "1",
+    //   departmentName: "Computer Science and Engineering",
+    //   departmentAbbreviation: "CSE",
+    //   tags: [
+    //     {
+    //       tagName: "Computer Science",
+    //       tagAbbreviation: "CS",
+    //     },
+    //     {
+    //       tagName: "Competitive Programming",
+    //       tagAbbreviation: "CP",
+    //     },
+    //   ],
+    // },
+    // {
+    //   eventId: 2,
+    //   eventName: "IOT Workshop",
+    //   eventDescription:
+    //     "Participants will explore the concepts, technologies, and practical applications of IoT that are transforming the way we interact with the world.",
+    //   eventDate: "2021-03-02T18:30:00.000Z",
+    //   eventTime: "11:00:00",
+    //   eventVenue: "Anugraha Hall",
+    //   eventImageURL:
+    //     "https://anokha.amrita.edu/2023/static/media/anokha_app.07f6b3b86aebf193cfc4.png",
+    //   eventPrice: 100,
+    //   maxSeats: 100,
+    //   seatsFilled: 0,
+    //   minTeamSize: 1,
+    //   maxTeamSize: 1,
+    //   isWorkshop: "1",
+    //   isTechnical: "1",
+    //   isGroup: "0",
+    //   needGroupData: "0",
+    //   isPerHeadPrice: "1",
+    //   isRefundable: "1",
+    //   eventStatus: "1",
+    //   departmentName: "Computer Science and Engineering",
+    //   departmentAbbreviation: "CSE",
+    //   tags: [
+    //     {
+    //       tagName: "Computer Science",
+    //       tagAbbreviation: "CS",
+    //     },
+    //     {
+    //       tagName: "Internet Of Things",
+    //       tagAbbreviation: "IOT",
+    //     },
+    //   ],
+    // },
+  ]);
+  const [filteredData, setFilteredData] = useState([
+  //   {
+  //     eventId: 1,
+  //     eventName: "Code Clash",
+  //     eventDescription:
+  //       "Welcome to the Code Clash Championship, where the brightest minds in the world of programming come together to engage in an exhilarating battle of algorithms and logic!",
+  //     eventDate: "2021-02-28T18:30:00.000Z",
+  //     eventTime: "10:00:00",
+  //     eventVenue: "Anugraha Hall",
+  //     eventImageURL:
+  //       "https://anokha.amrita.edu/2023/static/media/anokha_app.07f6b3b86aebf193cfc4.png",
+  //     eventPrice: 200,
+  //     maxSeats: 10,
+  //     seatsFilled: 0,
+  //     minTeamSize: 2,
+  //     maxTeamSize: 4,
+  //     isWorkshop: "0",
+  //     isTechnical: "1",
+  //     isGroup: "1",
+  //     needGroupData: "1",
+  //     isPerHeadPrice: "0",
+  //     isRefundable: "1",
+  //     eventStatus: "1",
+  //     departmentName: "Computer Science and Engineering",
+  //     departmentAbbreviation: "CSE",
+  //     tags: [
+  //       {
+  //         tagName: "Computer Science",
+  //         tagAbbreviation: "CS",
+  //       },
+  //       {
+  //         tagName: "Competitive Programming",
+  //         tagAbbreviation: "CP",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     eventId: 2,
+  //     eventName: "IOT Workshop",
+  //     eventDescription:
+  //       "Participants will explore the concepts, technologies, and practical applications of IoT that are transforming the way we interact with the world.",
+  //     eventDate: "2021-03-02T18:30:00.000Z",
+  //     eventTime: "11:00:00",
+  //     eventVenue: "Anugraha Hall",
+  //     eventImageURL:
+  //       "https://anokha.amrita.edu/2023/static/media/anokha_app.07f6b3b86aebf193cfc4.png",
+  //     eventPrice: 100,
+  //     maxSeats: 100,
+  //     seatsFilled: 0,
+  //     minTeamSize: 1,
+  //     maxTeamSize: 1,
+  //     isWorkshop: "1",
+  //     isTechnical: "1",
+  //     isGroup: "0",
+  //     needGroupData: "0",
+  //     isPerHeadPrice: "1",
+  //     isRefundable: "1",
+  //     eventStatus: "1",
+  //     departmentName: "Computer Science and Engineering",
+  //     departmentAbbreviation: "CSE",
+  //     tags: [
+  //       {
+  //         tagName: "Computer Science",
+  //         tagAbbreviation: "CS",
+  //       },
+  //       {
+  //         tagName: "Internet Of Things",
+  //         tagAbbreviation: "IOT",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     eventId: 1,
+  //     eventName: "Code Clash",
+  //     eventDescription:
+  //       "Welcome to the Code Clash Championship, where the brightest minds in the world of programming come together to engage in an exhilarating battle of algorithms and logic!",
+  //     eventDate: "2021-02-28T18:30:00.000Z",
+  //     eventTime: "10:00:00",
+  //     eventVenue: "Anugraha Hall",
+  //     eventImageURL:
+  //       "https://anokha.amrita.edu/2023/static/media/anokha_app.07f6b3b86aebf193cfc4.png",
+  //     eventPrice: 200,
+  //     maxSeats: 10,
+  //     seatsFilled: 0,
+  //     minTeamSize: 2,
+  //     maxTeamSize: 4,
+  //     isWorkshop: "0",
+  //     isTechnical: "1",
+  //     isGroup: "1",
+  //     needGroupData: "1",
+  //     isPerHeadPrice: "0",
+  //     isRefundable: "1",
+  //     eventStatus: "1",
+  //     departmentName: "Computer Science and Engineering",
+  //     departmentAbbreviation: "CSE",
+  //     tags: [
+  //       {
+  //         tagName: "Computer Science",
+  //         tagAbbreviation: "CS",
+  //       },
+  //       {
+  //         tagName: "Competitive Programming",
+  //         tagAbbreviation: "CP",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     eventId: 2,
+  //     eventName: "IOT Workshop",
+  //     eventDescription:
+  //       "Participants will explore the concepts, technologies, and practical applications of IoT that are transforming the way we interact with the world.",
+  //     eventDate: "2021-03-02T18:30:00.000Z",
+  //     eventTime: "11:00:00",
+  //     eventVenue: "Anugraha Hall",
+  //     eventImageURL:
+  //       "https://anokha.amrita.edu/2023/static/media/anokha_app.07f6b3b86aebf193cfc4.png",
+  //     eventPrice: 100,
+  //     maxSeats: 100,
+  //     seatsFilled: 0,
+  //     minTeamSize: 1,
+  //     maxTeamSize: 1,
+  //     isWorkshop: "1",
+  //     isTechnical: "1",
+  //     isGroup: "0",
+  //     needGroupData: "0",
+  //     isPerHeadPrice: "1",
+  //     isRefundable: "1",
+  //     eventStatus: "1",
+  //     departmentName: "Computer Science and Engineering",
+  //     departmentAbbreviation: "CSE",
+  //     tags: [
+  //       {
+  //         tagName: "Computer Science",
+  //         tagAbbreviation: "CS",
+  //       },
+  //       {
+  //         tagName: "Internet Of Things",
+  //         tagAbbreviation: "IOT",
+  //       },
+  //     ],
+  //   },
+   ]);
 
   useEffect(() => {
     console.log("DAY: ", DayFilter);
@@ -25,15 +307,15 @@ const Events = () => {
         eventsData.filter(
           (eventData) =>
             (groupFilter == -1 ||
-              eventData.isGroup == groupFilter.toString()) &&
+              eventData.isGroup == groupFilter?.toString()) &&
             (TechFilter == -1 ||
-              eventData.isTechnical == TechFilter.toString()) &&
+              eventData.isTechnical == TechFilter?.toString()) &&
             (TypeFilter == -1 ||
-              eventData.isWorkshop == TypeFilter.toString()) &&
+              eventData.isWorkshop == TypeFilter?.toString()) &&
             (DayFilter == [] ||
               DayFilter == -1 ||
-              DayFilter.length == 0 ||
-              DayFilter.includes(eventData.eventDate.slice(0, 10)))
+              DayFilter?.length == 0 ||
+              DayFilter?.includes(eventData.eventDate.slice(0, 10)))
         )
       );
     }
@@ -118,7 +400,7 @@ const Events = () => {
           );
           setTimeout(() => {
             router.push("/login");
-          }, 1500)
+          }, 1500);
           // openModal();
           // Session Expired or not logged in. Clear Cache and Navigate to login screen.
         } else if (res.status === 500) {
