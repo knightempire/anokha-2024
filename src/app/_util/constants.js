@@ -1,4 +1,4 @@
-const BASE_URL = "https://anokha.amrita.edu/api";
+const BASE_URL = "https://anokha.abhinavramakrishnan.tech/api";
 //const BASE_URL = "http://localhost:5000/api";
 const HACKATHON_URL = "https://anokha.amrita.edu/api/intel";
 

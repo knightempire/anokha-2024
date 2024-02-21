@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import FilterSection from "./components/FilterSection";
 import { TbArrowBigUpLinesFilled } from "react-icons/tb";
 import { ALL_EVENTS_URL } from "../_util/constants";
+import { useRouter } from "next/navigation";
 
 const Events = () => {
   const [groupFilter, setgroupFilter] = useState(null);
@@ -17,6 +18,7 @@ const Events = () => {
 
   const [eventsData, setEventsData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     console.log("DAY: ", DayFilter);
@@ -173,6 +175,7 @@ const Events = () => {
                         isAllowed={event.eventStatus === "1"} // Adjust as needed
                         maxseats={event.maxSeats}
                         seats={event.seatsFilled}
+                        router={router}
                       />
                     </Link>
                   </div>
