@@ -1,5 +1,5 @@
 const BASE_URL = "https://anokha.amrita.edu/api";
-// const BASE_URL = "http://localhost:5000/api";
+//const BASE_URL = "http://localhost:5000/api";
 const HACKATHON_URL = "https://anokha.amrita.edu/api/intel";
 
 export const EDIT_PROFILE_URL = BASE_URL+"/user/editStudentProfile";
