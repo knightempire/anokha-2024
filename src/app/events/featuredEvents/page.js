@@ -5,7 +5,7 @@ import Link from "next/link";
 import Navbar from "../../components/EventHeader";
 import Footer from "../../components/Footer";
 import FilterSection from "../components/FilterSection";
-import { TbArrowBigUpLinesFilled } from "react-icons/tb";
+import WebGLApp from "../../bg/WebGLApp";
 import { ALL_EVENTS_URL } from "../../_util/constants";
 
 const Events = () => {
@@ -145,8 +145,27 @@ const Events = () => {
   console.log("Events Data:", eventsData);
   console.log("Filter Data:", filteredData);
 
+  // const [webGLColors, setWebGLColors] = useState({
+  //   color1: [43 / 255, 30 / 255, 56 / 255],
+  //   color2: [11 / 255, 38 / 255, 59 / 255],
+  //   color3: [15 / 255, 21 / 255, 39 / 255],
+  // });
+
+  const [webGLColors, setWebGLColors] = useState({
+    color1: [45 / 255, 35 / 255, 25 / 255], // Dark Brown
+    color2: [222 / 255, 184 / 255, 135 / 255], // Burlywood
+    color3: [35 / 255, 25 / 255, 15 / 255], // Dark Chocolate
+  });
+
+  // const [webGLColors, setWebGLColors] = useState({
+  //   color1: [55 / 255, 45 / 255, 30 / 255], // Dark Bronze
+  //   color2: [222 / 255, 177 / 255, 108 / 255], // Goldenrod
+  //   color3: [45 / 255, 35 / 255, 20 / 255], // Dark Coffee
+  // });
+
   return (
     <main className="flex min-h-screen flex-col bg-[#192032]">
+      <WebGLApp colors={webGLColors} className="-z-10" />
       <div className="block">
         <Navbar />
         <div className="flex flex-col gap-5 min-h-screen justify-center items-center mx-10 pt-10 mt-10">
