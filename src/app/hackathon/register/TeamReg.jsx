@@ -100,7 +100,7 @@ const Register = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + secretToken,
+          "Authorization": "Bearer " + secretToken,
         },
         body: JSON.stringify({
           teamName: teamName,

@@ -7,6 +7,8 @@ import Footer from "../components/Footer";
 import FilterSection from "./components/FilterSection";
 import WebGLApp from "../bg/WebGLApp";
 import { ALL_EVENTS_URL } from "../_util/constants";
+import { useRouter } from "next/navigation";
+import secureLocalStorage from "react-secure-storage";
 
 const Events = () => {
   const [groupFilter, setgroupFilter] = useState(null);
@@ -17,6 +19,22 @@ const Events = () => {
 
   const [eventsData, setEventsData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+
+  const [secretToken, setSecretToken] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(0);
+  const [isAmritaCBE, setIsAmritaCBE] = useState(0);
+  const [hasActivePassport, setHasActivePassport] = useState(0);
+
+  useEffect(() => {
+    setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
+    setIsAmritaCBE(parseInt(secureLocalStorage.getItem("isAmritaCBE")));
+    setHasActivePassport(
+      parseInt(secureLocalStorage.getItem("hasActivePassport"))
+    );
+    setSecretToken(secureLocalStorage.getItem("registerToken"));
+  }, []);
+
+  const router = useRouter();
 
   useEffect(() => {
     console.log("DAY: ", DayFilter);
@@ -105,8 +123,7 @@ const Events = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer v4.public.eyJzdHVkZW50RnVsbE5hbWUiOiJBYmhpbmF2IFJhbWFrcmlzaG5hbiIsInN0dWRlbnRFbWFpbCI6ImhzaGVhZG9uZUBnbWFpbC5jb20iLCJzdHVkZW50UGhvbmUiOiI5NTk3MzQ3NTk0Iiwic3R1ZGVudFBhc3N3b3JkIjoiNGJjMzQ0NmI2NzJkMzBjYTA0NWViNTdjZDY2MTM0N2MyN2E3Y2EzZWRkODBjYzJmZTMyMDE1OTgwMGY4Yzg1NiIsIm5lZWRQYXNzcG9ydCI6IjEiLCJzdHVkZW50QWNjb3VudFN0YXR1cyI6IjEiLCJzdHVkZW50Q29sbGVnZU5hbWUiOiJBbXJpdGEgVmlzaHdhIFZpZHlhcGVldGhhbSIsInN0dWRlbnRDb2xsZWdlQ2l0eSI6IkNvaW1iYXRvcmUiLCJpc0luQ2FtcHVzIjoiMCIsInNlY3JldF9rZXkiOiJlNzQ2NWYyMGIxMzNkMjk0MzgyZDFmNTJkZGUwY2Y5NDk5NGM3NjJhNjNkNzk2NzA0ZDU1ZWU5ZjdhMTg0NmJlODhjODUzMWNjMGUxZjYwZjVjZWExNjIwMDM3NDRiYmYyY2NhNWIxM2QzOGRhZGY3MWRiMjU0NGM2NGQ3OGZlNDllNDRhYmZlYzgwOTRmMzM3MTE3YmE1YjAxNjBmYjY1ZGQ5MTRlOGIxNGI4YWIxMGJmNDRlMTQxOGQ3OWRjOWI3ODU5N2EwYjJhN2NlNDIwNjA5MDYxM2Q4Zjc2ZTMxMWIyYWJkZDY0OWJmYjQ4M2IzYjUzMTI4YWE1ZTI3MDAyYTY2YWE4ODhhZmQzYjJiYjRhMTYyNTc5MGRkZDQ1NmFjYjFhNzdjMmI4YTczZjU4MTZjYjExOTY4MzYzYTMwMDMyY2UwYjNkOTBiYTQ2NmI1MWE4NWNlMzA2ZTZlYjAzMGMwOTVkYjJjNjI4NmMwYTYyOTM5ZjEwNTZlN2VkNDc3Y2I5ZjE1NDUwNDUyNTM5ZWEzNzU2YTlmNDBhMTZiNTRmNTAxNjgwNTI4ODQyZjJmNDM2YTY4NDMzN2JkODU2MTc5Y2YwYThkOWU3MWZjNmM5MTMzMWYxZmQ2MDA2ZDYyYWQyNDI5NzhhMjUyMjQ1NWEzMWY4NjNlYzgxY2RjOGFlZmQzZWFkYjQyYjAwMzZjMWFlYTE3NmE3ZWEiLCJpYXQiOiIyMDI0LTAxLTE2VDExOjQ1OjM2LjM4OFoiLCJleHAiOiIyMDI0LTAxLTE2VDExOjUwOjM2LjM4OFoifZzXQXArINaREDHyRrTFKFnd7RYRmjsYJcro170WYbXRQFz685wV0Q7OEmCGz_5QI1V8LO2P_CxfqRWE_UzWdAk",
+        Authorization: "Bearer " + secretToken,
       },
     })
       .then((res) => {
@@ -160,7 +177,7 @@ const Events = () => {
           <div className="my-3 z-10 w-full min-h-[100px] flex justify-center">
             <FilterSection sendcurrentFilters={hanldeCurrentFilters} />
           </div>
-          <div className="grid mb-10 grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid mb-10 z-10 grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {eventsData && eventsData.length > 0 ? (
               filteredData.map((event) => {
                 return (
@@ -180,6 +197,7 @@ const Events = () => {
                         isAllowed={event.eventStatus === "1"}
                         maxseats={event.maxSeats}
                         seats={event.seatsFilled}
+                        router={router}
                       />
                     </Link>
                   </div>
