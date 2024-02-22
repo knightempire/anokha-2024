@@ -1,11 +1,10 @@
-require('dotenv').config({ path: '.env.local' })
 
-const BASE_URL = "https://anokha.abhinavramakrishnan.tech/api";
-//const BASE_URL = "http://localhost:5000/api";
+//const BASE_URL = "https://anokha.abhinavramakrishnan.tech/api";
+const BASE_URL = "http://localhost:5000/api";
 const HACKATHON_URL = "https://anokha.amrita.edu/api/intel";
 
-export const payU_Key = process.env.isProduction === '1' ? process.env.payU_KeyTest : process.env.payU_KeyProd;
-export const payU_Action = process.env.isProduction === '1' ? 'https://secure.payu.in/_payment' : 'https://test.payu.in/_payment'
+export const payU_Key = process.env.NEXT_PUBLIC_IS_PRODUCTION === '1' ? process.env.NEXT_PUBLIC_PAY_U_KEY_PROD : process.env.NEXT_PUBLIC_PAY_U_KEY_TEST ;
+export const payU_Action = process.env.NEXT_PUBLIC_IS_PRODUCTION === '1' ? 'https://secure.payu.in/_payment' : 'https://test.payu.in/_payment'
 
 export const EDIT_PROFILE_URL = BASE_URL+"/user/editStudentProfile";
 export const STUDENT_PROFILE_URL = BASE_URL+"/user/getStudentProfile";
