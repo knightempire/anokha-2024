@@ -9,6 +9,7 @@ import secureLocalStorage from "react-secure-storage";
 import { LoadingScreen } from "@/app/_util/LoadingScreen/LoadingScreen";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
+import { EVENT_REGISTER_STEP_ONE } from "../_util/constants";
 
 const TeamRegister = () => {
   const searchParams = useSearchParams();
@@ -44,23 +45,43 @@ const TeamRegister = () => {
 
   const emailRegex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
   let isValidEmails;
+  
   const HandleTeamRegister = async (e) => {
     e.preventDefault();
-    // let isValidEmails = true;
-    // for (let i of Emails) {
-    //   const isValidEmail = i.length > 0 && emailRegex.test(i);
-    //   if (!isValidEmail) isValidEmails = false;
-    // }
-    // if (isValidEmails == false) {
-    //   alert("Error Invalid email");
-    //   return;
-    // }
-    let teamData = {
-      teamName: TeamName,
-      emails: Emails,
-    };
-    console.log(teamData);
-    return teamData;
+    let isValidEmails = true;
+    for (let i of Emails) {
+      const isValidEmail = i.length > 0 && emailRegex.test(i);
+      if (!isValidEmail) isValidEmails = false;
+    }
+    if (isValidEmails == false) {
+      alert("Error Invalid email");
+      return;
+    }
+    try {
+      const response = await fetch(EVENT_REGISTER_STEP_ONE, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${secureLocalStorage.getItem(
+            "registerToken"
+          )}`,
+        },
+        body: {
+          "eventId": "",
+          "totalMembers": TeamSize,
+          "isMarketPlacePaymentMode":"",
+          "teamName":"",
+          "teamMembers":"",
+          "memberRoles":""
+        },
+      });
+
+      if (response.status === 200) {
+        console.log(200);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleEmails = (index, email) => {
@@ -103,7 +124,6 @@ const TeamRegister = () => {
       <WebGLApp colors={webGLColors} className="-z-10" />
       <div className="block space-y-24 md:space-y-10">
         <Navbar />
-        {console.log(registerEmail)}
         <div className="relative">
           <div className="flex flex-col py-10 px-[200px] items-center justify-center mx-auto min-h-screen w-[80%]">
             <div className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">

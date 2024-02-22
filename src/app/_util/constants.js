@@ -27,3 +27,5 @@ export const STAR_UNSTAR_EVENT_URL = BASE_URL + "/user/toggleStarredEvent";
 export const BUY_PASSPORT_DUMMY_PAGE_URL = BASE_URL + "/user/buyPassport";
 export const VERIFY_TRANSACTIONS_URL = BASE_URL + "/user/verifyTransaction";
 
+export const EVENT_REGISTER_STEP_ONE = BASE_URL + "/user/registerForEventStepOne";
+

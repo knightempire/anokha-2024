@@ -65,7 +65,8 @@ const Events = () => {
               DayFilter?.includes(eventData.eventDate.slice(0, 10))) &&
             (TagsFilter == [] ||
               TagsFilter?.length == 0 ||
-              tagsFunction(eventData))
+              tagsFunction(eventData)) &&
+            RegisteredFilter == -1
         )
       );
     }
@@ -141,7 +142,7 @@ const Events = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + secretToken,
+        "Authorization": "Bearer " + secretToken,
       },
     })
       .then((res) => {
