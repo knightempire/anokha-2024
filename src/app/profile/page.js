@@ -2,7 +2,11 @@
 
 import Navbar from "../components/EventHeader";
 import { useState, useRef, useEffect } from "react";
-import { EDIT_PROFILE_URL, STUDENT_PROFILE_URL } from "../_util/constants";
+import {
+  EDIT_PROFILE_URL,
+  STUDENT_PROFILE_URL,
+  BUY_PASSPORT_DUMMY_PAGE_URL,
+} from "../_util/constants";
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -117,7 +121,6 @@ export default function Register() {
     color2: [11 / 255, 38 / 255, 59 / 255],
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
-
   const toastRef = useRef(null);
 
   const genSHA256 = (email) => {
@@ -144,7 +147,9 @@ export default function Register() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${secureLocalStorage.getItem("registerToken")}`,
+          Authorization: `Bearer ${secureLocalStorage.getItem(
+            "registerToken"
+          )}`,
         },
         body: JSON.stringify({
           studentFullName: fullname,
@@ -209,6 +214,54 @@ export default function Register() {
       }
     } catch (error) {
       setLoading(false);
+    }
+  };
+  const handlePassportClick = async () => {
+    const response = await fetch(BUY_PASSPORT_DUMMY_PAGE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${secureLocalStorage.getItem("registerToken")}`,
+      },
+    });
+
+    if (response.status === 200) {
+      const data = await response.json();
+      const payUData = {
+        key: payU_Key,
+        txnid: data["txnid"],
+        amount: data["amount"],
+        productinfo: data["productinfo"],
+        firstname: data["firstname"],
+        email: data["email"],
+        phone: data["phone"],
+        surl: data["surl"],
+        furl: data["furl"],
+        hash: data["hash"],
+      };
+
+      const payUForm = document.createElement("form");
+      payUForm.method = "post";
+      payUForm.action = payU_Action;
+
+      for (const key in payUData) {
+        if (payUData.hasOwnProperty(key)) {
+          const hiddenField = document.createElement("input");
+          hiddenField.type = "hidden";
+          hiddenField.name = key;
+          hiddenField.value = payUData[key];
+
+          payUForm.appendChild(hiddenField);
+        }
+      }
+
+      document.body.appendChild(payUForm);
+
+      payUForm.submit();
+
+      setMessage("Called PayU API to make payment.");
+    } else {
+      console.log("Error");
     }
   };
 
@@ -350,13 +403,33 @@ export default function Register() {
                   </div>
                   <div className="flex flex-col flex-1 gap-8">
                     <div id="Fields">
-                      <div className="bg-[#ffffff] m-10 ml-20 mr-20 p-8 flex justify-center">
-                        <QRCode
-                          className=""
-                          size={256}
-                          value={qrValue}
-                          viewBox={`0 0 256 256`}
-                        />
+                      <div
+                        className={
+                          "m-10 ml-20 mr-20 p-8 flex justify-center " +
+                            secureLocalStorage.getItem("needPassport") ==
+                          0
+                            ? " bg-[#ffffff]"
+                            : " bg-blue-300 p-8 text-center"
+                        }
+                      >
+                        {secureLocalStorage.getItem("needPassport") == 0 ? (
+                          <QRCode
+                            className=""
+                            size={256}
+                            value={qrValue}
+                            viewBox={`0 0 256 256`}
+                          />
+                        ) : (
+                          <div>
+                            <div>Buy passport to register for events and participate</div>
+                            <button
+                              className="px-4 py-2 rounded-xl mt-[30px] bg-blue-400"
+                              onClick={() => handlePassportClick()}
+                            >
+                              Buy Passport
+                            </button>
+                          </div>
+                        )}
                       </div>
                     </div>
                     <div className="text-center">
