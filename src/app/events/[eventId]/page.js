@@ -28,16 +28,13 @@ const Event = () => {
 
   useEffect(() => {
     if (eventId) {
-      fetch(
-        `${EVENT_DATA_URL}/${eventId}`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer <SECRET_TOKEN>`,
-          },
-        }
-      )
+      fetch(`${EVENT_DATA_URL}/${eventId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer <SECRET_TOKEN>`,
+        },
+      })
         .then((res) => {
           if (res.ok) {
             return res.json();
@@ -140,8 +137,8 @@ const Event = () => {
                 href={{
                   pathname: "/events/register_team",
                   query: {
-                    minTeamMembers: eventData.minTeamSize,
-                    maxTeamMembers: eventData.maxTeamSize,
+                    minTeamSize: minTeamSize,
+                    maxTeamSize: maxTeamSize,
                   },
                 }}
               >

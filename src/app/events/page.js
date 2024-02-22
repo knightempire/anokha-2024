@@ -212,7 +212,7 @@ const Events = () => {
                         goi={event.isGroup}
                         tags={event.tags}
                         price={event.eventPrice}
-                        isAllowed={event.eventStatus === "1"} // Adjust as needed
+                        isAllowed={event.eventStatus === "1"}
                         maxseats={event.maxSeats}
                         seats={event.seatsFilled}
                         router={router}

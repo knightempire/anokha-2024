@@ -2,12 +2,27 @@
 import React, { useState, useEffect } from "react";
 import WebGLApp from "@/app/bg/WebGLApp";
 import Navbar from "../../components/EventHeader";
+import { useSearchParams } from "next/navigation";
+import { Button } from "primereact/button";
+import secureLocalStorage from "react-secure-storage";
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/lara-light-blue/theme.css";
 
-const TeamRegister = ({ minTeamSize, maxTeamSize }) => {
-  minTeamSize = 2;
-  maxTeamSize = 4;
+const TeamRegister = () => {
+  const searchParams = useSearchParams();
+  const minTeamSize = parseInt(searchParams.get("minTeamSize"));
+  const maxTeamSize = parseInt(searchParams.get("maxTeamSize"));
 
-  const [TeamSize, setTeamSize] = useState(1);
+  // const [isLoggedIn, setIsLoggedIn] = useState(0);
+  // const [registerEmail, setRegisterEmail] = useState("");
+
+  // setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
+  // setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
+
+  const [TeamSize, setTeamSize] = useState(() => {
+    const initialTeamSize = minTeamSize;
+    return initialTeamSize;
+  });
   const [Team, setTeam] = useState(() => {
     const t = Array.from(
       { length: parseInt(minTeamSize, 10) },
@@ -42,6 +57,16 @@ const TeamRegister = ({ minTeamSize, maxTeamSize }) => {
     console.log("TEAM:", Team);
   }, [TeamSize]);
 
+  const handleAddMem = () => {
+    if (TeamSize < maxTeamSize) {
+      setTeam((prevTeam) => {
+        const newTeam = [...prevTeam, prevTeam.length];
+        return newTeam;
+      });
+      setTeamSize((prevTeamSize) => prevTeamSize + 1);
+    }
+  };
+
   const [webGLColors, setWebGLColors] = useState({
     color1: [43 / 255, 30 / 255, 56 / 255],
     color2: [11 / 255, 38 / 255, 59 / 255],
@@ -50,7 +75,7 @@ const TeamRegister = ({ minTeamSize, maxTeamSize }) => {
 
   return (
     <main className="flex min-h-screen flex-col bg-[#192032]">
-      <webGLApp colors={webGLColors} />
+      <WebGLApp colors={webGLColors} className="-z-10" />
       <div className="block space-y-24 md:space-y-10">
         <Navbar />
         <div className="relative">
@@ -61,31 +86,6 @@ const TeamRegister = ({ minTeamSize, maxTeamSize }) => {
                   Register Team
                 </div>
                 <form>
-                  <div className="w-full text-center items-center pb-3">
-                    {minTeamSize != maxTeamSize ? (
-                      <div>
-                        <label className="pr-2">select team size</label>
-                        <input
-                          type="number"
-                          min={minTeamSize}
-                          max={maxTeamSize}
-                          className="text-black w-10 pl-2"
-                          onChange={(e) => {
-                            setTeamSize(e.target.value);
-                            let t;
-                            t = Array.from(
-                              { length: parseInt(e.target.value, 10) },
-                              (_, index) => index
-                            );
-                            setTeam(t);
-                          }}
-                        />
-                        <hr></hr>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </div>
                   <div className="flex flex-col gap-4 min-h-[250px]">
                     <div className="my-4">
                       <label
@@ -125,6 +125,21 @@ const TeamRegister = ({ minTeamSize, maxTeamSize }) => {
                         />
                       </div>
                     ))}
+                    <div className="w-full text-center items-center pb-3">
+                      {minTeamSize != maxTeamSize ? (
+                        TeamSize == maxTeamSize ? (
+                          <Button label="Add Member" type="button" disabled />
+                        ) : (
+                          <Button
+                            label="Add Member"
+                            onClick={handleAddMem}
+                            type="button"
+                          />
+                        )
+                      ) : (
+                        ""
+                      )}
+                    </div>
                   </div>
                   <button
                     type="submit"
