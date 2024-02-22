@@ -5,6 +5,7 @@ import Navbar from "../../components/EventHeader";
 import { useSearchParams } from "next/navigation";
 import { Button } from "primereact/button";
 import secureLocalStorage from "react-secure-storage";
+import { LoadingScreen } from "@/app/_util/LoadingScreen/LoadingScreen";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
 
@@ -13,11 +14,15 @@ const TeamRegister = () => {
   const minTeamSize = parseInt(searchParams.get("minTeamSize"));
   const maxTeamSize = parseInt(searchParams.get("maxTeamSize"));
 
-  // const [isLoggedIn, setIsLoggedIn] = useState(0);
-  // const [registerEmail, setRegisterEmail] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(0);
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [secretToken, setSecretToken] = useState("");
 
-  // setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
-  // setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
+  useEffect(() => {
+    setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
+    setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
+    setSecretToken(secureLocalStorage.getItem("registerToken"));
+  }, []);
 
   const [TeamSize, setTeamSize] = useState(() => {
     const initialTeamSize = minTeamSize;
@@ -73,11 +78,17 @@ const TeamRegister = () => {
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
 
-  return (
+  return registerEmail === null ||
+    secretToken === null ||
+    registerEmail.length == 0 ||
+    secretToken.length == 0 ? (
+    <LoadingScreen />
+  ) : (
     <main className="flex min-h-screen flex-col bg-[#192032]">
       <WebGLApp colors={webGLColors} className="-z-10" />
       <div className="block space-y-24 md:space-y-10">
         <Navbar />
+        {console.log(registerEmail)}
         <div className="relative">
           <div className="flex flex-col py-10 px-[200px] items-center justify-center mx-auto min-h-screen w-[80%]">
             <div className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
@@ -114,7 +125,7 @@ const TeamRegister = () => {
                         <input
                           type="text"
                           onChange={(e) => {
-                            handleEmails(member, e.target.value);
+                            handleEmails(member+1, e.target.value);
                             console.log(Emails);
                           }}
                           name="email"
@@ -122,6 +133,8 @@ const TeamRegister = () => {
                           className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
                           placeholder="Email"
                           required
+                          value = {member === 0 ? registerEmail : Emails[member]}
+                          disabled = {member === 0 ? true : false}
                         />
                       </div>
                     ))}
