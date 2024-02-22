@@ -137,6 +137,7 @@ const Event = () => {
                 href={{
                   pathname: "/events/register_team",
                   query: {
+                    eventId: eventId,
                     minTeamSize: minTeamSize,
                     maxTeamSize: maxTeamSize,
                   },

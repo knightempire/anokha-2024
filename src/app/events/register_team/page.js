@@ -4,6 +4,7 @@ import WebGLApp from "@/app/bg/WebGLApp";
 import Navbar from "../../components/EventHeader";
 import { useSearchParams } from "next/navigation";
 import { Button } from "primereact/button";
+import { InputText } from "primereact/inputtext";
 import secureLocalStorage from "react-secure-storage";
 import { LoadingScreen } from "@/app/_util/LoadingScreen/LoadingScreen";
 import "primereact/resources/primereact.min.css";
@@ -11,6 +12,7 @@ import "primereact/resources/themes/lara-light-blue/theme.css";
 
 const TeamRegister = () => {
   const searchParams = useSearchParams();
+  const eventId = parseInt(searchParams.get("eventId"));
   const minTeamSize = parseInt(searchParams.get("minTeamSize"));
   const maxTeamSize = parseInt(searchParams.get("maxTeamSize"));
 
@@ -24,6 +26,7 @@ const TeamRegister = () => {
     setSecretToken(secureLocalStorage.getItem("registerToken"));
   }, []);
 
+  const [TeamName, setTeamName] = useState("");
   const [TeamSize, setTeamSize] = useState(() => {
     const initialTeamSize = minTeamSize;
     return initialTeamSize;
@@ -37,24 +40,36 @@ const TeamRegister = () => {
     return t;
   });
   let Emails = [];
+  Emails[0] = registerEmail;
 
   const emailRegex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
   let isValidEmails;
   const HandleTeamRegister = async (e) => {
     e.preventDefault();
-    let isValidEmails = true;
-    for (let i of Emails) {
-      const isValidEmail = i.length > 0 && emailRegex.test(i);
-      if (!isValidEmail) isValidEmails = false;
-    }
-    if (isValidEmails == false) {
-      alert("Error Invalid email");
-      return;
-    }
+    // let isValidEmails = true;
+    // for (let i of Emails) {
+    //   const isValidEmail = i.length > 0 && emailRegex.test(i);
+    //   if (!isValidEmail) isValidEmails = false;
+    // }
+    // if (isValidEmails == false) {
+    //   alert("Error Invalid email");
+    //   return;
+    // }
+    let teamData = {
+      teamName: TeamName,
+      emails: Emails,
+    };
+    console.log(teamData);
+    return teamData;
   };
 
   const handleEmails = (index, email) => {
     Emails[index] = email;
+    console.log(Emails);
+  };
+
+  const handleTeamName = (name) => {
+    setTeamName(name);
   };
 
   useEffect(() => {
@@ -99,43 +114,39 @@ const TeamRegister = () => {
                 <form>
                   <div className="flex flex-col gap-4 min-h-[250px]">
                     <div className="my-4">
-                      <label
-                        htmlFor="team_name"
-                        className="block mb-2 text-sm font-medium text-black"
-                      >
-                        Team name
-                      </label>
-                      <input
-                        type="text"
-                        name="team_name"
-                        id="team_name"
-                        className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                        placeholder="Team Name"
-                        required
-                      />
+                      <span className="p-float-label">
+                        <InputText
+                          onChange={(e) => {
+                            handleTeamName(e.target.value);
+                          }}
+                          name="teamName"
+                          id="teamName"
+                          required
+                          style={{ width: "100%" }}
+                        />
+                        <label htmlFor="teamName">Team Name</label>
+                      </span>
                     </div>
                     {Team.map((member) => (
                       <div key={member}>
-                        <label
-                          htmlFor="email"
-                          className="block mb-2 text-sm font-medium text-black"
-                        >
-                          Member {member + 1} Email
-                        </label>
-                        <input
-                          type="text"
-                          onChange={(e) => {
-                            handleEmails(member+1, e.target.value);
-                            console.log(Emails);
-                          }}
-                          name="email"
-                          id="email"
-                          className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                          placeholder="Email"
-                          required
-                          value = {member === 0 ? registerEmail : Emails[member]}
-                          disabled = {member === 0 ? true : false}
-                        />
+                        <span className="p-float-label mt-5">
+                          <InputText
+                            onChange={(e) => {
+                              handleEmails(member, e.target.value);
+                            }}
+                            name="email"
+                            id="email"
+                            required
+                            value={
+                              member === 0 ? registerEmail : Emails[member]
+                            }
+                            disabled={member === 0 ? true : false}
+                            style={{ width: "100%" }}
+                          />
+                          <label htmlFor="Email">
+                            Member {member + 1} Email
+                          </label>
+                        </span>
                       </div>
                     ))}
                     <div className="w-full text-center items-center pb-3">
