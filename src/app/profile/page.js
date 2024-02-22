@@ -6,6 +6,8 @@ import {
   EDIT_PROFILE_URL,
   STUDENT_PROFILE_URL,
   BUY_PASSPORT_DUMMY_PAGE_URL,
+  payU_Key,
+  payU_Action
 } from "../_util/constants";
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
