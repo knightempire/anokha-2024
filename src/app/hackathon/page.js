@@ -93,7 +93,6 @@ export default function Page() {
               else if (data.firstRoundSubmission.length!=0) {
                 setDisplayResult(1)
               }
-              
               setUserState(2)
           }   
           else if (response.status === 401) {
@@ -106,13 +105,8 @@ export default function Page() {
               
           }
           else if (response.status === 400) {
-            
             setUserState(1)
         }
-
-              
-
-
       }catch(e){
           console.log(e);
           return -1;

@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import Star from "../../../../public/images/star.png";
 import Unstar from "../../../../public/images/unstar.png";
 import { STAR_UNSTAR_EVENT_URL } from "@/app/_util/constants";
+import secureLocalStorage from "react-secure-storage";
 
 export default function EventCard({
   imgSrc,
@@ -20,29 +21,40 @@ export default function EventCard({
   isAllowed,
   maxseats,
   seats,
-  router
+  router,
 }) {
+  const [secretToken, setSecretToken] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(0);
+  const [isAmritaCBE, setIsAmritaCBE] = useState(0);
+  const [hasActivePassport, setHasActivePassport] = useState(0);
+
+  useEffect(() => {
+    setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
+    setIsAmritaCBE(parseInt(secureLocalStorage.getItem("isAmritaCBE")));
+    setHasActivePassport(
+      parseInt(secureLocalStorage.getItem("hasActivePassport"))
+    );
+    setSecretToken(secureLocalStorage.getItem("registerToken"));
+  }, []);
+
   const [starred, toggleStar] = useState(0);
   const [tagAbb, setTagAbb] = useState(-1);
-
   useEffect(() => {
     fetch(STAR_UNSTAR_EVENT_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer v4.public.eyJzdHVkZW50RnVsbE5hbWUiOiJBYmhpbmF2IFJhbWFrcmlzaG5hbiIsInN0dWRlbnRFbWFpbCI6ImhzaGVhZG9uZUBnbWFpbC5jb20iLCJzdHVkZW50UGhvbmUiOiI5NTk3MzQ3NTk0Iiwic3R1ZGVudFBhc3N3b3JkIjoiNGJjMzQ0NmI2NzJkMzBjYTA0NWViNTdjZDY2MTM0N2MyN2E3Y2EzZWRkODBjYzJmZTMyMDE1OTgwMGY4Yzg1NiIsIm5lZWRQYXNzcG9ydCI6IjEiLCJzdHVkZW50QWNjb3VudFN0YXR1cyI6IjEiLCJzdHVkZW50Q29sbGVnZU5hbWUiOiJBbXJpdGEgVmlzaHdhIFZpZHlhcGVldGhhbSIsInN0dWRlbnRDb2xsZWdlQ2l0eSI6IkNvaW1iYXRvcmUiLCJpc0luQ2FtcHVzIjoiMCIsInNlY3JldF9rZXkiOiJlNzQ2NWYyMGIxMzNkMjk0MzgyZDFmNTJkZGUwY2Y5NDk5NGM3NjJhNjNkNzk2NzA0ZDU1ZWU5ZjdhMTg0NmJlODhjODUzMWNjMGUxZjYwZjVjZWExNjIwMDM3NDRiYmYyY2NhNWIxM2QzOGRhZGY3MWRiMjU0NGM2NGQ3OGZlNDllNDRhYmZlYzgwOTRmMzM3MTE3YmE1YjAxNjBmYjY1ZGQ5MTRlOGIxNGI4YWIxMGJmNDRlMTQxOGQ3OWRjOWI3ODU5N2EwYjJhN2NlNDIwNjA5MDYxM2Q4Zjc2ZTMxMWIyYWJkZDY0OWJmYjQ4M2IzYjUzMTI4YWE1ZTI3MDAyYTY2YWE4ODhhZmQzYjJiYjRhMTYyNTc5MGRkZDQ1NmFjYjFhNzdjMmI4YTczZjU4MTZjYjExOTY4MzYzYTMwMDMyY2UwYjNkOTBiYTQ2NmI1MWE4NWNlMzA2ZTZlYjAzMGMwOTVkYjJjNjI4NmMwYTYyOTM5ZjEwNTZlN2VkNDc3Y2I5ZjE1NDUwNDUyNTM5ZWEzNzU2YTlmNDBhMTZiNTRmNTAxNjgwNTI4ODQyZjJmNDM2YTY4NDMzN2JkODU2MTc5Y2YwYThkOWU3MWZjNmM5MTMzMWYxZmQ2MDA2ZDYyYWQyNDI5NzhhMjUyMjQ1NWEzMWY4NjNlYzgxY2RjOGFlZmQzZWFkYjQyYjAwMzZjMWFlYTE3NmE3ZWEiLCJpYXQiOiIyMDI0LTAxLTE2VDExOjQ1OjM2LjM4OFoiLCJleHAiOiIyMDI0LTAxLTE2VDExOjUwOjM2LjM4OFoifZzXQXArINaREDHyRrTFKFnd7RYRmjsYJcro170WYbXRQFz685wV0Q7OEmCGz_5QI1V8LO2P_CxfqRWE_UzWdAk",
+        Authorization: `Bearer ` + secureLocalStorage.getItem("registerToken"),
       },
       body: JSON.stringify({
-        eventId: id,
-        isStarred: starred ? "1" : "0",
+        eventId: id, // eg. "eventId": 1,
+        isStarred: starred ? "1" : "0", // "1" -> Star Event. "0" -> Unstar Event. eg. "isStarred": "1"
       }),
     })
       .then((res) => {
         if (res.status === 401) {
-          setTimeout(() => {
-            router.push("/login");
-          }, 1500);
+          console.log(secretToken);
+          console.log();
           // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
           // openModal();
           // Session Expired or not logged in. Clear Cache and Navigate to login screen.
@@ -64,6 +76,44 @@ export default function EventCard({
         // Error in Frontend Code. Handle it.
       });
   }, [starred]);
+  // useEffect(() => {
+  //   fetch(STAR_UNSTAR_EVENT_URL, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer " + secretToken,
+  //     },
+  //     body: JSON.stringify({
+  //       eventId: id,
+  //       isStarred: starred ? "1" : "0",
+  //     }),
+  //   })
+  //     .then((res) => {
+  //       if (res.status === 401) {
+  //         setTimeout(() => {
+  //           router.push("/login");
+  //         }, 1500);
+  //         // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
+  //         // openModal();
+  //         // Session Expired or not logged in. Clear Cache and Navigate to login screen.
+  //       } else if (res.status === 500) {
+  //         // Backend Error. Handle it.
+  //       } else if (res.status === 200) {
+  //         // Valid Request. Data has come
+  //         return res.json();
+  //       } else if (res.status === 400) {
+  //         // Display error message from "MESSAGE" field in data
+  //       } else {
+  //         // Unknown Error.
+  //       }
+  //     })
+  //     .then((data) => {
+  //       // Set Data variables.
+  //     })
+  //     .catch((err) => {
+  //       // Error in Frontend Code. Handle it.
+  //     });
+  // }, [starred]);
 
   const handleStarToggle = (e) => {
     e.preventDefault();
@@ -75,13 +125,13 @@ export default function EventCard({
   };
 
   function convertTo12HourFormat(time24) {
-    const [hours, minutes] = time24.split(':').map(Number);
-    const period = hours >= 12 ? 'PM' : 'AM';
+    const [hours, minutes] = time24.split(":").map(Number);
+    const period = hours >= 12 ? "PM" : "AM";
     const hours12 = hours % 12 || 12;
-    const time12 = `${hours12}:${String(minutes).padStart(2, '0')} ${period}`;
+    const time12 = `${hours12}:${String(minutes).padStart(2, "0")} ${period}`;
 
     return time12;
-}
+  }
 
   return (
     <div class="bg-[#0c111c] max-w-[350px] min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-purple-600 transition duration-150">
@@ -93,7 +143,7 @@ export default function EventCard({
             height={400}
             objectFit="contain"
             alt="https://i.imgur.com/iQy8GLM.jpg"
-            class=" rounded-2xl h-full transition duration-300 hover:filter hover:brightness-0 hover:grayscale-100 hover:opacity-0"
+            className=" rounded-2xl h-full transition duration-300 hover:filter hover:brightness-0 hover:grayscale-100 hover:opacity-0"
           />
 
           <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
@@ -171,7 +221,8 @@ export default function EventCard({
                 ></path>{" "}
               </g>
             </svg>
-            {"APRIL "+date.slice(8, 10)} <vt></vt>{convertTo12HourFormat(time.slice(0, 5))}
+            {"APRIL " + date.slice(8, 10)} <vt></vt>
+            {convertTo12HourFormat(time.slice(0, 5))}
           </p>
           <div class="text-xl flex justify-center items-center text-white font-semibold h-10 w-20 rounded-full ">
             ₹{price}
