@@ -22,20 +22,20 @@ export default function PaymentVerify() {
         }).then(res => {
             if (res.status === 200) {
                 setTimeout(() => {
-                    router.push("/events/register_team/success");
+                    router.push("/transactions/success");
                 }, 4000);
             } else if (res.status === 202) {
                 setTimeout(() => {
-                    router.push("/events/register_team/failure");
+                    router.push("/transactions/failure");
                 }, 4000);
             } else {
                 setTimeout(() => {
-                    router.push("/events/register_team/pending");
+                    router.push("/transactions/pending");
                 }, 4000);
             }
         }).catch(err => {
             console.log(err);
-            router.push('/events/register_team/pending')
+            router.push('/transactions/pending')
         });
     }, [router, txnId]);
 

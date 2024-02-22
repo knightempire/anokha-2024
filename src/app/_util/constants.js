@@ -2,6 +2,10 @@ const BASE_URL = "https://anokha.abhinavramakrishnan.tech/api";
 //const BASE_URL = "http://localhost:5000/api";
 const HACKATHON_URL = "https://anokha.abhinavramakrishnan.tech/api/intel";
 
+
+export const payU_Key = process.env.NEXT_PUBLIC_IS_PRODUCTION === '1' ? process.env.NEXT_PUBLIC_PAY_U_KEY_PROD : process.env.NEXT_PUBLIC_PAY_U_KEY_TEST ;
+export const payU_Action = process.env.NEXT_PUBLIC_IS_PRODUCTION === '1' ? 'https://secure.payu.in/_payment' : 'https://test.payu.in/_payment'
+
 export const EDIT_PROFILE_URL = BASE_URL+"/user/editStudentProfile";
 export const STUDENT_PROFILE_URL = BASE_URL+"/user/getStudentProfile";
 export const LOGIN_URL = BASE_URL + "/auth/loginStudent";
@@ -20,4 +24,6 @@ export const ALL_EVENTS_URL = BASE_URL + "/user/getAllEvents";
 export const EVENT_DATA_URL = BASE_URL + "/user/getEventData";
 export const STAR_UNSTAR_EVENT_URL = BASE_URL + "/user/toggleStarredEvent";
 
+export const BUY_PASSPORT_DUMMY_PAGE_URL = BASE_URL + "/user/buyPassport";
 export const VERIFY_TRANSACTIONS_URL = BASE_URL + "/user/verifyTransaction";
+
