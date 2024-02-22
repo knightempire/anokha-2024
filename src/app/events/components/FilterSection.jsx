@@ -64,7 +64,7 @@ export default function FilterSection({ sendcurrentFilters }) {
         <FilterComponent
           needSearch={1}
           name={"Tags"}
-          options={["IOT", "CODING", "CYS", "AI", "MEC", "EEE", "ECE", "MAT"]}
+          options={["IOT", "COD","CS", "CYS", "AI", "MEC", "EEE", "ECE", "MAT"]} //Add all possible tags here
           type={"tag"}
           sendSelectedOption={handleItemFromFilters}
         />
