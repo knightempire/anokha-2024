@@ -328,7 +328,7 @@ export default function ForgetPassword() {
   
 <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css'>
 
-<section class="pro">
+<!-- <section class="pro">
 <div class="swiper">
   <div class="swiper-wrapper">
     <div class="swiper-slide">
@@ -388,7 +388,7 @@ export default function ForgetPassword() {
     </p>
   </div>
 </div>
-</div>
+</div> -->
 
 <!-- Your scripts here -->
 <script src='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js'></script>
