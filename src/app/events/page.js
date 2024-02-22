@@ -15,6 +15,7 @@ const Events = () => {
   const [TypeFilter, setTypeFilter] = useState(null);
   const [DayFilter, setDayFilter] = useState(null);
   const [TechFilter, setTechFilter] = useState(null);
+  const [TagsFilter, setTagsFilter] = useState(null);
   const [RegisteredFilter, setRegisteredFilter] = useState(null);
 
   const [eventsData, setEventsData] = useState([]);
@@ -24,6 +25,16 @@ const Events = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(0);
   const [isAmritaCBE, setIsAmritaCBE] = useState(0);
   const [hasActivePassport, setHasActivePassport] = useState(0);
+
+  const tagsFunction = (eventData) => {
+    for (let i of eventData.tags) {
+      if (TagsFilter.includes(i.tagAbbreviation)) {
+        return true;
+      }
+      console.log(i);
+    }
+    return false;
+  };
 
   useEffect(() => {
     setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
@@ -51,7 +62,10 @@ const Events = () => {
             (DayFilter == [] ||
               DayFilter == -1 ||
               DayFilter?.length == 0 ||
-              DayFilter?.includes(eventData.eventDate.slice(0, 10)))
+              DayFilter?.includes(eventData.eventDate.slice(0, 10))) &&
+            (TagsFilter == [] ||
+              TagsFilter?.length == 0 ||
+              tagsFunction(eventData))
         )
       );
     }
@@ -63,6 +77,7 @@ const Events = () => {
     let evetypeCode = 0;
     let registerCode = -1;
     let Days = [];
+    let Tags = [];
     for (let i of filters) {
       console.log(i);
       switch (i) {
@@ -103,6 +118,8 @@ const Events = () => {
         case "03":
           Days.push("2021-02-28");
           break;
+        default:
+          Tags.push(i);
       }
     }
     setgroupFilter(grpCode);
@@ -116,6 +133,7 @@ const Events = () => {
     console.log("Day", Days);
     if (Days == []) setDayFilter(-1);
     else setDayFilter(Days);
+    setTagsFilter(Tags);
   };
 
   useEffect(() => {
