@@ -43,8 +43,7 @@ export default function EventCard({
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          `Bearer ` + secureLocalStorage.getItem("registerToken"),
+        Authorization: `Bearer ` + secureLocalStorage.getItem("registerToken"),
       },
       body: JSON.stringify({
         eventId: id, // eg. "eventId": 1,
@@ -97,7 +96,7 @@ export default function EventCard({
   }
 
   return (
-    <div class="bg-[#0c111c] max-w-[350px] min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-purple-600 transition duration-150">
+    <div class="bg-[rgba(0,0,0,0.3)] backdrop-blur-lg max-w-[350px] min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-purple-600 transition duration-150">
       <div class="flex flex-col relative group">
         <div class="relative h-[400px] w-full mb-3">
           <Image
@@ -109,7 +108,7 @@ export default function EventCard({
             className=" rounded-2xl h-full transition duration-300 hover:filter hover:brightness-0 hover:grayscale-100 hover:opacity-0"
           />
 
-          {secureLocalStorage.getItem("isLoggedIn") && isRegistered==1 ? (
+          {secureLocalStorage.getItem("isLoggedIn") && isRegistered == 1 ? (
             <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
               Registered
             </div>
