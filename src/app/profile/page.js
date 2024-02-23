@@ -405,23 +405,28 @@ export default function Register() {
                     <div id="Fields">
                       <div
                         className={
-                          "m-10 ml-20 mr-20 p-8 flex justify-center " +
-                            secureLocalStorage.getItem("needPassport") ==
-                          0
-                            ? " bg-[#ffffff]"
-                            : " bg-blue-300 p-8 text-center"
+                          secureLocalStorage.getItem("studentAccountStatus") ==
+                          2
+                            ? "m-10 ml-20 mr-20 p-8 flex justify-center bg-[#ffffff] rounded-2xl"
+                            : "m-10 ml-20 mr-20 p-8 flex justify-center  bg-blue-300 text-center rounded-2xl"
                         }
                       >
-                        {secureLocalStorage.getItem("needPassport") == 0 ? (
+                        {secureLocalStorage.getItem("studentAccountStatus") ==
+                        2 ? (
                           <QRCode
                             className=""
                             size={256}
                             value={qrValue}
                             viewBox={`0 0 256 256`}
                           />
-                        ) : (
+                        ) : secureLocalStorage.getItem(
+                            "studentAccountStatus"
+                          ) == 1 ? (
                           <div>
-                            <div>Buy passport to register for events and participate</div>
+                            <div>
+                              Buy passport to register for events and
+                              participate
+                            </div>
                             <button
                               className="px-4 py-2 rounded-xl mt-[30px] bg-blue-400"
                               onClick={() => handlePassportClick()}
@@ -429,6 +434,8 @@ export default function Register() {
                               Buy Passport
                             </button>
                           </div>
+                        ) : (
+                          ""
                         )}
                       </div>
                     </div>
