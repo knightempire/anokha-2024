@@ -145,17 +145,17 @@ const Events = () => {
   console.log("Events Data:", eventsData);
   console.log("Filter Data:", filteredData);
 
-  // const [webGLColors, setWebGLColors] = useState({
-  //   color1: [43 / 255, 30 / 255, 56 / 255],
-  //   color2: [11 / 255, 38 / 255, 59 / 255],
-  //   color3: [15 / 255, 21 / 255, 39 / 255],
-  // });
-
   const [webGLColors, setWebGLColors] = useState({
-    color1: [45 / 255, 35 / 255, 25 / 255], // Dark Brown
-    color2: [222 / 255, 184 / 255, 135 / 255], // Burlywood
-    color3: [35 / 255, 25 / 255, 15 / 255], // Dark Chocolate
+    color1: [43 / 255, 30 / 255, 56 / 255],
+    color2: [11 / 255, 38 / 255, 59 / 255],
+    color3: [15 / 255, 21 / 255, 39 / 255],
   });
+
+  // const [webGLColors, setWebGLColors] = useState({
+  //   color1: [45 / 255, 35 / 255, 25 / 255], // Dark Brown
+  //   color2: [222 / 255, 184 / 255, 135 / 255], // Burlywood
+  //   color3: [35 / 255, 25 / 255, 15 / 255], // Dark Chocolate
+  // });
 
   // const [webGLColors, setWebGLColors] = useState({
   //   color1: [55 / 255, 45 / 255, 30 / 255], // Dark Bronze

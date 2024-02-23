@@ -9,7 +9,8 @@ import secureLocalStorage from "react-secure-storage";
 import { LoadingScreen } from "@/app/_util/LoadingScreen/LoadingScreen";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
-import { EVENT_REGISTER_STEP_ONE } from "../_util/constants";
+import { EVENT_REGISTER_STEP_ONE } from "../../_util/constants";
+import validator from "validator";
 
 const TeamRegister = () => {
   const searchParams = useSearchParams();
@@ -27,6 +28,8 @@ const TeamRegister = () => {
     setSecretToken(secureLocalStorage.getItem("registerToken"));
   }, []);
 
+  const [isEmailsVaild, setIsEmailsValid] = useState(0);
+
   const [TeamName, setTeamName] = useState("");
   const [TeamSize, setTeamSize] = useState(() => {
     const initialTeamSize = minTeamSize;
@@ -40,53 +43,55 @@ const TeamRegister = () => {
     console.log(t);
     return t;
   });
-  let Emails = [];
-  Emails[0] = registerEmail;
+  const [Emails, setEmails] = useState([
+    secureLocalStorage.getItem("registerEmail"),
+  ]);
+  const handleEmails = (index, email) => {
+    setEmails((prevEmails) => {
+      const updatedEmails = [...prevEmails];
+      updatedEmails[index] = email;
+      return updatedEmails;
+    });
+    console.log(Emails);
+  };
 
-  const emailRegex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
-  let isValidEmails;
-  
   const HandleTeamRegister = async (e) => {
     e.preventDefault();
     let isValidEmails = true;
     for (let i of Emails) {
-      const isValidEmail = i.length > 0 && emailRegex.test(i);
-      if (!isValidEmail) isValidEmails = false;
-    }
-    if (isValidEmails == false) {
-      alert("Error Invalid email");
-      return;
-    }
-    try {
-      const response = await fetch(EVENT_REGISTER_STEP_ONE, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${secureLocalStorage.getItem(
-            "registerToken"
-          )}`,
-        },
-        body: {
-          "eventId": "",
-          "totalMembers": TeamSize,
-          "isMarketPlacePaymentMode":"",
-          "teamName":"",
-          "teamMembers":"",
-          "memberRoles":""
-        },
-      });
-
-      if (response.status === 200) {
-        console.log(200);
+      if (!validator.isEmail(i)) {
+        isValidEmails = false;
+        break;
       }
-    } catch (err) {
-      console.log(err);
     }
-  };
+    setIsEmailsValid(isValidEmails);
+    if (isValidEmails) {
+      try {
+        const response = await fetch(EVENT_REGISTER_STEP_ONE, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${secureLocalStorage.getItem(
+              "registerToken"
+            )}`,
+          },
+          body: {
+            eventId: "",
+            totalMembers: TeamSize,
+            isMarketPlacePaymentMode: "",
+            teamName: "",
+            teamMembers: "",
+            memberRoles: "",
+          },
+        });
 
-  const handleEmails = (index, email) => {
-    Emails[index] = email;
-    console.log(Emails);
+        if (response.status === 200) {
+          console.log(200);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
   };
 
   const handleTeamName = (name) => {
@@ -100,11 +105,11 @@ const TeamRegister = () => {
 
   const handleAddMem = () => {
     if (TeamSize < maxTeamSize) {
+      setTeamSize((prevTeamSize) => prevTeamSize + 1);
       setTeam((prevTeam) => {
         const newTeam = [...prevTeam, prevTeam.length];
         return newTeam;
       });
-      setTeamSize((prevTeamSize) => prevTeamSize + 1);
     }
   };
 
@@ -152,23 +157,27 @@ const TeamRegister = () => {
                         <span className="p-float-label mt-5">
                           <InputText
                             onChange={(e) => {
-                              handleEmails(member, e.target.value);
+                              if (!(member === 0))
+                                handleEmails(member, e.target.value);
                             }}
-                            name="email"
-                            id="email"
+                            name={`email_${member}`}
+                            id={`email_${member}`}
                             required
                             value={
-                              member === 0 ? registerEmail : Emails[member]
+                              member === 0
+                                ? registerEmail
+                                : Emails[member] || ""
                             }
                             disabled={member === 0 ? true : false}
                             style={{ width: "100%" }}
                           />
-                          <label htmlFor="Email">
+                          <label htmlFor={`email_${member}`}>
                             Member {member + 1} Email
                           </label>
                         </span>
                       </div>
                     ))}
+
                     <div className="w-full text-center items-center pb-3">
                       {minTeamSize != maxTeamSize ? (
                         TeamSize == maxTeamSize ? (
@@ -188,7 +197,9 @@ const TeamRegister = () => {
                   <button
                     type="submit"
                     onClick={HandleTeamRegister}
-                    className="w-full text-black bg-[#f69c18] mt-6 hover:bg-[#f69c18] focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    className={
+                      "w-full text-black bg-[#f69c18] mt-6 hover:bg-[#f69c18] focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+                    }
                   >
                     Register
                   </button>
