@@ -70,7 +70,7 @@ const Events = () => {
         )
       );
     }
-  }, [groupFilter, TypeFilter, DayFilter, TechFilter, RegisteredFilter]);
+  }, [groupFilter, TypeFilter, DayFilter, TechFilter, RegisteredFilter, TagsFilter]);
 
   const hanldeCurrentFilters = (filters) => {
     let grpCode = -1;
