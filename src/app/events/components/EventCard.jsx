@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import Star from "../../../../public/images/star.png";
-import Unstar from "../../../../public/images/unstar.png";
 import { STAR_UNSTAR_EVENT_URL } from "@/app/_util/constants";
 import secureLocalStorage from "react-secure-storage";
 
@@ -45,7 +43,8 @@ export default function EventCard({
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ` + secureLocalStorage.getItem("registerToken"),
+        Authorization:
+          `Bearer ` + secureLocalStorage.getItem("registerToken"),
       },
       body: JSON.stringify({
         eventId: id, // eg. "eventId": 1,
@@ -54,8 +53,9 @@ export default function EventCard({
     })
       .then((res) => {
         if (res.status === 401) {
-          console.log(secretToken);
-          console.log();
+          setTimeout(() => {
+            router.push("/login");
+          }, 1500);
           // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
           // openModal();
           // Session Expired or not logged in. Clear Cache and Navigate to login screen.
@@ -77,44 +77,6 @@ export default function EventCard({
         // Error in Frontend Code. Handle it.
       });
   }, [starred]);
-  // useEffect(() => {
-  //   fetch(STAR_UNSTAR_EVENT_URL, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: "Bearer " + secretToken,
-  //     },
-  //     body: JSON.stringify({
-  //       eventId: id,
-  //       isStarred: starred ? "1" : "0",
-  //     }),
-  //   })
-  //     .then((res) => {
-  //       if (res.status === 401) {
-  //         setTimeout(() => {
-  //           router.push("/login");
-  //         }, 1500);
-  //         // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
-  //         // openModal();
-  //         // Session Expired or not logged in. Clear Cache and Navigate to login screen.
-  //       } else if (res.status === 500) {
-  //         // Backend Error. Handle it.
-  //       } else if (res.status === 200) {
-  //         // Valid Request. Data has come
-  //         return res.json();
-  //       } else if (res.status === 400) {
-  //         // Display error message from "MESSAGE" field in data
-  //       } else {
-  //         // Unknown Error.
-  //       }
-  //     })
-  //     .then((data) => {
-  //       // Set Data variables.
-  //     })
-  //     .catch((err) => {
-  //       // Error in Frontend Code. Handle it.
-  //     });
-  // }, [starred]);
 
   const handleStarToggle = (e) => {
     e.preventDefault();
