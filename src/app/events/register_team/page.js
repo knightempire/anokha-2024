@@ -9,7 +9,7 @@ import secureLocalStorage from "react-secure-storage";
 import { LoadingScreen } from "@/app/_util/LoadingScreen/LoadingScreen";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
-import { EVENT_REGISTER_STEP_ONE } from "../_util/constants";
+import { EVENT_REGISTER_STEP_ONE } from "../../_util/constants";
 
 const TeamRegister = () => {
   const searchParams = useSearchParams();
@@ -67,17 +67,17 @@ const TeamRegister = () => {
           )}`,
         },
         body: {
-          "eventId": "",
+          "eventId": eventId,
           "totalMembers": TeamSize,
-          "isMarketPlacePaymentMode":"",
-          "teamName":"",
-          "teamMembers":"",
+          "isMarketPlacePaymentMode": "0",
+          "teamName": TeamName,
+          "teamMembers": Emails,
           "memberRoles":""
         },
       });
 
       if (response.status === 200) {
-        console.log(200);
+        console.log(response.data);
       }
     } catch (err) {
       console.log(err);
