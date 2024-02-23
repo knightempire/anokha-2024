@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import Star from "../../../../public/images/star.png";
-import Unstar from "../../../../public/images/unstar.png";
 import { STAR_UNSTAR_EVENT_URL } from "@/app/_util/constants";
 import secureLocalStorage from "react-secure-storage";
 
@@ -19,6 +17,7 @@ export default function EventCard({
   tags,
   price,
   isAllowed,
+  isRegistered,
   maxseats,
   seats,
   router,
@@ -44,7 +43,8 @@ export default function EventCard({
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ` + secureLocalStorage.getItem("registerToken"),
+        Authorization:
+          `Bearer ` + secureLocalStorage.getItem("registerToken"),
       },
       body: JSON.stringify({
         eventId: id, // eg. "eventId": 1,
@@ -53,8 +53,9 @@ export default function EventCard({
     })
       .then((res) => {
         if (res.status === 401) {
-          console.log(secretToken);
-          console.log();
+          setTimeout(() => {
+            router.push("/login");
+          }, 1500);
           // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
           // openModal();
           // Session Expired or not logged in. Clear Cache and Navigate to login screen.
@@ -76,44 +77,6 @@ export default function EventCard({
         // Error in Frontend Code. Handle it.
       });
   }, [starred]);
-  // useEffect(() => {
-  //   fetch(STAR_UNSTAR_EVENT_URL, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: "Bearer " + secretToken,
-  //     },
-  //     body: JSON.stringify({
-  //       eventId: id,
-  //       isStarred: starred ? "1" : "0",
-  //     }),
-  //   })
-  //     .then((res) => {
-  //       if (res.status === 401) {
-  //         setTimeout(() => {
-  //           router.push("/login");
-  //         }, 1500);
-  //         // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
-  //         // openModal();
-  //         // Session Expired or not logged in. Clear Cache and Navigate to login screen.
-  //       } else if (res.status === 500) {
-  //         // Backend Error. Handle it.
-  //       } else if (res.status === 200) {
-  //         // Valid Request. Data has come
-  //         return res.json();
-  //       } else if (res.status === 400) {
-  //         // Display error message from "MESSAGE" field in data
-  //       } else {
-  //         // Unknown Error.
-  //       }
-  //     })
-  //     .then((data) => {
-  //       // Set Data variables.
-  //     })
-  //     .catch((err) => {
-  //       // Error in Frontend Code. Handle it.
-  //     });
-  // }, [starred]);
 
   const handleStarToggle = (e) => {
     e.preventDefault();
@@ -146,9 +109,13 @@ export default function EventCard({
             className=" rounded-2xl h-full transition duration-300 hover:filter hover:brightness-0 hover:grayscale-100 hover:opacity-0"
           />
 
-          <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
-            Registered
-          </div>
+          {secureLocalStorage.getItem("isLoggedIn") && isRegistered==1 ? (
+            <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
+              Registered
+            </div>
+          ) : (
+            ""
+          )}
 
           <div class=" absolute rounded-2xl inset-0 bg-black bg-opacity-80 text-white p-3 text-center opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-center items-center">
             <span>{eventDesc}</span>

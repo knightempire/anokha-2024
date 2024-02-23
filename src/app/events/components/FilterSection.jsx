@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import FilterComponent from "./filterMultiSelect";
 import FilterComponent2 from "./filterSelectButton";
+import secureLocalStorage from "react-secure-storage";
 
 export default function FilterSection({ sendcurrentFilters }) {
   const [filters, setFilters] = useState([]);
@@ -90,11 +91,11 @@ export default function FilterSection({ sendcurrentFilters }) {
         />
 
         {/* Select Status: "Registered" | "Not Registered" */}
-        <FilterComponent2
+        {secureLocalStorage.getItem("isLoggedIn")?<FilterComponent2
           options={["Registered", "Not Registered"]}
           type={"reg"}
           sendSelectedOption={handleItemFromFilters}
-        />
+        />:""}
       </div>
     </div>
   );

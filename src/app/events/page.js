@@ -36,6 +36,7 @@ const Events = () => {
     return false;
   };
 
+  const router = useRouter();
   useEffect(() => {
     setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
     setIsAmritaCBE(parseInt(secureLocalStorage.getItem("isAmritaCBE")));
@@ -43,9 +44,7 @@ const Events = () => {
       parseInt(secureLocalStorage.getItem("hasActivePassport"))
     );
     setSecretToken(secureLocalStorage.getItem("registerToken"));
-  }, []);
-
-  const router = useRouter();
+  }, [router]);
 
   useEffect(() => {
     console.log("DAY: ", DayFilter);
@@ -66,11 +65,12 @@ const Events = () => {
             (TagsFilter == [] ||
               TagsFilter?.length == 0 ||
               tagsFunction(eventData)) &&
-            RegisteredFilter == -1
+            (RegisteredFilter == -1 ||
+              eventData.isRegistered == RegisteredFilter?.toString())
         )
       );
     }
-  }, [groupFilter, TypeFilter, DayFilter, TechFilter, RegisteredFilter]);
+  }, [groupFilter, TypeFilter, DayFilter, TechFilter, RegisteredFilter, TagsFilter]);
 
   const hanldeCurrentFilters = (filters) => {
     let grpCode = -1;
@@ -142,7 +142,7 @@ const Events = () => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + secretToken,
+        Authorization: "Bearer " + secureLocalStorage.getItem("registerToken"),
       },
     })
       .then((res) => {
@@ -214,6 +214,11 @@ const Events = () => {
                         tags={event.tags}
                         price={event.eventPrice}
                         isAllowed={event.eventStatus === "1"}
+                        isRegistered={
+                          secureLocalStorage.getItem("isLoggedIn")
+                            ? event.isRegistered
+                            : -1
+                        }
                         maxseats={event.maxSeats}
                         seats={event.seatsFilled}
                         router={router}

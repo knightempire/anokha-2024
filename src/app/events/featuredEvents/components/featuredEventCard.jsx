@@ -3,6 +3,7 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { STAR_UNSTAR_EVENT_URL } from "@/app/_util/constants";
+import secureLocalStorage from "react-secure-storage";
 
 export default function EventCard({
   imgSrc,
@@ -16,19 +17,34 @@ export default function EventCard({
   tags,
   price,
   isAllowed,
+  isRegistered,
   maxseats,
   seats,
+  router,
 }) {
+  const [secretToken, setSecretToken] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(0);
+  const [isAmritaCBE, setIsAmritaCBE] = useState(0);
+  const [hasActivePassport, setHasActivePassport] = useState(0);
+
+  useEffect(() => {
+    setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
+    setIsAmritaCBE(parseInt(secureLocalStorage.getItem("isAmritaCBE")));
+    setHasActivePassport(
+      parseInt(secureLocalStorage.getItem("hasActivePassport"))
+    );
+    setSecretToken(secureLocalStorage.getItem("registerToken"));
+  }, []);
+
   const [starred, toggleStar] = useState(0);
   const [tagAbb, setTagAbb] = useState(-1);
-
   useEffect(() => {
     fetch(STAR_UNSTAR_EVENT_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          "Bearer v4.public.eyJzdHVkZW50RnVsbE5hbWUiOiJBYmhpbmF2IFJhbWFrcmlzaG5hbiIsInN0dWRlbnRFbWFpbCI6ImhzaGVhZG9uZUBnbWFpbC5jb20iLCJzdHVkZW50UGhvbmUiOiI5NTk3MzQ3NTk0Iiwic3R1ZGVudFBhc3N3b3JkIjoiNGJjMzQ0NmI2NzJkMzBjYTA0NWViNTdjZDY2MTM0N2MyN2E3Y2EzZWRkODBjYzJmZTMyMDE1OTgwMGY4Yzg1NiIsIm5lZWRQYXNzcG9ydCI6IjEiLCJzdHVkZW50QWNjb3VudFN0YXR1cyI6IjEiLCJzdHVkZW50Q29sbGVnZU5hbWUiOiJBbXJpdGEgVmlzaHdhIFZpZHlhcGVldGhhbSIsInN0dWRlbnRDb2xsZWdlQ2l0eSI6IkNvaW1iYXRvcmUiLCJpc0luQ2FtcHVzIjoiMCIsInNlY3JldF9rZXkiOiJlNzQ2NWYyMGIxMzNkMjk0MzgyZDFmNTJkZGUwY2Y5NDk5NGM3NjJhNjNkNzk2NzA0ZDU1ZWU5ZjdhMTg0NmJlODhjODUzMWNjMGUxZjYwZjVjZWExNjIwMDM3NDRiYmYyY2NhNWIxM2QzOGRhZGY3MWRiMjU0NGM2NGQ3OGZlNDllNDRhYmZlYzgwOTRmMzM3MTE3YmE1YjAxNjBmYjY1ZGQ5MTRlOGIxNGI4YWIxMGJmNDRlMTQxOGQ3OWRjOWI3ODU5N2EwYjJhN2NlNDIwNjA5MDYxM2Q4Zjc2ZTMxMWIyYWJkZDY0OWJmYjQ4M2IzYjUzMTI4YWE1ZTI3MDAyYTY2YWE4ODhhZmQzYjJiYjRhMTYyNTc5MGRkZDQ1NmFjYjFhNzdjMmI4YTczZjU4MTZjYjExOTY4MzYzYTMwMDMyY2UwYjNkOTBiYTQ2NmI1MWE4NWNlMzA2ZTZlYjAzMGMwOTVkYjJjNjI4NmMwYTYyOTM5ZjEwNTZlN2VkNDc3Y2I5ZjE1NDUwNDUyNTM5ZWEzNzU2YTlmNDBhMTZiNTRmNTAxNjgwNTI4ODQyZjJmNDM2YTY4NDMzN2JkODU2MTc5Y2YwYThkOWU3MWZjNmM5MTMzMWYxZmQ2MDA2ZDYyYWQyNDI5NzhhMjUyMjQ1NWEzMWY4NjNlYzgxY2RjOGFlZmQzZWFkYjQyYjAwMzZjMWFlYTE3NmE3ZWEiLCJpYXQiOiIyMDI0LTAxLTE2VDExOjQ1OjM2LjM4OFoiLCJleHAiOiIyMDI0LTAxLTE2VDExOjUwOjM2LjM4OFoifZzXQXArINaREDHyRrTFKFnd7RYRmjsYJcro170WYbXRQFz685wV0Q7OEmCGz_5QI1V8LO2P_CxfqRWE_UzWdAk",
+          "Bearer " + secureLocalStorage.getItem("registerToken"),
       },
       body: JSON.stringify({
         eventId: id,
@@ -71,6 +87,15 @@ export default function EventCard({
     tagAbb == -1 ? setTagAbb(i) : setTagAbb(-1);
   };
 
+  function convertTo12HourFormat(time24) {
+    const [hours, minutes] = time24.split(":").map(Number);
+    const period = hours >= 12 ? "PM" : "AM";
+    const hours12 = hours % 12 || 12;
+    const time12 = `${hours12}:${String(minutes).padStart(2, "0")} ${period}`;
+
+    return time12;
+  }
+
   return (
     <div class="bg-[#0c111c] min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-orange-400 transition duration-150 overflow-hidden shiny">
       <div class="shiny-overlay"></div>
@@ -85,9 +110,13 @@ export default function EventCard({
             class=" rounded-2xl h-full transition duration-300 hover:filter hover:brightness-0 hover:grayscale-100 hover:opacity-0"
           />
 
-          <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
-            Registered
-          </div>
+          {secureLocalStorage.getItem("isLoggedIn") && isRegistered==1 ? (
+            <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
+              Registered
+            </div>
+          ) : (
+            ""
+          )}
 
           <div class=" absolute rounded-2xl inset-0 bg-black bg-opacity-80 text-white p-3 text-center opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-center items-center">
             <span>{eventDesc}</span>
@@ -133,21 +162,35 @@ export default function EventCard({
         </div>
 
         <div class="flex justify-between items-center">
-          <p class="text-gray-400 text-md flex flex-row">
+        <p class="text-gray-400 text-md flex flex-row gap-2">
             <svg
-              class="h-6 w-6 inline-block mr-2"
+              width="20px"
+              height="20px"
+              viewBox="-2.4 -2.4 28.80 28.80"
               fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#000000"
+              style={{ marginTop: "1px" }}
             >
-              <path
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 10h16M4 14h16M4 18h16"
-              ></path>
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                {" "}
+                <path
+                  d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z"
+                  stroke="#e6e6e6"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>{" "}
+              </g>
             </svg>
-            {date.slice(0, 10)} {time.slice(0, 5)}
+            {"APRIL " + date.slice(8, 10)} <vt></vt>
+            {convertTo12HourFormat(time.slice(0, 5))}
           </p>
           <div class="text-xl flex justify-center items-center text-white font-semibold h-10 w-20 rounded-full ">
             ₹{price}
