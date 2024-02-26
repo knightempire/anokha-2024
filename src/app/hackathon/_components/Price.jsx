@@ -15,7 +15,7 @@ import CountdownTimer from "@/app/components/Counter";
 export default function Price() {
   const [currentState, setCurrentState] = useState("guest");
   const router = useRouter();
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
 
   const getButtonText = () => {
     switch (currentState) {
@@ -48,7 +48,7 @@ export default function Price() {
           <div className="flex flex-row gap-4 items-center justify-start  mt-12">
             <FaTrophy size="30" color="#1c5dad" />
             <div className="md:text-2xl sm:text-xl capitalize  sm:px-2 md:px-0">
-              Prize money upto{" "}
+              Prizes worth{" "}
               <span className="font-black md:text-3xl sm:text-2xl text-[#1c5dad] ">
                 ₹1,25,000/-
               </span>

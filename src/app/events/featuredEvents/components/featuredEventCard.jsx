@@ -94,7 +94,7 @@ export default function EventCard({
   }
 
   return (
-    <div class="bg-[#0c111c] min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-orange-400 transition duration-150 overflow-hidden shiny">
+    <div class="bg-[rgba(0,0,0,0.3)] backdrop-blur-lg min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-orange-400 transition duration-150 overflow-hidden shiny">
       <div class="shiny-overlay"></div>
       <div class="flex flex-col relative group">
         <div class="relative h-[400px] w-full mb-3">

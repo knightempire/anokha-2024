@@ -5,15 +5,15 @@ import { FaMedal } from "react-icons/fa";
 const prizes = [
     {
       title: "2nd Place Winner",
-      price: "Cash Prize ₹ 40,000/-",
+      price: "Prizes Worth ₹ 40,000/-",
     },
     {
       title: "1st Place Winner",
-      price: "Cash Prize ₹ 60,000/-",
+      price: "Prize Worth ₹ 60,000/-",
     },
     {
       title: "3rd Place Winner",
-      price: "Cash Prize ₹ 25,000/-",
+      price: "Prices Worth ₹ 25,000/-",
     },
     
   ];

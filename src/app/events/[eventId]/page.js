@@ -215,7 +215,7 @@ const Event = () => {
                   : HandleTeamRegister;
               }}
             >
-              Register
+              Registerations Opening Soon
             </button>
           </div>
         </div>

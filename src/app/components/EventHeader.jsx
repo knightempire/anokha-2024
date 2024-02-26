@@ -17,11 +17,11 @@ const navLinks = [
   },
   {
     title: "Events",
-    path: "/comingSoon",
+    path: "/events",
   },
   {
     title: "Eventide",
-    path: "/comingSoon",
+    path: "/eventide",
   },
   {
     title: "Hackathon",

@@ -5,15 +5,13 @@ import WebGLApp from "../bg/WebGLApp";
 import { useEffect, useRef, useState } from "react";
 
 export default function ForgetPassword() {
-
-
   const [webGLColors, setWebGLColors] = useState({
     color1: [43 / 255, 30 / 255, 56 / 255],
     color2: [11 / 255, 38 / 255, 59 / 255],
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
   const [cardColor, setCardColor] = useState(webGLColors);
-    const page =`
+  const page = `
  
       
     <body>
@@ -22,7 +20,7 @@ export default function ForgetPassword() {
       <div class="intro-content">
         <h1 class="pro_titlee">Eventide</h1>
         <p class="description">
-          <span class="collage-art">Eventide </span> the 3-day cultural extravaganza of Anokha, has brought joy to thousands over the past decade through explosive performances
+           Eventide the 3-day cultural extravaganza of Anokha, has brought joy to thousands over the past decade through explosive performances
            from talented artists. The enchanting melodies of Raagasudha, our soulful music club, and the graceful performances of Natyasudha, 
            our energetic dance club have left our audience in awe. The highlight of this grand celebration, the pro show has featured passionate and 
            top-tier artists from the music industry. <br>
@@ -45,10 +43,6 @@ export default function ForgetPassword() {
       </div>
     </section>
   
-  
-  
-
-
   
     <section id="intro-club">
       <div class="split-beers">
@@ -1010,27 +1004,10 @@ grid-template-columns: 40% 50% 10%;
 }
 }
 </style>
-
-  
-  
-  
-  
-  
-
-  
-  
-  
-  
-  
-
-
-
-  
-  
   
     <section class="featured" id="featured">
       <div class="gradient-line"></div>
-      <h1 class="featured-pro_title">Gallery</h1>
+      <h1 class="featured-pro_title">Highlights 2023</h1>
       <div class="grid-area">
         <div class="item art-one">
           <img src="https://i.imgur.com/xcpliLs.jpg" >
@@ -1231,7 +1208,8 @@ grid-template-columns: 40% 50% 10%;
   .intro-content h1 {
   color: transparent;
   font-family: "Gloria Hallelujah", cursive;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(3rem, 5vw, 4rem);
+  font-weight: 600;
   line-height: 1.4;
   animation: fade-in-out 12s linear infinite;
   }
@@ -1346,7 +1324,7 @@ grid-template-columns: 40% 50% 10%;
   font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 600;
   color: #fff;
-  text-shadow: 0 0 10px #18d25f, 0 0 20px #f8f8f8;
+  text-shadow: 0 0 10px #fff;
   margin-bottom: 60px;
   }
   
@@ -1355,7 +1333,7 @@ grid-template-columns: 40% 50% 10%;
   font-size: clamp(3rem, 5vw, 4rem);
   font-weight: 600;
   color: #fff;
-  text-shadow: 0 0 10px #18d25f, 0 0 20px #f8f8f8;
+  text-shadow: 0 0 5px #fff;
   margin-bottom: 60px;
   }
 
@@ -1689,27 +1667,14 @@ grid-template-columns: 40% 50% 10%;
   display: none; /* Hide the overview section on small devices */
 }
 }
-
-
-
   </style>
+`;
 
-  
-  
-
-    
-    
-  
-
-    
-    `;
-    
-    return (
-        <>
-        <Navbar />
-        <WebGLApp colors={cardColor} className="-z-10" />
- <div dangerouslySetInnerHTML={{ __html: page }}/>
-        </>
-    );
+  return (
+    <>
+      <Navbar />
+      <WebGLApp colors={cardColor} className="-z-10" />
+      <div dangerouslySetInnerHTML={{ __html: page }} />
+    </>
+  );
 }
-

@@ -93,11 +93,11 @@ export default function EventCard({
   }
 
   return (
-    <div class="bg-[#0c111c] max-w-[350px] min-h-[600px] shadow-lg rounded-2xl p-4 border-2 border-transparent hover:border-2 hover:border-purple-600 transition duration-150">
+    <div class="bg-[rgba(0,0,0,0.3)] backdrop-blur-lg max-w-[350px] min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-purple-600 transition duration-150">
       <div class="flex flex-col relative group">
         <div class="relative h-[400px] w-full mb-3">
           <Image
-            src={"https://i.imgur.com/iQy8GLM.jpg"}
+            src={imgSrc}
             width={400}
             height={400}
             objectFit="contain"
@@ -118,8 +118,8 @@ export default function EventCard({
             <div class="flex justify-center mt-3">
               <div class="flex justify-center mt-3">
                 <div class="flex space-x-2 text-sm font-medium">
-                  <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
-                    <span>Register</span>
+                  <button class="transition disabled cursor-not-allowed ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
+                    <span>Opening Soon</span>
                   </button>
                 </div>
               </div>
