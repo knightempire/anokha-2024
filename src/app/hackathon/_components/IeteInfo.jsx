@@ -49,9 +49,9 @@ const IeteInfo = () => {
           </div> */}
           <h1 className="text-center">
            Mail us at{" "}
-            <Link href={"mailto:ietesf@cb.amrita.edu"} className="font-bold ">
+            <Link href={"mailto:anokhapr@cb.amrita.edu"} className="font-bold ">
               {" "}
-              ietesf@cb.amrita.edu
+              anokhapr@cb.amrita.edu
             </Link>
           </h1>
         </div>
