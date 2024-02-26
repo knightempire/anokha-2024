@@ -137,7 +137,7 @@ const Events = () => {
     setTagsFilter(Tags);
   };
 
-  useEffect(() => {
+useEffect(() => {
     fetch(ALL_EVENTS_URL, {
       method: "GET",
       headers: {
@@ -146,9 +146,11 @@ const Events = () => {
       },
     })
       .then((res) => {
+        if (res.status === 401) {
+          console.log('hi');
           // openModal();
           // Session Expired or not logged in. Clear Cache and Navigate to login screen.
-        } if (res.status === 500) {
+        } else if (res.status === 500) {
           // Backend Error. Handle it.
         } else if (res.status === 200) {
           // Valid Request. Data has come
