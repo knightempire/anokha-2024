@@ -79,6 +79,7 @@ export default function Register() {
             "studentAccountStatus",
             data.studentAccountStatus
           );
+          console.log(secureLocalStorage.getItem("studentAccountStatus"));
           return;
         } else if (response.status === 400) {
           secureLocalStorage.clear();
@@ -419,8 +420,8 @@ export default function Register() {
                         className={
                           secureLocalStorage.getItem("studentAccountStatus") ==
                           2
-                            ? "m-10 ml-20 mr-20 p-8 flex justify-center bg-[#ffffff] rounded-2xl"
-                            : "m-10 ml-20 mr-20 p-8 flex justify-center  bg-blue-300 text-center rounded-2xl"
+                            ? "m-10  ml-20 mr-20 p-8 flex justify-center bg-[#ffffff] rounded-2xl"
+                            : "m-10 md:ml-10 md:mr-10 lg:ml-20 lg:mr-20 p-8 flex justify-center  bg-blue-300 text-center rounded-2xl"
                         }
                       >
                         {secureLocalStorage.getItem("studentAccountStatus") ==

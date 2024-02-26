@@ -3,6 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import ToastAlert from "../../_util/ToastAlerts";
+import { Toast } from "primereact/toast";
+
 import secureLocalStorage from "react-secure-storage";
 import { EVENT_DATA_URL } from "@/app/_util/constants";
 import { EVENT_REGISTER_STEP_ONE } from "../../_util/constants";
@@ -43,6 +46,14 @@ const Event = () => {
   const Tags = useRef(null);
   const Price = useRef(null);
   const Desc = useRef(null);
+  const toastRef = useRef();
+
+  const setTeamIfEqual = (size) => {
+    setTeam([]);
+    for (let i = 0; i < size; i++) {
+      setTeam((Team) => [...Team, i]);
+    }
+  };
 
   useEffect(() => {
     if (eventId) {
@@ -61,10 +72,9 @@ const Event = () => {
           }
         })
         .then((data) => {
-          console.log("Received Data:", data);
           setEventData(data);
           setTeamSize(data.minTeamSize);
-          setTeam([0]);
+          setTeamIfEqual(data.minTeamSize);
           // Trigger GSAP animations once data is fetched and rendered
           let tl = gsap.timeline();
           tl.from(Poster.current, { opacity: 0, duration: 0.3 });
@@ -133,7 +143,9 @@ const Event = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "~": `Bearer ${secureLocalStorage.getItem("registerToken")}`,
+          Authorization: `Bearer ${secureLocalStorage.getItem(
+            "registerToken"
+          )}`,
         },
         body: JSON.stringify({
           eventId: eventData.eventId,
@@ -144,12 +156,51 @@ const Event = () => {
           memberRoles: memberRoles,
         }),
       });
-
+      const data = await response.json();
       if (response.status === 200) {
         console.log(200);
+        const payUData = {
+          key: payU_Key,
+          txnid: data["txnid"],
+          amount: data["amount"],
+          productinfo: data["productinfo"],
+          firstname: data["firstname"],
+          email: data["email"],
+          phone: data["phone"],
+          surl: data["surl"],
+          furl: data["furl"],
+          hash: data["hash"],
+        };
+
+        const payUForm = document.createElement("form");
+        payUForm.method = "post";
+        payUForm.action = payU_Action;
+
+        for (const key in payUData) {
+          if (payUData.hasOwnProperty(key)) {
+            const hiddenField = document.createElement("input");
+            hiddenField.type = "hidden";
+            hiddenField.name = key;
+            hiddenField.value = payUData[key];
+
+            payUForm.appendChild(hiddenField);
+          }
+        }
+
+        document.body.appendChild(payUForm);
+
+        payUForm.submit();
+
+        setMessage("Called PayU API to make payment.");
+      } else if (response.status === 400) {
+        console.log(data);
+        ToastAlert("error", "Registration Failed", `${data.MESSAGE}`, toastRef);
+      } else {
+        ToastAlert("error", "Registration Failed", `${data.MESSAGE}`, toastRef);
       }
     } catch (err) {
       console.log(err);
+      ToastAlert("error", "Registration Failed", `Error Occured`, toastRef);
     }
   };
 
@@ -292,6 +343,14 @@ const Event = () => {
         <div className="flex flex-col py-10 items-center justify-center mx-auto">
           <div className="w-full rounded-md mt-5 xl:p-0 bg-white">
             <div className="mx-10 mb-10 px-1 lg:px-10">
+              <div>
+                {eventData.maxTeamSize == eventData.minTeamSize
+                  ? "Team size - " + eventData.minTeamSize
+                  : "Team size " +
+                    eventData.minTeamSize +
+                    " - " +
+                    eventData.maxTeamSize}
+              </div>
               <form>
                 <div className="flex flex-col gap-4 min-h-[250px]">
                   <div className="my-4">
@@ -396,6 +455,7 @@ const Event = () => {
           </div>
         </div>
       </Dialog>
+      <Toast ref={toastRef} position="bottom-center" className="z-[2000]" />
     </main>
   );
 };
