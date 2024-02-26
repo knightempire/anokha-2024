@@ -111,13 +111,13 @@ const Events = () => {
           evetypeCode -= 1;
           break;
         case "01":
-          Days.push("2021-02-26");
+          Days.push("2024-04-04");
           break;
         case "02":
-          Days.push("2021-03-02");
+          Days.push("2024-04-05");
           break;
         case "03":
-          Days.push("2021-02-28");
+          Days.push("2024-04-06");
           break;
         default:
           Tags.push(i);
@@ -147,7 +147,14 @@ const Events = () => {
     })
       .then((res) => {
         if (res.status === 401) {
-          console.log('hi');
+          buildDialog(
+            "Error",
+            "You are not logged in!\nPlease Login to continue.",
+            "Okay"
+          );
+          setTimeout(() => {
+            router.push("/login");
+          }, 1500);
           // openModal();
           // Session Expired or not logged in. Clear Cache and Navigate to login screen.
         } else if (res.status === 500) {
@@ -194,29 +201,29 @@ const Events = () => {
               filteredData.map((event) => {
                 return (
                   <div key={event.eventId}>
-                    {/* <Link href={`/events/${event.eventId}`}> */}
-                    <EventCard
-                      imgSrc={event.eventImageURL}
-                      id={event.eventId}
-                      eventName={event.eventName}
-                      eventBlurb={event.eventDescription}
-                      eventDesc={event.eventDescription}
-                      date={event.eventDate}
-                      time={event.eventTime}
-                      goi={event.isGroup}
-                      tags={event.tags}
-                      price={event.eventPrice}
-                      isAllowed={event.eventStatus === "1"}
-                      isRegistered={
-                        secureLocalStorage.getItem("isLoggedIn")
-                          ? event.isRegistered
-                          : -1
-                      }
-                      maxseats={event.maxSeats}
-                      seats={event.seatsFilled}
-                      router={router}
-                    />
-                    {/* </Link> */}
+                    <Link href={`/events/${event.eventId}`}>
+                      <EventCard
+                        imgSrc={event.eventImageURL}
+                        id={event.eventId}
+                        eventName={event.eventName}
+                        eventBlurb={event.eventDescription}
+                        eventDesc={event.eventDescription}
+                        date={event.eventDate}
+                        time={event.eventTime}
+                        goi={event.isGroup}
+                        tags={event.tags}
+                        price={event.eventPrice}
+                        isAllowed={event.eventStatus === "1"}
+                        isRegistered={
+                          secureLocalStorage.getItem("isLoggedIn")
+                            ? event.isRegistered
+                            : -1
+                        }
+                        maxseats={event.maxSeats}
+                        seats={event.seatsFilled}
+                        router={router}
+                      />
+                    </Link>
                   </div>
                 );
               })
