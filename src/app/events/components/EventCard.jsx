@@ -52,7 +52,9 @@ export default function EventCard({
     })
       .then((res) => {
         if (res.status === 401) {
-          console.log('hi');
+          // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
+          // openModal();
+          // Session Expired or not logged in. Clear Cache and Navigate to login screen.
         } else if (res.status === 500) {
           // Backend Error. Handle it.
         } else if (res.status === 200) {
@@ -126,7 +128,7 @@ export default function EventCard({
         </div>
       </div>
       <div class="flex-auto justify-between flex flex-col">
-        <div class="flex flex-wrap items-center justify-between">
+        <div class="flex flex-row items-center justify-between">
           <h1 class="text-2xl cursor-pointer text-gray-200 hover:text-purple-500 break-word">
             {eventName}
           </h1>
@@ -154,7 +156,7 @@ export default function EventCard({
           </button>
         </div>
 
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center mt-2">
           <p class="text-gray-400 text-md flex flex-row gap-2">
             <svg
               width="20px"
@@ -185,8 +187,11 @@ export default function EventCard({
             {"APRIL " + date.slice(8, 10)} <vt></vt>
             {convertTo12HourFormat(time.slice(0, 5))}
           </p>
-          <div class="text-xl flex justify-center items-center text-white font-semibold h-10 w-20 rounded-full ">
-            ₹{price}
+          <div className="flex flex-col">
+            <div class="text-xl flex justify-center items-center text-white font-semibold h-7 w-20 rounded-full ">
+              ₹{Math.ceil(price * 1.18)}
+            </div>
+            <span className="text-[8px] mx-auto text-white">Incl. of GST</span>
           </div>
         </div>
         <div class="flex flex-wrap items-center justify-start mt-2">
