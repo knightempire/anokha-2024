@@ -70,7 +70,14 @@ const Events = () => {
         )
       );
     }
-  }, [groupFilter, TypeFilter, DayFilter, TechFilter, RegisteredFilter, TagsFilter]);
+  }, [
+    groupFilter,
+    TypeFilter,
+    DayFilter,
+    TechFilter,
+    RegisteredFilter,
+    TagsFilter,
+  ]);
 
   const hanldeCurrentFilters = (filters) => {
     let grpCode = -1;
@@ -192,10 +199,10 @@ const Events = () => {
       <WebGLApp colors={webGLColors} className="-z-10" />
       <div className="block">
         <Navbar />
-        <div className="flex flex-col gap-5 min-h-screen justify-center items-center mx-10 pt-10 mt-10">
-          <div className="my-3 z-10 w-full min-h-[100px] flex justify-center">
-            <FilterSection sendcurrentFilters={hanldeCurrentFilters} />
-          </div>
+        <div className="mx-10 pt-10 mt-12 mb-5">
+          <FilterSection sendcurrentFilters={hanldeCurrentFilters} />
+        </div>
+        <div className="flex flex-col gap-5 justify-center items-center mx-10">
           <div className="grid mb-10 z-10 grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {eventsData && eventsData.length > 0 ? (
               filteredData.map((event) => {
