@@ -28,7 +28,7 @@ const Events = () => {
 
   const tagsFunction = (eventData) => {
     for (let i of eventData.tags) {
-      if (TagsFilter.includes(i.tagAbbreviation)) {
+      if (TagsFilter.includes(i.tagName)) {
         return true;
       }
       console.log(i);
