@@ -52,12 +52,7 @@ export default function EventCard({
     })
       .then((res) => {
         if (res.status === 401) {
-          setTimeout(() => {
-            router.push("/login");
-          }, 1500);
-          // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
-          // openModal();
-          // Session Expired or not logged in. Clear Cache and Navigate to login screen.
+          console.log('hi');
         } else if (res.status === 500) {
           // Backend Error. Handle it.
         } else if (res.status === 200) {
@@ -121,8 +116,8 @@ export default function EventCard({
             <div class="flex justify-center mt-3">
               <div class="flex justify-center mt-3">
                 <div class="flex space-x-2 text-sm font-medium">
-                  <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
-                    <span>Register</span>
+                  <button class="transition disabled cursor-not-allowed ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
+                    <span>Opening Soon</span>
                   </button>
                 </div>
               </div>

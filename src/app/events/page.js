@@ -137,7 +137,7 @@ const Events = () => {
     setTagsFilter(Tags);
   };
 
-useEffect(() => {
+  useEffect(() => {
     fetch(ALL_EVENTS_URL, {
       method: "GET",
       headers: {
