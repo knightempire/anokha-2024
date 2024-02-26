@@ -35,6 +35,9 @@ export default function Register() {
   const [email, setEmail] = useState(
     secureLocalStorage.getItem("registerEmail")
   );
+  const [registerToken, setRegisterToken] = useState(
+    secureLocalStorage.getItem("registerToken")
+  )
   const [phone, setPhone] = useState(
     secureLocalStorage.getItem("studentPhone")
   );
@@ -61,9 +64,7 @@ export default function Register() {
           method: "GET",
           headers: {
             "Content-type": "application/json",
-            Authorization: `Bearer ${secureLocalStorage.getItem(
-              "registerToken"
-            )}`,
+            "Authorization": `Bearer ${registerToken}`,
           },
         });
 
@@ -258,14 +259,11 @@ export default function Register() {
         "Content-Type": "application/json",
         Authorization: `Bearer ${secureLocalStorage.getItem("registerToken")}`,
       },
-    })
-    
+    });
     const data = await response.json();
-    console.log(data);
-    ;
-
+   
     if (response.status === 200) {
-      const data = await response.json();
+      
       const payUData = {
         key: payU_Key,
         txnid: data["txnid"],
@@ -299,9 +297,31 @@ export default function Register() {
       payUForm.submit();
 
       setMessage("Called PayU API to make payment.");
-    } else {
-      console.log("Error");
+    } else if (response.status === 400) {
+      secureLocalStorage.clear();
+      ToastAlert("error", "Error", data.MESSAGE, toastRef);
+      
+    } else if (response.status === 401) {
+      ToastAlert(
+        "error",
+        "Unauthorized Access",
+        "Please login and try again.",
+        toastRef
+      );
+      secureLocalStorage.clear();
+      setTimeout(() => {
+        router.push("/");
+      }, 1500);
+    } else if (response.status === 500) {
+      ToastAlert(
+        "error",
+        "Internal Server Error",
+        "Oops! Please try again.",
+        toastRef
+      );
+      return;
     }
+    
   };
 
 
