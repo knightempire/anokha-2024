@@ -194,29 +194,29 @@ const Events = () => {
               filteredData.map((event) => {
                 return (
                   <div key={event.eventId}>
-                    <Link href={`/events/${event.eventId}`}>
-                      <EventCard
-                        imgSrc={event.eventImageURL}
-                        id={event.eventId}
-                        eventName={event.eventName}
-                        eventBlurb={event.eventDescription}
-                        eventDesc={event.eventDescription}
-                        date={event.eventDate}
-                        time={event.eventTime}
-                        goi={event.isGroup}
-                        tags={event.tags}
-                        price={event.eventPrice}
-                        isAllowed={event.eventStatus === "1"}
-                        isRegistered={
-                          secureLocalStorage.getItem("isLoggedIn")
-                            ? event.isRegistered
-                            : -1
-                        }
-                        maxseats={event.maxSeats}
-                        seats={event.seatsFilled}
-                        router={router}
-                      />
-                    </Link>
+                    {/* <Link href={`/events/${event.eventId}`}> */}
+                    <EventCard
+                      imgSrc={event.eventImageURL}
+                      id={event.eventId}
+                      eventName={event.eventName}
+                      eventBlurb={event.eventDescription}
+                      eventDesc={event.eventDescription}
+                      date={event.eventDate}
+                      time={event.eventTime}
+                      goi={event.isGroup}
+                      tags={event.tags}
+                      price={event.eventPrice}
+                      isAllowed={event.eventStatus === "1"}
+                      isRegistered={
+                        secureLocalStorage.getItem("isLoggedIn")
+                          ? event.isRegistered
+                          : -1
+                      }
+                      maxseats={event.maxSeats}
+                      seats={event.seatsFilled}
+                      router={router}
+                    />
+                    {/* </Link> */}
                   </div>
                 );
               })
