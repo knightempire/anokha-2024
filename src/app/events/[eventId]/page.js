@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import secureLocalStorage from "react-secure-storage";
+import WebGLApp from "@/app/bg/WebGLApp";
 import { EVENT_DATA_URL } from "@/app/_util/constants";
 import { EVENT_REGISTER_STEP_ONE } from "../../_util/constants";
 import { payU_Key, payU_Action } from "../../_util/constants";
@@ -44,13 +45,18 @@ const Event = () => {
   const Price = useRef(null);
   const Desc = useRef(null);
 
+  const [webGLColors, setWebGLColors] = useState({
+    color1: [43 / 255, 30 / 255, 56 / 255],
+    color2: [11 / 255, 38 / 255, 59 / 255],
+    color3: [15 / 255, 21 / 255, 39 / 255],
+  });
+
   useEffect(() => {
     if (eventId) {
       fetch(`${EVENT_DATA_URL}/${eventId}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer <SECRET_TOKEN>`,
         },
       })
         .then((res) => {
@@ -194,10 +200,11 @@ const Event = () => {
 
   return (
     <main className="flex min-h-screen max-h-screen flex-col bg-[#192032] text-white items-center justify-center">
-      <div className="h-4/5 w-5/6 z-10 grid grid-cols-2 gap-4">
-        <div className="flex-row relative">
+      <WebGLApp colors={webGLColors} className="-z-10" />
+      <div className="h-[80%] w-[72%] z-10 flex flex-row justify-between">
+        <div className="flex flex-col relative items-center">
           {/* Image Section */}
-          <div className="flex-none relative h-full">
+          <div className="flex-none relative h-full w-[160%]">
             <Image
               src={eventData.eventImageURL}
               layout="fill"
@@ -222,7 +229,7 @@ const Event = () => {
           </div>
         </div>
         {/* Main Content Section */}
-        <div className="mt-5 flex flex-col overflow-y-auto h-[500px]">
+        <div className="mt-5 flex flex-col overflow-y-auto h-[500px] pr-10">
           <div className="font-bold text-5xl mb-2" ref={Title}>
             {eventData.eventName}
           </div>
@@ -241,7 +248,7 @@ const Event = () => {
           </div>
           <div className="flex flex-row justify-between items-center ">
             {/* Additional Info */}
-            <div className="flex flex-col mt-4" ref={MainInfo}>
+            <div className="flex flex-col mt-4 mr-10" ref={MainInfo}>
               <p className="text-white text-base mb-2">
                 <strong>Date:</strong> {eventData.eventDate.slice(0, 10)} &bull;{" "}
                 <strong>Time:</strong> {eventData.eventTime}
@@ -255,8 +262,14 @@ const Event = () => {
               </p>
             </div>
             {/* Price Section */}
-            <div className="flex items-end justify-end pb-2 pr-8" ref={Price}>
-              <span className="text-4xl font-bold text-white">{`$${eventData.eventPrice}`}</span>
+            <div
+              className="flex flex-col items-end justify-end pb-2 pr-8"
+              ref={Price}
+            >
+              <span className="text-4xl font-bold text-white">{`₹${Math.ceil(
+                eventData.eventPrice * 1.18
+              )}`}</span>
+              <span className="text-md">Incl. of GST</span>
             </div>
           </div>
 
@@ -273,7 +286,7 @@ const Event = () => {
           </div>
           {eventData.eventMarkdownDescription.length > 4 && (
             <button
-              className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center m-4"
+              className="text-white focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-6 py-3 text-center m-4"
               onClick={() => setShowFullText(!showFullText)}
               tag="Others"
             >
