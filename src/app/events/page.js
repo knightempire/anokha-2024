@@ -146,18 +146,9 @@ const Events = () => {
       },
     })
       .then((res) => {
-        if (res.status === 401) {
-          buildDialog(
-            "Error",
-            "You are not logged in!\nPlease Login to continue.",
-            "Okay"
-          );
-          setTimeout(() => {
-            router.push("/login");
-          }, 1500);
           // openModal();
           // Session Expired or not logged in. Clear Cache and Navigate to login screen.
-        } else if (res.status === 500) {
+        } if (res.status === 500) {
           // Backend Error. Handle it.
         } else if (res.status === 200) {
           // Valid Request. Data has come
