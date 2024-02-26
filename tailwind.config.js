@@ -17,6 +17,7 @@ module.exports = {
         "custom-up": "5px -5px 10px rgba(0, 0, 0, 0.6)", // Define your custom shadow here
       },
     },
+
     screens: {
       sm: "300px",
       // @media (min-width: 640px)
@@ -34,5 +35,5 @@ module.exports = {
       // @media (min-width: 1536px)
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
 };

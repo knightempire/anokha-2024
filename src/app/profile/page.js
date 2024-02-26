@@ -7,7 +7,7 @@ import {
   STUDENT_PROFILE_URL,
   BUY_PASSPORT_DUMMY_PAGE_URL,
   payU_Key,
-  payU_Action
+  payU_Action,
 } from "../_util/constants";
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
@@ -65,10 +65,20 @@ export default function Register() {
 
         const data = await response.json();
         if (response.status === 200) {
-          secureLocalStorage.setItem("studentFullName", fullname);
-          secureLocalStorage.setItem("studentPhone", phoneNumber);
-          secureLocalStorage.setItem("studentCollegeCity", collegeCity);
-          secureLocalStorage.setItem("studentCollegeName", collegeName);
+          secureLocalStorage.setItem("studentFullName", data.studentFullName);
+          secureLocalStorage.setItem("studentPhone", data.studentPhone);
+          secureLocalStorage.setItem(
+            "studentCollegeCity",
+            data.studentCollegeCity
+          );
+          secureLocalStorage.setItem(
+            "studentCollegeName",
+            data.studentCollegeName
+          );
+          secureLocalStorage.setItem(
+            "studentAccountStatus",
+            data.studentAccountStatus
+          );
           return;
         } else if (response.status === 400) {
           secureLocalStorage.clear();

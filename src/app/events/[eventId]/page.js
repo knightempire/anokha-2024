@@ -3,12 +3,11 @@ import { useState, useEffect, useRef } from "react";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ReactMarkdown from "react-markdown";
 import secureLocalStorage from "react-secure-storage";
 import { EVENT_DATA_URL } from "@/app/_util/constants";
 import { EVENT_REGISTER_STEP_ONE } from "../../_util/constants";
 import { payU_Key, payU_Action } from "../../_util/constants";
-
+import Markdown from "markdown-to-jsx";
 import { Dialog } from "primereact/dialog";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
@@ -19,6 +18,7 @@ import validator from "validator";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useParams } from "next/navigation";
+import customScrollBarStyle from "../components/eventScrollbar.css";
 
 const Event = () => {
   const [eventData, setEventData] = useState(null);
@@ -127,6 +127,32 @@ const Event = () => {
     console.log(memberRoles);
   };
 
+  const getPayUForm = async () => {
+    try {
+      const response = await fetch(EVENT_REGISTER_STEP_ONE, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "~": `Bearer ${secureLocalStorage.getItem("registerToken")}`,
+        },
+        body: JSON.stringify({
+          eventId: eventData.eventId,
+          totalMembers: TeamSize,
+          isMarketPlacePaymentMode: "0",
+          teamName: TeamName,
+          teamMembers: Emails,
+          memberRoles: memberRoles,
+        }),
+      });
+
+      if (response.status === 200) {
+        console.log(200);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const HandleTeamRegister = async (e) => {
     e.preventDefault();
     let isValidEmails = true;
@@ -138,31 +164,7 @@ const Event = () => {
       }
     }
     if (isValidEmails) {
-      try {
-        const response = await fetch(EVENT_REGISTER_STEP_ONE, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${secureLocalStorage.getItem(
-              "registerToken"
-            )}`,
-          },
-          body: {
-            eventId: eventData.eventId,
-            totalMembers: TeamSize,
-            isMarketPlacePaymentMode: "0",
-            teamName: TeamName,
-            teamMembers: Emails,
-            memberRoles: memberRoles,
-          },
-        });
-
-        if (response.status === 200) {
-          console.log(200);
-        }
-      } catch (err) {
-        console.log(err);
-      }
+      await getPayUForm();
     }
   };
 
@@ -212,7 +214,7 @@ const Event = () => {
               onClick={() => {
                 eventData.minTeamSize != 1 && eventData.maxTeamSize != 1
                   ? setpopupvisibility(true)
-                  : HandleTeamRegister;
+                  : getPayUForm();
               }}
             >
               Registerations Opening Soon
@@ -263,13 +265,12 @@ const Event = () => {
             Description
           </h2>
           <br />
-
-          <ReactMarkdown
-            className={showFullText ? "" : "line-clamp-[4]"}
-            ref={Desc}
-          >
-            {eventData.eventMarkdownDescription}
-          </ReactMarkdown>
+          {console.log("Markdown content:", eventData.eventMarkdownDescription)}
+          <div className={showFullText ? "" : "line-clamp-[4]"} ref={Desc}>
+            <Markdown className="prose dark:prose-invert">
+              {eventData.eventMarkdownDescription}
+            </Markdown>
+          </div>
           {eventData.eventMarkdownDescription.length > 4 && (
             <button
               className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center m-4"
@@ -286,7 +287,7 @@ const Event = () => {
         header="Register Team"
         onHide={() => setpopupvisibility(false)}
         draggable={false}
-        className="w-[50%]"
+        className={`sm:w-[90%] md:w-[50%] bg-white ${customScrollBarStyle}`}
       >
         <div className="flex flex-col py-10 items-center justify-center mx-auto">
           <div className="w-full rounded-md mt-5 xl:p-0 bg-white">
@@ -354,7 +355,7 @@ const Event = () => {
                     </div>
                   ))}
 
-                  <div className="w-full flex flex-row gap-3 justify-center pb-3">
+                  <div className="w-full flex  sm:flex-col lg:flex-row gap-3 justify-center pb-3">
                     {eventData.minTeamSize != eventData.maxTeamSize ? (
                       <Button
                         label="Add Member"

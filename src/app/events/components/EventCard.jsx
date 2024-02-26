@@ -128,7 +128,7 @@ export default function EventCard({
         </div>
       </div>
       <div class="flex-auto justify-between flex flex-col">
-        <div class="flex flex-wrap items-center justify-between">
+        <div class="flex flex-row items-center justify-between">
           <h1 class="text-2xl cursor-pointer text-gray-200 hover:text-purple-500 break-word">
             {eventName}
           </h1>
