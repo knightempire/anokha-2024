@@ -95,7 +95,7 @@ export default function EventCard({
       <div class="flex flex-col relative group">
         <div class="relative h-[400px] w-full mb-3">
           <Image
-            src={"https://i.imgur.com/iQy8GLM.jpg"}
+            src={imgSrc}
             width={400}
             height={400}
             objectFit="contain"
