@@ -50,8 +50,8 @@ export default function FilterSection({ sendcurrentFilters }) {
     else if (type == "reg") setregFilterList(filter);
   };
   return (
-    <div className="p-5 ">
-      <div className="flex flex-row gap-5 justify-evenly flex-wrap">
+    <div className="p-5">
+      <div className="flex flex-row justify-center items-center space-x-2 flex-wrap">
         {/* All of the following should be Dropdown-Checkbox Components*/}
         {/* Select Day: "01" | "02" | "03"; */}
         <FilterComponent
@@ -65,7 +65,17 @@ export default function FilterSection({ sendcurrentFilters }) {
         <FilterComponent
           needSearch={1}
           name={"Tags"}
-          options={["IOT", "COD","CS", "CYS", "AI", "MEC", "EEE", "ECE", "MAT"]} //Add all possible tags here
+          options={[
+            "IOT",
+            "COD",
+            "CS",
+            "CYS",
+            "AI",
+            "MEC",
+            "EEE",
+            "ECE",
+            "MAT",
+          ]} //Add all possible tags here
           type={"tag"}
           sendSelectedOption={handleItemFromFilters}
         />
@@ -91,11 +101,15 @@ export default function FilterSection({ sendcurrentFilters }) {
         />
 
         {/* Select Status: "Registered" | "Not Registered" */}
-        {secureLocalStorage.getItem("isLoggedIn")?<FilterComponent2
-          options={["Registered", "Not Registered"]}
-          type={"reg"}
-          sendSelectedOption={handleItemFromFilters}
-        />:""}
+        {secureLocalStorage.getItem("isLoggedIn") ? (
+          <FilterComponent2
+            options={["Registered", "Not Registered"]}
+            type={"reg"}
+            sendSelectedOption={handleItemFromFilters}
+          />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

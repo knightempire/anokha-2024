@@ -43,8 +43,7 @@ export default function EventCard({
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          `Bearer ` + secureLocalStorage.getItem("registerToken"),
+        Authorization: `Bearer ` + secureLocalStorage.getItem("registerToken"),
       },
       body: JSON.stringify({
         eventId: id, // eg. "eventId": 1,
@@ -53,9 +52,6 @@ export default function EventCard({
     })
       .then((res) => {
         if (res.status === 401) {
-          setTimeout(() => {
-            router.push("/login");
-          }, 1500);
           // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
           // openModal();
           // Session Expired or not logged in. Clear Cache and Navigate to login screen.
@@ -97,7 +93,7 @@ export default function EventCard({
   }
 
   return (
-    <div class="bg-[#0c111c] max-w-[350px] min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-purple-600 transition duration-150">
+    <div class="bg-[#0c111c] max-w-[350px] min-h-[600px] shadow-lg rounded-2xl p-4 border-2 border-transparent hover:border-2 hover:border-purple-600 transition duration-150">
       <div class="flex flex-col relative group">
         <div class="relative h-[400px] w-full mb-3">
           <Image
@@ -109,7 +105,7 @@ export default function EventCard({
             className=" rounded-2xl h-full transition duration-300 hover:filter hover:brightness-0 hover:grayscale-100 hover:opacity-0"
           />
 
-          {secureLocalStorage.getItem("isLoggedIn") && isRegistered==1 ? (
+          {secureLocalStorage.getItem("isLoggedIn") && isRegistered == 1 ? (
             <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
               Registered
             </div>
@@ -160,7 +156,7 @@ export default function EventCard({
           </button>
         </div>
 
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center mt-2">
           <p class="text-gray-400 text-md flex flex-row gap-2">
             <svg
               width="20px"
@@ -191,8 +187,11 @@ export default function EventCard({
             {"APRIL " + date.slice(8, 10)} <vt></vt>
             {convertTo12HourFormat(time.slice(0, 5))}
           </p>
-          <div class="text-xl flex justify-center items-center text-white font-semibold h-10 w-20 rounded-full ">
-            ₹{price}
+          <div className="flex flex-col">
+            <div class="text-xl flex justify-center items-center text-white font-semibold h-7 w-20 rounded-full ">
+              ₹{Math.ceil(price * 1.18)}
+            </div>
+            <span className="text-[8px] mx-auto text-white">Incl. of GST</span>
           </div>
         </div>
         <div class="flex flex-wrap items-center justify-start mt-2">
