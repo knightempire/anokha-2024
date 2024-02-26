@@ -17,12 +17,12 @@ import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { createHash } from "crypto";
-
+import Link from 'next/link'
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
 import ToastAlert from "../_util/ToastAlerts";
-
+import { FaIndianRupeeSign } from "react-icons/fa6";
 import WebGLApp from "../bg/WebGLApp";
 
 import TextField from "@mui/material/TextField";
@@ -258,7 +258,11 @@ export default function Register() {
         "Content-Type": "application/json",
         Authorization: `Bearer ${secureLocalStorage.getItem("registerToken")}`,
       },
-    });
+    })
+    
+    const data = await response.json();
+    console.log(data);
+    ;
 
     if (response.status === 200) {
       const data = await response.json();
@@ -439,8 +443,12 @@ export default function Register() {
                   </div>
                   <div className="flex flex-col flex-1 gap-8">
                   <div className="mx-auto">
-                    {transactionDetails === null ? "" : <div>
-                    <button onClick={() => setDialogVisible(true)} className="w-[200px] mt-2 text-black bg-blue-600 mb-1 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed">
+                    { <div>
+                      <button 
+                        onClick={() => setDialogVisible(true)} 
+                        className={`w-[200px] mt-2 text-black bg-blue-600 mb-1 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed`} disabled={transactionDetails === null}
+                    >
+
                           View Transactions
                       </button>
 
@@ -448,18 +456,49 @@ export default function Register() {
   modal
   draggable={false}
   visible={dialogVisible}
-  style={{ width: '50vw' }}
+  
+  className="w-[80%] md:w-[650px] lg:w-[850px]"
   header="Transaction History"
   onHide={() => setDialogVisible(false)}
 >
-  <div className="m-0">
+  <div className="m-0 ">
     {transactionDetails && transactionDetails.PAY_U_TRANSACTIONS.map((transaction) => (
-      <div key={transaction.txnId} >
-        <p className="text-[20px] font-bold ">Transaction ID: {transaction.txnId}</p>
-        <p>Amount: {transaction.amount}</p>
-        <p>Time of Transaction: {transaction.timeOfTransaction}</p>
-        <p>Transaction Status: {transaction.transactionStatus}</p>
-        
+      <div key={transaction.txnId} className="flex flex-col gap-y-2 md:flex-row my-5 border-2 rounded-md p-2 border-gray-600">
+        <div className="flex flex-col w-[60%] ">
+          <div className="flex gap-x-3 items-center">
+            <p className="text-[17px] font-bold">Transaction ID:</p>
+            <p className="text-[17px]">{transaction.txnId}</p>
+          </div>
+
+          <div className="flex gap-x-5 md:gap-x-10 items-center">
+            <p className="text-[17px] font-bold">Amount:</p>
+            <div className="border-2 flex items-center rounded-lg bg-green-400 font-bold text-black  px-2">
+              <p className="text-[17px]">{transaction.amount}</p>
+              <FaIndianRupeeSign className=""/>
+            </div>
+          </div>
+
+          <div className="flex gap-x-3 items-center">
+            <p className="text-[17px] font-bold">Time of Transaction:</p>
+            <p className="text-[17px]">{new Date(transaction.timeOfTransaction).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}</p>
+          </div>
+        </div>
+        <div className="flex gap-x-5 items-center justify-between">
+          <div className="text-[17px] font-bold">Transaction Status:</div>
+          {
+            transaction.transactionStatus==="0"?
+
+            <Link href="/transactions/verify/[txnid]" as={`/transactions/verify/${transaction.txnId}`} className="text-[15px] h-10 px-4   w-[30%] flex rounded-md   text-black font-bold border-2 border-black  bg-[#ffbd03] items-center justify-center">
+              <div >Verify</div>
+            </Link>:
+            transaction.transactionStatus==="1"?
+            <div className="text-[15px] h-10 px-4   w-[30%] flex rounded-md   text-black font-bold border-2 border-black  bg-[#ffbd03] items-center justify-center">Success</div>:
+            transaction.transactionStatus==="2"?
+            <div className="text-[15px] h-10 px-4   w-[30%] flex rounded-md   text-black font-bold border-2 border-black  bg-[#e25f5f] items-center justify-center">Failed</div>
+            :null
+          }
+        </div>
+         
       </div>
     ))}
   </div>
