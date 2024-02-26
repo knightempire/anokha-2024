@@ -1,14 +1,18 @@
 "use client";
 
 import Navbar from "../components/EventHeader";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, use } from "react";
 import {
   EDIT_PROFILE_URL,
   STUDENT_PROFILE_URL,
   BUY_PASSPORT_DUMMY_PAGE_URL,
   payU_Key,
-  payU_Action
+  payU_Action,ALL_TRANSACTION_URL
+
 } from "../_util/constants";
+
+import { Dialog } from 'primereact/dialog';
+        
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -73,7 +77,7 @@ export default function Register() {
         } else if (response.status === 400) {
           secureLocalStorage.clear();
           ToastAlert("error", "Error", "Access restricted!", toastRef);
-          router.push("/login");
+          
         } else if (response.status === 401) {
           ToastAlert(
             "error",
@@ -99,10 +103,39 @@ export default function Register() {
       }
     };
     getProfile();
+    
   }, [collegeCity, collegeName, router]); // Calling the function once on mount
 
-  const qrValue = `anokha://${studentID}`;
+  useEffect(()=>{
+    const getTransaction = async () =>{
+      try {
+        const response = await fetch(ALL_TRANSACTION_URL, {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${secureLocalStorage.getItem(
+              "registerToken"
+            )}`,
+          },
+        });
+        const data = await response.json();
+        console.log(data)
+        if (response.status === 200) {
+          if (data.PAY_U_TRANSACTIONS.length > 0) {
+            setTransactionDetails(data)
+          }
+          return;
+        } 
+      } catch (error) {
+        setLoading(false);
+      }
+    };
+    getTransaction();
+  },[])
+  
 
+  const qrValue = `anokha://${studentID}`;
+  const [dialogVisible,setDialogVisible] = useState(false);
   //Regular expression to check amrita mail
   const amritaRegex =
     /^[a-zA-Z0-9._%+-]+@(cb\.students\.amrita\.edu|cb\.amrita\.edu|av\.students\.amrita\.edu|av\.amrita\.edu)$/;
@@ -124,7 +157,7 @@ export default function Register() {
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
   const toastRef = useRef(null);
-
+  const [transactionDetails,setTransactionDetails] = useState(null);
   const genSHA256 = (email) => {
     return createHash("sha256").update(email).digest("hex");
   };
@@ -267,6 +300,7 @@ export default function Register() {
     }
   };
 
+
   return (
     <main className="flex min-h-screen flex-col bg-[#192032]">
       <WebGLApp colors={webGLColors} />
@@ -404,13 +438,44 @@ export default function Register() {
                     </div>
                   </div>
                   <div className="flex flex-col flex-1 gap-8">
+                  <div className="mx-auto">
+                    {transactionDetails === null ? "" : <div>
+                    <button onClick={() => setDialogVisible(true)} className="w-[200px] mt-2 text-black bg-blue-600 mb-1 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed">
+                          View Transactions
+                      </button>
+
+                      <Dialog
+  modal
+  draggable={false}
+  visible={dialogVisible}
+  style={{ width: '50vw' }}
+  header="Transaction History"
+  onHide={() => setDialogVisible(false)}
+>
+  <div className="m-0">
+    {transactionDetails && transactionDetails.PAY_U_TRANSACTIONS.map((transaction) => (
+      <div key={transaction.txnId} >
+        <p className="text-[20px] font-bold ">Transaction ID: {transaction.txnId}</p>
+        <p>Amount: {transaction.amount}</p>
+        <p>Time of Transaction: {transaction.timeOfTransaction}</p>
+        <p>Transaction Status: {transaction.transactionStatus}</p>
+        
+      </div>
+    ))}
+  </div>
+</Dialog>
+
+                    </div>}
+                      
+                      
+                    </div>
                     <div id="Fields">
                       <div
                         className={
                           secureLocalStorage.getItem("studentAccountStatus") ==
                           2
-                            ? "m-10 ml-20 mr-20 p-8 flex justify-center bg-[#ffffff] rounded-2xl"
-                            : "m-10 ml-20 mr-20 p-8 flex justify-center  bg-blue-300 text-center rounded-2xl"
+                            ? "m-6 ml-20 mr-20 p-8 flex justify-center bg-[#ffffff] rounded-2xl"
+                            : "m-6 ml-20 mr-20 p-8 flex justify-center  bg-blue-300 text-center rounded-2xl"
                         }
                       >
                         {secureLocalStorage.getItem("studentAccountStatus") ==
@@ -441,7 +506,10 @@ export default function Register() {
                         )}
                       </div>
                     </div>
+
+                    
                     <div className="text-center">
+
                       <button
                         type="submit"
                         className="w-[200px] mt-3 text-black bg-[#f69c18] mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed"

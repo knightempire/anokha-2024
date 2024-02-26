@@ -18,6 +18,7 @@ const HomePage = () => {
         },
     });
 
+    
     if (response.status === 200) {
         const data = await response.json();
         const payUData = {
