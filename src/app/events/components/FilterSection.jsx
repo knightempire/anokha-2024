@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import FilterComponent from "./filterMultiSelect";
 import FilterComponent2 from "./filterSelectButton";
 import secureLocalStorage from "react-secure-storage";
+import { ALL_TAGS_URL } from "@/app/_util/constants";
 
 export default function FilterSection({ sendcurrentFilters }) {
   const [filters, setFilters] = useState([]);
@@ -10,15 +11,42 @@ export default function FilterSection({ sendcurrentFilters }) {
   const [eventTypeList, seteventTypeList] = useState([]);
   const [participationList, setparticipationList] = useState([]);
   const [dayFilterList, setdayFilterList] = useState([]);
+  const [tagList, setTagList] = useState([]);
 
-  useState(() => {
-    setdayFilterList([]);
-    seteventTypeList([]);
-    setparticipationList([]);
-    setregFilterList([]);
-    setregFilterList([]);
-    settagslist([]);
-  });
+  useEffect(() => {
+    fetch(ALL_TAGS_URL, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.status === 401) {
+          // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
+          // openModal();
+          // Session Expired or not logged in. Clear Cache and Navigate to login screen.
+        } else if (res.status === 500) {
+          // Backend Error. Handle it.
+        } else if (res.status === 200) {
+          // Valid Request. Data has come
+          return res.json();
+        } else if (res.status === 400) {
+          // Display error message from "MESSAGE" field in data
+        } else {
+          // Unknown Error.
+        }
+      })
+      .then((data) => {
+        console.log("Recived Data:", data);
+        for (let i of data.tags) {
+          setTagList(tagList => [...tagList, i.tagName]);
+        }
+        // Set Data variables.
+      })
+      .catch((err) => {
+        // Error in Frontend Code. Handle it.
+      });
+  }, []); // This empty bracket here is important
 
   useEffect(() => {
     sendcurrentFilters(filters);
@@ -65,17 +93,7 @@ export default function FilterSection({ sendcurrentFilters }) {
         <FilterComponent
           needSearch={1}
           name={"Tags"}
-          options={[
-            "IOT",
-            "COD",
-            "CS",
-            "CYS",
-            "AI",
-            "MEC",
-            "EEE",
-            "ECE",
-            "MAT",
-          ]} //Add all possible tags here
+          options={tagList} //Add all possible tags here
           type={"tag"}
           sendSelectedOption={handleItemFromFilters}
         />
