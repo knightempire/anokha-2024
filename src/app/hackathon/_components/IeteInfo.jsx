@@ -12,27 +12,27 @@ const IeteInfo = () => {
     <div className="w-full mb-5">
       <div className="md:flex-row justify-center items-center gap-4 mx-[5%] md:mx-auto sm:flex-col">
 
-        <div className="md:w-[20%] sm:px-10 md:px-5 my-5 mx-auto">
+        {/* <div className="md:w-[20%] sm:px-10 md:px-5 my-5 mx-auto">
           <Image src={ieteLogo} alt="IETE" />
-        </div>
+        </div> */}
 
-        <div className="lg:w-[30%] mx-auto sm:w-full text-center sm:mb-4">
+        {/* <div className="lg:w-[30%] mx-auto sm:w-full text-center sm:mb-4">
           <h1>This event is managed by</h1>
           <h1 className="font-bold text-3xl">IETE SF Amrita</h1>
-        </div>
+        </div> */}
 
         <div className="lg:w-[50%] mx-auto">
           <div className="flex gap-5 justify-center">
             <div className="text-center">
-              <h1 className="font-bold">Rohit Vakada</h1>
-              <h1>90785 29969</h1>
+              <h1 className="font-bold">Balasuriya</h1>
+              <h1>9597042888</h1>
             </div>
             <div className="text-center">
               <h1 className="font-bold">Siddharth G</h1>
               <h1>94411 21941</h1>
             </div>
           </div>
-          <div className="flex justify-center align-center gap-4 my-3">
+          {/* <div className="flex justify-center align-center gap-4 my-3">
             <Link href={"https://www.instagram.com/iete_amrita/"}>
               <FaInstagram size={40} className="hover:scale-110" />
             </Link>
@@ -46,7 +46,7 @@ const IeteInfo = () => {
             <Link href={"https://discord.gg/c3hya3pn"}>
               <FaDiscord size={40} className="hover:scale-110" />
             </Link>
-          </div>
+          </div> */}
           <h1 className="text-center">
            Mail us at{" "}
             <Link href={"mailto:ietesf@cb.amrita.edu"} className="font-bold ">
