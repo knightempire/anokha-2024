@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import secureLocalStorage from "react-secure-storage";
 import WebGLApp from "@/app/bg/WebGLApp";
+import Navigationbar from "@/app/components/EventHeader";
 import { EVENT_DATA_URL } from "@/app/_util/constants";
 import { EVENT_REGISTER_STEP_ONE } from "../../_util/constants";
 import { payU_Key, payU_Action } from "../../_util/constants";
@@ -201,10 +202,11 @@ const Event = () => {
   return (
     <main className="flex min-h-screen max-h-screen flex-col bg-[#192032] text-white items-center justify-center">
       <WebGLApp colors={webGLColors} className="-z-10" />
-      <div className="h-[80%] w-[72%] z-10 flex flex-row justify-between">
+      <Navigationbar />
+      <div className="sm:h-[90%] sm:w-[80%] lg:h-[80%] lg:w-[72%] z-10 flex sm:flex-col lg:flex-row lg:justify-between">
         <div className="flex flex-col relative items-center">
           {/* Image Section */}
-          <div className="flex-none relative h-full w-[160%]">
+          <div className="flex-none relative sm:mt-96 lg:mt-0 sm:h-[512px] sm:w-full lg:h-full lg:w-[160%] ">
             <Image
               src={eventData.eventImageURL}
               layout="fill"
@@ -215,9 +217,9 @@ const Event = () => {
             />
           </div>
           {/* Register Button */}
-          <div className="flex justify-center mt-8" ref={Register}>
+          <div className="flex justify-center sm:mt-4 lg:mt-8" ref={Register}>
             <button
-              className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+              className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-4 text-center me-2 mb-2"
               onClick={() => {
                 eventData.minTeamSize != 1 && eventData.maxTeamSize != 1
                   ? setpopupvisibility(true)
@@ -229,7 +231,7 @@ const Event = () => {
           </div>
         </div>
         {/* Main Content Section */}
-        <div className="mt-5 flex flex-col overflow-y-auto h-[500px] pr-10">
+        <div className="mt-4 flex flex-col overflow-y-auto h-[500px] sm:pr-4 lg:pr-10">
           <div className="font-bold text-5xl mb-2" ref={Title}>
             {eventData.eventName}
           </div>
