@@ -84,7 +84,7 @@ const Event = () => {
           setEventData(data);
           setTeamSize(data.minTeamSize);
           setTeamIfEqual(data.minTeamSize);
-          data.seatsFilled == data.maxSeats
+          data.seatsFilled == data.maxSeats || data.isRegistered == 1
             ? setDisableRegister(true)
             : setDisableRegister(false);
           // Trigger GSAP animations once data is fetched and rendered
