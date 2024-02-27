@@ -1,24 +1,28 @@
 "use client";
 
 import Navbar from "../components/EventHeader";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, use } from "react";
 import {
   EDIT_PROFILE_URL,
   STUDENT_PROFILE_URL,
   BUY_PASSPORT_DUMMY_PAGE_URL,
   payU_Key,
-  payU_Action,
+  payU_Action,ALL_TRANSACTION_URL
+,
 } from "../_util/constants";
+
+import { Dialog } from 'primereact/dialog';
+        
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { createHash } from "crypto";
-
+import Link from 'next/link'
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
 import ToastAlert from "../_util/ToastAlerts";
-
+import { FaIndianRupeeSign } from "react-icons/fa6";
 import WebGLApp from "../bg/WebGLApp";
 
 import TextField from "@mui/material/TextField";
@@ -31,6 +35,9 @@ export default function Register() {
   const [email, setEmail] = useState(
     secureLocalStorage.getItem("registerEmail")
   );
+  const [registerToken, setRegisterToken] = useState(
+    secureLocalStorage.getItem("registerToken")
+  )
   const [phone, setPhone] = useState(
     secureLocalStorage.getItem("studentPhone")
   );
@@ -57,9 +64,7 @@ export default function Register() {
           method: "GET",
           headers: {
             "Content-type": "application/json",
-            Authorization: `Bearer ${secureLocalStorage.getItem(
-              "registerToken"
-            )}`,
+            "Authorization": `Bearer ${registerToken}`,
           },
         });
 
@@ -79,11 +84,12 @@ export default function Register() {
             "studentAccountStatus",
             data.studentAccountStatus
           );
+          console.log(secureLocalStorage.getItem("studentAccountStatus"));
           return;
         } else if (response.status === 400) {
           secureLocalStorage.clear();
           ToastAlert("error", "Error", "Access restricted!", toastRef);
-          router.push("/login");
+          
         } else if (response.status === 401) {
           ToastAlert(
             "error",
@@ -109,10 +115,39 @@ export default function Register() {
       }
     };
     getProfile();
+    
   }, [collegeCity, collegeName, router]); // Calling the function once on mount
 
-  const qrValue = `anokha://${studentID}`;
+  useEffect(()=>{
+    const getTransaction = async () =>{
+      try {
+        const response = await fetch(ALL_TRANSACTION_URL, {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${secureLocalStorage.getItem(
+              "registerToken"
+            )}`,
+          },
+        });
+        const data = await response.json();
+        console.log(data)
+        if (response.status === 200) {
+          if (data.PAY_U_TRANSACTIONS.length > 0) {
+            setTransactionDetails(data)
+          }
+          return;
+        } 
+      } catch (error) {
+        setLoading(false);
+      }
+    };
+    getTransaction();
+  },[])
+  
 
+  const qrValue = `anokha://${studentID}`;
+  const [dialogVisible,setDialogVisible] = useState(false);
   //Regular expression to check amrita mail
   const amritaRegex =
     /^[a-zA-Z0-9._%+-]+@(cb\.students\.amrita\.edu|cb\.amrita\.edu|av\.students\.amrita\.edu|av\.amrita\.edu)$/;
@@ -134,7 +169,7 @@ export default function Register() {
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
   const toastRef = useRef(null);
-
+  const [transactionDetails,setTransactionDetails] = useState(null);
   const genSHA256 = (email) => {
     return createHash("sha256").update(email).digest("hex");
   };
@@ -236,9 +271,10 @@ export default function Register() {
         Authorization: `Bearer ${secureLocalStorage.getItem("registerToken")}`,
       },
     });
-
+    const data = await response.json();
+   
     if (response.status === 200) {
-      const data = await response.json();
+      
       const payUData = {
         key: payU_Key,
         txnid: data["txnid"],
@@ -272,10 +308,33 @@ export default function Register() {
       payUForm.submit();
 
       setMessage("Called PayU API to make payment.");
-    } else {
-      console.log("Error");
+    } else if (response.status === 400) {
+      secureLocalStorage.clear();
+      ToastAlert("error", "Error", data.MESSAGE, toastRef);
+      
+    } else if (response.status === 401) {
+      ToastAlert(
+        "error",
+        "Unauthorized Access",
+        "Please login and try again.",
+        toastRef
+      );
+      secureLocalStorage.clear();
+      setTimeout(() => {
+        router.push("/");
+      }, 1500);
+    } else if (response.status === 500) {
+      ToastAlert(
+        "error",
+        "Internal Server Error",
+        "Oops! Please try again.",
+        toastRef
+      );
+      return;
     }
+    
   };
+
 
   return (
     <main className="flex min-h-screen flex-col bg-[#192032]">
@@ -414,13 +473,79 @@ export default function Register() {
                     </div>
                   </div>
                   <div className="flex flex-col flex-1 gap-8">
+                  <div className="mx-auto">
+                    { <div>
+                      <button 
+                        onClick={() => setDialogVisible(true)} 
+                        className={`w-[200px] mt-2 text-black bg-blue-600 mb-1 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed`} disabled={transactionDetails === null}
+                    >
+
+                          View Transactions
+                      </button>
+
+                      <Dialog
+  modal
+  draggable={false}
+  visible={dialogVisible}
+  
+  className="w-[80%] md:w-[650px] lg:w-[850px]"
+  header="Transaction History"
+  onHide={() => setDialogVisible(false)}
+>
+  <div className="m-0 ">
+    {transactionDetails && transactionDetails.PAY_U_TRANSACTIONS.map((transaction) => (
+      <div key={transaction.txnId} className="flex flex-col gap-y-2 md:flex-row my-5 border-2 rounded-md p-2 border-gray-600">
+        <div className="flex flex-col w-[60%] ">
+          <div className="flex gap-x-3 items-center">
+            <p className="text-[17px] font-bold">Transaction ID:</p>
+            <p className="text-[17px]">{transaction.txnId}</p>
+          </div>
+
+          <div className="flex gap-x-5 md:gap-x-10 items-center">
+            <p className="text-[17px] font-bold">Amount:</p>
+            <div className="border-2 flex items-center rounded-lg bg-green-400 font-bold text-black  px-2">
+              <p className="text-[17px]">{transaction.amount}</p>
+              <FaIndianRupeeSign className=""/>
+            </div>
+          </div>
+
+          <div className="flex gap-x-3 items-center">
+            <p className="text-[17px] font-bold">Time of Transaction:</p>
+            <p className="text-[17px]">{new Date(transaction.timeOfTransaction).toLocaleString("en-IN", { timeZone: "Asia/Kolkata" })}</p>
+          </div>
+        </div>
+        <div className="flex gap-x-5 items-center justify-between">
+          <div className="text-[17px] font-bold">Transaction Status:</div>
+          {
+            transaction.transactionStatus==="0"?
+
+            <Link href="/transactions/verify/[txnid]" as={`/transactions/verify/${transaction.txnId}`} className="text-[15px] h-10 px-4   w-[30%] flex rounded-md   text-black font-bold border-2 border-black  bg-[#ffbd03] items-center justify-center">
+              <div >Verify</div>
+            </Link>:
+            transaction.transactionStatus==="1"?
+            <div className="text-[15px] h-10 px-4   w-[30%] flex rounded-md   text-black font-bold border-2 border-black  bg-[#ffbd03] items-center justify-center">Success</div>:
+            transaction.transactionStatus==="2"?
+            <div className="text-[15px] h-10 px-4   w-[30%] flex rounded-md   text-black font-bold border-2 border-black  bg-[#e25f5f] items-center justify-center">Failed</div>
+            :null
+          }
+        </div>
+         
+      </div>
+    ))}
+  </div>
+</Dialog>
+
+                    </div>}
+                      
+                      
+                    </div>
                     <div id="Fields">
                       <div
                         className={
                           secureLocalStorage.getItem("studentAccountStatus") ==
                           2
-                            ? "m-10 ml-20 mr-20 p-8 flex justify-center bg-[#ffffff] rounded-2xl"
-                            : "m-10 ml-20 mr-20 p-8 flex justify-center  bg-blue-300 text-center rounded-2xl"
+                            ? "m-6 ml-20 mr-20 p-8 flex justify-center bg-[#ffffff] rounded-2xl"
+                            : "m-6 ml-20 mr-20 p-8 flex justify-center  bg-blue-300 text-center rounded-2xl"
                         }
                       >
                         {secureLocalStorage.getItem("studentAccountStatus") ==
@@ -451,7 +576,10 @@ export default function Register() {
                         )}
                       </div>
                     </div>
+
+                    
                     <div className="text-center">
+
                       <button
                         type="submit"
                         className="w-[200px] mt-3 text-black bg-[#f69c18] mb-2 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-gray-400 disabled:cursor-not-allowed"

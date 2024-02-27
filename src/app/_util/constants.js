@@ -1,11 +1,12 @@
 const BASE_URL = "https://web.abhinavramakrishnan.tech/api";
 //const BASE_URL = "http://localhost:5000/api";
+//const BASE_URL = "https://anokha.amrita.edu/api";
 const HACKATHON_URL = "https://web.abhinavramakrishnan.tech/api/intel";
 
 
 export const payU_Key = process.env.NEXT_PUBLIC_IS_PRODUCTION === '1' ? process.env.NEXT_PUBLIC_PAY_U_KEY_PROD : process.env.NEXT_PUBLIC_PAY_U_KEY_TEST ;
 export const payU_Action = process.env.NEXT_PUBLIC_IS_PRODUCTION === '1' ? 'https://secure.payu.in/_payment' : 'https://test.payu.in/_payment'
-
+export const ALL_TRANSACTION_URL = BASE_URL + "/user/getAllTransactions";
 export const EDIT_PROFILE_URL = BASE_URL+"/user/editStudentProfile";
 export const STUDENT_PROFILE_URL = BASE_URL+"/user/getStudentProfile";
 export const LOGIN_URL = BASE_URL + "/auth/loginStudent";

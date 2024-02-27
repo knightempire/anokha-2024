@@ -20,8 +20,19 @@ const Themes = () => {
         ["Gen-AI based Ecommerce Personalized Recommendation system", "The field of recommendation systems is intriguing and continuously advancing within this track. Your task involves creating a chatbot capable of: (1) Engaging in goal-oriented conversations with users, comprehending their requirements, and expressing them in a specialized query language. (2) Integrating the query from step (1) into a recommendation system, and subsequently presenting the user with pertinent product recommendations."],
         ["Github Repository navigator", "Offering a real-time solution for comprehending a developer's problem statements (prompts), this tool goes beyond mere keyword-based generation. It analyzes entire GitHub repositories to provide relevant recommendations and offers a workflow when the solution requires more than a single repository."],
         ["Bring Your Designs to Life", "Craft an application that seamlessly translates your design concepts into live front-end code, ensuring a direct correlation between what you envision and the end result."],
+        ["Bridging Communication Gaps: Sign Language Translation AI", "This AI solution aims to facilitate real-time translation of sign language into spoken language or text, thereby enhancing accessibility for the deaf and hard of hearing individuals."],
         ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
       ],
+    },
+    {
+      text: "Energy",
+      problemStatements:[
+        ["Solar Panel Optimization","Develop an AI-powered algorithm that automatically positions and angles solar panels for maximum energy capture, considering shade, weather patterns, and local topography."],
+        ["E-waste to Renewable Energy Integration", "Design an AI model to identify, categorize, and streamline e-waste components for efficient recycling and integration into renewable energy systems."],
+        ["AI-powered Power Grid Risk Assessment", "Develop AI methods to accurately assess the risk of power grid failure under various disturbances like heat waves, wind events, and extreme weather phenomena."],
+        ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
+      ]
+
     },
     {
       text: "Internet Of Things",
@@ -37,7 +48,7 @@ const Themes = () => {
       problemStatements: [
         ["Multimodal Mental Health Assessment", "With increasing number of mental health related concerns, tools for early detection of deteriorating mental health and depression is necessary to maintain a healthy community. In this track, you are tasked to build a multimodal mental health assessment suite, that analyzes the mental health condition of an individual by  (1) Analyzing the video of the person. Specifically, by analyzing facial expressions and body language. (2) Analyzing the audio of the person. (3) You may also utilize some standard scales available for mental health assessment to support your model. Develop an innovative approach for mental health assessment by combining NLP analysis of patient interviews and written responses with CV analysis of facial expressions and body language. The system should provide a nuanced understanding of mental health conditions, aiding in more accurate diagnostics and treatment planning."], ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
     ],
-     
+
     },
     {
       text: "Open Ended",
@@ -51,6 +62,8 @@ const Themes = () => {
         ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."],
       ],
     },
+    
+  
   ];
 
   const data = [
@@ -122,9 +135,10 @@ const Themes = () => {
         <div id="tabbed-component" className="pt-10 sm:px-2 md:w-fit sm:w-full flex flex-wrap justify-center mb-2 mx-0 my-5 rounded bg-opacity-20 bg-white md:gap-6 sm:gap-2 ">
  
             <Button label="Generative AI" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 0 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(0)}/>
-            <Button label="Internet of Things" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 1 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(1)}/>
-            <Button label="HealthCare" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 2 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(2)}/>
-            <Button label="Open Ended" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 3 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(3)}/>
+            <Button label="Energy" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 0 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(1)}/>
+            <Button label="Internet of Things" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 1 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(2)}/>
+            <Button label="HealthCare" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 2 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(3)}/>
+            <Button label="Open Ended" className={`before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 pl-5 pr-5 ${selectedTab === 3 ? "border-white border-2" : ""}`} onClick={() => handleTabClick(4)}/>
 
             {data.map((val, index) => (
               <div

@@ -4,6 +4,8 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { STAR_UNSTAR_EVENT_URL } from "@/app/_util/constants";
 import secureLocalStorage from "react-secure-storage";
+import { FaUserGroup } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa";
 
 export default function EventCard({
   imgSrc,
@@ -93,9 +95,9 @@ export default function EventCard({
   }
 
   return (
-    <div class="bg-[rgba(0,0,0,0.3)] backdrop-blur-lg max-w-[350px] min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-purple-600 transition duration-150">
-      <div class="flex flex-col relative group">
-        <div class="relative h-[400px] w-full mb-3">
+    <div className="bg-[rgba(0,0,0,0.3)] backdrop-blur-lg max-w-[350px] min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-purple-600 transition duration-150">
+      <div className="flex flex-col relative group">
+        <div className="relative h-[400px] w-full mb-3">
           <Image
             src={imgSrc}
             width={400}
@@ -104,15 +106,17 @@ export default function EventCard({
             alt="https://i.imgur.com/iQy8GLM.jpg"
             className=" rounded-2xl h-full transition duration-300 hover:filter hover:brightness-0 hover:grayscale-100 hover:opacity-0"
           />
-
           {secureLocalStorage.getItem("isLoggedIn") && isRegistered == 1 ? (
             <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
               Registered
             </div>
+          ) : seats == maxseats ? (
+            <div class="absolute top-2 left-2 p-1 text-xs text-red-800 font-semibold border border-white rounded-lg bg-red-100">
+              Registrations Closed
+            </div>
           ) : (
             ""
           )}
-
           <div class=" absolute rounded-2xl inset-0 bg-black bg-opacity-80 text-white p-3 text-center opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-center items-center">
             <span>{eventDesc}</span>
             <div class="flex justify-center mt-3">
@@ -155,7 +159,6 @@ export default function EventCard({
             </svg>
           </button>
         </div>
-
         <div class="flex justify-between items-center mt-2">
           <p class="text-gray-400 text-md flex flex-row gap-2">
             <svg
@@ -185,7 +188,17 @@ export default function EventCard({
               </g>
             </svg>
             {"APRIL " + date.slice(8, 10)} <vt></vt>
-            {convertTo12HourFormat(time.slice(0, 5))}
+            {goi == "1" ? (
+              <div className="flex flex-row gap-2 mt-1">
+                <FaUserGroup />
+                <span className="font-normal text-xs mt-1">Group</span>
+              </div>
+            ) : (
+              <div className="flex flex-row gap-2 mt-1">
+                <FaUser />
+                <span className="font-normal text-xs mt-1">Individual</span>
+              </div>
+            )}
           </p>
           <div className="flex flex-col">
             <div class="text-xl flex justify-center items-center text-white font-semibold h-7 w-20 rounded-full ">
@@ -210,23 +223,22 @@ export default function EventCard({
             })}
           </div>
         </div>
-
         {/* <script>
-            const tags = document.querySelectorAll('.tag');
-        
-            tags.forEach(tag => {
-                let originalText = tag.innerText; // Store the original text content of the tag
-        
-                tag.addEventListener('mouseover', () => {
-                    const abbreviation = tag.getAttribute('data-title');
-                    tag.innerText = abbreviation;
-                });
-        
-                tag.addEventListener('mouseout', () => {
-                    tag.innerText = originalText; // Restore the original text content of the tag
-                });
-            });
-        </script> */}
+              const tags = document.querySelectorAll('.tag');
+      
+              tags.forEach(tag => {
+                  let originalText = tag.innerText; // Store the original text content of the tag
+      
+                  tag.addEventListener('mouseover', () => {
+                      const abbreviation = tag.getAttribute('data-title');
+                      tag.innerText = abbreviation;
+                  });
+      
+                  tag.addEventListener('mouseout', () => {
+                      tag.innerText = originalText; // Restore the original text content of the tag
+                  });
+              });
+          </script> */}
       </div>
     </div>
   );

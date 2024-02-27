@@ -19,19 +19,17 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
 
   const availThemes = [
     { code: "0", val: "GenAI" },
-    { code: "1", val: "IOT" },
-    { code: "2", val: "Healthcare" },
-    { code: "3", val: "AutonomousVehicles" },
-    { code: "4", val: "CyberSecurity" },
-    { code: "5", val: "OpenEnded" },
+    { code: "1", val: "Energy" },
+    { code: "2", val: "IOT" },
+    { code: "3", val: "Healthcare" },
+    { code: "4", val: "OpenEnded" },
   ];
   const ThemeCode = {
     0: "GenAI",
-    1: "IOT",
-    2: "Healthcare",
-    3: "AutonomousVehicles",
-    4: "CyberSecurity",
-    5: "OpenEnded",
+    1: "Energy",
+    2: "IOT",
+    3: "Healthcare",
+    4: "OpenEnded",
   };
   const [gitLink, setGitLink] = useState(roundOneSubmission[0]["githubLink"]);
   const [ytLink, setYTLink] = useState(

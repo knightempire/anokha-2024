@@ -28,7 +28,7 @@ const Events = () => {
 
   const tagsFunction = (eventData) => {
     for (let i of eventData.tags) {
-      if (TagsFilter.includes(i.tagAbbreviation)) {
+      if (TagsFilter.includes(i.tagName)) {
         return true;
       }
       console.log(i);
@@ -70,7 +70,14 @@ const Events = () => {
         )
       );
     }
-  }, [groupFilter, TypeFilter, DayFilter, TechFilter, RegisteredFilter, TagsFilter]);
+  }, [
+    groupFilter,
+    TypeFilter,
+    DayFilter,
+    TechFilter,
+    RegisteredFilter,
+    TagsFilter,
+  ]);
 
   const hanldeCurrentFilters = (filters) => {
     let grpCode = -1;
@@ -111,13 +118,13 @@ const Events = () => {
           evetypeCode -= 1;
           break;
         case "01":
-          Days.push("2021-02-26");
+          Days.push("2024-04-04");
           break;
         case "02":
-          Days.push("2021-03-02");
+          Days.push("2024-04-05");
           break;
         case "03":
-          Days.push("2021-02-28");
+          Days.push("2024-04-06");
           break;
         default:
           Tags.push(i);
@@ -187,18 +194,6 @@ const Events = () => {
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
 
-  // const [webGLColors, setWebGLColors] = useState({
-  //   color1: [45 / 255, 35 / 255, 25 / 255], // Dark Brown
-  //   color2: [222 / 255, 184 / 255, 135 / 255], // Burlywood
-  //   color3: [35 / 255, 25 / 255, 15 / 255], // Dark Chocolate
-  // });
-
-  // const [webGLColors, setWebGLColors] = useState({
-  //   color1: [55 / 255, 45 / 255, 30 / 255], // Dark Bronze
-  //   color2: [222 / 255, 177 / 255, 108 / 255], // Goldenrod
-  //   color3: [45 / 255, 35 / 255, 20 / 255], // Dark Coffee
-  // });
-
   return (
     <main className="flex min-h-screen flex-col bg-[#192032]">
       <WebGLApp colors={webGLColors} className="-z-10" />
@@ -234,7 +229,6 @@ const Events = () => {
                         maxseats={event.maxSeats}
                         seats={event.seatsFilled}
                         router={router}
-
                       />
                     </Link>
                   </div>

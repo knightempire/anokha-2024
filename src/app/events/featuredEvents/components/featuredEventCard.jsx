@@ -4,6 +4,8 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { STAR_UNSTAR_EVENT_URL } from "@/app/_util/constants";
 import secureLocalStorage from "react-secure-storage";
+import { FaUserGroup } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa";
 
 export default function EventCard({
   imgSrc,
@@ -43,8 +45,7 @@ export default function EventCard({
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer " + secureLocalStorage.getItem("registerToken"),
+        Authorization: "Bearer " + secureLocalStorage.getItem("registerToken"),
       },
       body: JSON.stringify({
         eventId: id,
@@ -94,12 +95,12 @@ export default function EventCard({
   }
 
   return (
-    <div class="bg-[rgba(0,0,0,0.3)] backdrop-blur-lg min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-orange-400 transition duration-150 overflow-hidden shiny">
+    <div class="bg-[rgba(0,0,0,0.3)] backdrop-blur-lg min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-orange-400 transition duration-150 overflow-hidden shiny">
       <div class="shiny-overlay"></div>
       <div class="flex flex-col relative group">
         <div class="relative h-[400px] w-full mb-3">
           <Image
-            src={"https://i.imgur.com/iQy8GLM.jpg"}
+            src={imgSrc}
             width={400}
             height={400}
             objectFit="contain"
@@ -107,7 +108,7 @@ export default function EventCard({
             class=" rounded-2xl h-full transition duration-300 hover:filter hover:brightness-0 hover:grayscale-100 hover:opacity-0"
           />
 
-          {secureLocalStorage.getItem("isLoggedIn") && isRegistered==1 ? (
+          {secureLocalStorage.getItem("isLoggedIn") && isRegistered == 1 ? (
             <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
               Registered
             </div>
@@ -121,7 +122,7 @@ export default function EventCard({
               <div class="flex justify-center mt-3">
                 <div class="flex space-x-2 text-sm font-medium">
                   <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
-                    <span>Register</span>
+                    <span>Opening Soon</span>
                   </button>
                 </div>
               </div>
@@ -159,7 +160,7 @@ export default function EventCard({
         </div>
 
         <div class="flex justify-between items-center">
-        <p class="text-gray-400 text-md flex flex-row gap-2">
+          <p class="text-gray-400 text-md flex flex-row gap-2">
             <svg
               width="20px"
               height="20px"
@@ -187,10 +188,23 @@ export default function EventCard({
               </g>
             </svg>
             {"APRIL " + date.slice(8, 10)} <vt></vt>
-            {convertTo12HourFormat(time.slice(0, 5))}
+            {goi == "1" ? (
+              <div className="flex flex-row gap-2 mt-1">
+                <FaUserGroup />
+                <span className="font-normal text-xs mt-1">Group</span>
+              </div>
+            ) : (
+              <div className="flex flex-row gap-2 mt-1">
+                <FaUser />
+                <span className="font-normal text-xs mt-1">Individual</span>
+              </div>
+            )}
           </p>
-          <div class="text-xl flex justify-center items-center text-white font-semibold h-10 w-20 rounded-full ">
-            ₹{price}
+          <div className="flex flex-col">
+            <div class="text-xl flex justify-center items-center text-white font-semibold h-7 w-20 rounded-full ">
+              ₹{Math.ceil(price * 1.18)}
+            </div>
+            <span className="text-[8px] mx-auto text-white">Incl. of GST</span>
           </div>
         </div>
         <div class="flex flex-wrap items-center justify-start mt-2">

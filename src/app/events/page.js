@@ -202,8 +202,8 @@ const Events = () => {
         <div className="mx-10 pt-10 mt-12 mb-5">
           <FilterSection sendcurrentFilters={hanldeCurrentFilters} />
         </div>
-        <div className="flex flex-col gap-5 justify-center items-center mx-10">
-          <div className="grid mb-10 z-10 grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="flex flex-col gap-5 justify-center items-center mx-10 md:min-h-[20px] lg:min-h-[160px]">
+          <div className="grid mb-10 z-10 grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
             {eventsData && eventsData.length > 0 ? (
               filteredData.map((event) => {
                 return (
