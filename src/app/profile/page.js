@@ -575,7 +575,7 @@ export default function Register() {
                         className={
                           secureLocalStorage.getItem("studentAccountStatus") ==
                           2
-                            ? "sm:m-2 lg:m-6 ml-20 mr-20 p-8 flex justify-center bg-[#ffffff] rounded-2xl"
+                            ? "sm:m-2 lg:m-6 ml-20 mr-20 p-8  flex justify-center bg-[#ffffff] rounded-2xl"
                             : "m-6 ml-20 mr-20 p-8 flex justify-center  bg-blue-300 text-center rounded-2xl"
                         }
                       >
