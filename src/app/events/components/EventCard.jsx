@@ -4,6 +4,8 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { STAR_UNSTAR_EVENT_URL } from "@/app/_util/constants";
 import secureLocalStorage from "react-secure-storage";
+import { FaUserGroup } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa";
 
 export default function EventCard({
   imgSrc,
@@ -112,7 +114,9 @@ export default function EventCard({
             <div class="absolute top-2 left-2 p-1 text-xs text-red-800 font-semibold border border-white rounded-lg bg-red-100">
               Registrations Closed
             </div>
-          ) : ""}
+          ) : (
+            ""
+          )}
           <div class=" absolute rounded-2xl inset-0 bg-black bg-opacity-80 text-white p-3 text-center opacity-0 group-hover:opacity-100 transition duration-300 flex flex-col justify-center items-center">
             <span>{eventDesc}</span>
             <div class="flex justify-center mt-3">
@@ -184,7 +188,17 @@ export default function EventCard({
               </g>
             </svg>
             {"APRIL " + date.slice(8, 10)} <vt></vt>
-            {convertTo12HourFormat(time.slice(0, 5))}
+            {goi == "1" ? (
+              <div className="flex flex-row gap-2 mt-1">
+                <FaUserGroup />
+                <span className="font-normal text-xs mt-1">Group</span>
+              </div>
+            ) : (
+              <div className="flex flex-row gap-2 mt-1">
+                <FaUser />
+                <span className="font-normal text-xs mt-1">Individual</span>
+              </div>
+            )}
           </p>
           <div className="flex flex-col">
             <div class="text-xl flex justify-center items-center text-white font-semibold h-7 w-20 rounded-full ">

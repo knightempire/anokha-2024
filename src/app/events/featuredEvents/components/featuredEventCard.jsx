@@ -94,7 +94,7 @@ export default function EventCard({
   }
 
   return (
-    <div class="bg-[rgba(0,0,0,0.3)] backdrop-blur-lg min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-transparent hover:border-2 hover:border-orange-400 transition duration-150 overflow-hidden shiny">
+    <div class="bg-[rgba(0,0,0,0.3)] backdrop-blur-lg min-h-[600px] shadow-lg rounded-xl p-4 border-2 border-orange-400 transition duration-150 overflow-hidden shiny">
       <div class="shiny-overlay"></div>
       <div class="flex flex-col relative group">
         <div class="relative h-[400px] w-full mb-3">
@@ -187,7 +187,17 @@ export default function EventCard({
               </g>
             </svg>
             {"APRIL " + date.slice(8, 10)} <vt></vt>
-            {convertTo12HourFormat(time.slice(0, 5))}
+            {goi == "1" ? (
+              <div className="flex flex-row gap-2 mt-1">
+                <FaUserGroup />
+                <span className="font-normal text-xs mt-1">Group</span>
+              </div>
+            ) : (
+              <div className="flex flex-row gap-2 mt-1">
+                <FaUser />
+                <span className="font-normal text-xs mt-1">Individual</span>
+              </div>
+            )}
           </p>
           <div className="flex flex-col">
             <div class="text-xl flex justify-center items-center text-white font-semibold h-7 w-20 rounded-full ">
