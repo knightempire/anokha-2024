@@ -3,19 +3,19 @@ import React from "react";
 const TimelineInstruct = () => {
   const phases = [
     {
-      title: "Feb 15th - 29th",
+      title: "Feb 15th - Mar 7th",
       description: "Registrations and submissions for first round",
     },
     {
-      title: "March 2nd",
+      title: "March 7th",
       description: "Announcement for shortlisted teams for 2nd round (prototype)",
     },
     {
-      title: "March 2nd to 20th",
+      title: "March 7th to 23rd",
       description: "Prototype development",
     },
     {
-      title: "March 22nd",
+      title: "March 23rd",
       description: "Announcement for the shortlisted teams for offline round",
     },
     {
