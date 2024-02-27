@@ -52,11 +52,10 @@ function RoundOne({ theme_val, theme, problem_val, problem, next }) {
                   Select a Theme
                 </option>
                 <option value={0}>Generative AI</option>
-                <option value={1}>Internet of Things (IOT)</option>
-                <option value={2}>Health Care</option>
-                <option value={3}>Autonomous Vehicles</option>
-                <option value={4}>Cyber Security</option>
-                <option value={5}>Open Ended</option>
+                <option value={1}>Energy</option>
+                <option value={2}>Internet of Things (IOT)</option>
+                <option value={3}>Health Care</option>
+                <option value={4}>Open Ended</option>
               </select>
 
               <div className="mt-7">
