@@ -283,7 +283,7 @@ const Event = () => {
                   ? setpopupvisibility(true)
                   : getPayUForm();
               }}
-              disabled={disableRegister}
+              disabled={true}
             >
               Registerations Opening Soon
             </button>
