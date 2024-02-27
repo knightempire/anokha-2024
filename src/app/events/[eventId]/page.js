@@ -164,8 +164,8 @@ const Event = () => {
           totalMembers: TeamSize,
           isMarketPlacePaymentMode: "0",
           teamName: TeamName,
-          teamMembers: Emails,
-          memberRoles: memberRoles,
+          teamMembers: Emails.slice(1),
+          memberRoles: memberRoles.slice(1),
         }),
       });
       const data = await response.json();
