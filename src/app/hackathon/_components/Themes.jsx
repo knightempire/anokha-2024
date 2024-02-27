@@ -48,7 +48,7 @@ const Themes = () => {
       problemStatements: [
         ["Multimodal Mental Health Assessment", "With increasing number of mental health related concerns, tools for early detection of deteriorating mental health and depression is necessary to maintain a healthy community. In this track, you are tasked to build a multimodal mental health assessment suite, that analyzes the mental health condition of an individual by  (1) Analyzing the video of the person. Specifically, by analyzing facial expressions and body language. (2) Analyzing the audio of the person. (3) You may also utilize some standard scales available for mental health assessment to support your model. Develop an innovative approach for mental health assessment by combining NLP analysis of patient interviews and written responses with CV analysis of facial expressions and body language. The system should provide a nuanced understanding of mental health conditions, aiding in more accurate diagnostics and treatment planning."], ["Other Problem Statements","Participants are free to choose any AI/ML related problem statement which comes under this theme."]
     ],
-     
+
     },
     {
       text: "Open Ended",
