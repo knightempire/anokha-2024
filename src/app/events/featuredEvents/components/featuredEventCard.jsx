@@ -99,7 +99,7 @@ export default function EventCard({
       <div class="flex flex-col relative group">
         <div class="relative h-[400px] w-full mb-3">
           <Image
-            src={"https://i.imgur.com/iQy8GLM.jpg"}
+            src={imgSrc}
             width={400}
             height={400}
             objectFit="contain"
@@ -121,7 +121,7 @@ export default function EventCard({
               <div class="flex justify-center mt-3">
                 <div class="flex space-x-2 text-sm font-medium">
                   <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
-                    <span>Register</span>
+                    <span>Opening Soon</span>
                   </button>
                 </div>
               </div>
@@ -189,8 +189,11 @@ export default function EventCard({
             {"APRIL " + date.slice(8, 10)} <vt></vt>
             {convertTo12HourFormat(time.slice(0, 5))}
           </p>
-          <div class="text-xl flex justify-center items-center text-white font-semibold h-10 w-20 rounded-full ">
-            ₹{price}
+          <div className="flex flex-col">
+            <div class="text-xl flex justify-center items-center text-white font-semibold h-7 w-20 rounded-full ">
+              ₹{Math.ceil(price * 1.18)}
+            </div>
+            <span className="text-[8px] mx-auto text-white">Incl. of GST</span>
           </div>
         </div>
         <div class="flex flex-wrap items-center justify-start mt-2">

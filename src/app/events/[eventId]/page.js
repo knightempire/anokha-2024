@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/router";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,7 +23,6 @@ import validator from "validator";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useParams } from "next/navigation";
-import customScrollBarStyle from "../components/eventScrollbar.css";
 
 const Event = () => {
   const [eventData, setEventData] = useState(null);
@@ -36,6 +36,7 @@ const Event = () => {
   ]);
   const [memberRoles, setMemberRoles] = useState(["Team Leader"]);
   const [Team, setTeam] = useState([]);
+  const [disableRegister, setDisableRegister] = useState(false);
 
   const { eventId } = useParams();
   console.log("Event ID:", eventId);
@@ -78,9 +79,13 @@ const Event = () => {
           }
         })
         .then((data) => {
+          console.log("Data ; ", data);
           setEventData(data);
           setTeamSize(data.minTeamSize);
           setTeamIfEqual(data.minTeamSize);
+          data.seatsFilled == data.maxSeats
+            ? setDisableRegister(true)
+            : setDisableRegister(false);
           // Trigger GSAP animations once data is fetched and rendered
           let tl = gsap.timeline();
           tl.from(Poster.current, { opacity: 0, duration: 0.3 });
@@ -201,6 +206,8 @@ const Event = () => {
       } else if (response.status === 400) {
         console.log(data);
         ToastAlert("error", "Registration Failed", `${data.MESSAGE}`, toastRef);
+      } else if (response.status === 401) {
+        window.location.href = "/login";
       } else {
         ToastAlert("error", "Registration Failed", `${data.MESSAGE}`, toastRef);
       }
@@ -268,12 +275,13 @@ const Event = () => {
           {/* Register Button */}
           <div className="flex justify-center mt-8" ref={Register}>
             <button
-              className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+              className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 disabled:cursor-not-allowed"
               onClick={() => {
                 eventData.minTeamSize != 1 && eventData.maxTeamSize != 1
                   ? setpopupvisibility(true)
                   : getPayUForm();
               }}
+              disabled={disableRegister}
             >
               Registerations Opening Soon
             </button>
@@ -351,12 +359,12 @@ const Event = () => {
         header="Register Team"
         onHide={() => setpopupvisibility(false)}
         draggable={false}
-        className={`sm:w-[90%] md:w-[50%] bg-white ${customScrollBarStyle}`}
+        className={`sm:w-[90%] md:w-[50%] bg-white`}
       >
         <div className="flex flex-col py-10 items-center justify-center mx-auto">
           <div className="w-full rounded-md mt-5 xl:p-0 bg-white">
             <div className="mx-10 mb-10 px-1 lg:px-10">
-              <div>
+              <div className="font-bold flex justify-end">
                 {eventData.maxTeamSize == eventData.minTeamSize
                   ? "Team size - " + eventData.minTeamSize
                   : "Team size " +

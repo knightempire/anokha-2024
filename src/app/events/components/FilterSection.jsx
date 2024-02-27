@@ -38,8 +38,9 @@ export default function FilterSection({ sendcurrentFilters }) {
       })
       .then((data) => {
         console.log("Recived Data:", data);
+        setTagList([]);
         for (let i of data.tags) {
-          setTagList(tagList => [...tagList, i.tagName]);
+          setTagList((tagList) => [...tagList, i.tagName]);
         }
         // Set Data variables.
       })
@@ -79,7 +80,7 @@ export default function FilterSection({ sendcurrentFilters }) {
   };
   return (
     <div className="p-5">
-      <div className="flex flex-row justify-center items-center space-x-2 flex-wrap">
+      <div className="flex flex-row justify-center items-center space-x-2 flex-wrap space-y-2">
         {/* All of the following should be Dropdown-Checkbox Components*/}
         {/* Select Day: "01" | "02" | "03"; */}
         <FilterComponent
