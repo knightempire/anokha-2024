@@ -226,6 +226,7 @@ const Events = () => {
                             ? event.isRegistered
                             : -1
                         }
+                        isStarred={event.isStarred}
                         maxseats={event.maxSeats}
                         seats={event.seatsFilled}
                         router={router}

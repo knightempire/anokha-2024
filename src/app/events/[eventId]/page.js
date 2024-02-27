@@ -84,7 +84,7 @@ const Event = () => {
           setEventData(data);
           setTeamSize(data.minTeamSize);
           setTeamIfEqual(data.minTeamSize);
-          data.seatsFilled == data.maxSeats
+          data.seatsFilled == data.maxSeats || data.isRegistered == 1
             ? setDisableRegister(true)
             : setDisableRegister(false);
           // Trigger GSAP animations once data is fetched and rendered
@@ -164,8 +164,8 @@ const Event = () => {
           totalMembers: TeamSize,
           isMarketPlacePaymentMode: "0",
           teamName: TeamName,
-          teamMembers: Emails,
-          memberRoles: memberRoles,
+          teamMembers: Emails.slice(1),
+          memberRoles: memberRoles.slice(1),
         }),
       });
       const data = await response.json();

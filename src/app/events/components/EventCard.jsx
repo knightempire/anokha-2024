@@ -20,6 +20,7 @@ export default function EventCard({
   price,
   isAllowed,
   isRegistered,
+  isStarred,
   maxseats,
   seats,
   router,
@@ -36,11 +37,12 @@ export default function EventCard({
       parseInt(secureLocalStorage.getItem("hasActivePassport"))
     );
     setSecretToken(secureLocalStorage.getItem("registerToken"));
+    toggleStar(isStarred);
   }, []);
 
   const [starred, toggleStar] = useState(0);
   const [tagAbb, setTagAbb] = useState(-1);
-  useEffect(() => {
+  const toggleStarBackend = () => {
     fetch(STAR_UNSTAR_EVENT_URL, {
       method: "POST",
       headers: {
@@ -49,7 +51,7 @@ export default function EventCard({
       },
       body: JSON.stringify({
         eventId: id, // eg. "eventId": 1,
-        isStarred: starred ? "1" : "0", // "1" -> Star Event. "0" -> Unstar Event. eg. "isStarred": "1"
+        isStarred: starred ? "0" : "1", // "1" -> Star Event. "0" -> Unstar Event. eg. "isStarred": "1"
       }),
     })
       .then((res) => {
@@ -74,11 +76,11 @@ export default function EventCard({
       .catch((err) => {
         // Error in Frontend Code. Handle it.
       });
-  }, [starred]);
-
+  };
   const handleStarToggle = (e) => {
     e.preventDefault();
     toggleStar(!starred);
+    toggleStarBackend();
   };
 
   const toogleTag = (e, i) => {
