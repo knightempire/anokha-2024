@@ -44,7 +44,7 @@ const Timeline = () => {
             title: "Round 1: Ideation",
       description:
 "During this initial phase, participants are tasked with brainstorming ideas centred around the provided problem statements. They are required to submit a PowerPoint presentation along with a concise description that clearly explains the proposed concept, with specific reference to the Intel toolkit employed.",
-        Date: "February 15th - 29th"
+        Date: "February 15th - March 7th"
 
 
 },
@@ -52,7 +52,7 @@ const Timeline = () => {
             title: "Round 2: Prototype Development",
       description:
 "The resources essential for building with OneAPI can be found in the learning resources section. Prototypes are to be shared through GitHub repositories, with a link to DevMesh."
-,Date: "March 2nd - 20th"    
+,Date: "March 7th - 23th"    
 },
     {
             title: "Round 3: Final Round",
