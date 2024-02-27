@@ -4,6 +4,8 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { STAR_UNSTAR_EVENT_URL } from "@/app/_util/constants";
 import secureLocalStorage from "react-secure-storage";
+import { FaUserGroup } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa";
 
 export default function EventCard({
   imgSrc,
@@ -43,8 +45,7 @@ export default function EventCard({
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          "Bearer " + secureLocalStorage.getItem("registerToken"),
+        Authorization: "Bearer " + secureLocalStorage.getItem("registerToken"),
       },
       body: JSON.stringify({
         eventId: id,
@@ -107,7 +108,7 @@ export default function EventCard({
             class=" rounded-2xl h-full transition duration-300 hover:filter hover:brightness-0 hover:grayscale-100 hover:opacity-0"
           />
 
-          {secureLocalStorage.getItem("isLoggedIn") && isRegistered==1 ? (
+          {secureLocalStorage.getItem("isLoggedIn") && isRegistered == 1 ? (
             <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
               Registered
             </div>
@@ -159,7 +160,7 @@ export default function EventCard({
         </div>
 
         <div class="flex justify-between items-center">
-        <p class="text-gray-400 text-md flex flex-row gap-2">
+          <p class="text-gray-400 text-md flex flex-row gap-2">
             <svg
               width="20px"
               height="20px"
