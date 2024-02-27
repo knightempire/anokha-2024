@@ -21,7 +21,7 @@ const navLinks = [
   },
   {
     title: "Eventide",
-    path: "/eventide",
+    path: "/comingSoon",
   },
   {
     title: "Hackathon",

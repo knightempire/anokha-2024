@@ -83,13 +83,15 @@ export default function FilterSection({ sendcurrentFilters }) {
       <div className="flex flex-row justify-center items-center space-x-2 flex-wrap space-y-2">
         {/* All of the following should be Dropdown-Checkbox Components*/}
         {/* Select Day: "01" | "02" | "03"; */}
-        <FilterComponent
-          needSearch={0}
-          name={"Day"}
-          options={["01", "02", "03"]}
-          type={"day"}
-          sendSelectedOption={handleItemFromFilters}
-        />
+        <div className="mt-[8px] ml-[8px]">
+          <FilterComponent
+            needSearch={0}
+            name={"Day"}
+            options={["01", "02", "03"]}
+            type={"day"}
+            sendSelectedOption={handleItemFromFilters}
+          />
+        </div>
         {/* Select Tags: <Bunch of tag options> */}
         <FilterComponent
           needSearch={1}
