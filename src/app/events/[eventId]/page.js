@@ -12,7 +12,10 @@ import WebGLApp from "@/app/bg/WebGLApp";
 import Navigationbar from "@/app/components/EventHeader";
 
 import { EVENT_DATA_URL, STAR_UNSTAR_EVENT_URL } from "@/app/_util/constants";
-import { EVENT_REGISTER_STEP_ONE, REGISTERED_EVENT_URL,} from "../../_util/constants";
+import {
+  EVENT_REGISTER_STEP_ONE,
+  REGISTERED_EVENT_URL,
+} from "../../_util/constants";
 
 import { payU_Key, payU_Action } from "../../_util/constants";
 import Markdown from "markdown-to-jsx";
@@ -141,12 +144,19 @@ const Event = () => {
           console.log("Data ; ", data);
           setEventData(data);
           setTeamSize(data.minTeamSize);
-          setTeamIfEqual(data.minTeamSize); 
-          if(secureLocalStorage.getItem("isLoggedIn") == "1"?
-          toggleStar(typeof data?.isStarred == "string" ? parseInt(data.isStarred) : 0):0)
-          data.seatsFilled == data.maxSeats
-            ? setDisableRegister(true)
-            : setDisableRegister(false);
+          setTeamIfEqual(data.minTeamSize);
+          if (
+            secureLocalStorage.getItem("isLoggedIn") == "1"
+              ? toggleStar(
+                  typeof data?.isStarred == "string"
+                    ? parseInt(data.isStarred)
+                    : 0
+                )
+              : 0
+          )
+            data.seatsFilled == data.maxSeats
+              ? setDisableRegister(true)
+              : setDisableRegister(false);
           if (data.isRegistered == "1") {
             await registeredEvent(data);
             console.log("############");
@@ -380,7 +390,7 @@ const Event = () => {
     <main className="flex min-h-screen max-h-screen flex-col bg-[#192032] text-white items-center justify-center">
       <WebGLApp colors={webGLColors} className="-z-10" />
       <Navigationbar />
-      <div className="sm:h-[90%] sm:w-[80%] lg:h-[80%] lg:w-[72%] z-10 flex sm:flex-col lg:flex-row lg:justify-between md:gap-24 lg:gap-32 sm:mt-[34rem] md:mt-[24rem] lg:mt-0">
+      <div className="sm:h-[90%] sm:w-[90%] lg:h-[80%] lg:w-[72%] z-10 flex sm:flex-col lg:flex-row lg:justify-between md:gap-24 lg:gap-32 sm:mt-[34rem] md:mt-[24rem] lg:mt-0">
         <div className="flex flex-col relative items-center">
           {/* Image Section */}
           <div className="flex-none relative sm:h-[32rem] sm:w-full lg:h-full lg:w-[150%] rounded-xl">
