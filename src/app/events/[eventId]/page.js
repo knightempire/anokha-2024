@@ -10,7 +10,7 @@ import { Toast } from "primereact/toast";
 import secureLocalStorage from "react-secure-storage";
 import WebGLApp from "@/app/bg/WebGLApp";
 import Navigationbar from "@/app/components/EventHeader";
-import { EVENT_DATA_URL } from "@/app/_util/constants";
+import { EVENT_DATA_URL, STAR_UNSTAR_EVENT_URL } from "@/app/_util/constants";
 import { EVENT_REGISTER_STEP_ONE } from "../../_util/constants";
 import { payU_Key, payU_Action } from "../../_util/constants";
 import Markdown from "markdown-to-jsx";
@@ -116,6 +116,60 @@ const Event = () => {
       setLoading(false);
     }
   }, [eventId]);
+
+  useEffect(() => {
+    eventData?.isStarred != undefined || eventData?.isStarred != null
+      ? toggleStar(eventData?.isStarred)
+      : toggleStar(0);
+  }, []);
+
+  const toggleStarBackend = () => {
+    fetch(STAR_UNSTAR_EVENT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ` + secureLocalStorage.getItem("registerToken"),
+      },
+      body: JSON.stringify({
+        eventId: eventId, // eg. "eventId": 1,
+        isStarred: starred == 0 ? "1" : "0", // "1" -> Star Event. "0" -> Unstar Event. eg. "isStarred": "1"
+      }),
+    })
+      .then((res) => {
+        if (res.status === 401) {
+          // buildDialog('Error', 'You are not logged in!\nPlease Login to continue.', 'Okay');
+          // openModal();
+          // Session Expired or not logged in. Clear Cache and Navigate to login screen.
+        } else if (res.status === 500) {
+          // Backend Error. Handle it.
+        } else if (res.status === 200) {
+          // Valid Request. Data has come
+          return res.json();
+        } else if (res.status === 400) {
+          // Display error message from "MESSAGE" field in data
+        } else {
+          // Unknown Error.
+        }
+      })
+      .then((data) => {
+        // Set Data variables.
+      })
+      .catch((err) => {
+        // Error in Frontend Code. Handle it.
+      });
+  };
+
+  const [starred, toggleStar] = useState(
+    typeof eventData?.isStarred == "string" ? parseInt(eventData.isStarred) : 0
+  );
+
+  const handleStarToggle = (e) => {
+    e.preventDefault();
+    toggleStar(starred == 0 ? 1 : 0);
+    secureLocalStorage.getItem("isLoggedIn") == "1"
+      ? toggleStarBackend()
+      : toggleStar(starred == 0 ? 1 : 0);
+  };
 
   console.log("Event Data:", eventData);
 
@@ -288,6 +342,30 @@ const Event = () => {
             >
               Registerations Opening Soon
             </button>
+            <div className="flex justify-center items-center ml-4">
+              <button
+                onClick={handleStarToggle}
+                id="heartButton2"
+                class="transition ease-in duration-300 bg-gray-800 hover:text-red-500 bg-red shadow hover:shadow-md text-gray-500 rounded-full w-8 h-8 text-center p-1"
+              >
+                <svg
+                  id="heartSVG2"
+                  class="h-6 w-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke={starred == 0 ? "currentColor" : "rgb(239, 68, 68)"}
+                >
+                  <path
+                    id="heartPath2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    fill={starred == 0 ? "none" : "rgb(239, 68, 68)"}
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
         {/* Main Content Section */}
