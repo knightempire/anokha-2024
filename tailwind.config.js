@@ -16,6 +16,9 @@ module.exports = {
         "custom-down": "5px 5px 10px rgba(0, 0, 0, 0.6)", // Define your custom shadow here
         "custom-up": "5px -5px 10px rgba(0, 0, 0, 0.6)", // Define your custom shadow here
       },
+      fontFamily: {
+        roobert: ["Roobert-Regular", "sans-serif"],
+      },
     },
 
     screens: {

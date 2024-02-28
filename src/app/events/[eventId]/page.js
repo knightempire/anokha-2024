@@ -261,10 +261,10 @@ const Event = () => {
     <main className="flex min-h-screen max-h-screen flex-col bg-[#192032] text-white items-center justify-center">
       <WebGLApp colors={webGLColors} className="-z-10" />
       <Navigationbar />
-      <div className="sm:h-[90%] sm:w-[80%] lg:h-[80%] lg:w-[72%] z-10 flex sm:flex-col lg:flex-row lg:justify-between sm:mt-[36rem] lg:mt-0">
+      <div className="sm:h-[90%] sm:w-[80%] lg:h-[80%] lg:w-[72%] z-10 flex sm:flex-col lg:flex-row lg:justify-between md:gap-24 lg:gap-32 sm:mt-[34rem] md:mt-[24rem] lg:mt-0">
         <div className="flex flex-col relative items-center">
           {/* Image Section */}
-          <div className="flex-none relative sm:h-[32rem] sm:w-full lg:h-full lg:w-[160%]">
+          <div className="flex-none relative sm:h-[32rem] sm:w-full lg:h-full lg:w-[150%] rounded-xl">
             <Image
               src={eventData.eventImageURL}
               layout="fill"
@@ -272,6 +272,7 @@ const Event = () => {
               objectFit="contain"
               objectPosition="center"
               ref={Poster}
+              className="rounded-xl"
             />
           </div>
           {/* Register Button */}

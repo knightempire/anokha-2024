@@ -50,9 +50,9 @@ gallery = {
   ],
   row2: [
     "https://i.imgur.com/EWdfaYj.jpg",
-    "https://i.imgur.com/uEtxZMb.jpg",
-    "https://i.imgur.com/0IvtFJG.jpg",
     "https://i.imgur.com/qI4UYV7.jpg",
+    "https://i.imgur.com/0IvtFJG.jpg",
+    "https://i.imgur.com/uEtxZMb.jpg",
     "https://i.imgur.com/uieA2G8.jpg",
     "https://i.imgur.com/AbUjXL8.jpg",
     "https://i.imgur.com/59VI4bH.jpg",
