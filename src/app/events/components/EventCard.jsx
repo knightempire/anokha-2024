@@ -55,7 +55,7 @@ export default function EventCard({
       },
       body: JSON.stringify({
         eventId: id, // eg. "eventId": 1,
-        isStarred: starred == 0 ? "0" : "1", // "1" -> Star Event. "0" -> Unstar Event. eg. "isStarred": "1"
+        isStarred: starred == 0 ? "1" : "0", // "1" -> Star Event. "0" -> Unstar Event. eg. "isStarred": "1"
       }),
     })
       .then((res) => {
