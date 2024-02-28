@@ -147,14 +147,14 @@ export default function EventCard({
           <button
             onClick={handleStarToggle}
             id="heartButton2"
-            class="transition ease-in duration-300 bg-gray-800 hover:text-red-500 shadow hover:shadow-md text-gray-500 rounded-full w-8 h-8 text-center p-1"
+            class="transition ease-in duration-300 bg-gray-800 hover:text-red-500 bg-red shadow hover:shadow-md text-gray-500 rounded-full w-8 h-8 text-center p-1"
           >
             <svg
               id="heartSVG2"
               class="h-6 w-6"
               fill="currentColor"
               viewBox="0 0 24 24"
-              stroke="currentColor"
+              stroke={starred == 0 ? "currentColor" : "rgb(239, 68, 68)"}
             >
               <path
                 id="heartPath2"
@@ -162,7 +162,7 @@ export default function EventCard({
                 stroke-linejoin="round"
                 stroke-width="2"
                 d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                fill={starred == 0 ? "none" : "currentColor"}
+                fill={starred == 0 ? "none" : "rgb(239, 68, 68)"}
               />
             </svg>
           </button>
