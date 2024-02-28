@@ -54,17 +54,19 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
   useEffect(() => {
     setThemeCode(roundOneSubmission[0]["theme"]);
     setCanSubmit(0);
-  }, [router, themeCode]);
+  }, [router]);
 
   useEffect(() => {
     for (let i in ThemeCode) {
       if (ThemeCode[i] == theme) {
         console.log(i.toString());
         setThemeCode(i.toString());
-        console.log(themeCode);
+        break;
       }
     }
   }, [theme]);
+
+
   useEffect(() => {
     if (
       gitLink == roundOneSubmission[0]["githubLink"] &&
@@ -78,7 +80,7 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
     } else {
       setCanSubmit(1);
     }
-  }, [probStatement, theme, gitLink, ytLink, devMeshLink, pptLink]);
+  }, [probStatement, theme, gitLink, ytLink, devMeshLink, pptLink, themeCode]);
 
   const handleSubmit = async () => {
     const response = await fetch(HACKATHON_EDIT_FIRST_ROUND_SUBMISSION_URL, {
