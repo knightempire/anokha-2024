@@ -41,10 +41,10 @@ export default function Page({ router }) {
         setTeamName(details.teamName);
         setNoOfMembers(details.totalMembers);
         let platformType;
-        if (details.platformType=="1") platformType = "Anokha"
-        else if (details.platformType=="2") platformType = "Devfolio"
-        else if (details.platformType=="3") platformType = "Unstop"
-        else if (details.platformType=="4") platformType = "Devpost"
+        if (details.platformType == "1") platformType = "Anokha";
+        else if (details.platformType == "2") platformType = "Devfolio";
+        else if (details.platformType == "3") platformType = "Unstop";
+        else if (details.platformType == "4") platformType = "Devpost";
         setPlatform(platformType);
         setPlatformID(details.platformId);
         setTeamMembers(details.teamMembers);
@@ -112,10 +112,10 @@ export default function Page({ router }) {
   };
 
   return (
-    <div className=" min-h-screen relative bg-[rgb(10,17,58)] overflow-hidden">
+    <div className=" min-h-screen relative bg-[rgb(10,17,58)] sm:overflow-x-auto lg:overflow-hidden">
       <Navigationbar />
-      <main className="absolute w-full h-full flex flex-row gap-4 top-[90px]">
-        <div className="w-[50%] mx-auto my-12 lg:my-15">
+      <main className="absolute w-full h-full flex sm:flex-col lg:flex-row gap-4 top-[90px]">
+        <div className="sm:w-[100%] lg:w-[50%] mx-auto my-12 lg:my-15">
           <TeamDetails
             teamName={teamName}
             noOfMembers={noOfMembers}
@@ -125,7 +125,7 @@ export default function Page({ router }) {
             teamStatus={teamStatus}
           />
         </div>
-        <div className="justify-end w-[50%] bg-[#172786] px-3 flex-1">
+        <div className="justify-end sm:w-[100%] lg:w-[50%] bg-[#172786] px-3 flex-1">
           <div className="flex flex-row justify-evenly">
             <button className="bg-[#0a113a] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg">
               Round 1

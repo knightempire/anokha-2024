@@ -170,7 +170,7 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
       </div>
       <div className="bg-[#0a113a] text-white rounded-xl p-6 w-full h-full mx-auto pt-1">
         <div className="flex flex-row mx-auto justify-between">
-          <p className="text-center mb-8 text-xl ml-[30%] mt-3">
+          <p className="text-center mb-8 text-xl lg:ml-[30%] mt-3">
             Problem Statements & Submission
           </p>
           {editable ? (
@@ -182,7 +182,7 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
             <MdEdit onClick={(e) => setEditable(!editable)} className="mt-2" />
           )}
         </div>
-        <div className="flex flex-row gap-4">
+        <div className="flex sm:flex-col sm:justify-center sm:items-center lg:flex-row gap-4">
           <Dropdown
             disabled={!editable}
             value={theme}
