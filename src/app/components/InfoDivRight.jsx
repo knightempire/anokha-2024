@@ -175,7 +175,7 @@ const Card = ({ title, description, src }) => {
     const tl1 = gsap.timeline({
       scrollTrigger: {
         trigger: phoneContainer.current,
-        start: "-10% 50%", // Adjust the start value to start the animation earlier
+        start: "-10% 50%",
         end: "120% 10%",
         scrub: true,
       },
@@ -262,9 +262,9 @@ const Card = ({ title, description, src }) => {
 
   return (
     <div>
-      <div className="pc-view lg:flex xl:flex md:hidden sm:hidden h-screen items-center justify-center sticky top-10">
+      <div className="pc-view lg:flex xl:flex md:hidden sm:hidden h-screen items-center justify-center sticky top-10 font-roobert">
         <div
-          className="flex flex-col relative -top-20 h-[73vh] w-[65vw] bg-[#121212]  b rounded-xl transform origin-top my-10 top-5"
+          className="flex flex-col relative -top-20 h-[73vh] w-[65vw] bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl transform origin-top my-10 top-5"
           ref={container}
         >
           <div className="flex absolute top-[35%] -right-[12%] text-white text-6xl z-10 rounded-xl">
@@ -317,20 +317,21 @@ const Card = ({ title, description, src }) => {
           </div>
           <div className="grid relative grid-cols-[5%,40%,55%] w-full h-full text-white text-md">
             <div></div>
-            <div className="flex flex-col justify-center items-center text-justify bg-gray-600 bg-opacity-10 rounded-xl p-4 my-10">
-              {description}
+            <div className="flex justify-center items-center h-full">
+              <div className="flex justify-center items-center text-justify bg-gray-600 bg-opacity-10 rounded-xl p-6 mt-6 mb-10">
+                {description}
+              </div>
             </div>
-            <div className="flex flex-col justify-center items-center"></div>
           </div>
         </div>
       </div>
 
       <div className="mobile-view xl:hidden lg:hidden md:flex sm:flex h-screen items-center justify-center sticky overflow-hidden top-10 pt-10">
         <div
-          className="flex flex-col relative -top-20 h-[80vh] w-[90vw] bg-[#121212] rounded-xl transform origin-top my-10 top-5"
+          className="flex flex-col relative -top-20 h-[80vh] w-[90vw] bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl transform origin-top my-10 top-5"
           ref={phoneContainer}
         >
-          <div className="flex relative top-[8%] text-white text-4xl z-10 w-full justify-center">
+          <div className="flex relative top-[8%] text-white text-4xl z-10 w-full justify-center flex-wrap">
             {title}
           </div>
           <div
@@ -368,8 +369,10 @@ const Card = ({ title, description, src }) => {
           </div>
           <div className="grid relative grid-rows-[10%,90%] w-full h-full text-white text-sm">
             <div className="flex flex-col justify-center items-center"></div>
-            <div className="flex flex-col justify-center items-center text-justify bg-gray-600 bg-opacity-10 rounded-xl p-4 m-10">
-              {description}
+            <div className="flex justify-center items-center h-full my-4 mt-2">
+              <div className="flex justify-center items-center text-justify rounded-xl p-6 mt-6 mb-10">
+                {description}
+              </div>
             </div>
           </div>
         </div>

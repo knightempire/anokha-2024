@@ -7,6 +7,11 @@
   src: url(/fonts/Roobert-Regular.ttf);
 }
 
+@font-face {
+  font-family: "Spin-cycle";
+  src: url("/fonts/SPINC___.TTF");
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Oswald");
 
 @import url("https://fonts.googleapis.com/css2?family=Blinker:wght@600&family=Monoton&display=swap");
