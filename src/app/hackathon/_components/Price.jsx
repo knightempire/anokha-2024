@@ -70,7 +70,7 @@ export default function Price() {
               Last Date To Register
               <br />
               <span className="font-bold text-center text-[2rem]">
-                7 March 2024
+                7th March 2024
               </span>
             </div>
           </div>
