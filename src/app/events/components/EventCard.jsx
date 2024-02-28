@@ -37,10 +37,14 @@ export default function EventCard({
       parseInt(secureLocalStorage.getItem("hasActivePassport"))
     );
     setSecretToken(secureLocalStorage.getItem("registerToken"));
-    toggleStar(isStarred);
+    isStarred != undefined || isStarred != null
+      ? toggleStar(isStarred)
+      : toggleStar(0);
   }, []);
 
-  const [starred, toggleStar] = useState(0);
+  const [starred, toggleStar] = useState(
+    typeof isStarred == "string" ? parseInt(isStarred) : 0
+  );
   const [tagAbb, setTagAbb] = useState(-1);
   const toggleStarBackend = () => {
     fetch(STAR_UNSTAR_EVENT_URL, {
@@ -51,7 +55,7 @@ export default function EventCard({
       },
       body: JSON.stringify({
         eventId: id, // eg. "eventId": 1,
-        isStarred: starred ? "0" : "1", // "1" -> Star Event. "0" -> Unstar Event. eg. "isStarred": "1"
+        isStarred: starred == 0 ? "0" : "1", // "1" -> Star Event. "0" -> Unstar Event. eg. "isStarred": "1"
       }),
     })
       .then((res) => {
@@ -79,8 +83,10 @@ export default function EventCard({
   };
   const handleStarToggle = (e) => {
     e.preventDefault();
-    toggleStar(!starred);
-    toggleStarBackend();
+    toggleStar(starred == 0 ? 1 : 0);
+    secureLocalStorage.getItem("isLoggedIn") == "1"
+      ? toggleStarBackend()
+      : toggleStar(starred == 0 ? 1 : 0);
   };
 
   const toogleTag = (e, i) => {
