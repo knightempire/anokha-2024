@@ -141,7 +141,9 @@ const Event = () => {
           console.log("Data ; ", data);
           setEventData(data);
           setTeamSize(data.minTeamSize);
-          setTeamIfEqual(data.minTeamSize);
+          setTeamIfEqual(data.minTeamSize); 
+          if(secureLocalStorage.getItem("isLoggedIn") == "1"?
+          toggleStar(typeof data?.isStarred == "string" ? parseInt(data.isStarred) : 0):0)
           data.seatsFilled == data.maxSeats
             ? setDisableRegister(true)
             : setDisableRegister(false);
@@ -223,9 +225,7 @@ const Event = () => {
       });
   };
 
-  const [starred, toggleStar] = useState(
-    typeof eventData?.isStarred == "string" ? parseInt(eventData.isStarred) : 0
-  );
+  const [starred, toggleStar] = useState(0);
 
   const handleStarToggle = (e) => {
     e.preventDefault();
