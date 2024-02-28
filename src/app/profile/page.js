@@ -593,11 +593,12 @@ export default function Register() {
                           <div>
                             <div>
                               Buy passport to register for events and
-                              participate
+                              participate <br /> (Opening Soon)
                             </div>
                             <button
-                              className="px-4 py-2 rounded-xl mt-[30px] bg-blue-400"
+                              className="px-4 py-2 rounded-xl mt-[30px] bg-blue-400 cursor-not-allowed"
                               onClick={() => handlePassportClick()}
+                              disabled="true"
                             >
                               Buy Passport
                             </button>
