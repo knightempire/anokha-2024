@@ -65,13 +65,13 @@ const FilmGallery = () => {
     });
 
     tl.to(Phrow1.current, {
-      x: -700,
+      x: -600,
       duration: 2,
     });
     tl.to(
       Phrow2.current,
       {
-        x: 700,
+        x: 600,
         duration: 2,
       },
       "-=2"

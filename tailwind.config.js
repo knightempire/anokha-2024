@@ -18,6 +18,7 @@ module.exports = {
       },
       fontFamily: {
         roobert: ["Roobert-Regular", "sans-serif"],
+        spincycle: ["Spin-cycle", "sans-serif"],
       },
     },
 
