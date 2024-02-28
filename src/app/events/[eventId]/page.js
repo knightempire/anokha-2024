@@ -11,7 +11,10 @@ import secureLocalStorage from "react-secure-storage";
 import WebGLApp from "@/app/bg/WebGLApp";
 import Navigationbar from "@/app/components/EventHeader";
 import { EVENT_DATA_URL } from "@/app/_util/constants";
-import { EVENT_REGISTER_STEP_ONE } from "../../_util/constants";
+import {
+  EVENT_REGISTER_STEP_ONE,
+  REGISTERED_EVENT_URL,
+} from "../../_util/constants";
 import { payU_Key, payU_Action } from "../../_util/constants";
 import Markdown from "markdown-to-jsx";
 import { Dialog } from "primereact/dialog";
@@ -32,12 +35,11 @@ const Event = () => {
   const [popupvisible, setpopupvisibility] = useState(false);
   const [TeamName, setTeamName] = useState("");
   const [TeamSize, setTeamSize] = useState("");
-  const [Emails, setEmails] = useState([
-    secureLocalStorage.getItem("registerEmail"),
-  ]);
-  const [memberRoles, setMemberRoles] = useState(["Team Leader"]);
+  const [Emails, setEmails] = useState([]);
+  const [memberRoles, setMemberRoles] = useState([]);
   const [Team, setTeam] = useState([]);
   const [disableRegister, setDisableRegister] = useState(false);
+  const [registeredData, setRegisteredData] = useState(null);
 
   const { eventId } = useParams();
   console.log("Event ID:", eventId);
@@ -64,13 +66,19 @@ const Event = () => {
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
 
-  useEffect(() => {
-    if (eventId) {
-      fetch(`${EVENT_DATA_URL}/${eventId}`, {
-        method: "GET",
+  const registeredEvent = async (currEventData) => {
+    try {
+      await fetch(REGISTERED_EVENT_URL, {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${secureLocalStorage.getItem(
+            "registerToken"
+          )}`,
         },
+        body: JSON.stringify({
+          registrationId: currEventData.registrationId,
+        }),
       })
         .then((res) => {
           if (res.ok) {
@@ -80,13 +88,70 @@ const Event = () => {
           }
         })
         .then((data) => {
+          console.log("Registered Data ; ", data);
+          setRegisteredData(data);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    setTeamSize(registeredData?.team?.length);
+    setTeam([]);
+    setEmails([]);
+    setMemberRoles([]);
+    for (let i = 0; i < registeredData?.team?.length; i++) {
+      console.log(
+        "%%%%%",
+        registeredData?.team[i]?.studentEmail,
+        registeredData?.team[i]?.roleDescription
+      );
+      setTeam((prevTeam) => [...prevTeam, i]);
+      setEmails((prevEmails) => [
+        ...prevEmails,
+        registeredData?.team[i].studentEmail,
+      ]);
+      setMemberRoles((prevMemberRoles) => [
+        ...prevMemberRoles,
+        registeredData?.team[i].roleDescription,
+      ]);
+    }
+    return;
+  }, [registeredData]);
+
+  useEffect(() => {
+    if (eventId) {
+      fetch(`${EVENT_DATA_URL}/${eventId}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${secureLocalStorage.getItem(
+            "registerToken"
+          )}`,
+        },
+      })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            throw new Error(`Error: ${res.statusText}`);
+          }
+        })
+        .then(async (data) => {
           console.log("Data ; ", data);
           setEventData(data);
           setTeamSize(data.minTeamSize);
           setTeamIfEqual(data.minTeamSize);
-          data.seatsFilled == data.maxSeats || data.isRegistered == 1
+          data.seatsFilled == data.maxSeats
             ? setDisableRegister(true)
             : setDisableRegister(false);
+          if (data.isRegistered == "1") {
+            await registeredEvent(data);
+            console.log("############");
+            console.log(Team, Emails, memberRoles);
+          } else {
+          }
           // Trigger GSAP animations once data is fetched and rendered
           let tl = gsap.timeline();
           tl.from(Poster.current, { opacity: 0, duration: 0.3 });
@@ -220,10 +285,11 @@ const Event = () => {
 
   const HandleTeamRegister = async (e) => {
     e.preventDefault();
+    console.log(Team, Emails, memberRoles);
     let isValidEmails = true;
-    for (let i of Emails) {
+    for (let i = 1; i < Emails.length; i++) {
       console.log(i);
-      if (!validator.isEmail(i)) {
+      if (!validator.isEmail(Emails[i])) {
         isValidEmails = false;
         break;
       }
@@ -279,13 +345,26 @@ const Event = () => {
             <button
               className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-4 text-center me-2 mb-2  disabled:cursor-not-allowed"
               onClick={() => {
-                eventData.minTeamSize != 1 && eventData.maxTeamSize != 1
+                secureLocalStorage.getItem("isLoggedIn") == "0" ||
+                secureLocalStorage.getItem("isLoggedIn") == undefined ||
+                secureLocalStorage.getItem("isLoggedIn") == null
+                  ? (window.location.href = "/login")
+                  : eventData.minTeamSize != 1 && eventData.maxTeamSize != 1
                   ? setpopupvisibility(true)
-                  : getPayUForm();
+                  : eventData.isRegistered != undefined &&
+                    eventData.isRegistered == "0"
+                  ? getPayUForm()
+                  : "";
               }}
-              disabled={true}
+              disabled={false}
             >
-              Registerations Opening Soon
+              {secureLocalStorage.getItem("isLoggedIn") == "0" ||
+              secureLocalStorage.getItem("isLoggedIn") == undefined ||
+              secureLocalStorage.getItem("isLoggedIn") == null
+                ? "Login to register"
+                : eventData.isRegistered == "0"
+                ? "Registerations Opening Soon"
+                : "View Registration"}
             </button>
           </div>
         </div>
@@ -339,7 +418,6 @@ const Event = () => {
             Description
           </h2>
           <br />
-          {console.log("Markdown content:", eventData.eventMarkdownDescription)}
           <div className={showFullText ? "" : "line-clamp-[4]"} ref={Desc}>
             <Markdown className="prose dark:prose-invert">
               {eventData.eventMarkdownDescription}
@@ -406,7 +484,11 @@ const Event = () => {
                               ? secureLocalStorage.getItem("registerEmail")
                               : Emails[member] || ""
                           }
-                          disabled={member === 0 ? true : false}
+                          disabled={
+                            member === 0 || eventData.isRegistered == "1"
+                              ? true
+                              : false
+                          }
                           style={{ width: "100%" }}
                         />
                         <label htmlFor={`email_${member}`}>
@@ -427,7 +509,11 @@ const Event = () => {
                               ? "Team Leader"
                               : memberRoles[member] || ""
                           }
-                          disabled={member === 0 ? true : false}
+                          disabled={
+                            member === 0 || eventData.isRegistered == "1"
+                              ? true
+                              : false
+                          }
                           style={{ width: "100%" }}
                         />
                         <label htmlFor={`role_${member}`}>
@@ -438,7 +524,8 @@ const Event = () => {
                   ))}
 
                   <div className="w-full flex  sm:flex-col lg:flex-row gap-3 justify-center pb-3">
-                    {eventData.minTeamSize != eventData.maxTeamSize ? (
+                    {eventData.minTeamSize != eventData.maxTeamSize &&
+                    eventData.isRegistered == "0" ? (
                       <Button
                         label="Add Member"
                         onClick={handleAddMem}
@@ -450,7 +537,8 @@ const Event = () => {
                     ) : (
                       ""
                     )}
-                    {eventData.minTeamSize != eventData.maxTeamSize ? (
+                    {eventData.minTeamSize != eventData.maxTeamSize &&
+                    eventData.isRegistered == "0" ? (
                       <Button
                         label="Remove Member"
                         onClick={hanndleRemoveMem}
@@ -464,15 +552,19 @@ const Event = () => {
                     )}
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  onClick={HandleTeamRegister}
-                  className={
-                    "w-full text-black bg-[#f69c18] mt-6 hover:bg-[#f69c18] focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
-                  }
-                >
-                  Register
-                </button>
+                {eventData.isRegistered == "0" ? (
+                  <button
+                    type="submit"
+                    onClick={HandleTeamRegister}
+                    className={
+                      "w-full text-black bg-[#f69c18] mt-6 hover:bg-[#f69c18] focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center "
+                    }
+                  >
+                    Register
+                  </button>
+                ) : (
+                  ""
+                )}
               </form>
             </div>
           </div>
