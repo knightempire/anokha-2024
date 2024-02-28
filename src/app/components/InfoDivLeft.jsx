@@ -316,8 +316,10 @@ const Card = ({ title, description, src }) => {
           </div>
           <div className="grid relative grid-cols-[55%,40%] w-full h-full text-white text-md">
             <div className="flex flex-col justify-center items-center"></div>
-            <div className="flex flex-col justify-center items-center text-justify bg-gray-600 bg-opacity-10 rounded-xl p-4 mt-6 mb-10">
-              {description}
+            <div className="flex justify-center items-center h-full">
+              <div className="flex justify-center items-center text-justify bg-gray-600 bg-opacity-10 rounded-xl p-6 mt-6 mb-10">
+                {description}
+              </div>
             </div>
           </div>
         </div>
@@ -328,7 +330,7 @@ const Card = ({ title, description, src }) => {
           className="flex flex-col relative -top-20 h-[80vh] w-[90vw] bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl transform origin-top my-10 top-5"
           ref={phoneContainer}
         >
-          <div className="flex relative top-[8%] text-white text-4xl z-10 w-full justify-center">
+          <div className="flex relative top-[8%] text-white text-4xl z-10 w-full justify-center flex-wrap">
             {title}
           </div>
           <div
@@ -366,8 +368,10 @@ const Card = ({ title, description, src }) => {
           </div>
           <div className="grid relative grid-rows-[10%,90%] w-full h-full text-white text-sm">
             <div className="flex flex-col justify-center items-center"></div>
-            <div className="flex flex-col justify-center items-center text-justify bg-gray-600 bg-opacity-10 rounded-xl p-4 m-10">
-              {description}
+            <div className="flex justify-center items-center h-full my-4 mt-2">
+              <div className="flex justify-center items-center text-justify rounded-xl p-6 mt-6 mb-10">
+                {description}
+              </div>
             </div>
           </div>
         </div>
