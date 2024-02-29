@@ -85,7 +85,7 @@ const Events = () => {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     console.log("DAY: ", DayFilter);
