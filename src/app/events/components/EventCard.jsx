@@ -114,7 +114,7 @@ export default function EventCard({
             alt="https://i.imgur.com/iQy8GLM.jpg"
             className=" rounded-2xl h-full transition duration-300 hover:filter hover:brightness-0 hover:grayscale-100 hover:opacity-0"
           />
-          {secureLocalStorage.getItem("isLoggedIn") && isRegistered == 1 ? (
+          {secureLocalStorage.getItem("isLoggedIn") && isRegistered == "1" ? (
             <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
               Registered
             </div>

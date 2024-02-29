@@ -9,7 +9,9 @@ import {
   payU_Key,
   payU_Action,
   ALL_TRANSACTION_URL,
+  GET_REGISTERED_EVENTS,
 } from "../_util/constants";
+import EventCard from "../events/components/EventCard";
 
 import { Dialog } from "primereact/dialog";
 
@@ -55,6 +57,9 @@ export default function Register() {
     secureLocalStorage.getItem("studentId")
   );
   const [enableUpdateProfile, setEnableUpdate] = useState(true);
+
+  const [eventsData, setEventsData] = useState(null);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -142,7 +147,30 @@ export default function Register() {
       }
     };
     getTransaction();
-  }, []);
+    const getRegisteredEventsFunction = async () => {
+      try {
+        const response1 = await fetch(GET_REGISTERED_EVENTS, {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${secureLocalStorage.getItem(
+              "registerToken"
+            )}`,
+          },
+        });
+        const data = await response1.json();
+        console.log(data);
+        if (response1.status === 200) {
+          console.log(data.EVENTS);
+          setEventsData(data.EVENTS);
+          return;
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getRegisteredEventsFunction();
+  }, [router]);
 
   const qrValue = `anokha://${studentID}`;
   const [dialogVisible, setDialogVisible] = useState(false);
@@ -622,6 +650,43 @@ export default function Register() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="mx-8 flex flex-col">
+          <div className="text-center text-2xl z-10 py-3 mx-4 my-6 text-gray-50 ">
+            REGISTERED EVENTS
+          </div>
+          <div className="grid mb-10 z-10 grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
+            {eventsData && eventsData.length > 0 ? (
+              eventsData.map((event) => {
+                return (
+                  <div key={event.eventId} className="justify-center mx-auto">
+                    <Link href={`/events/${event.eventId}`}>
+                      <EventCard
+                        imgSrc={event.eventImageURL}
+                        id={event.eventId}
+                        eventName={event.eventName}
+                        eventBlurb={event.eventDescription}
+                        eventDesc={event.eventDescription}
+                        date={event.eventDate}
+                        time={event.eventTime}
+                        goi={event.isGroup}
+                        tags={event.tags}
+                        price={event.eventPrice}
+                        isAllowed={event.eventStatus === "1"}
+                        isRegistered={"1"}
+                        isStarred={event.isStarred}
+                        maxseats={event.maxSeats}
+                        seats={event.seatsFilled}
+                        router={router}
+                      />
+                    </Link>
+                  </div>
+                );
+              })
+            ) : (
+              <p>Loading...</p>
+            )}
           </div>
         </div>
       </div>
