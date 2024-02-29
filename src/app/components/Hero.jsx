@@ -20,7 +20,7 @@ const Hero = () => (
           12th Edition
         </h3>
         <h4 className="text-3xl font-rooberto tracking-wider md:text-xl lg:text-2xl xl:text-3xl text-gray-300 mt-4">
-          April 4th, 5th & 6th
+          April 4<sup>th</sup>, 5<sup>th</sup> & 6<sup>th</sup>
         </h4>
       </section>
     </div>
