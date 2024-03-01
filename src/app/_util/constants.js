@@ -35,6 +35,7 @@ export const ALL_EVENTS_URL = BASE_URL + "/user/getAllEvents";
 export const REGISTERED_EVENT_URL = BASE_URL + "/user/registeredEventData";
 export const EVENT_DATA_URL = BASE_URL + "/user/getEventData";
 export const STAR_UNSTAR_EVENT_URL = BASE_URL + "/user/toggleStarredEvent";
+export const GET_REGISTERED_EVENTS = BASE_URL + "/user/getRegisteredEvents";
 
 export const BUY_PASSPORT_DUMMY_PAGE_URL = BASE_URL + "/user/buyPassport";
 export const VERIFY_TRANSACTIONS_URL = BASE_URL + "/user/verifyTransaction";

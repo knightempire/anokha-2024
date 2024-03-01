@@ -9,7 +9,10 @@ import {
   payU_Key,
   payU_Action,
   ALL_TRANSACTION_URL,
+  GET_REGISTERED_EVENTS,
 } from "../_util/constants";
+import EventCard from "../events/components/EventCard";
+import { FaAngleDoubleDown } from "react-icons/fa";
 
 import { Dialog } from "primereact/dialog";
 
@@ -55,7 +58,17 @@ export default function Register() {
     secureLocalStorage.getItem("studentId")
   );
   const [enableUpdateProfile, setEnableUpdate] = useState(true);
+
+  const [eventsData, setEventsData] = useState(null);
+
   const router = useRouter();
+
+  const handleScrollMore = () => {
+    window.scrollTo({
+      top: window.scrollY + 1000, // Adjust the value as needed for your desired scroll distance
+      behavior: "smooth", // Optional: Smooth scrolling animation
+    });
+  };
 
   useEffect(() => {
     const getProfile = async () => {
@@ -142,7 +155,30 @@ export default function Register() {
       }
     };
     getTransaction();
-  }, []);
+    const getRegisteredEventsFunction = async () => {
+      try {
+        const response1 = await fetch(GET_REGISTERED_EVENTS, {
+          method: "GET",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${secureLocalStorage.getItem(
+              "registerToken"
+            )}`,
+          },
+        });
+        const data = await response1.json();
+        console.log(data);
+        if (response1.status === 200) {
+          console.log(data.EVENTS);
+          setEventsData(data.EVENTS);
+          return;
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getRegisteredEventsFunction();
+  }, [router]);
 
   const qrValue = `anokha://${studentID}`;
   const [dialogVisible, setDialogVisible] = useState(false);
@@ -351,6 +387,7 @@ export default function Register() {
           <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
             <Toast ref={toastRef} position="bottom-center" />
+            <div className="w-full md:h-[20px] lg:h-[60px]"></div>
             <div className="w-full rounded-[24px] bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
               <div className="p-1 rounded-full ml-auto mr-auto flex justify-center">
                 <Image
@@ -516,7 +553,7 @@ export default function Register() {
                                           <p className="text-[17px] font-bold">
                                             Amount:
                                           </p>
-                                          <div className="border-2 flex items-center rounded-lg bg-green-400 font-bold text-black  px-2">
+                                          <div className="border-2 flex items-center rounded-lg bg-green-100 font-bold text-black  px-2">
                                             <p className="text-[17px]">
                                               {transaction.amount}
                                             </p>
@@ -552,7 +589,7 @@ export default function Register() {
                                           </Link>
                                         ) : transaction.transactionStatus ===
                                           "1" ? (
-                                          <div className="text-[15px] h-10 px-4   w-[30%] flex rounded-md   text-black font-bold border-2 border-black  bg-[#ffbd03] items-center justify-center">
+                                          <div className="text-[15px] h-10 px-4   w-[30%] flex rounded-md   text-black font-bold border-2 border-black  bg-[#85f594] items-center justify-center">
                                             Success
                                           </div>
                                         ) : transaction.transactionStatus ===
@@ -598,7 +635,7 @@ export default function Register() {
                             <button
                               className="px-4 py-2 rounded-xl mt-[30px] bg-blue-400 cursor-not-allowed"
                               onClick={() => handlePassportClick()}
-                              disabled="true"
+                              disabled={true}
                             >
                               Buy Passport
                             </button>
@@ -623,6 +660,51 @@ export default function Register() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="mx-8 flex flex-col">
+          <div className="text-center text-2xl z-10 py-3 mx-4 my-6 text-gray-50 ">
+            REGISTERED EVENTS
+          </div>
+          <div className="grid mb-10 z-10 grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
+            {eventsData && eventsData.length > 0 ? (
+              eventsData.map((event) => {
+                return (
+                  <div key={event.eventId} className="justify-center mx-auto">
+                    <Link href={`/events/${event.eventId}`}>
+                      <EventCard
+                        imgSrc={event.eventImageURL}
+                        id={event.eventId}
+                        eventName={event.eventName}
+                        eventBlurb={event.eventDescription}
+                        eventDesc={event.eventDescription}
+                        date={event.eventDate}
+                        time={event.eventTime}
+                        goi={event.isGroup}
+                        tags={event.tags}
+                        price={event.eventPrice}
+                        isAllowed={event.eventStatus === "1"}
+                        isRegistered={"1"}
+                        isStarred={event.isStarred}
+                        maxseats={event.maxSeats}
+                        seats={event.seatsFilled}
+                        router={router}
+                      />
+                    </Link>
+                  </div>
+                );
+              })
+            ) : (
+              <p>Loading...</p>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className="sticky bottom-12 mr-3 flex justify-end items-end">
+        <div
+          onClick={handleScrollMore}
+          className="bg-white tex animate-bounce absolute md:top-[92%] sm:top-[90%] rounded-full px-3 py-2 flex items-center justify-center"
+        >
+          Registered Events <FaAngleDoubleDown className="ml-2" />
         </div>
       </div>
     </main>
