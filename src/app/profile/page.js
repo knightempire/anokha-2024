@@ -12,6 +12,7 @@ import {
   GET_REGISTERED_EVENTS,
 } from "../_util/constants";
 import EventCard from "../events/components/EventCard";
+import { FaAngleDoubleDown } from "react-icons/fa";
 
 import { Dialog } from "primereact/dialog";
 
@@ -61,6 +62,13 @@ export default function Register() {
   const [eventsData, setEventsData] = useState(null);
 
   const router = useRouter();
+
+  const handleScrollMore = () => {
+    window.scrollTo({
+      top: window.scrollY + 1000, // Adjust the value as needed for your desired scroll distance
+      behavior: "smooth", // Optional: Smooth scrolling animation
+    });
+  };
 
   useEffect(() => {
     const getProfile = async () => {
@@ -379,6 +387,7 @@ export default function Register() {
           <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
             <Toast ref={toastRef} position="bottom-center" />
+            <div className="w-full md:h-[20px] lg:h-[60px]"></div>
             <div className="w-full rounded-[24px] bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
               <div className="p-1 rounded-full ml-auto mr-auto flex justify-center">
                 <Image
@@ -688,6 +697,14 @@ export default function Register() {
               <p>Loading...</p>
             )}
           </div>
+        </div>
+      </div>
+      <div className="sticky bottom-12 mr-3 flex justify-end items-end">
+        <div
+          onClick={handleScrollMore}
+          className="bg-white tex animate-bounce absolute md:top-[92%] sm:top-[90%] rounded-full px-3 py-2 flex items-center justify-center"
+        >
+          Registered Events <FaAngleDoubleDown className="ml-2" />
         </div>
       </div>
     </main>
