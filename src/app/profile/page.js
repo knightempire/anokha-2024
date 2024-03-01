@@ -544,7 +544,7 @@ export default function Register() {
                                           <p className="text-[17px] font-bold">
                                             Amount:
                                           </p>
-                                          <div className="border-2 flex items-center rounded-lg bg-green-400 font-bold text-black  px-2">
+                                          <div className="border-2 flex items-center rounded-lg bg-green-100 font-bold text-black  px-2">
                                             <p className="text-[17px]">
                                               {transaction.amount}
                                             </p>
@@ -580,7 +580,7 @@ export default function Register() {
                                           </Link>
                                         ) : transaction.transactionStatus ===
                                           "1" ? (
-                                          <div className="text-[15px] h-10 px-4   w-[30%] flex rounded-md   text-black font-bold border-2 border-black  bg-[#ffbd03] items-center justify-center">
+                                          <div className="text-[15px] h-10 px-4   w-[30%] flex rounded-md   text-black font-bold border-2 border-black  bg-[#85f594] items-center justify-center">
                                             Success
                                           </div>
                                         ) : transaction.transactionStatus ===
