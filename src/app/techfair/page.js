@@ -47,28 +47,28 @@ const Techfair = () => {
               <br />
             </div>
             <div className="flex flex-col lg:lg:mt-36">
-              <div className="flex flex-row h-[16vh] w-[30vw] items-center justify-center text-white bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 m-4 lg:text-6xl">
-                <div className="flex justify-center items-center mr-8">
+              <div className="flex flex-row h-[16vh] w-[30vw] items-center justify-center text-white bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 m-4 lg:text-7xl">
+                <div className="flex justify-center items-center mr-4">
                   <Image
                     src="/images/Picture1.jpg"
                     alt="techfair mascot"
-                    height={80}
-                    width={80}
+                    height={60}
+                    width={60}
                     objectFit="contain"
-                    className="rounded-full"
+                    className="rounded-xl"
                   />
                 </div>
-                <div className="bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">
+                <div className="bg-gradient-to-r from-blue-600 via-indigo-400 to-purple-600 inline-block text-transparent bg-clip-text">
                   TECHFAIR
                 </div>
               </div>
               <div className="flex flex-row mt-2">
-                <div className="h-[12vh] w-[9vw] flex items-center justify-center text-white bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 m-4 mt-0 mr-0">
+                <div className="h-[12vh] w-[9vw] flex items-center justify-center text-white bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 m-4 mt-0 mr-0 font-bold">
                   <div className="flex flex-col">
-                    <div className="flex justify-center items-center text-4xl">
-                      10<sup className="font-thin text-xl">th</sup>
+                    <div className="flex justify-center items-center text-5xl">
+                      10<sup className="font-thin text-2xl">th</sup>
                     </div>
-                    <div className="flex justify-center items-center text-lg">
+                    <div className="flex justify-center items-center text-xl font-normal">
                       March
                     </div>
                   </div>
@@ -94,7 +94,7 @@ const Techfair = () => {
                   </div>
                 </div>
                 <div className="flex flex-col mr-4">
-                  <div className="flex flex-col justify-center items-center text-black h-[40%] w-[10vw] bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 text-2xl cursor-pointer">
+                  <div className="flex flex-col justify-center items-center text-black h-[40%] w-[10vw] bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 bg-gradient-to-r from-blue-600 via-indigo-400 to-purple-600 text-2xl cursor-pointer">
                     <Link href="/techfair/register">
                       <div className="flex justify-center items-center p-4 hover:scale-110 transition-transform duration-300 ease-in-out transform">
                         Register Now &#8594;
@@ -102,12 +102,17 @@ const Techfair = () => {
                     </Link>
                   </div>
                   <div className="flex flex-col justify-center items-center text-white h-[50%] w-[10vw] bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 my-4">
-                    <div className="flex justify-center items-center text-5xl mb-2">
-                      CFP
-                    </div>
-                    <div className="flex justify-center items-center text-[12px]">
-                      Call For Projects
-                    </div>
+                    <Link
+                      href="/techfair/register"
+                      className="cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out transform"
+                    >
+                      <div className="flex justify-center items-center text-3xl">
+                        Call For
+                      </div>
+                      <div className="flex justify-center items-center text-2xl">
+                        Projects
+                      </div>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -152,7 +157,7 @@ const Techfair = () => {
           </div>
         </div>
         <div className="mobile-view flex flex-col xl:hidden lg:hidden md:flex sm:flex mt-24 sm:overflow-x-hidden">
-          <div className="flex flex-row h-[12vh] w-[90vw] items-center justify-center text-white bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 m-4 sm:text-4xl lg:text-6xl">
+          <div className="flex flex-row h-[12vh] w-[90vw] items-center justify-center text-white bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 m-4 sm:text-5xl">
             <div className="flex justify-center items-center mr-8">
               <Image
                 src="/images/Picture1.jpg"
@@ -160,14 +165,14 @@ const Techfair = () => {
                 height={50}
                 width={50}
                 objectFit="contain"
-                className="rounded-full"
+                className="rounded-xl"
               />
             </div>
-            <div className="bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">
+            <div className="bg-gradient-to-r from-blue-600 via-indigo-400 to-purple-600 inline-block text-transparent bg-clip-text">
               TECHFAIR
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center text-white bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-8 pb-10 m-4 sm:w-[90vw] lg:w-[30vw] lg:h-auto lg:mt-36 text-justify">
+          <div className="flex flex-col items-center justify-center text-white bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-8 pb-10 m-4 sm:w-[90vw] lg:w-[30vw] lg:h-auto lg:mt-36 text-justify pt-4">
             <div className="flex justify-center items-center text-4xl m-4">
               ABOUT
             </div>
@@ -195,14 +200,19 @@ const Techfair = () => {
           </div>
           <div className="flex flex-row mx-4">
             <div className="flex flex-col justify-center items-center text-white h-[40%] w-[40vw] bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 my-4">
-              <div className="flex justify-center items-center text-5xl">
-                CFP
-              </div>
-              <div className="flex justify-center items-center text-[12px]">
-                Call For Projects
-              </div>
+              <Link
+                href="/techfair/register"
+                className="cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out transform"
+              >
+                <div className="flex justify-center items-center text-3xl">
+                  Call For
+                </div>
+                <div className="flex justify-center items-center text-2xl">
+                  Projects
+                </div>
+              </Link>
             </div>
-            <div className="flex flex-col justify-center items-center text-black h-[40%] w-[40vw] bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 text-2xl cursor-pointer m-4 mx-8">
+            <div className="flex flex-col justify-center items-center text-black h-[40%] w-[40vw] bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 bg-gradient-to-r from-blue-600 via-indigo-400 to-purple-600 text-2xl cursor-pointer m-4 mx-8">
               <Link href="/techfair/register">
                 <div className="flex justify-center items-center hover:scale-110 transition-transform duration-300 ease-in-out transform">
                   Register Now &#8594;
@@ -210,7 +220,7 @@ const Techfair = () => {
               </Link>
             </div>
           </div>
-          <div className="h-auto w-[90vw] text-sm flex flex-row items-center justify-center text-white bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 m-4 mt-0">
+          <div className="h-auto w-[90vw] text-sm flex flex-row items-center justify-center text-white bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-8 m-4 mt-0">
             <div className="text-justify">
               Calling out all budding scientists and innovationists! The Anokha
               Tech Fair provides the perfect platform for you to present your
@@ -223,10 +233,10 @@ const Techfair = () => {
           <div className="flex flex-row mt-2">
             <div className="h-[12vh] w-[30vw] flex items-center justify-center text-white bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 m-4 mt-0 mr-0">
               <div className="flex flex-col">
-                <div className="flex justify-center items-center text-4xl">
+                <div className="flex justify-center items-center text-4xl font-bold">
                   10<sup className="font-thin text-xl">th</sup>
                 </div>
-                <div className="flex justify-center items-center text-lg">
+                <div className="flex justify-center items-center text-lg font-thin">
                   March
                 </div>
               </div>
