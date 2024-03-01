@@ -661,6 +661,14 @@ export default function Register() {
             </div>
           </div>
         </div>
+        <div className="sticky bottom-12 mr-3 flex justify-end items-end">
+        <div
+          onClick={handleScrollMore}
+          className="bg-white tex z-20 animate-bounce absolute md:top-[92%] sm:top-[90%] rounded-full px-3 py-2 flex items-center justify-center"
+        >
+          Registered Events <FaAngleDoubleDown className="ml-2" />
+        </div>
+      </div>
         <div className="mx-8 flex flex-col">
           <div className="text-center text-2xl z-10 py-3 mx-4 my-6 text-gray-50 ">
             REGISTERED EVENTS
@@ -697,14 +705,6 @@ export default function Register() {
               <p>Loading...</p>
             )}
           </div>
-        </div>
-      </div>
-      <div className="sticky bottom-12 mr-3 flex justify-end items-end">
-        <div
-          onClick={handleScrollMore}
-          className="bg-white tex animate-bounce absolute md:top-[92%] sm:top-[90%] rounded-full px-3 py-2 flex items-center justify-center"
-        >
-          Registered Events <FaAngleDoubleDown className="ml-2" />
         </div>
       </div>
     </main>
