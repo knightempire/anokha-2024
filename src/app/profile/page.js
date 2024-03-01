@@ -626,7 +626,7 @@ export default function Register() {
                             <button
                               className="px-4 py-2 rounded-xl mt-[30px] bg-blue-400 cursor-not-allowed"
                               onClick={() => handlePassportClick()}
-                              disabled="true"
+                              disabled={true}
                             >
                               Buy Passport
                             </button>
