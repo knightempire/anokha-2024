@@ -11,6 +11,7 @@ export default function FilterSection({ sendcurrentFilters }) {
   const [eventTypeList, seteventTypeList] = useState([]);
   const [participationList, setparticipationList] = useState([]);
   const [dayFilterList, setdayFilterList] = useState([]);
+  const [techFilterList, setTechFilterList] = useState([]);
   const [tagList, setTagList] = useState([]);
 
   useEffect(() => {
@@ -59,6 +60,7 @@ export default function FilterSection({ sendcurrentFilters }) {
       regFilterList,
       eventTypeList,
       participationList,
+      techFilterList,
       dayFilterList
     );
     newFilters = newFilters.filter((elem) => elem != null && elem != undefined);
@@ -69,12 +71,14 @@ export default function FilterSection({ sendcurrentFilters }) {
     eventTypeList,
     participationList,
     dayFilterList,
+    techFilterList
   ]);
 
   const handleItemFromFilters = (filter, type) => {
     if (type == "day") setdayFilterList(filter);
     else if (type == "tag") settagslist(filter);
-    else if (type == "event") seteventTypeList(filter);
+    else if (type == "eventType") seteventTypeList(filter);
+    else if (type == "technical") setTechFilterList(filter);
     else if (type == "team") setparticipationList(filter);
     else if (type == "reg") setregFilterList(filter);
   };
@@ -101,16 +105,15 @@ export default function FilterSection({ sendcurrentFilters }) {
           sendSelectedOption={handleItemFromFilters}
         />
         {/* Select Type: "Tech Workshop"| "Non-Tech Workshop" | "Tech Event" | "Non-Tech Event" | "Tech Contest" | "Non-Tech Contest" */}
-        <FilterComponent
-          needSearch={0}
-          name={"Event Type"}
-          options={[
-            "Tech Workshop",
-            "Non-Tech Workshop",
-            "Tech Event",
-            "Non-Tech Event",
-          ]}
-          type={"event"}
+        <FilterComponent2
+          options={["Workshop", "Event"]}
+          type={"eventType"}
+          sendSelectedOption={handleItemFromFilters}
+        />
+
+        <FilterComponent2
+          options={["Technical", "Non Technical"]}
+          type={"technical"}
           sendSelectedOption={handleItemFromFilters}
         />
 
