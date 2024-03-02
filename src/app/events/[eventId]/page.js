@@ -357,7 +357,7 @@ const Event = () => {
 
         payUForm.submit();
 
-        setMessage("Called PayU API to make payment.");
+        // setMessage("Called PayU API to make payment.");
       } else if (response.status === 400) {
         console.log(data);
         ToastAlert("error", "Registration Failed", `${data.MESSAGE}`, toastRef);
