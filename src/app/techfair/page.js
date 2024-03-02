@@ -2,6 +2,7 @@
 import Image from "next/image";
 import WebGLApp from "../bg/WebGLApp";
 import Navigationbar from "../components/EventHeader";
+import Footer from "../components/Footer";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -13,6 +14,7 @@ const Techfair = () => {
   });
 
   return (
+    <main>
     <main className="flex min-h-screen bg-[#192032] font-roobert text-md overflow-x-hidden">
       <WebGLApp colors={webGLColors} className="-z-10" />
       <div className="block z-20">
@@ -289,6 +291,8 @@ const Techfair = () => {
           </div>
         </div>
       </div>
+    </main>
+    <Footer/>
     </main>
   );
 };
