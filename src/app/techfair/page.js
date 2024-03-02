@@ -47,7 +47,7 @@ const Techfair = () => {
               <br />
             </div>
             <div className="flex flex-col lg:lg:mt-36">
-              <div className="flex flex-row h-[16vh] w-[30vw] items-center justify-center text-white bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 m-4 lg:text-7xl">
+              <div className="flex flex-row h-[16vh] w-[30vw] items-center justify-center text-white bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 m-4 lg:text-7xl font-extrabold">
                 <div className="flex justify-center items-center mr-4">
                   <Image
                     src="/images/Picture1.jpg"
