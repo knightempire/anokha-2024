@@ -1,11 +1,10 @@
 "use client";
-import React, { useState, useRef, createElement } from "react";
+import React, { useState, createElement } from "react";
 
-import { Avatar, Popover } from "@mui/material";
+import { Avatar } from "primereact/avatar";
 import { MD5 } from "crypto-js";
 
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
-import { hashPassword } from "@/app/_util/hash";
 import {
   Button,
   Menu,
@@ -16,7 +15,6 @@ import {
 } from "@material-tailwind/react";
 import {
   UserCircleIcon,
-  Cog6ToothIcon,
   PowerIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
@@ -33,7 +31,6 @@ const ProfileMenuItems = [
   },
 ];
 export default function ProfileCard({ email }) {
-  console.log("Email sis", email);
   const hash = MD5(email + email);
   const [isArrowMenuOpen, setIsArrowMenuOpen] = useState(false);
   const handlearrowclick = () => {
@@ -76,19 +73,16 @@ export default function ProfileCard({ email }) {
             onClick={handleClick}
             className="flex flex-row items-center rounded-full py-0.5 pr-0.5 pl-0.5   backdrop-blur-3xl"
           >
-            <div className="border-blue-600 border-2 p-1 rounded-full bg-gray-300 ">
+            <div className="border-blue-600 border-2 p-0 rounded-full bg-gray-300 ">
               <Avatar
-                variant="circle"
-                className=""
+                shape="circle"
                 alt="Travis Howard"
-                src={
+                image={
                   "https://www.gravatar.com/avatar/" +
                   hash +
-                  ".jpg?s=200&d=robohash"
+                  ".jpg?s=50&d=robohash"
                 }
-                width={340}
-                height={30}
-                sx={{ width: 30, height: 30, bg: "red" }}
+                size="large"
               />
             </div>
             <div className="cursor-pointer">

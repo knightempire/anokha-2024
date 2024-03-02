@@ -89,7 +89,7 @@ export default function Login() {
           toastRef
         );
         setTimeout(() => {
-          router.push("/hackathon");
+          router.push("/events");
         }, 1500);
       } else if (response.status === 500) {
         setLoading(false);

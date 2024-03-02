@@ -12,13 +12,29 @@ module.exports = withBundleAnalyzer({
     return config;
   },
 
-  images: {
-    domains: ["anokha.amrita.edu", "i.imgur.com", 'imgur.com'],
+  experimental: {
+    serverActions: {
+        allowedOrigins: [
+            'localhost',
+            'test.payu.in',
+            'testtxncdn.payubiz.in',
+            'secure.payu.in',
+            'txncdn.payu.in',
+            'anokha.amrita.edu',
+        ]
+    }
   },
 
-  env: {
-    name: "sajith",
-    email: "isajithrajan@gmail.com",
-    phone: "6379132006",
+  images: {
+    domains: ["anokha.amrita.edu", "i.imgur.com", "imgur.com", "gravatar.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**gravatar.com",
+        port: "",
+        pathname: "/avatar/**",
+      },
+    ],
   },
+
 });

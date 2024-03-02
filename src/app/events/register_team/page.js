@@ -2,12 +2,41 @@
 import React, { useState, useEffect } from "react";
 import WebGLApp from "@/app/bg/WebGLApp";
 import Navbar from "../../components/EventHeader";
+import { useSearchParams } from "next/navigation";
+import { Button } from "primereact/button";
+import { InputText } from "primereact/inputtext";
+import secureLocalStorage from "react-secure-storage";
+import { LoadingScreen } from "@/app/_util/LoadingScreen/LoadingScreen";
+import "primereact/resources/primereact.min.css";
+import "primereact/resources/themes/lara-light-blue/theme.css";
+import { EVENT_REGISTER_STEP_ONE } from "../../_util/constants";
+import {
+  payU_Key,
+  payU_Action
+} from "../../_util/constants";
+import validator from "validator";
 
-const TeamRegister = ({ minTeamSize, maxTeamSize }) => {
-  minTeamSize = 2;
-  maxTeamSize = 2;
+const TeamRegister = () => {
+  const searchParams = useSearchParams();
+  const eventId = parseInt(searchParams.get("eventId"));
+  const minTeamSize = parseInt(searchParams.get("minTeamSize"));
+  const maxTeamSize = parseInt(searchParams.get("maxTeamSize"));
 
-  const [TeamSize, setTeamSize] = useState(1);
+  const [isLoggedIn, setIsLoggedIn] = useState(0);
+  const [registerEmail, setRegisterEmail] = useState("");
+  const [secretToken, setSecretToken] = useState("");
+
+  useEffect(() => {
+    setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
+    setRegisterEmail(secureLocalStorage.getItem("registerEmail"));
+    setSecretToken(secureLocalStorage.getItem("registerToken"));
+  }, []);
+
+  const [TeamName, setTeamName] = useState("");
+  const [TeamSize, setTeamSize] = useState(() => {
+    const initialTeamSize = minTeamSize;
+    return initialTeamSize;
+  });
   const [Team, setTeam] = useState(() => {
     const t = Array.from(
       { length: parseInt(minTeamSize, 10) },
@@ -16,25 +45,68 @@ const TeamRegister = ({ minTeamSize, maxTeamSize }) => {
     console.log(t);
     return t;
   });
-  let Emails = [];
+  const [Emails, setEmails] = useState([
+    secureLocalStorage.getItem("registerEmail"),
+  ]);
+  const [memberRoles, setMemberRoles] = useState(["Team Leader"]);
+  const handleEmails = (index, email) => {
+    setEmails((prevEmails) => {
+      const updatedEmails = [...prevEmails];
+      updatedEmails[index] = email;
+      return updatedEmails;
+    });
+    console.log(Emails);
+  };
+  const handleRoles = (index, role) => {
+    setMemberRoles((prevRoles) => {
+      const updatedRoles = [...prevRoles];
+      updatedRoles[index] = role;
+      return updatedRoles;
+    });
+    console.log(memberRoles);
+  };
 
-  const emailRegex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
-  let isValidEmails;
   const HandleTeamRegister = async (e) => {
     e.preventDefault();
     let isValidEmails = true;
     for (let i of Emails) {
-      const isValidEmail = i.length > 0 && emailRegex.test(i);
-      if (!isValidEmail) isValidEmails = false;
+      console.log(i);
+      if (!validator.isEmail(i)) {
+        isValidEmails = false;
+        break;
+      }
     }
-    if (isValidEmails == false) {
-      alert("Error Invalid email");
-      return;
+    if (isValidEmails) {
+      try {
+        const response = await fetch(EVENT_REGISTER_STEP_ONE, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${secureLocalStorage.getItem(
+              "registerToken"
+            )}`,
+          },
+          body: {
+            eventId: eventId,
+            totalMembers: TeamSize,
+            isMarketPlacePaymentMode: "0",
+            teamName: TeamName,
+            teamMembers: Emails,
+            memberRoles: memberRoles,
+          },
+        });
+
+        if (response.status === 200) {
+          console.log(200);
+        }
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
-  const handleEmails = (index, email) => {
-    Emails[index] = email;
+  const handleTeamName = (name) => {
+    setTeamName(name);
   };
 
   useEffect(() => {
@@ -42,101 +114,44 @@ const TeamRegister = ({ minTeamSize, maxTeamSize }) => {
     console.log("TEAM:", Team);
   }, [TeamSize]);
 
+  const handleAddMem = () => {
+    if (TeamSize < maxTeamSize) {
+      setTeamSize((prevTeamSize) => prevTeamSize + 1);
+      setTeam((prevTeam) => {
+        const newTeam = [...prevTeam, prevTeam.length];
+        return newTeam;
+      });
+    }
+  };
+
+  const hanndleRemoveMem = () => {
+    if (TeamSize > minTeamSize) {
+      setTeamSize((prevTeamSize) => prevTeamSize - 1);
+      setTeam((prevTeam) => {
+        const newTeam = prevTeam.slice(0, prevTeam.length - 1);
+        return newTeam;
+      });
+    }
+  };
+
   const [webGLColors, setWebGLColors] = useState({
     color1: [43 / 255, 30 / 255, 56 / 255],
     color2: [11 / 255, 38 / 255, 59 / 255],
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
 
-  return (
+  return registerEmail === null ||
+    secretToken === null ||
+    registerEmail.length == 0 ||
+    secretToken.length == 0 ? (
+    <LoadingScreen />
+  ) : (
     <main className="flex min-h-screen flex-col bg-[#192032]">
-      <webGLApp colors={webGLColors} />
+      <WebGLApp colors={webGLColors} className="-z-10" />
       <div className="block space-y-24 md:space-y-10">
         <Navbar />
         <div className="relative">
-          <div className="flex flex-col py-10 px-[200px] items-center justify-center mx-auto min-h-screen w-[80%]">
-            <div className="w-full rounded-md bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
-              <div className="mx-10 mb-10 px-1 lg:px-10">
-                <div className="py-2 my-4 text-center text-xl font-bold leading-tight tracking-tight text-black md:text-2xl">
-                  Register Team
-                </div>
-                <form>
-                  <div className="w-full text-center items-center pb-3">
-                    {minTeamSize != maxTeamSize ? (
-                      <div>
-                        <label className="pr-2">select team size</label>
-                        <input
-                          type="number"
-                          min={minTeamSize}
-                          max={maxTeamSize}
-                          className="text-black w-10 pl-2"
-                          onChange={(e) => {
-                            setTeamSize(e.target.value);
-                            let t;
-                            t = Array.from(
-                              { length: parseInt(e.target.value, 10) },
-                              (_, index) => index
-                            );
-                            setTeam(t);
-                          }}
-                        />
-                        <hr></hr>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                  <div className="flex flex-col gap-4 min-h-[250px]">
-                    <div className="my-4">
-                      <label
-                        htmlFor="team_name"
-                        className="block mb-2 text-sm font-medium text-black"
-                      >
-                        Team name
-                      </label>
-                      <input
-                        type="text"
-                        name="team_name"
-                        id="team_name"
-                        className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                        placeholder="Team Name"
-                        required
-                      />
-                    </div>
-                    {Team.map((member) => (
-                      <div key={member}>
-                        <label
-                          htmlFor="email"
-                          className="block mb-2 text-sm font-medium text-black"
-                        >
-                          Member {member + 1} Email
-                        </label>
-                        <input
-                          type="text"
-                          onChange={(e) => {
-                            handleEmails(member, e.target.value);
-                            console.log(Emails);
-                          }}
-                          name="email"
-                          id="email"
-                          className="bg-transparent border border-gray-800 text-black sm:text-sm rounded-lg focus:ring-primary-800 focus:border-primary-800 block w-full p-2.5"
-                          placeholder="Email"
-                          required
-                        />
-                      </div>
-                    ))}
-                  </div>
-                  <button
-                    type="submit"
-                    onClick={HandleTeamRegister}
-                    className="w-full text-black bg-[#f69c18] mt-6 hover:bg-[#f69c18] focus:ring-4 focus:outline-none focus:ring-primary-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                  >
-                    Register
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </main>

@@ -59,8 +59,8 @@ export default function Home() {
           );
         })}
       </div>
-      <div>
-        <div className="mt-32 z-30 text-white text-6xl text-center">
+      <div className="z-10">
+        <div className="flex text-center text-6xl text-white justify-center font-roobert m-4">
           GALLERY
         </div>
         <FilmGallery />

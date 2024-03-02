@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
 const FilmGallery = () => {
-  const filmRow1 =  [
+  const filmRow1 = [
     "https://i.imgur.com/kWBGAkz.jpg",
     "https://i.imgur.com/CTW97kM.jpg",
     "https://i.imgur.com/wRjbQu6.jpg",
@@ -12,16 +12,16 @@ const FilmGallery = () => {
     "https://i.imgur.com/dlS1TaE.jpg",
     "https://i.imgur.com/aIbdm2i.jpg",
     "https://i.imgur.com/7r8gQN5.jpg",
-  ]
+  ];
   const filmRow2 = [
     "https://i.imgur.com/EWdfaYj.jpg",
-    "https://i.imgur.com/uEtxZMb.jpg",
-    "https://i.imgur.com/0IvtFJG.jpg",
     "https://i.imgur.com/qI4UYV7.jpg",
+    "https://i.imgur.com/0IvtFJG.jpg",
+    "https://i.imgur.com/uEtxZMb.jpg",
     "https://i.imgur.com/uieA2G8.jpg",
     "https://i.imgur.com/AbUjXL8.jpg",
     "https://i.imgur.com/59VI4bH.jpg",
-  ]
+  ];
 
   const row1 = useRef(null);
   const row2 = useRef(null);
@@ -65,13 +65,13 @@ const FilmGallery = () => {
     });
 
     tl.to(Phrow1.current, {
-      x: -300,
+      x: -600,
       duration: 2,
     });
     tl.to(
       Phrow2.current,
       {
-        x: 300,
+        x: 600,
         duration: 2,
       },
       "-=2"
@@ -127,7 +127,7 @@ const FilmGallery = () => {
       <div className="mobile-view z-10 sm:block md:block lg:hidden xl:hidden">
         <div className="overflow-hidden" ref={phoneContainer}>
           <div
-            className="grid grid-cols-5 gap-2 h-[25vh] w-[180vw] text-white my-3"
+            className="grid grid-cols-5 gap-2 h-[30vh] w-[270vw] text-white my-3"
             ref={Phrow1}
           >
             {filmRow1.slice(0, 5).map((src) => (
@@ -146,9 +146,9 @@ const FilmGallery = () => {
             ))}
           </div>
           <div
-            className="grid grid-cols-5 gap-2 h-[25vh] w-[180vw] bg-[#121212] text-white my-3"
+            className="grid grid-cols-5 gap-2 h-[30vh] w-[270vw] bg-[#121212] text-white my-3"
             ref={Phrow2}
-            style={{ marginLeft: "-80vw", overflowX: "hidden" }}
+            style={{ marginLeft: "-170vw", overflowX: "hidden" }}
           >
             {filmRow2.slice(0, 5).map((src) => (
               <div

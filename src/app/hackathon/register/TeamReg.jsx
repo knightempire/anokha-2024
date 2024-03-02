@@ -2,7 +2,6 @@
 import { useEffect, useState, useRef } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { HACKATHON_TEAM_REGISTER_URL } from "@/app/_util/constants";
-import Navbar from "../_components/HackathonHeader";
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
 import "primereact/resources/themes/lara-light-blue/theme.css";
@@ -12,8 +11,10 @@ import FirstRegister from "@/app/hackathon/_components/_form/FirstRegister";
 import SecondRegister from "@/app/hackathon/_components/_form/SecondRegister";
 import ThirdRegister from "@/app/hackathon/_components/_form/ThirdRegister";
 import secureLocalStorage from "react-secure-storage";
+import { LoadingScreen } from "@/app/_util/LoadingScreen/LoadingScreen";
 
 import { useRouter } from "next/navigation";
+import Navigationbar from "@/app/components/EventHeader";
 
 const RegisterSteps = [FirstRegister, SecondRegister, ThirdRegister];
 const Register = () => {
@@ -99,7 +100,7 @@ const Register = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: "Bearer " + secretToken,
+          "Authorization": "Bearer " + secretToken,
         },
         body: JSON.stringify({
           teamName: teamName,
@@ -131,6 +132,18 @@ const Register = () => {
         setTimeout(() => {
           router.push("/hackathon");
         }, 1500);
+      } else if (response.status === 401) {
+        ToastAlert(
+          "error",
+          "Session Expired",
+      "Please Login again.",
+          toastRef
+         
+        );
+        setTimeout(() => {
+          router.push("/login");
+        }, 1500);
+
       } else if (data.MESSAGE !== undefined || data.MESSAGE !== null) {
         ToastAlert("error", "Registration Failed", data.MESSAGE, toastRef);
 
@@ -183,6 +196,9 @@ const Register = () => {
     setMemONeTwo(mem_12);
   }, [member1IDC, member2Email, member2IDC]);
 
+  
+
+   
   const Memberview = ({ member, idc, no }) => {
     return (
       <div className="flex flex-col flex-1 space-y-5 ">
@@ -234,9 +250,21 @@ const Register = () => {
     );
   };
 
+   
+
   return (
+    registerEmail === null ||
+    secretToken === null ||
+    registerEmail.length == 0 ||
+    secretToken.length == 0) ? (
+      
+     
+      <LoadingScreen />
+       
+     
+  ) : (
     <div>
-      <Navbar />
+      <Navigationbar />
       <main className="w-full h-full bg-[rgb(10,17,58)] overflow-x-hidden">
         {/* <WebGLApp colors={webGLColors} /> */}
 
