@@ -516,7 +516,7 @@ const Event = () => {
               </p>
               <p className="text-white text-base mb-2">
                 <strong>Group/Individual:</strong>{" "}
-                {eventData.isGroup ? "Group" : "Individual"}
+                {eventData.isGroup == "1" ? "Group":"Individual"}
               </p>
             </div>
             {/* Price Section */}
