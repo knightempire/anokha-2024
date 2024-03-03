@@ -1,8 +1,10 @@
 "use client";
 import React, { useState, createElement } from "react";
+import Image from "next/image";
+import { createHash } from "crypto";
 
 import { Avatar } from "primereact/avatar";
-import { MD5 } from "crypto-js";
+
 
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import {
@@ -31,7 +33,7 @@ const ProfileMenuItems = [
   },
 ];
 export default function ProfileCard({ email }) {
-  const hash = MD5(email + email);
+  //const hash = MD5(email + email);
   const [isArrowMenuOpen, setIsArrowMenuOpen] = useState(false);
   const handlearrowclick = () => {
     setIsArrowMenuOpen(!isArrowMenuOpen);
@@ -53,6 +55,10 @@ export default function ProfileCard({ email }) {
 
   const handleClose = () => {
     setIsArrowMenuOpen(false);
+  };
+
+  const genSHA256 = (email) => {
+    return createHash("sha256").update(email).digest("hex");
   };
 
   return (
@@ -79,11 +85,23 @@ export default function ProfileCard({ email }) {
                 alt="Travis Howard"
                 image={
                   "https://www.gravatar.com/avatar/" +
-                  hash +
-                  ".jpg?s=50&d=robohash"
+                    genSHA256(email ?? "anokhapr@cb.amrita.edu") +
+                    ".jpg?s=200&d=robohash"
                 }
                 size="large"
               />
+              
+              {/* <Image
+                  className=""
+                  alt="Travis Howard"
+                  src={
+                    "https://www.gravatar.com/avatar/" +
+                    genSHA256(email ?? "anokhapr@cb.amrita.edu") +
+                    ".jpg?s=200&d=robohash"
+                  }
+                  width={80}
+                  height={80}
+                /> */}
             </div>
             <div className="cursor-pointer">
               {isMenuOpen ? (

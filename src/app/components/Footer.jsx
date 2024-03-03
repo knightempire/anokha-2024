@@ -98,7 +98,7 @@ const Footer = ({ current_page }) => {
                 <div className="text-white block">
                   <div className="flex flex-wrap">
                     <TbPointFilled className="-ml-4 align-middle mt-1" />
-                    <Link href="/home">HOME</Link>
+                    <Link href="/">HOME</Link>
                   </div>
                   <div className="text-gray-400 hover:text-white">
                     <Link href="/team">TEAM</Link>
@@ -113,7 +113,7 @@ const Footer = ({ current_page }) => {
               ) : current_page === "team" ? (
                 <div className="text-white block">
                   <div className="text-gray-400 hover:text-white">
-                    <Link href="/home">HOME</Link>
+                    <Link href="/">HOME</Link>
                   </div>
                   <div className="flex flex-wrap">
                     <TbPointFilled className="-ml-4 align-middle mt-1" />
@@ -129,7 +129,7 @@ const Footer = ({ current_page }) => {
               ) : current_page === "contact" ? (
                 <div className="text-white block">
                   <div className="text-gray-400 hover:text-white">
-                    <Link href="/home">HOME</Link>
+                    <Link href="/">HOME</Link>
                   </div>
                   <div className="text-gray-400 hover:text-white">
                     <Link href="/team">TEAM</Link>
@@ -145,7 +145,7 @@ const Footer = ({ current_page }) => {
               ) : current_page === "privacypolicy" ? (
                 <div className="text-white block">
                   <div className="text-gray-400 hover:text-white">
-                    <Link href="/home">HOME</Link>
+                    <Link href="/">HOME</Link>
                   </div>
                   <div className="text-gray-400 hover:text-white">
                     <Link href="/team">TEAM</Link>
@@ -161,7 +161,7 @@ const Footer = ({ current_page }) => {
               ) : (
                 <div className="text-white block">
                   <div className="text-gray-400 hover:text-white">
-                    <Link href="/home">HOME</Link>
+                    <Link href="/">HOME</Link>
                   </div>
                   <div className="text-gray-400 hover:text-white">
                     <Link href="/team">TEAM</Link>
