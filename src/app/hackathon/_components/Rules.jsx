@@ -4,6 +4,8 @@ const rules = [
   {
     title: "General Hackathon Rules",
     rules: [
+      "Participants are required to use Intel® AI Analytics Toolkit and Libraries to participate.",
+      "Participants are required to use the Intel® Developer Cloud (IDC) for developing and deploying their projects. ",
       "Teams should build their product from scratch (Mobile App / Consumer Web App / Business Web App).",
       "Teams must select a single problem statement and theme; multiple choices are not allowed. The available problem statements are specified within the provided tracks.",
       "A team must have only 3 - 4 members.",
