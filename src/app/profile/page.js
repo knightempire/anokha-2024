@@ -389,7 +389,7 @@ export default function Register() {
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
             <Toast ref={toastRef} position="bottom-center" />
             <div className="w-full md:h-[20px] lg:h-[60px]"></div>
-            <div className="w-full rounded-[24px] bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
+            <div className="w-full rounded-[24px] bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white mb-2">
               <div className="p-1 rounded-full mt-5 ml-auto mr-auto flex justify-center">
                 {/* <Image
                   className=""
