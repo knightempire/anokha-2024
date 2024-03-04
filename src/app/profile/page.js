@@ -417,7 +417,7 @@ export default function Register() {
                   />
               </div>
               </div>
-              <div className="w-full flex flex-col justify-center px-6 py-0 mb-4 mt-0 md:space-y-6 sm:p-8">
+              <div className="w-full flex flex-col justify-center px-6 py-0 mb-4 mt-0 md:space-y-6 sm:pb-8">
                 <h1 className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl ">
                   Profile
                 </h1>
