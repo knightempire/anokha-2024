@@ -20,6 +20,7 @@ export default function EventCard({
   price,
   isAllowed,
   isRegistered,
+  isStarred,
   maxseats,
   seats,
   router,
@@ -36,11 +37,16 @@ export default function EventCard({
       parseInt(secureLocalStorage.getItem("hasActivePassport"))
     );
     setSecretToken(secureLocalStorage.getItem("registerToken"));
+    isStarred != undefined || isStarred != null
+      ? toggleStar(isStarred)
+      : toggleStar(0);
   }, []);
 
-  const [starred, toggleStar] = useState(0);
+  const [starred, toggleStar] = useState(
+    typeof isStarred == "string" ? parseInt(isStarred) : 0
+  );
   const [tagAbb, setTagAbb] = useState(-1);
-  useEffect(() => {
+  const toggleStarBackend = () => {
     fetch(STAR_UNSTAR_EVENT_URL, {
       method: "POST",
       headers: {
@@ -49,7 +55,7 @@ export default function EventCard({
       },
       body: JSON.stringify({
         eventId: id, // eg. "eventId": 1,
-        isStarred: starred ? "1" : "0", // "1" -> Star Event. "0" -> Unstar Event. eg. "isStarred": "1"
+        isStarred: starred == 0 ? "1" : "0", // "1" -> Star Event. "0" -> Unstar Event. eg. "isStarred": "1"
       }),
     })
       .then((res) => {
@@ -74,11 +80,13 @@ export default function EventCard({
       .catch((err) => {
         // Error in Frontend Code. Handle it.
       });
-  }, [starred]);
-
+  };
   const handleStarToggle = (e) => {
     e.preventDefault();
-    toggleStar(!starred);
+    toggleStar(starred == 0 ? 1 : 0);
+    secureLocalStorage.getItem("isLoggedIn") == "1"
+      ? toggleStarBackend()
+      : toggleStar(starred == 0 ? 1 : 0);
   };
 
   const toogleTag = (e, i) => {
@@ -106,7 +114,7 @@ export default function EventCard({
             alt="https://i.imgur.com/iQy8GLM.jpg"
             className=" rounded-2xl h-full transition duration-300 hover:filter hover:brightness-0 hover:grayscale-100 hover:opacity-0"
           />
-          {secureLocalStorage.getItem("isLoggedIn") && isRegistered == 1 ? (
+          {secureLocalStorage.getItem("isLoggedIn") && isRegistered == "1" ? (
             <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
               Registered
             </div>
@@ -139,14 +147,14 @@ export default function EventCard({
           <button
             onClick={handleStarToggle}
             id="heartButton2"
-            class="transition ease-in duration-300 bg-gray-800 hover:text-red-500 shadow hover:shadow-md text-gray-500 rounded-full w-8 h-8 text-center p-1"
+            class="transition ease-in duration-300 bg-gray-800 hover:text-red-500 bg-red shadow hover:shadow-md text-gray-500 rounded-full w-8 h-8 text-center p-1"
           >
             <svg
               id="heartSVG2"
               class="h-6 w-6"
               fill="currentColor"
               viewBox="0 0 24 24"
-              stroke="currentColor"
+              stroke={starred == 0 ? "currentColor" : "rgb(239, 68, 68)"}
             >
               <path
                 id="heartPath2"
@@ -154,7 +162,7 @@ export default function EventCard({
                 stroke-linejoin="round"
                 stroke-width="2"
                 d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                fill={starred == 0 ? "none" : "currentColor"}
+                fill={starred == 0 ? "none" : "rgb(239, 68, 68)"}
               />
             </svg>
           </button>

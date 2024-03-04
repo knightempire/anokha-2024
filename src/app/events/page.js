@@ -47,6 +47,47 @@ const Events = () => {
   }, [router]);
 
   useEffect(() => {
+    fetch(ALL_EVENTS_URL, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + secureLocalStorage.getItem("registerToken"),
+      },
+    })
+      .then((res) => {
+        if (res.status === 401) {
+          buildDialog(
+            "Error",
+            "You are not logged in!\nPlease Login to continue.",
+            "Okay"
+          );
+          setTimeout(() => {
+            router.push("/login");
+          }, 1500);
+          // openModal();
+          // Session Expired or not logged in. Clear Cache and Navigate to login screen.
+        } else if (res.status === 500) {
+          // Backend Error. Handle it.
+        } else if (res.status === 200) {
+          // Valid Request. Data has come
+          return res.json();
+        } else if (res.status === 400) {
+          // Display error message from "MESSAGE" field in data
+        } else {
+          // Unknown Error.
+        }
+      })
+      .then((data) => {
+        console.log("Recived Data:", data);
+        setEventsData(data.EVENTS);
+        setFilteredData(data.EVENTS);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [router]);
+
+  useEffect(() => {
     console.log("DAY: ", DayFilter);
     if (eventsData) {
       setFilteredData(
@@ -101,20 +142,16 @@ const Events = () => {
         case "Not Registered":
           registerCode = 0;
           break;
-        case "Tech Workshop":
-          techCode += 1;
+        case "Workshop":
           evetypeCode += 1;
           break;
-        case "Non-Tech Workshop":
-          techCode -= 1;
-          evetypeCode += 1;
-          break;
-        case "Tech Event":
+        case "Technical":
           techCode += 1;
-          evetypeCode -= 1;
           break;
-        case "Non-Tech Event":
+        case "Non Technical":
           techCode -= 1;
+          break;
+        case "Event":
           evetypeCode -= 1;
           break;
         case "01":
@@ -144,46 +181,7 @@ const Events = () => {
     setTagsFilter(Tags);
   };
 
-  useEffect(() => {
-    fetch(ALL_EVENTS_URL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + secureLocalStorage.getItem("registerToken"),
-      },
-    })
-      .then((res) => {
-        if (res.status === 401) {
-          buildDialog(
-            "Error",
-            "You are not logged in!\nPlease Login to continue.",
-            "Okay"
-          );
-          setTimeout(() => {
-            router.push("/login");
-          }, 1500);
-          // openModal();
-          // Session Expired or not logged in. Clear Cache and Navigate to login screen.
-        } else if (res.status === 500) {
-          // Backend Error. Handle it.
-        } else if (res.status === 200) {
-          // Valid Request. Data has come
-          return res.json();
-        } else if (res.status === 400) {
-          // Display error message from "MESSAGE" field in data
-        } else {
-          // Unknown Error.
-        }
-      })
-      .then((data) => {
-        console.log("Recived Data:", data);
-        setEventsData(data.EVENTS);
-        setFilteredData(data.EVENTS);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []); // This empty bracket here is important
+   // This empty bracket here is important
 
   console.log("Events Data:", eventsData);
   console.log("Filter Data:", filteredData);
@@ -196,7 +194,7 @@ const Events = () => {
 
   return (
     <main className="flex min-h-screen flex-col bg-[#192032]">
-      <WebGLApp colors={webGLColors} className="-z-10" />
+      {/* <WebGLApp colors={webGLColors} className="-z-10" /> */}
       <div className="block">
         <Navbar />
         <div className="mx-10 pt-10 mt-12 mb-5">
@@ -226,6 +224,7 @@ const Events = () => {
                             ? event.isRegistered
                             : -1
                         }
+                        isStarred={event.isStarred}
                         maxseats={event.maxSeats}
                         seats={event.seatsFilled}
                         router={router}

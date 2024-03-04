@@ -35,7 +35,7 @@ export default function PaymentPending() {
             Payment Pending
           </h1>
           <p className="text-gray-700 text-sm text-center">
-            {"Head over to your Profile then click on My Transactions."}
+            {"Wait For 10 minutes and head over to your Profile then click on My Transactions."}
           </p>
           <p className="text-gray-700 text-sm text-center">
             {

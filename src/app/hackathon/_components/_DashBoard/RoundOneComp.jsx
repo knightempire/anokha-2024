@@ -54,17 +54,19 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
   useEffect(() => {
     setThemeCode(roundOneSubmission[0]["theme"]);
     setCanSubmit(0);
-  }, [router, themeCode]);
+  }, [router]);
 
   useEffect(() => {
     for (let i in ThemeCode) {
       if (ThemeCode[i] == theme) {
         console.log(i.toString());
         setThemeCode(i.toString());
-        console.log(themeCode);
+        break;
       }
     }
   }, [theme]);
+
+
   useEffect(() => {
     if (
       gitLink == roundOneSubmission[0]["githubLink"] &&
@@ -78,7 +80,7 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
     } else {
       setCanSubmit(1);
     }
-  }, [probStatement, theme, gitLink, ytLink, devMeshLink, pptLink]);
+  }, [probStatement, theme, gitLink, ytLink, devMeshLink, pptLink, themeCode]);
 
   const handleSubmit = async () => {
     const response = await fetch(HACKATHON_EDIT_FIRST_ROUND_SUBMISSION_URL, {
@@ -170,7 +172,7 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
       </div>
       <div className="bg-[#0a113a] text-white rounded-xl p-6 w-full h-full mx-auto pt-1">
         <div className="flex flex-row mx-auto justify-between">
-          <p className="text-center mb-8 text-xl ml-[30%] mt-3">
+          <p className="text-center mb-8 text-xl lg:ml-[30%] mt-3">
             Problem Statements & Submission
           </p>
           {editable ? (
@@ -182,7 +184,7 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
             <MdEdit onClick={(e) => setEditable(!editable)} className="mt-2" />
           )}
         </div>
-        <div className="flex flex-row gap-4">
+        <div className="flex sm:flex-col sm:justify-center sm:items-center lg:flex-row gap-4">
           <Dropdown
             disabled={!editable}
             value={theme}
