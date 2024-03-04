@@ -18,6 +18,7 @@ const Events = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(0);
   const [isAmritaCBE, setIsAmritaCBE] = useState(0);
   const [hasActivePassport, setHasActivePassport] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const tagsFunction = (eventData) => {
     for (let i of eventData.tags) {
@@ -40,6 +41,7 @@ const Events = () => {
   }, [router]);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch( STARRED_EVENTS_URL, {
       method: "GET",
       headers: {
@@ -74,9 +76,11 @@ const Events = () => {
         console.log("Recived Data:", data);
         setEventsData(data.EVENTS);
         setFilteredData(data.EVENTS);
+        setIsLoading(false);
       })
       .catch((err) => {
         console.error(err);
+        setIsLoading(false);
       });
   }, [router]);
 
@@ -93,9 +97,9 @@ const Events = () => {
       <WebGLApp colors={webGLColors} className="-z-10" /> 
       <div className="block">
         <Navbar />
-        <div className="flex flex-col gap-5 justify-center items-center mx-10 md:min-h-[20px] lg:min-h-[160px]">
-          <div className="grid mb-10 z-10 grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
-            {eventsData && eventsData.length > 0 ? (
+        <div className="flex flex-col gap-5 justify-center items-center mx-10 md:min-h-[20px] lg:min-h-[160px] mt-32">
+          <div className={eventsData.length>0?"grid mb-10 z-10 grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5":"w-full flex z-20 text-white text-center justify-center text-3xl mb-10"}>
+            {!isLoading ? eventsData.length > 0 ? (
               eventsData.map((event) => {
                 return (
                   <div key={event.eventId}>
@@ -126,6 +130,8 @@ const Events = () => {
                   </div>
                 );
               })
+            ) : (
+                "You have no Favourites"
             ) : (
               <p>Loading...</p>
             )}
