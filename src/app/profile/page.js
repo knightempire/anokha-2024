@@ -589,7 +589,7 @@ export default function Register() {
                                           </p>
                                         </div>
                                       </div>
-                                      <div className="flex gap-x-5 items-center justify-between">
+                                      <div className="flex gap-x-5 items-center ">
                                         <div className="text-[17px] font-bold">
                                           Transaction Status:
                                         </div>
