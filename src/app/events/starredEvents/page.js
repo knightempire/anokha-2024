@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import EventCard from "@/app/events/components/EventCard";
 import Link from "next/link";
 import Navbar from "../../components/EventHeader";
@@ -9,6 +9,8 @@ import WebGLApp from "../../bg/WebGLApp";
 import {STARRED_EVENTS_URL } from "@/app/_util/constants";
 import { useRouter } from "next/navigation";
 import secureLocalStorage from "react-secure-storage";
+import { Toast } from "primereact/toast";
+import ToastAlert from "@/app/_util/ToastAlerts";
 
 const Events = () => {
  
@@ -29,7 +31,7 @@ const Events = () => {
     }
     return false;
   };
-
+  const toastRef = useRef();
   const router = useRouter();
   useEffect(() => {
     setIsLoggedIn(parseInt(secureLocalStorage.getItem("isLoggedIn")));
@@ -51,14 +53,17 @@ const Events = () => {
     })
       .then((res) => {
         if (res.status === 401) {
-          buildDialog(
-            "Error",
-            "You are not logged in!\nPlease Login to continue.",
-            "Okay"
-          );
-          setTimeout(() => {
+          console.log("Not Logged In");
+        //   ToastAlert(
+        //     "error",
+        //     "Unauthorized Access",
+        //     "Please login and try again.",
+        //     toastRef
+        //   );
+        //   setTimeout(() => {
+        //     router.push("/login");
+        //   }, 1500);
             router.push("/login");
-          }, 1500);
           // openModal();
           // Session Expired or not logged in. Clear Cache and Navigate to login screen.
         } else if (res.status === 500) {
@@ -139,6 +144,7 @@ const Events = () => {
         </div>
         <Footer />
       </div>
+      {/* <Toast position="bottom-center" ref={toastRef} /> */}
     </main>
   );
 };
