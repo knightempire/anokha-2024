@@ -85,7 +85,7 @@ const Events = () => {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     console.log("DAY: ", DayFilter);
@@ -142,20 +142,16 @@ const Events = () => {
         case "Not Registered":
           registerCode = 0;
           break;
-        case "Tech Workshop":
-          techCode += 1;
+        case "Workshop":
           evetypeCode += 1;
           break;
-        case "Non-Tech Workshop":
-          techCode -= 1;
-          evetypeCode += 1;
-          break;
-        case "Tech Event":
+        case "Technical":
           techCode += 1;
-          evetypeCode -= 1;
           break;
-        case "Non-Tech Event":
+        case "Non Technical":
           techCode -= 1;
+          break;
+        case "Event":
           evetypeCode -= 1;
           break;
         case "01":

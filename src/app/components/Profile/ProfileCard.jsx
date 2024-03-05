@@ -1,8 +1,10 @@
 "use client";
 import React, { useState, createElement } from "react";
+import Image from "next/image";
+import { createHash } from "crypto";
 
 import { Avatar } from "primereact/avatar";
-import { MD5 } from "crypto-js";
+
 
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 import {
@@ -16,6 +18,7 @@ import {
 import {
   UserCircleIcon,
   PowerIcon,
+  HeartIcon
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import secureLocalStorage from "react-secure-storage";
@@ -26,12 +29,16 @@ const ProfileMenuItems = [
     icon: UserCircleIcon,
   },
   {
+    text: "Favourites",
+    icon: HeartIcon,
+  },
+  {
     text: "Sign Out",
     icon: PowerIcon,
   },
 ];
 export default function ProfileCard({ email }) {
-  const hash = MD5(email + email);
+  //const hash = MD5(email + email);
   const [isArrowMenuOpen, setIsArrowMenuOpen] = useState(false);
   const handlearrowclick = () => {
     setIsArrowMenuOpen(!isArrowMenuOpen);
@@ -51,8 +58,16 @@ export default function ProfileCard({ email }) {
     window.location.href = "/profile";
   };
 
+  const handleFavouritesClick = () => {
+    window.location.href = "/events/starredEvents";
+  };
+
   const handleClose = () => {
     setIsArrowMenuOpen(false);
+  };
+
+  const genSHA256 = (email) => {
+    return createHash("sha256").update(email).digest("hex");
   };
 
   return (
@@ -74,16 +89,28 @@ export default function ProfileCard({ email }) {
             className="flex flex-row items-center rounded-full py-0.5 pr-0.5 pl-0.5   backdrop-blur-3xl"
           >
             <div className="border-blue-600 border-2 p-0 rounded-full bg-gray-300 ">
-              <Avatar
+              {/* <Avatar
                 shape="circle"
                 alt="Travis Howard"
                 image={
                   "https://www.gravatar.com/avatar/" +
-                  hash +
-                  ".jpg?s=50&d=robohash"
+                    genSHA256(email ?? "anokhapr@cb.amrita.edu") +
+                    ".jpg?s=200&d=robohash"
                 }
-                size="large"
-              />
+                size="medium"
+              /> */}
+              
+              <Image
+                  className="rounded-full"
+                  alt="Travis Howard"
+                  src={
+                    "https://www.gravatar.com/avatar/" +
+                    genSHA256(email ?? "anokhapr@cb.amrita.edu") +
+                    ".jpg?s=200&d=robohash"
+                  }
+                  width={50}
+                  height={50}
+                />
             </div>
             <div className="cursor-pointer">
               {isMenuOpen ? (
@@ -101,6 +128,7 @@ export default function ProfileCard({ email }) {
         <MenuList className="z-40 p-1">
           {ProfileMenuItems.map(({ text, icon }, index) => {
             const isLastItem = index === ProfileMenuItems.length - 1;
+            const isFavourites = index === 1;
             return (
               <Link href="#" key={index}>
                 <MenuItem
@@ -110,7 +138,7 @@ export default function ProfileCard({ email }) {
                       ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
                       : "hover:bg-gray-500/10"
                   }`}
-                  onClick={isLastItem ? handleLogOut : handleProfileClick}
+                  onClick={isLastItem ? handleLogOut : isFavourites ? handleFavouritesClick : handleProfileClick}
                 >
                   {createElement(icon, {
                     strokeWidth: 2,

@@ -1,8 +1,8 @@
-//const BASE_URL = "https://web.abhinavramakrishnan.tech/api";
+const BASE_URL = "https://web.abhinavramakrishnan.tech/api";
 //const BASE_URL = "http://localhost:5000/api";
-const BASE_URL = "https://anokha.amrita.edu/api";
-//const HACKATHON_URL = "https://web.abhinavramakrishnan.tech/api/intel";
-const HACKATHON_URL = "https://anokha.amrita.edu/api/intel";
+//const BASE_URL = "https://anokha.amrita.edu/api";
+const HACKATHON_URL = "https://web.abhinavramakrishnan.tech/api/intel";
+//const HACKATHON_URL = "https://anokha.amrita.edu/api/intel";
 
 export const payU_Key =
   process.env.NEXT_PUBLIC_IS_PRODUCTION === "1"
@@ -32,9 +32,11 @@ export const HACKATHON_EDIT_FIRST_ROUND_SUBMISSION_URL =
 
 // These urls might be  wrong .. /auth/user (needs fix later)
 export const ALL_EVENTS_URL = BASE_URL + "/user/getAllEvents";
+export const STARRED_EVENTS_URL = BASE_URL + "/user/getStarredEvents";
 export const REGISTERED_EVENT_URL = BASE_URL + "/user/registeredEventData";
 export const EVENT_DATA_URL = BASE_URL + "/user/getEventData";
 export const STAR_UNSTAR_EVENT_URL = BASE_URL + "/user/toggleStarredEvent";
+export const GET_REGISTERED_EVENTS = BASE_URL + "/user/getRegisteredEvents";
 
 export const BUY_PASSPORT_DUMMY_PAGE_URL = BASE_URL + "/user/buyPassport";
 export const VERIFY_TRANSACTIONS_URL = BASE_URL + "/user/verifyTransaction";

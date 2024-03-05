@@ -29,7 +29,7 @@ const navLinks = [
   },
   {
     title: "TechFair",
-    path: "/comingSoon",
+    path: "/techfair",
   },
   {
     title: "Contact Us",
