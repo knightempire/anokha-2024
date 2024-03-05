@@ -9,11 +9,11 @@ const prizes = [
     },
     {
       title: "1st Place Winner",
-      price: "Prize Worth ₹ 60,000/-",
+      price: "Prizes Worth ₹ 60,000/-",
     },
     {
       title: "3rd Place Winner",
-      price: "Prices Worth ₹ 25,000/-",
+      price: "Prizes Worth ₹ 25,000/-",
     },
     
   ];
