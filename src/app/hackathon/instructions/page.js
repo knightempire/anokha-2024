@@ -17,7 +17,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { Typography } from "@material-tailwind/react";
-import Link from 'next/link'
+import Link from "next/link";
 const Home = () => {
   const handleScrollMore = () => {
     window.scrollTo({
@@ -47,31 +47,94 @@ const Home = () => {
         </div>
       </div>
       <div className="md:w-[70%] mx-auto sm:w-[90%]">
-
         <Accordion key={0} className="rounded my-2 p-2">
-            <AccordionSummary
-              expandIcon={<ArrowDownwardIcon />}
-              aria-controls="panel1-content"
-              id="faq-header"
-            >
-              <Typography className="font-bold text-center border-black b-4 px-7 py-1 text-xl text-black">
+          <AccordionSummary
+            expandIcon={<ArrowDownwardIcon />}
+            aria-controls="panel1-content"
+            id="faq-header"
+          >
+            <Typography className="font-bold text-center border-black b-4 px-7 py-1 text-xl text-black">
               Pre-Requisites for the Hackathon
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <div className="ml-5 text-[17px]">
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className="ml-5 text-[17px]">
               <ul className="list-disc ml-6 mt-2">
-                  <li>Intel®️ Developer Cloud setup guide <a href="https://www.youtube.com/watch?v=QFR3SvcTikY&t=5s" target="_blank" className="text-blue-500 font-bold underline">Link 1</a> <a href="https://www.youtube.com/watch?v=Enp8TP7ac18&t=61s" target="_blank" className="text-blue-500 font-bold underline">Link 2</a></li>
-                  <li>Intel®️ AI Analytics Toolkit and Libraries <a href="http://tinyurl.com/3a9rd6by" target="_blank" className="text-blue-500 font-bold underline">Click Here</a></li>
-                  <li>GitHub repo links: <a href="https://github.com/Sriram-code/Intel-Hackathon/tree/main" target="_blank" className="text-blue-500 font-bold underline">Link 1</a> GitHub repo: <a href="https://github.com/jaydip1235/oneAPI-GenAI-Hackathon-2023/tree/main/Lannister-Lions" target="_blank" className="text-blue-500 font-bold underline">Link 2</a></li>
-                  <li>Demo: <a href="https://youtu.be/Z-T3kgeMHlM?si=eI6Na2tvrrk6Gz7t" target="_blank" className="text-blue-500 font-bold underline">Link 1</a></li>
-                  <li>Signing up to Intel®️ Developer Cloud - IDC link <a href="https://console.cloud.intel.com/" target="_blank" className="text-blue-500 font-bold underline">https://console.cloud.intel.com/</a></li>
+                <li>
+                  Intel®️ Developer Cloud setup guide{" "}
+                  <a
+                    href="https://www.youtube.com/watch?v=QFR3SvcTikY&t=5s"
+                    target="_blank"
+                    className="text-blue-500 font-bold underline"
+                  >
+                    Link 1
+                  </a>{" "}
+                  <a
+                    href="https://www.youtube.com/watch?v=Enp8TP7ac18&t=61s"
+                    target="_blank"
+                    className="text-blue-500 font-bold underline"
+                  >
+                    Link 2
+                  </a>
+                </li>
+                <li>
+                  Intel®️ AI Analytics Toolkit and Libraries{" "}
+                  <a
+                    href="http://tinyurl.com/3a9rd6by"
+                    target="_blank"
+                    className="text-blue-500 font-bold underline"
+                  >
+                    Click Here
+                  </a>
+                </li>
+                <li>
+                  <strong>GitHub repo links</strong>
+                  <ul className="list-disc ml-6">
+                    <li>
+                      GitHub repo:{" "}
+                      <a
+                        href="https://github.com/Sriram-code/Intel-Hackathon/tree/main"
+                        target="_blank"
+                        className="text-blue-500 font-bold underline"
+                      >
+                        Link 1
+                      </a>
+                    </li>
+                    <li>
+                      GitHub repo:{" "}
+                      <a
+                        href="https://github.com/jaydip1235/oneAPI-GenAI-Hackathon-2023/tree/main/Lannister-Lions"
+                        target="_blank"
+                        className="text-blue-500 font-bold underline"
+                      >
+                        Link 2
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Demo:{" "}
+                  <a
+                    href="https://youtu.be/Z-T3kgeMHlM?si=eI6Na2tvrrk6Gz7t"
+                    target="_blank"
+                    className="text-blue-500 font-bold underline"
+                  >
+                    Click Here
+                  </a>
+                </li>
+                <li>
+                  Signing up to Intel®️ Developer Cloud - IDC link{" "}
+                  <a
+                    href="https://console.cloud.intel.com/"
+                    target="_blank"
+                    className="text-blue-500 font-bold underline"
+                  >
+                    https://console.cloud.intel.com/
+                  </a>
+                </li>
               </ul>
-
-
-                
-              </div>
-            </AccordionDetails>
+            </div>
+          </AccordionDetails>
         </Accordion>
         <Accordion key={0} className="rounded my-2 p-2 ">
           <AccordionSummary
