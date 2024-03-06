@@ -8,13 +8,13 @@ const Contest = () => {
           <h2 className='font-bold'>Participation Guidelines</h2>
           
           <ul className='list-disc md:ml-10 sm:ml-5 mt-2'>
-              <li>You must use Intel®️ AI Analytics Toolkit and Libraries to participate.</li>
-              <li>Participants must strictly adhere in using the Intel®️ AI Analytics Toolkits while framing their projects.</li>
+              <li>You must use Intel&reg; AI Analytics Toolkit and Libraries to participate.</li>
+              <li>Participants must strictly adhere in using the Intel&reg; AI Analytics Toolkits while framing their projects.</li>
           </ul>
           
           <br/>
           
-          <p>We strongly recommend that participants utilize the Intel®️ Developer Cloud (IDC) for developing and deploying their projects. This platform not only offers the advantage of high-performance GPU and enterprise-grade CPU but also provides access to the latest Intel hardware and software capabilities. By leveraging these resources, you can ensure optimal performance and efficiency for your projects. So, make the most of these cutting-edge technologies to bring your innovative ideas to life.</p>
+          <p>We strongly recommend that participants utilize the Intel&reg; Developer Cloud (IDC) for developing and deploying their projects. This platform not only offers the advantage of high-performance GPU and enterprise-grade CPU but also provides access to the latest Intel hardware and software capabilities. By leveraging these resources, you can ensure optimal performance and efficiency for your projects. So, make the most of these cutting-edge technologies to bring your innovative ideas to life.</p>
           
           <br/>
           
