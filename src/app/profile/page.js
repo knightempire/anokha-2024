@@ -15,6 +15,7 @@ import EventCard from "../events/components/EventCard";
 import { FaAngleDoubleDown } from "react-icons/fa";
 
 import { Dialog } from "primereact/dialog";
+import { Avatar } from "primereact/avatar";
 
 import secureLocalStorage from "react-secure-storage";
 import { useRouter } from "next/navigation";
@@ -308,6 +309,8 @@ export default function Register() {
       console.log(error);
     }
   };
+  const [dialog2Visible, setDialog2Visible] = useState(false);
+  
   const handlePassportClick = async () => {
     const response = await fetch(BUY_PASSPORT_DUMMY_PAGE_URL, {
       method: "POST",
@@ -351,7 +354,7 @@ export default function Register() {
 
       payUForm.submit();
 
-      setMessage("Called PayU API to make payment.");
+      //setMessage("Called PayU API to make payment.");
     } else if (response.status === 400) {
       secureLocalStorage.clear();
       ToastAlert("error", "Error", data.MESSAGE, toastRef);
@@ -388,9 +391,9 @@ export default function Register() {
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto min-h-screen lg:py-0 ">
             <Toast ref={toastRef} position="bottom-center" />
             <div className="w-full md:h-[20px] lg:h-[60px]"></div>
-            <div className="w-full rounded-[24px] bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white">
-              <div className="p-1 rounded-full ml-auto mr-auto flex justify-center">
-                <Image
+            <div className="w-full rounded-[24px] bg-clip-padding backdrop-blur-xl bg-opacity-80 md:-top-2 lg:w-3/4 xl:p-0 bg-white mb-2">
+              <div className="p-1 rounded-full mt-5 ml-auto mr-auto flex justify-center">
+                {/* <Image
                   className=""
                   alt="Travis Howard"
                   src={
@@ -400,10 +403,22 @@ export default function Register() {
                   }
                   width={80}
                   height={80}
-                />
+                /> */}
+                <div>
+                  <Avatar
+                    shape="circle"
+                    alt="Travis Howard"
+                    image={
+                      "https://www.gravatar.com/avatar/" +
+                        genSHA256(email ?? "anokhapr@cb.amrita.edu") +
+                        ".jpg?s=200&d=robohash"
+                    }
+                    size="xlarge"
+                  />
               </div>
-              <div className="w-full flex flex-col justify-center p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1 className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl">
+              </div>
+              <div className="w-full flex flex-col justify-center px-6 py-0 mb-4 mt-0 md:space-y-6 sm:pb-8">
+                <h1 className="text-xl mx-auto top-10 font-bold leading-tight tracking-tight text-black md:text-2xl ">
                   Profile
                 </h1>
                 <div className="space-y-4 md:space-y-6 flex flex-col md:flex-row md:gap-10 justify-center">
@@ -574,7 +589,7 @@ export default function Register() {
                                           </p>
                                         </div>
                                       </div>
-                                      <div className="flex gap-x-5 items-center justify-between">
+                                      <div className="flex gap-x-5 items-center ">
                                         <div className="text-[17px] font-bold">
                                           Transaction Status:
                                         </div>
@@ -628,12 +643,42 @@ export default function Register() {
                             "studentAccountStatus"
                           ) == 1 ? (
                           <div>
+                            <button
+                              className="px-2 py-2 font-medium w-[140px] rounded-xl mb-[20px] bg-blue-400 "
+                              onClick={() => setDialog2Visible(true)}
+                             >
+                              Why Passport?
+                            </button>
+                            <Dialog
+                            modal
+                            draggable={false}
+                            visible={dialog2Visible}
+                            className="w-[80%] md:w-[650px] lg:w-[750px]"
+                            header="Passport Information"
+                            onHide={() => setDialog2Visible(false)}
+                          >
+                              <div>
+                              <ul class="list-disc list-inside p-4 space-y-2 text-gray-700">
+                                <li>The Anokha passport is the <span class="font-bold">exclusive entry ticket</span> for the Anokha tech fest.</li>
+                                <li>
+                                  Students <span class="font-bold">(except Amrita Vishwa Vidyapeetham Coimbatore campus)</span> must purchase a passport before registering for events and workshops.
+                                </li>
+                                <li>
+                                  Coimbatore campus students can register for events and workshops using their <span class="font-bold">registered Amrita email-id</span> and do not need to purchase a passport.
+                                </li>
+                                <li>The passport costs <span class="font-bold">₹ 500 (including GST)</span> and only guarantees entry to the tech fest (events and workshops have separate fees).</li>
+                                <li>No physical copies will be provided. A <span class="font-bold">QR code</span> received upon purchase must be shown for entry on all three days.</li>
+                              </ul>
+
+
+                              </div>
+                          </Dialog>
                             <div>
                               Buy passport to register for events and
                               participate <br /> (Opening Soon)
                             </div>
                             <button
-                              className="px-4 py-2 rounded-xl mt-[30px] bg-blue-400 cursor-not-allowed"
+                              className="px-4 py-2 font-medium w-[140px] rounded-xl mt-[20px] bg-blue-400 cursor-not-allowed"
                               onClick={() => handlePassportClick()}
                               disabled={true}
                             >

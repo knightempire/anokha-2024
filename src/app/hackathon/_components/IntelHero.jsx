@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import oneapilogo from "../images/oneAPI-rgb-3000.png";
 import ieeelogo from "../images/ieee.png"
+import intelogo from "../images/intel-logo.png"
 import { IoLocation } from "react-icons/io5";
 import { Button, Chip } from "@material-tailwind/react";
 import { useRouter } from "next/navigation";
@@ -27,8 +28,9 @@ function IntelHero({ userState, displayResult }) {
             <Image src={oneapilogo} width={150} alt="oneapilogo" />
             <Image src={ieeelogo} width={150} alt="ieeelogo" className="mt-5 -mr-2" />
           </div>
-          <p className="md:text-[3rem] sm:text-[2rem] font-bold sm:leading-[100%] mt-2">
-            Intel AI Hackathon
+          <p className="md:text-[3rem] sm:text-[2.2rem] font-bold sm:leading-[100%] md:flex sm:block items-baseline gap-3 pt-2">
+            <span><Image src={intelogo} width={100} alt="intel logo" /></span> 
+            AI Hackathon
           </p>
           <div className="text-xs w-fit py-2 bg-blue-500 px-4 mt-2 rounded-full text-white flex items-center gap-1">
             <IoLocation size={15} /> Amrita Vishwa Vidyapeetham, Coimbatore

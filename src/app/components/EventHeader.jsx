@@ -13,7 +13,7 @@ import { Button } from "@material-tailwind/react";
 const navLinks = [
   {
     title: "About",
-    path: "/comingSoon",
+    path: "/#about",
   },
   {
     title: "Events",

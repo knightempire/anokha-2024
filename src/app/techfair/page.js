@@ -2,6 +2,7 @@
 import Image from "next/image";
 import WebGLApp from "../bg/WebGLApp";
 import Navigationbar from "../components/EventHeader";
+import Footer from "../components/Footer";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -13,6 +14,7 @@ const Techfair = () => {
   });
 
   return (
+    <main>
     <main className="flex min-h-screen bg-[#192032] font-roobert text-md overflow-x-hidden">
       <WebGLApp colors={webGLColors} className="-z-10" />
       <div className="block z-20">
@@ -95,7 +97,7 @@ const Techfair = () => {
                 </div>
                 <div className="flex flex-col mr-4">
                   <div className="flex flex-col justify-center items-center text-black h-[40%] w-[10vw] bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 bg-gradient-to-r from-blue-600 via-indigo-400 to-purple-600 text-2xl cursor-pointer">
-                    <Link href="/techfair/register">
+                    <Link href="https://forms.office.com/r/bp79NqPxkt">
                       <div className="flex justify-center items-center p-4 hover:scale-110 transition-transform duration-300 ease-in-out transform">
                         Register Now &#8594;
                       </div>
@@ -103,7 +105,7 @@ const Techfair = () => {
                   </div>
                   <div className="flex flex-col justify-center items-center text-white h-[50%] w-[10vw] bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 my-4">
                     <Link
-                      href="/techfair/register"
+                      href="https://forms.office.com/r/bp79NqPxkt"
                       className="cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out transform"
                     >
                       <div className="flex justify-center items-center text-3xl">
@@ -201,7 +203,7 @@ const Techfair = () => {
           <div className="flex flex-row mx-4">
             <div className="flex flex-col justify-center items-center text-white h-[40%] w-[40vw] bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 my-4">
               <Link
-                href="/techfair/register"
+                href="https://forms.office.com/r/bp79NqPxkt"
                 className="cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out transform"
               >
                 <div className="flex justify-center items-center text-3xl">
@@ -213,7 +215,7 @@ const Techfair = () => {
               </Link>
             </div>
             <div className="flex flex-col justify-center items-center text-black h-[40%] w-[40vw] bg-[rgba(0,0,0,0.4)] backdrop-blur-lg rounded-xl p-4 bg-gradient-to-r from-blue-600 via-indigo-400 to-purple-600 text-2xl cursor-pointer m-4 mx-8">
-              <Link href="/techfair/register">
+              <Link href="https://forms.office.com/r/bp79NqPxkt">
                 <div className="flex justify-center items-center hover:scale-110 transition-transform duration-300 ease-in-out transform">
                   Register Now &#8594;
                 </div>
@@ -289,6 +291,8 @@ const Techfair = () => {
           </div>
         </div>
       </div>
+    </main>
+    <Footer/>
     </main>
   );
 };

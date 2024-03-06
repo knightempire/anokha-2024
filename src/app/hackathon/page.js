@@ -27,6 +27,7 @@ import Judging from './_components/Judging'
 import WinnerPrice from './_components/WinnerPrice'
 import SubGuidelines from './_components/SubGuidelines'
 import Navigationbar from '../components/EventHeader'
+import Contest from './_components/Contest'
 
  
 export default function Page() {
@@ -164,7 +165,8 @@ export default function Page() {
         
         <About/>
         <Themes />
-        <Timeline/>  
+        <Timeline/>
+        <Contest/>
         <FAQs/>
         <Footer/>
     </div>

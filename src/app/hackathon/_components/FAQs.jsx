@@ -45,7 +45,7 @@ const FAQs = () => {
     {
       question: "When is the application deadline? ",
       answer:
-        "The application closes on 29th Feb. Make sure to register and submit a project based on the given problem statement and theme! ",
+        "The application closes on 7th March. Make sure to register and submit a project based on the given problem statement and theme! ",
     },
     {
       question: "How do I submit what I have made for the Hackathon? ",

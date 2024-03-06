@@ -357,7 +357,7 @@ const Event = () => {
 
         payUForm.submit();
 
-        setMessage("Called PayU API to make payment.");
+        // setMessage("Called PayU API to make payment.");
       } else if (response.status === 400) {
         console.log(data);
         ToastAlert("error", "Registration Failed", `${data.MESSAGE}`, toastRef);
@@ -516,7 +516,7 @@ const Event = () => {
               </p>
               <p className="text-white text-base mb-2">
                 <strong>Group/Individual:</strong>{" "}
-                {eventData.isGroup ? "Group" : "Individual"}
+                {eventData.isGroup == "1" ? "Group":"Individual"}
               </p>
             </div>
             {/* Price Section */}
