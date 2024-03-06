@@ -226,7 +226,7 @@ export default function Register() {
                     <div id="Fields">
                       <TextField
                         error={!isPhoneValid && phone != ""}
-                        placeholder={"+91 99999 99999"}
+                        placeholder={"9999999999"}
                         label="Phone Number"
                         value={phone}
                         helperText={
