@@ -27,24 +27,10 @@ const Techfair = () => {
               </div>
               <br />
               <div className="flex justify-center items-center text-sm ">
-                Amrita Vishwa Vidyapeetham Tech Fair acts as a unifying
-                platform, which brings together students from different colleges
-                across the country to present their work to business
-                professionals. It serves as a brilliant opportunity for them to
-                network and gain insights from their peers nationwide.
+              Anokha Techfair exhibitions acts as a unifying platform, which brings together students from different colleges across the country to present their work to industry professionals and a wide audience. It serves as a brilliant opportunity to network and gain insights from experts and professionals nationwide. 
                 <br />
                 <br />
-                This large-scale fair, considered a flagship event for talent
-                and innovation, provides a forum for creative ideas to take
-                center stage, allowing diverse skills to shine. Tech Fair
-                exemplifies the collaboration between academia and industry.
-                Students exhibit technological proficiency, gaining valuable
-                insights for their future careers. It highlights the vital link
-                between academic achievement and real-world application in the
-                industry and embodies a unique blend of teamwork and
-                versatility. In every Anokha edition, the Tech Fair has served
-                as the epicentre of innovation, blurring the boundaries between
-                imagination and reality.
+                Techfair exhibitions, considered a flagship event for talent and innovation at Amrita University, Coimbatore, provides a forum for creative ideas to take centre stage, allowing diverse skills to shine and year after year, the it has served as the epicentre of innovation, blurring the boundaries between imagination and reality. The Anokha Techfair exhibitions exemplifies the collaboration between academia and industry. Students exhibit technological proficiency, gaining valuable insights for their future careers. It highlights the vital link between academic achievement and real-world application in the industry and embodies a unique blend of teamwork and versatility. 
               </div>
               <br />
             </div>
