@@ -114,7 +114,7 @@ export default function Page({ router }) {
   return (
     <div className=" min-h-screen relative bg-[rgb(10,17,58)] sm:overflow-x-auto lg:overflow-hidden">
       <Navigationbar />
-      <main className="absolute w-full h-full flex sm:flex-col lg:flex-row gap-4 top-[90px]">
+      <main className="absolute w-full h-full flex sm:flex-col lg:flex-row gap-4 top-[85px]">
         <div className="sm:w-[100%] lg:w-[50%] mx-auto my-12 lg:my-15">
           <TeamDetails
             teamName={teamName}

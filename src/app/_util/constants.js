@@ -1,8 +1,8 @@
 const BASE_URL = "https://web.abhinavramakrishnan.tech/api";
 //const BASE_URL = "http://localhost:5000/api";
-//const BASE_URL = "https://anokha.amrita.edu/api";
+// const BASE_URL = "https://anokha.amrita.edu/api";
 const HACKATHON_URL = "https://web.abhinavramakrishnan.tech/api/intel";
-//const HACKATHON_URL = "https://anokha.amrita.edu/api/intel";
+// const HACKATHON_URL = "https://anokha.amrita.edu/api/intel";
 
 export const payU_Key =
   process.env.NEXT_PUBLIC_IS_PRODUCTION === "1"

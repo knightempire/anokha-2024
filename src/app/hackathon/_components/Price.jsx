@@ -97,10 +97,10 @@ export default function Price() {
               onClick={(e) => {
                 router.push("/hackathon/register");
               }}
-              className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-4  rounded-[5px] mt-3 ml-3"
-              disabled={disableCondition}
+              className="text-[1rem]  bg-gradient-to-r from-[#0A113A] to-[#3306B5] text-white p-3 px-8 sm:mt-4  rounded-[5px] mt-3 ml-3 disabled:cursor-not-allowed disabled:opacity-80"
+              disabled={true}
             >
-              Registrations Open!
+              Registrations Closed!
             </Button>
           </div>
         </div>

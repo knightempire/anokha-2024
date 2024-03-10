@@ -66,7 +66,6 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
     }
   }, [theme]);
 
-
   useEffect(() => {
     if (
       gitLink == roundOneSubmission[0]["githubLink"] &&
@@ -146,19 +145,19 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
         ) : (
           ""
         )}
-        <div className="w-full focus:outline-0 pl-2">
-          <a
+        <div className="w-[90%] focus:outline-0 pl-2">
+          {/* <a
             href={link}
             target="blank"
-            className={editable ? "hidden" : "text-blue-400"}
+            className={false ? "hidden" : "text-blue-400 text-wrap"}
           >
             {link}
-          </a>
+          </a> */}
           <input
             type="text"
             value={link}
             onChange={(e) => setLink(e.target.value)}
-            className={editable ? "focus:outline-0 w-full" : "hidden"}
+            className={true ? "focus:outline-0 w-full" : "hidden"}
           />
         </div>
       </div>
@@ -175,18 +174,21 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
           <p className="text-center mb-8 text-xl lg:ml-[30%] mt-3">
             Problem Statements & Submission
           </p>
-          {editable ? (
+          {true ? (
             <MdEditOff
-              onClick={(e) => setEditable(!editable)}
+              // onClick={(e) => setEditable(!editable)}
               className="mt-2"
             />
           ) : (
-            <MdEdit onClick={(e) => setEditable(!editable)} className="mt-2" />
+            <MdEdit
+              // onClick={(e) => setEditable(!editable)}
+              className="mt-2"
+            />
           )}
         </div>
         <div className="flex sm:flex-col sm:justify-center sm:items-center lg:flex-row gap-4">
           <Dropdown
-            disabled={!editable}
+            disabled={true}
             value={theme}
             onChange={(e) => setTheme(e.target.value)}
             options={availThemes}
@@ -199,7 +201,7 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
             <div className=" focus:outline-0 pl-2 h-[100%]">
               <textarea
                 style={{ resize: "none", height: "100%" }}
-                disabled={!editable}
+                disabled={true}
                 placeholder="Enter problem statement"
                 value={probStatement}
                 onChange={(e) => setProbStat(e.target.value)}
@@ -217,13 +219,17 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
           {SubmissionComponent("pdf", pptLink, setPptLink)}
         </div>
 
-        <Button
+        <div className="text-center justify-center text-xl mt-5">
+          Please be patient until we evaluate the submissions
+        </div>
+
+        {/* <Button
           className="mx-auto text-md flex justify-center items-center before:ease relative h-12 w-40 overflow-hidden border rounded border-blue-800 bg-blue-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 mt-6"
           onClick={handleSubmit}
-          disabled={!canSubmit}
+          disabled={true}
         >
           <span relative="relative z-10">Submit</span>
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

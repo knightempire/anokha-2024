@@ -55,8 +55,9 @@ function IntelHero({ userState, displayResult }) {
                   router.push("/register");
                 }}
                 className="before:ease relative h-12  md:w-fit sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
+                disabled={true}
               >
-                Sign Up for Anokha !
+                Registrations Closed!
               </Button>
             ) : userState === 1 ? (
               <Button
@@ -64,8 +65,9 @@ function IntelHero({ userState, displayResult }) {
                   router.push("/hackathon/register");
                 }}
                 className="before:ease relative  md:w-fit   sm:w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40"
+                disabled={true}
               >
-                Register your Team !
+                Registrations Closed!
               </Button>
             ) : userState === 2 ? (
               <Button
