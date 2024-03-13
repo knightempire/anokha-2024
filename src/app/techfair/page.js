@@ -82,14 +82,14 @@ const Techfair = () => {
               foster lasting relationships with individuals who share your
               enthusiasm for pushing the boundaries of technology.
             </div>
-            <Link href="https://forms.office.com/r/bp79NqPxkt">
+            <Link href="https://forms.office.com/r/jVHMVi3ek6">
               <button className="text-xl text-black bg-gradient-to-r from-blue-600 via-indigo-400 to-purple-600 rounded-lg p-4 transition duration-50 hover:scale-105 active:scale-100">
                 SUBMIT YOUR PROJECTS
               </button>
             </Link>
             <div className="text-white text-3xl my-3 p-2 flex sm:flex-col md:flex-row justify-center">
               <div>Submission Deadline : </div>
-              <div>&nbsp; 10th March, 2024</div>
+              <div>&nbsp; 20<sup>th</sup> March, 2024</div>
             </div>
           </div>
 
