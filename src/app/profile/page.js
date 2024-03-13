@@ -666,7 +666,7 @@ export default function Register() {
                                 <li>
                                   Coimbatore campus students can register for events and workshops using their <span class="font-bold">registered Amrita email-id</span> and do not need to purchase a passport.
                                 </li>
-                                <li>The passport costs <span class="font-bold">₹ 500 (including GST)</span> and only guarantees entry to the tech fest (events and workshops have separate fees).</li>
+                                <li>The passport costs <span class="font-bold">₹ 300 (+ GST)</span> and only guarantees entry to the tech fest (events and workshops have separate fees).</li>
                                 <li>No physical copies will be provided. A <span class="font-bold">QR code</span> received upon purchase must be shown for entry on all three days.</li>
                               </ul>
 
