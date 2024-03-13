@@ -10,6 +10,7 @@ import ToastAlert from "@/app/_util/ToastAlerts";
 import TeamDetails from "../_components/_DashBoard/TeamDetails";
 
 import RoundOneComp from "../_components/_DashBoard/RoundOneComp";
+import RoundTwoComp from "../_components/_DashBoard/RoundTwoComp";
 import Round1NotFound from "../_components/_DashBoard/RoundOneNotFound";
 import Navigationbar from "@/app/components/EventHeader";
 
@@ -32,6 +33,7 @@ export default function Page({ router }) {
   const [teamMembers, setTeamMembers] = useState("");
   const [RoundOneSub, setRoundOneSub] = useState("");
   const [RoundTwoSub, setRoundTwoSub] = useState("");
+  const [roundDisplay, setRoundDisplay] = useState(1);
 
   useEffect(() => {
     console.log(detailsJson);
@@ -51,6 +53,7 @@ export default function Page({ router }) {
         setRoundOneSub(details.firstRoundSubmission);
         setRoundTwoSub(details.secondRoundSubmission);
         setTeamStatus(details.teamStatus);
+        if(details.secondRoundSubmission.length == 0 ? setRoundDisplay(1) : setRoundDisplay(2));
         console.log(details.firstRoundSubmission, RoundOneSub);
       } catch (error) {
         console.error("Error parsing JSON:", error);
@@ -113,6 +116,7 @@ export default function Page({ router }) {
 
   return (
     <div className=" min-h-screen relative bg-[rgb(10,17,58)] sm:overflow-x-auto lg:overflow-hidden">
+      <div className="w-full h-[20px]"></div>
       <Navigationbar />
       <main className="absolute w-full h-full flex sm:flex-col lg:flex-row gap-4 top-[85px]">
         <div className="sm:w-[100%] lg:w-[50%] mx-auto my-12 lg:my-15">
@@ -127,10 +131,26 @@ export default function Page({ router }) {
         </div>
         <div className="justify-end sm:w-[100%] lg:w-[50%] bg-[#172786] px-3 flex-1">
           <div className="flex flex-row justify-evenly">
-            <button className="bg-[#0a113a] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg">
+            <button
+              className={
+                roundDisplay == 1
+                  ? "bg-[#0a113a] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg"
+                  : "bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg"
+              }
+              onClick={() => setRoundDisplay(1)}
+            >
               Round 1
             </button>
-            <button className="bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg cursor-not-allowed">
+            <button
+              className={
+                teamStatus == 2
+                  ? roundDisplay == 2
+                    ? "bg-[#0a113a] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg"
+                    : "bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg"
+                  : "bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg cursor-not-allowed"
+              }
+              onClick={teamStatus == 2 ? () => setRoundDisplay(2) : ""}
+            >
               Round 2
             </button>
             <button className="bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg cursor-not-allowed">
@@ -138,10 +158,16 @@ export default function Page({ router }) {
             </button>
           </div>
 
-          {RoundOneSub == "" || RoundOneSub == null || RoundOneSub == [] ? (
-            <Round1NotFound router={router} />
+          {roundDisplay == 1 ? (
+            RoundOneSub == "" || RoundOneSub == null || RoundOneSub == [] ? (
+              <Round1NotFound router={router} round={1} />
+            ) : (
+              <RoundOneComp router={router} roundOneSubmission={RoundOneSub} />
+            )
+          ) : roundDisplay == 2 ? (
+            <RoundTwoComp router={router} roundOneSubmission={RoundOneSub} roundTwoSubmission={RoundTwoSub} />
           ) : (
-            <RoundOneComp router={router} roundOneSubmission={RoundOneSub} />
+            <Round1NotFound router={router} />
           )}
         </div>
       </main>

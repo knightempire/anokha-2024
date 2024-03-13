@@ -20,7 +20,7 @@ const TeamDetails = ({
           Welcome <i className="font-bold">{teamName}</i>
         </h1>
         <h3 className="mx-auto text-white font-normal bg-[rgba(255,255,255,0.5)] py-1 px-2 rounded-2xl">
-          You are currently in Round {teamStatus}
+          {teamStatus==1? "Sorry, you didn't make it to Round 2": teamStatus == 2 ? "Congratulations. You are shortlisted for Round 2":""}
         </h3>
         <p className="w-full text-center font-light test-md mt-3 text-white">
           Team Details
