@@ -5,10 +5,12 @@ import Link from "next/link";
 import Navbar from "../components/EventHeader";
 import Footer from "../components/Footer";
 import FilterSection from "./components/FilterSection";
-import WebGLApp from "../bg/WebGLApp";
 import { ALL_EVENTS_URL } from "../_util/constants";
 import { useRouter } from "next/navigation";
 import secureLocalStorage from "react-secure-storage";
+import "primereact/resources/themes/lara-light-blue/theme.css";
+import "primereact/resources/primereact.min.css";
+
 
 const Events = () => {
   const [groupFilter, setgroupFilter] = useState(null);
@@ -25,6 +27,8 @@ const Events = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(0);
   const [isAmritaCBE, setIsAmritaCBE] = useState(0);
   const [hasActivePassport, setHasActivePassport] = useState(0);
+
+  const [searchText, setSearchText] = useState("");
 
   const tagsFunction = (eventData) => {
     for (let i of eventData.tags) {
@@ -88,11 +92,12 @@ const Events = () => {
   }, [router]);
 
   useEffect(() => {
-    console.log("DAY: ", DayFilter);
+    // console.log("DAY: ", DayFilter);
     if (eventsData) {
       setFilteredData(
         eventsData.filter(
           (eventData) =>
+          (searchText === "" || eventData.eventName.toLowerCase().includes(searchText.toLowerCase())) &&
             (groupFilter == -1 ||
               eventData.isGroup == groupFilter?.toString()) &&
             (TechFilter == -1 ||
@@ -118,6 +123,7 @@ const Events = () => {
     TechFilter,
     RegisteredFilter,
     TagsFilter,
+    searchText
   ]);
 
   const hanldeCurrentFilters = (filters) => {
@@ -181,7 +187,7 @@ const Events = () => {
     setTagsFilter(Tags);
   };
 
-   // This empty bracket here is important
+  // This empty bracket here is important
 
   console.log("Events Data:", eventsData);
   console.log("Filter Data:", filteredData);
@@ -197,7 +203,21 @@ const Events = () => {
       {/* <WebGLApp colors={webGLColors} className="-z-10" /> */}
       <div className="block">
         <Navbar />
+        
         <div className="mx-10 pt-10 mt-12 mb-5">
+          {/* Search Bar */}
+
+          <div className="flex flex-row justify-center items-center flex-wrap mt-8">
+            <input
+              type="text"
+              placeholder="Search Event by Event Name"
+              className="p-3 w-[90%] md:w-3/5 bg-white rounded-xl text-black"
+              onChange={(e) => {
+                setSearchText(e.target.value);
+              }}
+            />
+          </div>
+
           <FilterSection sendcurrentFilters={hanldeCurrentFilters} />
         </div>
         <div className="flex flex-col gap-5 justify-center items-center mx-10 md:min-h-[20px] lg:min-h-[160px]">
@@ -234,7 +254,7 @@ const Events = () => {
                 );
               })
             ) : (
-              <p>Loading...</p>
+              <p className="text-white text-center">Loading...</p>
             )}
           </div>
         </div>
