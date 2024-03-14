@@ -146,19 +146,19 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
           ""
         )}
         <div className="w-[90%] focus:outline-0 pl-2">
-          {/* <a
+          <a
             href={link}
             target="blank"
             className={false ? "hidden" : "text-blue-400 text-wrap"}
           >
             {link}
-          </a> */}
-          <input
+          </a>
+          {/* <input
             type="text"
             value={link}
             onChange={(e) => setLink(e.target.value)}
             className={true ? "focus:outline-0 w-full" : "hidden"}
-          />
+          /> */}
         </div>
       </div>
     );
@@ -174,7 +174,7 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
           <p className="text-center mb-8 text-xl lg:ml-[30%] mt-3">
             Problem Statements & Submission
           </p>
-          {true ? (
+          {false ? (
             <MdEditOff
               // onClick={(e) => setEditable(!editable)}
               className="mt-2"
@@ -220,7 +220,7 @@ const RoundOneComp = ({ router, roundOneSubmission }) => {
         </div>
 
         <div className="text-center justify-center text-xl mt-5">
-          Please be patient until we evaluate the submissions
+          Results are published
         </div>
 
         {/* <Button

@@ -1,11 +1,11 @@
 "use client";
 
-export default function ROund1NotFound({ router }) {
+export default function ROund1NotFound({ router, round }) {
   return (
     <div className="bg-[rgb(10,17,58)] text-white w-full p-5 pt-0 h-[80%] text-center rounded-b-xl justify-center">
       <div className="flex flex-col justify-center h-full p-6 item-center">
         <div className="text-[30px]">
-          Submission deadline had passed
+          Submission deadline is over.
           <br /> Your team is eliminated !
         </div>
         {/* <div>

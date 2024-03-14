@@ -14,19 +14,25 @@ module.exports = withBundleAnalyzer({
 
   experimental: {
     serverActions: {
-        allowedOrigins: [
-            'localhost',
-            'test.payu.in',
-            'testtxncdn.payubiz.in',
-            'secure.payu.in',
-            'txncdn.payu.in',
-            'anokha.amrita.edu',
-        ]
-    }
+      allowedOrigins: [
+        "localhost",
+        "test.payu.in",
+        "testtxncdn.payubiz.in",
+        "secure.payu.in",
+        "txncdn.payu.in",
+        "anokha.amrita.edu",
+      ],
+    },
   },
 
   images: {
-    domains: ["anokha.amrita.edu", "i.imgur.com", "imgur.com", "gravatar.com"],
+    domains: [
+      "anokha.amrita.edu",
+      "i.imgur.com",
+      "imgur.com",
+      "gravatar.com",
+      "wwd.com",
+    ],
     remotePatterns: [
       {
         protocol: "https",
@@ -36,5 +42,4 @@ module.exports = withBundleAnalyzer({
       },
     ],
   },
-
 });

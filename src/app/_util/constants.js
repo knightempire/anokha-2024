@@ -1,8 +1,8 @@
-const BASE_URL = "https://web.abhinavramakrishnan.tech/api";
+// const BASE_URL = "https://web.abhinavramakrishnan.tech/api";
 //const BASE_URL = "http://localhost:5000/api";
-// const BASE_URL = "https://anokha.amrita.edu/api";
-const HACKATHON_URL = "https://web.abhinavramakrishnan.tech/api/intel";
-// const HACKATHON_URL = "https://anokha.amrita.edu/api/intel";
+const BASE_URL = "https://anokha.amrita.edu/api";
+// const HACKATHON_URL = "https://web.abhinavramakrishnan.tech/api/intel";
+const HACKATHON_URL = "https://anokha.amrita.edu/api/intel";
 
 export const payU_Key =
   process.env.NEXT_PUBLIC_IS_PRODUCTION === "1"
@@ -27,8 +27,12 @@ export const HACKATHON_TEAM_REGISTER_URL = HACKATHON_URL + "/registerTeam";
 export const HACKATHON_DASHBOARD_URL = HACKATHON_URL + "/getDashBoard";
 export const HACKATHON_FIRST_ROUND_SUBMISSION_URL =
   HACKATHON_URL + "/submitFirstRound";
+export const HACKATHON_SECOND_ROUND_SUBMISSION_URL =
+  HACKATHON_URL + "/submitSecondRound";
 export const HACKATHON_EDIT_FIRST_ROUND_SUBMISSION_URL =
   HACKATHON_URL + "/editFirstRoundSubmission";
+export const HACKATHON_EDIT_SECOND_ROUND_SUBMISSION_URL =
+  HACKATHON_URL + "/editSecondRoundSubmission";
 
 // These urls might be  wrong .. /auth/user (needs fix later)
 export const ALL_EVENTS_URL = BASE_URL + "/user/getAllEvents";
