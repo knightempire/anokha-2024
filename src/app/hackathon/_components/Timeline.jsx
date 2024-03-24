@@ -52,7 +52,7 @@ const Timeline = () => {
             title: "Round 2: Prototype Development",
       description:
 "The resources essential for building with OneAPI can be found in the learning resources section. Prototypes are to be shared through GitHub repositories, with a link to DevMesh."
-,Date: "March 7th - 23th"    
+,Date: "March 7th - 28th"    
 },
     {
             title: "Round 3: Final Round",
