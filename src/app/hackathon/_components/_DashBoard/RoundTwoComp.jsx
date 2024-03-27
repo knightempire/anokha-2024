@@ -67,29 +67,19 @@ const RoundOneComp = ({ router, roundOneSubmission, roundTwoSubmission }) => {
 
   useEffect(() => {
     if (roundTwoSubmission.length != 0) {
-      if (
-        gitLink == roundTwoSubmission[0]["githubLink"] &&
-        ytLink == roundTwoSubmission[0]["youtubeVideoLink"] &&
-        devMeshLink == roundTwoSubmission[0]["devmeshLink"] &&
-        pptLink == roundTwoSubmission[0]["pptFileLink"]
-      ) {
+      if (gitLink == roundTwoSubmission[0]["githubLink"]) {
         setCanSubmit(0);
       } else {
         setCanSubmit(1);
       }
     } else {
-      if (
-        pptLink.length != 0 &&
-        gitLink.length != 0 &&
-        ytLink.length != 0 &&
-        devMeshLink.length != 0
-      ) {
+      if (gitLink.length != 0) {
         setCanSubmit(1);
       } else {
         setCanSubmit(0);
       }
     }
-  }, [gitLink, ytLink, devMeshLink, pptLink]);
+  }, [gitLink, ytLink, devMeshLink, pptLink, roundTwoSubmission]);
 
   const handleSubmit = async () => {
     if (roundTwoSubmission.length != 0) {
@@ -102,10 +92,10 @@ const RoundOneComp = ({ router, roundOneSubmission, roundTwoSubmission }) => {
           )}`,
         },
         body: JSON.stringify({
-          pptFileLink: pptLink,
-          githubLink: gitLink,
-          youtubeVideoLink: ytLink,
-          devmeshLink: devMeshLink,
+          pptFileLink: pptLink.length == 0 ? "-" : pptLink,
+          githubLink: gitLink.length == 0 ? "-" : gitLink,
+          youtubeVideoLink: ytLink.length == 0 ? "-" : ytLink,
+          devmeshLink: devMeshLink.length == 0 ? "-" : devMeshLink,
         }),
       });
       const data = await response.json();
