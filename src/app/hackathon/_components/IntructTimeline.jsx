@@ -11,11 +11,11 @@ const TimelineInstruct = () => {
       description: "Announcement for shortlisted teams for 2nd round (prototype)",
     },
     {
-      title: "March 7th to 28th",
+      title: "March 7th to April 2nd (10 AM)",
       description: "Prototype development",
     },
     {
-      title: "March 29th",
+      title: "April 2nd (EOD)",
       description: "Announcement for the shortlisted teams for offline round",
     },
     {
