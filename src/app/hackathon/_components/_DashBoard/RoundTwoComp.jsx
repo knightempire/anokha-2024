@@ -210,13 +210,13 @@ const RoundOneComp = ({ router, roundOneSubmission, roundTwoSubmission }) => {
             className={editable == 1 ? "focus:outline-0 w-full" : "hidden"}
             placeholder={
               icon == "github"
-                ? "Project github url"
+                ? "Project GitHub url (MANDATORY)"
                 : icon == "YT"
-                ? "Project youtube url"
+                ? "Project YouTube url (OPTIONAL)"
                 : icon == "devmesh"
-                ? "Project devmesh url"
+                ? "Project DevMesh url (OPTIONAL)"
                 : icon == "pdf"
-                ? "Project ppt url"
+                ? "Project PPT url (OPTIONAL)"
                 : ""
             }
           />
