@@ -92,10 +92,10 @@ const RoundOneComp = ({ router, roundOneSubmission, roundTwoSubmission }) => {
           )}`,
         },
         body: JSON.stringify({
-          pptFileLink: pptLink.length == 0 ? "-" : pptLink,
-          githubLink: gitLink.length == 0 ? "-" : gitLink,
-          youtubeVideoLink: ytLink.length == 0 ? "-" : ytLink,
-          devmeshLink: devMeshLink.length == 0 ? "-" : devMeshLink,
+          pptFileLink: pptLink.length === 0 ? "-" : pptLink,
+          githubLink: gitLink.length === 0 ? "-" : gitLink,
+          youtubeVideoLink: ytLink.length === 0 ? "-" : ytLink,
+          devmeshLink: devMeshLink.length === 0 ? "-" : devMeshLink,
         }),
       });
       const data = await response.json();
@@ -140,10 +140,10 @@ const RoundOneComp = ({ router, roundOneSubmission, roundTwoSubmission }) => {
           )}`,
         },
         body: JSON.stringify({
-          pptFileLink: pptLink,
-          githubLink: gitLink,
-          youtubeVideoLink: ytLink,
-          devmeshLink: devMeshLink,
+          pptFileLink: pptLink.length === 0 ? "-" : pptLink,
+          githubLink: gitLink.length === 0 ? "-" : gitLink,
+          youtubeVideoLink: ytLink.length === 0 ? "-" : ytLink,
+          devmeshLink: devMeshLink.length === 0 ? "-" : devMeshLink,
         }),
       });
       const data = await response.json();
