@@ -49,6 +49,12 @@ const RoundOneComp = ({ router, roundOneSubmission, roundTwoSubmission }) => {
   const [pptLink, setPptLink] = useState(
     roundTwoSubmission.length ? roundTwoSubmission[0]["pptFileLink"] : ""
   );
+  const [topic, setTopic] = useState(
+    roundTwoSubmission.length ? roundTwoSubmission[0]["projectTitle"] : ""
+  );
+  const [intelResourcesUsed, setintelResourcesUsed] = useState(
+    roundTwoSubmission.length ? roundTwoSubmission[0]["intelResourcesUsed"] : ""
+  );
   const [canSubmit, setCanSubmit] = useState(0);
   //Use this for sending to backend
   const [themeCode, setThemeCode] = useState("0");
@@ -69,9 +75,8 @@ const RoundOneComp = ({ router, roundOneSubmission, roundTwoSubmission }) => {
     if (roundTwoSubmission.length != 0) {
       if (
         gitLink == roundTwoSubmission[0]["githubLink"] &&
-        ytLink == roundTwoSubmission[0]["youtubeVideoLink"] &&
-        devMeshLink == roundTwoSubmission[0]["devmeshLink"] &&
-        pptLink == roundTwoSubmission[0]["pptFileLink"]
+        topic == roundTwoSubmission[0]["projectTitle"] &&
+        intelResourcesUsed == roundTwoSubmission[0]["intelResourcesUsed"]
       ) {
         setCanSubmit(0);
       } else {
@@ -79,17 +84,24 @@ const RoundOneComp = ({ router, roundOneSubmission, roundTwoSubmission }) => {
       }
     } else {
       if (
-        pptLink.length != 0 &&
         gitLink.length != 0 &&
-        ytLink.length != 0 &&
-        devMeshLink.length != 0
+        topic.length != 0 &&
+        intelResourcesUsed.length != 0
       ) {
         setCanSubmit(1);
       } else {
         setCanSubmit(0);
       }
     }
-  }, [gitLink, ytLink, devMeshLink, pptLink]);
+  }, [
+    gitLink,
+    ytLink,
+    devMeshLink,
+    pptLink,
+    roundTwoSubmission,
+    topic,
+    intelResourcesUsed,
+  ]);
 
   const handleSubmit = async () => {
     if (roundTwoSubmission.length != 0) {
@@ -102,10 +114,12 @@ const RoundOneComp = ({ router, roundOneSubmission, roundTwoSubmission }) => {
           )}`,
         },
         body: JSON.stringify({
-          pptFileLink: pptLink,
+          pptFileLink: pptLink.length === 0 ? "-" : pptLink,
           githubLink: gitLink,
-          youtubeVideoLink: ytLink,
-          devmeshLink: devMeshLink,
+          youtubeVideoLink: ytLink.length === 0 ? "-" : ytLink,
+          devmeshLink: devMeshLink.length === 0 ? "-" : devMeshLink,
+          projectTitle: topic,
+          intelResourcesUsed: intelResourcesUsed,
         }),
       });
       const data = await response.json();
@@ -150,10 +164,12 @@ const RoundOneComp = ({ router, roundOneSubmission, roundTwoSubmission }) => {
           )}`,
         },
         body: JSON.stringify({
-          pptFileLink: pptLink,
+          pptFileLink: pptLink.length === 0 ? "-" : pptLink,
           githubLink: gitLink,
-          youtubeVideoLink: ytLink,
-          devmeshLink: devMeshLink,
+          youtubeVideoLink: ytLink.length === 0 ? "-" : ytLink,
+          devmeshLink: devMeshLink.length === 0 ? "-" : devMeshLink,
+          projectTitle: topic,
+          intelResourcesUsed: intelResourcesUsed,
         }),
       });
       const data = await response.json();
@@ -220,13 +236,13 @@ const RoundOneComp = ({ router, roundOneSubmission, roundTwoSubmission }) => {
             className={editable == 1 ? "focus:outline-0 w-full" : "hidden"}
             placeholder={
               icon == "github"
-                ? "Project github url"
+                ? "Project GitHub url (MANDATORY)"
                 : icon == "YT"
-                ? "Project youtube url"
+                ? "Project YouTube url (OPTIONAL)"
                 : icon == "devmesh"
-                ? "Project devmesh url"
+                ? "Project DevMesh url (OPTIONAL)"
                 : icon == "pdf"
-                ? "Project ppt url"
+                ? "Project PPT url (OPTIONAL)"
                 : ""
             }
           />
@@ -236,7 +252,7 @@ const RoundOneComp = ({ router, roundOneSubmission, roundTwoSubmission }) => {
   };
 
   return (
-    <div className=" bg-[#0a113a] text-white w-full p-5 pt-0 h-[80%] rounded-b-xl ">
+    <div className=" bg-[#0a113a] text-white w-full p-5 pt-0 h-[80%] rounded-b-xl overflow-scroll">
       <div className="p-2">
         <Toast ref={toastRef} position="bottom-center" className="p-5" />
       </div>
@@ -285,9 +301,29 @@ const RoundOneComp = ({ router, roundOneSubmission, roundTwoSubmission }) => {
           {SubmissionComponent("devmesh", devMeshLink, setDevMeshLink)}
           {SubmissionComponent("pdf", pptLink, setPptLink)}
         </div>
-
+        <div className="focus:outline-0 pl-2 bg-white  text-black items-center rounded px-4 py-2 mt-3">
+          <input
+            type="text"
+            value={topic}
+            onChange={(e) => setTopic(e.target.value)}
+            className={"focus:outline-0 w-full"}
+            disabled={editable == 0}
+            placeholder="Enter project title (MANDATORY)"
+          />
+        </div>
+        <div className="focus:outline-0 pl-2 bg-white  text-black items-center rounded px-4 py-2 mt-3">
+          <textarea
+            value={intelResourcesUsed}
+            style={{ resize: "none", height: "100px" }}
+            onChange={(e) => setintelResourcesUsed(e.target.value)}
+            className={"focus:outline-0 w-full"}
+            disabled={editable == 0}
+            placeholder="Enter Intel Resources used (MANDATORY)"
+            maxLength={200}
+          ></textarea>
+        </div>
         {/* <div className="text-center justify-center text-xl mt-5">
-          Results are published
+          Your Submission is being evaluated.<br></br>Please wait patiently
         </div> */}
 
         <Button
