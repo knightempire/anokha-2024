@@ -111,7 +111,8 @@ const Techfair = () => {
               </div>
               <div className="text-white text-3xl my-4 mt-8 p-2 flex sm:flex-col md:flex-row justify-center items-center">
                 <p>Submission Deadline: </p>
-                <p>&nbsp; 20<sup>th</sup> March, 2024</p>
+                {/* <p>&nbsp; 20<sup>th</sup> March, 2024</p> */}
+                <p>&nbsp; TBD </p>
               </div>
             </div>
           </div>
