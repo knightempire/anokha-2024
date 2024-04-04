@@ -53,7 +53,7 @@ export default function Page({ router }) {
         setRoundOneSub(details.firstRoundSubmission);
         setRoundTwoSub(details.secondRoundSubmission);
         setTeamStatus(details.teamStatus);
-        if(details.secondRoundSubmission.length == 0 ? setRoundDisplay(1) : setRoundDisplay(2));
+        if (details.secondRoundSubmission.length == 0 ? setRoundDisplay(1) : setRoundDisplay(2));
         console.log(details.firstRoundSubmission, RoundOneSub);
       } catch (error) {
         console.error("Error parsing JSON:", error);
@@ -143,13 +143,13 @@ export default function Page({ router }) {
             </button>
             <button
               className={
-                teamStatus == 2
+                teamStatus >= 2
                   ? roundDisplay == 2
                     ? "bg-[#0a113a] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg"
                     : "bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg"
                   : "bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg cursor-not-allowed"
               }
-              onClick={teamStatus == 2 ? () => setRoundDisplay(2) : ""}
+              onClick={teamStatus >= 2 ? () => setRoundDisplay(2) : ""}
             >
               Round 2
             </button>
@@ -164,10 +164,10 @@ export default function Page({ router }) {
             ) : (
               <RoundOneComp router={router} roundOneSubmission={RoundOneSub} />
             )
-          ) : roundDisplay == 2 ? (
-            <RoundTwoComp router={router} roundOneSubmission={RoundOneSub} roundTwoSubmission={RoundTwoSub} />
+          ) : roundDisplay == 2 && (RoundTwoSub == "" || RoundTwoSub == null || RoundTwoSub == []) ? (
+            <Round1NotFound round={roundDisplay} router={router} />
           ) : (
-            <Round1NotFound router={router} />
+            <RoundTwoComp router={router} roundOneSubmission={RoundOneSub} roundTwoSubmission={RoundTwoSub} />
           )}
         </div>
       </main>

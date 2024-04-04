@@ -81,8 +81,8 @@ function IntelHero({ userState, displayResult }) {
             ) : null}
           </div>
           <div className="flex md:gap-2 sm:gap-2 justify-center items-center flex-wrap -mb-6 mt-5 bg-[rgb(9,11,60)] mx-auto rounded-full text-white text-[14px] px-2 ">
-            {displayResult === 2 ? (
-              <p className="p-3 ">Congratulations you are shortlisted for Round 2 </p>
+            {displayResult === 3 ? <p className="p-3 ">Congratulations, you are shortlisted for Round 3! (The Finale)  </p> : displayResult === 2 ? (
+              <p className="p-3 ">Sorry, you didn&apos;t make it to Round 3. But hey, congratulations on making it till Round 2! </p>
             ) : displayResult === 1 ? (
               <p className="p-3">Sorry, you didn&apos;t make it to Round 2</p>
             ) : null}
