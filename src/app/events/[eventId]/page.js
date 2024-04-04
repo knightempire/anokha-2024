@@ -508,11 +508,13 @@ const Event = () => {
             {/* Additional Info */}
             <div className="flex flex-col mt-4 mr-10" ref={MainInfo}>
               <p className="text-white text-base mb-2">
-                <strong>Date:</strong> {eventData.eventDate.slice(0, 10)} &bull;{" "}
-                <strong>Time:</strong> {eventData.eventTime}
+                {/* <strong>Date:</strong> {eventData.eventDate.slice(0, 10)} &bull;{" "} */}
+                {/* <strong>Time:</strong> {eventData.eventTime} */}
+                <strong>Date:</strong> Coming Soon {" "} 
               </p>
               <p className="text-white text-base mb-2">
-                <strong>Venue:</strong> {eventData.eventVenue}
+                {/* <strong>Venue:</strong> {eventData.eventVenue} */}
+                <strong>Venue: </strong> To be announced
               </p>
               <p className="text-white text-base mb-2">
                 <strong>Group/Individual:</strong>{" "}
