@@ -323,7 +323,7 @@ const RoundOneComp = ({ router, roundOneSubmission, roundTwoSubmission }) => {
           ></textarea>
         </div>
         <div className="text-center justify-center text-xl mt-5">
-          Your Submission is being evaluated.<br></br>Please wait patiently.
+          Results are published! Logout and Login again to view the results.
         </div>
 
         {/* <Button

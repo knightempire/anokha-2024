@@ -196,7 +196,7 @@ export default function EventCard({
               </g>
             </svg>
             {/* {"APRIL " + date.slice(8, 10)}  */}
-            To be announced
+            TBD
             <vt></vt>
             {goi == "1" ? (
               <div className="flex flex-row gap-2 mt-1">

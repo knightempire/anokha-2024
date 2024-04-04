@@ -143,13 +143,13 @@ export default function Page({ router }) {
             </button>
             <button
               className={
-                teamStatus == 2
+                teamStatus >= 2
                   ? roundDisplay == 2
                     ? "bg-[#0a113a] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg"
                     : "bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg"
                   : "bg-[#172786] flex-1 p-1 text-white text-lg mt-2 rounded-t-lg cursor-not-allowed"
               }
-              onClick={teamStatus == 2 ? () => setRoundDisplay(2) : ""}
+              onClick={teamStatus >= 2 ? () => setRoundDisplay(2) : ""}
             >
               Round 2
             </button>

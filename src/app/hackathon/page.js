@@ -93,6 +93,8 @@ export default function Page() {
               }
               else if (data.teamStatus == "1") {
                 setDisplayResult(1)
+              } else if (data.teamStatus == "3") {
+                setDisplayResult(3)
               }
               setUserState(2)
           }   
