@@ -460,7 +460,7 @@ const Result = () => {
                     <p className='ml-2'>{"oneAPI Hackathon"}</p>
                 </div>
 
-                <p className='text-lime-50 text-2xl mb-16'>Top 11 Teams (Qualified for Round 3)</p>
+                <p className='text-lime-50 text-2xl mb-16'>Finalists</p>
 
                 {/* Table with same card like design. teamName and members with colspan */}
 
