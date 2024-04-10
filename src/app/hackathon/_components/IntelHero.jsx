@@ -89,7 +89,7 @@ function IntelHero({ userState, displayResult }) {
 
             className="before:ease relative w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 p-4 ml-auto mr-auto mt-4 mb-0 cursor-pointer"
           >
-            Finale Result Announced. Click to view result
+            Intel OneAPI Hackathon Result Announced. Click to view result.
           </a>
           <div className="flex md:gap-2 sm:gap-2 justify-center items-center flex-wrap -mb-6 mt-5 bg-[rgb(9,11,60)] mx-auto rounded-full text-white text-[14px] px-2 ">
             {displayResult === 3 ? <p className="p-3 ">Congratulations, you are shortlisted for Round 3! (The Finale)  </p> : displayResult === 2 ? (

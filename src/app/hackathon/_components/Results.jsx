@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaTrophy } from "react-icons/fa6";
 // import { FaMedal } from "react-icons/fa";
+import Image from "next/image";
 
 const prizes = [
     {
@@ -78,10 +79,16 @@ const prizes = [
 
 ];
 
+
 const Result = () => {
     return (
-        <div id="result" className='w-[100%] min-h-[100vh] flex flex-col justify-center items-center align-middle m-auto bg-gradient-to-r from-[rgb(10,17,58)] to-[rgb(13,26,99)]'>
-            <h1 className="text-[3rem] font-bold text-center text-lime-50">Finale Result</h1>
+        <div id="result" className='w-[100%] min-h-[100vh] flex flex-col justify-center items-center align-middle m-auto bg-gradient-to-r from-[rgb(10,17,58)] to-[rgb(13,26,99)] z-10'>
+            <div className="text-[3rem] font-bold flex flex-col text-center md:flex-row pt-2 text-white justify-center align-middle items-center">
+                <Image src={"/images/Intel_logo_white.png"} height={100} width={100} alt="intel logo" />
+                <p className='ml-2'>{"oneAPI Hackathon Result"}</p>
+            </div>
+            <p className='text-lime-50 text-2xl'>Congratulations!</p>
+
             <div className="md:w-[80%] w-[90%] h-full md:flex mx-auto pb-10 items-center ">
                 {prizes.map((val, id) => (
                     <div key={id} className={`md:w-[30%] sm:w-[70%]  mx-auto bg-[#000000] bg-opacity-50 border border-gray-800 backdrop:blur-2xl rounded-xl sm:my-4 sm:pb-5 ${id == 1 ? " md:w-[30%] md:py-10 h-full md:shadow-xl" : "md:my-12 md:py-5 md:h-[50%] md:w-[25%]"}`}>
