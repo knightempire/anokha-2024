@@ -29,7 +29,7 @@ function IntelHero({ userState, displayResult }) {
             <Image src={ieeelogo} width={150} alt="ieeelogo" className="mt-5 -mr-2" />
           </div>
           <p className="md:text-[3rem] sm:text-[2.2rem] font-bold sm:leading-[100%] md:flex sm:block items-baseline gap-3 pt-2">
-            <span><Image src={intelogo} width={100} alt="intel logo" /></span> 
+            <span><Image src={intelogo} width={100} alt="intel logo" /></span>
             AI Hackathon
           </p>
           <div className="text-xs w-fit py-2 bg-blue-500 px-4 mt-2 rounded-full text-white flex items-center gap-1">
@@ -80,6 +80,17 @@ function IntelHero({ userState, displayResult }) {
               </Button>
             ) : null}
           </div>
+          <a
+            onClick={(e) => {
+              router.push("/hackathon#result");
+            }}
+            // disabled={1}
+
+
+            className="before:ease relative w-full overflow-hidden border rounded-xl border-blue-800 bg-blue-800 text-md flex justify-center items-center text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-blue-800 hover:before:-translate-x-40 p-4 ml-auto mr-auto mt-4 mb-0 cursor-pointer"
+          >
+            Finale Result Announced. Click to view result
+          </a>
           <div className="flex md:gap-2 sm:gap-2 justify-center items-center flex-wrap -mb-6 mt-5 bg-[rgb(9,11,60)] mx-auto rounded-full text-white text-[14px] px-2 ">
             {displayResult === 3 ? <p className="p-3 ">Congratulations, you are shortlisted for Round 3! (The Finale)  </p> : displayResult === 2 ? (
               <p className="p-3 ">Sorry, you didn&apos;t make it to Round 3. But hey, congratulations on making it till Round 2! </p>

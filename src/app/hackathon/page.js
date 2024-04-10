@@ -28,6 +28,7 @@ import WinnerPrice from './_components/WinnerPrice'
 import SubGuidelines from './_components/SubGuidelines'
 import Navigationbar from '../components/EventHeader'
 import Contest from './_components/Contest'
+import Result from './_components/Results'
 
  
 export default function Page() {
@@ -163,7 +164,7 @@ export default function Page() {
         <IntelHero userState={userState} displayResult={displayResult} />
        
         <Price />
-        <WinnerPrice />
+        <Result />
         
         <About/>
         <Themes />
