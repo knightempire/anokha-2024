@@ -447,7 +447,7 @@ const Event = () => {
                     ? getPayUForm()
                     : setpopupvisibility(true);
                 }}
-                disabled={true}
+                disabled={false}
               >
                 {secureLocalStorage.getItem("isLoggedIn") == "0" ||
                 secureLocalStorage.getItem("isLoggedIn") == undefined ||
