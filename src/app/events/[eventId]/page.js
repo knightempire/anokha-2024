@@ -194,31 +194,36 @@ const Event = () => {
   useEffect(() => {
     let isValidMemberRoles = true;
     let isValidEmails = true;
-    if (Emails.length == 0) {
+    if (Emails.length != Team.length || memberRoles.length != Team.length) {
       isValidEmails = false;
-    } else {
-      for (let i = 1; i < Emails.length; i++) {
-        if (
-          !validator.isEmail(Emails[i]) &&
-          Emails[i] != undefined &&
-          Emails[i] != null
-        ) {
-          isValidEmails = false;
-          break;
-        }
-      }
-    }
-    if (memberRoles.length == 0) {
       isValidMemberRoles = false;
     } else {
-      for (let i = 1; i < memberRoles.length; i++) {
-        if (
-          !validator.isAlpha(memberRoles[i]) &&
-          memberRoles[i] != undefined &&
-          memberRoles[i] != null
-        ) {
-          isValidMemberRoles = false;
-          break;
+      if (Emails.length == 0) {
+        isValidEmails = false;
+      } else {
+        for (let i = 1; i < Emails.length; i++) {
+          if (
+            !validator.isEmail(Emails[i]) &&
+            Emails[i] != undefined &&
+            Emails[i] != null
+          ) {
+            isValidEmails = false;
+            break;
+          }
+        }
+      }
+      if (memberRoles.length == 0) {
+        isValidMemberRoles = false;
+      } else {
+        for (let i = 1; i < memberRoles.length; i++) {
+          if (
+            !validator.isAlpha(memberRoles[i]) &&
+            memberRoles[i] != undefined &&
+            memberRoles[i] != null
+          ) {
+            isValidMemberRoles = false;
+            break;
+          }
         }
       }
     }
@@ -231,7 +236,7 @@ const Event = () => {
     ) {
       setAllValid(true);
     } else setAllValid(false);
-  }, [Emails, memberRoles, TeamName]);
+  }, [Emails, memberRoles, TeamName, Team]);
 
   const toggleStarBackend = () => {
     fetch(STAR_UNSTAR_EVENT_URL, {
@@ -447,7 +452,7 @@ const Event = () => {
                     ? getPayUForm()
                     : setpopupvisibility(true);
                 }}
-                disabled={true}
+                disabled={false}
               >
                 {secureLocalStorage.getItem("isLoggedIn") == "0" ||
                 secureLocalStorage.getItem("isLoggedIn") == undefined ||
@@ -510,7 +515,7 @@ const Event = () => {
               <p className="text-white text-base mb-2">
                 {/* <strong>Date:</strong> {eventData.eventDate.slice(0, 10)} &bull;{" "} */}
                 {/* <strong>Time:</strong> {eventData.eventTime} */}
-                <strong>Date:</strong> Coming Soon {" "} 
+                <strong>Date:</strong> Coming Soon{" "}
               </p>
               <p className="text-white text-base mb-2">
                 {/* <strong>Venue:</strong> {eventData.eventVenue} */}
@@ -518,7 +523,7 @@ const Event = () => {
               </p>
               <p className="text-white text-base mb-2">
                 <strong>Group/Individual:</strong>{" "}
-                {eventData.isGroup == "1" ? "Group":"Individual"}
+                {eventData.isGroup == "1" ? "Group" : "Individual"}
               </p>
             </div>
             {/* Price Section */}
