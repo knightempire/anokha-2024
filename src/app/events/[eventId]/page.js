@@ -194,6 +194,7 @@ const Event = () => {
   useEffect(() => {
     let isValidMemberRoles = true;
     let isValidEmails = true;
+    console.log(Emails, memberRoles);
     if (Emails.length != Team.length || memberRoles.length != Team.length) {
       isValidEmails = false;
       isValidMemberRoles = false;
@@ -202,11 +203,7 @@ const Event = () => {
         isValidEmails = false;
       } else {
         for (let i = 1; i < Emails.length; i++) {
-          if (
-            !validator.isEmail(Emails[i]) &&
-            Emails[i] != undefined &&
-            Emails[i] != null
-          ) {
+          if (!validator.isEmail(Emails[i])) {
             isValidEmails = false;
             break;
           }
@@ -216,11 +213,7 @@ const Event = () => {
         isValidMemberRoles = false;
       } else {
         for (let i = 1; i < memberRoles.length; i++) {
-          if (
-            !validator.isAlpha(memberRoles[i]) &&
-            memberRoles[i] != undefined &&
-            memberRoles[i] != null
-          ) {
+          if (!/^[A-Za-z\s]+$/.test(memberRoles[i])) {
             isValidMemberRoles = false;
             break;
           }
@@ -652,7 +645,8 @@ const Event = () => {
                               id={`email_${member}`}
                               required
                               value={
-                                member === 0
+                                // checking if its the first member and if not registered, so that you can auto fill details, else render the original details.
+                                member === 0 && eventData.isRegistered == "0"
                                   ? secureLocalStorage.getItem("registerEmail")
                                   : Emails[member] || ""
                               }
@@ -677,7 +671,8 @@ const Event = () => {
                               id={`role_${member}`}
                               required
                               value={
-                                member === 0
+                                // checking if its the first member and if not registered, so that you can auto fill details, else render the original details.
+                                member === 0 && eventData.isRegistered == "0"
                                   ? "Team Leader"
                                   : memberRoles[member] || ""
                               }
