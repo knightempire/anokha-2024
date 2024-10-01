@@ -5,7 +5,7 @@ import { HACKATHON_DASHBOARD_URL } from "@/app/_util/constants";
 import secureLocalStorage from "react-secure-storage";
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
-import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/themes/lara-light-blue/theme.css";
 import ToastAlert from "@/app/_util/ToastAlerts";
 import TeamDetails from "../_components/_DashBoard/TeamDetails";
 
