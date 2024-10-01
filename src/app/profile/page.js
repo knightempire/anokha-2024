@@ -24,7 +24,7 @@ import { createHash } from "crypto";
 import Link from "next/link";
 import { Toast } from "primereact/toast";
 import "primereact/resources/primereact.min.css";
-import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/themes/lara-light-blue/theme.css";
 import ToastAlert from "../_util/ToastAlerts";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import WebGLApp from "../bg/WebGLApp";
