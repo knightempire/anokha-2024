@@ -1,13 +1,30 @@
-// "use client";
-// import React, { useState, useEffect } from "react";
-
+"use client";
 import Image from "next/image";
 
+const CountdownTimer = () => {
+    return (
+        <div className="flex relative flex-col justify-center items-center w-30 xl:mr-24 lg:mr-24">
+            {/* public/images/mascot_base.svg */}
+            <Image src="/images/mascot_base.svg" alt="mascot" width={512} height={512} />
+            {/*Coming soon*/}
+            <p className="font-roobert tracking-wider text-2xl text-white animate-slidein text-center">
+                Oct 17, 18 & 19
+            </p>
+            <p className="font-roobert tracking-wider text-2xl text-white animate-slidein text-center">
+                2024
+            </p>
+        </div>
+    );
+}
+
+export default CountdownTimer;
+
 // const CountdownTimer = () => {
-//   const eventDate = new Date("April 4, 2024 00:00:00 GMT+0530"); // Set your event date here
+//   const eventDate = new Date("October 17, 2024 00:00:00 GMT+0530"); // Set your event date here
 
 //   const [timeLeft, setTimeLeft] = useState({});
 
+//   // eslint-disable-next-line react-hooks/exhaustive-deps
 //   const calculateTimeLeft = () => {
 //     const difference = +eventDate - +new Date();
 //     let timeLeft = {};
@@ -77,17 +94,4 @@ import Image from "next/image";
 //     </div>
 //   );
 // };
-
-const CountdownTimer = () => {
-  return (
-    <div className="flex relative flex-col justify-center items-center w-30 xl:mr-24 lg:mr-24">
-      {/* public/images/mascot_base.svg */}
-      <Image src="/images/mascot_base.svg" alt="mascot" width={512} height={512} />
-      {/*Coming soon*/}
-      <p className="font-roobert tracking-wider text-2xl text-white animate-slidein">Coming soon ...</p>
-    </div>
-  );
-}
-
-export default CountdownTimer;
 
