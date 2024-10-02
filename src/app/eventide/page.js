@@ -2,7 +2,7 @@
 
 import Navbar from "../components/EventHeader";
 import WebGLApp from "../bg/WebGLApp";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 export default function ForgetPassword() {
   const [webGLColors, setWebGLColors] = useState({

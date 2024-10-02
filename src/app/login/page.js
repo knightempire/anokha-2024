@@ -10,8 +10,6 @@ import { hashPassword } from "../_util/hash";
 import validator from "validator";
 import secureLocalStorage from "react-secure-storage";
 import WebGLApp from "../bg/WebGLApp";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import TextField from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";

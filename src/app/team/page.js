@@ -15,37 +15,75 @@ const Team = () => {
     <ComingSoon />
     // <main className="flex min-h-screen flex-col bg-[#192032]">
     //   <WebGLApp colors={webGLColors} />
-    //   <div className="grid grid-cols-5 gap-4 m-10">
-    //     <TeamMember
-    //       name="Tharun Kumarr A"
-    //       Position="Frontend Developer"
-    //       rollno="CB.EN.U4CSE22253"
-    //       imgSrc="/images/dummy.jpg"
-    //     />
-    //     <TeamMember
-    //       name="Tharun Kumarr A"
-    //       Position="Frontend Developer"
-    //       rollno="CB.EN.U4CSE22253"
-    //       imgSrc="/images/dummy.jpg"
-    //     />
-    //     <TeamMember
-    //       name="Tharun Kumarr A"
-    //       Position="Frontend Developer"
-    //       rollno="CB.EN.U4CSE22253"
-    //       imgSrc="/images/dummy.jpg"
-    //     />
-    //     <TeamMember
-    //       name="Tharun Kumarr A"
-    //       Position="Frontend Developer"
-    //       rollno="CB.EN.U4CSE22253"
-    //       imgSrc="/images/dummy.jpg"
-    //     />
-    //     <TeamMember
-    //       name="Tharun Kumarr A"
-    //       Position="Frontend Developer"
-    //       rollno="CB.EN.U4CSE22253"
-    //       imgSrc="/images/dummy.jpg"
-    //     />
+    //   <div className="flex flex-col gap-10">
+    //     <div>
+    //       <div className="text-center w-full text-white z-99 text-xl">
+    //         Backend Developers
+    //       </div>
+    //       <div className="grid grid-cols-5 gap-4 m-10">
+    //         <TeamMember
+    //           name="Abhinav Ramakrishnan"
+    //           Position="Backend Developer"
+    //           rollno="CB.EN.U4CSE21001"
+    //           imgSrc="/images/dummy.jpg"
+    //         />
+    //         <TeamMember
+    //           name="Ashwin Narayanan S"
+    //           Position="Backend Developer"
+    //           rollno="CB.EN.U4CSE21008"
+    //           imgSrc="/images/dummy.jpg"
+    //         />
+    //       </div>
+    //     </div>
+    //     <div>
+    //       <div className="text-center w-full text-white z-99 text-xl">
+    //         Frontend Developers
+    //       </div>
+    //       <div className="grid grid-cols-5 gap-4 m-10">
+    //         <TeamMember
+    //           name="Sajith Rajan P"
+    //           Position="Frontend Developer"
+    //           rollno="CB.EN.U4CSE22253"
+    //           imgSrc="/images/dummy.jpg"
+    //         />
+    //         <TeamMember
+    //           name="Tharun Kumarr A"
+    //           Position="Frontend Developer"
+    //           rollno="CB.EN.U4CSE22253"
+    //           imgSrc="/images/dummy.jpg"
+    //         />
+    //         <TeamMember
+    //           name="Thanus Kumaar A"
+    //           Position="Frontend Developer"
+    //           rollno="CB.EN.U4CSE22253"
+    //           imgSrc="/images/dummy.jpg"
+    //         />
+    //         <TeamMember
+    //           name="Amritha Nandini"
+    //           Position="Frontend Developer"
+    //           rollno="CB.EN.U4CSE22253"
+    //           imgSrc="/images/dummy.jpg"
+    //         />
+    //         <TeamMember
+    //           name="Ritesh Koushik"
+    //           Position="Frontend Developer"
+    //           rollno="CB.EN.U4CSE22253"
+    //           imgSrc="/images/dummy.jpg"
+    //         />
+    //         <TeamMember
+    //           name="Dilip Parasu"
+    //           Position="Frontend Developer"
+    //           rollno="CB.EN.U4CSE22253"
+    //           imgSrc="/images/dummy.jpg"
+    //         />
+    //         <TeamMember
+    //           name="Dante_js"
+    //           Position="Frontend Developer"
+    //           rollno="CB.EN.U4CSE22253"
+    //           imgSrc="/images/dummy.jpg"
+    //         />
+    //       </div>
+    //     </div>
     //   </div>
     // </main>
   );
