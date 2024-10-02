@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { anokhaDates } from "../_util/constants";
 
 // const CountdownTimer = () => {
 //     return (
@@ -20,9 +21,9 @@ import { useState, useEffect } from "react";
 
 
 const CountdownTimer = () => {
-  const eventDate = new Date("October 17, 2024 00:00:00 GMT+0530"); // Set your event date here
 
-  const [timeLeft, setTimeLeft] = useState({});
+  const eventDate = new Date(anokhaDates.dayOne);
+  eventDate.setHours(0, 0, 0, 0); 
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const calculateTimeLeft = () => {
@@ -47,6 +48,8 @@ const CountdownTimer = () => {
 
     return timeLeft;
   };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
     const timer = setTimeout(() => {
