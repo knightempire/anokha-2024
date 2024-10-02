@@ -1,9 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/router";
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import ToastAlert from "../../_util/ToastAlerts";
 import { Toast } from "primereact/toast";
 
@@ -27,7 +25,6 @@ import "primereact/resources/themes/lara-light-blue/theme.css";
 
 import validator from "validator";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { useParams } from "next/navigation";
 
 const Event = () => {
@@ -136,6 +133,9 @@ const Event = () => {
           }
         })
         .then(async (data) => {
+          if(data.MODE === "0") {
+            secureLocalStorage.clear();
+          }
           setEventData(data);
           setTeamSize(data.minTeamSize);
           setTeamIfEqual(data.minTeamSize);
