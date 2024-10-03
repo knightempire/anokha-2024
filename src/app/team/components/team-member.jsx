@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-function ProfileCard({ name, imgSrc, Position, rollno }) {
+function ProfileCard({ name, imgSrc, Position, rollno, email, dept }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -32,6 +32,8 @@ function ProfileCard({ name, imgSrc, Position, rollno }) {
         <div className="name text-xl font-semibold mb-1">{name}</div>
         <div className="position text-md font-normal mb-2">{rollno}</div>
         <div className="position text-md font-normal">{Position}</div>
+        <div className="position text-md font-normal">{email}</div>
+        <div className="position text-md font-normal">{dept}</div>
       </div>
     </div>
   );
