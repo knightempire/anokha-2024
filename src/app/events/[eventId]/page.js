@@ -1,9 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { useRouter } from "next/router";
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
 import ToastAlert from "../../_util/ToastAlerts";
 import { Toast } from "primereact/toast";
 
@@ -27,7 +25,6 @@ import "primereact/resources/themes/lara-light-blue/theme.css";
 
 import validator from "validator";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import { useParams } from "next/navigation";
 
 const Event = () => {
@@ -136,6 +133,9 @@ const Event = () => {
           }
         })
         .then(async (data) => {
+          if(data.MODE === "0") {
+            secureLocalStorage.clear();
+          }
           setEventData(data);
           setTeamSize(data.minTeamSize);
           setTeamIfEqual(data.minTeamSize);
@@ -504,13 +504,13 @@ const Event = () => {
             {/* Additional Info */}
             <div className="flex flex-col mt-4 mr-10" ref={MainInfo}>
               <p className="text-white text-base mb-2">
-                {/* <strong>Date:</strong> {eventData.eventDate.slice(0, 10)} &bull;{" "} */}
-                {/* <strong>Time:</strong> {eventData.eventTime} */}
-                <strong>Date:</strong> Coming Soon{" "}
+                <strong>Date:</strong> {new Date(eventData.eventDate).toDateString()} &bull;{" "}
+                <strong>Time:</strong> {eventData.eventTime} IST
+                {/* <strong>Date:</strong> Coming Soon{" "} */}
               </p>
               <p className="text-white text-base mb-2">
                 {/* <strong>Venue:</strong> {eventData.eventVenue} */}
-                <strong>Venue: </strong> To be announced
+                <strong>Venue: </strong> {eventData.eventVenue ?? "To be announced"}
               </p>
               <p className="text-white text-base mb-2">
                 <strong>Group/Individual:</strong>{" "}

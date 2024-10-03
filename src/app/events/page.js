@@ -5,7 +5,7 @@ import Link from "next/link";
 import Navbar from "../components/EventHeader";
 import Footer from "../components/Footer";
 import FilterSection from "./components/FilterSection";
-import { ALL_EVENTS_URL } from "../_util/constants";
+import { ALL_EVENTS_URL, anokhaDates } from "../_util/constants";
 import { useRouter } from "next/navigation";
 import secureLocalStorage from "react-secure-storage";
 import "primereact/resources/themes/lara-light-blue/theme.css";
@@ -161,13 +161,13 @@ const Events = () => {
           evetypeCode -= 1;
           break;
         case "01":
-          Days.push("2024-04-04");
+          Days.push(anokhaDates.dayOne);
           break;
         case "02":
-          Days.push("2024-04-05");
+          Days.push(anokhaDates.dayTwo);
           break;
         case "03":
-          Days.push("2024-04-06");
+          Days.push(anokhaDates.dayThree);
           break;
         default:
           Tags.push(i);

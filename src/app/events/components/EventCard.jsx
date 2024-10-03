@@ -195,8 +195,7 @@ export default function EventCard({
                 ></path>{" "}
               </g>
             </svg>
-            {/* {"APRIL " + date.slice(8, 10)}  */}
-            TBD
+            {new Date(date).toLocaleDateString('en-US', {month: 'short', day: '2-digit'})} 
             <vt></vt>
             {goi == "1" ? (
               <div className="flex flex-row gap-2 mt-1">
