@@ -6,7 +6,7 @@ const PhonePromo = () => {
   return (
     <div className='px-10 pt-10 z-10 md:flex justify-center gap-[60px] mx-auto w-full'>
       <div className='flex justify-center'>
-        <Image src='/images/apppromo.png' width={400} height={500}/>
+        <Image src='/images/apppromo.png' width={400} height={500} alt="Anokha 2024 mobile app mockups." />
       </div>
       <div className='text-white flex flex-col justify-center gap-0 md:w-[45%]'>
       <h1 className='text-bold md:text-[3rem] sm:text-3xl'>Anokha 2024 in Your Pocket!
