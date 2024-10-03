@@ -450,11 +450,9 @@ const Event = () => {
                 {secureLocalStorage.getItem("isLoggedIn") == "0" ||
                 secureLocalStorage.getItem("isLoggedIn") == undefined ||
                 secureLocalStorage.getItem("isLoggedIn") == null
-                  ? "Login to register"
+                  ? "Login to Register"
                   : eventData.isRegistered == "0"
-                  ? "Registerations Opening Soon"
-                  : eventData.isGroup == "0"
-                  ? "Registered"
+                  ? "Register"
                   : "View Registration"}
               </button>
               <div className="flex justify-center items-center ml-4">
