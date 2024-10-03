@@ -46,55 +46,55 @@ const Lumere = () => {
       <WebGLApp colors={webGLColors} className="-z-10" />
       <div className="flex z-20 w-full flex-col">
         <Navigationbar />
-        <div className="flex w-full h-full">
-          <div className="container mx-auto pb-16">
-            <div className="text-center mb-16 bg-cover bg-center h-screen flex flex-col justify-center items-center relative">
-              <div
-                className="absolute inset-0 bg-cover bg-center z-[-1]"
-                style={{
-                  backgroundImage: "url('/images/lumierebg.jpeg')",
-                  filter: "brightness(50%)",
-                }}
+        <div className="w-full pb-16">
+          <div className="text-center mb-16 bg-cover bg-center h-screen flex flex-col justify-center items-center relative mx-0 sm:mx-auto">
+            {" "}
+            <div
+              className="absolute inset-0 bg-cover bg-center z-[-1] w-full"
+              style={{
+                backgroundImage: "url('/images/lumierebg.jpeg')",
+                filter: "brightness(50%)",
+              }}
+            />
+            <div className="sm:w-[200px] md:w-[400px]">
+              <Image
+                src="/images/lumiere v2.png"
+                alt="lumiere-logo"
+                width={400}
+                height={100}
+                layout="responsive"
               />
-              <div>
-                <Image
-                  src="/images/lumiere v2.png"
-                  width={400}
-                  height={100}
-                  alt="lumiere-logo"
-                />
-              </div>
-              <h1 className="text-8xl font-bold mb-4 text-white z-10 font-">
-                Tech Talk<span className="text-base font-thin"> 2024</span>
-              </h1>
-              <p className="text-xl text-gray-200 z-10">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-              </p>
-              <button class="mt-8 px-4 py-2 text-lg text-black bg-white font-semibold border rounded-full bg-red-10 z-10 hover:scale-105 transition">
-                REGISTER
-              </button>
             </div>
+            <h1 className="text-8xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 text-white z-10 font-">
+              Tech Talk<span className="text-base font-thin"> 2024</span>
+            </h1>
+            <p className="text-xl text-gray-200 z-10">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit
+            </p>
+            <button className="mt-8 px-4 py-2 text-lg text-black bg-white font-semibold border rounded-full bg-red-10 z-10 hover:scale-105 transition">
+              REGISTER
+            </button>
+          </div>
 
-            <div className="mt-24">
-              <h2 className="text-4xl font-bold text-center mb-8 text-white">
-                The Speakers
-              </h2>
-              <p className="text-center text-gray-300 mb-12">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                a diam et dolor
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
-                {speakers.map((speaker, index) => (
-                  <div key={index} className="text-center">
-                    <div className="w-40 h-40 mx-auto mb-4 bg-gray-700 rounded-lg"></div>
-                    <h3 className="font-semibold text-xl text-white">
-                      {speaker.name}
-                    </h3>
-                    <p className="text-gray-300 mt-2">{speaker.role}</p>
-                    <p className="text-blue-400 mt-1">@{speaker.company}</p>
-                  </div>
-                ))}
-              </div>
+          <div className="mt-24">
+            <h2 className="text-4xl font-bold text-center mb-8 text-white">
+              The Speakers
+            </h2>
+            <p className="text-center text-gray-300 mb-12">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a
+              diam et dolor
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+              {speakers.map((speaker, index) => (
+                <div key={index} className="text-center">
+                  <div className="w-40 h-40 mx-auto mb-4 bg-gray-700 rounded-lg"></div>
+                  <h3 className="font-semibold text-xl text-white">
+                    {speaker.name}
+                  </h3>
+                  <p className="text-gray-300 mt-2">{speaker.role}</p>
+                  <p className="text-blue-400 mt-1">@{speaker.company}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
