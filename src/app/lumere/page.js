@@ -15,29 +15,29 @@ const Lumere = () => {
 
   const speakers = [
     {
-      name: "Ruby Jennings",
-      role: "Product Manager",
-      company: "Anokha",
+      name: "Speaker 1",
+      role: "Role 1",
+      company: "Lumiere",
     },
     {
-      name: "Leon Hanson",
-      role: "Sales Manager",
-      company: "Anokha",
+      name: "Speaker 2",
+      role: "Role 2",
+      company: "Lumiere",
     },
     {
-      name: "Meghan Stone",
-      role: "Marketing Specialist",
-      company: "Anokha",
+      name: "Speaker 3",
+      role: "Role 3",
+      company: "Lumiere",
     },
     {
-      name: "Willie Perkins",
-      role: "UX Engineer",
-      company: "Anokha",
+      name: "Speaker 4",
+      role: "Role 4",
+      company: "Lumiere",
     },
     {
-      name: "Ruby Jennings",
-      role: "Product Manager",
-      company: "Anokha",
+      name: "Speaker 5",
+      role: "Role 5",
+      company: "Lumiere",
     },
   ];
 
@@ -47,31 +47,41 @@ const Lumere = () => {
       <div className="flex z-20 w-full flex-col">
         <Navigationbar />
         <div className="flex w-full h-full">
-          <div className="container mx-auto py-12">
-            <div
-              className="text-center mb-16 bg-cover bg-center h-screen flex flex-col justify-center items-center"
-              style={{
-                backgroundImage: "url('/images/lumierebg.jpeg')",
-              }}
-            >
-              <h1 className="text-4xl font-bold mb-4 text-white">
-                Clear Statement about Your Event
+          <div className="container mx-auto pb-16">
+            <div className="text-center mb-16 bg-cover bg-center h-screen flex flex-col justify-center items-center relative">
+              <div
+                className="absolute inset-0 bg-cover bg-center z-[-1]"
+                style={{
+                  backgroundImage: "url('/images/lumierebg.jpeg')",
+                  filter: "brightness(50%)",
+                }}
+              />
+              <div>
+                <Image
+                  src="/images/lumiere v2.png"
+                  width={400}
+                  height={100}
+                  alt="lumiere-logo"
+                />
+              </div>
+              <h1 className="text-8xl font-bold mb-4 text-white z-10 font-">
+                Tech Talk<span className="text-base font-thin"> 2024</span>
               </h1>
-              <p className="text-xl text-gray-200">
-                Secondary header providing additional information
+              <p className="text-xl text-gray-200 z-10">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit
               </p>
-              <button className="mt-8 bg-gray-800 text-white px-6 py-3 rounded-md hover:bg-gray-700 transition-colors">
-                GET THE TICKET
+              <button class="mt-8 px-4 py-2 text-lg text-black bg-white font-semibold border rounded-full bg-red-10 z-10 hover:scale-105 transition">
+                REGISTER
               </button>
             </div>
 
             <div className="mt-24">
-              <h2 className="text-3xl font-bold text-center mb-8 text-white">
+              <h2 className="text-4xl font-bold text-center mb-8 text-white">
                 The Speakers
               </h2>
               <p className="text-center text-gray-300 mb-12">
-                Write a few lines about the event speakers to highlight their
-                expertise in the field
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                a diam et dolor
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
                 {speakers.map((speaker, index) => (
