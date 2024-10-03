@@ -510,7 +510,7 @@ const Event = () => {
               </p>
               <p className="text-white text-base mb-2">
                 {/* <strong>Venue:</strong> {eventData.eventVenue} */}
-                <strong>Venue: </strong> To be announced
+                <strong>Venue: </strong> {eventData.eventVenue ?? "To be announced"}
               </p>
               <p className="text-white text-base mb-2">
                 <strong>Group/Individual:</strong>{" "}
