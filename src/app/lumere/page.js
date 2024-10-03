@@ -16,23 +16,28 @@ const Lumere = () => {
   const speakers = [
     {
       name: "Ruby Jennings",
-      role: "Product Manager at Anokha",
-      username: "username",
+      role: "Product Manager",
+      company: "Anokha",
     },
     {
       name: "Leon Hanson",
-      role: "Sales Manager at Anokha",
-      username: "username",
+      role: "Sales Manager",
+      company: "Anokha",
     },
     {
       name: "Meghan Stone",
-      role: "Marketing Specialist at Anokha",
-      username: "username",
+      role: "Marketing Specialist",
+      company: "Anokha",
     },
     {
       name: "Willie Perkins",
-      role: "UX Engineer at Anokha",
-      username: "username",
+      role: "UX Engineer",
+      company: "Anokha",
+    },
+    {
+      name: "Ruby Jennings",
+      role: "Product Manager",
+      company: "Anokha",
     },
   ];
 
@@ -42,11 +47,11 @@ const Lumere = () => {
       <div className="flex z-20 w-full flex-col">
         <Navigationbar />
         <div className="flex w-full h-full">
-          <div className="container mx-auto px-4 py-12">
+          <div className="container mx-auto py-12">
             <div
               className="text-center mb-16 bg-cover bg-center h-screen flex flex-col justify-center items-center"
               style={{
-                backgroundImage: "url('/path/to/your/background-image.jpg')",
+                backgroundImage: "url('/images/lumierebg.jpeg')",
               }}
             >
               <h1 className="text-4xl font-bold mb-4 text-white">
@@ -68,7 +73,7 @@ const Lumere = () => {
                 Write a few lines about the event speakers to highlight their
                 expertise in the field
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
                 {speakers.map((speaker, index) => (
                   <div key={index} className="text-center">
                     <div className="w-40 h-40 mx-auto mb-4 bg-gray-700 rounded-lg"></div>
@@ -76,7 +81,7 @@ const Lumere = () => {
                       {speaker.name}
                     </h3>
                     <p className="text-gray-300 mt-2">{speaker.role}</p>
-                    <p className="text-blue-400 mt-1">@{speaker.username}</p>
+                    <p className="text-blue-400 mt-1">@{speaker.company}</p>
                   </div>
                 ))}
               </div>
