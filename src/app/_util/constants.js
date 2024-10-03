@@ -49,3 +49,12 @@ export const VERIFY_TRANSACTIONS_URL = BASE_URL + "/user/verifyTransaction";
 export const EVENT_REGISTER_STEP_ONE =
   BASE_URL + "/user/registerForEventStepOne";
 export const ALL_TAGS_URL = BASE_URL + "/admin/getActiveTags";
+
+export const anokhaDates = 
+{
+  dayOne : "2024-10-17",
+  dayTwo : "2024-10-18",
+  dayThree : "2024-10-19"
+};
+
+

@@ -450,11 +450,9 @@ const Event = () => {
                 {secureLocalStorage.getItem("isLoggedIn") == "0" ||
                 secureLocalStorage.getItem("isLoggedIn") == undefined ||
                 secureLocalStorage.getItem("isLoggedIn") == null
-                  ? "Login to register"
+                  ? "Login to Register"
                   : eventData.isRegistered == "0"
-                  ? "Registerations Opening Soon"
-                  : eventData.isGroup == "0"
-                  ? "Registered"
+                  ? "Register"
                   : "View Registration"}
               </button>
               <div className="flex justify-center items-center ml-4">
@@ -506,13 +504,13 @@ const Event = () => {
             {/* Additional Info */}
             <div className="flex flex-col mt-4 mr-10" ref={MainInfo}>
               <p className="text-white text-base mb-2">
-                {/* <strong>Date:</strong> {eventData.eventDate.slice(0, 10)} &bull;{" "} */}
-                {/* <strong>Time:</strong> {eventData.eventTime} */}
-                <strong>Date:</strong> Coming Soon{" "}
+                <strong>Date:</strong> {new Date(eventData.eventDate).toDateString()} &bull;{" "}
+                <strong>Time:</strong> {eventData.eventTime} IST
+                {/* <strong>Date:</strong> Coming Soon{" "} */}
               </p>
               <p className="text-white text-base mb-2">
                 {/* <strong>Venue:</strong> {eventData.eventVenue} */}
-                <strong>Venue: </strong> To be announced
+                <strong>Venue: </strong> {eventData.eventVenue ?? "To be announced"}
               </p>
               <p className="text-white text-base mb-2">
                 <strong>Group/Individual:</strong>{" "}

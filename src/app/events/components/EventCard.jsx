@@ -131,7 +131,7 @@ export default function EventCard({
               <div class="flex justify-center mt-3">
                 <div class="flex space-x-2 text-sm font-medium">
                   <button class="transition disabled cursor-not-allowed ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
-                    <span>Opening Soon</span>
+                    <span>Register</span>
                   </button>
                 </div>
               </div>
@@ -195,8 +195,7 @@ export default function EventCard({
                 ></path>{" "}
               </g>
             </svg>
-            {/* {"APRIL " + date.slice(8, 10)}  */}
-            TBD
+            {new Date(date).toLocaleDateString('en-US', {month: 'short', day: '2-digit'})} 
             <vt></vt>
             {goi == "1" ? (
               <div className="flex flex-row gap-2 mt-1">
