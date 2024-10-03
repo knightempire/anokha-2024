@@ -133,7 +133,7 @@ const Event = () => {
           }
         })
         .then(async (data) => {
-          if(data.MODE == 0) {
+          if(data.MODE === "0") {
             secureLocalStorage.clear();
           }
           setEventData(data);
