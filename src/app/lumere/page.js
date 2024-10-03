@@ -13,17 +13,80 @@ const Lumere = () => {
     color3: [15 / 255, 21 / 255, 39 / 255],
   });
 
+  const speakers = [
+    {
+      name: "Ruby Jennings",
+      role: "Product Manager at Anokha",
+      username: "username",
+    },
+    {
+      name: "Leon Hanson",
+      role: "Sales Manager at Anokha",
+      username: "username",
+    },
+    {
+      name: "Meghan Stone",
+      role: "Marketing Specialist at Anokha",
+      username: "username",
+    },
+    {
+      name: "Willie Perkins",
+      role: "UX Engineer at Anokha",
+      username: "username",
+    },
+  ];
+
   return (
     <main className="flex min-h-screen bg-[#192032] font-roobert text-md overflow-x-hidden">
-        <WebGLApp colors={webGLColors} className="-z-10" />
-        <div className="flex z-20 w-full flex-col">
-          <Navigationbar />
-          <div className="flex w-full bg-white h-full mt-16 ">
-            
+      <WebGLApp colors={webGLColors} className="-z-10" />
+      <div className="flex z-20 w-full flex-col">
+        <Navigationbar />
+        <div className="flex w-full h-full">
+          <div className="container mx-auto px-4 py-12">
+            <div
+              className="text-center mb-16 bg-cover bg-center h-screen flex flex-col justify-center items-center"
+              style={{
+                backgroundImage: "url('/path/to/your/background-image.jpg')",
+              }}
+            >
+              <h1 className="text-4xl font-bold mb-4 text-white">
+                Clear Statement about Your Event
+              </h1>
+              <p className="text-xl text-gray-200">
+                Secondary header providing additional information
+              </p>
+              <button className="mt-8 bg-gray-800 text-white px-6 py-3 rounded-md hover:bg-gray-700 transition-colors">
+                GET THE TICKET
+              </button>
+            </div>
+
+            <div className="mt-24">
+              <h2 className="text-3xl font-bold text-center mb-8 text-white">
+                The Speakers
+              </h2>
+              <p className="text-center text-gray-300 mb-12">
+                Write a few lines about the event speakers to highlight their
+                expertise in the field
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {speakers.map((speaker, index) => (
+                  <div key={index} className="text-center">
+                    <div className="w-40 h-40 mx-auto mb-4 bg-gray-700 rounded-lg"></div>
+                    <h3 className="font-semibold text-xl text-white">
+                      {speaker.name}
+                    </h3>
+                    <p className="text-gray-300 mt-2">{speaker.role}</p>
+                    <p className="text-blue-400 mt-1">@{speaker.username}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
+        <Footer />
+      </div>
     </main>
   );
-}
+};
 
 export default Lumere;
