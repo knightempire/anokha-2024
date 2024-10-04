@@ -24,12 +24,16 @@ const navLinks = [
     path: "/comingSoon",
   },
   {
-    title: "Hackathon",
-    path: "/hackathon",
+    title: "Lumiere",
+    path: "/comingSoon",
   },
   {
     title: "TechFair",
     path: "/techfair",
+  },
+  {
+    title: "Hackathon(Closed)",
+    path: "/hackathon",
   },
   {
     title: "Contact Us",
