@@ -633,12 +633,15 @@ const Event = () => {
                           <label htmlFor="teamName">Team Name</label>
                         </span>
                       </div>
-                      <div className="bg-gray-200 p-3 rounded-lg text-center md:w-[75%] mx-auto md:text-sm text-xs" hidden={eventData.minTeamSize<=1}>
+                      <div
+                        className="bg-gray-200 p-3 rounded-lg text-center md:w-[75%] mx-auto md:text-sm text-xs"
+                        hidden={eventData.minTeamSize <= 1}
+                      >
                         <b>Note:</b>
                         <i>
                           {" "}
-                          All members of the team should be registered in anokha
-                          and should have an anokha account
+                          All members of the team should be registered to Anokha
+                          2024 and have an Anokha 2024 account.
                         </i>
                       </div>
                       {Team.map((member) => (
