@@ -16,6 +16,7 @@ const Footer = dynamic(() => import("./components/Footer"));
 
 import { useEffect, useRef, useState } from "react";
 import projects from "./info_data";
+import PhonePromo from "./components/PhonePromo";
 
 export default function Home() {
   const container = useRef(null);
@@ -46,6 +47,7 @@ export default function Home() {
       {/* This is temprovary sponsor component may change in future */}
       <SponsorsMarquee />
       <div id="about" className="z-100 top-32 mx-auto"></div>
+      <PhonePromo className="z-10 visible"/>
       <div ref={container} className="sticky mt-10 z-10" >
         {projects.map((project, index) => {
           const Component = index % 2 === 0 ? InfoLeft : InfoRight;
@@ -60,13 +62,16 @@ export default function Home() {
           );
         })}
       </div>
+      
       <div className="z-10">
         <div className="flex text-center text-6xl text-white justify-center font-roobert m-4">
           GALLERY
         </div>
         <FilmGallery />
       </div>
+      
       <AnokhaMarquee />
+      
       <Footer current_page="home" />
     </main>
   );

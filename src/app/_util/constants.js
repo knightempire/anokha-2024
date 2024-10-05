@@ -22,6 +22,7 @@ export const STUDENT_FORGOT_PASSWORD_URL =
   BASE_URL + "/auth/forgotPasswordStudent";
 export const STUDENT_RESET_PASSWORD_URL =
   BASE_URL + "/auth/resetPasswordStudent";
+export const CREW_URL = BASE_URL + "/user/getCrew";
 
 export const HACKATHON_TEAM_REGISTER_URL = HACKATHON_URL + "/registerTeam";
 export const HACKATHON_DASHBOARD_URL = HACKATHON_URL + "/getDashBoard";
