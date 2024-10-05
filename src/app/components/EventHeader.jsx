@@ -32,7 +32,7 @@ const navLinks = [
     path: "/techfair",
   },
   {
-    title: "Hackathon(Closed)",
+    title: "Hackathon",
     path: "/hackathon",
   },
   {
