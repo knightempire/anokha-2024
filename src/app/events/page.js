@@ -93,16 +93,6 @@ const Events = () => {
   useEffect(() => {
     // console.log("DAY: ", DayFilter);
     if (eventsData) {
-      console.log(
-        "#%#%#: ",
-        groupFilter,
-        TypeFilter,
-        DayFilter,
-        TechFilter,
-        RegisteredFilter,
-        TagsFilter,
-        searchText
-      );
       setFilteredData(
         eventsData.filter(
           (eventData) =>
@@ -136,6 +126,7 @@ const Events = () => {
     RegisteredFilter,
     TagsFilter,
     searchText,
+    eventsData
   ]);
 
   const hanldeCurrentFilters = (filters) => {

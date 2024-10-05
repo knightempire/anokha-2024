@@ -11,64 +11,43 @@ export default function FilterSelectButton({
   options,
   sendSelectedOption,
 }) {
-  const [currVal, setCurrVal] = useState();
+  const [currVal, setCurrVal] = useState(val());
   const [buttonClick, setButtonClick] = useState(0);
-  function val(){
-    if (type == "day")
-      return JSON.parse(sessionStorage.getItem("dayFilterList"))[0];
-    else if (type == "tag")
-      return JSON.parse(sessionStorage.getItem("tagslist"))[0];
-    else if (type == "eventType")
-      return JSON.parse(sessionStorage.getItem("eventTypeList"))[0];
-    else if (type == "technical")
-      return JSON.parse(sessionStorage.getItem("techFilterList"))[0];
-    else if (type == "team")
-      return JSON.parse(sessionStorage.getItem("participationList"))[0];
-    else if (type == "reg")
-      return JSON.parse(sessionStorage.getItem("regFilterList"))[0];
+  function val() {
+    let value;
+    if (type === "eventType") {
+      value = sessionStorage.getItem("eventTypeList");
+    } else if (type === "technical") {
+      value = sessionStorage.getItem("techFilterList");
+    } else if (type === "team") {
+      value = sessionStorage.getItem("participationList");
+    } else if (type === "reg") {
+      value = sessionStorage.getItem("regFilterList");
+    }
+    return value ? JSON.parse(value)?.[0] : null;
   }
   useEffect(() => {
     if ((!currVal || currVal == null || currVal == "") && buttonClick == 0) {
-      console.log("suppressing resetting session storage! #####");
-      console.log(
-        sessionStorage.getItem("participationList"),
-        sessionStorage.getItem("techFilterList")
-      );
-      if (type == "day")
-        sendSelectedOption(
-          JSON.parse(sessionStorage.getItem("dayFilterList")),
-          type
-        );
-      else if (type == "tag")
-        sendSelectedOption(
-          JSON.parse(sessionStorage.getItem("tagslist")),
-          type
-        );
-      else if (type == "eventType")
-        sendSelectedOption(
-          JSON.parse(sessionStorage.getItem("eventTypeList")),
-          type
-        );
-      else if (type == "technical")
-        sendSelectedOption(
-          JSON.parse(sessionStorage.getItem("techFilterList")),
-          type
-        );
-      else if (type == "team")
-        sendSelectedOption(
-          JSON.parse(sessionStorage.getItem("participationList")),
-          type
-        );
-      else if (type == "reg")
-        sendSelectedOption(
-          JSON.parse(sessionStorage.getItem("regFilterList")),
-          type
-        );
+      return
     } else {
-      sendSelectedOption([currVal], type);
+      if (type == "eventType")
+        sessionStorage.setItem("eventTypeList", JSON.stringify([currVal]));
+      else if (type == "technical")
+        sessionStorage.setItem("techFilterList", JSON.stringify([currVal]));
+      else if (type == "team")
+        sessionStorage.setItem("participationList", JSON.stringify([currVal]));
+      else if (type == "reg")
+        sessionStorage.setItem("regFilterList", JSON.stringify([currVal]));
+      sendSelectedOption();
       setButtonClick(0);
     }
   }, [currVal]);
+
+  useEffect(() => {
+    console.log("frrrrrrrrrrRrR");
+    return
+  }, []);
+
   return (
     <div>
       <SelectButton

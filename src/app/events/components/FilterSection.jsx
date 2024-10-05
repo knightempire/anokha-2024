@@ -52,10 +52,15 @@ export default function FilterSection({ sendcurrentFilters }) {
   }, []); // This empty bracket here is important
 
   useEffect(() => {
+    console.log("before sending: ", filters);
     sendcurrentFilters(filters);
   }, [filters]);
-
-  function updateFilters() {
+  
+  useEffect(() => {
+    handleItemFromFilters();
+  }, []); // This will run only once when the component mounts
+  
+  const handleItemFromFilters = () => {
     let newFilters = [].concat(
       JSON.parse(sessionStorage.getItem("tagslist")),
       JSON.parse(sessionStorage.getItem("regFilterList")),
@@ -64,25 +69,11 @@ export default function FilterSection({ sendcurrentFilters }) {
       JSON.parse(sessionStorage.getItem("techFilterList")),
       JSON.parse(sessionStorage.getItem("dayFilterList"))
     );
-    newFilters = newFilters.filter((elem) => elem != null && elem != undefined);
-    setFilters(newFilters);
-    console.log(newFilters);
-  }
-
-  const handleItemFromFilters = (filter, type) => {
-    if (type == "day")
-      sessionStorage.setItem("dayFilterList", JSON.stringify(filter));
-    else if (type == "tag")
-      sessionStorage.setItem("tagslist", JSON.stringify(filter));
-    else if (type == "eventType")
-      sessionStorage.setItem("eventTypeList", JSON.stringify(filter));
-    else if (type == "technical")
-      sessionStorage.setItem("techFilterList", JSON.stringify(filter));
-    else if (type == "team")
-      sessionStorage.setItem("participationList", JSON.stringify(filter));
-    else if (type == "reg")
-      sessionStorage.setItem("regFilterList", JSON.stringify(filter));
-    updateFilters();
+  
+    newFilters = newFilters.filter((elem) => elem != null && elem !== undefined);
+    console.log("Filtered values: ", newFilters); 
+    console.log("Old", filters);
+    setFilters(newFilters); // Update the filters state with newFilters
   };
   return (
     <div className="p-5">

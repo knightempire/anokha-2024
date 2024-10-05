@@ -13,42 +13,24 @@ export default function FilterComponent({
   options,
   sendSelectedOption,
 }) {
-  const [curr_options, setCurrOptions] = useState(null);
-  const opt = [{ name: "hi", val: "hi", name: "hello", val: "hello" }];
+  const [curr_options, setCurrOptions] = useState(val());
+  function val() {
+    let value;
+    if (type == "day")
+      value =  sessionStorage.getItem("dayFilterList");
+    else if (type == "tag")
+      value =  sessionStorage.getItem("tagslist");
+    return value ? JSON.parse(value) : null;
+  }
   useEffect(() => {
     if (!curr_options || curr_options == null || curr_options == "") {
-      if (type == "day")
-        sendSelectedOption(
-          JSON.parse(sessionStorage.getItem("dayFilterList")),
-          type
-        );
-      else if (type == "tag")
-        sendSelectedOption(
-          JSON.parse(sessionStorage.getItem("tagslist")),
-          type
-        );
-      else if (type == "eventType")
-        sendSelectedOption(
-          JSON.parse(sessionStorage.getItem("eventTypeList")),
-          type
-        );
-      else if (type == "technical")
-        sendSelectedOption(
-          JSON.parse(sessionStorage.getItem("techFilterList")),
-          type
-        );
-      else if (type == "team")
-        sendSelectedOption(
-          JSON.parse(sessionStorage.getItem("participationList")),
-          type
-        );
-      else if (type == "reg")
-        sendSelectedOption(
-          JSON.parse(sessionStorage.getItem("regFilterList")),
-          type
-        );
+      return
     } else {
-      sendSelectedOption(curr_options, type);
+      if (type == "day")
+        sessionStorage.setItem("dayFilterList",JSON.stringify(curr_options));
+      else if (type == "tag")
+        sessionStorage.setItem("tagslist",JSON.stringify(curr_options))
+      sendSelectedOption();
     }
   }, [curr_options]);
 
