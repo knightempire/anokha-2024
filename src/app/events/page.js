@@ -11,7 +11,6 @@ import secureLocalStorage from "react-secure-storage";
 import "primereact/resources/themes/lara-light-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 
-
 const Events = () => {
   const [groupFilter, setgroupFilter] = useState(null);
   const [TypeFilter, setTypeFilter] = useState(null);
@@ -94,10 +93,23 @@ const Events = () => {
   useEffect(() => {
     // console.log("DAY: ", DayFilter);
     if (eventsData) {
+      console.log(
+        "#%#%#: ",
+        groupFilter,
+        TypeFilter,
+        DayFilter,
+        TechFilter,
+        RegisteredFilter,
+        TagsFilter,
+        searchText
+      );
       setFilteredData(
         eventsData.filter(
           (eventData) =>
-          (searchText === "" || eventData.eventName.toLowerCase().includes(searchText.toLowerCase())) &&
+            (searchText === "" ||
+              eventData.eventName
+                .toLowerCase()
+                .includes(searchText.toLowerCase())) &&
             (groupFilter == -1 ||
               eventData.isGroup == groupFilter?.toString()) &&
             (TechFilter == -1 ||
@@ -123,10 +135,11 @@ const Events = () => {
     TechFilter,
     RegisteredFilter,
     TagsFilter,
-    searchText
+    searchText,
   ]);
 
   const hanldeCurrentFilters = (filters) => {
+    console.log("BLA:", filters);
     let grpCode = -1;
     let techCode = 0;
     let evetypeCode = 0;
@@ -203,7 +216,7 @@ const Events = () => {
       {/* <WebGLApp colors={webGLColors} className="-z-10" /> */}
       <div className="block">
         <Navbar />
-        
+
         <div className="mx-10 pt-10 mt-12 mb-5">
           {/* Search Bar */}
 

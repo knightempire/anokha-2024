@@ -13,6 +13,7 @@ export default function FilterSection({ sendcurrentFilters }) {
   const [dayFilterList, setdayFilterList] = useState([]);
   const [techFilterList, setTechFilterList] = useState([]);
   const [tagList, setTagList] = useState([]);
+  const [sessionStorageChange, setSessionStorageChange] = useState();
 
   useEffect(() => {
     fetch(ALL_TAGS_URL, {
@@ -54,33 +55,34 @@ export default function FilterSection({ sendcurrentFilters }) {
     sendcurrentFilters(filters);
   }, [filters]);
 
-  useEffect(() => {
+  function updateFilters() {
     let newFilters = [].concat(
-      tagslist,
-      regFilterList,
-      eventTypeList,
-      participationList,
-      techFilterList,
-      dayFilterList
+      JSON.parse(sessionStorage.getItem("tagslist")),
+      JSON.parse(sessionStorage.getItem("regFilterList")),
+      JSON.parse(sessionStorage.getItem("eventTypeList")),
+      JSON.parse(sessionStorage.getItem("participationList")),
+      JSON.parse(sessionStorage.getItem("techFilterList")),
+      JSON.parse(sessionStorage.getItem("dayFilterList"))
     );
     newFilters = newFilters.filter((elem) => elem != null && elem != undefined);
     setFilters(newFilters);
-  }, [
-    regFilterList,
-    tagslist,
-    eventTypeList,
-    participationList,
-    dayFilterList,
-    techFilterList
-  ]);
+    console.log(newFilters);
+  }
 
   const handleItemFromFilters = (filter, type) => {
-    if (type == "day") setdayFilterList(filter);
-    else if (type == "tag") settagslist(filter);
-    else if (type == "eventType") seteventTypeList(filter);
-    else if (type == "technical") setTechFilterList(filter);
-    else if (type == "team") setparticipationList(filter);
-    else if (type == "reg") setregFilterList(filter);
+    if (type == "day")
+      sessionStorage.setItem("dayFilterList", JSON.stringify(filter));
+    else if (type == "tag")
+      sessionStorage.setItem("tagslist", JSON.stringify(filter));
+    else if (type == "eventType")
+      sessionStorage.setItem("eventTypeList", JSON.stringify(filter));
+    else if (type == "technical")
+      sessionStorage.setItem("techFilterList", JSON.stringify(filter));
+    else if (type == "team")
+      sessionStorage.setItem("participationList", JSON.stringify(filter));
+    else if (type == "reg")
+      sessionStorage.setItem("regFilterList", JSON.stringify(filter));
+    updateFilters();
   };
   return (
     <div className="p-5">
