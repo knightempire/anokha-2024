@@ -20,11 +20,11 @@ const navLinks = [
     path: "/events",
   },
   {
-    title: "Eventide",
+    title: "Lumière",
     path: "/comingSoon",
   },
   {
-    title: "Lumiere",
+    title: "Eventide",
     path: "/comingSoon",
   },
   {
@@ -127,10 +127,18 @@ const Navigationbar = () => {
                 <Link href={link.path}>
                   <Button
                     variant="text"
-                    className=" h-[40px] hover:bg-gray-700"
+                    className="h-[40px] hover:bg-gray-700 relative"
                   >
-                    <div className="my-auto   text-gray-300   text-[13px]  rounded md:p-0 hover:text-white">
+                    <div className="my-auto text-gray-300 text-[13px] rounded md:p-0 hover:text-white">
                       {link.title}
+                      {index === 5 && (
+                        <span
+                          className="absolute bottom-0 right-0 text-[8px] text-gray-400"
+                          style={{ paddingRight: "5px", paddingBottom: "2px" }}
+                        >
+                          Closed
+                        </span>
+                      )}
                     </div>
                   </Button>
                 </Link>
