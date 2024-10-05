@@ -8,6 +8,7 @@ import { FiArrowUpRight } from "react-icons/fi";
 import { TbPointFilled } from "react-icons/tb";
 import { IoLogoYoutube } from "react-icons/io";
 import { IoLocationSharp } from "react-icons/io5";
+import { BiLogoPlayStore } from "react-icons/bi";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -77,6 +78,18 @@ const Footer = ({ current_page }) => {
               </div>
               <div className="block mt-5">
                 <div className="flex flex-nowrap">
+                    <Link
+                      href={"https://play.google.com/store/apps/details?id=com.vaisakhkrishnank.anokha_home"}
+                      className="text-gray-200 hover:font-bold hover:text-white flex"
+                    >
+                      <BiLogoPlayStore 
+                        className="mt-1 mr-1"
+                      />
+                      <p>PLAYSTORE</p>
+                    </Link>
+                    {/* <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" /> */}
+                </div>
+                <div className="flex flex-nowrap">
                   <Link
                     href={"https://www.amrita.edu"}
                     className="text-gray-200 hover:text-white hover:font-bold"
@@ -85,15 +98,6 @@ const Footer = ({ current_page }) => {
                   </Link>
                   <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" />
                 </div>
-                {/* <div className="flex flex-nowrap">
-                  <Link
-                    href={"https://www.google.com"}
-                    className="text-gray-200 hover:text-white hover:font-bold"
-                  >
-                    PLAYSTORE APP
-                  </Link>
-                  <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" />
-                </div> */}
               </div>
             </div>
             <div className="mt-3">
