@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import CountdownTimer from "./Counter";
+import { FaLocationDot } from "react-icons/fa6";
+import Link from "next/link";
 
 const Hero = () => (
   <div className="container mx-auto flex xl:flex-row lg:flex-row md:flex-row sm:flex-col justify-between items-center min-h-screen">
@@ -24,8 +26,17 @@ const Hero = () => (
         </h4> */}
       </section>
     </div>
-    <div className="text-2xl sm:m-5 md:m-10 lg:m-20 xl:m-20 z-10 text-white cursor-default">
+    <div className="text-2xl sm:m-5 md:m-10 lg:m-20 xl:m-20 z-10 text-white cursor-default flex flex-col items-center justify-center">
       <CountdownTimer />
+      <Link
+        href={"https://maps.app.goo.gl/MyE1VW4u4jWdxhco9"}
+        className="text-gray-200 hover:font-bold ease-in transition-all"
+      >
+        <div className="flex flex-wrap w-fit items-center justify-center bg-[rgba(0,0,0,0.4)] rounded-full px-6 py-2 hover:scale-105 ease-in transition-transform">
+          <FaLocationDot className="text-orange-500 mr-2"/>
+          <p className="text-[16px]">Amrita Vishwa Vidyapeetham, Coimbatore</p>
+        </div>
+      </Link>
     </div>
   </div>
 );
