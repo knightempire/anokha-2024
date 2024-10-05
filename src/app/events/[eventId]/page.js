@@ -605,7 +605,18 @@ const Event = () => {
                 ""
               ) : (
                 <div>
-                  <div className="font-bold flex justify-end">
+                  <div
+                    className="bg-red-200 p-3 rounded-lg text-center md:w-[75%] mx-auto md:text-sm text-xs"
+                    hidden={eventData.minTeamSize <= 1}
+                  >
+                    <b>Note:</b>
+                    <i>
+                      {" "}
+                      All members of the team should be registered for Anokha
+                      2024 and have an Anokha 2024 account.
+                    </i>
+                  </div>
+                  <div className="font-bold flex justify-end mt-5">
                     {eventData.isRegistered == "0"
                       ? eventData.maxTeamSize == eventData.minTeamSize
                         ? "Team size - " + eventData.minTeamSize
@@ -632,17 +643,6 @@ const Event = () => {
                           />
                           <label htmlFor="teamName">Team Name</label>
                         </span>
-                      </div>
-                      <div
-                        className="bg-gray-200 p-3 rounded-lg text-center md:w-[75%] mx-auto md:text-sm text-xs"
-                        hidden={eventData.minTeamSize <= 1}
-                      >
-                        <b>Note:</b>
-                        <i>
-                          {" "}
-                          All members of the team should be registered to Anokha
-                          2024 and have an Anokha 2024 account.
-                        </i>
                       </div>
                       {Team.map((member) => (
                         <div key={member}>
