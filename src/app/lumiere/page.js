@@ -4,40 +4,34 @@ import WebGLApp from "../bg/WebGLApp";
 import Navigationbar from "../components/EventHeader";
 import Footer from "../components/Footer";
 import { useState } from "react";
-import Link from "next/link";
 
 const Lumere = () => {
   const [webGLColors, setWebGLColors] = useState({
     color1: [43 / 255, 30 / 255, 56 / 255],
-    color2: [11 / 255, 38 / 255, 59 / 255],
-    color3: [15 / 255, 21 / 255, 39 / 255],
+    color2: [11 / 255, 38 / 255],
+    color3: [15 / 255, 21 / 255],
   });
 
   const speakers = [
     {
-      name: "Speaker 1",
-      role: "Role 1",
-      company: "Lumiere",
+      name: "Dr. Sudhanshu Mani",
+      role: "Led the Vande Bharat Express project, enhancing Indian Railways with cutting-edge engineering.",
     },
     {
-      name: "Speaker 2",
-      role: "Role 2",
-      company: "Lumiere",
+      name: "Major Deepak Iyer",
+      role: "Former Special Forces officer focused on leadership development and resilience in business.",
     },
     {
-      name: "Speaker 3",
-      role: "Role 3",
-      company: "Lumiere",
+      name: "Dushyant Dubey",
+      role: "Social activist using digital platforms for grassroots change in mental health and abuse prevention.",
     },
     {
-      name: "Speaker 4",
-      role: "Role 4",
-      company: "Lumiere",
+      name: "Kalki Subramaniam",
+      role: "Transgender rights advocate employing art and media for social change in India.",
     },
     {
-      name: "Speaker 5",
-      role: "Role 5",
-      company: "Lumiere",
+      name: "Veena Kumaravel",
+      role: "Founder of Naturals, empowering women entrepreneurs through a successful salon franchise model.",
     },
   ];
 
@@ -48,7 +42,6 @@ const Lumere = () => {
         <Navigationbar />
         <div className="w-full pb-16">
           <div className="text-center mb-16 bg-cover bg-center h-screen flex flex-col justify-center items-center relative mx-0 sm:mx-auto">
-            {" "}
             <div
               className="absolute inset-0 bg-cover bg-center z-[-1] w-full"
               style={{
@@ -65,34 +58,46 @@ const Lumere = () => {
                 layout="responsive"
               />
             </div>
-            <h1 className="text-8xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 text-white z-10 font-">
-              Tech Talk<span className="text-base font-thin"> 2024</span>
+            <h1 className="text-8xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-4 text-white z-10">
+              Tech Talk
             </h1>
-            <p className="text-xl text-gray-200 z-10">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
+            <p className="text-5xl sm:text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-white z-10">
+              18th Oct{" "}
+              <span className="text-3xl sm:text-lg md:text-xl lg:text-3xl">
+                2024
+              </span>
+            </p>
+            <p className="text-xl text-gray-200 z-10 max-w-3xl">
+              Lumière is a dynamic segment of Anokha 2024, where influential
+              voices share insights on society, technology, and leadership.
             </p>
             <button className="mt-8 px-4 py-2 text-lg text-black bg-white font-semibold border rounded-full bg-red-10 z-10 hover:scale-105 transition">
               REGISTER
             </button>
           </div>
 
-          <div className="mt-24">
+          <div className="mt-16 px-4">
             <h2 className="text-4xl font-bold text-center mb-8 text-white">
               The Speakers
             </h2>
             <p className="text-center text-gray-300 mb-12">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a
-              diam et dolor
+              Lumière features inspiring talks and an interactive Q&A.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+            <div className="flex flex-wrap justify-center gap-8">
               {speakers.map((speaker, index) => (
-                <div key={index} className="text-center">
-                  <div className="w-40 h-40 mx-auto mb-4 bg-gray-700 rounded-lg"></div>
-                  <h3 className="font-semibold text-xl text-white">
+                <div
+                  key={index}
+                  className="py-4 px-12 rounded-lg w-full sm:w-auto"
+                >
+                  <div className="w-32 h-32 mx-auto mb-4 bg-gray-700 rounded-full  flex items-center justify-center text-gray-400 text-4xl font-bold">
+                    {speaker.name.charAt(0)}
+                  </div>
+                  <h3 className="font-bold text-xl text-white text-center mb-2">
                     {speaker.name}
                   </h3>
-                  <p className="text-gray-300 mt-2">{speaker.role}</p>
-                  <p className="text-blue-400 mt-1">@{speaker.company}</p>
+                  <p className="text-gray-300 text-center text-sm max-w-xs mx-auto">
+                    {speaker.role}
+                  </p>
                 </div>
               ))}
             </div>
