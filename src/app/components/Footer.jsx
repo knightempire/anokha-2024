@@ -7,6 +7,7 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { FiArrowUpRight } from "react-icons/fi";
 import { TbPointFilled } from "react-icons/tb";
 import { IoLogoYoutube } from "react-icons/io";
+import { IoLocationSharp } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -45,9 +46,11 @@ const Footer = ({ current_page }) => {
           <div className="mt-5 flex flex-col lg:flex-row flex-wrap justify-right gap-2 lg:justify-between">
             <div className="mt-3">
               <h2 className="text-white font-bold">OUR ADDRESS</h2>
-              <p className="text-gray-500 text-sm">
-                Amrita Vishwa Vidyapeetham
-              </p>
+              <Link href={"https://maps.app.goo.gl/MyE1VW4u4jWdxhco9"}>
+                <span className="text-gray-400 hover:text-white flex">
+                  <p>Amrita Vishwa Vidyapeetham</p> <IoLocationSharp className="text-sm mt-[5px] ml-[4px]"/>
+                </span>
+              </Link>
               <p className="text-gray-500 text-sm">Coimbatore Campus</p>
               <p className="text-gray-500 text-sm">Amritanagar</p>
               <p className="text-gray-500 text-sm">Coimbatore - 641 112</p>
