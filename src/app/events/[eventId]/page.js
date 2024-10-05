@@ -133,7 +133,7 @@ const Event = () => {
           }
         })
         .then(async (data) => {
-          if(data.MODE === "0") {
+          if (data.MODE === "0") {
             secureLocalStorage.clear();
           }
           setEventData(data);
@@ -504,13 +504,15 @@ const Event = () => {
             {/* Additional Info */}
             <div className="flex flex-col mt-4 mr-10" ref={MainInfo}>
               <p className="text-white text-base mb-2">
-                <strong>Date:</strong> {new Date(eventData.eventDate).toDateString()} &bull;{" "}
+                <strong>Date:</strong>{" "}
+                {new Date(eventData.eventDate).toDateString()} &bull;{" "}
                 <strong>Time:</strong> {eventData.eventTime} IST
                 {/* <strong>Date:</strong> Coming Soon{" "} */}
               </p>
               <p className="text-white text-base mb-2">
                 {/* <strong>Venue:</strong> {eventData.eventVenue} */}
-                <strong>Venue: </strong> {eventData.eventVenue ?? "To be announced"}
+                <strong>Venue: </strong>{" "}
+                {eventData.eventVenue ?? "To be announced"}
               </p>
               <p className="text-white text-base mb-2">
                 <strong>Group/Individual:</strong>{" "}
@@ -561,7 +563,7 @@ const Event = () => {
         draggable={false}
         className={`sm:w-[90%] md:w-[50%] bg-white`}
       >
-        <div className="flex flex-col py-10 items-center justify-center mx-auto">
+        <div className="flex flex-col py-2 items-center justify-center mx-auto">
           <div className="w-full rounded-md mt-5 xl:p-0 bg-white">
             <div className="mx-5 mb-10 px-1 lg:px-5">
               {eventData.isRegistered == "1" ? (
@@ -630,6 +632,17 @@ const Event = () => {
                           />
                           <label htmlFor="teamName">Team Name</label>
                         </span>
+                      </div>
+                      <div
+                        className="bg-gray-200 p-3 rounded-lg text-center md:w-[75%] mx-auto md:text-sm text-xs"
+                        hidden={eventData.minTeamSize <= 1}
+                      >
+                        <b>Note:</b>
+                        <i>
+                          {" "}
+                          All members of the team should be registered to Anokha
+                          2024 and have an Anokha 2024 account.
+                        </i>
                       </div>
                       {Team.map((member) => (
                         <div key={member}>
