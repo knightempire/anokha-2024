@@ -374,7 +374,7 @@ const Event = () => {
     e.preventDefault();
     console.log(Team, Emails, memberRoles);
     if (allValid) {
-      await getPayUForm();
+      confirm("Are you ready to make the payment? (You'll be redirected to the payment gateway to complete the registration.)") && await getPayUForm();
     }
   };
 
@@ -442,7 +442,7 @@ const Event = () => {
                     ? setpopupvisibility(true)
                     : eventData.isRegistered != undefined &&
                       eventData.isRegistered == "0"
-                    ? getPayUForm()
+                    ? confirm("Are you ready to make the payment? (You'll be redirected to the payment gateway to complete the registration.)") && getPayUForm()
                     : setpopupvisibility(true);
                 }}
                 disabled={false}
@@ -605,7 +605,18 @@ const Event = () => {
                 ""
               ) : (
                 <div>
-                  <div className="font-bold flex justify-end">
+                  <div
+                    className="bg-red-200 p-3 rounded-lg text-center md:w-[75%] mx-auto md:text-sm text-xs"
+                    hidden={eventData.minTeamSize <= 1}
+                  >
+                    <b>Note:</b>
+                    <i>
+                      {" "}
+                      All members of the team should be registered for Anokha
+                      2024 and have an Anokha 2024 account.
+                    </i>
+                  </div>
+                  <div className="font-bold flex justify-end mt-5">
                     {eventData.isRegistered == "0"
                       ? eventData.maxTeamSize == eventData.minTeamSize
                         ? "Team size - " + eventData.minTeamSize
@@ -632,17 +643,6 @@ const Event = () => {
                           />
                           <label htmlFor="teamName">Team Name</label>
                         </span>
-                      </div>
-                      <div
-                        className="bg-gray-200 p-3 rounded-lg text-center md:w-[75%] mx-auto md:text-sm text-xs"
-                        hidden={eventData.minTeamSize <= 1}
-                      >
-                        <b>Note:</b>
-                        <i>
-                          {" "}
-                          All members of the team should be registered to Anokha
-                          2024 and have an Anokha 2024 account.
-                        </i>
                       </div>
                       {Team.map((member) => (
                         <div key={member}>

@@ -46,8 +46,8 @@ export default function Home() {
       <Hero className="z-10" />
       {/* This is temprovary sponsor component may change in future */}
       <SponsorsMarquee />
-      <div id="about" className="z-100 top-32 mx-auto"></div>
       <PhonePromo className="z-10 visible"/>
+      <div id="about" className="z-100 top-32 mx-auto"></div>
       <div ref={container} className="sticky mt-10 z-10" >
         {projects.map((project, index) => {
           const Component = index % 2 === 0 ? InfoLeft : InfoRight;

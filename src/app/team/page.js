@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import TeamMember from "./components/team-member";
 import WebGLApp from "@/app/bg/WebGLApp";
 import { CREW_URL } from "../_util/constants.js";
+import Footer from "../components/Footer";
+import Navigationbar from "../components/EventHeader";
 
 // import ComingSoon from "../components/ComingSoon";
 
@@ -37,35 +39,39 @@ const Team = () => {
 
   return (
     // <ComingSoon />
-    <main className="flex min-h-screen flex-col bg-[#192032]">
-      {/* <WebGLApp colors={webGLColors} /> */}
-      <div className="flex flex-col gap-10">
-      {crew
-          ? crew.map((data, index) => (
-              <div key={index}>
-                <div className="text-center w-full text-white text-xl">
-                  {data.crewName}
+    <main className="flex min-h-screen bg-[#192032] font-roobert text-md overflow-x-hidden">
+      <WebGLApp colors={webGLColors} />
+      <div className="flex z-20 w-full flex-col">
+        <Navigationbar />
+        <div className="flex flex-col gap-10 pb-16 mt-28">
+          {crew
+            ? crew.map((data, index) => (
+                <div key={index}>
+                  <div className="text-center w-full text-white text-2xl">
+                    &#9672; {data.crewName} &#9672;
+                  </div>
+                  <div className="flex flex-row flex-wrap gap-4 m-10">
+                    {data.teamMembers && data.teamMembers.length > 0 ? (
+                      data.teamMembers.map((member) => (
+                        <div key={member.memberId}>
+                          <TeamMember
+                            name={member.managerName}
+                            Position={member.roleDescription}
+                            imgSrc={member.memberImageURL}
+                            email={member.memberEmail}
+                            dept={member.departmentName}
+                          />
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-white">NOT FOUND</div>
+                    )}
+                  </div>
                 </div>
-                <div className="flex flex-row flex-wrap gap-4 m-10">
-                  {data.teamMembers && data.teamMembers.length > 0 ? (
-                    data.teamMembers.map((member) => (
-                      <div key={member.memberId}>
-                        <TeamMember
-                          name={member.managerName}
-                          Position={member.roleDescription}
-                          imgSrc={member.memberImageURL}
-                          email={member.memberEmail}
-                          dept={member.departmentName}
-                        />
-                      </div>
-                    ))
-                  ) : (
-                    <div className="text-white">NOT FOUND</div>
-                  )}
-                </div>
-              </div>
-            ))
-          : "NOT AVAILABLE"}
+              ))
+            : "NOT AVAILABLE"}
+        </div>
+        <Footer />
       </div>
     </main>
   );
