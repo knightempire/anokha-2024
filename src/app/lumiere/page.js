@@ -4,6 +4,7 @@ import WebGLApp from "../bg/WebGLApp";
 import Navigationbar from "../components/EventHeader";
 import Footer from "../components/Footer";
 import { useState } from "react";
+import { FaAngleDoubleDown } from "react-icons/fa";
 
 const Lumere = () => {
   const [webGLColors, setWebGLColors] = useState({
@@ -34,6 +35,13 @@ const Lumere = () => {
       role: "Founder of Naturals, empowering women entrepreneurs through a successful salon franchise model.",
     },
   ];
+
+  const handleScrollMore = () => {
+    window.scrollTo({
+      top: window.scrollY + 700,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <main className="flex min-h-screen bg-[#192032] font-roobert text-md overflow-x-hidden">
@@ -72,8 +80,16 @@ const Lumere = () => {
               voices share insights on society, technology, and leadership.
             </p>
             <button className="mt-8 px-4 py-2 text-lg text-black bg-white font-semibold border rounded-full bg-red-10 z-10 hover:scale-105 transition">
-              REGISTER
+              Register
             </button>
+            <div className=" inset-0 flex justify-center items-center">
+              <div
+                onClick={handleScrollMore}
+                className="bg-gray-400 tex animate-bounce absolute md:top-[92%] sm:top-[90%]  w-32 rounded-full px-3 py-2 flex items-center justify-center cursor-pointer"
+              >
+                Scroll More <FaAngleDoubleDown className="ml-2" />
+              </div>
+            </div>
           </div>
 
           <div className="mt-16 px-4">
@@ -81,7 +97,9 @@ const Lumere = () => {
               The Speakers
             </h2>
             <p className="text-center text-gray-300 mb-12">
-              Lumière features inspiring talks and an interactive Q&A.
+              Lumière features inspiring talks and an interactive Q&A, and a
+              panel on &ldquo;Language & Literature in the Age of Programming &
+              AI&rdquo;
             </p>
             <div className="flex flex-wrap justify-center gap-8">
               {speakers.map((speaker, index) => (
