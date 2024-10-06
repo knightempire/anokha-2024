@@ -13,6 +13,7 @@ export default function FilterSection({ sendcurrentFilters }) {
   const [dayFilterList, setdayFilterList] = useState([]);
   const [techFilterList, setTechFilterList] = useState([]);
   const [tagList, setTagList] = useState([]);
+  const [sessionStorageChange, setSessionStorageChange] = useState();
 
   useEffect(() => {
     fetch(ALL_TAGS_URL, {
@@ -53,34 +54,23 @@ export default function FilterSection({ sendcurrentFilters }) {
   useEffect(() => {
     sendcurrentFilters(filters);
   }, [filters]);
-
+  
   useEffect(() => {
+    handleItemFromFilters();
+  }, []); // This will run only once when the component mounts
+  
+  const handleItemFromFilters = () => {
     let newFilters = [].concat(
-      tagslist,
-      regFilterList,
-      eventTypeList,
-      participationList,
-      techFilterList,
-      dayFilterList
+      JSON.parse(sessionStorage.getItem("tagslist")),
+      JSON.parse(sessionStorage.getItem("regFilterList")),
+      JSON.parse(sessionStorage.getItem("eventTypeList")),
+      JSON.parse(sessionStorage.getItem("participationList")),
+      JSON.parse(sessionStorage.getItem("techFilterList")),
+      JSON.parse(sessionStorage.getItem("dayFilterList"))
     );
-    newFilters = newFilters.filter((elem) => elem != null && elem != undefined);
-    setFilters(newFilters);
-  }, [
-    regFilterList,
-    tagslist,
-    eventTypeList,
-    participationList,
-    dayFilterList,
-    techFilterList
-  ]);
-
-  const handleItemFromFilters = (filter, type) => {
-    if (type == "day") setdayFilterList(filter);
-    else if (type == "tag") settagslist(filter);
-    else if (type == "eventType") seteventTypeList(filter);
-    else if (type == "technical") setTechFilterList(filter);
-    else if (type == "team") setparticipationList(filter);
-    else if (type == "reg") setregFilterList(filter);
+  
+    newFilters = newFilters.filter((elem) => elem != null && elem !== undefined);
+    setFilters(newFilters); // Update the filters state with newFilters
   };
   return (
     <div className="p-5">
