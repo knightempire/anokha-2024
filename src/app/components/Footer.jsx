@@ -76,19 +76,7 @@ const Footer = ({ current_page }) => {
                   <IoLogoYoutube className="text-gray-600 hover:text-white" />
                 </Link>
               </div>
-              <div className="block mt-5">
-                <div className="flex flex-nowrap">
-                    <Link
-                      href={"https://play.google.com/store/apps/details?id=com.vaisakhkrishnank.anokha_home"}
-                      className="text-gray-200 hover:font-bold hover:text-white flex"
-                    >
-                      <BiLogoPlayStore 
-                        className="mt-1 mr-1"
-                      />
-                      <p>PLAYSTORE</p>
-                    </Link>
-                    {/* <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" /> */}
-                </div>
+              <div className="block mt-5 space-y-2">
                 <div className="flex flex-nowrap">
                   <Link
                     href={"https://www.amrita.edu"}
@@ -97,6 +85,18 @@ const Footer = ({ current_page }) => {
                     AMRITA.EDU
                   </Link>
                   <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" />
+                </div>
+                <div className="flex flex-nowrap w-fit border-[0.5px] border-gray-200 hover:border-white rounded-md items-center justify-center px-2">
+                    <Link
+                      href={"https://play.google.com/store/apps/details?id=com.vaisakhkrishnank.anokha_home"}
+                      className="text-gray-200 hover:font-bold hover:text-white flex"
+                    >
+                      <BiLogoPlayStore 
+                        className="mt-1 mr-1"
+                      />
+                      <p>PlayStore</p>
+                    </Link>
+                    {/* <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" /> */}
                 </div>
               </div>
             </div>
