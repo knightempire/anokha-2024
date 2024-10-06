@@ -374,7 +374,7 @@ const Event = () => {
     e.preventDefault();
     console.log(Team, Emails, memberRoles);
     if (allValid) {
-      await getPayUForm();
+      confirm("Are you ready to make the payment? (You'll be redirected to the payment gateway to complete the registration.)") && await getPayUForm();
     }
   };
 
@@ -442,7 +442,7 @@ const Event = () => {
                     ? setpopupvisibility(true)
                     : eventData.isRegistered != undefined &&
                       eventData.isRegistered == "0"
-                    ? getPayUForm()
+                    ? confirm("Are you ready to make the payment? (You'll be redirected to the payment gateway to complete the registration.)") && getPayUForm()
                     : setpopupvisibility(true);
                 }}
                 disabled={false}
