@@ -130,7 +130,6 @@ const Events = () => {
   ]);
 
   const hanldeCurrentFilters = (filters) => {
-    console.log("BLA:", filters);
     let grpCode = -1;
     let techCode = 0;
     let evetypeCode = 0;

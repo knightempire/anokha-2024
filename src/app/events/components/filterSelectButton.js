@@ -43,11 +43,6 @@ export default function FilterSelectButton({
     }
   }, [currVal]);
 
-  useEffect(() => {
-    console.log("frrrrrrrrrrRrR");
-    return
-  }, []);
-
   return (
     <div>
       <SelectButton

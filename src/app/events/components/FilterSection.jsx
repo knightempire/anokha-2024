@@ -52,7 +52,6 @@ export default function FilterSection({ sendcurrentFilters }) {
   }, []); // This empty bracket here is important
 
   useEffect(() => {
-    console.log("before sending: ", filters);
     sendcurrentFilters(filters);
   }, [filters]);
   
@@ -71,8 +70,6 @@ export default function FilterSection({ sendcurrentFilters }) {
     );
   
     newFilters = newFilters.filter((elem) => elem != null && elem !== undefined);
-    console.log("Filtered values: ", newFilters); 
-    console.log("Old", filters);
     setFilters(newFilters); // Update the filters state with newFilters
   };
   return (
