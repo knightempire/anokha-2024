@@ -7,6 +7,8 @@ import { FaLinkedinIn } from "react-icons/fa6";
 import { FiArrowUpRight } from "react-icons/fi";
 import { TbPointFilled } from "react-icons/tb";
 import { IoLogoYoutube } from "react-icons/io";
+import { IoLocationSharp } from "react-icons/io5";
+import { BiLogoPlayStore } from "react-icons/bi";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -45,9 +47,11 @@ const Footer = ({ current_page }) => {
           <div className="mt-5 flex flex-col lg:flex-row flex-wrap justify-right gap-2 lg:justify-between">
             <div className="mt-3">
               <h2 className="text-white font-bold">OUR ADDRESS</h2>
-              <p className="text-gray-500 text-sm">
-                Amrita Vishwa Vidyapeetham
-              </p>
+              <Link href={"https://maps.app.goo.gl/MyE1VW4u4jWdxhco9"} target="_blank">
+                <span className="text-gray-400 hover:text-white flex">
+                  <p>Amrita Vishwa Vidyapeetham</p> <IoLocationSharp className="text-sm mt-[5px] ml-[4px]"/>
+                </span>
+              </Link>
               <p className="text-gray-500 text-sm">Coimbatore Campus</p>
               <p className="text-gray-500 text-sm">Amritanagar</p>
               <p className="text-gray-500 text-sm">Coimbatore - 641 112</p>
@@ -72,25 +76,28 @@ const Footer = ({ current_page }) => {
                   <IoLogoYoutube className="text-gray-600 hover:text-white" />
                 </Link>
               </div>
-              <div className="block mt-5">
+              <div className="block mt-5 space-y-2">
                 <div className="flex flex-nowrap">
                   <Link
-                    href={"https://www.amrita.edu"}
+                    href={"https://www.amrita.edu"} target="_blank"
                     className="text-gray-200 hover:text-white hover:font-bold"
                   >
                     AMRITA.EDU
                   </Link>
                   <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" />
                 </div>
-                {/* <div className="flex flex-nowrap">
-                  <Link
-                    href={"https://www.google.com"}
-                    className="text-gray-200 hover:text-white hover:font-bold"
-                  >
-                    PLAYSTORE APP
-                  </Link>
-                  <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" />
-                </div> */}
+                <div className="flex flex-nowrap w-fit border-[0.5px] border-gray-200 hover:border-white rounded-md items-center justify-center px-2">
+                    <Link
+                      href={"https://play.google.com/store/apps/details?id=com.vaisakhkrishnank.anokha_home"} target="_blank"
+                      className="text-gray-200 hover:font-bold hover:text-white flex"
+                    >
+                      <BiLogoPlayStore 
+                        className="mt-1 mr-1"
+                      />
+                      <p>PlayStore</p>
+                    </Link>
+                    {/* <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" /> */}
+                </div>
               </div>
             </div>
             <div className="mt-3">
