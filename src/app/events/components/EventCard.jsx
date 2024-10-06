@@ -130,7 +130,7 @@ export default function EventCard({
             <div class="flex justify-center mt-3">
               <div class="flex justify-center mt-3">
                 <div class="flex space-x-2 text-sm font-medium">
-                  <button class="transition disabled cursor-not-allowed ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
+                  <button class="transition disabled ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
                     <span>Register</span>
                   </button>
                 </div>
