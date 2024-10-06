@@ -50,6 +50,15 @@ const Events = () => {
     setSecretToken(secureLocalStorage.getItem("registerToken"));
   }, [router]);
 
+  /* Randomize array in-place using Durstenfeld shuffle algorithm: Complexity 0(n)*/
+  const shuffleArray = (array) => {
+    const l = array.length;
+    for (let i = l - 1; i >= 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1)) % l;
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
   useEffect(() => {
     fetch(ALL_EVENTS_URL, {
       method: "GET",
@@ -83,6 +92,7 @@ const Events = () => {
       })
       .then((data) => {
         console.log("Recived Data:", data);
+        shuffleArray(data.EVENTS)
         setEventsData(data.EVENTS);
         setFilteredData(data.EVENTS);
       })
