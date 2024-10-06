@@ -33,8 +33,8 @@ const Hero = () => (
         className="text-gray-200 hover:font-bold ease-in transition-all"
       >
         <div className="flex flex-wrap w-fit items-center justify-center bg-[rgba(0,0,0,0.4)] rounded-full px-6 py-2 hover:scale-105 ease-in transition-transform">
-          <FaLocationDot className="text-orange-500 mr-2"/>
-          <p className="text-[16px]">Amrita Vishwa Vidyapeetham, Coimbatore</p>
+          <FaLocationDot className="text-orange-500 sm:mr-1 md:mr-2"/>
+          <p className="sm:text-sm md:text-[16px]">Amrita Vishwa Vidyapeetham, Coimbatore</p>
         </div>
       </Link>
     </div>
