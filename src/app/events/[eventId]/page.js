@@ -4,6 +4,8 @@ import React from "react";
 import Image from "next/image";
 import ToastAlert from "../../_util/ToastAlerts";
 import { Toast } from "primereact/toast";
+import { ConfirmDialog } from 'primereact/confirmdialog'; 
+import { confirmDialog } from 'primereact/confirmdialog';
 
 import secureLocalStorage from "react-secure-storage";
 import WebGLApp from "@/app/bg/WebGLApp";
@@ -370,11 +372,31 @@ const Event = () => {
     }
   };
 
+  const accept = async () => {
+    await getPayUForm();
+  }
+
+  const reject = () => {
+      // do nothing
+  }
+
+  const confirmProceed = () => {
+      confirmDialog({
+          message: `Are you ready to make the payment? (You'll be redirected to the payment gateway to complete the registration.)`,
+          header: 'Confirmation',
+          icon: 'pi pi-exclamation-triangle',
+          defaultFocus: 'accept',
+          style:{ width:'35rem', margin: '5px' },
+          accept,
+          reject
+      });
+  };
+
   const HandleTeamRegister = async (e) => {
     e.preventDefault();
     console.log(Team, Emails, memberRoles);
     if (allValid) {
-      confirm("Are you ready to make the payment? (You'll be redirected to the payment gateway to complete the registration.)") && await getPayUForm();
+      confirmProceed();
     }
   };
 
@@ -425,6 +447,7 @@ const Event = () => {
               className="rounded-xl"
             />
           </div>
+          <ConfirmDialog/>
           {/* Register Button */}
           <div
             className="flex flex-col justify-center sm:mt-4 lg:mt-8"
@@ -442,7 +465,7 @@ const Event = () => {
                     ? setpopupvisibility(true)
                     : eventData.isRegistered != undefined &&
                       eventData.isRegistered == "0"
-                    ? confirm("Are you ready to make the payment? (You'll be redirected to the payment gateway to complete the registration.)") && getPayUForm()
+                    ? confirmProceed()
                     : setpopupvisibility(true);
                 }}
                 disabled={false}
