@@ -129,7 +129,7 @@ const Events = () => {
     eventsData
   ]);
 
-  const hanldeCurrentFilters = (filters) => {
+  const handleCurrentFilters = (filters) => {
     let grpCode = -1;
     let techCode = 0;
     let evetypeCode = 0;
@@ -221,7 +221,7 @@ const Events = () => {
             />
           </div>
 
-          <FilterSection sendcurrentFilters={hanldeCurrentFilters} />
+          <FilterSection sendcurrentFilters={handleCurrentFilters} />
         </div>
         <div className="flex flex-col gap-5 justify-center items-center mx-10 md:min-h-[20px] lg:min-h-[160px]">
           <div className="grid mb-10 z-10 grid-flow-row gap-10 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 3xl:grid-cols-5">
