@@ -47,7 +47,7 @@ const Footer = ({ current_page }) => {
           <div className="mt-5 flex flex-col lg:flex-row flex-wrap justify-right gap-2 lg:justify-between">
             <div className="mt-3">
               <h2 className="text-white font-bold">OUR ADDRESS</h2>
-              <Link href={"https://maps.app.goo.gl/MyE1VW4u4jWdxhco9"}>
+              <Link href={"https://maps.app.goo.gl/MyE1VW4u4jWdxhco9"} target="_blank">
                 <span className="text-gray-400 hover:text-white flex">
                   <p>Amrita Vishwa Vidyapeetham</p> <IoLocationSharp className="text-sm mt-[5px] ml-[4px]"/>
                 </span>
@@ -79,7 +79,7 @@ const Footer = ({ current_page }) => {
               <div className="block mt-5 space-y-2">
                 <div className="flex flex-nowrap">
                   <Link
-                    href={"https://www.amrita.edu"}
+                    href={"https://www.amrita.edu"} target="_blank"
                     className="text-gray-200 hover:text-white hover:font-bold"
                   >
                     AMRITA.EDU
@@ -88,7 +88,7 @@ const Footer = ({ current_page }) => {
                 </div>
                 <div className="flex flex-nowrap w-fit border-[0.5px] border-gray-200 hover:border-white rounded-md items-center justify-center px-2">
                     <Link
-                      href={"https://play.google.com/store/apps/details?id=com.vaisakhkrishnank.anokha_home"}
+                      href={"https://play.google.com/store/apps/details?id=com.vaisakhkrishnank.anokha_home"} target="_blank"
                       className="text-gray-200 hover:font-bold hover:text-white flex"
                     >
                       <BiLogoPlayStore 

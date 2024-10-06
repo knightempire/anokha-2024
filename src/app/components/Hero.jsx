@@ -29,7 +29,7 @@ const Hero = () => (
     <div className="text-2xl sm:m-5 md:m-10 lg:m-20 xl:m-20 z-10 text-white cursor-default flex flex-col items-center justify-center">
       <CountdownTimer />
       <Link
-        href={"https://maps.app.goo.gl/MyE1VW4u4jWdxhco9"}
+        href={"https://maps.app.goo.gl/MyE1VW4u4jWdxhco9"} target="_blank"
         className="text-gray-200 hover:font-bold ease-in transition-all"
       >
         <div className="flex flex-wrap w-fit items-center justify-center bg-[rgba(0,0,0,0.4)] rounded-full px-6 py-2 hover:scale-105 ease-in transition-transform">
