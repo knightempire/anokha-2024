@@ -386,6 +386,7 @@ const Event = () => {
           header: 'Confirmation',
           icon: 'pi pi-exclamation-triangle',
           defaultFocus: 'accept',
+          style:{ width:'35rem', margin: '5px' },
           accept,
           reject
       });
