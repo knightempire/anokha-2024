@@ -454,30 +454,58 @@ const Event = () => {
             ref={Register}
           >
             <div className="flex flex-row gap-3 justify-center">
-              <button
-                className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-4 text-center me-2 mb-2  disabled:cursor-not-allowed"
-                onClick={() => {
-                  secureLocalStorage.getItem("isLoggedIn") == "0" ||
-                  secureLocalStorage.getItem("isLoggedIn") == undefined ||
-                  secureLocalStorage.getItem("isLoggedIn") == null
-                    ? (window.location.href = "/login")
-                    : eventData.minTeamSize != 1 && eventData.maxTeamSize != 1
-                    ? setpopupvisibility(true)
-                    : eventData.isRegistered != undefined &&
-                      eventData.isRegistered == "0"
-                    ? confirmProceed()
-                    : setpopupvisibility(true);
-                }}
-                disabled={false}
-              >
-                {secureLocalStorage.getItem("isLoggedIn") == "0" ||
-                secureLocalStorage.getItem("isLoggedIn") == undefined ||
-                secureLocalStorage.getItem("isLoggedIn") == null
-                  ? "Login to Register"
-                  : eventData.isRegistered == "0"
-                  ? "Register"
-                  : "View Registration"}
-              </button>
+              {
+                (
+                  eventData.seatsFilled >= eventData.maxSeats || 
+                  eventData.eventStatus !== "1"
+                ) 
+                ? 
+                (
+                  <button
+                    className="text-white disabled cursor-not-allowed
+                    bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700
+                    hover:bg-gradient-to-br focus:ring-4 focus:outline-none
+                  focus:ring-blue-300 dark:focus:ring-blue-800 font-medium
+                    rounded-lg text-sm px-4 py-4 text-center me-2 mb-2"
+                  >
+                    {"Registrations Closed"}
+                  </button>
+                  
+                )
+                :
+                (
+                  <button
+                    className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-4 text-center me-2 mb-2  disabled:cursor-not-allowed"
+                    onClick={() => {
+                      (
+                        secureLocalStorage.getItem("isLoggedIn") == "0" ||
+                        secureLocalStorage.getItem("isLoggedIn") == undefined ||
+                        secureLocalStorage.getItem("isLoggedIn") == null
+                      )
+                        ? (window.location.href = "/login")
+                        : eventData.minTeamSize != 1 && eventData.maxTeamSize != 1
+                        ? setpopupvisibility(true)
+                        : eventData.isRegistered != undefined &&
+                          eventData.isRegistered == "0"
+                        ? confirmProceed()
+                        : setpopupvisibility(true);
+                    }}
+                    disabled={false}
+                  >
+                    {
+                      (
+                        secureLocalStorage.getItem("isLoggedIn") == "0" ||
+                        secureLocalStorage.getItem("isLoggedIn") == undefined ||
+                        secureLocalStorage.getItem("isLoggedIn") == null
+                      )
+                      ? "Login to Register"
+                      : eventData.isRegistered == "0"
+                      ? "Register"
+                      : "View Registration"
+                    }
+                  </button>
+                )
+              }
               <div className="flex justify-center items-center ml-4">
                 <button
                   onClick={handleStarToggle}

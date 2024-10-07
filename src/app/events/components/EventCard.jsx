@@ -11,6 +11,7 @@ export default function EventCard({
   imgSrc,
   id,
   eventName,
+  eventStatus,
   eventBlurb,
   eventDesc,
   date,
@@ -118,7 +119,8 @@ export default function EventCard({
             <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
               Registered
             </div>
-          ) : seats == maxseats ? (
+          ) : (seats >= maxseats || eventStatus !== "1")  ? 
+          (
             <div class="absolute top-2 left-2 p-1 text-xs text-red-800 font-semibold border border-white rounded-lg bg-red-100">
               Registrations Closed
             </div>
@@ -130,9 +132,24 @@ export default function EventCard({
             <div class="flex justify-center mt-3">
               <div class="flex justify-center mt-3">
                 <div class="flex space-x-2 text-sm font-medium">
-                  <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
-                    <span>Register</span>
-                  </button>
+                  {
+                    ( 
+                      seats < maxseats &&
+                      eventStatus === "1"
+                    ) 
+                    ? 
+                    (
+                      <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
+                        <span>Register</span>
+                      </button>
+                    )
+                    :
+                    (
+                      <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
+                        <span>Registrations Closed</span>
+                      </button>
+                    )
+                  }
                 </div>
               </div>
             </div>

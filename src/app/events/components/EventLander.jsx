@@ -33,6 +33,7 @@ export default function EventLander() {
                   imgSrc={event.imgsrc}
                   eventName={event.title}
                   eventBlurb={event.blurb}
+                  eventStatus={event.eventStatus}
                   eventDesc={event.description}
                   date={event.date}
                   time={event.time}

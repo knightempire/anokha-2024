@@ -244,6 +244,7 @@ const Events = () => {
                         imgSrc={event.eventImageURL}
                         id={event.eventId}
                         eventName={event.eventName}
+                        eventStatus={event.eventStatus}
                         eventBlurb={event.eventDescription}
                         eventDesc={event.eventDescription}
                         date={event.eventDate}
