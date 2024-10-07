@@ -1,0 +1,36 @@
+name: Build Anokha Site
+
+on:
+  push:
+    branches:
+      - prod_2
+  pull_request:
+    branches:
+      - prod_2
+  workflow_dispatch: # For manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.10.0]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the Next.js app
+        run: npm run build
+
+      - name: Verify build output
+        run: echo "Build completed successfully!"
