@@ -54,23 +54,27 @@ export default function FilterSection({ sendcurrentFilters }) {
   useEffect(() => {
     sendcurrentFilters(filters);
   }, [filters]);
-  
+
   useEffect(() => {
     handleItemFromFilters();
   }, []); // This will run only once when the component mounts
-  
+
   const handleItemFromFilters = () => {
-    let newFilters = [].concat(
-      JSON.parse(sessionStorage.getItem("tagslist")),
-      JSON.parse(sessionStorage.getItem("regFilterList")),
-      JSON.parse(sessionStorage.getItem("eventTypeList")),
-      JSON.parse(sessionStorage.getItem("participationList")),
-      JSON.parse(sessionStorage.getItem("techFilterList")),
-      JSON.parse(sessionStorage.getItem("dayFilterList"))
-    );
-  
-    newFilters = newFilters.filter((elem) => elem != null && elem !== undefined);
-    setFilters(newFilters); // Update the filters state with newFilters
+    if (typeof window !== "undefined") {
+      let newFilters = [].concat(
+        JSON.parse(sessionStorage.getItem("tagslist")),
+        JSON.parse(sessionStorage.getItem("regFilterList")),
+        JSON.parse(sessionStorage.getItem("eventTypeList")),
+        JSON.parse(sessionStorage.getItem("participationList")),
+        JSON.parse(sessionStorage.getItem("techFilterList")),
+        JSON.parse(sessionStorage.getItem("dayFilterList"))
+      );
+
+      newFilters = newFilters.filter(
+        (elem) => elem != null && elem !== undefined
+      );
+      setFilters(newFilters); // Update the filters state with newFilters
+    }
   };
   return (
     <div className="p-5">
