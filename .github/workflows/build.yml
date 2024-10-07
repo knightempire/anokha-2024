@@ -3,10 +3,10 @@ name: Build Anokha Site
 on:
   push:
     branches:
-      - prod_2
+      - prod2
   pull_request:
     branches:
-      - prod_2
+      - prod2
   workflow_dispatch: # For manual trigger
 
 jobs:
