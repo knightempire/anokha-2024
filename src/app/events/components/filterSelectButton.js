@@ -14,6 +14,7 @@ export default function FilterSelectButton({
   const [currVal, setCurrVal] = useState(val());
   const [buttonClick, setButtonClick] = useState(0);
   function val() {
+    if (typeof window === "undefined") return null;
     let value;
     if (type === "eventType") {
       value = sessionStorage.getItem("eventTypeList");
@@ -28,16 +29,21 @@ export default function FilterSelectButton({
   }
   useEffect(() => {
     if ((!currVal || currVal == null || currVal == "") && buttonClick == 0) {
-      return
+      return;
     } else {
-      if (type == "eventType")
-        sessionStorage.setItem("eventTypeList", JSON.stringify([currVal]));
-      else if (type == "technical")
-        sessionStorage.setItem("techFilterList", JSON.stringify([currVal]));
-      else if (type == "team")
-        sessionStorage.setItem("participationList", JSON.stringify([currVal]));
-      else if (type == "reg")
-        sessionStorage.setItem("regFilterList", JSON.stringify([currVal]));
+      if (typeof window !== "undefined") {
+        if (type == "eventType")
+          sessionStorage.setItem("eventTypeList", JSON.stringify([currVal]));
+        else if (type == "technical")
+          sessionStorage.setItem("techFilterList", JSON.stringify([currVal]));
+        else if (type == "team")
+          sessionStorage.setItem(
+            "participationList",
+            JSON.stringify([currVal])
+          );
+        else if (type == "reg")
+          sessionStorage.setItem("regFilterList", JSON.stringify([currVal]));
+      }
       sendSelectedOption();
       setButtonClick(0);
     }
