@@ -3,6 +3,8 @@
 import Navbar from "../components/EventHeader";
 import WebGLApp from "../bg/WebGLApp";
 import { useState } from "react";
+import Parallax from "./components/landing";
+
 
 export default function ForgetPassword() {
   const [webGLColors, setWebGLColors] = useState({
@@ -16,32 +18,7 @@ export default function ForgetPassword() {
       
     <body>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css'>
-    <section class="intro">
-      <div class="intro-content">
-        <h1 class="pro_titlee">Eventide</h1>
-        <p class="description">
-           Eventide the 3-day cultural extravaganza of Anokha, has brought joy to thousands over the past decade through explosive performances
-           from talented artists. The enchanting melodies of Raagasudha, our soulful music club, and the graceful performances of Natyasudha, 
-           our energetic dance club have left our audience in awe. The highlight of this grand celebration, the pro show has featured passionate and 
-           top-tier artists from the music industry. <br>
-           Eventide  has become a platform for the celebration of India's rich cultural heritage and 
-          diversity encouraging performers from all over the country. Between soulful classical music, scintillating film numbers,
-           and powerful percussion, we have explored every genre you can name. This cultural experience has left an everlasting impression on our audience. 
-     
-      </div>
-  
-      <div class="card-container">
-        <div style="--r: -15; --y: 40; --x: 50" class="card">
-          <img src="https://i.imgur.com/1dQBPga.jpeg" alt="" style="width: 100%;">
-        </div>
-        <div style="--r: 5; --y: -30; --x: 30" class="card">
-          <img src="https://i.imgur.com/IzzrByl.jpeg" alt="" />
-        </div>
-        <div style="--r: 15; --y: 50; --x: 0" class="card">
-          <img src="https://i.imgur.com/oyxMzmY.jpeg" alt="" />
-        </div>
-      </div>
-    </section>
+    
   
   
     <section id="intro-club">
@@ -1674,7 +1651,11 @@ grid-template-columns: 40% 50% 10%;
     <>
       <Navbar />
       <WebGLApp colors={cardColor} className="-z-10" />
+      <Parallax className="-z-9"/>
+      
+      
       <div dangerouslySetInnerHTML={{ __html: page }} />
+     
     </>
   );
 }
