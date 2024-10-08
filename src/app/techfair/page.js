@@ -65,23 +65,9 @@ const Techfair = () => {
             <div className="bg-[rgba(0,0,0,0.3)] backdrop-blur-lg justify-center items-center p-8 rounded-2xl ml-auto mr-auto md:w-1/2 mb-8 md:mb-0">
               <div className="text-white text-4xl mb-8">About</div>
               <div className="text-white rounded-2xl text-md text-justify mb-4">
-                Anokha TechFair exhibitions acts as a unifying platform, which
-                brings together students from different colleges across the country
-                to present their work to industry professionals and a wide audience.
-                It serves as a brilliant opportunity to network and gain insights
-                from experts and professionals nationwide.
-                <br />
-                <br /> TechFair exhibitions, considered a flagship event for talent
-                and innovation at Amrita University, Coimbatore, provides a forum
-                for creative ideas to take centre stage, allowing diverse skills to
-                shine and year after year, the it has served as the epicentre of
-                innovation, blurring the boundaries between imagination and reality.
-                The Anokha TechFair exhibitions exemplifies the collaboration
-                between academia and industry. Students exhibit technological
-                proficiency, gaining valuable insights for their future careers. It
-                highlights the vital link between academic achievement and
-                real-world application in the industry and embodies a unique blend
-                of teamwork and versatility.
+              Anokha TechFair & Exhibitions acts as an unifying platform, which brings together students from different colleges across the country to present their work to industry professionals and a wide audience. It serves as a brilliant opportunity to network and gain insights from experts and professionals nationwide.
+              <br/><br/>
+              TechFair & Exhibitions, a flagship event at Amrita University, Coimbatore, provides a forum for creative ideas to take centre stage and allows diverse skills to shine. Year after year, it has served as the epicentre of innovation, blurring the boundaries between imagination and reality. Anokha TechFair & Exhibitions exemplifies the collaboration between academia and industry where students exhibit technological proficiency and gain valuable insights for their future careers. It highlights the vital link between academic achievement and real-world application in the industry and embodies a unique blend of teamwork and versatility.
               </div>
             </div>
 
