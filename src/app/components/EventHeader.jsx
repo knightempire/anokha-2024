@@ -21,7 +21,8 @@ const navLinks = [
   },
   {
     title: "Lumière",
-    path: "/comingSoon",
+    // temporary path (will be changed to lumiere page after development)
+    path: "/events/141",
   },
   {
     title: "Eventide",
