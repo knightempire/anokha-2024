@@ -13,8 +13,10 @@ import {
 } from "../_util/constants";
 import secureLocalStorage from "react-secure-storage";
 import ToastAlert from "../_util/ToastAlerts";
+import { ConfirmDialog } from "primereact/confirmdialog";
+import { confirmDialog } from "primereact/confirmdialog";
 
-const Lumere = () => {
+const Lumiere = () => {
   const [webGLColors, setWebGLColors] = useState({
     color1: [43 / 255, 30 / 255, 56 / 255],
     color2: [11 / 255, 38 / 255],
@@ -154,6 +156,27 @@ const Lumere = () => {
       });
   }, []);
 
+
+  const accept = async () => {
+    await getPayUForm();
+  };
+
+  const reject = () => {
+    // do nothing
+  };
+
+  const confirmProceed = () => {
+    confirmDialog({
+      message: `Are you ready to make the payment? (You'll be redirected to the payment gateway to complete the registration.)`,
+      header: "Confirmation",
+      icon: "pi pi-exclamation-triangle",
+      defaultFocus: "accept",
+      style: { width: "35rem", margin: "5px" },
+      accept,
+      reject,
+    });
+  };
+
   const handleRegister = async (e) => {
     e.preventDefault();
     if (
@@ -164,9 +187,7 @@ const Lumere = () => {
       window.location.href = "/login";
       return;
     }
-    confirm(
-      "Are you ready to make the payment? (You'll be redirected to the payment gateway to complete the registration.)"
-    ) && (await getPayUForm());
+    confirmProceed();
   };
 
   return (
@@ -259,7 +280,7 @@ const Lumere = () => {
                 "Registrations Closed"
               )}
             </button>
-
+            <ConfirmDialog />
             <div className=" inset-0 flex justify-center items-center">
               <div
                 onClick={handleScrollMore}
@@ -343,4 +364,4 @@ const Lumere = () => {
   );
 };
 
-export default Lumere;
+export default Lumiere;
