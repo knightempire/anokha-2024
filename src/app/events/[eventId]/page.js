@@ -483,7 +483,7 @@ const Event = () => {
                         secureLocalStorage.getItem("isLoggedIn") == null
                       )
                         ? (window.location.href = "/login")
-                        : eventData.minTeamSize != 1 && eventData.maxTeamSize != 1
+                        : eventData.isGroup === "1"
                         ? setpopupvisibility(true)
                         : eventData.isRegistered != undefined &&
                           eventData.isRegistered == "0"
