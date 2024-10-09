@@ -4,8 +4,8 @@ import React from "react";
 import Image from "next/image";
 import ToastAlert from "../../_util/ToastAlerts";
 import { Toast } from "primereact/toast";
-import { ConfirmDialog } from 'primereact/confirmdialog'; 
-import { confirmDialog } from 'primereact/confirmdialog';
+import { ConfirmDialog } from "primereact/confirmdialog";
+import { confirmDialog } from "primereact/confirmdialog";
 
 import secureLocalStorage from "react-secure-storage";
 import WebGLApp from "@/app/bg/WebGLApp";
@@ -213,13 +213,6 @@ const Event = () => {
       }
       if (memberRoles.length == 0) {
         isValidMemberRoles = false;
-      } else {
-        for (let i = 1; i < memberRoles.length; i++) {
-          if (!/^[A-Za-z\s]+$/.test(memberRoles[i])) {
-            isValidMemberRoles = false;
-            break;
-          }
-        }
       }
     }
     console.log(isValidEmails, isValidMemberRoles);
@@ -374,22 +367,22 @@ const Event = () => {
 
   const accept = async () => {
     await getPayUForm();
-  }
+  };
 
   const reject = () => {
-      // do nothing
-  }
+    // do nothing
+  };
 
   const confirmProceed = () => {
-      confirmDialog({
-          message: `Are you ready to make the payment? (You'll be redirected to the payment gateway to complete the registration.)`,
-          header: 'Confirmation',
-          icon: 'pi pi-exclamation-triangle',
-          defaultFocus: 'accept',
-          style:{ width:'35rem', margin: '5px' },
-          accept,
-          reject
-      });
+    confirmDialog({
+      message: `Are you ready to make the payment? (You'll be redirected to the payment gateway to complete the registration.)`,
+      header: "Confirmation",
+      icon: "pi pi-exclamation-triangle",
+      defaultFocus: "accept",
+      style: { width: "35rem", margin: "5px" },
+      accept,
+      reject,
+    });
   };
 
   const HandleTeamRegister = async (e) => {
@@ -447,65 +440,50 @@ const Event = () => {
               className="rounded-xl"
             />
           </div>
-          <ConfirmDialog/>
+          <ConfirmDialog />
           {/* Register Button */}
           <div
             className="flex flex-col justify-center sm:mt-4 lg:mt-8"
             ref={Register}
           >
             <div className="flex flex-row gap-3 justify-center">
-              {
-                (
-                  eventData.seatsFilled >= eventData.maxSeats || 
-                  eventData.eventStatus !== "1"
-                ) 
-                ? 
-                (
-                  <button
-                    className="text-white disabled cursor-not-allowed
+              {eventData.seatsFilled >= eventData.maxSeats ||
+              eventData.eventStatus !== "1" ? (
+                <button
+                  className="text-white disabled cursor-not-allowed
                     bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700
                     hover:bg-gradient-to-br focus:ring-4 focus:outline-none
                   focus:ring-blue-300 dark:focus:ring-blue-800 font-medium
                     rounded-lg text-sm px-4 py-4 text-center me-2 mb-2"
-                  >
-                    {"Registrations Closed"}
-                  </button>
-                  
-                )
-                :
-                (
-                  <button
-                    className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-4 text-center me-2 mb-2  disabled:cursor-not-allowed"
-                    onClick={() => {
-                      (
-                        secureLocalStorage.getItem("isLoggedIn") == "0" ||
-                        secureLocalStorage.getItem("isLoggedIn") == undefined ||
-                        secureLocalStorage.getItem("isLoggedIn") == null
-                      )
-                        ? (window.location.href = "/login")
-                        : eventData.isGroup === "1"
-                        ? setpopupvisibility(true)
-                        : eventData.isRegistered != undefined &&
-                          eventData.isRegistered == "0"
-                        ? confirmProceed()
-                        : setpopupvisibility(true);
-                    }}
-                    disabled={false}
-                  >
-                    {
-                      (
-                        secureLocalStorage.getItem("isLoggedIn") == "0" ||
-                        secureLocalStorage.getItem("isLoggedIn") == undefined ||
-                        secureLocalStorage.getItem("isLoggedIn") == null
-                      )
-                      ? "Login to Register"
-                      : eventData.isRegistered == "0"
-                      ? "Register"
-                      : "View Registration"
-                    }
-                  </button>
-                )
-              }
+                >
+                  {"Registrations Closed"}
+                </button>
+              ) : (
+                <button
+                  className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-4 text-center me-2 mb-2  disabled:cursor-not-allowed"
+                  onClick={() => {
+                    secureLocalStorage.getItem("isLoggedIn") == "0" ||
+                    secureLocalStorage.getItem("isLoggedIn") == undefined ||
+                    secureLocalStorage.getItem("isLoggedIn") == null
+                      ? (window.location.href = "/login")
+                      : eventData.isGroup === "1"
+                      ? setpopupvisibility(true)
+                      : eventData.isRegistered != undefined &&
+                        eventData.isRegistered == "0"
+                      ? confirmProceed()
+                      : setpopupvisibility(true);
+                  }}
+                  disabled={false}
+                >
+                  {secureLocalStorage.getItem("isLoggedIn") == "0" ||
+                  secureLocalStorage.getItem("isLoggedIn") == undefined ||
+                  secureLocalStorage.getItem("isLoggedIn") == null
+                    ? "Login to Register"
+                    : eventData.isRegistered == "0"
+                    ? "Register"
+                    : "View Registration"}
+                </button>
+              )}
               <div className="flex justify-center items-center ml-4">
                 <button
                   onClick={handleStarToggle}
