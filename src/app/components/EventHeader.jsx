@@ -155,7 +155,9 @@ const Navigationbar = () => {
                 <Button
                   className="relative border-[#1a4d76] border-0 inline-flex items-center w-[100px] md:w-[200px] justify-center px-2  md:px-2 md:py-2 md:text-lg font-bold text-white transition-all duration-100 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-gray-900 sm:before:content-['Login'] md:before:content-['Login_\/_Sign_Up'] hover:scale-[1.02] hover:border-[#1a4d76] hover:border-2"
                   onClick={handleForgetPassword}
-                ></Button>
+                >
+                  <p></p> {/* To fix: The prop `children` is marked as required in `MaterialTailwind.Button`, but its value is `undefined`.*/}
+                </Button>
               </div>
             )}
           </div>

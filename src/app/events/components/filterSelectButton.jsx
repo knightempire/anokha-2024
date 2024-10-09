@@ -11,9 +11,8 @@ export default function FilterSelectButton({
   options,
   sendSelectedOption,
 }) {
-  const [currVal, setCurrVal] = useState(val());
-  const [buttonClick, setButtonClick] = useState(0);
-  function val() {
+
+  const val = () => {
     if (typeof window === "undefined") return null;
     let value;
     if (type === "eventType") {
@@ -27,6 +26,10 @@ export default function FilterSelectButton({
     }
     return value ? JSON.parse(value)?.[0] : null;
   }
+
+  const [currVal, setCurrVal] = useState(val());
+  const [buttonClick, setButtonClick] = useState(0);
+
   useEffect(() => {
     if ((!currVal || currVal == null || currVal == "") && buttonClick == 0) {
       return;
