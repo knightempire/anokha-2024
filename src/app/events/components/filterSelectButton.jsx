@@ -13,7 +13,9 @@ export default function FilterSelectButton({
 }) {
 
   const val = () => {
-    if (typeof window === "undefined") return null;
+    if (typeof window === "undefined"){
+      return null;
+    } 
     let value;
     if (type === "eventType") {
       value = sessionStorage.getItem("eventTypeList");
@@ -27,8 +29,12 @@ export default function FilterSelectButton({
     return value ? JSON.parse(value)?.[0] : null;
   }
 
-  const [currVal, setCurrVal] = useState(val());
+  const [currVal, setCurrVal] = useState();
   const [buttonClick, setButtonClick] = useState(0);
+
+  useEffect(()=>{
+    setCurrVal(val())
+  },[])
 
   useEffect(() => {
     if ((!currVal || currVal == null || currVal == "") && buttonClick == 0) {
