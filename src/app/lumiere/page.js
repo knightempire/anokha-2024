@@ -219,7 +219,7 @@ const Lumere = () => {
         : "bg-white text-black hover:scale-105"
     }`}
               onClick={handleRegister}
-              disabled={loading || !isOpen}
+              disabled={loading || !isOpen || isRegistered}
             >
               {loading ? (
                 <div className="flex items-center">
