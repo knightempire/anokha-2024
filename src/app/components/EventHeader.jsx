@@ -21,7 +21,7 @@ const navLinks = [
   },
   {
     title: "Lumière",
-    path: "/comingSoon",
+    path: "/lumiere",
   },
   {
     title: "Eventide",
