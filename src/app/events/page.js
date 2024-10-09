@@ -59,7 +59,7 @@ const Events = () => {
     }
     // Shuffle the rest of the array starting from the second element.
     const l = array.length;
-    for (let i = l - 1; i > 1; i--) {  // Start at 1 to leave array[0] unchanged
+    for (let i = l - 1; i >= 1; i--) {  // Start at 1 to leave array[0] unchanged
         const j = Math.floor(Math.random() * (i - 1)) + 1;
         [array[i], array[j]] = [array[j], array[i]];
     }
