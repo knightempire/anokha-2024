@@ -537,7 +537,7 @@ const Event = () => {
           </h2>
           <br />
           <div className={showFullText ? "" : "line-clamp-[4]"} ref={Desc}>
-            <Markdown className="prose dark:prose-invert">
+            <Markdown className="prose dark:prose-invert text-white">
               {eventData.eventMarkdownDescription}
             </Markdown>
           </div>
