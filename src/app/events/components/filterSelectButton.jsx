@@ -14,7 +14,6 @@ export default function FilterSelectButton({
 
   const val = () => {
     if (typeof window === "undefined"){
-      console.log("Window not defined!");
       return null;
     } 
     let value;
@@ -27,7 +26,6 @@ export default function FilterSelectButton({
     } else if (type === "reg") {
       value = sessionStorage.getItem("regFilterList");
     }
-    console.log(value)
     return value ? JSON.parse(value)?.[0] : null;
   }
 
