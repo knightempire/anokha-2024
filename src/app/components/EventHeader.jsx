@@ -37,7 +37,7 @@ const navLinks = [
   },
   {
     title: "Contact Us",
-    path: "/",
+    path: "/#footer",
   },
 ];
 
