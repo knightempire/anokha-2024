@@ -11,6 +11,7 @@ export default function EventCard({
   imgSrc,
   id,
   eventName,
+  eventStatus,
   eventBlurb,
   eventDesc,
   date,
@@ -110,15 +111,15 @@ export default function EventCard({
             src={imgSrc}
             width={400}
             height={400}
-            objectFit="contain"
             alt="https://i.imgur.com/iQy8GLM.jpg"
-            className=" rounded-2xl h-full transition duration-300 hover:filter hover:brightness-0 hover:grayscale-100 hover:opacity-0"
+            className=" rounded-2xl h-full object-contain transition duration-300 hover:filter hover:brightness-0 hover:grayscale-100 hover:opacity-0"
           />
           {secureLocalStorage.getItem("isLoggedIn") && isRegistered == "1" ? (
             <div class="absolute top-2 left-2 p-1 text-xs text-green-800 font-semibold border border-white rounded-lg bg-green-100">
               Registered
             </div>
-          ) : seats == maxseats ? (
+          ) : (seats >= maxseats || eventStatus !== "1")  ? 
+          (
             <div class="absolute top-2 left-2 p-1 text-xs text-red-800 font-semibold border border-white rounded-lg bg-red-100">
               Registrations Closed
             </div>
@@ -130,9 +131,24 @@ export default function EventCard({
             <div class="flex justify-center mt-3">
               <div class="flex justify-center mt-3">
                 <div class="flex space-x-2 text-sm font-medium">
-                  <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
-                    <span>Register</span>
-                  </button>
+                  {
+                    ( 
+                      seats < maxseats &&
+                      eventStatus === "1"
+                    ) 
+                    ? 
+                    (
+                      <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
+                        <span>Register</span>
+                      </button>
+                    )
+                    :
+                    (
+                      <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
+                        <span>Registrations Closed</span>
+                      </button>
+                    )
+                  }
                 </div>
               </div>
             </div>

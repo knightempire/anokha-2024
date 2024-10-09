@@ -26,13 +26,6 @@ module.exports = withBundleAnalyzer({
   },
 
   images: {
-    domains: [
-      "anokha.amrita.edu",
-      "i.imgur.com",
-      "imgur.com",
-      "gravatar.com",
-      "wwd.com",
-    ],
     remotePatterns: [
       {
         protocol: "https",
@@ -40,6 +33,30 @@ module.exports = withBundleAnalyzer({
         port: "",
         pathname: "/avatar/**",
       },
+      {
+        protocol: "https",
+        hostname: "anokha.amrita.edu",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "i.imgur.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "imgur.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "**wwd.com",
+        port: "",
+        pathname: "/**",
+      }
     ],
   },
 });
