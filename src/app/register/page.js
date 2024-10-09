@@ -306,7 +306,7 @@ export default function Register() {
                           className="text-sm font-medium text-[#1e1e1e]"
                           id="Others"
                         >
-                          Amrita Student?
+                          Amrita Coimbatore Student?
                         </label>
                       </div>
                     </div>

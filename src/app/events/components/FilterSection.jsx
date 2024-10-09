@@ -13,6 +13,7 @@ export default function FilterSection({ sendcurrentFilters }) {
   const [dayFilterList, setdayFilterList] = useState([]);
   const [techFilterList, setTechFilterList] = useState([]);
   const [tagList, setTagList] = useState([]);
+  const [sessionStorageChange, setSessionStorageChange] = useState();
 
   useEffect(() => {
     fetch(ALL_TAGS_URL, {
@@ -55,32 +56,25 @@ export default function FilterSection({ sendcurrentFilters }) {
   }, [filters]);
 
   useEffect(() => {
-    let newFilters = [].concat(
-      tagslist,
-      regFilterList,
-      eventTypeList,
-      participationList,
-      techFilterList,
-      dayFilterList
-    );
-    newFilters = newFilters.filter((elem) => elem != null && elem != undefined);
-    setFilters(newFilters);
-  }, [
-    regFilterList,
-    tagslist,
-    eventTypeList,
-    participationList,
-    dayFilterList,
-    techFilterList
-  ]);
+    handleItemFromFilters();
+  }, []); // This will run only once when the component mounts
 
-  const handleItemFromFilters = (filter, type) => {
-    if (type == "day") setdayFilterList(filter);
-    else if (type == "tag") settagslist(filter);
-    else if (type == "eventType") seteventTypeList(filter);
-    else if (type == "technical") setTechFilterList(filter);
-    else if (type == "team") setparticipationList(filter);
-    else if (type == "reg") setregFilterList(filter);
+  const handleItemFromFilters = () => {
+    if (typeof window !== "undefined") {
+      let newFilters = [].concat(
+        JSON.parse(sessionStorage.getItem("tagslist")),
+        JSON.parse(sessionStorage.getItem("regFilterList")),
+        JSON.parse(sessionStorage.getItem("eventTypeList")),
+        JSON.parse(sessionStorage.getItem("participationList")),
+        JSON.parse(sessionStorage.getItem("techFilterList")),
+        JSON.parse(sessionStorage.getItem("dayFilterList"))
+      );
+
+      newFilters = newFilters.filter(
+        (elem) => elem != null && elem !== undefined
+      );
+      setFilters(newFilters); // Update the filters state with newFilters
+    }
   };
   return (
     <div className="p-5">
