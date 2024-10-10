@@ -51,11 +51,19 @@ const Events = () => {
 
   /* Randomize array in-place using Durstenfeld shuffle algorithm: Complexity 0(n)*/
   const shuffleArray = (array) => {
+    // Find the index of the object where eventName matches "Lumiere" (case-insensitive).
+    const lumiereIndex = array.findIndex((item) => item["eventName"].toLowerCase() === "lumiere");
+    // If "Lumiere" is found, swap it with the first element.
+    if (lumiereIndex !== -1) {
+      [array[0], array[lumiereIndex]] = [array[lumiereIndex], array[0]];
+    }
+    // Shuffle the rest of the array starting from the second element.
     const l = array.length;
-    for (let i = l - 1; i >= 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1)) % l;
+    for (let i = l - 1; i >= 1; i--) {  // Start at 1 to leave array[0] unchanged
+        const j = Math.floor(Math.random() * (i - 1)) + 1;
         [array[i], array[j]] = [array[j], array[i]];
     }
+    return array;
   }
 
   useEffect(() => {
@@ -90,7 +98,7 @@ const Events = () => {
         }
       })
       .then((data) => {
-        console.log("Recived Data:", data);
+        // console.log("Recived Data:", data);
         shuffleArray(data.EVENTS)
         setEventsData(data.EVENTS);
         setFilteredData(data.EVENTS);
@@ -202,8 +210,8 @@ const Events = () => {
 
   // This empty bracket here is important
 
-  console.log("Events Data:", eventsData);
-  console.log("Filter Data:", filteredData);
+  // console.log("Events Data:", eventsData);
+  // console.log("Filter Data:", filteredData);
 
   const [webGLColors, setWebGLColors] = useState({
     color1: [43 / 255, 30 / 255, 56 / 255],
