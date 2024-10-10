@@ -72,7 +72,9 @@ export default function Home() {
       
       <AnokhaMarquee />
       
-      <Footer current_page="home" />
+      <section id ="footer">
+        <Footer current_page="home" />
+      </section>
     </main>
   );
 }
