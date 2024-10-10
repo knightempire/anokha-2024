@@ -71,7 +71,7 @@ const Team = () => {
               ))
             : "NOT AVAILABLE"}
         </div>
-        <Footer />
+        <Footer current_page={"team"}/>
       </div>
     </main>
   );
