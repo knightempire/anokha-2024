@@ -74,13 +74,13 @@ function Parallax() {
                     </div>
                 </div>
                 <div ref={stage} className="absolute z-30 w-full h-full opacity-1">
-                    <Image alt="stage" src="/test/stage.jpg" layout="fill" objectFit="cover" />
+                    <Image alt="stage" src="/images/stage.jpg" layout="fill" objectFit="cover" />
                 </div>
                 <div ref={man} className="absolute z-20 w-full h-full opacity-1">
-                    <Image alt="man" src="/test/manwstage.jpg" layout="fill" objectFit="cover" />
+                    <Image alt="man" src="/images/manwstage.jpg" layout="fill" objectFit="cover" />
                 </div>
                 <div ref={full} className="absolute z-0 w-full h-full opacity-1">
-                    <Image alt="full" src="/test/full.jpg" layout="fill" objectFit="cover" />
+                    <Image alt="full" src="/images/full.jpg" layout="fill" objectFit="cover" />
                 </div>
 
               
