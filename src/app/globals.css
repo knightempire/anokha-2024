@@ -24,12 +24,7 @@
   font-family: arista;
   src: url("/fonts/arista.otf");
 }
-@font-face {
-  font-family: 'blackcrow';
-  src: url('/fonts/Blackcrow Bold.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-}
+
 #404e {
   font-family: "Protest Strike";
 }
