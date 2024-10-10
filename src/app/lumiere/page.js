@@ -25,7 +25,7 @@ const Lumiere = () => {
 
   const speakers = [
     {
-      name: "Dr. Sudhanshu Mani",
+      name: "Sudhanshu Mani",
       role: "Led the Vande Bharat Express project, enhancing Indian Railways with cutting-edge engineering.",
     },
     {
