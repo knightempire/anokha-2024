@@ -17,6 +17,8 @@ const SponsorElement = ({ src, title }) => {
           ? 200
           : title == "Dhanalakshmi Bank"
           ? 150
+          : title == "vnc group"
+          ? 100
           : 80
       }
       width={
@@ -28,9 +30,11 @@ const SponsorElement = ({ src, title }) => {
           ? 200
           : title == "Dhanalakshmi Bank"
           ? 150
+          : title == "vnc group"
+          ? 100
           : 80
       }
-      className={title == "H&R" ? "mr-4 ml-24" : title == "Dhanalakshmi Bank" ? "ml-20 mr-8" : "mx-8"}
+      className={title == "H&R" ? "mr-4 ml-24" : title == "Dhanalakshmi Bank" ? "mx-20" : "mx-8"}
     />
   );
 };
@@ -54,6 +58,8 @@ const SponsorsMarquee = () => {
         <SponsorElement src="https://i.imgur.com/0VLpF8v.png" title="ICICI" />
         {/* <SponsorElement src="https://i.imgur.com/tP5wEjl.png" title="CISCO" /> */}
         <SponsorElement src="https://i.imgur.com/gCTbGOI.png" title="Dhanalakshmi Bank"/>
+        <SponsorElement src="https://i.imgur.com/7lCblCB.png" title="vnc group"/>
+
 
         {/* OneAPI logo */}
         <SponsorElement src="https://i.imgur.com/X1qoxbQ.png" title="H&R" />
@@ -63,6 +69,7 @@ const SponsorsMarquee = () => {
         <SponsorElement src="https://i.imgur.com/0VLpF8v.png" title="ICICI" />
         {/* <SponsorElement src="https://i.imgur.com/tP5wEjl.png" title="CISCO" /> */}
         <SponsorElement src="https://i.imgur.com/gCTbGOI.png" title="Dhanalakshmi Bank"/>
+        <SponsorElement src="https://i.imgur.com/7lCblCB.png" title="vnc group"/>
 
         <SponsorElement src="https://i.imgur.com/X1qoxbQ.png" title="H&R" />
         <SponsorElement src="https://i.imgur.com/5BlpVzJ.jpg" title="IETE" />
@@ -71,6 +78,7 @@ const SponsorsMarquee = () => {
         <SponsorElement src="https://i.imgur.com/0VLpF8v.png" title="ICICI" />
         {/* <SponsorElement src="https://i.imgur.com/tP5wEjl.png" title="CISCO" /> */}
         <SponsorElement src="https://i.imgur.com/gCTbGOI.png" title="Dhanalakshmi Bank"/>
+        <SponsorElement src="https://i.imgur.com/7lCblCB.png" title="vnc group"/>
 
         <SponsorElement src="https://i.imgur.com/X1qoxbQ.png" title="H&R" />
         <SponsorElement src="https://i.imgur.com/5BlpVzJ.jpg" title="IETE" />
@@ -79,6 +87,7 @@ const SponsorsMarquee = () => {
         <SponsorElement src="https://i.imgur.com/0VLpF8v.png" title="ICICI" />
         {/* <SponsorElement src="https://i.imgur.com/tP5wEjl.png" title="CISCO" /> */}
         <SponsorElement src="https://i.imgur.com/gCTbGOI.png" title="Dhanalakshmi Bank"/>
+        <SponsorElement src="https://i.imgur.com/7lCblCB.png" title="vnc group"/>
 
         <SponsorElement src="https://i.imgur.com/X1qoxbQ.png" title="H&R" />
         <SponsorElement src="https://i.imgur.com/5BlpVzJ.jpg" title="IETE" />
@@ -87,6 +96,7 @@ const SponsorsMarquee = () => {
         <SponsorElement src="https://i.imgur.com/0VLpF8v.png" title="ICICI" />
         {/* <SponsorElement src="https://i.imgur.com/tP5wEjl.png" title="CISCO" /> */}
         <SponsorElement src="https://i.imgur.com/gCTbGOI.png" title="Dhanalakshmi Bank"/>
+        <SponsorElement src="https://i.imgur.com/7lCblCB.png" title="vnc group"/>
 
         <SponsorElement src="https://i.imgur.com/X1qoxbQ.png" title="H&R" />
         <SponsorElement src="https://i.imgur.com/5BlpVzJ.jpg" title="IETE" />
@@ -95,6 +105,7 @@ const SponsorsMarquee = () => {
         <SponsorElement src="https://i.imgur.com/0VLpF8v.png" title="ICICI" />
         {/* <SponsorElement src="https://i.imgur.com/tP5wEjl.png" title="CISCO" /> */}
         <SponsorElement src="https://i.imgur.com/gCTbGOI.png" title="Dhanalakshmi Bank"/>
+        <SponsorElement src="https://i.imgur.com/7lCblCB.png" title="vnc group"/>
 
       </Marquee>
     </div>
