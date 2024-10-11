@@ -138,9 +138,19 @@ export default function EventCard({
                     ) 
                     ? 
                     (
+                      (secureLocalStorage.getItem("isLoggedIn") && isRegistered == "1") 
+                      ?
+                      (
+                        <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
+                          <span>Registered</span>
+                        </button>
+                      )
+                      :
+                      (
                       <button class="transition ease-in duration-300 inline-flex items-center text-sm font-medium bg-white px-5 py-2 hover:shadow-lg tracking-wider text-black rounded-full ">
                         <span>Register</span>
                       </button>
+                      )
                     )
                     :
                     (

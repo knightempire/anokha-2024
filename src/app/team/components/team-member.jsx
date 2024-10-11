@@ -19,7 +19,7 @@ function ProfileCard({ name, imgSrc, Position, rollno, email, dept }) {
 
   return (
     <div
-      className={`relative max-w-xs bg-[rgba(0,0,0,0.7)] backdrop-blur-md border border-gray-600 rounded-lg shadow-lg p-4 transition-all duration-300 ease-in-out ${
+      className={`relative max-w-xs bg-[rgba(0,0,0,0.4)] backdrop-blur-md border border-gray-600 rounded-lg shadow-lg p-4 transition-all duration-300 ease-in-out ${
         isHovered ? "shadow-xl" : ""
       }`}
       onMouseEnter={() => setIsHovered(true)}
