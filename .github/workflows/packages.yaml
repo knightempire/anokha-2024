@@ -29,7 +29,7 @@ jobs:
 
     - name: Get short Git SHA
       id: vars
-      run: echo "GIT_SHA=${{ github.sha::0:8 }}" >> $GITHUB_ENV
+      run: echo "GIT_SHA=${GITHUB_SHA:0:8}" >> $GITHUB_ENV
 
     - name: Build and Push Multi-Platform Docker Image
       run: |
