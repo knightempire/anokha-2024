@@ -1,5 +1,5 @@
+"use client";
 import styles from './styles.module.scss';
-import Picture1 from '../../../../../public/images/stephen2.jpg';
 import Picture2 from '../../../../../public/images/Sarnesh_148.jpg';
 import Picture3 from '../../../../../public/images/Eniyan_25.jpg';
 import Picture4 from '../../../../../public/images/SriHaran_2.jpg';
@@ -27,6 +27,8 @@ export default function Index() {
         useTransform(scrollYProgress, [0, 1], [1, 8]),
         useTransform(scrollYProgress, [0, 1], [1, 9]),
     ];
+
+    const Picture1 = "https://i.imgur.com/nKKOhTQ.png";
 
     const pictures = [
         Picture1,
