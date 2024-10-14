@@ -9,6 +9,7 @@ import WebGLApp from "./bg/WebGLApp";
 import FilmGallery from "./components/FilmGallery";
 import InfoLeft from "./components/InfoDivLeft";
 import InfoRight from "./components/InfoDivRight";
+import PrivacyPolicy from "./components/PrivacyPolicy";
 
 const SponsorsMarquee = dynamic(() => import("./components/SponsorsMarquee"));
 const AnokhaMarquee = dynamic(() => import("./components/AnokhaMarquee"));
@@ -19,6 +20,7 @@ import projects from "./info_data";
 import PhonePromo from "./components/PhonePromo";
 
 export default function Home() {
+  const [open, setOpen] = useState(false)
   const container = useRef(null);
 
   useEffect(() => {
@@ -41,6 +43,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col bg-[#192032]">
+      <PrivacyPolicy open={open} setOpen={setOpen} />
       <WebGLApp colors={cardColor} className="-z-10" />
       <Navbar login={true} />
       <Hero className="z-10" />
@@ -73,7 +76,7 @@ export default function Home() {
       <AnokhaMarquee />
       
       <section id ="footer">
-        <Footer current_page="home" />
+        <Footer current_page="home" openPolicy={open} setOpenPolicy={setOpen} />
       </section>
     </main>
   );

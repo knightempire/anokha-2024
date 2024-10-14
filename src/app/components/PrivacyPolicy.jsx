@@ -1,13 +1,27 @@
-import React from 'react'
-import { Dialog } from 'primereact/dialog';
+import React from "react";
+import { Dialog } from "primereact/dialog";
 import Markdown from "markdown-to-jsx";
 
-const PrivacyPolicy = () => {
+const PrivacyPolicy = ({ open, setOpen }) => {
   return (
-    <div className="card flex justify-content-center">
-        <Dialog header="Header" visible={true} style={{ width: '50vw' }} breakpoints={{ '960px': '75vw', '641px': '100vw' }} onHide={() => {/*if (!visible) return; setVisible(false);*/ }}>
-            <Markdown className="prose dark:prose-invert text-white">
-                {`
+    <div
+      className="card flex justify-content-center z-50"
+      onBlur={() => {
+        setOpen(false);
+      }}
+    >
+      <Dialog
+        header="Header"
+        visible={open}
+        style={{ width: "50vw" }}
+        breakpoints={{ "960px": "75vw", "641px": "100vw" }}
+        onHide={() => {
+          if (!open) return;
+          setOpen(false);
+        }}
+      >
+        <Markdown className="prose dark:prose-invert text-white">
+          {`
 # Privacy Policy for Anokha 2024
 
 **Last Updated:** 10/10/2024
@@ -67,10 +81,10 @@ If you have any questions about this Privacy Policy, please contact us:
 - **Email:** anokhapr@cb.amrita.edu
 - **Address:** Amrita Vishwa Vidyapeetham, Coimbatore Campus, Amritanagar, Coimbatore - 641 112.
                 `}
-            </Markdown>
-        </Dialog>
+        </Markdown>
+      </Dialog>
     </div>
-  )
-}
+  );
+};
 
 export default PrivacyPolicy;

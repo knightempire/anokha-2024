@@ -11,8 +11,9 @@ import { IoLocationSharp } from "react-icons/io5";
 import { BiLogoPlayStore } from "react-icons/bi";
 import Image from "next/image";
 import Link from "next/link";
+import PrivacyPolicy from "./PrivacyPolicy";
 
-const Footer = ({ current_page }) => {
+const Footer = ({ current_page, openPolicy, setOpenPolicy }) => {
   return (
     <div className="relative h-1/2 footer-font bg-black">
       {/* <div className="absolute inset-0 bg-black opacity-100">
@@ -47,9 +48,13 @@ const Footer = ({ current_page }) => {
           <div className="mt-5 flex flex-col lg:flex-row flex-wrap justify-right gap-2 lg:justify-between">
             <div className="mt-3">
               <h2 className="text-white font-bold">OUR ADDRESS</h2>
-              <Link href={"https://maps.app.goo.gl/MyE1VW4u4jWdxhco9"} target="_blank">
+              <Link
+                href={"https://maps.app.goo.gl/MyE1VW4u4jWdxhco9"}
+                target="_blank"
+              >
                 <span className="text-gray-400 hover:text-white flex">
-                  <p>Amrita Vishwa Vidyapeetham</p> <IoLocationSharp className="text-sm mt-[5px] ml-[4px]"/>
+                  <p>Amrita Vishwa Vidyapeetham</p>{" "}
+                  <IoLocationSharp className="text-sm mt-[5px] ml-[4px]" />
                 </span>
               </Link>
               <p className="text-gray-500 text-sm">Coimbatore Campus</p>
@@ -79,7 +84,8 @@ const Footer = ({ current_page }) => {
               <div className="block mt-5 space-y-2">
                 <div className="flex flex-nowrap">
                   <Link
-                    href={"https://www.amrita.edu"} target="_blank"
+                    href={"https://www.amrita.edu"}
+                    target="_blank"
                     className="text-gray-200 hover:text-white hover:font-bold"
                   >
                     AMRITA.EDU
@@ -87,16 +93,17 @@ const Footer = ({ current_page }) => {
                   <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" />
                 </div>
                 <div className="flex flex-nowrap w-fit border-[0.5px] border-gray-200 hover:border-white rounded-md items-center justify-center px-2">
-                    <Link
-                      href={"https://play.google.com/store/apps/details?id=com.vaisakhkrishnank.anokha_home"} target="_blank"
-                      className="text-gray-200 hover:font-bold hover:text-white flex"
-                    >
-                      <BiLogoPlayStore 
-                        className="mt-1 mr-1"
-                      />
-                      <p>PlayStore</p>
-                    </Link>
-                    {/* <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" /> */}
+                  <Link
+                    href={
+                      "https://play.google.com/store/apps/details?id=com.vaisakhkrishnank.anokha_home"
+                    }
+                    target="_blank"
+                    className="text-gray-200 hover:font-bold hover:text-white flex"
+                  >
+                    <BiLogoPlayStore className="mt-1 mr-1" />
+                    <p>PlayStore</p>
+                  </Link>
+                  {/* <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" /> */}
                 </div>
               </div>
             </div>
@@ -111,10 +118,13 @@ const Footer = ({ current_page }) => {
                     <Link href="/team">TEAM</Link>
                   </div>
                   <div className="text-gray-400 hover:text-white">
-                    <Link href="/contact">CONTACT</Link>
-                  </div>
-                  <div className="text-gray-400 hover:text-white">
-                    <Link href="/privacypolicy">PRIVACY POLICY</Link>
+                    <div
+                      onClick={() => {
+                        setOpen(true);
+                      }}
+                    >
+                      PRIVACY POLICY
+                    </div>
                   </div>
                 </div>
               ) : current_page === "team" ? (
@@ -127,10 +137,13 @@ const Footer = ({ current_page }) => {
                     <Link href="/team">TEAM</Link>
                   </div>
                   <div className="text-gray-400 hover:text-white">
-                    <Link href="/contact">CONTACT</Link>
-                  </div>
-                  <div className="text-gray-400 hover:text-white">
-                    <Link href="/privacypolicy">PRIVACY POLICY</Link>
+                    <div
+                      onClick={() => {
+                        setOpen(true);
+                      }}
+                    >
+                      PRIVACY POLICY
+                    </div>
                   </div>
                 </div>
               ) : current_page === "contact" ? (
@@ -141,12 +154,14 @@ const Footer = ({ current_page }) => {
                   <div className="text-gray-400 hover:text-white">
                     <Link href="/team">TEAM</Link>
                   </div>
-                  <div className="flex flex-wrap">
-                    <TbPointFilled className="-ml-4 align-middle mt-1" />
-                    <Link href="/contact">CONTACT</Link>
-                  </div>
                   <div className="text-gray-400 hover:text-white">
-                    <Link href="/privacypolicy">PRIVACY POLICY</Link>
+                    <div
+                      onClick={() => {
+                        setOpen(true);
+                      }}
+                    >
+                      PRIVACY POLICY
+                    </div>
                   </div>
                 </div>
               ) : current_page === "privacypolicy" ? (
@@ -157,12 +172,15 @@ const Footer = ({ current_page }) => {
                   <div className="text-gray-400 hover:text-white">
                     <Link href="/team">TEAM</Link>
                   </div>
-                  <div className="text-gray-400 hover:text-white">
-                    <Link href="/contact">CONTACT</Link>
-                  </div>
                   <div className="flex flex-wrap">
                     <TbPointFilled className="-ml-4 align-middle mt-1" />
-                    <Link href="/privacypolicy">PRIVACY POLICY</Link>
+                    <div
+                      onClick={() => {
+                        setOpen(true);
+                      }}
+                    >
+                      PRIVACY POLICY
+                    </div>
                   </div>
                 </div>
               ) : (
@@ -174,10 +192,13 @@ const Footer = ({ current_page }) => {
                     <Link href="/team">TEAM</Link>
                   </div>
                   <div className="text-gray-400 hover:text-white">
-                    <Link href="/contact">CONTACT</Link>
-                  </div>
-                  <div className="text-gray-400 hover:text-white">
-                    <Link href="/privacypolicy">PRIVACY POLICY</Link>
+                    <div
+                      onClick={() => {
+                        setOpen(true);
+                      }}
+                    >
+                      PRIVACY POLICY
+                    </div>
                   </div>
                 </div>
               )}
