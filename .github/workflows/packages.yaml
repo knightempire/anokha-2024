@@ -29,7 +29,10 @@ jobs:
 
     - name: Get short Git SHA
       id: vars
-      run: echo "GIT_SHA=${GITHUB_SHA:0:8}" >> $GITHUB_ENV
+      run: |
+        REF_PART=${GITHUB_REF#*/}
+        INDEX=${REF_PART:0:8}
+        echo "INDEX=$INDEX" >> $GITHUB_ENV
 
     - name: Build and Push Multi-Platform Docker Image
       run: |
