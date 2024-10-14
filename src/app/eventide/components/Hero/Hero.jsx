@@ -25,6 +25,8 @@ const Hero = () => {
         show: { opacity: 1, y:0, transition:{type: 'smooth'} },
     }
 
+    const etext="Eventide the 3-day cultural extravaganza of Anokha, has brought joy to thousands over the past decade through explosive performances from talented artists. The enchanting melodies of Raagasudha, our soulful music club, and the graceful performances of Natyasudha, our energetic dance club have left our audience in awe. The highlight of this grand celebration, the pro show has featured passionate and top-tier artists from the music industry.Eventide has become a platform for the celebration of India's rich cultural heritage and diversity encouraging performers from all over the country. Between soulful classical music, scintillating film numbers, and powerful percussion, we have explored every genre you can name. This cultural experience has left an everlasting impression on our audience."
+
     return (
         <div className="pt-28">
                 <BackgroundBeams />
@@ -32,13 +34,11 @@ const Hero = () => {
              className="flex flex-col items-center justify-between">
                 <motion.h1 variants={item} className="text-center text-9xl pb-2 leading-snug max-lg:text-7xl max-md:text-5xl text-white">Feel the Rhythm of</motion.h1>
                  <motion.p className="text-center text-9xl pb-14 max-lg:text-7xl max-md:text-5xl text-white" variants={item}>Your Heart&apos;s Music</motion.p>
-                <motion.p variants={item} className="text-xl text-center w-10/12 mx-auto tracking-wider text-neutral-400 max-lg:text-base max-md:text-sm">Eventide the 3-day cultural extravaganza of Anokha, has brought joy to thousands over the past decade through explosive performances from talented artists. The enchanting melodies of Raagasudha, our soulful music club, and the graceful performances of Natyasudha, our energetic dance club have left our audience in awe. The highlight of this grand celebration, the pro show has featured passionate and top-tier artists from the music industry.
-                Eventide has become a platform for the celebration of India's rich cultural heritage and diversity encouraging performers from all over the country. Between soulful classical music, scintillating film numbers, and powerful percussion, we have explored every genre you can name. This cultural experience has left an everlasting impression on our audience.
-                </motion.p>
+                <motion.p variants={item} className="text-xl text-center w-10/12 mx-auto tracking-wider text-neutral-400 max-lg:text-base max-md:text-sm">{etext}</motion.p>
             
             </motion.div>
             <div className="mt-28 text-white">
-                <div className="p-2 relative">
+                <div className="p-2 relative scale-50 sm:scale-100">
                 <motion.img
     initial={{ y: 400, opacity: 0 }}
     whileInView={{ y: 0, opacity: 1 }}

@@ -19,8 +19,16 @@ const VerticalMarquee = () => {
           <div className="flex flex-col space-y-4">
             
             {images.map((image, index) => (
-              <img key={index} src={image} alt="picsum" className="w-full opacity-50 h-auto" />
-            ))}
+              <Image 
+              key={index} 
+              src={image} 
+              alt="picsum" 
+              className="w-full opacity-50 h-auto" 
+              layout="responsive" 
+              width={700} 
+              height={475} 
+            />
+                ))}
           </div>
         </Marquee>
       </div>
@@ -30,13 +38,21 @@ const VerticalMarquee = () => {
           height='100vh' 
           width='100%' 
           reverse={true} 
-          duration={20000} 
+          duration={30000} 
           background="black" 
           axis='y'
         >
           <div className="flex flex-col space-y-4">
             {images2.map((image, index) => (
-              <img key={index} src={image} alt="picsum" className=" opacity-50 w-full h-auto" />
+              <Image 
+              key={index} 
+              src={image} 
+              alt="picsum" 
+              className="w-full opacity-50 h-auto" 
+              layout="responsive" 
+              width={700} 
+              height={475} 
+            />
             ))}
           </div>
         </Marquee>
@@ -52,7 +68,15 @@ const VerticalMarquee = () => {
         >
           <div className="flex flex-col space-y-4">
             {images3.map((image, index) => (
-              <img key={index} src={image} alt="picsum" className="w-full opacity-50 h-auto" />
+              <Image 
+              key={index} 
+              src={image} 
+              alt="picsum" 
+              className="w-full opacity-50 h-auto" 
+              layout="responsive" 
+              width={700} 
+              height={475} 
+            />
             ))}
           </div>
         </Marquee>

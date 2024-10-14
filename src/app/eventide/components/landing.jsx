@@ -25,7 +25,7 @@ function Parallax() {
           trigger: container.current,
           start: "top top",
           //end: `+=${container.current.offsetHeight}`,
-          end:"2500 bottom",
+          end:"2000 bottom",
           scrub: true,
           pin: true,
           onUpdate: (self) => {
