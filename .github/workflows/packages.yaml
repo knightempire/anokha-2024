@@ -36,11 +36,11 @@ jobs:
 
     - name: Build and Push Multi-Platform Docker Image
       run: |
-        IMAGE_TAG=ghcr.io/${{ secrets.ORG_NAME }}/anokha_frontend:${{ github.ref_name }}-${{ env.GIT_SHA }}
+        IMAGE_TAG=ghcr.io/${{ github.repository_owner }}/anokha-2024:${{ github.ref_name }}-${{ env.GIT_SHA }}
         docker buildx build \
           --platform linux/amd64,linux/arm64 \
           --tag $IMAGE_TAG \
-          --tag ghcr.io/${{ secrets.ORG_NAME }}/anokha_frontend:latest \
+          --tag ghcr.io/${{ github.repository_owner }}/anokha-2024:latest \
           --push .
 
     - name: Log out from Docker
