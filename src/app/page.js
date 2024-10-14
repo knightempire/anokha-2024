@@ -9,7 +9,6 @@ import WebGLApp from "./bg/WebGLApp";
 import FilmGallery from "./components/FilmGallery";
 import InfoLeft from "./components/InfoDivLeft";
 import InfoRight from "./components/InfoDivRight";
-import PrivacyPolicy from "./components/PrivacyPolicy";
 
 const SponsorsMarquee = dynamic(() => import("./components/SponsorsMarquee"));
 const AnokhaMarquee = dynamic(() => import("./components/AnokhaMarquee"));
@@ -20,7 +19,7 @@ import projects from "./info_data";
 import PhonePromo from "./components/PhonePromo";
 
 export default function Home() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const container = useRef(null);
 
   useEffect(() => {
@@ -43,15 +42,14 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col bg-[#192032]">
-      <PrivacyPolicy open={open} setOpen={setOpen} />
       <WebGLApp colors={cardColor} className="-z-10" />
       <Navbar login={true} />
       <Hero className="z-10" />
       {/* This is temprovary sponsor component may change in future */}
       <SponsorsMarquee />
-      <PhonePromo className="z-10 visible"/>
+      <PhonePromo className="z-10 visible" />
       <div id="about" className="z-100 top-32 mx-auto"></div>
-      <div ref={container} className="sticky mt-10 z-10" >
+      <div ref={container} className="sticky mt-10 z-10">
         {projects.map((project, index) => {
           const Component = index % 2 === 0 ? InfoLeft : InfoRight;
           return (
@@ -65,18 +63,18 @@ export default function Home() {
           );
         })}
       </div>
-      
+
       <div className="z-10">
         <div className="flex text-center text-6xl text-white justify-center font-roobert m-4">
           GALLERY
         </div>
         <FilmGallery />
       </div>
-      
+
       <AnokhaMarquee />
-      
-      <section id ="footer">
-        <Footer current_page="home" openPolicy={open} setOpenPolicy={setOpen} />
+
+      <section id="footer">
+        <Footer current_page="home" open={open} setOpen={setOpen} />
       </section>
     </main>
   );

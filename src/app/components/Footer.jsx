@@ -11,14 +11,10 @@ import { IoLocationSharp } from "react-icons/io5";
 import { BiLogoPlayStore } from "react-icons/bi";
 import Image from "next/image";
 import Link from "next/link";
-import PrivacyPolicy from "./PrivacyPolicy";
 
-const Footer = ({ current_page, openPolicy, setOpenPolicy }) => {
+const Footer = ({ current_page }) => {
   return (
     <div className="relative h-1/2 footer-font bg-black">
-      {/* <div className="absolute inset-0 bg-black opacity-100">
-        <h1 className="text-4xl text-white text-center content-center">Trust me this is the footer</h1>
-      </div> */}
       <div className="flex flex-wrap p-8 space-x-4 lg:justify-center">
         <div className="p-6">
           <Image
@@ -28,11 +24,11 @@ const Footer = ({ current_page, openPolicy, setOpenPolicy }) => {
             height={600}
           />
         </div>
-        <div className=" pl-4 pr-4 pb-4 block lg:w-1/2">
+        <div className="pl-4 pr-4 pb-4 block lg:w-1/2">
           <div className="">
             <h1 className="text-white text-5xl">REACH OUT TO US!</h1>
             <h6 className="text-gray-600">
-              Feel free to reachout to us if any queries
+              Feel free to reach out to us if you have any queries
             </h6>
           </div>
           <div className="mt-7">
@@ -44,7 +40,6 @@ const Footer = ({ current_page, openPolicy, setOpenPolicy }) => {
               <FaArrowRight className="align-middle mt-1.5 ml-2 text-base md:text-xl" />
             </Link>
           </div>
-          {/* <div className='mt-1'><Link href="mailto:anokhasupport@cb.amrita.edu" className='text-white text-xl flex flex-nowrap hover:space-x-4 lg:text-2xl'><p>anokhasupport@cb.amrita.edu</p> <FaArrowRight className='align-middle mt-1.5 ml-2 text-base lg:text-xl'/></Link></div> */}
           <div className="mt-5 flex flex-col lg:flex-row flex-wrap justify-right gap-2 lg:justify-between">
             <div className="mt-3">
               <h2 className="text-white font-bold">OUR ADDRESS</h2>
@@ -103,7 +98,6 @@ const Footer = ({ current_page, openPolicy, setOpenPolicy }) => {
                     <BiLogoPlayStore className="mt-1 mr-1" />
                     <p>PlayStore</p>
                   </Link>
-                  {/* <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" /> */}
                 </div>
               </div>
             </div>
@@ -118,13 +112,7 @@ const Footer = ({ current_page, openPolicy, setOpenPolicy }) => {
                     <Link href="/team">TEAM</Link>
                   </div>
                   <div className="text-gray-400 hover:text-white">
-                    <div
-                      onClick={() => {
-                        setOpen(true);
-                      }}
-                    >
-                      PRIVACY POLICY
-                    </div>
+                    <Link href="/privacy-policy">PRIVACY POLICY</Link>
                   </div>
                 </div>
               ) : current_page === "team" ? (
@@ -137,13 +125,7 @@ const Footer = ({ current_page, openPolicy, setOpenPolicy }) => {
                     <Link href="/team">TEAM</Link>
                   </div>
                   <div className="text-gray-400 hover:text-white">
-                    <div
-                      onClick={() => {
-                        setOpen(true);
-                      }}
-                    >
-                      PRIVACY POLICY
-                    </div>
+                    <Link href="/privacy-policy">PRIVACY POLICY</Link>
                   </div>
                 </div>
               ) : current_page === "contact" ? (
@@ -155,13 +137,7 @@ const Footer = ({ current_page, openPolicy, setOpenPolicy }) => {
                     <Link href="/team">TEAM</Link>
                   </div>
                   <div className="text-gray-400 hover:text-white">
-                    <div
-                      onClick={() => {
-                        setOpen(true);
-                      }}
-                    >
-                      PRIVACY POLICY
-                    </div>
+                    <Link href="/privacy-policy">PRIVACY POLICY</Link>
                   </div>
                 </div>
               ) : current_page === "privacypolicy" ? (
@@ -174,13 +150,7 @@ const Footer = ({ current_page, openPolicy, setOpenPolicy }) => {
                   </div>
                   <div className="flex flex-wrap">
                     <TbPointFilled className="-ml-4 align-middle mt-1" />
-                    <div
-                      onClick={() => {
-                        setOpen(true);
-                      }}
-                    >
-                      PRIVACY POLICY
-                    </div>
+                    <Link href="/privacy-policy">PRIVACY POLICY</Link>
                   </div>
                 </div>
               ) : (
@@ -192,13 +162,7 @@ const Footer = ({ current_page, openPolicy, setOpenPolicy }) => {
                     <Link href="/team">TEAM</Link>
                   </div>
                   <div className="text-gray-400 hover:text-white">
-                    <div
-                      onClick={() => {
-                        setOpen(true);
-                      }}
-                    >
-                      PRIVACY POLICY
-                    </div>
+                    <Link href="/privacy-policy">PRIVACY POLICY</Link>
                   </div>
                 </div>
               )}
