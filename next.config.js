@@ -12,6 +12,8 @@ module.exports = withBundleAnalyzer({
     return config;
   },
 
+  output: "standalone",
+
   experimental: {
     serverActions: {
       allowedOrigins: [
