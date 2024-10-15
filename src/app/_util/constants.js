@@ -49,6 +49,7 @@ export const VERIFY_TRANSACTIONS_URL = BASE_URL + "/user/verifyTransaction";
 export const EVENT_REGISTER_STEP_ONE =
   BASE_URL + "/user/registerForEventStepOne";
 export const ALL_TAGS_URL = BASE_URL + "/admin/getActiveTags";
+export const FORMBRICKS_URL = BASE_URL + "/user/generateFormBricksLink";
 
 export const anokhaDates = 
 {
