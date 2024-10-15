@@ -6,8 +6,6 @@ const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-[#192032] text-white p-8">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-6">Privacy Policy</h1>
-
         <Markdown className="prose dark:prose-invert text-white">
           {`
 # Privacy Policy for Anokha 2024
