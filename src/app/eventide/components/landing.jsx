@@ -55,7 +55,7 @@ function Parallax() {
     return (
         <div className="overflow-hidden">
             <div ref={container} className="relative h-screen w-screen flex flex-col justify-center items-center">
-                <div ref={eventide}  className="  z-50 flex justify-center items-center lg:w-[61vh] lg:h-[11vh] md:w-[45vh] md:h-[8vh] sm:w-[22vh] sm:h-[4vh] ">
+                <div ref={eventide}  className="  z-50 flex justify-center items-center lg:w-[60vh] lg:h-[10vh] md:w-[42vh] md:h-[7vh] sm:w-[20vh] sm:h-[2.8vh] ">
           
                     <Image src="/images/eventide_1.png" layout="fill" objectFit="contain"/>
                   

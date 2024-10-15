@@ -30,21 +30,23 @@ const Hero = () => {
                      {etext} </motion.p>
             </motion.div>
             <div className="mt-28 text-white">
-                <div className="p-2 relative scale-50 sm:scale-75">
+                <div className="p-2 relative">
                     <motion.div
-                        initial={{ y: 400, opacity: 0 }}
+                        initial={{ y: 400, opacity: 1 }}
                         whileInView={{ y: 0, opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, type: "keyframes" }}
                         className="w-full h-full relative"
                     >
                         <Image
-                            src="/images/poster.webp"
+                            src="https://i.imgur.com/cAxj8mb.jpg"
                             alt="Event poster"
-                            layout="fill"
-                            objectFit="cover"
+                            
+                            objectFit='contain'
+                            height={400}
+                            width={700}
                             objectPosition="top"
-                            className="w-full h-full"
+                            className="w-full h-full "
                         />
                     </motion.div>
                 </div>

@@ -63,7 +63,8 @@ export default function ForgetPassword() {
         stopColor = "white"
         stopOpacity = "0" />
         
-        </linearGradient> </defs > </svg> <Hero />
+        </linearGradient> </defs > </svg> 
+        <Hero />
         </div> 
         
         <Section />
