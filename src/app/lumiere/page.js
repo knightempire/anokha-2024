@@ -191,7 +191,7 @@ const Lumiere = () => {
   };
 
   const newRegisterFormLink =
-    "https://forms.office.com/Pages/ShareFormPage.aspx?id=o835AF4H5USqC6ujrdZTn4OCc7ccBIBEnr3I2BfMdBBUNkdHTkxIN1NHSlBFOEtJRkZENkhKSkhFTi4u&sharetoken=KMSbZRowJtfmlw8h89m8";
+    "https://forms.office.com/Pages/ResponsePage.aspx?id=o835AF4H5USqC6ujrdZTn8QVvRN5P6BInWN9BADXaWhUMThQS0dVUTdMMk04UEVRTTVNSzhEWkpSUC4u";
 
   return (
     <main className="flex min-h-screen bg-[#192032] font-roobert text-md overflow-x-hidden">
@@ -270,12 +270,6 @@ const Lumiere = () => {
                     </svg>
                     Checking Your Registration Status ...
                   </div>
-                ) : secureLocalStorage.getItem("isLoggedIn") == "0" ||
-                  secureLocalStorage.getItem("isLoggedIn") == undefined ||
-                  secureLocalStorage.getItem("isLoggedIn") == null ? (
-                  "Login to Register"
-                ) : isRegistered ? (
-                  "Registered"
                 ) : (
                   "Register"
                 )}
