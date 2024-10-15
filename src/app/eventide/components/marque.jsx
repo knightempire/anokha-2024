@@ -38,7 +38,7 @@ const VerticalMarquee = () => {
           height='100vh' 
           width='100%' 
           reverse={true} 
-          duration={30000} 
+          duration={29000} 
           background="black" 
           axis='y'
         >
