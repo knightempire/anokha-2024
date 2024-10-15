@@ -27,6 +27,16 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED=1
 
+# Set environment variables needed for build
+ARG NEXT_PUBLIC_IS_PRODUCTION
+ARG NEXT_PUBLIC_PAY_U_KEY_TEST
+ARG NEXT_PUBLIC_PAY_U_KEY_PROD
+
+# Pass them to the build process
+ENV NEXT_PUBLIC_IS_PRODUCTION=${NEXT_PUBLIC_IS_PRODUCTION}
+ENV NEXT_PUBLIC_PAY_U_KEY_TEST=${NEXT_PUBLIC_PAY_U_KEY_TEST}
+ENV NEXT_PUBLIC_PAY_U_KEY_PROD=${NEXT_PUBLIC_PAY_U_KEY_PROD}
+
 RUN \
   if [ -f yarn.lock ]; then yarn run build; \
   elif [ -f package-lock.json ]; then npm run build; \
