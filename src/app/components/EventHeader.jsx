@@ -25,7 +25,7 @@ const navLinks = [
   },
   {
     title: "Eventide",
-    path: "/comingSoon",
+    path: "/eventide",
   },
   {
     title: "TechFair",
