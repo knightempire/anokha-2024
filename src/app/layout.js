@@ -9,7 +9,8 @@ export const metadata = {
   description: `12th Annual Techfest of Amrita Viswa Vidyapeetham, Coimbatore.`,
   favicon: `./favicon.ico`,
   icon: `./favicon.ico`,
-  appleIcon: `./favicon.ico`
+  appleIcon: `./favicon.ico`,
+  image: `/images/anokha_image.png`
 }
 
 export default function RootLayout({ children }) {
