@@ -19,6 +19,7 @@ import projects from "./info_data";
 import PhonePromo from "./components/PhonePromo";
 
 export default function Home() {
+  const [open, setOpen] = useState(false);
   const container = useRef(null);
 
   useEffect(() => {
@@ -46,9 +47,9 @@ export default function Home() {
       <Hero className="z-10" />
       {/* This is temprovary sponsor component may change in future */}
       <SponsorsMarquee />
-      <PhonePromo className="z-10 visible"/>
+      <PhonePromo className="z-10 visible" />
       <div id="about" className="z-100 top-32 mx-auto"></div>
-      <div ref={container} className="sticky mt-10 z-10" >
+      <div ref={container} className="sticky mt-10 z-10">
         {projects.map((project, index) => {
           const Component = index % 2 === 0 ? InfoLeft : InfoRight;
           return (
@@ -62,18 +63,18 @@ export default function Home() {
           );
         })}
       </div>
-      
+
       <div className="z-10">
         <div className="flex text-center text-6xl text-white justify-center font-roobert m-4">
           GALLERY
         </div>
         <FilmGallery />
       </div>
-      
+
       <AnokhaMarquee />
-      
-      <section id ="footer">
-        <Footer current_page="home" />
+
+      <section id="footer">
+        <Footer current_page="home" open={open} setOpen={setOpen} />
       </section>
     </main>
   );

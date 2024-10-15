@@ -6,12 +6,17 @@ import ToastAlert from "../../_util/ToastAlerts";
 import { Toast } from "primereact/toast";
 import { ConfirmDialog } from "primereact/confirmdialog";
 import { confirmDialog } from "primereact/confirmdialog";
+import { useRouter } from "next/navigation";
 
 import secureLocalStorage from "react-secure-storage";
 import WebGLApp from "@/app/bg/WebGLApp";
 import Navigationbar from "@/app/components/EventHeader";
 
-import { EVENT_DATA_URL, STAR_UNSTAR_EVENT_URL } from "@/app/_util/constants";
+import {
+  EVENT_DATA_URL,
+  STAR_UNSTAR_EVENT_URL,
+  FORMBRICKS_URL,
+} from "@/app/_util/constants";
 import {
   EVENT_REGISTER_STEP_ONE,
   REGISTERED_EVENT_URL,
@@ -30,6 +35,7 @@ import gsap from "gsap";
 import { useParams } from "next/navigation";
 
 const Event = () => {
+  const router = useRouter();
   const [eventData, setEventData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showFullText, setShowFullText] = useState(false);
@@ -484,6 +490,53 @@ const Event = () => {
                     : "View Registration"}
                 </button>
               )}
+              <button
+                className={
+                  secureLocalStorage.getItem("isLoggedIn") == "1" &&
+                  eventData.isRegistered == "1"
+                    ? "text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-4 text-center me-2 mb-2"
+                    : "hidden"
+                }
+                onClick={async () => {
+                  const response = await fetch(FORMBRICKS_URL, {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization:
+                        `Bearer ` + secureLocalStorage.getItem("registerToken"),
+                    },
+                    body: JSON.stringify({
+                      eventId: parseInt(eventId),
+                      registrationId: eventData.registrationId,
+                    }),
+                  });
+                  if (response.status == 200) {
+                    const data = await response.json();
+                    console.log(data.FORM_BRICKS_LINK);
+                    router.push(data.FORM_BRICKS_LINK);
+                  } else if (response.status == 401) {
+                    router.push("/login");
+                  } else {
+                    console.log(response.status);
+                    if (response.status == 400) {
+                      const data = await response.json();
+                      console.log(data.MESSAGE);
+                      ToastAlert(
+                        "error",
+                        "Unable to open feedback",
+                        `${data.MESSAGE}`,
+                        toastRef
+                      );
+                    }
+                    console.log("Unable to redirect to feedback form!");
+                  }
+                }}
+              >
+                {secureLocalStorage.getItem("isLoggedIn") == "1" &&
+                eventData.isRegistered == "1"
+                  ? "Send Feedback"
+                  : ""}
+              </button>
               <div className="flex justify-center items-center ml-4">
                 <button
                   onClick={handleStarToggle}

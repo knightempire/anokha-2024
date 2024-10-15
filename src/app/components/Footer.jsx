@@ -15,9 +15,6 @@ import Link from "next/link";
 const Footer = ({ current_page }) => {
   return (
     <div className="relative h-1/2 footer-font bg-black">
-      {/* <div className="absolute inset-0 bg-black opacity-100">
-        <h1 className="text-4xl text-white text-center content-center">Trust me this is the footer</h1>
-      </div> */}
       <div className="flex flex-wrap p-8 space-x-4 lg:justify-center">
         <div className="p-6">
           <Image
@@ -27,11 +24,11 @@ const Footer = ({ current_page }) => {
             height={600}
           />
         </div>
-        <div className=" pl-4 pr-4 pb-4 block lg:w-1/2">
+        <div className="pl-4 pr-4 pb-4 block lg:w-1/2">
           <div className="">
             <h1 className="text-white text-5xl">REACH OUT TO US!</h1>
             <h6 className="text-gray-600">
-              Feel free to reachout to us if any queries
+              Feel free to reach out to us if you have any queries
             </h6>
           </div>
           <div className="mt-7">
@@ -43,13 +40,16 @@ const Footer = ({ current_page }) => {
               <FaArrowRight className="align-middle mt-1.5 ml-2 text-base md:text-xl" />
             </Link>
           </div>
-          {/* <div className='mt-1'><Link href="mailto:anokhasupport@cb.amrita.edu" className='text-white text-xl flex flex-nowrap hover:space-x-4 lg:text-2xl'><p>anokhasupport@cb.amrita.edu</p> <FaArrowRight className='align-middle mt-1.5 ml-2 text-base lg:text-xl'/></Link></div> */}
           <div className="mt-5 flex flex-col lg:flex-row flex-wrap justify-right gap-2 lg:justify-between">
             <div className="mt-3">
               <h2 className="text-white font-bold">OUR ADDRESS</h2>
-              <Link href={"https://maps.app.goo.gl/MyE1VW4u4jWdxhco9"} target="_blank">
+              <Link
+                href={"https://maps.app.goo.gl/MyE1VW4u4jWdxhco9"}
+                target="_blank"
+              >
                 <span className="text-gray-400 hover:text-white flex">
-                  <p>Amrita Vishwa Vidyapeetham</p> <IoLocationSharp className="text-sm mt-[5px] ml-[4px]"/>
+                  <p>Amrita Vishwa Vidyapeetham</p>{" "}
+                  <IoLocationSharp className="text-sm mt-[5px] ml-[4px]" />
                 </span>
               </Link>
               <p className="text-gray-500 text-sm">Coimbatore Campus</p>
@@ -79,7 +79,8 @@ const Footer = ({ current_page }) => {
               <div className="block mt-5 space-y-2">
                 <div className="flex flex-nowrap">
                   <Link
-                    href={"https://www.amrita.edu"} target="_blank"
+                    href={"https://www.amrita.edu"}
+                    target="_blank"
                     className="text-gray-200 hover:text-white hover:font-bold"
                   >
                     AMRITA.EDU
@@ -87,16 +88,16 @@ const Footer = ({ current_page }) => {
                   <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" />
                 </div>
                 <div className="flex flex-nowrap w-fit border-[0.5px] border-gray-200 hover:border-white rounded-md items-center justify-center px-2">
-                    <Link
-                      href={"https://play.google.com/store/apps/details?id=com.vaisakhkrishnank.anokha_home"} target="_blank"
-                      className="text-gray-200 hover:font-bold hover:text-white flex"
-                    >
-                      <BiLogoPlayStore 
-                        className="mt-1 mr-1"
-                      />
-                      <p>PlayStore</p>
-                    </Link>
-                    {/* <FiArrowUpRight className="pr-1 text-gray-500 text-xl mt-0.5 hover:scale-150" /> */}
+                  <Link
+                    href={
+                      "https://play.google.com/store/apps/details?id=com.vaisakhkrishnank.anokha_home"
+                    }
+                    target="_blank"
+                    className="text-gray-200 hover:font-bold hover:text-white flex"
+                  >
+                    <BiLogoPlayStore className="mt-1 mr-1" />
+                    <p>PlayStore</p>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -111,10 +112,7 @@ const Footer = ({ current_page }) => {
                     <Link href="/team">TEAM</Link>
                   </div>
                   <div className="text-gray-400 hover:text-white">
-                    <Link href="/contact">CONTACT</Link>
-                  </div>
-                  <div className="text-gray-400 hover:text-white">
-                    <Link href="/privacypolicy">PRIVACY POLICY</Link>
+                    <Link href="/privacy-policy">PRIVACY POLICY</Link>
                   </div>
                 </div>
               ) : current_page === "team" ? (
@@ -127,10 +125,7 @@ const Footer = ({ current_page }) => {
                     <Link href="/team">TEAM</Link>
                   </div>
                   <div className="text-gray-400 hover:text-white">
-                    <Link href="/contact">CONTACT</Link>
-                  </div>
-                  <div className="text-gray-400 hover:text-white">
-                    <Link href="/privacypolicy">PRIVACY POLICY</Link>
+                    <Link href="/privacy-policy">PRIVACY POLICY</Link>
                   </div>
                 </div>
               ) : current_page === "contact" ? (
@@ -141,12 +136,8 @@ const Footer = ({ current_page }) => {
                   <div className="text-gray-400 hover:text-white">
                     <Link href="/team">TEAM</Link>
                   </div>
-                  <div className="flex flex-wrap">
-                    <TbPointFilled className="-ml-4 align-middle mt-1" />
-                    <Link href="/contact">CONTACT</Link>
-                  </div>
                   <div className="text-gray-400 hover:text-white">
-                    <Link href="/privacypolicy">PRIVACY POLICY</Link>
+                    <Link href="/privacy-policy">PRIVACY POLICY</Link>
                   </div>
                 </div>
               ) : current_page === "privacypolicy" ? (
@@ -157,12 +148,9 @@ const Footer = ({ current_page }) => {
                   <div className="text-gray-400 hover:text-white">
                     <Link href="/team">TEAM</Link>
                   </div>
-                  <div className="text-gray-400 hover:text-white">
-                    <Link href="/contact">CONTACT</Link>
-                  </div>
                   <div className="flex flex-wrap">
                     <TbPointFilled className="-ml-4 align-middle mt-1" />
-                    <Link href="/privacypolicy">PRIVACY POLICY</Link>
+                    <Link href="/privacy-policy">PRIVACY POLICY</Link>
                   </div>
                 </div>
               ) : (
@@ -174,10 +162,7 @@ const Footer = ({ current_page }) => {
                     <Link href="/team">TEAM</Link>
                   </div>
                   <div className="text-gray-400 hover:text-white">
-                    <Link href="/contact">CONTACT</Link>
-                  </div>
-                  <div className="text-gray-400 hover:text-white">
-                    <Link href="/privacypolicy">PRIVACY POLICY</Link>
+                    <Link href="/privacy-policy">PRIVACY POLICY</Link>
                   </div>
                 </div>
               )}
