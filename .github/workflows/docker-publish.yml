@@ -79,6 +79,11 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
           platforms: linux/amd64,linux/arm64/v8
+          build-args: |
+            NEXT_PUBLIC_IS_PRODUCTION=${{ secrets.NEXT_PUBLIC_IS_PRODUCTION }}
+            NEXT_PUBLIC_PAY_U_KEY_TEST=${{ secrets.NEXT_PUBLIC_PAY_U_KEY_TEST }}
+            NEXT_PUBLIC_PAY_U_KEY_PROD=${{ secrets.NEXT_PUBLIC_PAY_U_KEY_PROD }}
+
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
