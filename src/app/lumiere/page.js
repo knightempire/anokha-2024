@@ -15,6 +15,7 @@ import secureLocalStorage from "react-secure-storage";
 import ToastAlert from "../_util/ToastAlerts";
 import { ConfirmDialog } from "primereact/confirmdialog";
 import { confirmDialog } from "primereact/confirmdialog";
+import Link from "next/link";
 
 const Lumiere = () => {
   const [webGLColors, setWebGLColors] = useState({
@@ -156,7 +157,6 @@ const Lumiere = () => {
       });
   }, []);
 
-
   const accept = async () => {
     await getPayUForm();
   };
@@ -189,6 +189,9 @@ const Lumiere = () => {
     }
     confirmProceed();
   };
+
+  const newRegisterFormLink =
+    "https://forms.office.com/Pages/ShareFormPage.aspx?id=o835AF4H5USqC6ujrdZTn4OCc7ccBIBEnr3I2BfMdBBUNkdHTkxIN1NHSlBFOEtJRkZENkhKSkhFTi4u&sharetoken=KMSbZRowJtfmlw8h89m8";
 
   return (
     <main className="flex min-h-screen bg-[#192032] font-roobert text-md overflow-x-hidden">
@@ -226,60 +229,58 @@ const Lumiere = () => {
               A dynamic segment of Anokha 2024, where influential voices share
               insights on society, technology, and leadership.
             </p>
-            {!loading ? (
+            {/* {!loading ? (
               <p className="text-3xl md:text-xl font-bold bg-[rgba(0,0,0,0.3)] backdrop-blur-lg  text-gray-200 z-10 max-w-3xl px-4 py-2 rounded-lg mt-4 border-2 border-gray-300">
                 ₹{Math.ceil(eventData.eventPrice * 1.18)}
                 <span className="text-sm">{"  (Incl. of GST)"}</span>
               </p>
-            ) : null}
-            <button
-              className={`mt-8 px-4 py-2 text-lg font-semibold border rounded-full z-10 transition 
-    ${
-      loading || !isOpen
-        ? "bg-gray-400 text-gray-700 cursor-not-allowed"
-        : "bg-white text-black hover:scale-105"
-    }`}
-              onClick={handleRegister}
-              disabled={loading || !isOpen || isRegistered}
-            >
-              {loading ? (
-                <div className="flex items-center">
-                  <svg
-                    className="animate-spin h-5 w-5 mr-3 text-black"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8v8H4z"
-                    ></path>
-                  </svg>
-                  Checking Your Registration Status ...
-                </div>
-              ) : isOpen ? (
-                secureLocalStorage.getItem("isLoggedIn") == "0" ||
-                secureLocalStorage.getItem("isLoggedIn") == undefined ||
-                secureLocalStorage.getItem("isLoggedIn") == null ? (
+            ) : null} */}
+            <Link href={newRegisterFormLink} target="_blank">
+              <button
+                className={`mt-8 px-4 py-2 text-lg font-semibold border rounded-full z-10 transition 
+                  ${
+                    loading
+                      ? "bg-gray-400 text-gray-700 cursor-not-allowed"
+                      : "bg-white text-black hover:scale-105"
+                  }`}
+                // onClick={handleRegister}
+                disabled={loading || isRegistered}
+              >
+                {loading ? (
+                  <div className="flex items-center">
+                    <svg
+                      className="animate-spin h-5 w-5 mr-3 text-black"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v8H4z"
+                      ></path>
+                    </svg>
+                    Checking Your Registration Status ...
+                  </div>
+                ) : secureLocalStorage.getItem("isLoggedIn") == "0" ||
+                  secureLocalStorage.getItem("isLoggedIn") == undefined ||
+                  secureLocalStorage.getItem("isLoggedIn") == null ? (
                   "Login to Register"
                 ) : isRegistered ? (
                   "Registered"
                 ) : (
                   "Register"
-                )
-              ) : (
-                "Registrations Closed"
-              )}
-            </button>
+                )}
+              </button>
+            </Link>
             <ConfirmDialog />
             <div className=" inset-0 flex justify-center items-center">
               <div
