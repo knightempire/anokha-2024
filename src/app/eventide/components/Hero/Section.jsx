@@ -30,7 +30,7 @@ const Section = () => {
         <div className="mt-40">
             <motion.div initial='hidden' whileInView='show' variants={container} viewport={{ once: true }} className="md:grid grid-cols-2 gap-x-7 space-y-10">
                 <motion.div variants={image} className="md:mt-[-100px] opacity-80">
-                    <Image src="/images/Sarnesh_867.jpg" alt="Performance image 3" layout="responsive" width={500} height={500} />
+                    <Image src="https://i.imgur.com/bD5DFgM.jpeg" alt="Performance image 3" layout="responsive" width={500} height={500} />
                 </motion.div>
                 <div className="max-md:hidden text-4xl md:text-7xl text-neutral-600 flex items-center justify-center font-extrabold">FUSION OF DYNAMICS...</div>
                 <motion.div variants={item}>
@@ -38,18 +38,23 @@ const Section = () => {
                     <p className="text-neutral-500 mt-3 max-sm:text-sm">Every year, the stage comes alive with Raagasudha’s enthralling music performances! From heartfelt classical renditions to exciting beats of contemporary tunes, each performance is a testament to the club’s versatility. The performers showcase their dedication and collaborative effort, creating an electrifying atmosphere that leaves the audience spellbound. Every note is a masterpiece, showcasing an impeccable blend of melody, pitch, rhythm, and harmony. Come witness this musical spectacle at Anokha 2024.</p>
                 </motion.div>
                 <motion.div variants={image} className="md:mt-[40px]">
-                    <Image src="/images/Sarnesh_1689.jpg" alt="Performance image 4" layout="responsive" width={500} height={500} />
+                    <Image src="https://i.imgur.com/p00di0N.jpeg" alt="Performance image 4" layout="responsive" width={500} height={500} />
                 </motion.div>
                 <motion.div variants={image} className="md:mt-[-100px] opacity-80">
+                <div className="h-[500px] overflow-hidden">
                     <Image src="https://i.imgur.com/7tVoC5h.jpg" alt="Performance image 3" layout="responsive" width={500} height={200} />
+                    </div>
                 </motion.div>
                 <div className="max-md:hidden text-4xl md:text-7xl text-neutral-600 flex items-center justify-center font-extrabold">RHYTHM. FUSION. FIRE....</div>
                 <motion.div variants={item}>
                     <h1 className="text-4xl mt-7 mb-4 max-sm:text-3xl text-white">Pro Show</h1>
                     <p className="text-neutral-500 mt-3 max-sm:text-sm">{etext2}</p></motion.div>
-                <motion.div variants={image} className="md:mt-[40px] scale-75">
-                    <Image src="https://i.imgur.com/d2ReTJe.jpg" alt="Performance image 4" layout="responsive" width={500} height={200}  />
-                </motion.div>
+                    <motion.div variants={image} className="md:mt-[40px] scale-75">
+    <div className="h-[500px] overflow-hidden">
+        <Image src="https://i.imgur.com/d2ReTJe.jpg" alt="Performance image 4" layout="responsive" width={500} height={200} />
+    </div>
+</motion.div>
+
                 <motion.div variants={image}>
                     <Image src="/images/Sarnesh_160.jpg" alt="Performance image 1" layout="responsive" width={500} height={500} />
                 </motion.div>

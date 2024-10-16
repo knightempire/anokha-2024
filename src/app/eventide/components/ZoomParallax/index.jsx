@@ -1,11 +1,6 @@
 "use client";
 import styles from './styles.module.scss';
-import Picture2 from '../../../../../public/images/Sarnesh_148.jpg';
-import Picture3 from '../../../../../public/images/Eniyan_25.jpg';
-import Picture4 from '../../../../../public/images/SriHaran_2.jpg';
-import Picture5 from '../../../../../public/images/Sarnesh_780.jpg';
-import Picture6 from '../../../../../public/images/Eniyan_47.jpg';
-import Picture7 from '../../../../../public/images/Sarnesh_1137.jpg';
+
 import Image from 'next/image';
 import { useScroll, useTransform, motion } from 'framer-motion';
 import { useRef } from 'react';
@@ -29,6 +24,12 @@ export default function Index() {
     ];
 
     const Picture1 = "https://i.imgur.com/nKKOhTQ.png";
+    const Picture2 = "https://i.imgur.com/DEhANBJ.jpeg";
+    const Picture3 = "https://i.imgur.com/57Wd6ww.jpeg";
+    const Picture4 = "https://i.imgur.com/nqFGkMx.jpeg";
+    const Picture5 = "https://i.imgur.com/u49T4RZ.jpeg";
+    const Picture6 = "https://i.imgur.com/vj1J7pH.jpeg";
+    const Picture7 = "https://i.imgur.com/3R1wS41.jpeg";
 
     const pictures = [
         Picture1,
