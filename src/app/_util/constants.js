@@ -5,13 +5,17 @@ const BASE_URL = "https://anokha.amrita.edu/api";
 const HACKATHON_URL = "https://anokha.amrita.edu/api/intel";
 
 export const payU_Key =
-  process.env.NEXT_PUBLIC_IS_PRODUCTION === "1"
-    ? process.env.NEXT_PUBLIC_PAY_U_KEY_PROD
-    : process.env.NEXT_PUBLIC_PAY_U_KEY_TEST;
+  process.env.NEXT_PUBLIC_IS_PRODUCTION === "0"
+    ? process.env.NEXT_PUBLIC_PAY_U_KEY_TEST
+    : 
+    (
+      process.env.NEXT_PUBLIC_PAY_U_KEY_PROD ?? "ypfBaJ" // Dummy test Key
+    );
 export const payU_Action =
-  process.env.NEXT_PUBLIC_IS_PRODUCTION === "1"
-    ? "https://secure.payu.in/_payment"
-    : "https://test.payu.in/_payment";
+  process.env.NEXT_PUBLIC_IS_PRODUCTION === "0"
+    ? "https://test.payu.in/_payment"
+    :"https://secure.payu.in/_payment";
+
 export const ALL_TRANSACTION_URL = BASE_URL + "/user/getAllTransactions";
 export const EDIT_PROFILE_URL = BASE_URL + "/user/editStudentProfile";
 export const STUDENT_PROFILE_URL = BASE_URL + "/user/getStudentProfile";
