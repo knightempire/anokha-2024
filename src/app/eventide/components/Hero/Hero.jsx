@@ -38,16 +38,7 @@ const Hero = () => {
                         transition={{ duration: 0.8, type: "keyframes" }}
                         className="w-full h-full relative"
                     >
-                        <Image
-                            src="https://i.imgur.com/cAxj8mb.jpg"
-                            alt="Event poster"
-                            
-                            objectFit='contain'
-                            height={400}
-                            width={700}
-                            objectPosition="top"
-                            className="w-full h-full "
-                        />
+                  
                     </motion.div>
                 </div>
             </div>
