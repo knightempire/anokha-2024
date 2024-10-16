@@ -14,7 +14,7 @@ import Section from './components/Hero/Section'
 
 
 
-export default function ForgetPassword() {
+export default function Eventide() {
     const [webGLColors, setWebGLColors] = useState({
         color1: [0, 0, 0], // Black
         color2: [0 / 255, 0 / 255, 0 / 255], // Gray
