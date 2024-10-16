@@ -20,9 +20,21 @@ https://github.com/user-attachments/assets/fea082d8-32e8-46e1-9fa3-e2a04c00c845
 
 ## Favourites Page
 
-Add events and workshops to favorites, and explore the things that you like.
+Add events and workshops to your favorites, and explore the things that you like.
 
 https://github.com/user-attachments/assets/7870eafe-0ad4-460e-aff1-93407f4dd570
+
+
+## Event/Workshop Registration
+
+Event registration procedure for individual events.
+
+https://github.com/user-attachments/assets/bae59551-9701-4790-b5d0-8a890954fcfb
+
+
+## View Transactions
+
+https://github.com/user-attachments/assets/3af0b5ff-166b-4601-9646-4216ce26ec03
 
 
 ## Lumere Page
@@ -36,7 +48,7 @@ https://github.com/user-attachments/assets/46c864ee-7b3c-46c5-8e79-06e272acdd95
 
 Enjoy the rhythm, dance, and fusion of Eventide.
 
-https://github.com/user-attachments/assets/ed2c6c35-bfd5-4db3-a622-bf8a9394f293
+https://github.com/user-attachments/assets/1d9c840b-cb66-45e2-9086-3b8c72932445
 
 
 ## Tech Fair Page
