@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { FaMapMarkerAlt } from 'react-icons/fa';
 
 const Section = () => {
   const container = {
@@ -73,6 +74,10 @@ const Section = () => {
           >
             17th October @ 6:30 PM
           </div>
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-pink-800 to-blue-500 px-4 py-2 rounded-lg mt-4">
+            <FaMapMarkerAlt />
+            <span>Main Ground</span>
+          </div>
         </motion.div>
         <motion.div variants={image} className="md:mt-[40px]">
           <Image
@@ -107,6 +112,10 @@ const Section = () => {
  text-transparent bg-clip-text animate-gradient mt-4"
           >
             18th October @ 6:30 PM
+          </div>
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-800 to-blue-500 px-4 py-2 rounded-lg mt-4">
+            <FaMapMarkerAlt />
+            <span>Main Ground</span>
           </div>
         </motion.div>
         <motion.div variants={image} className="md:mt-[40px] scale-75">
@@ -152,6 +161,10 @@ const Section = () => {
  text-transparent bg-clip-text animate-gradient mt-4"
           >
             19th October @ 6:30 PM
+          </div>
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-green-500 to-yellow-500 px-4 py-2 rounded-lg mt-4">
+            <FaMapMarkerAlt />
+            <span>Main Ground</span>
           </div>
         </motion.div>
         <motion.div variants={image} className="md:mt-[40px]">
