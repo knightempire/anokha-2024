@@ -8,70 +8,80 @@ This is the official GitHub page for the website.
 ## 🌐 Home Page
 
 Explore Anokha and Amrita at its best.  
-![Home Page](https://github.com/user-attachments/assets/b1a7d0d0-0fa2-44cc-8234-bd0b15b27975)
+
+https://github.com/user-attachments/assets/b1a7d0d0-0fa2-44cc-8234-bd0b15b27975
 
 ---
 
 ## 🗓️ Events Page
 
 Register and participate in various events and workshops.  
-![Events Page](https://github.com/user-attachments/assets/fea082d8-32e8-46e1-9fa3-e2a04c00c845)
+
+https://github.com/user-attachments/assets/fea082d8-32e8-46e1-9fa3-e2a04c00c845
 
 ---
 
 ## ⭐ Favourites Page
 
 Add events and workshops to your favorites, and explore your interests.  
-![Favourites Page](https://github.com/user-attachments/assets/7870eafe-0ad4-460e-aff1-93407f4dd570)
+
+https://github.com/user-attachments/assets/7870eafe-0ad4-460e-aff1-93407f4dd570
 
 ---
 
 ## 📝 Event/Workshop Registration
 
 Follow the event registration process for individual events.  
-![Registration Page](https://github.com/user-attachments/assets/bae59551-9701-4790-b5d0-8a890954fcfb)
+
+https://github.com/user-attachments/assets/bae59551-9701-4790-b5d0-8a890954fcfb
 
 ---
 
 ## 💳 View Transactions
 
 Manage and view your transactions effortlessly.  
-![View Transactions Page](https://github.com/user-attachments/assets/3af0b5ff-166b-4601-9646-4216ce26ec03)
+
+https://github.com/user-attachments/assets/3af0b5ff-166b-4601-9646-4216ce26ec03
 
 ---
 
 ## 💡 Lumere Page
 
 Explore **Lumere Tech Talk**, where leaders share insights on society, technology, and leadership.  
-![Lumere Page](https://github.com/user-attachments/assets/46c864ee-7b3c-46c5-8e79-06e272acdd95)
+
+https://github.com/user-attachments/assets/46c864ee-7b3c-46c5-8e79-06e272acdd95
 
 ---
 
 ## 🎶 Eventide Page
 
-Enjoy the rhythm, dance, and fusion of **Eventide**.  
-![Eventide Page](https://github.com/user-attachments/assets/1d9c840b-cb66-45e2-9086-3b8c72932445)
+Enjoy the rhythm, dance, and fusion of **Eventide**. 
+
+https://github.com/user-attachments/assets/1d9c840b-cb66-45e2-9086-3b8c72932445
 
 ---
 
 ## 🚀 Tech Fair Page
 
 Participate with the brightest minds. Submit your ideas to get your projects displayed at **Anokha**.  
-![Tech Fair Page](https://github.com/user-attachments/assets/3b3f6671-339b-4c35-875e-4b1d6523b12a)
+
+https://github.com/user-attachments/assets/3b3f6671-339b-4c35-875e-4b1d6523b12a
 
 ---
 
 ## 👨‍💻 Hackathon Page
 
 Join the Hackathon to solve real-world problems and showcase your skills.  
-![Hackathon Page](https://github.com/user-attachments/assets/6d40bab4-e024-4a6d-a164-d1d05b107e80)
+
+https://github.com/user-attachments/assets/6d40bab4-e024-4a6d-a164-d1d05b107e80
 
 ---
 
 ## 👥 Team Page
 
 Meet the people who make **Anokha 2024** possible.  
-![Team Page](https://github.com/user-attachments/assets/b3d3d311-f36f-4cb3-9c50-8bc958134f9f)
+
+https://github.com/user-attachments/assets/b3d3d311-f36f-4cb3-9c50-8bc958134f9f
 
 ---
 
@@ -100,7 +110,7 @@ Meet the people who make **Anokha 2024** possible.
 
 ---
 
-## 🧑‍💻 Team Data
+## 🧑‍💻 The Team
 
 | Name                     | Role                     | Contact                         |
 |--------------------------|--------------------------|---------------------------------|
