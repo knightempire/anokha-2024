@@ -1,71 +1,121 @@
-
 # Anokha 2024
 
-Amrita Vishwa Vidyapeetham's Coimbatore Campus hosts Anokha, a lively tech extravaganza!
+Amrita Vishwa Vidyapeetham's Coimbatore Campus hosts **Anokha**, a lively tech extravaganza!  
 This is the official GitHub page for the website.
 
-## Home Page
+---
 
-Explore Anokha and Amrita at its best.
+## 🌐 Home Page
 
-https://github.com/user-attachments/assets/b1a7d0d0-0fa2-44cc-8234-bd0b15b27975
+Explore Anokha and Amrita at its best.  
+![Home Page](https://github.com/user-attachments/assets/b1a7d0d0-0fa2-44cc-8234-bd0b15b27975)
 
+---
 
-## Events Page
+## 🗓️ Events Page
 
-Register and participate in events and workshops.
+Register and participate in various events and workshops.  
+![Events Page](https://github.com/user-attachments/assets/fea082d8-32e8-46e1-9fa3-e2a04c00c845)
 
-https://github.com/user-attachments/assets/fea082d8-32e8-46e1-9fa3-e2a04c00c845
+---
 
+## ⭐ Favourites Page
 
-## Favourites Page
+Add events and workshops to your favorites, and explore your interests.  
+![Favourites Page](https://github.com/user-attachments/assets/7870eafe-0ad4-460e-aff1-93407f4dd570)
 
-Add events and workshops to your favorites, and explore the things that you like.
+---
 
-https://github.com/user-attachments/assets/7870eafe-0ad4-460e-aff1-93407f4dd570
+## 📝 Event/Workshop Registration
 
+Follow the event registration process for individual events.  
+![Registration Page](https://github.com/user-attachments/assets/bae59551-9701-4790-b5d0-8a890954fcfb)
 
-## Event/Workshop Registration
+---
 
-Event registration procedure for individual events.
+## 💳 View Transactions
 
-https://github.com/user-attachments/assets/bae59551-9701-4790-b5d0-8a890954fcfb
+Manage and view your transactions effortlessly.  
+![View Transactions Page](https://github.com/user-attachments/assets/3af0b5ff-166b-4601-9646-4216ce26ec03)
 
+---
 
-## View Transactions
+## 💡 Lumere Page
 
-https://github.com/user-attachments/assets/3af0b5ff-166b-4601-9646-4216ce26ec03
+Explore **Lumere Tech Talk**, where leaders share insights on society, technology, and leadership.  
+![Lumere Page](https://github.com/user-attachments/assets/46c864ee-7b3c-46c5-8e79-06e272acdd95)
 
+---
 
-## Lumere Page
+## 🎶 Eventide Page
 
-Explore Lumere tech talk, where people share insights on society, technology, and leadership.
+Enjoy the rhythm, dance, and fusion of **Eventide**.  
+![Eventide Page](https://github.com/user-attachments/assets/1d9c840b-cb66-45e2-9086-3b8c72932445)
 
-https://github.com/user-attachments/assets/46c864ee-7b3c-46c5-8e79-06e272acdd95
+---
 
+## 🚀 Tech Fair Page
 
-## Eventide Page
+Participate with the brightest minds. Submit your ideas to get your projects displayed at **Anokha**.  
+![Tech Fair Page](https://github.com/user-attachments/assets/3b3f6671-339b-4c35-875e-4b1d6523b12a)
 
-Enjoy the rhythm, dance, and fusion of Eventide.
+---
 
-https://github.com/user-attachments/assets/1d9c840b-cb66-45e2-9086-3b8c72932445
+## 👨‍💻 Hackathon Page
 
+Join the Hackathon to solve real-world problems and showcase your skills.  
+![Hackathon Page](https://github.com/user-attachments/assets/6d40bab4-e024-4a6d-a164-d1d05b107e80)
 
-## Tech Fair Page
+---
 
-Participate among the brightest brains and submit your ideas, to get your projects on display at Anokha.
+## 👥 Team Page
 
-https://github.com/user-attachments/assets/3b3f6671-339b-4c35-875e-4b1d6523b12a
+Meet the people who make **Anokha 2024** possible.  
+![Team Page](https://github.com/user-attachments/assets/b3d3d311-f36f-4cb3-9c50-8bc958134f9f)
 
+---
 
-## Hackathon Page
+## 🛠️ Features
 
+### Profile Page
 
+- Manage your account and edit your profile details.
+- View your registered events and workshops in your profile.
+- Update your personal details on the profile page.
 
-https://github.com/user-attachments/assets/6d40bab4-e024-4a6d-a164-d1d05b107e80
+### Favourites
 
+- Mark events and workshops as favorites to save them for easy access.
+- Keep track of your favorite events and workshops using the filters on the event page.
 
-Team Page
+---
 
-https://github.com/user-attachments/assets/b3d3d311-f36f-4cb3-9c50-8bc958134f9f
+## ✍️ Instructions to Register
 
+1. Visit the **Events Page**.
+2. Browse through the list of events and workshops.
+3. Click on the event you are interested in.
+4. Follow the **Register** button to complete the registration process.
+5. After successful registration, the event will be listed in your **Profile Page** under **Registered Events**.
+
+---
+
+## 🧑‍💻 Team Data
+
+| Name                     | Role                     | Contact                         |
+|--------------------------|--------------------------|---------------------------------|
+| Dilip P                 | Head                     | dilip.parasu@gmail.com          |
+| Ashwin Narayanan S      | Software Engg. Lead      | ashrockzzz2003@gmail.com        |
+| Abhinav R               | Software Engg. Lead      | abhinavramki@gmail.com          |
+| Dharma Pravardhana      | App Developer            | dharmapravardhana7@gmail.com    |
+| Shreyas V               | App Developer            | shreyasvisweshwaran@gmail.com   |
+| Tharun Kumar A          | Web Developer            | tharunkumarra@gmail.com         |
+| Thanus Kumar A          | Web Developer            | thanuskumaara@gmail.com         |
+| Amritha Nandini KL      | Co-Head                  | amrithanandini2003@gmail.com    |
+| Sajith Rajan P          | Web Developer            | isajithrajan@gmail.com          |
+| Abinesh T               | Web Developer            | knightempire24@gmail.com        |
+| Barath Kumar J          | Web Developer            | barathkumarj121@gmail.com       |
+
+---
+
+Stay tuned for updates and enjoy the **Anokha 2024** experience! 🚀
