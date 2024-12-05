@@ -128,4 +128,13 @@ https://github.com/user-attachments/assets/b3d3d311-f36f-4cb3-9c50-8bc958134f9f
 
 ---
 
+## Discover Other Repositories Associated with Anokha
+
+- [Backend Repository](https://github.com/anokha-24/anokha_backend)  
+- [Mobile Application Repository](https://github.com/anokha-24/anokha_app)  
+- [Intel Admin Repository](https://github.com/anokha-24/anokha_intel_admin)  
+- [Live Transactions Repository](https://github.com/anokha-24/anokha_transactions_live_update)  
+- [DevOps Repository](https://github.com/anokha-24/operations)
+
+
 Stay tuned for updates and enjoy the **Anokha 2024** experience! 🚀
