@@ -143,10 +143,14 @@ https://github.com/user-attachments/assets/b3d3d311-f36f-4cb3-9c50-8bc958134f9f
 ## Discover Other Repositories Associated with Anokha
 
 - [Backend Repository](https://github.com/anokha-24/anokha_backend)  
-- [Mobile Application Repository](https://github.com/anokha-24/anokha_app)  
-- [Intel Admin Repository](https://github.com/anokha-24/anokha_intel_admin)  
-- [Live Transactions Repository](https://github.com/anokha-24/anokha_transactions_live_update)  
-- [DevOps Repository](https://github.com/anokha-24/operations)
+- [Anokha'24 Mobile App Repository](https://github.com/anokha-24/anokha_app)
+- [Anokha Admin Management App Repository](https://github.com/anokha-24/anokha_admin_app)
+- [Intel Admin Portal Repository](https://github.com/anokha-24/anokha_intel_admin)
+- [QR Event Attendance/Gate Entry Exit Scanner Repository](https://github.com/anokha-24/anokha_qr_scan)
+- [Anokha Live Revenue Monitoring App Repository](https://github.com/anokha-24/anokha_admin_angular)
+- [MySQL Backup Script - Upload to OneDrive Repository](https://github.com/anokha-24/anokha_backup_mysql)
+- [Anokha Live Transactions Update Repository](https://github.com/anokha-24/anokha_transactions_live_update)  
+- [Anokha DevOps Config Repository](https://github.com/anokha-24/operations)
 
 
-Stay tuned for updates and enjoy the **Anokha 2024** experience! 🚀
+Stay tuned for updates on **Anokha 2025**! 🚀
