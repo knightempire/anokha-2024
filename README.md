@@ -37,9 +37,21 @@ https://github.com/user-attachments/assets/bae59551-9701-4790-b5d0-8a890954fcfb
 
 ---
 
+## Profile Page
+
+Visit your profile to update your details and view registered events.
+
+
+
+https://github.com/user-attachments/assets/ed589656-b210-4b45-a697-c43e7c216e2d
+
+
+
+---
+
 ## 💳 View Transactions
 
-Manage and view your transactions effortlessly.  
+View Registration and Submit Feedback.
 
 https://github.com/user-attachments/assets/3af0b5ff-166b-4601-9646-4216ce26ec03
 
